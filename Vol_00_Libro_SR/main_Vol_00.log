@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  7 JUL 2026 07:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  15 JUL 2026 20:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -9970,7 +9970,7 @@ ine 603.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 603.
 <Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_apertifinti.pdf, id=
-4177, 274.83388pt x 101.30478pt>
+4182, 274.83388pt x 101.30478pt>
 File: Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_apertifinti.pdf
  Graphic file (type pdf)
 <use Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_apertifinti.pdf>
@@ -10014,7 +10014,7 @@ ine 656.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 658.
 <Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_multipiano.pdf, id=4
-187, 418.52423pt x 240.0697pt>
+193, 418.52423pt x 240.0697pt>
 File: Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_multipiano.pdf 
 Graphic file (type pdf)
 <use Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_multipiano.pdf>
@@ -35291,11 +35291,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7453.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7453.
-
-
-LaTeX Warning: Reference `fig:tre_maglie_schema' on page 515 undefined on input
- line 7459.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7461.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -35394,7 +35389,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7567.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7567.
-[515]
+ [515]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7573.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -35682,10 +35677,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7814.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7814.
-
-LaTeX Warning: Reference `fig:tre_maglie_soluzione' on page 517 undefined on in
-put line 7828.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7828.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -35808,11 +35799,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7901.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7903.
-
-
-LaTeX Warning: Reference `fig:mensola_schema' on page 519 undefined on input li
-ne 7909.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 7911.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -35927,7 +35913,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8017.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8017.
-[519]
+ [519]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8021.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36193,10 +36179,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8246.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8246.
-
-LaTeX Warning: Reference `fig:mensola_soluzione' on page 521 undefined on input
- line 8254.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8254.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36306,11 +36288,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8312.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8315.
-
-
-LaTeX Warning: Reference `fig:ktruss_schema' on page 522 undefined on input lin
-e 8316.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8317.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36435,7 +36412,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8412.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8417.
-[522]
+ [522]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8427.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36446,11 +36423,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8441.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8444.
-
-
-LaTeX Warning: Reference `fig:ktruss_soluzione' on page 523 undefined on input 
-line 8449.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8449.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36487,7 +36459,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8464.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8466.
-[523]
+ [523]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8469.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36685,10 +36657,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8653.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8654.
-
-LaTeX Warning: Reference `fig:ktruss_soluzione' on page 524 undefined on input 
-line 8656.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8656.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36734,11 +36702,6 @@ ine 8680.
 [524] [525]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8682.
-
-
-LaTeX Warning: Reference `fig:gru_schema' on page 526 undefined on input line 8
-689.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8690.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36857,7 +36820,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8778.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8779.
-[526]
+ [526]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8782.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36876,11 +36839,6 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8812.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8814.
-
-
-LaTeX Warning: Reference `fig:gru_soluzione' on page 527 undefined on input lin
-e 8820.
-
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8820.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -36983,7 +36941,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8868.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8868.
-[527]
+ [527]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 8873.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -37098,8 +37056,8 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 9006.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 9008.
- [528]) (./Parti/P04-Travi_rigide/C06-Telai_piani/C06-Telai_piani.tex
-[529] [530
+ [528])
+(./Parti/P04-Travi_rigide/C06-Telai_piani/C06-Telai_piani.tex [529] [530
 
 ]
 Capitolo 19.
@@ -43204,233 +43162,19 @@ Underfull \hbox (badness 2828) in paragraph at lines 71--73
  mec-ca-ni-ca ra-zio-na-le per
  []
 
-[594]) [595] (./main_Vol_00.nls [596
+[594]) [595]
+No file main_Vol_00.nls.
+[596
 
 
-
-]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 4.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 5.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 6.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 7.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 8.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 9.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 9.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 9.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 9.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 9.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 10.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 10.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 10.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 10.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 10.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 10.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 11.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 11.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 11.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 11.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 11.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 12.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 12.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 12.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 12.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 12.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 13.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 14.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 15.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 16.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 17.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 17.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 18.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 18.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 19.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 20.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 22.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 23.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 24.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 24.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 25.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 25.
- [597]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 26.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 27.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 28.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 29.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 29.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 30.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 31.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 31.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 31.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 32.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 33.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 33.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 34.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 34.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 35.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 35.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 36.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 36.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 37.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 38.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 38.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 39.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 40.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 40.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 41.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 41.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 42.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 42.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 43.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 44.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 45.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 45.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 46.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 46.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 46.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 47.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 48.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 49.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 50.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 51.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 52.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 53.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 54.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 55.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 56.
- [598]
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 58.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 58.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 59.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 60.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 61.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 62.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 63.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 64.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 65.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 66.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 67.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 68.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 69.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 70.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 71.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 72.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 74.
-LaTeX Font Info:    No math alphabet change to frozen version normal on input l
-ine 75.
-) [599] [600
 
 ]
 runsystem(makeindex main_Vol_00.idx)...executed safely (allowed).
 
+ (./main_Vol_00.ind [597
 
-(./main_Vol_00.ind [601
-
-] [602] [603] [604] [605]) [606] (./main_Vol_00.aux
-(./Parti/P07_Bibliografia/t_bibliografia.aux))
+] [598] [599] [600] [601]) [602]
+(./main_Vol_00.aux (./Parti/P07_Bibliografia/t_bibliografia.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -43445,93 +43189,64 @@ LaTeX Warning: There were undefined references.
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `main_Vol_00.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main_Vol_00.out':
-(rerunfilecheck)             Before: 6D34758F825390A1EC3A091A74B98BE0;78609
-(rerunfilecheck)             After:  4D5AA7DBE1AA325BEE07456A7C16E0F5;78768.
+Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
+(rerunfilecheck)             Checksum: A6B9F2F37A494F5BDA2F92889093DA56;78768.
  ) 
 Here is how much of TeX's memory you used:
- 51408 strings out of 474116
- 971979 string characters out of 5743681
+ 51387 strings out of 474116
+ 971617 string characters out of 5743681
  2026187 words of memory out of 5000000
- 70515 multiletter control sequences out of 15000+600000
+ 70508 multiletter control sequences out of 15000+600000
  729582 words of font info for 193 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  115i,27n,120p,1655b,1489s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurb10.p
+fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10
+.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbsy10.pfb></us
+r/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/lm/lmbx6.pfb></usr/local/texlive/2024/texmf-dist
+/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
+1/public/lm/lmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
+/lmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbxi10.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/p
+ublic/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
+mi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/20
+24/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-di
+st/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
+pe1/public/lm/lmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/
+lm/lmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr6.pfb>
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/
+texlive/2024/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
+1/public/lm/lmri12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/l
+m/lmri7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri8.pfb
+></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri9.pfb></usr/loca
+l/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/
+2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/
+type1/public/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publi
+c/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msa
+m10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols
+/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stmaryrd/stm
+ary10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stmaryrd/stmar
+y8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stmaryrd/stmary9.
+pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/boondox/zxxrw8a.pfb>
 
-pdfTeX warning (dest): name{table.caption.221} has been referenced but does not
- exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{table.caption.220} has been referenced but does not
- exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{figure.caption.215} has been referenced but does no
-t exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{table.caption.207} has been referenced but does not
- exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section*.227} has been referenced but does not exis
-t, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{chapter*.223} has been referenced but does not exis
-t, replaced by a fixed one
-
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurb10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10.p
-fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbsy10.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texl
-ive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2024/t
-exmf-dist/fonts/type1/public/lm/lmbx6.pfb></usr/local/texlive/2024/texmf-dist/f
-onts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
-public/lm/lmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/l
-mbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb>
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2024/texmf-dist/font
-s/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pub
-lic/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi
-8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/2024
-/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/texmf-dist
-/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type
-1/public/lm/lmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
-/lmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr6.pfb></
-usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/te
-xlive/2024/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2024/t
-exmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
-public/lm/lmri12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/
-lmri7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri8.pfb><
-/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri9.pfb></usr/local/
-texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/20
-24/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2024/texmf-di
-st/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
-pe1/public/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/
-lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam1
-0.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/m
-sbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stmaryrd/stmar
-y10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stmaryrd/stmary8
-.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/stmaryrd/stmary9.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/boondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (606 pages, 3402604 bytes).
+Output written on main_Vol_00.pdf (602 pages, 3396455 bytes).
 PDF statistics:
- 7446 PDF objects out of 8907 (max. 8388607)
- 6636 compressed objects within 67 object streams
- 2247 named destinations out of 2487 (max. 500000)
- 2743 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 7434 PDF objects out of 8907 (max. 8388607)
+ 6628 compressed objects within 67 object streams
+ 2236 named destinations out of 2487 (max. 500000)
+ 2751 words of extra memory for PDF output out of 10000 (max. 10000000)
 
