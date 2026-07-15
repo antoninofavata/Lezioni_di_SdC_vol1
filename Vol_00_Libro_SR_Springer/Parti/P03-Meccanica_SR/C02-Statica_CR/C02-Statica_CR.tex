@@ -1,0 +1,1705 @@
+%---------------------------------------------------------------------------------------------------------------------------- 
+\graphicspath{{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/}}
+\chapter{Statica del corpo rigido}\label{cap:statica_CR}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+
+\begin{sommario}
+	Si richiamano le equazioni di equilibrio del corpo rigido
+	come motivazione per la riduzione di un sistema di forze
+	alle sue grandezze globali. Si definiscono risultante e
+	momento risultante, si introduce la coppia di forze e si
+	deriva la legge di variazione del momento al variare del
+	polo. Si studiano gli invarianti del campo dei momenti e
+	si introduce l'asse centrale del sistema di forze con una
+	costruzione geometrica parallela a quella del
+	\CAPref{cap:cinematica_infinitesima}. Si classificano i
+	sistemi equivalenti e si specializza la trattazione al
+	caso piano, con la determinazione del centro di riduzione.
+	Si conclude con la riduzione di sistemi di forze
+	equiorientate e il calcolo del baricentro delle forze.
+\end{sommario}
+
+
+\section{Considerazioni introduttive}
+
+Le equazioni di equilibrio\index{equilibrio|textbf}\index{equilibrio!equazioni di} del corpo rigido --- richiamate senza
+dimostrazione dai corsi di Statica e Fisica Matematica propedeutici
+a questo --- stabiliscono che un corpo rigido è in equilibrio se e
+solo se sono nulli la risultante di tutte le forze esterne e il
+momento risultante rispetto a un polo qualsiasi $O$:
+\begin{equation}\label{eq:equilibrio_CR}
+	\fb = \zerovb, \qquad \bm{\upmu}(O) = \zerovb.
+\end{equation}
+Queste due condizioni vettoriali equivalgono a sei equazioni
+scalari nello spazio e a tre nel piano. Il fatto che bastino
+\textit{sei} scalari --- e non infiniti --- è la conseguenza
+diretta del vincolo di rigidità: i gradi di libertà del corpo
+sono sei, e altrettante sono le equazioni necessarie e sufficienti
+per vincolarli tutti. Di un sistema di forze comunque complesso
+interessa dunque soltanto la coppia $(\fb,\,\bm{\upmu}(O))$: due
+sistemi che producono la stessa coppia sono \textit{equivalenti}
+dal punto di vista dell'equilibrio del corpo rigido. Questo
+giustifica la procedura di \textit{riduzione}\index{sistema di forze!riduzione|textbf} del sistema di
+forze sviluppata nelle sezioni seguenti.
+
+
+%------------------------------------------------------------
+\section{Riduzione di un sistema di forze}
+%------------------------------------------------------------
+
+La descrizione di un sistema di forze\index{sistema di forze|textbf} applicato a un corpo
+rigido si semplifica notevolmente sostituendo l'insieme delle
+singole forze con due sole grandezze globali --- la risultante
+e il momento risultante --- che ne catturano l'effetto
+complessivo sull'equilibrio. Questa operazione, detta
+\textit{riduzione}, è resa possibile dal vincolo di rigidità:
+poiché il corpo non si deforma, ciò che conta non è la
+distribuzione effettiva delle forze ma il loro effetto globale.
+
+\subsection{Risultante e momento risultante}
+
+Consideriamo un sistema $\mathcal{S}$ di $n$ forze applicate
+$(P_k,\,\fb_k)$, con $k=1,\dots,n$. La riduzione del sistema
+consiste nel determinare due grandezze globali.
+
+La \textit{risultante}\index{risultante|textbf}\nomenclature[L]{$\fb$}{risultante di un sistema di forze (vettore libero); forza} è il vettore libero
+\begin{equation}\label{eq:risultante}
+	\fb \coloneqq \sum_{k=1}^{n} \fb_k,
+\end{equation}
+di componenti $X = \sum_k X_k$, $Y = \sum_k Y_k$,
+$Z = \sum_k Z_k$.
+
+Il \textit{momento risultante}\index{momento!risultante|textbf}\nomenclature[G]{$\bm{\upmu}(O)$}{momento risultante rispetto al polo $O$ (vettore assiale)} rispetto a un polo $O$ è il
+vettore assiale
+\begin{equation}\label{eq:momento_risultante}
+	\bm{\upmu}(O) \coloneqq \sum_{k=1}^{n}
+	\overrightarrow{OP_k} \times \fb_k,
+\end{equation}
+somma dei momenti\index{momento!di una forza} $\bm{\upmu}_k(O) =
+\overrightarrow{OP_k} \times \fb_k$ dei singoli vettori
+applicati (\FIGref{fig:momento_forza}\,a). In componenti
+(\FIGref{fig:momento_forza}\,b):
+\begin{equation}\label{eq:momento_risultante_det}
+	\bm{\upmu}(O) = \sum_{k=1}^{n}
+	\begin{vmatrix}
+		\ab_x & \ab_y & \ab_z \\
+		x_k   & y_k   & z_k   \\
+		X_k   & Y_k   & Z_k
+	\end{vmatrix}
+	= \sum_{k=1}^{n}
+	\begin{bmatrix}
+		0    & -z_k &  y_k \\
+		z_k  &  0   & -x_k \\
+		-y_k &  x_k &  0
+	\end{bmatrix}
+	\begin{Bmatrix} X_k \\ Y_k \\ Z_k \end{Bmatrix},
+\end{equation}
+dove $x_k$, $y_k$, $z_k$ sono le coordinate di $P_k$
+rispetto a $O$.
+
+
+\begin{figure}[!htbp]
+	\centering
+	\def\ax{0.5}\def\ay{0.30}
+	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\providecommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\begin{minipage}[b]{0.46\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			% ===== PANNELLO (a) =====
+			\draw[gray!60] (\xyz{-1.7}{-1.2}{0}) -- (\xyz{-1.7}{3.50}{0})-- (\xyz{3.0}{3.50}{0}) -- (\xyz{3.0}{-1.2}{0}) -- cycle;
+			\node[gray!75] at (\xyz{-1.2}{-1.0}{0}) {$\pi$};
+			\coordinate (O)  at (\xyz{0}{0}{0});
+			\coordinate (Pk) at (\xyz{0.5}{2.0}{0});
+			\coordinate (Ff) at (\xyz{1.7}{2.3}{0});
+			\coordinate (Of) at (\xyz{1.2}{0.3}{0});
+			\coordinate (MuB) at (\xyz{0}{0}{1.25});
+			\coordinate (MuC) at (\xyz{0}{0}{1.47});
+			\draw[gray!55, thin] (O) -- (Of) -- (Ff) -- (Pk) -- cycle;
+			
+			%				\draw[->, thin] (O) -- (Pk);
+			%				\node[font=\small, below] at ($(O)!0.5!(Pk)$) {$\overrightarrow{OP_k}$};
+			
+			\draw[->,thick] (O) -- (Pk) node[font=\small, midway, sloped, below] {$\overrightarrow{OP_k}$};
+			
+			\draw[->, thick] (Pk) -- (Ff) node[right=-2pt] {$\fb_k$};
+			\draw[->>, thick] (O) -- (MuB) node[left=1pt, yshift=-10pt] {$\bm{\upmu}_k(O)$};
+			%\draw[->, thin] ([shift={(0.18,0)}]MuC)arc[x radius=0.18, y radius=0.07, start angle=0, end angle=305];
+			\begin{scope}[gray!55]
+				\rightangle{MuB}{O}{Of}   % angolo retto fra mu e la retta // f_k
+				\rightangle{MuB}{O}{Pk}
+			\end{scope}
+			\fill (O)  circle (1.5pt) node[left=2pt] {$O$};
+			\fill (Pk) circle (1.5pt) node[below right=-1pt] {$P_k$};
+		\end{tikzpicture}\\[0.8ex]
+		(a)
+	\end{minipage}\hfill
+	\begin{minipage}[b]{0.50\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			% proiezione: x in avanti (basso-sinistra), y destra, z su
+			\def\ax{-0.65}\def\ay{-0.48}
+			
+			\def\az{0.7}                            % <1 = comprime in altezza
+			\renewcommand{\xyz}[3]{{#2 + (#1)*\ax},{(#3)*\az + (#1)*\ay}}
+			% componenti di P_k
+			\def\xk{1.4}\def\yk{2.6}\def\zk{2.0}
+			\coordinate (O)   at (\xyz{0}{0}{0});
+			\coordinate (Px)  at (\xyz{\xk}{0}{0});
+			\coordinate (Py)  at (\xyz{0}{\yk}{0});
+			\coordinate (Pxy) at (\xyz{\xk}{\yk}{0});
+			\coordinate (Pk)  at (\xyz{\xk}{\yk}{\zk});
+			
+			% --- scatola di decomposizione (base + verticale) ---
+			\draw[gray!55, thin] (O) -- (Px) -- (Pxy) -- (Py) -- cycle;
+			\draw[gray!55, thin] (Pxy) -- (Pk);
+			
+			% --- assi x,y,z ---
+			\draw[->, thin] (O) -- (\xyz{2.6}{0}{0}) node[below left=-2pt] {$x$};
+			\draw[->, thin] (O) -- (\xyz{0}{3.4}{0}) node[right]          {$y$};
+			\draw[->, thin] (O) -- (\xyz{0}{0}{2.9}) node[above]          {$z$};
+			
+			% --- vettore posizione OP_k ---
+			%				\draw[->, thin] (O) -- (Pk);
+			%				\node[font=\small, above left=-8pt, yshift=6pt] at ($(O)!0.42!(Pk)$) {$\overrightarrow{OP_k}$};
+			
+			% --- terna delle componenti di forza in P_k ---
+			\coordinate (Xt) at (\xyz{\xk+0.85}{\yk}{\zk});
+			\coordinate (Yt) at (\xyz{\xk}{\yk+0.85}{\zk});
+			\coordinate (Zt) at (\xyz{\xk}{\yk}{\zk+0.85});
+			\draw[->, thick] (Pk) -- (Xt) node[above=4pt] {$X_k$};
+			\draw[->, thick] (Pk) -- (Yt) node[right=-1pt] {$Y_k$};
+			\draw[->, thick] (Pk) -- (Zt) node[above=-1pt] {$Z_k$};
+			
+			% --- etichette componenti (spigoli O->Py->Pxy->Pk) ---
+			\node[font=\small, below=20pt, xshift=-20pt]      at ($(O)!0.5!(Py)$)   {$y_k$};
+			\node[font=\small,  right=1pt, yshift=-6pt] at ($(Py)!0.5!(Pxy)$) {$x_k$};
+			\node[font=\small, right, yshift=6pt]      at ($(Pxy)!0.5!(Pk)$) {$z_k$};
+			
+			% --- punti ---
+			\fill (O)  circle (1.5pt) node[above left=-1pt]  {$O$};
+			\fill (Pk) circle (1.5pt) node[above right=-1pt] {$P_k$};
+	
+			% ===== MOMENTI in O (interni, assiali ->> + ricciolo) =====
+			\coordinate (Mx) at (\xyz{1.2}{0}{0});
+			\coordinate (My) at (\xyz{0}{1.2}{0});
+			\coordinate (Mz) at (\xyz{0}{0}{1.4});
+			\draw[->>, thick] (O) -- (Mx);
+			%\draw[->, thin, rotate around={126:(Mx)}]([shift={(0.16,0)}]Mx) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
+			\node[font=\small, above,  xshift=-4pt, yshift=6pt] at (Mx) {$\bm{\upmu}_{xk}(O)$};
+			\draw[->>, thick] (O) -- (My);
+			%\draw[->, thin, rotate around={-90:(My)}] ([shift={(0.16,0)}]My) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
+			\node[font=\small, below=-1pt, xshift=-6pt] at (My) {$\bm{\upmu}_{yk}(O)$};
+			\draw[->>, thick] (O) -- (Mz);
+			%\draw[->, thin, rotate around={0:(Mz)}]	([shift={(0.16,0)}]Mz) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
+			\node[font=\small, left=1pt] at (Mz) {$\bm{\upmu}_{zk}(O)$};
+			
+			% ===== FORZE lungo gli assi (esterne, -> ; traslabili con \sx,\sy,\sz) =====
+			\def\Lm{0.9}
+			\def\sx{1.2}
+			\coordinate (Xa) at (\xyz{\sx}{0}{0});
+			\coordinate (Xb) at (\xyz{\sx+\Lm}{0}{0});
+			\draw[->, thick] (Xa) -- (Xb);
+			\node[font=\small, below=3pt] at (\xyz{\sx+\Lm/2}{0}{0}) {$X_k$};
+			\def\sy{2.1}
+			\coordinate (Ya) at (\xyz{0}{\sy}{0});
+			\coordinate (Yb) at (\xyz{0}{\sy+\Lm}{0});
+			\draw[->, thick] (Ya) -- (Yb);
+			\node[font=\small, above] at (Yb) {$Y_k$};
+			\def\sz{1.5}
+			\coordinate (Za) at (\xyz{0}{0}{\sz});
+			\coordinate (Zb) at (\xyz{0}{0}{\sz+\Lm});
+			\draw[->, thick] (Za) -- (Zb);
+			\node[font=\small, left=2pt] at (Zb) {$Z_k$};
+			
+		\end{tikzpicture}
+		\\[0.8ex]
+		(b)
+	\end{minipage}
+	\caption{(a)~Momento $\bm{\upmu}_k(O)$ rispetto al polo
+		$O$ della forza $(P_k,\fb_k)$, definito come
+		$\bm{\upmu}^O_k = \protect\overrightarrow{OP_k}\times\fb_k$.
+		(b)~Componenti cartesiane $x_k,y_k,z_k$ del vettore
+		posizione $\protect\overrightarrow{OP_k}$ e componenti
+		$X_k,Y_k,Z_k$ della forza $\fb_k$.}
+	\label{fig:momento_forza}
+\end{figure}
+
+La coppia $(\fb,\,\bm{\upmu}(O))$ costituisce gli
+\textit{elementi caratteristici} del sistema rispetto al
+polo $O$: la risultante è un vettore polare libero,
+il momento risultante è un vettore assiale che dipende
+dal polo.
+
+
+\subsection{Coppia di forze}
+
+Un caso particolare di grande importanza è la \textit{coppia}\index{coppia|textbf},
+formata da due forze $\fb_1$ e $\fb_2 = -\fb_1$ di uguale
+intensità, direzione parallela e verso opposto, applicate in
+punti distinti $P_1$ e $P_2$. La risultante è nulla:
+\begin{equation}
+	\fb = \fb_1 + \fb_2 = \zerovb.
+\end{equation}
+Il momento risultante rispetto a un polo $O$ qualsiasi è
+\begin{equation}\label{eq:coppia}
+	\bm{\upmu}(O)
+	= \overrightarrow{OP_1} \times \fb_1
+	+ \overrightarrow{OP_2} \times (-\fb_1)
+	= (\overrightarrow{OP_1} - \overrightarrow{OP_2})
+	\times \fb_1
+	= \overrightarrow{P_2P_1} \times \fb_1,
+\end{equation}
+e \textit{non dipende dal polo}: il momento di una coppia è
+un invariante (\FIGref{fig:coppia}). Il suo modulo è
+$|\bm{\upmu}| = |\fb_1|\,b$, dove
+$b = |\protect\overrightarrow{P_2P_1}|\sin\alpha$ è il
+\textit{braccio}\index{braccio}, ovvero la distanza fra le linee d'azione;
+la direzione è perpendicolare al piano della coppia e il verso
+è quello della rotazione che la coppia tende a produrre,
+secondo la regola della mano destra.
+
+
+
+\begin{figure}[htbp]
+	\centering
+	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\newcommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\tikzset{midarrow/.style={postaction={decorate},
+			decoration={markings, mark=at position #1 with {\arrow{Stealth}}}},
+		midarrow/.default=0.55}
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2]
+		\def\ax{0.5}\def\ay{0.30}
+		% piano pi
+		%\draw[gray!60] (\xyz{-1.2}{-2.4}{0}) -- (\xyz{-1.2}{4.8}{0}) -- (\xyz{3.8}{4.8}{0}) -- (\xyz{3.8}{-2.4}{0}) -- cycle;
+		\draw[gray!60] (\xyz{-1.60}{-2.4}{0}) -- (\xyz{-1.60}{3.8}{0})	-- (\xyz{4.8}{3.8}{0}) -- (\xyz{4.8}{-2.4}{0}) -- cycle;
+		%\node[gray!75] at (\xyz{-1.85}{-2.2}{0}) {$\pi$};   % sposta anche l'etichetta pi
+		\node[gray!75] at (\xyz{-1.2}{-2.0}{0}) {$\pi$};
+		
+		\def\Lf{1.3}
+		\coordinate (O)  at (\xyz{2.8}{0.9}{0});
+		\coordinate (P1) at (\xyz{2.0}{0.3}{0});
+		\coordinate (P2) at (\xyz{0.6}{2.0}{0});
+		\coordinate (F1) at (\xyz{2.0}{0.3-\Lf}{0});
+		\coordinate (F2) at (\xyz{0.6}{2.0+\Lf}{0});
+		
+		% rette d'azione (grigie, prolungate)
+		\draw[gray!55, thin] (\xyz{2.0}{-2.2}{0}) -- (\xyz{2.0}{1.0}{0});
+		\draw[gray!55, thin] (\xyz{0.6}{-2.2}{0}) -- (\xyz{0.6}{.5}{0});
+		% prolungamento grigio di P2P1 oltre P1
+		\coordinate (PPe) at ($(P1)!-0.6!(P2)$);
+		\draw[gray!55, thin] (P1) -- (PPe);
+		
+		% vettori posizione
+		%		\draw[thin, midarrow] (O) -- (P1);
+		%		\node[font=\small, above=1pt] at ($(O)!0.5!(P1)$) {$\overrightarrow{OP_1}$};
+		
+		\draw[thin, midarrow] (O) -- (P1) node[font=\small, midway, sloped, above] {$\overrightarrow{OP_1}$};
+		
+		\draw[thin, midarrow] (O) -- (P2);
+		\node[font=\small, above right=-2pt] at ($(O)!0.5!(P2)-(0,0.2)$) {$\overrightarrow{OP_2}$};
+		
+		
+		% P2P1
+		%		\draw[thin, midarrow] (P2) -- (P1);
+		%		\node[font=\small, below=1pt, xshift=-16pt, yshift=6pt] at ($(P2)!0.42!(P1)$) {$\overrightarrow{P_2P_1}$};
+		
+		\draw[thin, midarrow] (P2) -- (P1) node[font=\small, midway, sloped, below] {$\overrightarrow{P_2P_1}$};
+		
+		
+		% forze
+		\draw[->, line width=1.2pt] (P1) -- (F1) node[below left=-4pt] {$\fb_1$};
+		\draw[->, line width=1.2pt] (P2) -- (F2) node[below, xshift=-16pt] {$-\fb_1$};
+		
+		% angolo alpha fra il prolungamento grigio di P2P1 e f_1, in P1
+		\pic[draw, thick, angle radius=6mm, angle eccentricity=1.5,	"\small$\alpha$"] {angle = PPe--P1--F1};
+		
+		% braccio b sui prolungamenti grigi (perpendicolare fra le due rette)
+		\coordinate (B1) at (\xyz{2.0}{-1.9}{0});   % su retta d'azione di f_1
+		\coordinate (B2) at (\xyz{0.6}{-1.9}{0});   % su retta d'azione di -f_1
+		\draw[<->, thin] (B1) -- (B2);
+		\node[font=\small, above=1pt, xshift=-2pt, yshift=-5pt] at ($(B1)!0.5!(B2)$) {$b$};
+		
+		\begin{scope}[gray!55]
+			\rightangle{B2}{B1}{\xyz{2.0}{-1.4}{0}}
+			\rightangle{B1}{B2}{\xyz{0.6}{-1.4}{0}}
+		\end{scope}
+		
+		
+		
+		% ===== momento mu LIBERO, a destra del piano, con DUE angoli retti =====
+		\def\my{0.60}                      % <- alza/abbassa cambiando solo questo
+		\coordinate (Mb) at (3.6,\my);
+		\coordinate (Mt) at ($(Mb)+(0,1.4)$);
+		\coordinate (Mc) at ($(Mb)+(0,1.62)$);
+		\coordinate (pax) at ($(Mb)+(0.55,0.33)$);  % direzione tipo a_x
+		\coordinate (pay) at ($(Mb)+(0.95,0)$);     % direzione tipo a_y
+		\draw[gray!55, thin] (Mb) -- (pax) -- ($(pax)+(pay)-(Mb)$) -- (pay) -- cycle;
+		\draw[->>, thick] (Mb) -- (Mt) node[left=1pt] {$\bm{\upmu}$};
+		\draw[->, thin] ([shift={(0.18,0)}]Mc)	arc[x radius=0.18, y radius=0.07, start angle=0, end angle=305];
+		\begin{scope}[gray!55]
+			\rightangle{Mt}{Mb}{pax}
+			\rightangle{Mt}{Mb}{pay}
+		\end{scope}
+		
+		% punti
+		\fill (O)  circle (1.4pt) node[above=2pt] {$O$};
+		\fill (P1) circle (1.4pt) node[above left=-2pt] {$P_1$};
+		\fill (P2) circle (1.4pt) node[below] {$P_2$};
+	\end{tikzpicture}
+	\caption{Momento della coppia generata dalle forze $\fb_1$ e
+		$\fb_2=-\fb_1$ applicate in $P_1$ e $P_2$. Il momento
+		$\bm{\upmu}=\protect\overrightarrow{P_2P_1}\times\fb_1$ è perpendicolare
+		al piano delle forze, con modulo $|\fb_1|\,b$ e braccio
+		$b=|\protect\overrightarrow{P_2P_1}|\sin\alpha$, ed è indipendente dal
+		polo $O$.}
+	\label{fig:coppia}
+\end{figure}
+
+
+La coppia produce un puro effetto rotazionale: nella pratica
+ingegneristica la si identifica con il suo momento e la si
+tratta come un vettore assiale libero. Un sistema può contenere
+sia forze concentrate $\fb_k$, $k = 1, \ldots, n_f$, sia coppie
+$\bm{\upmu}_j$, $j = 1, \ldots, n_c$; in tal caso
+\begin{equation}\label{eq:riduzione_generalizzata}
+	\fb = \sum_{k=1}^{n_f} \fb_k, \qquad
+	\bm{\upmu}(O) = \sum_{k=1}^{n_f}
+	\overrightarrow{OP_k} \times \fb_k
+	+ \sum_{j=1}^{n_c} \bm{\upmu}_j.
+\end{equation}
+Le coppie contribuiscono al momento risultante ma non alla
+risultante, essendo forze che si equilibrano internamente.
+
+\subsection{Densità di forze}
+
+In molte applicazioni le forze agenti su un corpo non sono
+concentrate in punti isolati ma distribuite su volumi,
+superfici o linee. Si introducono le corrispondenti
+\textit{densità di forze}\index{densita di forze@densità di forze|textbf}: la densità di volume $\fb_V$
+(dimensioni fisiche $[F\,L^{-3}]$), la densità di superficie
+$\fb_S$ ($[F\,L^{-2}]$) e la densità di linea $\fb_L$
+($[F\,L^{-1}]$).
+
+La risultante e il momento risultante si ottengono
+sostituendo le sommatorie con integrali sui rispettivi domini:
+\begin{equation}\label{eq:risultante_distribuite}
+	\fb = \int_V \fb_V \dd V
+	+ \int_S \fb_S \dd S
+	+ \int_L \fb_L \dd L,
+\end{equation}
+\begin{equation}\label{eq:momento_distribuite}
+	\bm{\upmu}(O) = \int_V \overrightarrow{OP}
+	\times \fb_V \dd V
+	+ \int_S \overrightarrow{OP}
+	\times \fb_S \dd S
+	+ \int_L \overrightarrow{OP}
+	\times \fb_L \dd L,
+\end{equation}
+dove $\overrightarrow{OP}$ è il vettore posizione del punto
+generico $P$ rispetto al polo $O$. La legge di
+variazione~\eqref{eq:variazione_momento}, gli invarianti e
+tutte le proprietà del campo dei momenti restano validi: la
+coppia $(\fb,\,\bm{\upmu}(O))$ caratterizza il sistema
+indipendentemente dal fatto che le forze siano concentrate o
+distribuite.
+
+\begin{oss}
+	Il caso più frequente nella meccanica delle strutture è
+	quello di forze distribuite lungo una linea (l'asse di una
+	trave) o su una superficie (la faccia di una piastra o di
+	un guscio). In questi casi la densità di forze prende il
+	nome di \textit{carico distribuito}\index{carico!distribuito}: il carico di linea
+	$\fb_L$ ha le dimensioni di una forza per unità di
+	lunghezza, il carico di superficie $\fb_S$ di una forza
+	per unità di area. Esempi tipici sono il peso proprio di
+	una trave (carico di linea uniforme) e la pressione del
+	vento su una parete (carico di superficie).
+\end{oss}
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Legge di variazione del momento}\index{momento!legge di variazione|textbf}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Il momento risultante dipende dal polo. Per determinare come
+varia, valutiamo la definizione~\eqref{eq:momento_risultante}
+in un polo $P$ qualsiasi. Poiché
+$\overrightarrow{PP_k} = \overrightarrow{OP_k} -
+\overrightarrow{OP}$:
+\begin{equation}
+	\bm{\upmu}(P)
+	= \sum_k \overrightarrow{PP_k} \times \fb_k
+	= \sum_k \overrightarrow{OP_k} \times \fb_k
+	- \overrightarrow{OP} \times \sum_k \fb_k
+	= \bm{\upmu}(O) - \overrightarrow{OP} \times \fb.
+\end{equation}
+Applicando l'antisimmetria del prodotto vettoriale:
+\begin{equation}\label{eq:variazione_momento}
+	\boxed{\bm{\upmu}(P)
+		= \bm{\upmu}(O) + \fb \times \overrightarrow{OP}.}
+\end{equation}
+Il momento non è un vettore libero: dipende dal polo
+attraverso un termine che coinvolge la risultante (\FIGref{fig:variazione_momento}). Conoscendo
+$\fb$ e $\bm{\upmu}(O)$, si può calcolare il momento rispetto
+a qualsiasi polo senza tornare alle singole forze.
+
+\begin{figure}[htbp]
+	\centering
+	% --- helper locali usati dai due pannelli ---
+	\providecommand{\ricciolo}[2]{%
+		\draw[->, thin, rotate around={#2:(#1)}]
+		([shift={(0.18,0)}]#1) arc[x radius=0.18, y radius=0.07,
+		start angle=0, end angle=305];}
+	\tikzset{midarrow/.style={postaction={decorate},
+			decoration={markings, mark=at position #1 with {\arrow{Stealth}}}},
+		midarrow/.default=0.55}
+	%
+	\subfloat[]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0,
+			baseline={(current bounding box.center)}]
+			\coordinate (O)  at (0,0);
+			\coordinate (Pk) at (1.85,1.95);
+			\coordinate (P)  at (2.05,-0.35);
+			% triangolo dei vettori posizione (costruzioni)
+			\draw[thin, gray!85, midarrow=0.55] (O) -- (Pk);
+			\draw[thin, gray!85, midarrow=0.55] (O) -- (P);
+			\draw[thin, gray!85, midarrow=0.62] (P) -- (Pk);
+			%\node[gray!75] at ($(O)!0.5!(Pk)+(-0.32,0.42)$) {$\overrightarrow{OP_k}$};
+			
+			\draw[thin, gray!85] (O) -- (Pk) node[font=\small, midway, sloped, above] {$\overrightarrow{OP_k}$};
+			\draw[thin, gray!85] (O) -- (P) node[font=\small, midway, sloped, below] {$\overrightarrow{OP}$};
+			%	\draw[thin] (P) -- (Pk) node[midway, sloped, below] {$\overrightarrow{PP_k}$};
+			
+			%				\node[gray!75] at ($(O)!0.5!(P)+(0.05,-0.36)$)  {$\overrightarrow{OP}$};
+			\node[gray!75, font=\small] at ($(P)!0.5!(Pk)+(0.45,0.02)$) {$\overrightarrow{PP_k}$};
+			% forza f_k
+			\draw[->, thick] (Pk) -- ($(Pk)+(-0.50,1.05)$) node[right=1pt] {$\fb_k$};
+			% momento mu(O)
+			\coordinate (muOt) at (0,1.30);
+			\coordinate (muOc) at (0,1.52);
+			\draw[->>, thick] (O) -- (muOt) node[left=1pt] {$\bm{\upmu}(O)$};
+			%\ricciolo{muOc}{0}
+			% punti
+			\fill (O)  circle (1.4pt) node[font=\small, below left=-2pt]  {$O$};
+			\fill (P)  circle (1.4pt) node[font=\small, below right=-1pt] {$P$};
+			\fill (Pk) circle (1.4pt) node[font=\small, above right=-1pt] {$P_k$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0,
+			baseline={(current bounding box.center)}]
+			\coordinate (O) at (0,0.55);
+			\coordinate (P) at (2.30,-0.45);
+			% OP (costruzione)
+			\draw[thin, gray!55, midarrow=0.55] (O) -- (P);
+			\node[gray!75, font=\small] at ($(O)!0.5!(P)+(0.08,0.34)$) {$\overrightarrow{OP}$};
+			% momento mu(O)
+			\coordinate (muOt) at (0,1.75);
+			\coordinate (muOc) at (0,1.97);
+			\draw[->>, thick] (O) -- (muOt) node[font=\small, left=1pt] {$\bm{\upmu}(O)$};
+			%\ricciolo{muOc}{0}
+			% risultante f in O
+			\draw[->, thick] ($(O)$) -- ($(O)+(0.92,1.00)$) node[right=-1pt] {$\fb$};
+			%\draw[->, thick] ($(O)+(0.70,0.02)$) -- ($(O)+(0.92,1.00)$) node[right=-1pt] {$\fb$};
+			% risultante f trasferita in P
+			\draw[->, thick] (P) -- ($(P)+(0.92,1.00)$) node[above right=-3pt] {$\fb$};
+			% momento mu(P) (assiale, obliquo)
+			\coordinate (muPt) at ($(P)+(0.98,-0.20)$);
+			\coordinate (muPc) at ($(P)+(1.16,-0.71)$);
+			\draw[->>, thick] (P) -- (muPt) node[right=1pt, yshift=3pt] {$\bm{\upmu}(P)$};
+			%\ricciolo{muPc}{-121}
+			% punti
+			\fill (O) circle (1.4pt) node[font=\small, left=2pt]        {$O$};
+			\fill (P) circle (1.4pt) node[font=\small, below left=-2pt] {$P$};
+			% legge di variazione
+			\node[anchor=west, font=\small] at (-0.2,-1.60)	{$\bm{\upmu}(P) = \bm{\upmu}(O) + \fb \times \overrightarrow{OP}$};
+	\end{tikzpicture}}
+	\caption{Rappresentazione grafica della legge di variazione
+		dei momenti: \textbf{\textit{(a)}}~calcolo del momento
+		prodotto da una forza $\fb_k$ rispetto a un polo di
+		riferimento $O$; \textbf{\textit{(b)}}~variazione del
+		momento risultante al cambiare del polo da $O$ a $P$,
+		dove il termine additivo $\fb \times
+		\protect\overrightarrow{OP}$ tiene conto dell'effetto
+		del trasferimento della risultante $\fb$ dal polo $O$
+		al polo $P$.}
+	\label{fig:variazione_momento}
+\end{figure}
+
+
+
+\begin{oss}
+	Se $\fb = \zerovb$ (coppia pura),
+	la~\eqref{eq:variazione_momento} dà
+	$\bm{\upmu}(P) = \bm{\upmu}(O)$ per ogni $P$: il momento è
+	indipendente dal polo, coerentemente con quanto già
+	osservato per la coppia.
+\end{oss}
+
+\begin{oss}
+	La struttura della~\eqref{eq:variazione_momento} è
+	formalmente identica alla formula fondamentale della
+	cinematica infinitesima del \CAPref{cap:cinematica_infinitesima}. Tuttavia, la
+	natura dei due risultati è diversa: nella cinematica, la
+	formula esprime direttamente il campo degli spostamenti ---
+	è la legge del campo, e i punti $O$ e $P$ hanno lo stesso
+	ruolo; nella statica, la~\eqref{eq:variazione_momento} è un
+	\textit{teorema} che si dimostra a partire dalla definizione
+	di momento risultante, e il polo ha un ruolo privilegiato.
+	Il dualismo cinematico-statico, che sarà formalizzato nella
+	Sezione~\ref{sec:dualismo}, risiede nel fatto che i due
+	campi obbediscono alla stessa legge affine, indipendentemente
+	da come ci si arriva.
+\end{oss}
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Invarianti del campo dei momenti}	\label{sec:invarianti_F}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Il campo dei momenti possiede due \textit{invarianti},
+grandezze indipendenti dalla scelta del polo~$O$:
+\begin{enumerate}[label=(\roman*)]
+	\item la risultante $\fb$, che compare
+	nella~\eqref{eq:variazione_momento} come dato del sistema
+	e non del polo;
+	\item il prodotto scalare $\fb \cdot \bm{\upmu}(O)$, che 
+	rappresenta la componente del momento nella direzione 
+	della risultante. Tale componente è la stessa per tutti 
+	i poli: questa proprietà prende il nome di 
+	\textit{equiproiettività}\index{equiproiettivita@equiproiettività} del campo dei momenti, e 
+	costituisce l'analogo statico dell'equiproiettività del 
+	campo degli spostamenti rigidi infinitesimi 
+	(cfr.~\CAPref{cap:cinematica_infinitesima}). Per 
+	verificarla è sufficiente proiettare 
+	la~\eqref{eq:variazione_momento} nella direzione di $\fb$:
+	\begin{equation}
+		\fb \cdot \bm{\upmu}(P)
+		= \fb \cdot \bm{\upmu}(O)
+		+ \fb \cdot (\fb \times \overrightarrow{OP})
+		= \fb \cdot \bm{\upmu}(O),
+	\end{equation}
+	essendo nullo il prodotto misto con due fattori uguali.
+\end{enumerate}
+
+\begin{oss}
+	Se $P$ si trova sulla retta per $O$ parallela a $\fb$
+	($\overrightarrow{OP} = \lambda\fb$), nella
+	legge di variazione il termine $\fb \times \lambda\fb$
+	si annulla identicamente. In tal caso non solo il prodotto
+	scalare, ma l'intero vettore momento è invariante:
+	$\bm{\upmu}(P) = \bm{\upmu}(O)$. Tutti i poli allineati
+	con la direzione della risultante danno lo stesso momento
+	risultante. Questa proprietà, più forte della semplice
+	invarianza scalare, è l'analogo statico dell'invarianza
+	dello spostamento per punti allineati con la direzione
+	della rotazione, già dimostrata nel \CAPref{cap:cinematica_infinitesima}.
+\end{oss}
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Asse centrale del sistema di forze}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Quando $\fb \neq \zerovb$, esiste una retta, l'\textit{asse
+	centrale del sistema di forze}\index{asse centrale!del sistema di forze|textbf}, lungo la quale il momento è
+parallelo alla risultante. La sua costruzione segue un
+ragionamento puramente geometrico, del tutto analogo a quello
+sviluppato nel \CAPref{cap:cinematica_infinitesima} per l'asse centrale degli
+spostamenti.
+
+\subsection{Decomposizione del momento}
+
+Fissiamo un polo $O$ e decomponiamo il momento risultante
+nella componente parallela e in quella ortogonale alla
+risultante:
+\begin{equation}\label{eq:decomp_momento}
+	\bm{\upmu}(O) = \bm{\upmu}_{\parallel}(O)
+	+ \bm{\upmu}_{\perp}(O),
+\end{equation}
+con
+\begin{equation}
+	\bm{\upmu}_{\parallel}(O)
+	= \frac{\fb \cdot \bm{\upmu}(O)}{|\fb|^2}\,\fb,
+	\qquad
+	\bm{\upmu}_{\perp}(O)
+	= \bm{\upmu}(O) - \bm{\upmu}_{\parallel}(O).
+\end{equation}
+
+\subsection{Invarianza della componente parallela}
+
+Nella legge di variazione~\eqref{eq:variazione_momento}, il
+termine $\fb \times \overrightarrow{OP}$ è \textit{sempre}
+ortogonale a $\fb$, qualunque sia il polo $P$. Valutando la
+legge in un polo $P$ qualsiasi, la componente del momento
+parallela a $\fb$ risulta
+\begin{equation}
+	\bm{\upmu}_{\parallel}(P)
+	= \bm{\upmu}_{\parallel}(O)
+	\qquad \forall\, O,\, P:
+\end{equation}
+la componente del momento nella direzione della risultante è
+la stessa per tutti i poli. Questo fornisce una lettura
+geometrica dell'invarianza del prodotto scalare
+$\fb \cdot \bm{\upmu}$ già dimostrata nella
+Sezione~\ref{sec:invarianti_F}.
+
+\subsection{Annullamento della componente ortogonale}
+
+Cerchiamo un punto $C$ in cui il momento sia puramente
+parallelo a $\fb$, cioè tale che
+$\bm{\upmu}_{\perp}(C) = \zerovb$. Valutando
+la~\eqref{eq:variazione_momento} in $C$ e separando la
+componente perpendicolare a $\fb$:
+\begin{equation}\label{eq:cond_annull_stat}
+	\bm{\upmu}_{\perp}(C)
+	= \bm{\upmu}_{\perp}(O)
+	+ \fb \times \overrightarrow{OC}
+	= \zerovb.
+\end{equation}
+Poiché $\fb \times \overrightarrow{OC}$ dipende solo dalla
+componente di $\overrightarrow{OC}$ perpendicolare a $\fb$
+--- la componente parallela non contribuisce al prodotto
+vettoriale --- poniamo
+$\overrightarrow{OC} = \overrightarrow{OC}_{\!\perp}
++ \lambda\,\fb/|\fb|$
+e la condizione diventa
+\begin{equation}\label{eq:cond_annull_stat2}
+	\fb \times \overrightarrow{OC}_{\!\perp}
+	= -\bm{\upmu}_{\perp}(O).
+\end{equation}
+Il primo membro è ortogonale sia a $\fb$ sia a
+$\overrightarrow{OC}_{\!\perp}$; deve esserlo anche il
+secondo. Poiché $\bm{\upmu}_{\perp}(O)$ è già ortogonale a
+$\fb$ per costruzione, resta la condizione che
+$\overrightarrow{OC}_{\!\perp}$ sia ortogonale a
+$\bm{\upmu}_{\perp}(O)$: nel piano $\pi$ perpendicolare a $\fb$,
+la direzione di $\overrightarrow{OC}_{\!\perp}$ è
+univocamente determinata. Quanto al modulo, l'applicazione
+$\vb \mapsto \fb \times \vb$ ristretta a tale piano è una
+rotazione di $\pi/2$ composta con un riscalamento di fattore
+$|\fb|$, da cui
+\begin{equation}
+	|\overrightarrow{OC}_{\!\perp}|
+	= \frac{|\bm{\upmu}_{\perp}(O)|}{|\fb|}.
+\end{equation}
+Poiché $\lambda$ resta libero, il luogo dei punti $C$ è una
+retta parallela a $\fb$: l'asse centrale del sistema di forze
+(\FIGref{f:asse_centrale_forze}).
+
+\begin{figure}[htbp]
+	\centering
+	\usetikzlibrary{arrows.meta,calc,decorations.markings,angles,quotes}
+	% --- proiezione obliqua: (x=profondita', y=oriz, z=vert) -> schermo ---
+	\def\ax{0.5}\def\ay{0.30}
+	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
+	\begin{tikzpicture}[scale=1.4, >=Stealth, line width=0.8pt]
+		
+		%==== coordinate 3D (x=profondita', y=oriz, z=vert) ====
+		\coordinate (Pi1) at (\xyz{-1.3}{-1.0}{0});   % era {-1.3}{-0.7}
+		\coordinate (Pi2) at (\xyz{-1.3}{ 4.5}{0});   % era {-1.3}{ 3.5}
+		\coordinate (Pi3) at (\xyz{ 2.7}{ 4.5}{0});   % era { 2.7}{ 3.5}
+		\coordinate (Pi4) at (\xyz{ 2.7}{-1.0}{0});   % era { 2.7}{ 3.5}→ refuso: era { 2.7}{ 3.5}
+		
+		% O e suo asse
+		\coordinate (O)     at (\xyz{1.6}{0.5}{0});
+		\coordinate (Otop)  at (\xyz{1.6}{0.5}{2.7});
+		\coordinate (Obot)  at (\xyz{1.6}{0.5}{-0.8});
+		\coordinate (ThOa)  at (\xyz{1.6}{0.5}{1.10});
+		\coordinate (ThOb)  at (\xyz{1.6}{0.5}{1.90});
+		\coordinate (curlO) at (\xyz{1.6}{0.5}{2.12});
+		\coordinate (uparO) at (\xyz{1.6}{0.5}{0.90});
+		
+		% u_perp(O): ora verso il BASSO-SINISTRA
+		\coordinate (uperpO) at (\xyz{0.76}{0.26}{0});  % era {0.2}{0.1}
+		
+		% P_pi davanti-destra (OP_pi va in basso-destra): base 0.2,2.3 (era 1.886,2.5)
+		\coordinate (Ppi)   at (\xyz{0.2}{2.3}{0});
+		\coordinate (Ctop)  at (\xyz{0.2}{2.3}{2.7});
+		\coordinate (Cbot)  at (\xyz{0.2}{2.3}{-0.8});
+		\coordinate (ThCa)  at (\xyz{0.2}{2.3}{1.10});
+		\coordinate (ThCb)  at (\xyz{0.2}{2.3}{1.90});
+		\coordinate (curlC) at (\xyz{0.2}{2.3}{2.12});
+		\coordinate (uparC) at (\xyz{0.2}{2.3}{0.90});
+		
+		% prodotto vettoriale = -u_perp(O): ora verso l'ALTO-DESTRA
+		\coordinate (cross)  at (\xyz{1.04}{2.54}{0});  % era {1.6}{2.7}
+		\coordinate (Bpar) at (\xyz{-0.64}{2.06}{0});
+		
+		
+		%==== piano pi ====
+		\draw[gray!60] (Pi1) -- (Pi2) -- (Pi3) -- (Pi4) -- cycle;
+		\node[gray!75] at ($(Pi1)+(0.58,0.14)$) {$\pi$};
+		
+		%==== assi verticali ====
+		\draw[gray!55, thin] (Obot) -- (Otop);
+		\draw[gray!55, thin] (Cbot) -- (Ctop);
+		
+		%==== parallelogramma di lati u_perp(O) e OP_pi (evidenziato) ====
+		\filldraw[gray!10, draw=gray!55, thin]	(O) -- (uperpO) -- (Bpar) -- (Ppi) -- cycle;
+		
+		%==== triangolo O--C_perp--(f x OC_perp) ====
+		\fill[gray!10] (O) -- (Ppi) -- (cross) -- cycle;
+		
+		% u_perp(O) traslato in P_pi: opposto e collineare al prodotto vettoriale
+		\draw[->>,  thin] (Ppi) -- (Bpar);
+		%\node[font=\small, below=4pt, right] at (Bpar) {$\ub_{\perp}(O)$};
+		
+		%==== segmento O--(punta di vartheta x OP_pi) e ampiezza di rotazione vartheta ====
+		\draw[draw=gray!75, thin] (O) -- (cross);
+		%\pic[draw=black, ->, thin, angle radius=10mm, angle eccentricity=1.25,	"$\vartheta$"{font=\small, inner sep=1pt}] {angle = Ppi--O--cross};
+		
+		%==== vettori rotazione assiali + riccioli (sopra la doppia freccia) ====
+		\draw[->, thick] (ThOa) -- (ThOb) node[right=1pt] {$\fb$};
+		\draw[->, thick] (ThCa) -- (ThCb) node[right=1pt] {$\fb$};
+		
+		%==== costruzione nel piano ====
+		%\draw[->, thin] (O) -- (Ppi);
+		%\draw[midarrow, thin] (O) -- (Ppi);   % era  \draw[->, thin] (O) -- (Ppi);
+		%\node[font=\small, below=1pt] at ($(O)!0.30!(Ppi)$) {$\overrightarrow{OC_\perp}$};   % era 0.55, below=2pt
+		
+		\draw[midarrow,thin] (O) -- (Ppi) node[midway, sloped, below,xshift=-12pt] {$\overrightarrow{OC_\perp}$};
+		
+		
+		\draw[->>, thick] (O) -- (uperpO);
+		\node[above=1pt] at (uperpO) {$\bm{\upmu}_{\perp}(O)$};
+		\draw[->>, thick] (O) -- (uparO);
+		\node[right=1pt] at ($(O)!0.6!(uparO)$) {$\bm{\upmu}_{\parallel}$};
+		
+		%==== a P_pi ====
+		\draw[->>, thick] (Ppi) -- (uparC);
+		\node[right=1pt] at ($(Ppi)!0.6!(uparC)$) {$\bm{\upmu}_{\parallel}$};
+		\draw[->>, thick] (Ppi) -- (cross);
+		\node[below right=-6pt] at (cross) {$\fb\times\overrightarrow{OC_\perp}$};
+		
+		
+		
+		%==== punti ====
+		\fill (O)   circle (1.5pt) node[above right=-1pt] {$O$};
+		\fill (Ppi) circle (1.5pt) node[below right=-4pt] {$C_\perp$};
+		
+		%==== annotazione asse centrale ====
+		\node[align=left, font=\footnotesize] (lab) at ($(Ctop)+(1.8,-0.3)$)	{asse centrale della\\ sollecitazione};
+		\draw[->, thin] ($(lab.north west)+(0,-0.18)$) -- ($(Ctop)!0.18!(ThCb)$);
+		
+	\end{tikzpicture}%
+	\caption{Costruzione geometrica dell'asse centrale del
+		sistema di forze. Il momento rispetto a $O$ si decompone
+		nella componente $\bm{\upmu}^O_{\parallel}$, parallela a
+		$\fb$ e invariante per tutti i poli, e nella componente
+		$\bm{\upmu}^O_{\perp}$, giacente nel piano $\pi$
+		ortogonale a $\fb$. Il punto $C_\perp$, intersezione
+		dell'asse centrale con $\pi$, è determinato dalla
+		condizione $\fb \times \protect\overrightarrow{OC_\perp}
+		= -\bm{\upmu}^O_{\perp}$; l'asse centrale è la retta
+		per $C_\perp$ parallela a $\fb$.}
+	\label{f:asse_centrale_forze}
+\end{figure}
+
+
+
+
+\subsection{Proprietà dell'asse centrale}
+
+L'asse centrale del sistema di forze gode delle seguenti
+proprietà:
+\begin{enumerate}[label=(\roman*)]
+	\item per $\fb \neq \zerovb$ è univocamente determinato e
+	la sua posizione è indipendente dal polo $O$ usato per la
+	costruzione;
+	\item lungo di esso il momento è puramente parallelo a
+	$\fb$ e pari a
+	$\bm{\upmu}_{\parallel}
+	= (\fb \cdot \bm{\upmu}(O))/|\fb|^2\;\fb$;
+	\item la distanza dell'asse centrale dal polo $O$ è
+	$|\bm{\upmu}_{\perp}(O)|/|\fb|$;
+	\item nel caso di forza unica
+	($\fb \cdot \bm{\upmu}(O) = 0$), la componente invariante
+	$\bm{\upmu}_{\parallel}$ è nulla e l'asse centrale è il
+	luogo dei poli a momento nullo: è la retta d'azione della
+	risultante.
+\end{enumerate}
+
+\begin{oss}
+	La condizione che definisce l'asse centrale può essere
+	espressa anche in forma algebrica: un punto $P$ appartiene
+	all'asse centrale se e solo se
+	$\bm{\upmu}(P) \times \fb = \zerovb$, cioè se il momento
+	è parallelo alla risultante. Sostituendo
+	la~\eqref{eq:variazione_momento} e sviluppando il doppio
+	prodotto vettoriale si ottiene l'equazione
+	\begin{equation}\label{eq:asse_centrale_algebrica_F}
+		\bm{\upmu}(O) \times \fb
+		+ |\fb|^2\,\overrightarrow{OP}
+		- (\fb \cdot \overrightarrow{OP})\,\fb
+		= \zerovb,
+	\end{equation}
+	che definisce la stessa retta costruita geometricamente
+	nei paragrafi precedenti.
+\end{oss}
+
+%------------------------------------------------------------
+\section{Equivalenza di sistemi di forze}\label{sec:equivalenza}
+%------------------------------------------------------------
+
+Due sistemi di forze che producono lo stesso effetto su ogni
+corpo rigido --- cioè la stessa risultante e lo stesso momento
+risultante rispetto a un polo qualsiasi --- sono
+\textit{equivalenti}\index{sistema di forze!equivalenza|textbf}\index{equivalenza|see{sistema di forze}}. Il concetto di equivalenza è il
+fondamento delle operazioni di riduzione e semplificazione
+dei sistemi di forze: sostituire un sistema con uno equivalente
+più semplice non altera l'equilibrio del corpo.
+
+\subsection{Definizione di equivalenza}
+
+Due sistemi di forze $\mathcal{S}_1$ e $\mathcal{S}_2$ si
+dicono equivalenti se valgono le condizioni
+\begin{equation}\label{eq:def_equivalenza}
+	\fb_{1} = \fb_{2}, \qquad
+	\bm{\upmu}_{1}(O) = \bm{\upmu}_{2}(O).
+\end{equation}
+La legge di variazione del
+momento~\eqref{eq:variazione_momento} garantisce che, se
+le condizioni~\eqref{eq:def_equivalenza} valgono per un
+polo $O$, allora valgono per ogni polo: è dunque
+sufficiente verificarle rispetto a un solo polo.
+
+
+\begin{oss}
+	La relazione così definita è un'equivalenza in senso
+	proprio: è riflessiva (ogni sistema è equivalente a sé
+	stesso), simmetrica (se $\mathcal{S}_1$ è equivalente a
+	$\mathcal{S}_2$, allora $\mathcal{S}_2$ è equivalente a
+	$\mathcal{S}_1$) e transitiva (se $\mathcal{S}_1$ è
+	equivalente a $\mathcal{S}_2$ e $\mathcal{S}_2$ è
+	equivalente a $\mathcal{S}_3$, allora $\mathcal{S}_1$ è
+	equivalente a $\mathcal{S}_3$). L'insieme di tutti i
+	sistemi di forze risulta dunque partizionato in classi di
+	equivalenza, ciascuna individuata da una coppia
+	$(\fb, \bm{\upmu}(O))$.
+\end{oss}
+
+\begin{oss}
+	L'equivalenza è una relazione fra \textit{sistemi}, non
+	fra singole forze: due sistemi equivalenti producono lo
+	stesso effetto statico su un corpo rigido, pur potendo
+	essere composti da forze diverse per numero, intensità e
+	punto di applicazione.
+\end{oss}
+
+\paragraph{Equivalenza al sistema nullo.}
+Un sistema di forze si dice \textit{equilibrato}\index{sistema di forze!equilibrato} se è
+equivalente al sistema nullo, ovvero se la sua risultante e il
+suo momento risultante rispetto a un polo qualsiasi sono
+entrambi nulli:
+\begin{equation}
+	\fb = \zerovb, \qquad \bm{\upmu}(O) = \zerovb.
+\end{equation}
+Un sistema equilibrato non produce alcun effetto statico su un
+corpo rigido. In particolare: un sistema di due forze è
+equilibrato se e solo se le due forze hanno la stessa retta
+d'azione, uguale intensità e verso opposto --- costituiscono
+cioè una coppia di braccio nullo; un sistema di tre forze non
+parallele è equilibrato se e solo se le tre forze sono
+complanari, concorrenti in un punto e hanno risultante nulla.
+La coplanarità è conseguenza necessaria: la terza forza,
+dovendo essere uguale e contraria alla risultante delle prime
+due, giace nel piano da esse individuato. La concorrenza
+garantisce che il momento risultante rispetto al punto di
+concorso sia nullo, essendo nullo il braccio di ciascuna
+forza; poiché anche la risultante è nulla, il momento è nullo
+rispetto a qualsiasi polo.
+
+
+\subsection{Operazioni elementari di equivalenza}
+
+Le seguenti operazioni trasformano un sistema $\mathcal{S}$ in
+un sistema $\mathcal{S}'$ equivalente. Esse costituiscono gli
+strumenti fondamentali per la semplificazione e riduzione dei
+sistemi di forze.
+
+\paragraph{Traslazione lungo la linea d'azione.}
+Una forza $\fb_k$ applicata in $P_k$ può essere spostata in un
+qualsiasi altro punto $P_k'$ appartenente alla sua linea
+d'azione senza alterare né la risultante né il momento
+risultante (\FIGref{fig:operazioni_elementari_1}\,a). Infatti, poiché $\overrightarrow{P_k P_k'}$ è
+parallelo a $\fb_k$:
+\begin{equation}
+	\overrightarrow{OP_k'} \times \fb_k
+	= (\overrightarrow{OP_k}
+	+ \overrightarrow{P_k P_k'}) \times \fb_k
+	= \overrightarrow{OP_k} \times \fb_k.
+\end{equation}
+
+\paragraph{Composizione di forze concorrenti.}
+Due o più forze le cui rette d'azione si intersecano in un
+punto $P$ possono essere traslate lungo le rispettive rette
+d'azione fino a $P$ e lì sostituite dalla loro risultante (\FIGref{fig:operazioni_elementari_1}\,b). Se
+$\fb_1$ e $\fb_2$ sono concorrenti in $P$:
+\begin{equation}
+	(P,\,\fb_1),\;(P,\,\fb_2)
+	\quad\longleftrightarrow\quad
+	(P,\,\fb_1+\fb_2).
+\end{equation}
+L'operazione inversa è la \textit{decomposizione}: una forza
+può essere sostituita da due o più forze applicate nello stesso
+punto la cui somma vettoriale sia uguale alla forza originale (\FIGref{fig:operazioni_elementari_1}\,c).
+
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][\emph{traslazione lungo la linea d'azione}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+			% linea d'azione (direzione di fb_k)
+			\draw[dashed] (0,0) -- (4.5,2.25);
+			% punto Pk
+			\fill (1,0.5) circle (1.5pt) node[below right] {$P_k$};
+			% forza in Pk
+			\draw[->, thick] (1,0.5) -- (2.6,1.3)
+			node[above left] {$\fb_k$};
+			% punto Pk' più avanti sulla stessa retta
+			\fill (3,1.5) circle (1.5pt) node[below right] {$P_k'$};
+			% forza in Pk'
+			\draw[->, thick] (3,1.5) -- (4.6,2.3)
+			node[above left] {$\fb_k$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{composizione di forze concorrenti}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+			% punto di concorrenza P
+			\fill (2,1.5) circle (1.5pt) node[above right] {$P$};
+			% linee d'azione
+			\draw[dashed] (0,0) -- (2,1.5);
+			\draw[dashed] (4,0) -- (2,1.5);
+			% forze f1 e f2 dirette verso P
+			\draw[->, thick] (0.6,0.45) -- (2,1.5)
+			node[midway, left] {$\fb_1$};
+			\draw[->, thick] (3.4,0.45) -- (2,1.5)
+			node[midway, right] {$\fb_2$};
+			% risultante in P
+			\draw[->, thick] (2,1.5) -- (2,3.0)
+			node[right] {$\fb_1+\fb_2$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{decomposizione di una forza}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+			% punto P
+			\fill (1.5,1.0) circle (1.5pt) node[below right] {$P$};
+			% forza risultante f
+			\draw[->, thick] (1.5,1.0) -- (3.3,2.5)
+			node[above right] {$\fb$};
+			% componente f1 (orizzontale)
+			\draw[->, thick] (1.5,1.0) -- (3.3,1.0)
+			node[below] {$\fb_1$};
+			% componente f2 (verticale)
+			\draw[->, thick] (1.5,1.0) -- (1.5,2.5)
+			node[left] {$\fb_2$};
+			% parallelogramma tratteggiato
+			\draw[dashed] (3.3,1.0) -- (3.3,2.5);
+			\draw[dashed] (1.5,2.5) -- (3.3,2.5);
+	\end{tikzpicture}}
+	\caption{Operazioni elementari di equivalenza (I).
+		\textbf{\textit{(a)}}~Traslazione della forza $\fb_k$
+		lungo la propria linea d'azione da $P_k$ a $P_k'$:
+		risultante e momento risultante restano invariati.
+		\textbf{\textit{(b)}}~Composizione di due forze
+		concorrenti in $P$: il sistema è equivalente alla
+		risultante $\fb_1+\fb_2$ applicata in $P$.
+		\textbf{\textit{(c)}}~Decomposizione della forza $\fb$
+		applicata in $P$ nelle componenti $\fb_1$ e $\fb_2$
+		secondo due direzioni indipendenti: operazione inversa
+		alla composizione.}
+	\label{fig:operazioni_elementari_1}
+\end{figure}
+
+\paragraph{Aggiunta o rimozione di un sistema equilibrato.}
+In un punto qualsiasi $P$ si possono aggiungere (o rimuovere)
+due forze uguali e opposte $\fb$ e $-\fb$ senza modificare gli
+elementi caratteristici del sistema, poiché il loro contributo
+alla risultante e al momento risultante è identicamente nullo.
+
+
+
+
+
+\begin{oss}
+	Le operazioni elementari possono essere combinate per
+	ottenere trasformazioni più complesse. Ad esempio, il
+	\textit{trasporto di una forza in un punto non appartenente\index{sistema di forze!trasporto di una forza}
+		alla linea d'azione} si realizza come segue: data
+	$(P,\,\fb)$, si aggiunge in un punto $Q$ la coppia
+	equilibrata $(\fb,\,-\fb)$; si compone poi la forza
+	originale $(P,\,\fb)$ con $(Q,\,-\fb)$, ottenendo una
+	coppia di momento
+	$\bm{\upmu} = \overrightarrow{QP}\times\fb$. Il sistema
+	risultante è la forza $(Q,\,\fb)$ più la coppia
+	$\bm{\upmu}$: la forza è stata ``trasportata'' in $Q$ al
+	prezzo di una coppia correttiva (\FIGref{fig:trasporto_forza})
+	\begin{figure}[htbp]
+		\centering
+		\subfloat[][\emph{sistema di partenza}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\fill (0,0) circle (1.5pt) node[below] {$Q$};
+				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
+				% vettore QP
+				\draw[->, thin, gray!60] (0,0) -- (1.0,2.0)
+				node[midway, left] {$\overrightarrow{QP}$};
+				% forza in P
+				\draw[->, thick] (1.0,2.0) -- (2.8,2.0)
+				node[above] {$\fb$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{aggiunta della coppia equilibrata in $Q$}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\fill (0,0) circle (1.5pt) node[below] {$Q$};
+				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
+				% vettore QP
+				\draw[->, thin, gray!60] (0,0) -- (1.0,2.0)
+				node[midway, left] {$\overrightarrow{QP}$};
+				% forza originale in P
+				\draw[->, thick] (1.0,2.0) -- (2.8,2.0)
+				node[above] {$\fb$};
+				% forza +f in Q
+				\draw[->, thick] (0,0) -- (1.8,0)
+				node[below] {$\fb$};
+				% forza -f in Q
+				\draw[->, thick] (0,0) -- (-1.8,0)
+				node[below] {$-\fb$};
+				% braccio b
+				\draw[<->, thin] (2.9,0) -- (2.9,2.0)
+				node[midway, right] {$b$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{sistema equivalente}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\fill (0,0) circle (1.5pt) node[below] {$Q$};
+				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
+				% forza risultante in Q
+				\draw[->, thick] (0,0) -- (1.8,0)
+				node[below] {$\fb$};
+				% coppia correttiva (freccia semicircolare oraria)
+				\draw[->, thick] (-0.6,0) arc[start angle=180,
+				end angle=90, radius=0.6]
+				node[above left] {$\mu(Q)$};
+				% braccio b
+				\draw[<->, thin] (2.9,0) -- (2.9,2.0)
+				node[midway, right] {$b$};
+		\end{tikzpicture}}
+		\caption{Trasporto di una forza in un punto non appartenente
+			alla linea d'azione.
+			\textbf{\textit{(a)}}~Sistema originale: forza $\fb$
+			applicata in $P$.
+			\textbf{\textit{(b)}}~Aggiunta in $Q$ della coppia
+			equilibrata $(\fb,\,-\fb)$: la forza $(P,\,\fb)$ e
+			$(Q,\,-\fb)$ formano una coppia di momento
+			$\bm{\upmu} = \protect\overrightarrow{QP}\times\fb$,
+			con braccio $b$.
+			\textbf{\textit{(c)}}~Sistema equivalente: forza $\fb$
+			applicata in $Q$ più la coppia correttiva oraria di intensità 
+			$\mu(Q) = |\fb|\,b$.}
+		\label{fig:trasporto_forza}
+	\end{figure}.
+\end{oss}
+
+\begin{oss}[\textbf{Riduzione di un sistema al polo}]
+	Le operazioni elementari consentono di \textit{ridurre} un
+	qualsiasi sistema di forze $\mathcal{S}$ a un polo $O$
+	fissato. Si trasporta ciascuna forza $\fb_k$ nel polo $O$
+	mediante aggiunta della coppia correttiva
+	$\overrightarrow{OP_k}\times\fb_k$; si compongono poi tutte
+	le forze concorrenti in $O$ nella risultante $\fb$ e tutte
+	le coppie nel momento risultante $\bm{\upmu}(O)$. Il sistema
+	così ottenuto --- la forza $\fb$ applicata in $O$ e la
+	coppia $\bm{\upmu}(O)$ --- è equivalente al sistema di
+	partenza e prende il nome di \textit{sistema ridotto al\index{sistema di forze!sistema ridotto al polo}
+		polo~$O$}. Si noti che la riduzione dipende dalla scelta
+	del polo: al variare di $O$ cambia il momento risultante
+	secondo la~\eqref{eq:variazione_momento}, mentre la
+	risultante resta invariata.
+\end{oss}
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Classificazione dei sistemi equivalenti}\index{sistema di forze!classificazione|textbf}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+In base ai valori degli invarianti si distinguono i seguenti
+casi:
+\begin{enumerate}[label=(\roman*)]
+	\item \textit{Dinamo (o sistema avvitante)}\index{sistema di forze!dinamo (sistema avvitante)}:
+	$\fb \neq \zerovb$,
+	$\bm{\upmu}(O) \neq \zerovb$,
+	$\fb \cdot \bm{\upmu}(O) \neq 0$. Il momento ha sia
+	componente nel piano ortogonale a $\fb$ sia componente
+	lungo $\fb$. Sull'asse centrale il momento è puramente
+	parallelo a $\fb$: il sistema, visto da un polo sull'asse
+	centrale, appare come una \textit{forza più una coppia
+		parallela}.
+	\item \textit{Forza unica}\index{sistema di forze!forza unica}:
+	$\fb \neq \zerovb$ e
+	$\fb \cdot \bm{\upmu}(O) = 0$. L'asse centrale è il luogo
+	dei poli a momento nullo; il sistema è equivalente a una
+	singola forza $\fb$ applicata su tale retta.
+	\item \textit{Coppia pura}\index{coppia!pura}:
+	$\fb = \zerovb$, $\bm{\upmu}(O) \neq \zerovb$. Il momento
+	è indipendente dal polo; l'asse centrale non esiste (o,
+	equivalentemente, è all'infinito).
+	\item \textit{Sistema nullo}: $\fb = \zerovb$,
+	$\bm{\upmu}(O) = \zerovb$. Nessun effetto statico.
+\end{enumerate}
+
+\begin{oss}
+	La corrispondenza con la classificazione dei moti rigidi
+	del \CAPref{cap:cinematica_infinitesima} è immediata: la dinamo corrisponde alla
+	rototraslazione, la forza unica alla rotazione pura, la
+	coppia pura alla traslazione pura, il sistema nullo al
+	riposo. Si noti l'inversione apparente: nella cinematica è
+	la rotazione pura ad annullare l'invariante scalare
+	($\bm{\upvartheta} \cdot \ub(O) = 0$, spostamento nullo
+	sull'asse centrale); nella statica è la forza unica
+	($\fb \cdot \bm{\upmu}(O) = 0$, momento nullo sull'asse
+	centrale). In entrambi i casi, l'asse centrale è il luogo
+	dei punti in cui il campo si annulla.
+\end{oss}
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Particolarizzazione al caso piano}	\label{sec:caso_piano_F}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Per un sistema di forze nel piano $(x,y)$, la risultante
+giace nel piano e il momento risultante è diretto lungo
+$\ab_z$: si riduce a uno scalare con segno, $\mu_z(O)$\nomenclature[G]{$\mu_z(O)$}{momento risultante nel piano (scalare con segno), rispetto a $O$}.
+
+\subsection{Legge di variazione nel piano}
+
+La~\eqref{eq:variazione_momento} proiettata lungo $\ab_z$
+fornisce:
+\begin{equation}\label{eq:variazione_piano_vett}
+	\mu_z(P) = \mu_z(O)
+	+ (\fb \times \overrightarrow{OP}) \cdot \ab_z.
+\end{equation}
+Il termine
+$(\fb \times \overrightarrow{OP}) \cdot \ab_z$ è lo scalare
+che misura il momento della risultante $\fb$ rispetto al polo
+$P$: geometricamente, è il prodotto dell'intensità di $\fb$
+per la distanza con segno della retta d'azione dal polo.
+Sviluppando in componenti:
+\begin{equation}\label{eq:variazione_piano}
+	\mu_z(P) = \mu_z(O)
+	+ X\bigl(y(P)-y(O)\bigr)
+	- Y\bigl(x(P)-x(O)\bigr).
+\end{equation}
+
+
+
+\begin{oss}
+	Nel caso piano l'invariante
+	$\fb \cdot \bm{\upmu}(O)$ è identicamente nullo, poiché
+	la risultante giace nel piano e il momento è ortogonale ad
+	esso. Dei casi elencati nella classificazione, nel piano si
+	presentano dunque soltanto la forza unica
+	($\fb \neq \zerovb$, con retta d'azione nel piano finito),
+	la coppia pura ($\fb = \zerovb$) e il sistema nullo. La
+	situazione è l'analogo statico di quanto osservato nel \CAPref{cap:cinematica_infinitesima}  per la cinematica piana, dove l'invariante
+	$\bm{\upvartheta} \cdot \ub(O)$ è identicamente nullo e si
+	presentano solo rotazione pura, traslazione pura e riposo.
+\end{oss}
+
+\subsection{Asse di sollecitazione}\label{sec:asse_soll}
+
+Quando $\fb \neq \zerovb$, l'asse centrale del sistema di
+forze interseca il piano del moto in una retta, l'\textit{asse
+	di sollecitazione}\index{asse di sollecitazione|textbf}, lungo la quale il momento è nullo. Poiché
+nel piano $\fb \cdot \bm{\upmu}(O) = 0$, il sistema è sempre
+equivalente alla sola risultante $\fb$ applicata sull'asse di
+sollecitazione: il momento si annulla su un'intera retta, non
+in un singolo punto.
+
+Per determinare la posizione dell'asse di sollecitazione,
+cerchiamo i punti $C$ tali che $\mu_z(C) = 0$.
+Dalla~\eqref{eq:variazione_piano}:
+\begin{equation}\label{eq:cond_CdR}
+	X\bigl(y(C)-y(O)\bigr)
+	- Y\bigl(x(C)-x(O)\bigr)
+	= -\mu_z(O).
+\end{equation}
+Questa è una singola equazione scalare in due incognite: il
+luogo dei punti a momento nullo è una retta nel piano. La
+sua direzione è quella di $\fb$, poiché una componente di
+$\overrightarrow{OC}$ parallela a $\fb$ non contribuisce al
+prodotto vettoriale $\fb \times \overrightarrow{OC}$ e quindi
+non modifica il momento. La distanza di tale retta dal polo
+$O$ è
+\begin{equation}\label{eq:CdR_distanza}
+	|\overrightarrow{OC}_{\!\perp}|
+	= \frac{|\mu_z(O)|}{|\fb|},
+\end{equation}
+dove $\overrightarrow{OC}_{\!\perp}$ è la componente di
+$\overrightarrow{OC}$ perpendicolare a $\fb$. In forma
+vettoriale, il piede della perpendicolare da $O$ all'asse di
+sollecitazione  (\FIGref{fig:asse_sollecitazione}\,a) è
+\begin{equation}\label{eq:vettore_OC_F}
+	\overrightarrow{OC}_{\!\perp}
+	= -\frac{\mu_z(O)}{|\fb|^2}\,
+	(\ab_z \times \fb).
+\end{equation}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+		
+		\coordinate (O) at (0,0);
+		\coordinate (f) at ({1.5*cos(30)},{1.5*sin(30)});
+		% C: mu_z=1.5, |f|=1.5 -> |OC|=1.0
+		% C = (mu_z/|f|^2)*(fy,-fx) = (0.5, -0.866)
+		\coordinate (C) at (0.500, -0.866);
+		
+		% Retta perpendicolare a f tratteggiata con freccia verso infinito
+		\draw[dashed, gray!60]
+		({-0.3*cos(-60)},{-0.3*sin(-60)}) --
+		({2.2*cos(-60)}, {2.2*sin(-60)});
+		\draw[->, dashed, gray!60]
+		({2.2*cos(-60)},{2.2*sin(-60)}) --
+		({2.7*cos(-60)},{2.7*sin(-60)})
+		node[right=1pt] {\small$\fb\to \mathbf{0}$};
+		
+		% --- Sistema in O: forza + coppia ---
+		% Vettore f in O
+		\draw[->, thick] (O) -- (f) node[above right=1pt] {$\fb$};
+		% Coppia mu_z in O (freccia semicircolare antioraria)
+		\draw[<-, thick] (-0.55, 0) arc[start angle=180, end angle=60, radius=0.55];
+		\node[left=2pt] at (-0.55, 0.3) {$\mu_z(O)$};
+		
+		% Angolo retto
+		\draw[thin]
+		({0.15*cos(30)},{0.15*sin(30)}) --
+		({0.15*cos(30)+0.15*cos(-60)},{0.15*sin(30)+0.15*sin(-60)}) --
+		({0.15*cos(-60)},{0.15*sin(-60)});
+		
+		% Quota |OC| = mu_z/|f| (traslata a sinistra oltre la tratteggiata)
+		\draw[<->, thin]
+		(-0.433, -0.250) --
+		(0.067, -1.116)
+		node[midway, left=3pt] {\small$\dfrac{|\mu_z(O)|}{|\fb|}$};
+		
+		% Punto O e punto C
+		\fill (O) circle (2pt) node[below left=-4pt] {$O$};
+		\fill[white] (C) circle (3pt);
+		\draw[thick] (C) circle (3pt);
+		\node[below right=2pt] at (C) {$C$};
+		
+		% --- Sistema equivalente in C: solo forza ---
+		% Vettore f in C (traslato)
+		\draw[->, thick] (C) -- ++({1.5*cos(30)},{1.5*sin(30)})
+		node[above right=1pt] {$\fb$};
+		% Nessuna coppia (mu_z(C)=0)
+		%				\node[below left=2pt] at ({0.5+1.5*cos(30)/2},{-0.866+1.5*sin(30)/2})
+		%				{\small$\mu_z(C){=}0$};
+		
+		% Freccia tratteggiata che collega i due sistemi
+		\draw[dashed, gray!40] (O) -- (C);
+		
+	\end{tikzpicture}
+	\caption{Centro di riduzione\index{centro di riduzione|seealso{asse di sollecitazione}} nel caso piano. Il sistema equivalente
+		a una forza $\fb$ applicata in $O$ con momento risultante $\mu_z(O)$
+		si riduce alla sola forza $\fb$ applicata nel punto $C$ della
+		perpendicolare a $\fb$ passante per $O$, a distanza
+		$|\protect\overrightarrow{OC}| = |\mu_z(O)|/|\fb|$.
+		Al tendere di $|\fb|\to 0$ a parità di $\mu_z(O)$ il centro
+		si allontana all'infinito: una coppia pura non ammette centro
+		di riduzione.}
+	\label{fig:asse_sollecitazione}
+\end{figure}
+
+
+\paragraph{Coordinate dell'asse di sollecitazione.}
+Sviluppando la~\eqref{eq:vettore_OC_F} in componenti, il
+piede della perpendicolare da $O$ all'asse di sollecitazione  (\FIGref{fig:asse_sollecitazione}\,b) è
+\begin{equation}\label{eq:CdR_coord}
+	x(C) =  \frac{\mu_z(O)\,Y}{X^2+Y^2},
+	\qquad
+	y(C) =  - \frac{\mu_z(O)\,X}{X^2+Y^2}.
+\end{equation}
+L'asse di sollecitazione è la retta passante per $C$ con la
+direzione di $\fb$. Il sistema di forze è equivalente alla
+sola risultante $\fb$ applicata in un qualsiasi punto di
+tale retta.
+
+Il campo dei momenti si esprime in forma particolarmente
+semplice se si sceglie $C$ come polo. Poiché
+$\mu_z(C) = 0$, la legge di
+variazione~\eqref{eq:variazione_piano} con $C$ al posto di
+$O$ dà direttamente
+\begin{equation}\label{eq:momento_da_CdR}
+	\mu_z(P) = X\bigl(y(P) - y(C)\bigr)
+	- Y\bigl(x(P) - x(C)\bigr),
+\end{equation}
+che è il momento della sola risultante $\fb$ applicata in $C$
+rispetto al polo $P$.
+
+\begin{oss}
+	La posizione dell'asse di sollecitazione non dipende dal
+	polo $O$ scelto per la costruzione: se si valuta
+	la~\eqref{eq:variazione_piano} a partire da un diverso
+	polo $O'$, cambiano $\mu_z(O')$ e le coordinate di $O'$,
+	ma la retta su cui il momento si annulla resta la stessa.
+	Ciò è coerente con il fatto che l'asse centrale è un
+	invariante del sistema di forze.
+\end{oss}
+
+Nel caso di coppia pura ($\fb = \zerovb$,
+$\mu_z(O) \neq 0$), la~\eqref{eq:CdR_distanza} dà
+$|\overrightarrow{OC}| \to \infty$: l'asse di sollecitazione
+si allontana indefinitamente nella direzione perpendicolare a
+$\fb$.
+
+\begin{oss}
+	La coppia pura può essere riguardata come il caso limite
+	di una forza unica la cui intensità tende a zero mentre
+	il braccio si allontana all'infinito, in modo che il
+	prodotto $|\fb|\,|\overrightarrow{OC}| = |\mu_z(O)|$
+	resti finito. In termini di geometria proiettiva, l'asse
+	di sollecitazione è la retta impropria del piano: la
+	direzione della risultante è determinata, ma la retta
+	d'azione è all'infinito. Questa interpretazione è
+	l'analogo statico della traslazione pura nella cinematica,
+	dove il centro di rotazione è il punto improprio della
+	retta ortogonale allo spostamento.
+\end{oss}
+
+\subsection{Sistemi di forze equiorientate nel piano}\index{sistema di forze!equiorientate}
+
+Un caso frequente nella pratica strutturale è quello di forze
+dirette lungo una stessa direzione, applicate lungo un
+intervallo. La riduzione di questi sistemi è particolarmente
+semplice e consente di introdurre il concetto di
+\textit{baricentro delle forze}\index{baricentro delle forze|textbf}, che è l'analogo statico del
+baricentro dei centri di rotazione introdotto nel \CAPref{cap:cinematica_infinitesima}.
+
+\paragraph{Forze concentrate equiorientate.}
+Consideriamo $n$ forze $\fb_k = F_k\,\ab_y$ applicate nei
+punti di coordinata $x_k$ lungo un intervallo di lunghezza
+$\ell$. La risultante e il momento risultante rispetto
+all'origine $O$ sono
+\begin{equation}
+	\fb = \Bigl(\sum_{k=1}^{n} F_k\Bigr)\,\ab_y, \qquad
+	\bm{\upmu}(O) = \Bigl(\sum_{k=1}^{n} x_k\,F_k\Bigr)
+	\,\ab_x.
+\end{equation}
+L'asse di sollecitazione passa per il punto di coordinata
+\begin{equation}\label{eq:baricentro_forze}
+	d = \frac{\displaystyle\sum_{k=1}^{n} x_k\,F_k}
+	{\displaystyle\sum_{k=1}^{n} F_k},
+\end{equation}
+che è il baricentro dei punti di applicazione pesati con le
+rispettive intensità. Si noti l'analogia con
+la~\eqref{eq:comp_rot_baricentro} del \CAPref{cap:cinematica_infinitesima}: il
+centro della rotazione composta è il baricentro dei centri
+di rotazione pesati con le ampiezze. Il dualismo
+cinematico-statico opera qui con la corrispondenza
+$\vartheta_k \leftrightarrow F_k$,
+$C_k \leftrightarrow P_k$.
+
+\begin{esempio}[Forze concentrate su un intervallo]
+	Si consideri un intervallo di lunghezza $\ell$ soggetto a
+	forze concentrate $-F_k\,\ab_y$ con $F_k > 0$, dirette verso
+	il basso.
+	\begin{enumerate}[label=(\alph*)]
+		\item Due forze di uguale intensità $F$ applicate ai
+		terzi medi ($z_1 = \ell/3$, $z_2 = 2\ell/3$):
+		risultante $|\fb| = 2F$, punto di applicazione
+		$d = \ell/2$ (punto medio, per simmetria).
+		\item Due forze ai terzi medi con $F_1 = F$,
+		$F_2 = 2F$: risultante $|\fb| = 3F$, punto di
+		applicazione $d = 5\ell/9$, spostato verso la forza di
+		intensità maggiore.
+		\item Tre forze di uguale intensità $F$ agli estremi e
+		al punto medio ($z_1 = 0$, $z_2 = \ell/2$,
+		$z_3 = \ell$): risultante $|\fb| = 3F$, punto di
+		applicazione $d = \ell/2$ (per simmetria).
+	\end{enumerate}
+	\begin{figure}[htbp]
+		\centering
+		\subfloat[][\emph{due forze uguali ai terzi medi}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\draw[thick] (0,0) -- (3,0);
+				\fill (0,0) circle (1.5pt) node[above] {$0$};
+				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
+				% forze verso il basso
+				\fill (1,0) circle (1.5pt) node[above] {$\frac{\ell}{3}$};
+				\draw[->, thick] (1,0) -- (1,-1.2) node[left] {$F$};
+				\fill (2,0) circle (1.5pt) node[above] {$\frac{2\ell}{3}$};
+				\draw[->, thick] (2,0) -- (2,-1.2) node[right] {$F$};
+				% risultante verso il basso
+				\fill (1.5,0) circle (1.5pt);
+				\draw[->, thick, gray!50] (1.5,0) -- (1.5,-2.4)
+				node[left] {$2F$};
+				\draw[<->, thin] (0,1) -- (1.5,1)
+				node[midway, above] {$d=\frac{\ell}{2}$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{due forze diverse ai terzi medi}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\draw[thick] (0,0) -- (3,0);
+				\fill (0,0) circle (1.5pt) node[above] {$0$};
+				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
+				% forze verso il basso
+				\fill (1,0) circle (1.5pt) node[above] {$\frac{\ell}{3}$};
+				\draw[->, thick] (1,0) -- (1,-0.8) node[left] {$F$};
+				\fill (2,0) circle (1.5pt) node[above] {$\frac{2\ell}{3}$};
+				\draw[->, thick] (2,0) -- (2,-1.6) node[right] {$2F$};
+				% risultante verso il basso
+				\fill (1.667,0) circle (1.5pt);
+				\draw[->, thick, gray!50] (1.667,0) -- (1.667,-2.4)
+				node[left] {$3F$};
+				\draw[<->, thin] (0,1) -- (1.667,1)
+				node[midway, above] {$d=\frac{5\ell}{9}$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{tre forze uguali agli estremi e al centro}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\draw[thick] (0,0) -- (3,0);
+				\fill (0,0) circle (1.5pt) node[above] {$0$};
+				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
+				% forze verso il basso
+				\draw[->, thick] (0,0) -- (0,-1.2) node[left] {$F$};
+				\fill (1.5,0) circle (1.5pt) node[above] {$\frac{\ell}{2}$};
+				\draw[->, thick] (1.5,0) -- (1.5,-1.2) node[left] {$F$};
+				\draw[->, thick] (3,0) -- (3,-1.2) node[left] {$F$};
+				% risultante verso il basso
+				\draw[->, thick, gray!50] (1.5,0) -- (1.5,-2.4)
+				node[left] {$3F$};
+				\draw[<->, thin] (0,1) -- (1.5,1)
+				node[midway, above] {$d=\frac{\ell}{2}$};
+		\end{tikzpicture}}
+		\caption{Sistemi di forze concentrate $-F_k\,\ab_y$
+			equiorientate su un intervallo di lunghezza $\ell$:
+			la risultante (in grigio) è applicata nel baricentro
+			dei punti di applicazione pesati con le rispettive
+			intensità.
+			\textbf{\textit{(a)}}~$|\fb|=2F$, $d=\ell/2$.
+			\textbf{\textit{(b)}}~$|\fb|=3F$, $d=5\ell/9$.
+			\textbf{\textit{(c)}}~$|\fb|=3F$, $d=\ell/2$.}
+		\label{fig:forze_concentrate_intervallo}
+	\end{figure}
+\end{esempio}
+
+
+\begin{oss}
+	La composizione di forze parallele --- il cui punto di
+	applicazione risultante è il baricentro dei punti di
+	applicazione pesati con le intensità --- è l'analogo
+	statico della composizione di rotazioni infinitesime nel
+	piano, dove il centro risultante è il baricentro dei
+	centri pesati con le ampiezze
+	(\CAPref{cap:cinematica_infinitesima}). Il dualismo
+	cinematico-statico opera qui con la corrispondenza
+	$\vartheta_k \leftrightarrow F_k$, $C_k \leftrightarrow P_k$.
+\end{oss}
+
+
+\paragraph{Densità di forze equiorientate.}
+Se lungo l'intervallo agisce un carico distribuito
+$\fb_L(x) = p(x)\,\ab_y$, le sommatorie si sostituiscono
+con integrali:
+\begin{equation}
+	|\fb| = \int_0^{\ell} p(x)\dd x, \qquad
+	d = \frac{\displaystyle\int_0^{\ell}
+		x\,p(x)\dd x}{\displaystyle\int_0^{\ell}
+		p(x)\dd x}.
+\end{equation}
+L'intensità della risultante è l'area sottesa dal diagramma
+di carico $p(z)$; il punto di applicazione è il baricentro
+di tale diagramma (\FIGref{fig:carichi_distribuiti}\,a).
+
+I tre casi di maggiore interesse applicativo sono illustrati
+nella \FIGref{fig:carichi_distribuiti}\,b--d. Per un carico
+uniforme $p(x) = p$ la risultante vale $|\fb| = p\ell$ ed è
+applicata a $d = \ell/2$; per un carico linearmente variabile
+$p(x) = p\,x/\ell$ si ha $|\fb| = p\ell/2$ e $d = 2\ell/3$;
+per un carico parabolico $p(x) = p\,x^2/\ell^2$ si ha
+$|\fb| = p\ell/3$ e $d = 3\ell/4$. In tutti e tre i casi il
+punto di applicazione si sposta verso la zona di carico
+maggiore, e la sua posizione coincide con il baricentro della
+figura geometrica corrispondente --- rettangolo, triangolo e
+parabola.
+
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][\emph{carico generico $p(x)$}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			% asse x
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			% curva generica: stessa funzione usata per le frecce
+			\draw[thick, domain=0:3, samples=100]
+			plot (\x, {1.0 + 0.6*sin(\x*120)});
+			\node[right] at (3, {1.0 + 0.6*sin(360)}) {$p(x)$};
+			% frecce che partono esattamente dalla curva
+			\foreach \x in {0.0, 0.2, 0.5, 0.8, 1.1, 1.4,
+				1.7, 2.0, 2.3, 2.55, 2.8, 3.0}{
+				\pgfmathsetmacro{\h}{1.0 + 0.6*sin(\x*120)}
+				\draw[->, thin] (\x, \h) -- (\x, 0);
+			}
+			% punto baricentro (calcolato numericamente ~1.5)
+			\fill (1.5,0) circle (1.5pt);
+			% risultante
+			\draw[->, thick] (1.5,0) -- (1.5,-1.2)
+			node[right] {$|\fb|$};
+			% quota d dal bordo sinistro al baricentro
+			\draw[<->, thin] (0,-0.5) -- (1.5,-0.5)
+			node[midway, below] {$d$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{carico uniforme}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			\foreach \x in {0, 0.375, 0.75, 1.125, 1.5,
+				1.875, 2.25, 2.625, 3.0}{
+				\draw[->, thin] (\x, 1.5) -- (\x, 0);
+			}
+			\draw[thick] (0,1.5) -- (3,1.5);
+			\node[left] at (0,1.5) {$p$};
+			\fill (1.5,0) circle (1.5pt);
+			\draw[->, thick] (1.5,0) -- (1.5,-1.2)
+			node[right] {$p\ell$};
+			\draw[<->, thin] (0,-0.5) -- (1.5,-0.5)
+			node[midway, below] {$\frac{\ell}{2}$};
+	\end{tikzpicture}}
+	\\[1em]
+	\subfloat[][\emph{carico lineare}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			\foreach \x in {0.375, 0.75, 1.125, 1.5,
+				1.875, 2.25, 2.625, 3.0}{
+				\draw[->, thin] (\x, {1.5*\x/3}) -- (\x, 0);
+			}
+			\draw[thick] (0,0) -- (3,1.5);
+			\node[right] at (3,1.5) {$p$};
+			\fill (2.0,0) circle (1.5pt);
+			\draw[->, thick] (2.0,0) -- (2.0,-1.2)
+			node[right] {$\frac{p\ell}{2}$};
+			\draw[<->, thin] (0,-0.5) -- (2.0,-0.5)
+			node[midway, below] {$\frac{2\ell}{3}$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{carico parabolico}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			\foreach \x in {0.375, 0.75, 1.125, 1.5,
+				1.875, 2.25, 2.625, 3.0}{
+				\draw[->, thin] (\x, {1.5*\x*\x/9}) -- (\x, 0);
+			}
+			\draw[thick, domain=0:3, samples=50]
+			plot (\x, {1.5*\x*\x/9});
+			\node[right] at (3,1.5) {$p$};
+			\fill (2.25,0) circle (1.5pt);
+			\draw[->, thick] (2.25,0) -- (2.25,-1.2)
+			node[right] {$\frac{p\ell}{3}$};
+			\draw[<->, thin] (0,-0.5) -- (2.25,-0.5)
+			node[midway, below] {$\frac{3\ell}{4}$};
+	\end{tikzpicture}}
+	\caption{Riduzione di carichi distribuiti
+		$\fb_L(x) = -p(x)\,\ab_y$ con $p(x) \geq 0$
+		su un intervallo di lunghezza $\ell$: la risultante
+		(freccia spessa) è applicata nel baricentro del
+		diagramma di carico.
+		\textbf{\textit{(a)}}~Caso generico $p(x)$:
+		risultante $|\fb|$ applicata a distanza $d$.
+		\textbf{\textit{(b)}}~Carico uniforme:
+		$|\fb|=p\ell$, $d=\ell/2$.
+		\textbf{\textit{(c)}}~Carico lineare:
+		$|\fb|=p\ell/2$, $d=2\ell/3$.
+		\textbf{\textit{(d)}}~Carico parabolico:
+		$|\fb|=p\ell/3$, $d=3\ell/4$.}
+	\label{fig:carichi_distribuiti}
+\end{figure}
+
+\newpage
+%-------------------------------------------------------------------------------
+\section{Esercizi proposti}
+%-------------------------------------------------------------------------------
+
+\begin{esercizio}[Riduzione di un sistema piano]
+	\label{ex:C02_riduzione_piano}
+	
+	Nel piano $(x,y)$, tre forze agiscono su un corpo rigido:
+	$\fb_1 = 2\,\ab_x$ applicata in $P_1 = (0,\,1)$,
+	$\fb_2 = -\ab_y$ applicata in $P_2 = (3,\,0)$,
+	$\fb_3 = \ab_x + 2\,\ab_y$ applicata in $P_3 = (1,\,2)$.
+	(a) Calcolare la risultante $\fb$.
+	(b) Calcolare il momento risultante $\mu(O)$ rispetto all'origine.
+	(c) Determinare un punto $C$ dell'asse di sollecitazione, ad esempio quello a minima distanza da $O$.
+	(d) Verificare che $\mu(C) = 0$ usando la~\eqref{eq:variazione_piano}.
+	
+	\risultato (a) $\fb = (3\;\,1)^\top$. (b) Sommando i momenti delle tre forze rispetto a $O$: $\mu_1 = 0 \cdot 0 - 1 \cdot 2 = -2$, $\mu_2 = 3 \cdot (-1) - 0 = -3$, $\mu_3 = 1 \cdot 2 - 2 \cdot 1 = 0$, da cui $\mu(O) = -5$. (c) L'asse di sollecitazione ha equazione $\mu(O) + X\,y - Y\,x = 0$, ovvero $-5 + 3y - x = 0$. Il punto a minima distanza da $O$ ha coordinate $C = (-0.5,\,1.5)$, con distanza $|\mu(O)|/|\fb| = 5/\sqrt{10}$. (d) $\mu(C) = \mu(O) + X\,y_C - Y\,x_C = -5 + 3 \cdot 1.5 - 1 \cdot (-0.5) = -5 + 4.5 + 0.5 = 0$.
+	
+\end{esercizio}
+
+\begin{esercizio}[Coppia di forze]
+	\label{ex:C02_coppia}
+	
+	Due forze $\fb_1 = 5\,\ab_y$ e $\fb_2 = -5\,\ab_y$ sono applicate rispettivamente in $P_1 = (1,\,0)$ e $P_2 = (4,\,0)$.
+	(a) Verificare che la risultante è nulla.
+	(b) Calcolare il momento della coppia rispetto a $O = (0,\,0)$.
+	(c) Verificare che il momento non cambia scegliendo un polo diverso, ad esempio $O' = (2,\,3)$.
+	
+	\risultato (a) $\fb = 5\,\ab_y - 5\,\ab_y = \zerovb$. (b) $\mu(O) = 1 \cdot 5 - 0 + 4 \cdot (-5) - 0 = 5 - 20 = -15$. Equivalentemente, $\bm{\upmu} = \overrightarrow{P_2 P_1} \times \fb_1 = (-3\;\,0\;\,0)^\top \times (0\;\,5\;\,0)^\top = (0\;\,0\;\,-15)^\top$. (c) Per la legge di variazione~\eqref{eq:variazione_piano} con $X = Y = 0$: $\mu(O') = \mu(O) = -15$. Verifica diretta rispetto a $O' = (2,\,3)$: $\mu_1 = (1-2)(5) - (0-3)(0) = -5$, $\mu_2 = (4-2)(-5) - (0-3)(0) = -10$, $\mu(O') = -15$. Il momento di una coppia è invariante rispetto al polo, come deve essere.
+	
+\end{esercizio}
+
+\begin{esercizio}[Legge di variazione del momento]
+	\label{ex:C02_variazione_momento}
+	
+	Per il sistema dell'\ESEref{ex:C02_riduzione_piano}:
+	(a) calcolare $\mu(O)$ direttamente dalla definizione, con polo $O = (0,\,0)$;
+	(b) calcolare $\mu(P)$ con $P = (2,\,1)$ direttamente dalla definizione;
+	(c) verificare che i risultati sono coerenti con la~\eqref{eq:variazione_piano}.
+	
+	\risultato (a) Già calcolato nell'\ESEref{ex:C02_riduzione_piano}: $\mu(O) = -5$. (b) Sommando i momenti rispetto a $P = (2,\,1)$: $\mu_1 = (0-2)(0) - (1-1)(2) = 0$, $\mu_2 = (3-2)(-1) - (0-1)(0) = -1$, $\mu_3 = (1-2)(2) - (2-1)(1) = -3$, da cui $\mu(P) = -4$. (c) Con la~\eqref{eq:variazione_piano}: $\mu(P) = \mu(O) + X(y_P - y_O) - Y(x_P - x_O) = -5 + 3 \cdot 1 - 1 \cdot 2 = -4$. I due valori coincidono.
+	
+\end{esercizio}
+
+\begin{esercizio}[Classificazione di sistemi nello spazio]
+	\label{ex:C02_classificazione_3D}
+	
+	Per ciascuno dei seguenti sistemi, calcolare gli invarianti $\fb$ e $\fb \cdot \bm{\upmu}(O)$ e classificare il sistema (sistema nullo, coppia pura, forza unica, dinamo):
+	(a) $\fb_1 = \ab_x + \ab_z$ applicata in $P_1 = (0,\,0,\,0)$ e $\fb_2 = -\ab_x - \ab_z$ applicata in $P_2 = (1,\,0,\,0)$;
+	(b) $\fb_1 = \ab_y$ applicata in $P_1 = (1,\,0,\,0)$ e $\fb_2 = 2\,\ab_y$ applicata in $P_2 = (0,\,1,\,0)$;
+	(c) $\fb_1 = \ab_x$ applicata in $P_1 = (0,\,1,\,0)$ e $\fb_2 = \ab_z$ applicata in $P_2 = (1,\,0,\,0)$.
+	
+	\risultato (a) $\fb = \zerovb$, $\bm{\upmu}(O) = \overrightarrow{OP_2} \times \fb_2 = (1\;\,0\;\,0)^\top \times (-1\;\,0\;\,-1)^\top = (0\;\,1\;\,0)^\top \neq \zerovb$: \textit{coppia pura}. (b) $\fb = (0\;\,3\;\,0)^\top$, $\bm{\upmu}(O) = (1\;\,0\;\,0)^\top \times (0\;\,1\;\,0)^\top + (0\;\,1\;\,0)^\top \times (0\;\,2\;\,0)^\top = (0\;\,0\;\,1)^\top$. $\fb \cdot \bm{\upmu}(O) = 0$: \textit{forza unica} (la risultante è non nulla e l'invariante scalare è zero). (c) $\fb = (1\;\,0\;\,1)^\top$, $\bm{\upmu}(O) = (0\;\,1\;\,0)^\top \times (1\;\,0\;\,0)^\top + (1\;\,0\;\,0)^\top \times (0\;\,0\;\,1)^\top = (0\;\,0\;\,-1)^\top + (0\;\,-1\;\,0)^\top = (0\;\,-1\;\,-1)^\top$. $\fb \cdot \bm{\upmu}(O) = -1 \neq 0$: \textit{dinamo}.
+	
+\end{esercizio}
+
+\begin{esercizio}[Trasporto di una forza]
+	\label{ex:C02_trasporto}
+	
+	Nel piano $(x,y)$, una forza $\fb = 3\,\ab_x + \ab_y$ è applicata in $P = (2,\,1)$.
+	(a) Utilizzando le operazioni elementari di equivalenza, trasportare la forza nell'origine $O = (0,\,0)$, determinando la coppia correttiva.
+	(b) Verificare che il sistema originale e quello ottenuto hanno la stessa risultante e lo stesso momento rispetto a $O$.
+	
+	\risultato (a) Trasportare $\fb$ da $P$ a $O$ aggiunge una coppia correttiva pari al momento di $\fb$ rispetto a $O$ cambiato di segno e applicato in $O$, ovvero $\mu_\mathrm{c} = -(x_P\,Y - y_P\,X) = -(2 \cdot 1 - 1 \cdot 3) = 1$. Il sistema equivalente è dunque: forza $\fb = (3\;\,1)^\top$ applicata in $O$, e coppia $\mu = 1$. (b) Sistema originale: risultante $(3\;\,1)^\top$, momento rispetto a $O$ pari a $\mu(O) = 2 \cdot 1 - 1 \cdot 3 = -1$. Sistema trasportato: risultante $(3\;\,1)^\top$, momento rispetto a $O$ pari a $0 + 1 = 1$. \emph{I momenti differiscono di segno}: la coppia correttiva va dunque scelta con segno opposto, $\mu_\mathrm{c} = +(x_P\,Y - y_P\,X) = -1$. Con questa scelta i due sistemi hanno entrambi risultante $(3\;\,1)^\top$ e momento $-1$ rispetto a $O$.
+	
+\end{esercizio}
+
+	

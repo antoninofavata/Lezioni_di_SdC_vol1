@@ -1,0 +1,4791 @@
+%---------------------------------------------------------------------------------------------------------------------------- 
+\graphicspath{{Parti/P03-Meccanica_SR/C04-Vincoli/Figure/}}
+\chapter{Prestazioni cinematiche e statiche dei vincoli}\label{cap:vincoli_CR}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+
+\begin{sommario}
+	Si distingue preliminarmente il \emph{vincolo di
+		rigidità} --- proprietà interna del corpo che impone uguaglianza di spostamento e rotazione in ogni zona di connessione,
+	con le relative nozioni di distorsione e svincolo ---	dai \emph{vincoli di collegamento} che costituiscono	l'oggetto principale del capitolo. Si definisce il	vincolo posizionale, se ne introduce la molteplicità	e si distingue fra vincoli esterni e interni. Per
+	ciascuno dei cinque vincoli elementari --- carrello,	bipendolo, cerniera, glifo e incastro --- si ricavano	l'equazione cinematica, il luogo del centro di	rotazione assoluto o relativo e la reazione vincolare,	ottenuta applicando il principio dei lavori virtuali.	Si mostra come i vincoli composti si ottengano per	giustapposizione dei vincoli semplici e come l'incastro	interno sia la forma di collegamento equivalente al	vincolo di rigidità. Si generalizza quindi la	trattazione al caso del cedimento vincolare e si	estende ai vincoli che collegano più di due corpi.	Il capitolo si chiude con una tavola riepilogativa	e una serie di esercizi proposti.
+\end{sommario}
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Il vincolo di rigidità e i vincoli di collegamento}
+\label{sec:vincoli_intro}
+%----------------------------------------------------------------------------------------------------------------------------
+
+I vincoli che agiscono su un sistema di corpi rigidi
+sono di due nature fondamentalmente diverse. Si
+introduce dapprima il \emph{vincolo di rigidità},
+proprietà interna del corpo, e si passa poi ai
+\emph{vincoli di collegamento}, che costituiscono
+il catalogo principale del capitolo:
+
+\begin{itemize}[nosep]
+	\item il \textbf{vincolo di rigidità}\index{vincolo!di rigidità|textbf}: ogni corpo
+	rigido esteso soddisfa per sua natura una
+	condizione di continuità --- le sue parti sono
+	connesse. La rigidità impone inoltre che questa
+	connessione non ammetta deformazioni relative:
+	nessuno scorrimento, nessuna rotazione relativa
+	tra le parti. Non è un dispositivo aggiunto
+	dall'esterno ma una condizione che il corpo
+	possiede per sua natura. La sua violazione
+	controllata genera le \emph{distorsioni}; il
+	suo rilascio parziale genera gli
+	\emph{svincoli}. La trattazione quantitativa
+	è sviluppata nei capitoli successivi;
+	\item i \textbf{vincoli di collegamento}:
+	relazioni cinematiche imposte fra due entità
+	distinte --- un corpo e il suolo (vincoli
+	esterni) oppure due corpi distinti
+	$\mathcal{C}_i$ e $\mathcal{C}_j$ (vincoli
+	interni), definiti formalmente nel
+	\PARref{sec:definizione}.
+\end{itemize}
+
+
+
+\subsection{Prestazione cinematica}
+
+Il vincolo di rigidità in una zona di connessione impone che le due parti del corpo abbiano, in quella zona, lo stesso spostamento e la stessa rotazione. In un problema piano	ciò si traduce in tre condizioni scalari: le due componenti	dello spostamento devono essere uguali sui due lati della zona di connessione, e altrettanto la rotazione. Non vi è alcun grado	di libertà relativo: la zona di connessione non può aprirsi, scorrere né ruotare.
+
+\subsection{Prestazione statica}
+
+Le reazioni interne trasmesse attraverso la sezione sono
+distribuite sulla superficie di connessione. Ridotte a un
+polo arbitrario $O$, esse equivalgono a una
+\emph{forza risultante} --- due componenti scalari nel
+piano --- e un \emph{momento risultante} --- una componente
+scalare. In totale tre incognite, duali alle tre condizioni
+cinematiche. Il polo $O$ è arbitrario: cambiandolo varia
+il momento risultante ma non la forza né il numero delle
+incognite.
+
+\begin{oss}
+	La dualità fra prestazione cinematica e prestazione
+	statica è perfetta: a ciascuna delle tre condizioni
+	cinematiche corrisponde una e una sola incognita
+	statica. Questa struttura --- tre condizioni, tre
+	reazioni --- sarà ritrovata nel catalogo dei vincoli
+	di collegamento con il nome di \emph{incastro}.
+	Il collegamento fra le due forme è discusso
+	nell'osservazione del \PARref{sec:incastro}.
+\end{oss}
+
+\subsection{Distorsioni e svincoli}
+
+La rigidità è la condizione di default: in assenza di
+indicazioni contrarie ogni zona di connessione è rigida.
+È possibile introdurre due tipi di eccezione:
+
+\begin{itemize}[nosep]
+	\item le \textbf{distorsioni}\index{distorsione|textbf}\index{distorsione!di Volterra}\index{distorsione|seealso{cedimento}} (o distorsioni di
+	Volterra): violazioni \emph{controllate} della
+	rigidità, in cui una o più delle tre condizioni
+	cinematiche sono sostituite da valori non nulli
+	assegnati. Modellano discontinuità cinematiche
+	prescritte --- rotazioni relative imposte, variazioni
+	termiche differenziali, disassamenti geometrici;
+	\item gli \textbf{svincoli}\index{svincolo|textbf}\index{svincolo|seealso{vincolo}}: rilascio di una o più
+	delle tre condizioni di rigidità, che vengono
+	semplicemente rimosse. Uno svincolo rotazionale
+	lascia libera la rotazione relativa fra i due tratti,
+	mantenendo le due condizioni di traslazione; uno
+	svincolo traslazionale lascia libera una componente
+	di spostamento relativo. Ogni svincolo riduce di uno
+	il numero di condizioni cinematiche attive e,
+	dualmente, di uno il numero di reazioni interne
+	trasmesse  attraverso la zona di connessione.
+\end{itemize}
+
+\begin{oss}
+	I vincoli di collegamento interni possono essere
+	interpretati come vincoli di rigidità parzialmente
+	rilasciati tramite svincoli. Ad esempio, un vincolo
+	che mantiene le due condizioni di traslazione ---
+	uguaglianza delle componenti orizzontale e verticale
+	dello spostamento relativo --- ma rilascia la
+	condizione di rotazione, lasciando libera la rotazione
+	relativa fra i due tratti, corrisponde a un vincolo
+	di rigidità con svincolo rotazionale. Questa
+	prospettiva --- rigidità come punto di partenza,
+	svincolo come rilascio --- è del tutto equivalente
+	a quella dei vincoli di collegamento sviluppata nelle
+	sezioni seguenti, ma offre un quadro concettuale
+	più unitario, particolarmente utile quando si
+	introduce la deformabilità nei volumi successivi.
+	Il lettore riconoscerà in questo esempio la cerniera
+	interna, che sarà definita formalmente nel
+	\PARref{sec:cerniera}.
+\end{oss}
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Il vincolo posizionale: definizione e classificazione}	\label{sec:definizione}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+\begin{definizione}[Vincolo posizionale]\label{def:vincolo}
+	Un \emph{vincolo posizionale}\index{vincolo|textbf} è un dispositivo meccanico che, una
+	volta applicato a uno o più corpi rigidi, limita le possibilità di
+	spostamento ammissibili per i punti del corpo (o dei corpi) cui è
+	collegato, imponendo una o più relazioni cinematiche lineari fra le
+	componenti di spostamento.
+\end{definizione}
+
+La parola \textit{posizionale} indica che le condizioni imposte dal
+vincolo riguardano le \emph{coordinate di posizione} dei punti del
+corpo (o, in regime infinitesimo, i loro spostamenti), e non le
+velocità: il vincolo stabilisce \emph{dove} il corpo può trovarsi,
+non \emph{come} si sta muovendo. Vincoli che impongono invece
+condizioni sulle velocità sono detti \emph{cinematici}\index{vincolo!cinematico}: alcuni
+sono equivalenti a vincoli posizionali --- quando le condizioni
+sulle velocità sono integrabili, come accade per il rotolamento
+puro di una ruota su una guida rettilinea, dove $\dot{x} = R\,\dot{\varphi}$
+si integra in $x = R\varphi + \text{cost.}$ --- altri non lo
+sono e si dicono \emph{anolonomi}\index{vincolo!anolonomo}: il caso classico è quello del
+pattino, in cui la velocità del centro deve restare allineata con
+il pattino senza che ciò restringa le posizioni accessibili.
+Vincoli cinematici e anolonomi non rientrano nello scopo di
+questo capitolo.
+
+\begin{definizione}[Molteplicità di un vincolo]\label{def:molteplicita}
+	Si chiama \emph{molteplicità}\index{vincolo!molteplicita@molteplicità|textbf}\index{molteplicita@molteplicità|see{vincolo}} (o \emph{grado di vincolo}\index{vincolo!grado di|textbf}\index{grado di vincolo|see{vincolo}}) di un
+	vincolo posizionale il numero di equazioni cinematiche lineari
+	indipendenti che esso impone sulle grandezze cinematiche del corpo
+	cui è applicato. Un vincolo di molteplicità $m$ riduce di $m$ il
+	numero di gradi di libertà del sistema.
+\end{definizione}
+
+Nel seguito ci si restringe al \emph{caso piano}, in cui un
+corpo rigido libero possiede tre gradi di libertà: due
+componenti di traslazione e una rotazione. I vincoli che
+studieremo hanno molteplicità $m \in \{1,2,3\}$ e lasciano
+rispettivamente due, uno o nessun grado di libertà. La
+trattazione tridimensionale, in cui il corpo rigido libero
+possiede sei gradi di libertà, segue gli stessi principi
+con le opportune estensioni.
+
+
+\begin{oss}
+	La linearità delle relazioni cinematiche richiesta nella
+	\DEFref{def:vincolo} è conseguenza dell'ipotesi di
+	spostamenti \emph{infinitesimi} adottata nel
+	\CAPref{cap:cinematica_infinitesima}: nell'ambito della
+	cinematica infinitesima, le relazioni geometriche si
+	linearizzano e le equazioni di vincolo assumono la forma
+	lineare utilizzata nel seguito. Per spostamenti finiti
+	le relazioni diventerebbero non lineari e la nozione di
+	molteplicità andrebbe reinterpretata.
+\end{oss}
+
+
+% ───────────────────────────────────────────────────────────────────────────
+\subsection{Vincoli esterni e vincoli interni}
+\label{sec:esterno_interno}
+% ───────────────────────────────────────────────────────────────────────────
+
+\begin{definizione}[Vincolo esterno]\label{def:esterno}
+	Un vincolo si dice \emph{esterno}\index{vincolo!esterno|textbf} quando collega il corpo rigido
+	$\mathcal{C}$ a un riferimento fisso (il suolo). Le equazioni che
+	esso impone coinvolgono le componenti di \emph{spostamento assoluto}
+	dei punti del corpo.
+\end{definizione}
+
+
+\begin{definizione}[Vincolo interno di collegamento]\label{def:interno}
+	Un vincolo si dice \emph{interno}\index{vincolo!interno|textbf}\index{collegamento, vincolo di|see{vincolo (interno)}} --- o equivalentemente
+	\emph{di collegamento} --- quando connette due corpi rigidi
+	distinti $\mathcal{C}_i$ e $\mathcal{C}_j$. Il termine
+	\emph{collegamento} sottolinea che si tratta di una relazione
+	fra due entità separate, a differenza del vincolo di rigidità
+	--- introdotto nel \PARref{sec:vincoli_intro} --- che è una
+	proprietà interna del corpo stesso. Le equazioni che il vincolo
+	interno impone coinvolgono lo \emph{spostamento relativo} e la
+	\emph{rotazione relativa} dei due corpi nella zona di
+	collegamento.
+\end{definizione}
+
+A seconda della geometria del collegamento si distinguono i
+vincoli interni \emph{puntiformi}, in cui i due punti di
+applicazione coincidono geometricamente in un unico punto $A$,
+e i vincoli interni a \emph{estensione finita}, in cui sono
+punti distinti dei due corpi: per i primi le equazioni di
+vincolo si scrivono naturalmente attraverso il \emph{salto}
+$\llbracket \cdot \rrbracket(A)$ delle grandezze cinematiche
+attraverso $A$; per i secondi, attraverso il loro
+\emph{incremento} $\Delta$ fra i due punti di applicazione.
+La distinzione fra le due notazioni è quella stabilita nel
+\PARref{sec:salto_incremento}; nelle sezioni seguenti la si
+esemplifica caso per caso.
+
+Il trattamento matematico dei vincoli interni è formalmente
+identico a quello dei vincoli esterni: basta sostituire gli
+spostamenti assoluti con gli spostamenti relativi e la
+rotazione assoluta con la rotazione relativa. In modo analogo,
+il \CRa\ individuato da un vincolo esterno diventa, nel caso
+interno, il \CRr\ fra i due corpi collegati. Per questa
+ragione, nelle sezioni seguenti si svilupperà il trattamento
+per il caso esterno e si riporterà poi il risultato per il
+caso interno in forma compatta.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Richiamo: il campo di spostamento e il centro di rotazione}	\label{sec:richiamo}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+I risultati di questo capitolo poggiano sulle formule ricavate
+nel \CAPref{cap:cinematica_infinitesima}. Li ricordiamo
+brevemente.
+
+Nel caso piano, la formula fondamentale della cinematica infinitesima
+del corpo rigido lega lo spostamento di un punto generico $P$ a quello
+di un polo $O$ e alla rotazione $\vartheta$:
+\begin{equation}\label{eq:FFCI_piano_vett}
+	\ub(P) = \ub(O) + \bm{\upvartheta} \times \overrightarrow{OP},
+\end{equation}
+dove $\bm{\upvartheta} = \vartheta\,\ab_z$ è il vettore di rotazione
+diretto lungo l'asse uscente dal piano. Ponendo il polo $O$
+nell'origine del riferimento, in componenti cartesiane:
+\begin{equation}\label{eq:FFCI_piano}
+	\begin{Bmatrix} u(P) \\ v(P) \end{Bmatrix}
+	=
+	\begin{Bmatrix} u(O) \\ v(O) \end{Bmatrix}
+	+
+	\begin{bmatrix} 0 & -\vartheta \\ \vartheta & 0 \end{bmatrix}
+	\begin{Bmatrix} x(P) \\ y(P) \end{Bmatrix}.
+\end{equation}
+Lo spostamento rigido piano è caratterizzato da tre parametri
+indipendenti: le due componenti della traslazione $u(O)$, $v(O)$ e
+la rotazione $\vartheta$.
+
+Per $\vartheta \neq 0$ esiste un unico punto $C$ con spostamento
+nullo: il \CRa. Il campo si riscrive come
+\begin{equation}\label{eq:centro_campo}
+	\ub(P) = \bm{\upvartheta} \times \overrightarrow{CP},
+\end{equation}
+e le coordinate di $C$, con $O$ nell'origine, si ricavano
+imponendo $\ub(C) = \zerovb$:
+\begin{equation}\label{eq:coord_C}
+	x(C) = -\frac{v(O)}{\vartheta}, \qquad
+	y(C) = \frac{u(O)}{\vartheta}.
+\end{equation}
+
+Per $\vartheta = 0$ il moto è una traslazione pura e il centro
+si sposta all'infinito nella direzione perpendicolare alla
+traslazione.
+
+\medskip
+
+Questo strumento geometrico --- la posizione del centro di
+rotazione --- è il principale indicatore cinematico\index{centro di rotazione!luogo geometrico} che
+utilizzeremo per caratterizzare le prestazioni di ciascun
+vincolo: ogni equazione di vincolo può essere letta come
+un'informazione sul luogo geometrico in cui il centro di
+rotazione può trovarsi. Dualmente, la reazione vincolare\index{reazione vincolare|textbf}
+è la grandezza statica che non compie lavoro negli
+spostamenti ammessi dal vincolo.
+
+
+\begin{oss}
+	Per il corpo rigido, la cinematica è interamente
+	descritta da tre parametri globali: le due componenti
+	di traslazione del polo $O$ e la rotazione $\vartheta$.
+	Quest'ultima è la stessa per tutti i punti del corpo,
+	mentre la traslazione dipende dalla scelta del polo.
+	Le equazioni di vincolo coinvolgono quindi grandezze
+	globali --- lo spostamento di un punto specifico $A$,
+	espresso tramite la formula fondamentale in funzione
+	di $\ub(O)$ e $\vartheta$, e la rotazione $\vartheta$
+	del corpo --- e il punto di applicazione $A$ individua
+	il luogo geometrico in cui il vincolo è fisicamente
+	connesso al corpo, senza che ciò limiti la generalità
+	della trattazione.
+	
+	Per i corpi deformabili, come le travi che si 
+	incontreranno nelle lezioni successive, la cinematica
+	è descritta da un campo di spostamenti $\ub(s)$ che
+	varia punto per punto. In quel contesto il punto di
+	applicazione $A$ acquista un ruolo ancora più centrale:
+	un bipendolo applicato in $A$ impone $\vartheta(A) = 0$
+	solo in quel punto, non sull'intera struttura. La
+	trattazione sviluppata in questo capitolo per il corpo
+	rigido costituisce quindi il caso particolare --- e il
+	fondamento concettuale --- della teoria generale dei
+	vincoli per corpi deformabili.
+\end{oss}
+
+\begin{oss}
+	Le reazioni vincolari si dividono in due categorie di
+	natura diversa:
+	\begin{enumerate}[label=(\roman*)]
+		\item le \emph{forze reattive}\index{reazione vincolare!forza reattiva} $\rb(A)$\nomenclature[L]{$\rb(A)$}{forza reattiva (reazione vincolare nel punto $A$)}, che sono
+		applicate in un punto specifico $A$ del corpo; il
+		loro punto di applicazione è essenziale per il
+		bilancio dei momenti e non può essere modificato
+		arbitrariamente;
+		\item le \emph{coppie reattive}\index{reazione vincolare!coppia reattiva} $\mu$, che sono
+		vettori liberi: il loro effetto sul corpo rigido
+		è indipendente dal punto in cui vengono applicate.
+	\end{enumerate}
+	Per uniformità notazionale, anche le coppie reattive
+	si scrivono nella forma $\mu(A)$, in cui il punto $A$
+	non rappresenta un punto di applicazione --- privo di
+	significato per un vettore libero --- ma serve come
+	\emph{etichetta} che identifica il vincolo di
+	provenienza, in analogia con le componenti scalari
+	$X(A), Y(A), R(A)$ delle forze. Questo accorgimento
+	è essenziale nella soluzione dei problemi statici, in
+	cui un corpo può ricevere coppie reattive da più
+	vincoli distinti e ciascuna incognita scalare deve
+	essere identificabile in modo univoco. Lo stesso vale
+	per le coppie scambiate nei vincoli interni puntiformi,
+	dove $A$ identifica il giunto.
+	
+	Nell'equilibrio del corpo rigido inteso come corpo unico,
+	la distinzione (i)/(ii) fra forze applicate in un punto e
+	coppie come vettori liberi è automaticamente soddisfatta.
+	Diventa invece cruciale quando si considerano le forze
+	interne trasmesse attraverso una sezione --- nella trave
+	rigida e, a maggior ragione, nei corpi deformabili ---
+	dove il punto di applicazione di forze e coppie influenza
+	la risposta interna della struttura.
+\end{oss}
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Vincoli semplici: molteplicità uno}	\label{sec:semplici}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+I vincoli di molteplicità uno\index{vincolo!semplice} rimuovono un solo grado di libertà,
+lasciando il corpo con due gradi di libertà residui. Le due tipologie
+fondamentali sono il \emph{carrello} (o biella equivalente) e il
+\emph{bipendolo}.
+
+Per ciascun vincolo del catalogo si seguirà la medesima procedura
+espositiva in tre passi: si scrive l'\emph{equazione cinematica}
+imposta dal vincolo; si determina il \emph{luogo del centro di
+	rotazione} compatibile con essa; si ricava la \emph{reazione
+	vincolare} applicando il \emph{principio dei lavori virtuali}
+(\CAPref{cap:dualismo_CR}), in base al quale la reazione è la
+grandezza statica che compie lavoro nullo su tutti gli spostamenti
+virtuali compatibili con il vincolo, in dualità con le componenti
+cinematiche bloccate.
+
+
+\subsection{Il carrello}\label{sec:carrello}
+
+\paragraph{Realizzazione meccanica e parametri caratterizzanti.}
+Il carrello\index{carrello|textbf}\index{carrello|seealso{vincolo}} è schematizzato dal simbolo di figura~\ref{fig:carrello}:
+un dispositivo che impedisce la traslazione del punto di applicazione
+$A$ in una direzione assegnata, lasciando libere la traslazione
+nella direzione perpendicolare e la rotazione. Il vincolo è
+completamente caratterizzato da:
+\begin{enumerate}[label=(\roman*)]
+	\item il \emph{punto di applicazione} $A$;
+	\item il \emph{versore dell'asse} $\ab$, ovvero la direzione
+	lungo la quale lo spostamento è impedito.
+\end{enumerate}
+Una realizzazione meccanica concreta del carrello è la
+\emph{biella}\index{biella|textbf}\index{biella|seealso{carrello}}: un'asta rigida incardinata
+con una cerniera al corpo nel punto $A$ e con un'altra cerniera
+al suolo. Per spostamenti finiti il punto $A$ percorre un arco
+di circonferenza centrato nel cardine a terra; nell'ipotesi di
+spostamenti infinitesimi, lo spostamento ammesso di $A$ è
+perpendicolare all'asse della biella, e quest'ultima fornisce
+quindi le stesse prestazioni cinematiche del carrello, a
+condizione che il suo asse e il versore $\ab$ del carrello
+siano collineari.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering		
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Simbolo del carrello
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			% ── Parametri del simbolo (convenzioni del libro) ──
+			\def\xA{0.8}     % ascissa di A
+			\def\yA{0.0}     % ordinata di A
+			\def\tw{0.30}    % semi-larghezza triangolo
+			\def\thR{0.40}   % altezza triangolo carrello
+			\def\rn{0.10}    % raggio semicerchio (anellino a metà)
+			\def\bw{0.18}    % semi-distanza ruote
+			\def\gw{0.45}    % semi-larghezza barre di terra
+			
+			% ── Asse del carrello: retta verticale grigia continua ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, \yA-\thR-0.5) -- (\xA, 3.85);
+			
+			% ── Etichetta del luogo del CR ──
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (\xA+0.08, 2.50) {$C \in$ asse del carrello};
+			
+			
+			% ── Retta-luogo del CR: due tratti, sopra il corpo e sotto il suolo ──
+			\draw[dashed, gray!60, line width=0.6pt] 
+			(\xA, 2.05) -- (\xA, 2.85);
+			\draw[ gray!60, line width=0.6pt] 
+			(\xA, \yA-\thR) -- (\xA, \yA-\thR-0.15);
+			
+			% ── Corpo di fantasia (linea, senza fill) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.8, 0.0) (1.6, 0.15) (2.2, 0.7) (2.0, 1.7) 
+				(1.0, 2.0) (-0.1, 1.7) (-0.6, 1.0) (-0.3, 0.3)};
+			\node at (1.5, 1.1) {$\mathcal{C}$};
+			
+			% ── Spostamento ammesso: freccia grigia perpendicolare ad a ──
+			%\draw[->, gray, line width=0.9pt] 	(\xA+0.20, \yA) -- (\xA+1.60, \yA);
+			\node[above=5pt] at (\xA+2.50, \yA+0.5) 	{\footnotesize $\ub(A) \cdot \ab = 0$};
+			
+			% ── Simbolo del carrello: apice del triangolo IN A ──
+			
+			% Triangolo (apice in A, base in basso)
+			\draw (\xA, \yA) -- ++(-\tw, -\thR) -- ++(2*\tw, 0) -- cycle;
+			
+			% Prima barra (alla base del triangolo)
+			\draw (\xA-\gw, \yA-\thR) -- (\xA+\gw, \yA-\thR);
+			
+			% Due ruote (cerchietti vuoti)
+			\draw (\xA-\bw, \yA-\thR-0.13) circle (3pt);
+			\draw (\xA+\bw, \yA-\thR-0.13) circle (3pt);
+			
+			% Seconda barra (suolo)
+			\draw (\xA-\gw, \yA-\thR-0.26) -- (\xA+\gw, \yA-\thR-0.26);
+			
+			% Tratteggio del suolo
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thR-0.26) -- ++(-0.10, -0.13);
+			
+			% Semicerchio (anellino a metà) in A: rotazione consentita
+			\draw[fill=white] 
+			(\xA-\rn, \yA) arc(180:360:\rn) -- cycle;
+			
+			% Punto A (ridisegnato dopo il semicerchio così resta visibile)
+			%\fill (\xA, \yA) circle (1.5pt);
+			\node[above left=-1pt] at (\xA-0.02, \yA+0.05) {$A$};
+			
+			% ── Asse a sopra il corpo ──
+			\draw[->, thick] (\xA, 2.10) -- (\xA, 2.85);
+			\node[right=2pt] at (\xA, 2.85) {$\ab$};
+			
+			% ── Etichetta verticale "asse del carrello" ──
+			\node[gray, rotate=90, anchor=south, font=\footnotesize] 
+			at (\xA-0.12, 2.45) {asse del carrello};
+			
+			% ── Etichetta pannello ──
+			\node[anchor=north] at (\xA+2, \yA-\thR) {$(a)$};
+			
+		\end{scope}
+		
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — biella (realizzazione meccanica)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5.5cm]
+			
+			% ── Parametri ──
+			\def\xA{0.8}     % ascissa di A (e del perno al suolo)
+			\def\yA{1.5}     % ordinata di A
+			\def\yG{0.0}     % ordinata del perno al suolo
+			\def\tw{0.30}    % semi-larghezza triangolo
+			\def\thA{0.40}   % altezza triangolo cerniera al suolo
+			\def\rn{0.10}    % raggio semicerchio in A
+			\def\gw{0.50}    % semi-larghezza barra di terra
+			
+			% ── Asse della biella: retta verticale dashed continua ──
+			%    (verrà parzialmente coperta da asta e triangolo)
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, \yG-\thA-0.5) -- (\xA, 4.50);
+			
+			% ── Corpo di fantasia (alzato, senza fill) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.8, 1.5) (1.6, 1.65) (2.2, 2.2) (2.0, 3.2) 
+				(1.0, 3.5) (-0.1, 3.2) (-0.6, 2.5) (-0.3, 1.8)};
+			\node at (0.95, 2.6) {$\mathcal{C}$};
+			
+			% ── Cinematica finita: arco ──
+			\draw[gray, line width=0.9pt] 
+			(\xA, \yG) ++(60:1.5) 
+			arc[start angle=60, end angle=120, radius=1.5];
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (1.6, 0.85) {cinematica finita};
+			
+			% ── Cinematica infinitesima: tangente ──
+			\draw[gray, dashed, line width=0.9pt] 
+			(-0.7, \yA) -- (2.4, \yA);
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (2.2, \yA+0.35) {cinematica infinitesima};
+			
+			% ── Asta della biella (copre il tratto centrale dell'asse) ──
+			\draw[line width=0.8pt] (\xA, \yA) -- (\xA, \yG);
+			
+			% ── Cerniera al suolo: triangolo + barra + tratteggio ──
+			\draw (\xA, \yG) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yG-\thA) -- (\xA+\gw, \yG-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yG-\thA) -- ++(-0.10, -0.13);
+			
+			% ── Anellini (in quest'ordine, dopo asta e triangolo) ──
+			% Sommità della biella (in A): semicerchio bianco, concavità in basso
+			\draw[fill=white] 
+			(\xA-\rn, \yA) arc(180:360:\rn) -- cycle;
+			% Cerniera al suolo: perno pieno
+			\draw[fill=white] (\xA, \yG) circle (3.5pt);
+			
+			% ── Punto A (ridisegnato dopo il semicerchio) ──
+			%\fill (\xA, \yA) circle (1.5pt);
+			\node[above left=-1pt] at (\xA-0.02, \yA+0.05) {$A$};
+			
+			% ── Asse a sopra il corpo ──
+			\draw[->, thick] (\xA, 3.60) -- (\xA, 4.30);
+			\node[right=2pt] at (\xA, 4.30) {$\ab$};
+			
+			% ── Etichetta del luogo del CR ──
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (\xA+0.08, 4.00) {$C \in$ asse della biella};
+			
+			% ── Etichetta pannello ──
+			\node[anchor=north] at (\xA+2, \yG-\thA) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Vincolo semplice di carrello: simbolo convenzionale (a)
+		e realizzazione meccanica tramite biella (b). L'equazione
+		di vincolo $\ub(A)\cdot\ab = 0$ annulla la componente di
+		spostamento di $A$ lungo l'asse $\ab$; le componenti libere
+		--- traslazione lungo $\ab^\perp$ e rotazione --- non sono
+		rappresentate. Per la biella, la cinematica finita è un
+		arco di circonferenza centrato nel perno al suolo;
+		nell'ipotesi di spostamenti infinitesimi essa coincide con
+		la tangente in $A$, e le prestazioni cinematiche della
+		biella si riducono a quelle del carrello. In entrambi i
+		casi il \CRa\ giace sulla retta per $A$ in direzione $\ab$.}
+	\label{fig:carrello}
+\end{figure}
+
+\paragraph{Caso esterno.}
+
+\paragraph{Equazione cinematica.}
+Il carrello impedisce la componente di spostamento del punto $A$
+nella direzione $\ab$. L'equazione di vincolo è:
+\begin{equation}\label{eq:carrello_cin}
+	\ub (A) \cdot \ab = 0.
+\end{equation}
+Il punto $A$ può liberamente spostarsi nella direzione
+perpendicolare, ma non lungo $\ab$.
+
+\paragraph{Posizione del centro di rotazione assoluto.}
+Sostituendo la~\eqref{eq:centro_campo} nella~\eqref{eq:carrello_cin}:
+\begin{equation}
+	\bigl(\bm{\upvartheta} \times \overrightarrow{CA}\bigr)
+	\cdot \ab = 0.
+\end{equation}
+Applicando la proprietà ciclica del prodotto misto:
+\begin{equation}
+	\bm{\upvartheta} \cdot \bigl(\overrightarrow{CA} \times \ab\bigr)
+	= 0.
+\end{equation}
+Poiché $\bm{\upvartheta} = \vartheta\,\ab_z$ e
+$\overrightarrow{CA} \times \ab$ è parallelo ad $\ab_z$, la
+condizione si riduce a richiedere che il prodotto vettoriale
+$\overrightarrow{CA} \times \ab$ sia nullo, ovvero che
+$\overrightarrow{CA}$ sia parallelo ad $\ab$.
+
+\begin{proposizione}[Centro di rotazione --- carrello]
+	\label{prop:CR_carrello}
+	Il \CRa\ di un corpo vincolato da un carrello applicato in $A$
+	con asse $\ab$ giace sulla retta passante per $A$ nella
+	direzione di $\ab$:
+	\begin{equation}\label{eq:CR_carrello}
+		C = A + \lambda\,\ab, \qquad \lambda \in \mathbb{R}.
+	\end{equation}
+	La retta costituisce il \emph{luogo geometrico} dei centri
+	compatibili con il vincolo; la posizione esatta lungo tale
+	retta è determinata solo una volta assegnati ulteriori vincoli
+	o lo spostamento del corpo.
+\end{proposizione}
+
+
+\paragraph{Reazione vincolare.}
+Gli spostamenti compatibili con il carrello sono quelli per cui
+$\ub(A)\cdot\ab = 0$: il punto $A$ si sposta liberamente in
+direzione perpendicolare ad $\ab$. Per il principio dei lavori
+virtuali, la reazione deve compiere lavoro nullo su ogni tale
+spostamento: la forza reattiva è quindi parallela ad $\ab$ e la
+coppia reattiva è nulla,
+\begin{equation}\label{eq:reazione_carrello}
+	\rb(A) = R(A)\,\ab,
+	\qquad
+	\mu(A) = 0,
+	\qquad
+	R(A) \in \mathbb{R}.
+\end{equation}
+Sono noti a priori il punto di applicazione $A$, la direzione
+$\ab$ della forza reattiva e l'assenza di coppia reattiva;
+l'unica incognita scalare è l'intensità con segno $R(A)$, il
+cui segno determina se la reazione è concorde o discorde con
+$\ab$, in accordo con la molteplicità uno. La
+\FIGref{fig:carrello_stat} illustra la reazione per il simbolo
+del carrello e per la sua realizzazione meccanica tramite
+biella.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering        
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Reazione del carrello
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			% ── Parametri ──
+			\def\xA{0.8}
+			\def\yA{0.0}
+			\def\tw{0.30}
+			\def\thR{0.40}
+			\def\rn{0.10}
+			\def\bw{0.18}
+			\def\gw{0.45}
+			
+			% ── Asse del carrello: retta verticale grigia continua ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, \yA-\thR-0.5) -- (\xA, 3.85);
+			
+			% ── Corpo di fantasia ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.8, 0.0) (1.6, 0.15) (2.2, 0.7) (2.0, 1.7) 
+				(1.0, 2.0) (-0.1, 1.7) (-0.6, 1.0) (-0.3, 0.3)};
+			\node at (1.5, 1.5) {$\mathcal{C}$};
+			
+			% ── Simbolo del carrello ──
+			\draw (\xA, \yA) -- ++(-\tw, -\thR) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yA-\thR) -- (\xA+\gw, \yA-\thR);
+			\draw (\xA-\bw, \yA-\thR-0.13) circle (3pt);
+			\draw (\xA+\bw, \yA-\thR-0.13) circle (3pt);
+			\draw (\xA-\gw, \yA-\thR-0.26) -- (\xA+\gw, \yA-\thR-0.26);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thR-0.26) -- ++(-0.10, -0.13);
+			
+			% ── Semicerchio in A: rotazione consentita ──
+			\draw[fill=white] 
+			(\xA-\rn, \yA) arc(180:360:\rn) -- cycle;
+			
+			% ── REAZIONE: forza R(A) a, in rosso, da A verso l'alto ──
+			\draw[->, line width=1.2pt] 
+			(\xA, \yA+0.05) -- (\xA, \yA+1.05);
+			\node[anchor=west, font=\small] 
+			at (\xA, \yA+0.65) {$R(A)\,\ab$};
+			
+			% ── Etichetta A (a destra, fuori dal triangolo) ──
+			\node[anchor=west, font=\small] at (\xA+0.18, \yA-0.08) {$A$};
+			
+			% ── Asse a sopra il corpo ──
+			\draw[->, thick] (\xA, 2.10) -- (\xA, 2.85);
+			\node[right=2pt] at (\xA, 2.85) {$\ab$};
+			
+			% ── Etichetta verticale "asse del carrello" ──
+			\node[gray, rotate=90, anchor=south, font=\footnotesize] 
+			at (\xA-0.12, 2.45) {asse del carrello};
+			
+			% ── Etichetta pannello ──
+			\node[anchor=north] at (\xA+2, \yA-\thR) {$(a)$};
+			
+		\end{scope}
+		
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Reazione della biella
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5.5cm]
+			
+			% ── Parametri ──
+			\def\xA{0.8}
+			\def\yA{1.5}
+			\def\yG{0.0}
+			\def\tw{0.30}
+			\def\thA{0.40}
+			\def\rn{0.10}
+			\def\gw{0.50}
+			
+			% ── Asse della biella ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, \yG-\thA-0.5) -- (\xA, 4.50);
+			
+			% ── Corpo di fantasia ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.8, 1.5) (1.6, 1.65) (2.2, 2.2) (2.0, 3.2) 
+				(1.0, 3.5) (-0.1, 3.2) (-0.6, 2.5) (-0.3, 1.8)};
+			\node at (1.5, 3.0) {$\mathcal{C}$};
+			
+			% ── Asta della biella ──
+			\draw[line width=0.8pt] (\xA, \yA) -- (\xA, \yG);
+			
+			% ── Cerniera al suolo ──
+			\draw (\xA, \yG) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yG-\thA) -- (\xA+\gw, \yG-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yG-\thA) -- ++(-0.10, -0.13);
+			
+			% ── Anellini: semicerchio in A, perno pieno al suolo ──
+			\draw[fill=white] 
+			(\xA-\rn, \yA) arc(180:360:\rn) -- cycle;
+			\draw[fill=white] (\xA, \yG) circle (3.5pt);
+			
+			% ── REAZIONE: forza R(A) a, in rosso, da A verso l'alto ──
+			\draw[->,  line width=1.2pt] 
+			(\xA, \yA+0.05) -- (\xA, \yA+1.05);
+			\node[anchor=west, font=\small] 
+			at (\xA, \yA+0.65) {$R(A)\,\ab$};
+			
+			% ── Etichetta A (a sinistra dell'asta) ──
+			\node[anchor=east, font=\small] at (\xA, \yA-0.24) {$A$};
+			
+			% ── Asse a sopra il corpo ──
+			\draw[->, thick] (\xA, 3.60) -- (\xA, 4.30);
+			\node[right=2pt] at (\xA, 4.30) {$\ab$};
+			
+			% ── Etichetta verticale "asse della biella" ──
+			\node[gray, rotate=90, anchor=south, font=\footnotesize] 
+			at (\xA-0.12, 3.40) {asse della biella};
+			
+			% ── Etichetta pannello ──
+			\node[anchor=north] at (\xA+2, \yG-\thA) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Prestazione statica del carrello (a) e della biella
+		(b): la reazione vincolare si riduce alla sola forza
+		$R(A)\,\ab$ diretta lungo l'asse, in dualità con la
+		componente di spostamento bloccata; le componenti reattive
+		nulle (coppia e forza in $\ab^\perp$) non sono
+		rappresentate, in accordo con la molteplicità uno. Nella
+		biella, la forza è trasmessa al corpo $\mathcal{C}$
+		dall'asta lungo il proprio asse.}
+	\label{fig:carrello_stat}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Caso interno.}
+Quando il vincolo collega due corpi $\mathcal{C}_i$ e
+$\mathcal{C}_j$, la condizione~\eqref{eq:carrello_cin} si
+specializza in due forme distinte, secondo che il vincolo
+sia puntiforme o esteso.
+
+
+Nel \emph{carrello interno}\index{carrello!interno} i punti di applicazione $A_i$
+e $A_j$ coincidono geometricamente, $A_i = A_j = A$, e la
+condizione di uguaglianza degli spostamenti nella direzione
+$\ab$ si scrive come salto attraverso $A$:
+\begin{equation}\label{eq:carrello_int_punt}
+	\llbracket \ub \rrbracket(A) \cdot \ab = 0,
+	\qquad
+	\llbracket \ub \rrbracket(A) \coloneqq \ub_j(A) -
+	\ub_i(A),
+\end{equation}
+in accordo con la convenzione del
+\PARref{sec:salto_incremento}. Nella \emph{biella di
+	lunghezza finita}, invece, $A_i$ e $A_j$ sono punti
+distinti dei due corpi e la condizione si esprime tramite
+l'incremento dello spostamento fra di essi:
+\begin{equation}\label{eq:carrello_int_est}
+	\Delta\ub \cdot \ab = 0,
+	\qquad
+	\Delta\ub \coloneqq \ub(A_j) - \ub(A_i),
+\end{equation}
+con $\ab \coloneqq \overrightarrow{A_i A_j}/
+|\overrightarrow{A_i A_j}|$ determinato dalla geometria
+dell'asta. Il carrello si recupera come limite della
+biella finita per $|\overrightarrow{A_i A_j}| \to 0$: i
+due punti di applicazione collassano in un unico punto
+$A$ e l'incremento $\Delta$ degenera nel salto
+$\llbracket \cdot \rrbracket(A)$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (a) — Prestazione cinematica della biella interno
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm]
+				
+				% ── Parametri (carrello ruotato di 90° CCW) ──
+				\def\xAi{-0.30}     % ascissa di A_i (bordo destro di C_i)
+				\def\xAj{ 1.20}     % ascissa di A_j (apice triangolo)
+				\def\yAx{ 0.00}     % asse a coincide con y=0
+				\def\tw{0.30}       % semi-altezza triangolo (era larghezza)
+				\def\thR{0.40}      % "altezza" triangolo = base - apice
+				\def\rn{0.10}       % raggio semicerchio
+				\def\bw{0.18}       % semi-distanza ruote (verticale)
+				\def\gw{0.45}       % semi-altezza barre laterali
+				
+				%% ── Asse a (retta grigia continua) ──
+				\draw[gray!60, line width=0.6pt] 
+				(-2.5, \yAx) -- (3.40, \yAx);
+				
+				%% ── Corpo C_i a sinistra ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.30,  0.00) (-0.50,  0.80) (-1.40,  1.10) 
+					(-2.40,  0.95) (-2.80,  0.20) (-2.60, -0.70) 
+					(-1.70, -1.05) (-0.70, -0.80) (-0.45, -0.45)};
+				\node at (-1.60, 0.30) {$\mathcal{C}_i$};
+				
+				%% ── Corpo C_j a destra ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(1.20,  0.00) (1.40,  0.80) (2.20,  1.10) 
+					(3.20,  0.95) (3.60,  0.20) (3.40, -0.70) 
+					(2.50, -1.05) (1.60, -0.85) (1.35, -0.45)};
+				\node at (2.40, 0.30) {$\mathcal{C}_j$};
+				
+				
+				%% ── biella: asta orizzontale + semicerchi terminali ──
+				\draw[line width=0.8pt] (\xAi, \yAx) -- (\xAj, \yAx);
+				
+				%% Semicerchio in A_i (concavità a sinistra, verso C_i)
+				\draw[fill=white] 
+				(\xAi, \yAx-\rn) arc(-90:90:\rn) -- cycle;
+				
+				%% Semicerchio in A_j (concavità a destra, verso C_j)
+				\draw[fill=white] 
+				(\xAj, \yAx+\rn) arc(90:270:\rn) -- cycle;
+				
+				%% ── Semicerchio in A_j (apice del triangolo) ──
+				\draw[fill=white] 
+				(\xAj, \yAx+\rn) arc(90:270:\rn) -- cycle;
+				
+				%% ── Etichette A_i e A_j ──
+				\node[anchor=south east, font=\small] 
+				at (\xAi-0.05, \yAx+0.05) {$A_i$};
+				\node[anchor=south west, font=\small] 
+				at (\xAj+0.10, \yAx+0.05) {$A_j$};
+				
+				
+				%% ── Versore a, allineato con l'asse della biella ──
+				\draw[->, line width=1pt] 
+				(\xAj+1.40, \yAx) -- (\xAj+2.20, \yAx);
+				\node[anchor=north, font=\small] 
+				at (\xAj+1.70, \yAx-0.05) {$\ab$};
+				
+				%% ──────────────────────────────────────────────────
+				%% VETTORI SPOSTAMENTO (linee spesse)
+				%% ──────────────────────────────────────────────────
+				
+				% u(A_i): da A_i, direzione 70°, modulo |u_i|
+				\def\uimx{ 0.41}    % cos(70°) * |u_i|
+				\def\uimy{ 1.13}    % sin(70°) * |u_i|, scelti per ottenere d=0.41
+				\draw[->, line width=1.4pt] 
+				(\xAi, \yAx) -- ++(\uimx, \uimy);
+				\node[anchor=south, font=\small] 
+				at (\xAi+\uimx, \yAx+\uimy-0.05) {$\ub(A_i)$};
+				
+				% Linea tratteggiata di proiezione di u(A_i) sull'asse
+				\draw[dashed, gray!70, line width=0.5pt] 
+				(\xAi+\uimx, \yAx+\uimy) -- (\xAi+\uimx, \yAx);
+				
+				% u(A_j): da A_j, direzione -50°, modulo |u_j|
+				\def\ujmx{ 0.41}    % cos(-50°) * |u_j| (stesso d!)
+				\def\ujmy{-0.49}    % sin(-50°) * |u_j|
+				\draw[->, line width=1.4pt] 
+				(\xAj, \yAx) -- ++(\ujmx, \ujmy);
+				\node[anchor=north west, font=\small] 
+				at (\xAj+\ujmx-0.05, \yAx+\ujmy+0.2) {$\ub(A_j)$};
+				
+				% Linea tratteggiata di proiezione di u(A_j) sull'asse
+				\draw[dashed, gray!70, line width=0.5pt] 
+				(\xAj+\ujmx, \yAx+\ujmy) -- (\xAj+\ujmx, \yAx);
+				
+				%% ── Etichetta del luogo del CR relativo (sopra C_j) ──
+				\node[font=\footnotesize, anchor=south] 
+				at (2.50, 1.20) 
+				{$C_{ij} \in$ asse della biella};
+				
+				
+				%% ──────────────────────────────────────────────────
+				%% TACCHE DI UGUAGLIANZA (doppia barretta)
+				%% sui due segmenti di proiezione, sull'asse
+				%% ──────────────────────────────────────────────────
+				% Proiezione di u(A_i): segmento da (xAi, 0) a (xAi+uimx, 0)
+				% Punto medio: (xAi + uimx/2, 0)
+				% Proiezione di u(A_j): segmento da (xAj, 0) a (xAj+ujmx, 0)
+				% Punto medio: (xAj + ujmx/2, 0)
+				
+				% Tacche su proiezione i (due barrette verticali)
+				\draw[line width=0.7pt] 
+				(\xAi+\uimx/2-0.04, -0.08) -- (\xAi+\uimx/2-0.04, 0.08);
+				\draw[line width=0.7pt] 
+				(\xAi+\uimx/2+0.04, -0.08) -- (\xAi+\uimx/2+0.04, 0.08);
+				
+				% Tacche su proiezione j
+				\draw[line width=0.7pt] 
+				(\xAj+\ujmx/2-0.04, -0.08) -- (\xAj+\ujmx/2-0.04, 0.08);
+				\draw[line width=0.7pt] 
+				(\xAj+\ujmx/2+0.04, -0.08) -- (\xAj+\ujmx/2+0.04, 0.08);
+				
+				%% ── Equazione in alto al centro ──
+				\node[font=\small] at (0.45, 2.05) 
+				{$\ub(A_i)\cdot\ab \;=\; \ub(A_j)\cdot\ab$};
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] at (0.45, -1.0) {$(a)$};
+				
+			\end{scope}
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (b) — Prestazione statica della biella interno
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=8cm]   % o yshift=-3.5cm, a tua scelta
+				
+				% ── Parametri (identici a (a)) ──
+				\def\xAi{-0.50}
+				\def\xAj{ 1.40}
+				\def\yAx{ 0.00}
+				\def\rn{0.10}
+				
+				%% ── Asse a (retta grigia continua) ──
+				\draw[gray!60, line width=0.6pt] 
+				(-3.80, \yAx) -- (3.65, \yAx);
+				
+				%% ── Corpo C_i (identico ad (a)) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.50,  0.00) (-0.70,  0.80) (-1.60,  1.10) 
+					(-2.60,  0.95) (-3.00,  0.20) (-2.80, -0.70) 
+					(-1.90, -1.05) (-0.90, -0.80) (-0.65, -0.45)};
+				\node at (-1.80, 0.30) {$\mathcal{C}_i$};
+				
+				%% ── Corpo C_j (identico ad (a)) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(1.40,  0.00) (1.60,  0.80) (2.40,  1.10) 
+					(3.40,  0.95) (3.80,  0.20) (3.60, -0.70) 
+					(2.70, -1.05) (1.80, -0.85) (1.55, -0.45)};
+				\node at (2.60, 0.30) {$\mathcal{C}_j$};
+				
+				%% ── biella: asta + semicerchi terminali ──
+				\draw[line width=0.8pt] (\xAi, \yAx) -- (\xAj, \yAx);
+				\draw[fill=white] 
+				(\xAi, \yAx-\rn) arc(-90:90:\rn) -- cycle;
+				\draw[fill=white] 
+				(\xAj, \yAx+\rn) arc(90:270:\rn) -- cycle;
+				
+				%% ── Etichette A_i e A_j ──
+				\node[anchor=south east, font=\small] 
+				at (\xAi-0.05, \yAx+0.05) {$A_i$};
+				\node[anchor=south west, font=\small] 
+				at (\xAj+0.10, \yAx+0.05) {$A_j$};
+				
+				%% ── Versore a, allineato con l'asse della biella ──
+				\draw[->, line width=1pt] 
+				(\xAj+1.50, \yAx) -- (\xAj+2.10, \yAx);
+				\node[anchor=north, font=\small] 
+				at (\xAj+1.70, \yAx-0.05) {$\ab$};
+				
+				%% ──────────────────────────────────────────────────
+				%% REAZIONI (linee spesse, entranti nei corpi)
+				%% ──────────────────────────────────────────────────
+				
+				%% Reazione in A_i: -R a, da A_i verso sinistra (entra in C_i)
+				\draw[->, line width=1.4pt] 
+				(\xAi, \yAx) -- ++(-1.00, 0);
+				\node[anchor=north, font=\small] 
+				at (\xAi-0.80, \yAx-0.06) {$-R\,\ab$};
+				
+				%% Reazione in A_j: +R a, da A_j verso destra (entra in C_j)
+				\draw[->, line width=1.4pt] 
+				(\xAj, \yAx) -- ++(1.00, 0);
+				\node[anchor=north, font=\small] 
+				at (\xAj+0.50, \yAx-0.06) {$R\,\ab$};
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] at (0.45, -1.0) {$(b)$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+	}
+	\caption[Biella interna fra due corpi: prestazioni cinematica e statica.]{%
+		Biella interna fra i corpi $\mathcal{C}_i$ e $\mathcal{C}_j$,
+		con punti di applicazione $A_i$ e $A_j$ e versore d'asse
+		$\ab = \overrightarrow{A_iA_j}/|\overrightarrow{A_iA_j}|$.
+		Prestazione cinematica (a): l'equazione di vincolo
+		$\ub(A_i)\cdot\ab = \ub(A_j)\cdot\ab$ impone l'uguaglianza
+		delle componenti degli spostamenti di $A_i$ e $A_j$ lungo
+		l'asse $\ab$; la componente trasversale e la rotazione
+		relativa restano libere e non sono rappresentate.
+		Prestazione statica (b): le reazioni scambiate fra i due
+		corpi sono una coppia di forze uguali e opposte
+		$\pm R\,\ab$ applicate in $A_i$ e $A_j$, in accordo con la
+		molteplicità uno.}
+	\label{fig:pendolo_interno}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Il \CRr\ $C_{ij}$ giace sulla retta dell'asse del vincolo
+--- la retta per $A$ in direzione $\ab$ nel carrello, la
+retta per $A_i$ e $A_j$ nella biella finita. Le reazioni
+scambiate fra i due corpi sono una coppia di forze uguali
+e opposte applicate in $A_i$ e $A_j$, parallele ad $\ab$,
+e nessuna coppia scambiata:
+\begin{equation}\label{eq:reazione_carrello_int}
+	\rb_i = -R(A)\,\ab,
+	\qquad
+	\rb_j = R(A)\,\ab,
+	\qquad
+	\mu(A) = 0,
+	\qquad
+	R(A) \in \mathbb{R}.
+\end{equation}
+Sono noti a priori i punti di applicazione $A_i$ e $A_j$,
+la direzione $\ab$ delle forze e l'assenza di coppia
+scambiata, $\mu(A) = 0$; l'unica incognita scalare è
+l'intensità con segno $R(A)$, il cui segno determina se
+la forza trasmessa da $\mathcal{C}_i$ a $\mathcal{C}_j$
+è concorde o discorde con $\ab$. La
+\FIGref{fig:pendolo_interno} illustra le prestazioni
+cinematica e statica della biella interna fra due corpi.
+
+
+
+
+\subsection{Il bipendolo}\label{sec:bipendolo}
+
+\paragraph{Realizzazione meccanica e parametri caratterizzanti.}
+Il bipendolo\index{bipendolo|textbf}\index{bipendolo|seealso{vincolo}}\index{pendolo!doppio|see{bipendolo}} è un vincolo che impedisce la rotazione del corpo
+lasciandone libere entrambe le traslazioni nel piano. Una
+realizzazione meccanica tipica è il \emph{pantografo}\index{pantografo|seealso{bipendolo}}: una
+catena di aste articolate che trasmette al corpo qualsiasi
+traslazione rigida senza trasmettere alcuna rotazione, come
+illustrato nella \FIGref{fig:bipendolo_esterno}. Il vincolo
+non è caratterizzato né da un punto di applicazione né da una
+direzione preferenziale nel piano: l'unico parametro che lo
+definisce è l'impedimento della rotazione attorno all'asse
+uscente dal piano.
+
+
+\paragraph{Caso esterno.}
+
+\paragraph{Equazione cinematica.}
+\begin{equation}\label{eq:bipendolo_cin}
+	\vartheta = 0.
+\end{equation}
+Il campo di spostamento ammesso è una pura traslazione rigida:
+$\ub(P) = \ub$ per ogni punto $P$ del corpo, con $\ub \in
+\mathbb{R}^2$ arbitrario.
+
+\paragraph{Posizione del centro di rotazione assoluto.}
+Per $\vartheta = 0$ il centro di rotazione è all'infinito:
+il corpo trasla senza ruotare e non esiste alcun punto fisso
+nel piano.
+
+\begin{proposizione}[Centro di rotazione --- bipendolo]
+	Il \CRa\ di un corpo vincolato da un bipendolo è posto
+	all'infinito. La direzione verso la quale si trova è
+	perpendicolare alla traslazione residua, ed è indeterminata
+	finché non si aggiungono ulteriori vincoli.
+\end{proposizione}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	%\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (a) — Prestazione cinematica del bipendolo
+			% (realizzazione: pantografo a parallelogramma)
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm]
+				
+				%% ── Parametri ──
+				\def\xAuno{-0.40}
+				\def\xAdue{ 0.40}
+				\def\yA{ 0.00}
+				\def\Lbiella{0.70}      % era 0.90
+				\def\angSup{-110}
+				\def\angInf{-70}
+				\def\rn{0.10}
+				\def\tw{0.22}
+				\def\thA{0.32}
+				\def\gw{0.40}
+				
+				% Coordinate calcolate
+				\pgfmathsetmacro{\dxSup}{\Lbiella*cos(\angSup)}
+				\pgfmathsetmacro{\dySup}{\Lbiella*sin(\angSup)}
+				\pgfmathsetmacro{\dxInf}{\Lbiella*cos(\angInf)}
+				\pgfmathsetmacro{\dyInf}{\Lbiella*sin(\angInf)}
+				% B_1, B_2 (nodi traversa)
+				\pgfmathsetmacro{\xBuno}{\xAuno+\dxSup}
+				\pgfmathsetmacro{\yB}{\yA+\dySup}
+				\pgfmathsetmacro{\xBdue}{\xAdue+\dxSup}
+				% G_1, G_2 (cerniere a terra)
+				\pgfmathsetmacro{\xGuno}{\xBuno+\dxInf}
+				\pgfmathsetmacro{\yG}{\yB+\dyInf}
+				\pgfmathsetmacro{\xGdue}{\xBdue+\dxInf}
+				
+				
+				%% ── Corpo C (più grande, agganciato a A_1=-0.40 e A_2=+0.40) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.40, 0.00) (-1.30, 0.35) (-1.80, 1.15) 
+					(-1.45, 2.05) (-0.55, 2.40) (0.55, 2.40) 
+					(1.45, 2.05) (1.80, 1.15) (1.30, 0.35) (0.40, 0.00)};
+				\node at (-0.65, 1.65) {$\mathcal{C}$};
+				\node[font=\footnotesize] at (0.00, 0.75) {$\vartheta = 0$};
+				
+				%% ── Bielle superiori (parallelogramma 1) ──
+				\draw[line width=0.8pt] (\xAuno, \yA) -- (\xBuno, \yB);
+				\draw[line width=0.8pt] (\xAdue, \yA) -- (\xBdue, \yB);
+				
+				%% ── Traversa B_1 B_2 ──
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xBdue, \yB);
+				
+				%% ── Bielle inferiori (parallelogramma 2) ──
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xGuno, \yG);
+				\draw[line width=0.8pt] (\xBdue, \yB) -- (\xGdue, \yG);
+				
+				%% ── Cerniere al suolo G_1, G_2 ──
+				\draw (\xGuno, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGuno-\gw, \yG-\thA) -- (\xGuno+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGuno+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				
+				\draw (\xGdue, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGdue-\gw, \yG-\thA) -- (\xGdue+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGdue+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				
+				%% ── Anellini ──
+				% A_1, A_2: semicerchi (corpo C ruota libero rispetto alla biella)
+				\draw[fill=white] 
+				(\xAuno-\rn, \yA) arc(180:360:\rn) -- cycle;
+				\draw[fill=white] 
+				(\xAdue-\rn, \yA) arc(180:360:\rn) -- cycle;
+				% B_1, B_2: cerchi pieni (nodi del parallelogramma)
+				\draw[fill=white] (\xBuno, \yB) circle (3pt);
+				\draw[fill=white] (\xBdue, \yB) circle (3pt);
+				% G_1, G_2: cerchi pieni (perni al suolo)
+				\draw[fill=white] (\xGuno, \yG) circle (3pt);
+				\draw[fill=white] (\xGdue, \yG) circle (3pt);
+				
+				%				
+				%% ── Retta impropria r_∞ (luogo del CR all'infinito) ──
+				\def\xRinf{-2.40}
+				\def\yRinf{ 1.20}
+				\def\angRinf{60}
+				\def\Lrinf{1.20}
+				\pgfmathsetmacro{\dxR}{\Lrinf*cos(\angRinf)}
+				\pgfmathsetmacro{\dyR}{\Lrinf*sin(\angRinf)}
+				\draw[gray!60, line width=0.6pt] 
+				({\xRinf-\dxR}, {\yRinf-\dyR}) -- ({\xRinf+\dxR}, {\yRinf+\dyR});
+				
+				%% Etichetta "r_∞" all'estremità superiore della retta
+				\node[gray, font=\footnotesize, anchor=south west] 
+				at ({\xRinf+\dxR+0.05}, {\yRinf+\dyR+0.05}) {$r_\infty$};
+				
+				%% Etichetta "C ∈ r_∞" sopra la retta a metà, ruotata
+				\node[gray, font=\footnotesize, rotate=\angRinf, anchor=south, 
+				inner sep=2pt] 
+				at (\xRinf, \yRinf) {$C \in r_\infty$};
+				
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] 
+				at (-0.25, \yG-\thA-0.50) {$(a)$};
+				
+			\end{scope}
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (b) — Prestazione statica del bipendolo
+			% (realizzazione: pantografo a parallelogramma)
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=5cm]
+				
+				%% ── Parametri (identici ad (a)) ──
+				%% ── Parametri ──
+				\def\xAuno{-0.40}
+				\def\xAdue{ 0.40}
+				\def\yA{ 0.00}
+				\def\Lbiella{0.70}      % era 0.90
+				\def\angSup{-110}
+				\def\angInf{-70}
+				\def\rn{0.10}
+				\def\tw{0.22}
+				\def\thA{0.32}
+				\def\gw{0.40}
+				
+				% Coordinate calcolate
+				\pgfmathsetmacro{\dxSup}{\Lbiella*cos(\angSup)}
+				\pgfmathsetmacro{\dySup}{\Lbiella*sin(\angSup)}
+				\pgfmathsetmacro{\dxInf}{\Lbiella*cos(\angInf)}
+				\pgfmathsetmacro{\dyInf}{\Lbiella*sin(\angInf)}
+				\pgfmathsetmacro{\xBuno}{\xAuno+\dxSup}
+				\pgfmathsetmacro{\yB}{\yA+\dySup}
+				\pgfmathsetmacro{\xBdue}{\xAdue+\dxSup}
+				\pgfmathsetmacro{\xGuno}{\xBuno+\dxInf}
+				\pgfmathsetmacro{\yG}{\yB+\dyInf}
+				\pgfmathsetmacro{\xGdue}{\xBdue+\dxInf}
+				
+				%% ── Corpo C (identico ad (a)) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.40, 0.00) (-1.30, 0.35) (-1.80, 1.15) 
+					(-1.45, 2.05) (-0.55, 2.40) (0.55, 2.40) 
+					(1.45, 2.05) (1.80, 1.15) (1.30, 0.35) (0.40, 0.00)};
+				\node at (-0.65, 1.65) {$\mathcal{C}$};
+				
+				
+				
+				%% ── Bielle superiori, traversa, bielle inferiori (identici ad (a)) ──
+				\draw[line width=0.8pt] (\xAuno, \yA) -- (\xBuno, \yB);
+				\draw[line width=0.8pt] (\xAdue, \yA) -- (\xBdue, \yB);
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xBdue, \yB);
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xGuno, \yG);
+				\draw[line width=0.8pt] (\xBdue, \yB) -- (\xGdue, \yG);
+				
+				%% ── Cerniere al suolo G_1, G_2 (identiche ad (a)) ──
+				\draw (\xGuno, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGuno-\gw, \yG-\thA) -- (\xGuno+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGuno+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				\draw (\xGdue, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGdue-\gw, \yG-\thA) -- (\xGdue+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGdue+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				
+				%% ── Anellini (identici ad (a)) ──
+				\draw[fill=white] 
+				(\xAuno-\rn, \yA) arc(180:360:\rn) -- cycle;
+				\draw[fill=white] 
+				(\xAdue-\rn, \yA) arc(180:360:\rn) -- cycle;
+				\draw[fill=white] (\xBuno, \yB) circle (3pt);
+				\draw[fill=white] (\xBdue, \yB) circle (3pt);
+				\draw[fill=white] (\xGuno, \yG) circle (3pt);
+				\draw[fill=white] (\xGdue, \yG) circle (3pt);
+				
+				%% ──────────────────────────────────────────────────
+				%% COPPIA REATTIVA mu — arco con freccia sopra C
+				%% ──────────────────────────────────────────────────
+				\def\xMu{0.00}
+				\def\yMu{0.50}
+				\def\rMu{0.40}
+				\draw[->, line width=1.4pt] ({\xMu+\rMu}, \yMu) arc[start angle=0, end angle=180, radius=\rMu];
+				\node[font=\footnotesize] at (0.00, 0.5) {$\mu$};
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] at (-0.25, \yG-\thA-0.50) {$(b)$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		%	}
+	
+	\caption[Bipendolo esterno: prestazioni cinematica e statica.]{%
+		Bipendolo esterno applicato al corpo $\mathcal{C}$,
+		realizzato meccanicamente come pantografo a doppio
+		parallelogramma. Prestazione cinematica (a): l'equazione
+		di vincolo $\vartheta = 0$ annulla la rotazione del
+		corpo, lasciando libere le due componenti di traslazione,
+		non rappresentate; il \CRa\ giace sulla retta impropria
+		$r_\infty$. Prestazione statica (b): la reazione vincolare
+		si riduce alla sola coppia $\mu$, in dualità con la
+		rotazione bloccata; la forza risultante è identicamente
+		nulla, in accordo con la molteplicità uno.}
+	\label{fig:bipendolo_esterno}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Reazione vincolare.}
+Gli spostamenti compatibili con il bipendolo sono tutte le
+traslazioni rigide ($\vartheta = 0$, $\ub$ libero). Il lavoro
+di una forza risultante $\rb$ su una traslazione $\ub$ è
+$\rb\cdot\ub$: perché sia nullo per qualsiasi $\ub$, deve
+essere $\rb = \zerovb$. La reazione è quindi una \emph{coppia
+	pura}:
+\begin{equation}\label{eq:reazione_bipendolo}
+	\rb = \zerovb,
+	\qquad
+	\mu(A) \in \mathbb{R}.
+\end{equation}
+È noto a priori che il bipendolo non oppone alcuna forza
+alle traslazioni, $\rb = \zerovb$, mentre reagisce a
+qualsiasi tentativo di rotazione con una coppia di verso e
+intensità non noti a priori; l'unica incognita scalare è
+$\mu(A)$, il cui segno determina se la coppia è oraria o
+antioraria, in accordo con la molteplicità uno.
+
+
+\begin{oss}
+	La dualità cinematica-statica è qui particolarmente
+	evidente: la variabile cinematica vincolata è $\vartheta$
+	(una rotazione) e la corrispondente reazione è $\mu$
+	(una coppia), mentre le variabili libere sono le due
+	traslazioni e le corrispondenti reazioni sono nulle.
+\end{oss}
+
+
+
+\paragraph{Caso interno.}
+Il bipendolo interno\index{bipendolo!interno} fra $\mathcal{C}_i$ e $\mathcal{C}_j$
+impone l'uguaglianza delle rotazioni dei due corpi,
+scritta come annullamento del salto della rotazione,
+\begin{equation}\label{eq:bipendolo_int}
+	\llbracket \vartheta \rrbracket = 0,
+	\qquad
+	\llbracket \vartheta \rrbracket \coloneqq
+	\vartheta_j - \vartheta_i,
+\end{equation}
+e i due corpi ruotano della stessa quantità. La condizione
+non coinvolge punti, coerentemente col fatto che la
+rotazione di un corpo rigido è una grandezza globale; il
+\CRr\ $C_{ij}$ è all'infinito.
+
+Le reazioni scambiate fra i due corpi sono una forza nulla
+e una coppia di verso e intensità non noti a priori, uguali
+e opposte:
+\begin{equation}\label{eq:reazione_bipendolo_int}
+	\rb_i = \rb_j = \zerovb,
+	\qquad
+	\mu(A) \in \mathbb{R}.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica del bipendolo interno
+		% (realizzazione: pantografo a doppio parallelogramma)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xAi{ 0.00}
+			\def\yAuno{ 0.35}
+			\def\yAdue{-0.35}
+			\def\Lbiella{0.65}
+			\def\angInt{-25}
+			\def\angExt{ 25}
+			\def\rn{0.10}
+			
+			% Coordinate calcolate
+			\pgfmathsetmacro{\dxInt}{\Lbiella*cos(\angInt)}
+			\pgfmathsetmacro{\dyInt}{\Lbiella*sin(\angInt)}
+			\pgfmathsetmacro{\dxExt}{\Lbiella*cos(\angExt)}
+			\pgfmathsetmacro{\dyExt}{\Lbiella*sin(\angExt)}
+			\pgfmathsetmacro{\xBuno}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBuno}{\yAuno+\dyInt}
+			\pgfmathsetmacro{\xBdue}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBdue}{\yAdue+\dyInt}
+			\pgfmathsetmacro{\xAj}{\xBuno+\dxExt}
+			\pgfmathsetmacro{\yAjuno}{\yBuno+\dyExt}
+			\pgfmathsetmacro{\yAjdue}{\yBdue+\dyExt}
+			
+			%% ── Corpo C_i (a sinistra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, 0.35) (-0.35, 1.10) (-1.00, 1.55) 
+				(-1.95, 1.35) (-2.40, 0.55) (-2.40, -0.55)
+				(-1.95, -1.35) (-1.00, -1.55) (-0.35, -1.10) 
+				(0.00, -0.35)};
+			\node at (-1.25, 0.80) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (a destra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(\xAj, 0.35) ({\xAj+0.35}, 1.10) ({\xAj+1.00}, 1.55) 
+				({\xAj+1.95}, 1.35) ({\xAj+2.40}, 0.55) 
+				({\xAj+2.40}, -0.55) ({\xAj+1.95}, -1.35) 
+				({\xAj+1.00}, -1.55) ({\xAj+0.35}, -1.10) 
+				(\xAj, -0.35)};
+			\node at ({\xAj+1.25}, 0.80) {$\mathcal{C}_j$};
+			
+			
+			%% ── Bielle interne (parallelogramma 1) ──
+			\draw[line width=0.8pt] (\xAi, \yAuno) -- (\xBuno, \yBuno);
+			\draw[line width=0.8pt] (\xAi, \yAdue) -- (\xBdue, \yBdue);
+			
+			%% ── Traversa B_1 B_2 (verticale) ──
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xBdue, \yBdue);
+			
+			%% ── Bielle esterne (parallelogramma 2) ──
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xAj, \yAjuno);
+			\draw[line width=0.8pt] (\xBdue, \yBdue) -- (\xAj, \yAjdue);
+			
+			%% ── Anellini ──
+			\draw[fill=white] (\xBuno, \yBuno) circle (3pt);
+			\draw[fill=white] (\xBdue, \yBdue) circle (3pt);
+			
+			
+			%% ── Anellini terminali ──
+			% A^i (bordo destro di C_i, semicerchio sporge a destra verso pantografo)
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAuno-\rn) arc(-90:90:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAdue-\rn) arc(-90:90:\rn) -- cycle;
+			% A^j (bordo sinistro di C_j, semicerchio sporge a sinistra verso pantografo)
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjuno+\rn) arc(90:270:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjdue+\rn) arc(90:270:\rn) -- cycle;
+			% B_1, B_2: cerchi pieni
+			\draw[fill=white] (\xBuno, \yBuno) circle (3pt);
+			\draw[fill=white] (\xBdue, \yBdue) circle (3pt);
+			
+			
+			%% ── Archi delle rotazioni ϑ_i e ϑ_j (semicerchio, 180°) ──
+			\def\rrot{0.30}
+			% In C_i
+			\draw[->, line width=1pt] 
+			(-1.25+\rrot, -0.20) arc(0:180:\rrot);
+			\node[font=\footnotesize, anchor=west] 	at (-2.0+\rrot+0.05, -0.40) {$\vartheta_i$};
+			% In C_j
+			\draw[->, line width=1pt] ({\xAj+1.25+\rrot}, -0.20) arc(0:180:\rrot);
+			\node[font=\footnotesize, anchor=west] 	at (+1.80+\rrot+0.05, -0.40) {$\vartheta_j$};
+			
+			%% ── Equazione di vincolo (in basso al centro) ──
+			\node[font=\small] 
+			at ({(\xAi+\xAj)/2}, 1.80) 
+			{$\vartheta_j - \vartheta_i = 0$};
+			
+			%% ── Retta impropria r_∞ (in alto a sinistra) ──
+			\def\xRinf{-1.80}
+			\def\yRinf{ 2.20}
+			\def\angRinf{15}
+			\def\Lrinf{1.20}
+			\pgfmathsetmacro{\dxR}{\Lrinf*cos(\angRinf)}
+			\pgfmathsetmacro{\dyR}{\Lrinf*sin(\angRinf)}
+			\draw[gray!60, line width=0.6pt] 
+			({\xRinf-\dxR}, {\yRinf-\dyR}) 
+			-- ({\xRinf+\dxR}, {\yRinf+\dyR});
+			\node[gray, font=\footnotesize, anchor=south west] 
+			at ({\xRinf+\dxR+0.05}, {\yRinf+\dyR+0.05}) {$r_\infty$};
+			\node[gray, font=\footnotesize, rotate=\angRinf, 
+			anchor=south, inner sep=2pt] 
+			at (\xRinf, \yRinf) {$C_{ij} \in r_\infty$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at ({(\xAi+\xAj)/2}, -1.50) {$(a)$};
+			
+		\end{scope}
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica del bipendolo interno
+		% (realizzazione: pantografo a doppio parallelogramma)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=7cm]
+			
+			%% ── Parametri ──
+			\def\xAi{ 0.00}
+			\def\yAuno{ 0.35}
+			\def\yAdue{-0.35}
+			\def\Lbiella{0.65}
+			\def\angInt{-25}
+			\def\angExt{ 25}
+			\def\rn{0.10}
+			
+			% Coordinate calcolate
+			\pgfmathsetmacro{\dxInt}{\Lbiella*cos(\angInt)}
+			\pgfmathsetmacro{\dyInt}{\Lbiella*sin(\angInt)}
+			\pgfmathsetmacro{\dxExt}{\Lbiella*cos(\angExt)}
+			\pgfmathsetmacro{\dyExt}{\Lbiella*sin(\angExt)}
+			\pgfmathsetmacro{\xBuno}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBuno}{\yAuno+\dyInt}
+			\pgfmathsetmacro{\xBdue}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBdue}{\yAdue+\dyInt}
+			\pgfmathsetmacro{\xAj}{\xBuno+\dxExt}
+			\pgfmathsetmacro{\yAjuno}{\yBuno+\dyExt}
+			\pgfmathsetmacro{\yAjdue}{\yBdue+\dyExt}
+			
+			%% ── Corpo C_i (a sinistra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, 0.35) (-0.35, 1.10) (-1.00, 1.55) 
+				(-1.95, 1.35) (-2.40, 0.55) (-2.40, -0.55)
+				(-1.95, -1.35) (-1.00, -1.55) (-0.35, -1.10) 
+				(0.00, -0.35)};
+			\node at (-1.25, 0.80) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (a destra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(\xAj, 0.35) ({\xAj+0.35}, 1.10) ({\xAj+1.00}, 1.55) 
+				({\xAj+1.95}, 1.35) ({\xAj+2.40}, 0.55) 
+				({\xAj+2.40}, -0.55) ({\xAj+1.95}, -1.35) 
+				({\xAj+1.00}, -1.55) ({\xAj+0.35}, -1.10) 
+				(\xAj, -0.35)};
+			\node at ({\xAj+1.25}, 0.80) {$\mathcal{C}_j$};
+			
+			%% ── Bielle interne, traversa, bielle esterne ──
+			\draw[line width=0.8pt] (\xAi, \yAuno) -- (\xBuno, \yBuno);
+			\draw[line width=0.8pt] (\xAi, \yAdue) -- (\xBdue, \yBdue);
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xBdue, \yBdue);
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xAj, \yAjuno);
+			\draw[line width=0.8pt] (\xBdue, \yBdue) -- (\xAj, \yAjdue);
+			
+			%% ── Anellini terminali (identici ad (a)) ──
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAuno-\rn) arc(-90:90:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAdue-\rn) arc(-90:90:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjuno+\rn) arc(90:270:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjdue+\rn) arc(90:270:\rn) -- cycle;
+			\draw[fill=white] (\xBuno, \yBuno) circle (3pt);
+			\draw[fill=white] (\xBdue, \yBdue) circle (3pt);
+			
+			%% ──────────────────────────────────────────────────
+			%% COPPIE REATTIVE μ (uguali e opposte)
+			%% ──────────────────────────────────────────────────
+			\def\rmu{0.40}
+			\def\yMu{-0.20}
+			\def\xMuI{-1.25}        % era -1.10
+			\def\xMuJ{\xAj+1.25}    % era \xAj+1.10
+			
+			% Coppia in C_i: semicerchio antiorario
+			\draw[<-, line width=1.4pt] (\xMuI+\rmu, \yMu) arc(0:180:\rmu);
+			\node[font=\small] 	at (\xMuI, \yMu) {$\mu$};
+			
+			% Coppia in C_j: semicerchio orario
+			\draw[->, line width=1.4pt] (\xMuJ+\rmu, \yMu) arc(0:180:\rmu);
+			\node[font=\small] 	at (\xMuJ, \yMu) {$\mu$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at ({(\xAi+\xAj)/2}, -1.50) {$(b)$};
+			
+		\end{scope}
+	\end{tikzpicture}
+	\caption[Bipendolo interno fra due corpi: prestazioni cinematica e statica.]{%
+		Bipendolo interno fra i corpi $\mathcal{C}_i$ e
+		$\mathcal{C}_j$, realizzato come pantografo a doppio
+		parallelogramma. Prestazione cinematica (a): l'equazione
+		di vincolo $\vartheta_j - \vartheta_i = 0$ impone l'uguaglianza
+		delle rotazioni dei due corpi; le componenti di traslazione
+		relativa restano libere e non sono rappresentate. Il \CRr\
+		$C_{ij}$ giace sulla retta impropria $r_\infty$.
+		Prestazione statica (b): i due corpi si scambiano
+		una coppia pura di intensità $\mu$, in dualità con la
+		rotazione relativa bloccata; la forza scambiata è
+		identicamente nulla, in accordo con la molteplicità uno.}
+	\label{fig:bipendolo_interno}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Il punto $A$, secondo la convenzione introdotta
+nell'osservazione del \PARref{sec:richiamo}, identifica
+il giunto da cui la coppia proviene; questo è essenziale
+sia per distinguerla da altre coppie reattive eventualmente
+agenti sui due corpi, sia per localizzare correttamente
+la discontinuità che essa produce nei diagrammi delle
+caratteristiche di sollecitazione, quando i corpi
+$\mathcal{C}_i$ e $\mathcal{C}_j$ sono tratti contigui di
+una stessa trave. È noto a priori che il bipendolo interno
+non scambia alcuna forza fra i due corpi,
+$\rb_i = \rb_j = \zerovb$; l'unica incognita scalare è
+$\mu(A)$. La \FIGref{fig:bipendolo_interno} illustra
+le prestazioni cinematica e statica del bipendolo interno
+fra due corpi.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Vincoli doppi: molteplicità due}\label{sec:doppi}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+I vincoli di molteplicità due\index{vincolo!doppio} rimuovono due gradi di libertà,
+lasciando al corpo un solo grado di libertà residuo. Le due tipologie
+fondamentali sono la \emph{cerniera} e il \emph{glifo}.
+
+
+\subsection{La cerniera}\label{sec:cerniera}
+
+\paragraph{Realizzazione meccanica e parametri caratterizzanti.}
+La cerniera\index{cerniera|textbf}\index{cerniera|seealso{vincolo}} è un vincolo che fissa la posizione di un punto
+del corpo lasciandone libera la rotazione. Il corpo può ruotare
+attorno al punto di applicazione ma non può traslare in alcuna
+direzione. Il vincolo è completamente caratterizzato dal solo
+\emph{punto di applicazione} $A$.
+
+\paragraph{Caso esterno.}
+
+\paragraph{Equazione cinematica.}
+La condizione di spostamento nullo del punto $A$ fornisce due
+equazioni scalari:
+\begin{equation}\label{eq:cerniera_cin}
+	\ub(A) = \zerovb,
+	\qquad\text{ovvero}\qquad
+	u(A) = 0, \quad v(A) = 0.
+\end{equation}
+
+\paragraph{Posizione del centro di rotazione assoluto.}
+Dalla~\eqref{eq:centro_campo}, imponendo $\ub(A) = \zerovb$:
+\begin{equation}
+	\bm{\upvartheta} \times \overrightarrow{CA} = \zerovb,
+\end{equation}
+che è soddisfatta se e solo se $C = A$.
+
+\begin{proposizione}[Centro di rotazione --- cerniera]
+	\label{prop:CR_cerniera}
+	Il \CRa\ di un corpo vincolato da una cerniera in $A$
+	coincide con il punto $A$ stesso:
+	\begin{equation}\label{eq:CR_cerniera}
+		C = A.
+	\end{equation}
+	Il centro è univocamente determinato dalla posizione
+	della cerniera: qualsiasi spostamento compatibile è
+	una rotazione rigida attorno ad $A$.
+\end{proposizione}
+
+\begin{oss}
+	La cerniera può essere interpretata come la
+	sovrapposizione di due carrelli ortogonali applicati
+	in $A$: uno con asse $\ab_x$, che impone $u(A) = 0$,
+	e uno con asse $\ab_y$, che impone $v(A) = 0$. Ciascun
+	carrello colloca il centro su una retta passante per
+	$A$; l'intersezione delle due rette --- ortogonali fra
+	loro --- è il punto $A$ stesso.
+\end{oss}
+
+\paragraph{Reazione vincolare.}
+Gli spostamenti compatibili con la cerniera sono le rotazioni
+rigide attorno ad $A$: il punto $A$ è fisso e qualsiasi forza
+concentrata in $A$ compie lavoro nullo. La reazione è quindi
+una \emph{forza arbitraria} applicata in $A$, senza coppia:
+\begin{equation}\label{eq:reazione_cerniera}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y,
+	\qquad
+	\mu(A) = 0,
+	\qquad
+	X(A), Y(A) \in \mathbb{R}.
+\end{equation}
+Sono noti a priori il punto di applicazione $A$ e l'assenza
+di coppia reattiva, $\mu(A) = 0$; la direzione, il verso e
+l'intensità della forza reattiva non sono noti a priori e
+sono sintetizzati dalle due componenti scalari $X(A)$ e
+$Y(A)$, ciascuna con segno libero, in accordo con la
+molteplicità due. La \FIGref{fig:cerniera_esterna} illustra
+le prestazioni cinematica e statica della cerniera esterna.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica della cerniera esterna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.80}
+			\def\yA{0.00}
+			\def\tw{0.30}
+			\def\thA{0.40}
+			\def\gw{0.45}
+			\def\rn{0.10}    % raggio semicerchio (anellino a metà)
+			
+			%% ── Terna x, y in basso a sinistra ──
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-1.40, 0.00);
+			\node[anchor=west, font=\footnotesize] at (-1.40, -0.05) {$x$};
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-2.20, 0.80);
+			\node[anchor=south, font=\footnotesize] at (-2.20, 0.80) {$y$};
+			
+			%% ── Equazione di vincolo (in alto) ──
+			\node[font=\small] at (\xA-1.5, 2.0) {$\ub(A) = \zerovb$};
+			
+			
+			
+			%% ── Corpo C ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.80, 0.00) (1.60, 0.15) (2.20, 0.70) (2.00, 1.70) 
+				(1.00, 2.00) (-0.10, 1.70) (-0.60, 1.00) (-0.30, 0.30)};
+			\node at (1.50, 1.10) {$\mathcal{C}$};
+			
+			
+			%% ── Cerniera in A: triangolo + barra + tratteggio ──
+			\draw (\xA, \yA) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yA-\thA) -- (\xA+\gw, \yA-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thA) -- ++(-0.10, -0.13);
+			
+			
+			%% ── Semicerchio in A (corpo libero di ruotare sul perno) ──
+			\draw[line width=0.8pt, fill=white] ({\xA-\rn}, \yA) arc(180:360:\rn) -- cycle;
+			
+			
+			
+			%% ── Etichetta A ──
+			\node[above, font=\small] at (\xA, \yA+0.05) {$A$};
+			
+			%% ── Etichetta C ≡ A ──
+			\node[font=\footnotesize, anchor=west] 
+			at (\xA+0.50, \yA-0.20) {$C \equiv A$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (\xA-0.8, \yA-\thA-0.30) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica della cerniera esterna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\xA{0.80}
+			\def\yA{0.00}
+			\def\tw{0.30}
+			\def\thA{0.40}
+			\def\gw{0.45}
+			\def\rn{0.10}    % raggio semicerchio (anellino a metà)
+			
+			%% ── Terna x, y in basso a sinistra (identica ad (a)) ──
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-1.40, 0.00);
+			\node[anchor=west, font=\footnotesize] at (-1.40, -0.05) {$x$};
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-2.20, 0.80);
+			\node[anchor=south, font=\footnotesize] at (-2.20, 0.80) {$y$};
+			
+			%% ── Corpo C (identico ad (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.80, 0.00) (1.60, 0.15) (2.20, 0.70) (2.00, 1.70) 
+				(1.00, 2.00) (-0.10, 1.70) (-0.60, 1.00) (-0.30, 0.30)};
+			\node at (1.50, 0.50) {$\mathcal{C}$};
+			
+			%% ── Cerniera in A: triangolo + barra + tratteggio (identica ad (a)) ──
+			\draw (\xA, \yA) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yA-\thA) -- (\xA+\gw, \yA-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thA) -- ++(-0.10, -0.13);
+			
+			
+			%% ── Semicerchio in A (corpo libero di ruotare sul perno) ──
+			\draw[line width=0.8pt, fill=white] ({\xA-\rn}, \yA) arc(180:360:\rn) -- cycle;
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONE: due componenti X(A) e Y(A)
+			%% ──────────────────────────────────────────────────
+			
+			%% Componente orizzontale X(A) a_x: da A verso destra
+			\draw[->, line width=1.4pt] 
+			(\xA+0.10, \yA) -- (\xA+1.10, \yA);
+			\node[anchor=west, font=\small] 
+			at (\xA+1.15, \yA) {$X(A)\,\ab_x$};
+			
+			%% Componente verticale Y(A) a_y: da A verso l'alto
+			\draw[->, line width=1.4pt] 
+			(\xA, \yA) -- (\xA, \yA+1.0);
+			\node[anchor=south, font=\small] 
+			at (\xA, \yA+1.15) {$Y(A)\,\ab_y$};
+			
+			%% ── Etichetta A (a sinistra del perno) ──
+			\node[anchor=east, font=\small] at (\xA, \yA+0.3) {$A$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (\xA-0.8, \yA-\thA-0.30) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Cerniera esterna applicata in $A$: prestazioni cinematica e statica.]{%
+		Cerniera esterna applicata al corpo $\mathcal{C}$ nel
+		punto $A$. Prestazione cinematica (a): il punto $A$ è
+		fisso, $\ub(A) = \zerovb$, e il corpo ruota liberamente
+		attorno ad esso; il \CRa\ coincide con il punto di
+		applicazione, $C \equiv A$. Prestazione statica (b): la
+		reazione vincolare è una forza generica
+		$X(A)\,\ab_x + Y(A)\,\ab_y$ applicata in $A$, in dualità
+		con le due componenti di spostamento bloccate; la coppia
+		reattiva è identicamente nulla, in accordo con la
+		molteplicità due.}
+	\label{fig:cerniera_esterna}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Caso interno.}
+La cerniera interna\index{cerniera!interna} è un vincolo puntiforme: i punti di
+applicazione $A_i \in \mathcal{C}_i$ e $A_j \in \mathcal{C}_j$
+coincidono geometricamente in un unico punto $A$. La
+condizione di uguaglianza degli spostamenti dei due corpi in
+$A$ si scrive come annullamento del salto attraverso $A$:
+\begin{equation}\label{eq:cerniera_int}
+	\llbracket \ub \rrbracket(A) = \zerovb,
+	\qquad
+	\llbracket \ub \rrbracket(A) \coloneqq \ub_j(A) - \ub_i(A),
+\end{equation}
+in accordo con la convenzione del
+\PARref{sec:salto_incremento}. Il \CRr\ $C_{ij}$ coincide
+con $A$. Le reazioni scambiate fra i due corpi sono forze
+uguali e opposte applicate in $A$, di direzione, verso e
+intensità non noti a priori, e nessuna coppia scambiata:
+\begin{equation}\label{eq:reazione_cerniera_int}
+	\rb_i = -X(A)\,\ab_x - Y(A)\,\ab_y,
+	\qquad
+	\rb_j = X(A)\,\ab_x + Y(A)\,\ab_y,
+	\qquad
+	\mu(A) = 0,
+\end{equation}
+con $X(A), Y(A) \in \mathbb{R}$. Sono noti a priori il punto
+di applicazione $A$ e l'assenza di coppia scambiata,
+$\mu(A) = 0$; le due incognite scalari $X(A)$ e $Y(A)$,
+ciascuna con segno libero, sintetizzano direzione, verso e
+intensità della forza trasmessa da $\mathcal{C}_i$ a
+$\mathcal{C}_j$, in accordo con la molteplicità due. La
+\FIGref{fig:cerniera_interna} illustra le prestazioni
+cinematica e statica della cerniera interna fra due corpi.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica della cerniera interna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\pgfmathsetmacro{\rn}{0.15}
+			\def\xA{0.00}
+			\def\yA{0.00}
+			
+			%% ── Corpo C_i (bordo destro tangente al pallino) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(-0.15, 0.50) (-0.30, 0.85) (-0.65, 1.10) (-1.35, 1.40) 
+				(-2.15, 1.20) (-2.55, 0.50) (-2.55, -0.50)
+				(-2.15, -1.20) (-1.35, -1.40) (-0.65, -1.10) 
+				(-0.30, -0.85) (-0.15, -0.50)};
+			\node at (-1.55, 0.0) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (bordo sinistro tangente al pallino) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.15, 0.50) (0.30, 0.85) (0.65, 1.10) (1.35, 1.40) 
+				(2.15, 1.20) (2.55, 0.50) (2.55, -0.50)
+				(2.15, -1.20) (1.35, -1.40) (0.65, -1.10) 
+				(0.30, -0.85) (0.15, -0.50)};
+			\node at (1.55, 0.0) {$\mathcal{C}_j$};
+			
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (\xA, \yA) circle (\rn);
+			
+			%% ── Etichette dei punti di applicazione A_i, A_j ──
+			\node[font=\footnotesize, anchor=south east] at ({-\rn-0.02}, 0.05) {$A_i$};
+			\node[font=\footnotesize, anchor=south west] at ({\rn-0.02}, 0.0) {$A_j$};
+			
+			
+			%% ── Equazione di vincolo (in alto) ──
+			\node[font=\small] at (0.00, 1.80) 	{$\ub(A_j) - \ub(A_i) = \zerovb$};
+			
+			%% ── Archi delle rotazioni ϑ_i, ϑ_j (semicerchio, 180°) ──
+			\def\rrot{0.30}
+			
+			%% ── Etichetta del centro di rotazione relativo (in basso) ──
+			\node[font=\footnotesize] 
+			at (0.00, -1.80) 
+			{$C_{ij} \equiv A_i \equiv A_j$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0.00, -2.30) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica della cerniera interna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=8cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\pgfmathsetmacro{\rn}{0.15}
+			\def\xA{0.00}
+			\def\yA{0.00}
+			
+			%% ── Corpo C_i (identico ad (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(-0.15, 0.50) (-0.30, 0.85) (-0.65, 1.10) (-1.35, 1.40) 
+				(-2.15, 1.20) (-2.55, 0.50) (-2.55, -0.50)
+				(-2.15, -1.20) (-1.35, -1.40) (-0.65, -1.10) 
+				(-0.30, -0.85) (-0.15, -0.50)};
+			\node at (-1.55, 0.60) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (identico ad (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.15, 0.50) (0.30, 0.85) (0.65, 1.10) (1.35, 1.40) 
+				(2.15, 1.20) (2.55, 0.50) (2.55, -0.50)
+				(2.15, -1.20) (1.35, -1.40) (0.65, -1.10) 
+				(0.30, -0.85) (0.15, -0.50)};
+			\node at (1.55, 0.60) {$\mathcal{C}_j$};
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (\xA, \yA) circle (\rn);
+			
+			%% ── Etichette A_i, A_j (identiche ad (a)) ──
+			\node[font=\footnotesize, anchor=south east] 
+			at ({-\rn-0.02}, 0.05) {$A_i$};
+			\node[font=\footnotesize, anchor=south west] 
+			at ({\rn-0.02}, 0.0) {$A_j$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: 4 frecce, azione e reazione
+			%% ──────────────────────────────────────────────────
+			
+			%% Forze applicate a C_i (lato sinistro): -X(A) a_x, -Y(A) a_y
+			% Componente orizzontale: da A verso sinistra
+			\draw[->, line width=1.4pt] ({-\rn}, 0) -- ({-\rn-1.05}, 0);
+			\node[anchor=north, font=\small] at ({-\rn-1.10}, -0.1) {$-X(A)\,\ab_x$};
+			% Componente verticale: da A verso il basso
+			\draw[->, line width=1.4pt] (-0.05, {-\rn}) -- (-0.05, {-\rn-1.0});
+			\node[anchor=north, font=\small] at (0, {-\rn-1.10}) {$-Y(A)\,\ab_y$};
+			
+			%% Forze applicate a C_j (lato destro): +X(A) a_x, +Y(A) a_y
+			% Componente orizzontale: da A verso destra
+			\draw[->, line width=1.4pt] ({\rn}, 0) -- ({\rn+1.05}, 0);
+			\node[anchor=north, font=\small] at ({\rn+1.10}, -0.1) {$X(A)\,\ab_x$};
+			% Componente verticale: da A verso l'alto
+			\draw[->, line width=1.4pt] (0.05, {\rn}) -- (0.05, {\rn+1.0});
+			\node[anchor=south, font=\small] at (0, {\rn+1.10}) {$Y(A)\,\ab_y$};
+			
+			%% ── Terna x, y in basso a sinistra ──
+			\draw[->, line width=0.8pt] (-3.20, -1.80) -- (-2.40, -1.80);
+			\node[anchor=west, font=\footnotesize] at (-2.40, -1.85) {$x$};
+			\draw[->, line width=0.8pt] (-3.20, -1.80) -- (-3.20, -1.00);
+			\node[anchor=south, font=\footnotesize] at (-3.20, -1.00) {$y$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0.00, -2.30) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Cerniera interna fra due corpi: prestazioni cinematica e statica.]{%
+		Cerniera interna fra i corpi $\mathcal{C}_i$ e
+		$\mathcal{C}_j$, applicata nel punto $A$ che si identifica
+		con i punti di applicazione $A_i \in \mathcal{C}_i$ e
+		$A_j \in \mathcal{C}_j$. Prestazione cinematica (a):
+		l'equazione di vincolo $\ub(A_j) - \ub(A_i) = \zerovb$
+		impone l'uguaglianza degli spostamenti dei due corpi in
+		$A$; le rotazioni dei due corpi restano libere e non sono
+		rappresentate. Il \CRr\ coincide con il punto di
+		applicazione, $C_{ij} \equiv A_i \equiv A_j$.
+		Prestazione statica (b): i due corpi si scambiano una
+		forza generica $X(A)\,\ab_x + Y(A)\,\ab_y$ applicata in
+		$A$, in dualità con le due componenti di spostamento
+		relativo bloccate; la coppia scambiata è identicamente
+		nulla, in accordo con la molteplicità due.}
+	\label{fig:cerniera_interna}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Il glifo}\label{sec:glifo}
+
+\paragraph{Realizzazione meccanica e parametri caratterizzanti.}
+Il glifo\index{glifo|textbf}\index{glifo|seealso{vincolo}}\index{giunto prismatico|see{glifo}} è un giunto prismatico: una guida che costringe il
+corpo a scorrere nella propria direzione mantenendone
+inalterato l'orientamento. Impedisce quindi la traslazione
+nella direzione $\ab$ e la rotazione, lasciando libera la
+sola traslazione nella direzione perpendicolare $\ab^{\perp}$.
+Il vincolo è caratterizzato da:
+\begin{enumerate}[label=(\roman*)]
+	\item il \emph{punto di applicazione} $A$, in cui la
+	guida si connette al corpo;
+	\item il \emph{versore dell'asse} $\ab$, ovvero la
+	direzione lungo la quale la traslazione è impedita.
+\end{enumerate}
+A differenza del carrello, in cui $A$ identifica univocamente
+il punto la cui traslazione è vincolata, qui la condizione
+$\vartheta = 0$ rende lo spostamento $\ub$ uguale in ogni
+punto del corpo: la scrittura $\ub(A)\cdot\ab = 0$ è quindi
+equivalente a $\ub(P)\cdot\ab = 0$ per qualsiasi $P$, e $A$,
+relativamente a questa equazione, agisce solo come etichetta
+del giunto. Il punto $A$ recupera invece il proprio ruolo
+fisico di punto di applicazione nella forza reattiva
+$R(A)\,\ab$, dove la posizione di applicazione concorre
+all'equilibrio dei momenti.
+
+
+\paragraph{Caso esterno.}
+
+\paragraph{Equazione cinematica.}
+Le due equazioni scalari del glifo sono:
+\begin{equation}
+	\label{eq:glifo_cin}
+	\ub(A) \cdot \ab = 0, \qquad
+	\vartheta = 0.
+\end{equation}
+La seconda equazione impone che il campo di spostamento sia
+una traslazione pura; la prima seleziona, fra tutte le
+traslazioni, quelle nella direzione $\ab^{\perp}$.
+Lo spostamento ammesso è pertanto:
+\begin{equation}\label{eq:glifo_moto_ammesso}
+	\ub(P) = \alpha\,\ab^{\perp}, \qquad \alpha \in \mathbb{R},
+	\quad \forall\, P \in \mathcal{C}.
+\end{equation}
+
+\begin{oss}
+	Il glifo può essere interpretato come la sovrapposizione
+	di un carrello con asse $\ab$ e di un bipendolo: le due
+	equazioni cinematiche sono indipendenti e si sommano.
+	Questa prospettiva è sviluppata sistematicamente per
+	tutti i vincoli composti nell'osservazione del
+	\PARref{sec:incastro}.
+\end{oss}
+
+\paragraph{Posizione del centro di rotazione assoluto.}
+Da $\vartheta = 0$ il centro è all'infinito. La traslazione
+ammessa è nella direzione $\ab^{\perp}$; il centro si trova
+quindi all'infinito nella direzione $\ab$, perpendicolare
+alla traslazione:
+\begin{equation}\label{eq:CR_glifo}
+	C \longrightarrow \infty
+	\quad \text{nella direzione } \ab.
+\end{equation}
+
+\begin{proposizione}[Centro di rotazione --- glifo]
+	Il \CRa\ di un corpo vincolato da un glifo con asse $\ab$
+	è situato all'infinito nella direzione $\ab$,
+	perpendicolare alla direzione di scorrimento $\ab^{\perp}$.
+\end{proposizione}
+
+
+\begin{oss}[Il glifo come cerniera impropria]
+	La proposizione precedente ammette una lettura proiettiva
+	suggestiva. Il glifo può essere visto come una
+	\emph{cerniera il cui centro è il punto improprio della
+		direzione} $\ab$: la cinematica è una rotazione attorno
+	a tale centro, che nel piano euclideo si manifesta come
+	pura traslazione lungo $\ab^{\perp}$ (perpendicolare alla
+	direzione del centro). Per distinguerle, in questa
+	prospettiva si parla di \emph{cerniera propria} per la
+	cerniera ordinaria — con centro $C = A$ al finito — e di
+	\emph{cerniera impropria}\index{cerniera!impropria} per il glifo — con centro
+	$C = \infty_\ab$. Questa classificazione è specifica del
+	caso binario: il ``glifo multiplo'' — $k$ corpi che condividono
+	in $A$ la componente di spostamento lungo $\ab$ e la
+	rotazione — è una possibilità geometrica, ma non
+	corrisponde a un dispositivo strutturale di uso comune;
+	per questo nel \PARref{sec:vincoli_multipli} si trattano
+	soltanto la cerniera multipla e l'incastro multiplo.
+\end{oss}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica del glifo esterno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}    % semi-lunghezza piatto
+			\def\bw{0.20}         % semi-distanza ruote
+			\def\rrota{0.05}      % raggio ruote
+			\def\gw{0.65}         % semi-larghezza barra di terra (un po' più del piatto)
+			\def\rrota{0.10}     % raggio ruote (tangenti ai due piatti)
+			
+			%% ── Asse a (retta verticale grigia continua) ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, -0.55) -- (\xA, 2.85);
+			
+			%% ── Etichetta del CR all'infinito ──
+			\node[gray, font=\footnotesize, anchor=south west] 
+			at (\xA+0.30, 2.20) {$C = \infty_\ab$};
+			
+			%% ── Versore a in alto ──
+			\draw[->, line width=1pt] 	(\xA, 2.10) -- (\xA, 2.85);
+			\node[anchor=west, font=\small] 
+			at (\xA+0.05, 2.85) {$\ab$};
+			
+			%% ── Corpo C (con piatto orizzontale inferiore) ──
+			\draw[line width=1pt] 
+			(-\Lpiatto, 0.00) 
+			.. controls (-1.55, 0.10) and (-1.80, 0.95) 
+			.. (-1.70, 1.55)
+			.. controls (-0.85, 2.40) and ( 0.35, 2.50) 
+			.. ( 0.85, 2.15)
+			.. controls ( 1.65, 1.70) and ( 1.80, 0.60) 
+			.. (\Lpiatto, 0.00)
+			-- cycle;
+			\node at (0.50, 1.60) {$\mathcal{C}$};
+			
+			%% ── Equazioni di vincolo (in alto, accanto all'asse) ──
+			\node[anchor=west, font=\small] at (\xA-2.40, 2.55) {$\ub(A)\cdot\ab = 0$};
+			\node[anchor=west, font=\small] at (\xA-2.40, 2.10) {$\vartheta = 0$};
+			
+			
+			%% ── Glifo: prima barra (sotto il piatto del corpo) ──
+			%\draw (-\gw, -0.05) -- (\gw, -0.05);
+			
+			%% ── Glifo: due ruote ──
+			\draw (-\bw, -0.13) circle (\rrota);
+			\draw (\bw, -0.13) circle (\rrota);
+			
+			%% ── Glifo: due ruote (tangenti ai due piatti) ──
+			\draw (-\bw, -0.155) circle (\rrota);
+			\draw (\bw, -0.155) circle (\rrota);
+			
+			%% ── Glifo: seconda barra (al telaio) ──
+			\draw (-\gw, -0.26) -- (\gw, -0.26);
+			
+			%% ── Glifo: tratteggio del suolo ──
+			\foreach \x in {-0.50,-0.25,0,0.25,0.50}
+			\draw[thin] (\x, -0.26) -- ++(-0.10, -0.13);
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south west, font=\small] at (\xA, \yA+0.05) {$A$};
+			
+			
+			%% ── Etichetta verticale "asse del glifo" ──
+			\node[gray, rotate=90, anchor=south, font=\footnotesize] at (\xA, 1.20) {asse del glifo};
+			
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 	at (\xA-1.95, -0.25) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica del glifo esterno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}
+			\def\bw{0.20}
+			\def\rrota{0.10}
+			\def\gw{0.65}
+			
+			%% ── Asse a (retta verticale grigia continua) ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, -0.55) -- (\xA, 2.85);
+			
+			%% ── Versore a in alto ──
+			\draw[->, line width=1pt] 
+			(\xA, 2.10) -- (\xA, 2.85);
+			\node[anchor=west, font=\small] 
+			at (\xA+0.05, 2.85) {$\ab$};
+			
+			%% ── Corpo C (identico ad (a)) ──
+			\draw[line width=1pt] 
+			(-\Lpiatto, 0.00) 
+			.. controls (-1.55, 0.10) and (-1.80, 0.95) 
+			.. (-1.70, 1.55)
+			.. controls (-0.85, 2.40) and ( 0.35, 2.50) 
+			.. ( 0.85, 2.15)
+			.. controls ( 1.65, 1.70) and ( 1.80, 0.60) 
+			.. (\Lpiatto, 0.00)
+			-- cycle;
+			\node at (0.50, 1.60) {$\mathcal{C}$};
+			
+			%% ── Glifo: due ruote tangenti ──
+			\draw (-\bw, -0.155) circle (\rrota);
+			\draw (\bw, -0.155) circle (\rrota);
+			
+			%% ── Glifo: seconda barra (al telaio) ──
+			\draw (-\gw, -0.26) -- (\gw, -0.26);
+			
+			%% ── Glifo: tratteggio del suolo ──
+			\foreach \x in {-0.50,-0.25,0,0.25,0.50}
+			\draw[thin] (\x, -0.26) -- ++(-0.10, -0.13);
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south west, font=\small] 	at (\xA+0.1, \yA-0.04) {$A$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONE: forza R(A) a + coppia μ
+			%% ──────────────────────────────────────────────────
+			
+			%% Forza R(A) a: freccia verticale lungo l'asse, da A verso l'alto
+			\draw[->, line width=1.4pt] 
+			(\xA, \yA+0.05) -- (\xA, \yA+1.20);
+			\node[anchor=west, font=\small] at (\xA+0.08, \yA+1.0) {$R(A)\,\ab$};
+			
+			%% Coppia reattiva μ(A): semicerchio centrato in A, sopra il punto
+			\def\rmu{0.30}
+			\draw[->, line width=1.4pt] ({\xA+\rmu}, {\yA+0.30}) arc(0:180:\rmu);
+			\node[anchor=west, font=\small] at (\xA-1.30, {\yA+\rmu+0.5}) {$\mu(A)$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (\xA-1.95, -0.25) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Glifo esterno con asse $\ab$: prestazioni cinematica e statica.]{%
+		Glifo esterno applicato al corpo $\mathcal{C}$ in $A$,
+		con asse $\ab$. Prestazione cinematica (a): le equazioni
+		di vincolo $\ub(A)\cdot\ab = 0$ e $\vartheta = 0$
+		impediscono la traslazione di $A$ lungo $\ab$ e la
+		rotazione del corpo; il \CRa\ è all'infinito sulla retta
+		dell'asse, $C = \infty_\ab$. Prestazione statica (b):
+		la reazione vincolare consta di una forza $R(A)\,\ab$
+		diretta lungo l'asse e di una coppia $\mu(A)$, in
+		dualità rispettivamente con la traslazione lungo $\ab$
+		e con la rotazione bloccate, in accordo con la
+		molteplicità due.}
+	\label{fig:glifo_esterno}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Reazione vincolare.}
+Gli spostamenti compatibili con il glifo sono della forma
+$\ub(P) = \alpha\,\ab^{\perp}$, con $\vartheta = 0$.
+Il lavoro della reazione su tali spostamenti deve essere nullo:
+\begin{equation}
+	\rb(A)\cdot(\alpha\,\ab^{\perp}) + \mu(A) \cdot 0 = 0
+	\quad \forall\,\alpha
+	\quad\Longrightarrow\quad
+	\rb(A) \cdot \ab^{\perp} = 0,
+\end{equation}
+da cui $\rb(A)$ è diretta lungo $\ab$. La coppia $\mu(A)$
+non è vincolata dalla condizione di lavoro nullo (essendo
+$\vartheta = 0$) e rimane incognita libera. La reazione è
+quindi una forza diretta lungo $\ab$ e una coppia di verso
+e intensità non noti a priori:
+\begin{equation}\label{eq:reazione_glifo}
+	\rb(A) = R(A)\,\ab,
+	\qquad
+	\mu(A) \in \mathbb{R},
+	\qquad
+	R(A) \in \mathbb{R}.
+\end{equation}
+Sono noti a priori il punto di applicazione $A$ e la direzione $\ab$ della
+forza reattiva. Per la forza, $A$ è il \emph{punto di
+	applicazione} fisico — la sua posizione concorre
+all'equilibrio dei momenti del corpo; per la coppia, $A$ è
+\emph{etichetta} del giunto, secondo la convenzione del
+\PARref{sec:richiamo} (la coppia è un vettore libero, il cui
+effetto sul corpo è indipendente dal punto in cui viene
+applicata). Le due incognite scalari sono $R(A)$, il cui
+segno determina verso e intensità della forza, e $\mu(A)$,
+il cui segno determina verso e intensità della coppia, in
+accordo con la molteplicità due. La \FIGref{fig:glifo_esterno}
+illustra le prestazioni cinematica e statica del glifo esterno.
+
+
+
+
+
+\paragraph{Caso interno.}
+Il glifo interno\index{glifo!interno} fra $\mathcal{C}_i$ e $\mathcal{C}_j$ è un
+vincolo puntiforme: la condizione di uguaglianza, in $A$,
+delle componenti dello spostamento dei due corpi nella
+direzione $\ab$ e delle rotazioni si scrive come annullamento
+dei salti corrispondenti,
+\begin{equation}\label{eq:glifo_int}
+	\llbracket \ub \rrbracket(A) \cdot \ab = 0,
+	\qquad
+	\llbracket \vartheta \rrbracket = 0.
+\end{equation}
+I due corpi hanno la stessa rotazione e la stessa componente
+di spostamento lungo $\ab$ in $A$; possono scorrere l'uno
+rispetto all'altro lungo $\ab^{\perp}$ mantenendo lo stesso
+orientamento. Il \CRr\ $C_{ij}$ è all'infinito in direzione
+$\ab$. Le reazioni scambiate fra i due corpi sono una forza
+diretta lungo $\ab$ e una coppia di verso e intensità non
+noti a priori, uguali e opposte:
+\begin{equation}\label{eq:reazione_glifo_int}
+	\rb_i = -R(A)\,\ab,
+	\qquad
+	\rb_j = R(A)\,\ab,
+	\qquad
+	R(A), \mu(A) \in \mathbb{R}.
+\end{equation}
+Sono noti a priori il punto di applicazione $A$ e la
+direzione $\ab$ della forza scambiata; le due incognite
+scalari sono $R(A)$, il cui segno determina il verso e
+l'intensità della forza trasmessa da $\mathcal{C}_i$ a
+$\mathcal{C}_j$, e $\mu(A)$, il cui segno determina il
+verso e l'intensità della coppia, in accordo con la
+molteplicità due. La \FIGref{fig:glifo_interno} illustra
+le prestazioni cinematica e statica del glifo interno fra
+due corpi.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica del glifo interno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xAi{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}    % semi-lunghezza piatto verticale
+			\def\bw{0.20}         % semi-distanza ruote
+			\pgfmathsetmacro{\rrota}{0.105}
+			\pgfmathsetmacro{\D}{2*\rrota}
+			\pgfmathsetmacro{\xAj}{\xAi+\D}
+			\pgfmathsetmacro{\xMid}{\xAi+\rrota}
+			
+			%% ── Asse a (retta orizzontale grigia continua) ──
+			\draw[gray!60, line width=0.6pt]  (-4.0, \yA) -- (3.10, \yA);
+			
+			%% ── Versore a a destra ──
+			\draw[->, line width=1pt] 	(1.80, \yA) -- (2.30, \yA);
+			\node[anchor=north, font=\small] at (1.85, \yA-0.05) {$\ab$};
+			
+			%% ── Etichetta del CR all'infinito ──
+			\node[gray, font=\footnotesize, anchor=south] 	at (-3.80, \yA+0.0) {$C_{ij} = \infty_\ab$};
+			
+			%% ── Corpo C_i (a sinistra, piatto verticale a x=0) ──
+			\draw[line width=1pt] 
+			(\xAi, -\Lpiatto)
+			.. controls (-0.60, -1.55) and (-1.55, -1.65)
+			.. (-2.15, -1.30)
+			.. controls (-2.85, -0.70) and (-3.00,  0.50)
+			.. (-2.50, 1.20)
+			.. controls (-1.80, 1.65) and (-0.70, 1.55)
+			.. (\xAi, \Lpiatto)
+			-- cycle;
+			\node at (-1.65, 0.70) {$\mathcal{C}_i$};
+			
+			%			%% ── Corpo C_j (a destra, piatto verticale a x=D) ──
+			\draw[line width=1pt] 
+			(\xAj, \Lpiatto)
+			.. controls ({\xAj+0.70}, 1.55) and ({\xAj+1.80}, 1.65)
+			.. ({\xAj+2.50}, 1.20)
+			.. controls ({\xAj+3.00}, 0.50) and ({\xAj+2.85}, -0.70)
+			.. ({\xAj+2.15}, -1.30)
+			.. controls ({\xAj+1.55}, -1.65) and ({\xAj+0.60}, -1.55)
+			.. (\xAj, -\Lpiatto)
+			-- cycle;
+			\node at ({\xAj+1.65}, 0.70) {$\mathcal{C}_j$};
+			
+			%% ── Equazioni di vincolo (in alto) ──
+			\node[font=\small] at (\xMid, 2.0) {$\llbracket \ub \rrbracket(A)\cdot\ab = 0, \quad \llbracket \vartheta \rrbracket = 0$};
+			
+			
+			%% ── Glifo: due ruote tangenti ai piatti ──
+			\draw (\xMid, \bw) circle (\rrota);
+			\draw (\xMid, -\bw) circle (\rrota);
+			
+			%% ── Punti A_i e A_j ──
+			\fill (\xAi, \yA) circle (1.5pt);
+			\fill (\xAj, \yA) circle (1.5pt);
+			\node[anchor=east, font=\footnotesize] 
+			at ({\xAi-0.05}, {\yA-0.18}) {$A_i$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAj+0.05}, {\yA-0.18}) {$A_j$};
+			
+			
+			%			
+			%% ── Etichetta "asse del glifo" sulla retta dell'asse ──
+			\node[gray, font=\footnotesize, anchor=north] at (\xMid-4.0, \yA-0.05) {asse del glifo};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 	at (\xMid, -1.50) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica del glifo interno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6.5cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\xAi{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}
+			\def\bw{0.20}
+			\pgfmathsetmacro{\rrota}{0.105}
+			\pgfmathsetmacro{\D}{2*\rrota}
+			\pgfmathsetmacro{\xAj}{\xAi+\D}
+			\pgfmathsetmacro{\xMid}{\xAi+\rrota}
+			
+			%% ── Asse a (retta orizzontale grigia continua) ──
+			\draw[gray!60, line width=0.6pt] (-2.0, \yA) -- (3.0, \yA);
+			
+			%% ── Versore a a destra ──
+			\draw[->, line width=1pt] (3.30, \yA) -- (3.80, \yA);
+			\node[anchor=south, font=\small] at (3.55, \yA+0.05) {$\ab$};
+			
+			%% ── Corpo C_i (identico ad (a)) ──
+			%% ── Corpo C_i (a sinistra, piatto verticale a x=0) ──
+			\draw[line width=1pt] 
+			(\xAi, -\Lpiatto)
+			.. controls (-0.60, -1.55) and (-1.55, -1.65)
+			.. (-2.15, -1.30)
+			.. controls (-2.85, -0.70) and (-3.00,  0.50)
+			.. (-2.50, 1.20)
+			.. controls (-1.80, 1.65) and (-0.70, 1.55)
+			.. (\xAi, \Lpiatto)
+			-- cycle;
+			\node at (-1.75, 0.90) {$\mathcal{C}_i$};
+			
+			
+			%% ── Corpo C_j (identico ad (a)) ──
+			\draw[line width=1pt] 
+			(\xAj, \Lpiatto)
+			.. controls ({\xAj+0.70}, 1.55) and ({\xAj+1.80}, 1.65)
+			.. ({\xAj+2.50}, 1.20)
+			.. controls ({\xAj+3.00}, 0.50) and ({\xAj+2.85}, -0.70)
+			.. ({\xAj+2.15}, -1.30)
+			.. controls ({\xAj+1.55}, -1.65) and ({\xAj+0.60}, -1.55)
+			.. (\xAj, -\Lpiatto)
+			-- cycle;
+			\node at ({\xAj+1.75}, 0.90) {$\mathcal{C}_j$};
+			
+			%% ── Glifo: due ruote tangenti ai piatti ──
+			\draw (\xMid, \bw) circle (\rrota);
+			\draw (\xMid, -\bw) circle (\rrota);
+			
+			%% ── Punti A_i e A_j ──
+			\fill (\xAi, \yA) circle (1.5pt);
+			\fill (\xAj, \yA) circle (1.5pt);
+			\node[anchor=east, font=\footnotesize] 	at ({\xAi-0.05}, {\yA-0.28}) {$A_i$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAj+0.05}, {\yA-0.28}) {$A_j$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: 2 forze + 2 coppie, uguali e opposte
+			%% ──────────────────────────────────────────────────
+			
+			%% Forza in A_i: -R a (verso sinistra, entra in C_i)
+			\draw[->, line width=1.4pt] 
+			({\xAi-0.05}, \yA) -- ({\xAi-1.05}, \yA);
+			\node[anchor=south, font=\small] 
+			at ({\xAi-0.55}, {\yA+0.05}) {$-R\,\ab$};
+			
+			%% Forza in A_j: +R a (verso destra, entra in C_j)
+			\draw[->, line width=1.4pt] 
+			({\xAj+0.05}, \yA) -- ({\xAj+1.05}, \yA);
+			\node[anchor=south, font=\small] 
+			at ({\xAj+0.55}, {\yA+0.05}) {$R\,\ab$};
+			
+			
+			%% ── Coppie μ(A): semicerchi verticali, uguali e opposti ──
+			\def\rmu{0.35}
+			\def\yMu{0.0}              % quota delle coppie, dentro i corpi
+			
+			% Coppia in C_i: semicerchio orario (concavo verso destra, freccia in basso)
+			\draw[->, line width=1.4pt] ({-1.65+\rmu}, \yMu-\rmu) arc(-90:-270:\rmu);
+			\node[font=\small] at (-2.0, \yMu-0.5) {$\mu(A)$};
+			
+			% Coppia in C_j: semicerchio antiorario (concavo verso sinistra, freccia in basso)
+			\draw[->, line width=1.4pt] ({\xAj+1.65-\rmu}, \yMu-\rmu) arc(-90:90:\rmu);
+			\node[font=\small] at ({\xAj+2.0}, \yMu-0.5) {$\mu(A)$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (\xMid, -1.50) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Glifo interno con asse $\ab$ fra due corpi: prestazioni cinematica e statica.]{%
+		Glifo interno fra i corpi $\mathcal{C}_i$ e $\mathcal{C}_j$
+		con asse $\ab$. Prestazione cinematica (a): le equazioni
+		di vincolo $\llbracket \ub \rrbracket(A) \cdot \ab = 0$ e
+		$\llbracket \vartheta \rrbracket = 0$ impongono l'uguaglianza
+		delle componenti di spostamento dei due corpi lungo $\ab$
+		e l'uguaglianza delle rotazioni $\vartheta_i$ e $\vartheta_j$;
+		lo scorrimento relativo lungo $\ab^\perp$ resta libero. Il
+		\CRr\ è all'infinito sulla retta dell'asse,
+		$C_{ij} = \infty_\ab$. Prestazione statica (b): i due corpi
+		si scambiano una forza $R\,\ab$ diretta lungo l'asse e una
+		coppia $\mu(A)$, uguali e opposte, in dualità rispettivamente
+		con la componente di spostamento relativo lungo $\ab$ e con
+		la rotazione relativa bloccate, in accordo con la
+		molteplicità due.}
+	\label{fig:glifo_interno}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Vincolo triplo: l'incastro}\label{sec:incastro}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+\paragraph{Realizzazione meccanica e parametri caratterizzanti.}
+L'incastro\index{incastro|textbf}\index{incastro|seealso{vincolo}}\index{vincolo!triplo} è l'unico vincolo di molteplicità tre: blocca
+completamente il corpo impedendone sia le traslazioni che
+la rotazione. Come la cerniera, è caratterizzato dal
+\emph{punto di applicazione} $A$; a differenza di essa,
+vincola anche la rotazione.
+
+\paragraph{Caso esterno.}
+
+\paragraph{Equazioni cinematiche.}
+L'incastro in $A$ impone tre equazioni scalari:
+\begin{equation}\label{eq:incastro_cin}
+	\ub(A) = \zerovb, \qquad \vartheta = 0,
+\end{equation}
+equivalenti, tramite la~\eqref{eq:FFCI_piano_vett}, a
+richiedere lo spostamento nullo di ogni punto del corpo:
+\begin{equation}
+	\ub(P) = \zerovb \qquad \forall\, P \in \mathcal{C}.
+\end{equation}
+
+\begin{oss}
+	L'incastro può essere visto come la sovrapposizione di
+	una cerniera in $A$ --- che impone $\ub(A) = \zerovb$
+	e porta il centro in $A$ --- e di un bipendolo --- che
+	impone $\vartheta = 0$ e porta il centro all'infinito.
+	La combinazione dei due vincoli sovradetermina il centro:
+	non esiste alcuno spostamento rigido non nullo compatibile
+	con entrambi simultaneamente.
+\end{oss}
+
+\paragraph{Posizione del centro di rotazione.}
+Non esiste alcuno spostamento rigido non nullo compatibile
+con l'incastro: il concetto di centro di rotazione è privo
+di significato. Il corpo è completamente bloccato.
+
+\paragraph{Reazione vincolare.}
+Non esistono spostamenti virtuali compatibili non nulli;
+qualsiasi sistema di forze e coppie soddisfa banalmente
+la condizione di lavoro virtuale nullo. La reazione
+dell'incastro è pertanto del tutto arbitraria: una forza
+e una coppia applicate in $A$, di direzione, verso e
+intensità non noti a priori,
+\begin{equation}\label{eq:reazione_incastro}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y,
+	\qquad
+	\mu(A) \in \mathbb{R},
+	\qquad
+	X(A), Y(A) \in \mathbb{R}.
+\end{equation}
+È noto a priori il solo punto di applicazione $A$; le tre
+incognite scalari sono $X(A)$ e $Y(A)$, ciascuna con segno
+libero, che sintetizzano direzione, verso e intensità della
+forza, e $\mu(A)$, il cui segno determina il verso e
+l'intensità della coppia, in accordo con la molteplicità
+tre. La \FIGref{fig:incastro} illustra le prestazioni
+cinematica e statica dell'incastro esterno.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica dell'incastro
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lcamp{0.65}      % era 0.50, semi-altezza fascia campita
+			
+			%% ── Corpo C (ingrandito) ──
+			\draw[line width=1pt] 
+			(\xA, -\Lcamp)
+			.. controls ( 0.65, -1.65) and ( 1.65, -1.75)
+			.. ( 2.25, -1.40)
+			.. controls ( 3.00, -0.75) and ( 3.10,  0.50)
+			.. ( 2.65, 1.25)
+			.. controls ( 1.90, 1.75) and ( 0.75, 1.65)
+			.. (\xA, \Lcamp)
+			-- cycle;
+			\node at (1.80, 0.10) {$\mathcal{C}$};
+			
+			%% ── Campitura (tratteggio obliquo) lungo il bordo sinistro ──
+			\foreach \y in {-0.55,-0.40,-0.25,-0.10,0.05,0.20,0.35,0.50}
+			\draw[thin] (\xA, \y) -- ++(-0.13, -0.10);
+			
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south west, font=\small] 
+			at ({\xA+0.05}, {\yA+0.05}) {$A$};
+			
+			%% ── Equazioni di vincolo (a sinistra, fuori dal corpo) ──
+			\node[font=\small, anchor=east] 
+			at (-0.40, 0.50) {$\ub(A) = \zerovb$};
+			\node[font=\small, anchor=east] 
+			at (-0.40, 0.10) {$\vartheta = 0$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (-0.06, -1.0) {$(a)$};
+			
+		\end{scope}
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica dell'incastro
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lcamp{0.65}      % era 0.50, semi-altezza fascia campita
+			
+			%% ── Corpo C (ingrandito) ──
+			\draw[line width=1pt] 
+			(\xA, -\Lcamp)
+			.. controls ( 0.65, -1.65) and ( 1.65, -1.75)
+			.. ( 2.25, -1.40)
+			.. controls ( 3.00, -0.75) and ( 3.10,  0.50)
+			.. ( 2.65, 1.25)
+			.. controls ( 1.90, 1.75) and ( 0.75, 1.65)
+			.. (\xA, \Lcamp)
+			-- cycle;
+			\node at (1.80, 0.10) {$\mathcal{C}$};
+			
+			%% ── Campitura (tratteggio obliquo) lungo il bordo sinistro ──
+			\foreach \y in {-0.55,-0.40,-0.25,-0.10,0.05,0.20,0.35,0.50}
+			\draw[thin] (\xA, \y) -- ++(-0.13, -0.10);
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south east, font=\small] 
+			at ({\xA-0.05}, {\yA+0.05}) {$A$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: X(A), Y(A), μ(A)
+			%% ──────────────────────────────────────────────────
+			
+			%% Forza X(A): da A verso destra
+			\draw[->, line width=1.4pt] 
+			(\xA+0.05, \yA) -- (\xA+1.05, \yA);
+			\node[anchor=north, font=\small] at ({\xA+0.85}, {\yA-0.05}) {$X(A)\,\ab_x$};
+			
+			%% Forza Y(A): da A verso l'alto
+			\draw[->, line width=1.4pt] 
+			(\xA, \yA+0.05) -- (\xA, \yA+1.05);
+			\node[anchor=south, font=\small] 	at ({\xA-0.05}, {\yA+1.0}) {$Y(A)\,\ab_y$};
+			
+			%% ── Terna x, y in basso a sinistra ──
+			\draw[->, line width=0.8pt] (-1.50, -1.20) -- (-0.70, -1.20);
+			\node[anchor=west, font=\footnotesize] at (-0.70, -1.25) {$x$};
+			\draw[->, line width=0.8pt] (-1.50, -1.20) -- (-1.50, -0.40);
+			\node[anchor=south, font=\footnotesize] at (-1.50, -0.40) {$y$};
+			
+			%% Coppia μ(A): arco antiorario dentro al corpo
+			\def\xMu{1.10}     % era 0.80
+			\def\yMu{0.50}     % era 0.80
+			
+			%% Coppia μ(A): arco di π/2 centrato in A, fra le due frecce di forza
+			\def\rmu{0.55}
+			\draw[->, line width=1.4pt] 
+			({\xA+\rmu}, \yA) arc(0:90:\rmu);
+			\node[font=\small] 
+			at ({\xA+\rmu*1.7}, {\yA+\rmu*0.707+0.05}) {$\mu(A)$};
+			
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 	at (-0.06, -1.0) {$(b)$};
+			
+		\end{scope}
+	\end{tikzpicture}
+	\caption[Incastro in $A$: prestazioni cinematica e statica.]{%
+		Incastro applicato al corpo $\mathcal{C}$ nel punto $A$.
+		Prestazione cinematica (a): nessuno spostamento è ammesso, 
+		né traslazione né rotazione ($\ub(A) = \zerovb$, 
+		$\vartheta = 0$); il corpo è completamente bloccato.
+		Prestazione statica (b): la reazione vincolare è una forza
+		generica $X(A)\,\ab_x + Y(A)\,\ab_y$ e una coppia $\mu(A)$,
+		applicate in $A$, in accordo con la molteplicità tre.}
+	\label{fig:incastro}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Caso interno.}
+\label{sec:incastro_interno}
+L'incastro interno\index{incastro!interno} fra $\mathcal{C}_i$ e $\mathcal{C}_j$ è
+un vincolo puntiforme: la condizione di uguaglianza, in $A$,
+degli spostamenti e delle rotazioni dei due corpi si scrive
+come annullamento di entrambi i salti,
+\begin{equation}\label{eq:incastro_int}
+	\llbracket \ub \rrbracket(A) = \zerovb,
+	\qquad
+	\llbracket \vartheta \rrbracket = 0.
+\end{equation}
+I due corpi si comportano come un unico corpo rigido nel
+punto di collegamento: hanno lo stesso spostamento e la
+stessa rotazione. Le reazioni scambiate fra i due corpi
+sono una forza e una coppia, di direzione, verso e
+intensità non noti a priori, uguali e opposte:
+\begin{equation}\label{eq:reazione_incastro_int}
+	\begin{aligned}
+		&\rb_i = -X(A)\,\ab_x - Y(A)\,\ab_y,
+		\qquad
+		\rb_j = X(A)\,\ab_x + Y(A)\,\ab_y,
+		\\
+		&X(A), Y(A), \mu(A) \in \mathbb{R}.
+	\end{aligned}
+\end{equation}
+È noto a priori il solo punto di applicazione $A$; le tre
+incognite scalari sono $X(A)$ e $Y(A)$, ciascuna con segno
+libero, che sintetizzano direzione, verso e intensità della
+forza trasmessa da $\mathcal{C}_i$ a $\mathcal{C}_j$, e
+$\mu(A)$, il cui segno determina il verso e l'intensità
+della coppia, in accordo con la molteplicità tre.
+
+
+\begin{oss}
+	L'incastro interno è la forma di \emph{collegamento}
+	del vincolo di rigidità introdotto nel
+	\PARref{sec:vincoli_intro}: le tre condizioni
+	cinematiche sono le stesse --- uguaglianza di
+	spostamento e rotazione --- e le tre reazioni hanno
+	la stessa struttura --- forza risultante e momento
+	risultante. La differenza è di natura fisica: il
+	vincolo di rigidità è una proprietà interna del
+	corpo, diffusa sulla sezione di connessione;
+	l'incastro interno è un dispositivo di collegamento
+	concentrato nel punto $A$, che scambia forze e coppie
+	concentrate. In entrambi i casi la struttura duale
+	--- tre condizioni cinematiche, tre reazioni
+	incognite --- è la stessa.
+\end{oss}
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Vincoli composti: giustapposizione di vincoli semplici}
+\label{sec:vincoli_composti}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+I vincoli di molteplicità due e tre si possono interpretare 
+come la \emph{giustapposizione}\index{vincolo!composto|textbf}\index{giustapposizione di vincoli|see{vincolo (composto)}} di vincoli semplici --- 
+carrelli e bipendoli --- le cui equazioni cinematiche si 
+sommano e le cui reazioni si combinano vettorialmente. 
+Questa prospettiva non è solo mnemonica: chiarisce in modo 
+unitario la struttura delle equazioni di vincolo, la 
+posizione del centro di rotazione e la forma delle reazioni, 
+rendendo immediato il conteggio della molteplicità.
+
+\begin{oss}[Doppia accezione di ``vincolo elementare'']
+	I cinque vincoli presentati nel catalogo --- carrello,
+	bipendolo, cerniera, glifo, incastro --- sono ``elementari''
+	nel senso didattico-tradizionale: costituiscono il
+	repertorio di dispositivi di base con cui si descrivono
+	le strutture piane. Dal punto di vista \emph{strutturale},
+	però, i veri primitivi sono soltanto due --- carrello e
+	bipendolo --- come mostra questa sezione: cerniera, glifo
+	e incastro si ottengono per giustapposizione. Le due
+	accezioni non sono in conflitto: la prima riflette l'uso
+	consolidato del lessico tecnico, la seconda la struttura
+	algebrica del problema di vincolo. Per evitare ambiguità,
+	in questo capitolo si parla di vincoli \emph{semplici}
+	(\PARref{sec:semplici}) quando si intende il livello
+	atomico --- carrello e bipendolo --- e di vincoli
+	\emph{composti} (questa sezione) quando si intende la
+	loro giustapposizione; il termine \emph{elementare} resta
+	disponibile per l'uso informale, riferito al catalogo dei
+	cinque.
+\end{oss}
+
+
+\paragraph{Cinematica: teorema di intersezione.}
+Le equazioni di vincolo della giustapposizione sono l'unione 
+di quelle dei vincoli componenti; la loro indipendenza 
+determina la molteplicità complessiva per somma. La 
+posizione del \CRa\ obbedisce al \emph{teorema di 
+	intersezione}\index{teorema!di intersezione}: il centro di un vincolo composto è il punto 
+comune ai luoghi del centro dei vincoli componenti. La 
+\FIGref{fig:teorema_intersezione} illustra i tre casi 
+rilevanti, in cui i due luoghi si incontrano al finito 
+(cerniera), all'infinito (glifo) o in nessun punto 
+(incastro). In particolare:
+\begin{itemize}[noitemsep]
+	\item la \textbf{cerniera} è la giustapposizione di due
+	carrelli con assi $\ab_1$ e $\ab_2$ \emph{non paralleli}.
+	Il centro si trova all'intersezione delle due rette per
+	$A$ in direzione $\ab_1$ e $\ab_2$, ossia nel punto $A$
+	stesso. Il caso particolare $\ab_1 = \ab_x$,
+	$\ab_2 = \ab_y$ corrisponde alla decomposizione
+	cartesiana, ma la cerniera \emph{non dipende} dalla
+	scelta degli assi dei carrelli componenti, purché non
+	collineari;
+	
+	\item il \textbf{glifo} di asse $\ab$ è la giustapposizione
+	di un carrello con asse $\ab$ e un bipendolo, oppure 
+	equivalentemente di due carrelli con assi \emph{paralleli}
+	ad $\ab$. Nel primo caso il carrello vincola il centro
+	sulla retta per $A$ in direzione $\ab$, e il bipendolo lo
+	spinge sulla retta impropria $r_\infty$; nel secondo caso,
+	le due rette parallele si incontrano nel \emph{punto
+		improprio} della loro direzione comune. In entrambe le 
+	letture il centro è $C = \infty_\ab$;
+	
+	\item l'\textbf{incastro} è la giustapposizione di una
+	cerniera e un bipendolo, ovvero di due carrelli non
+	paralleli e un bipendolo. La cerniera porta il centro in
+	$A$, il bipendolo lo richiederebbe sulla retta impropria:
+	i due luoghi non hanno punti comuni e \emph{non esiste 
+		alcun centro di rotazione}, in coerenza col fatto che 
+	nessuno spostamento rigido infinitesimo è ammesso.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Cerniera equivalente: rette concorrenti
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xAuno{-0.80}
+			\def\yAuno{-0.65}     % quota di A_1 (più bassa per tangenza)
+			\def\xAdue{ 0.80}
+			\def\yAdue{-0.55}     % quota di A_2
+			\def\anguno{70}
+			\def\angdue{110}
+			\def\Lasse{2.40}
+			\def\tw{0.22}
+			\def\thR{0.30}
+			\def\bw{0.16}
+			\def\rrota{2.4pt}
+			\def\gw{0.40}
+			\def\rn{0.10}
+			
+			\pgfmathsetmacro{\dxuno}{cos(\anguno)}
+			\pgfmathsetmacro{\dyuno}{sin(\anguno)}
+			\pgfmathsetmacro{\dxdue}{cos(\angdue)}
+			\pgfmathsetmacro{\dydue}{sin(\angdue)}
+			
+			%% ── Carrello 1 in A_1 ──
+			\begin{scope}[shift={(\xAuno, \yAuno)}, rotate=\anguno-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Carrello 2 in A_2 ──
+			\begin{scope}[shift={(\xAdue, \yAdue)}, rotate=\angdue-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Corpo C (blob smooth) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, -0.50) (0.90, -0.40) (1.40, 0.10) 
+				(1.20, 0.80) (0.30, 1.10) (-0.50, 1.00) 
+				(-1.20, 0.50) (-1.40, -0.10) (-0.90, -0.50)};
+			\node at (0.00, 0.40) {$\mathcal{C}$};
+			
+			%% ── Anellini in A_1, A_2 (tangenti al bordo) ──
+			\draw[line width=0.8pt, fill=white] (\xAuno, \yAuno) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xAdue, \yAdue) circle (\rn);
+			
+			%% ── Rette degli assi ──
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAuno, \yAuno) -- ({\xAuno+\Lasse*\dxuno}, {\yAuno+\Lasse*\dyuno});
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAdue, \yAdue) -- ({\xAdue+\Lasse*\dxdue}, {\yAdue+\Lasse*\dydue});
+			
+			%% ── Etichette A_1, A_2 ──
+			\node[anchor=east, font=\footnotesize] 
+			at ({\xAuno-0.10}, \yAuno) {$A_1$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAdue+0.10}, \yAdue) {$A_2$};
+			
+			%% ── Centro C ──
+			\fill (0.02, 1.61) circle (1.5pt);
+			\node[anchor=south, font=\small] at (0.02, 1.66) {$C$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (0, -2.10) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Glifo: rette parallele, C all'infinito
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=4.5cm]
+			
+			%% ── Parametri ──
+			\def\xAuno{-0.80}
+			\def\yAuno{-0.65}
+			\def\xAdue{ 0.80}
+			\def\yAdue{-0.55}
+			\def\anguno{90}      % verticali, paralleli
+			\def\angdue{90}
+			\def\Lasse{2.40}
+			\def\tw{0.22}
+			\def\thR{0.30}
+			\def\bw{0.16}
+			\def\rrota{2.4pt}
+			\def\gw{0.40}
+			\def\rn{0.10}
+			
+			\pgfmathsetmacro{\dxuno}{cos(\anguno)}
+			\pgfmathsetmacro{\dyuno}{sin(\anguno)}
+			\pgfmathsetmacro{\dxdue}{cos(\angdue)}
+			\pgfmathsetmacro{\dydue}{sin(\angdue)}
+			
+			%% ── Carrello 1 in A_1 ──
+			\begin{scope}[shift={(\xAuno, \yAuno)}, rotate=\anguno-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Carrello 2 in A_2 ──
+			\begin{scope}[shift={(\xAdue, \yAdue)}, rotate=\angdue-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Corpo C (identico a (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, -0.50) (0.90, -0.40) (1.40, 0.10) 
+				(1.20, 0.80) (0.30, 1.10) (-0.50, 1.00) 
+				(-1.20, 0.50) (-1.40, -0.10) (-0.90, -0.50)};
+			\node at (0.00, 0.40) {$\mathcal{C}$};
+			
+			%% ── Anellini ──
+			\draw[line width=0.8pt, fill=white] (\xAuno, \yAuno) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xAdue, \yAdue) circle (\rn);
+			
+			%% ── Rette parallele degli assi ──
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAuno, \yAuno) -- ({\xAuno+\Lasse*\dxuno}, {\yAuno+\Lasse*\dyuno});
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAdue, \yAdue) -- ({\xAdue+\Lasse*\dxdue}, {\yAdue+\Lasse*\dydue});
+			
+			%% ── Etichette A_1, A_2 ──
+			\node[anchor=east, font=\footnotesize] 
+			at ({\xAuno-0.10}, \yAuno) {$A_1$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAdue+0.10}, \yAdue) {$A_2$};
+			
+			%% ── Etichetta del centro all'infinito ──
+			\node[font=\small] at (0, 2.10) {$C = \infty_\ab$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (0, -2.10) {$(b)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (c) — Incastro: cerniera + bipendolo (incompatibilità)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=9cm]
+			
+			%% ── Parametri ──
+			\def\xAuno{-1.45}
+			\def\yAuno{0.30}        % cerniera tangente al bordo sinistro
+			\def\tw{0.22}
+			\def\thR{0.30}
+			\def\gw{0.40}
+			\def\rn{0.10}
+			
+			%% ── Corpo C (identico ai pannelli a, b) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, -0.50) (0.90, -0.40) (1.40, 0.10) 
+				(1.20, 0.80) (0.30, 1.10) (-0.50, 1.00) 
+				(-1.20, 0.50) (-1.40, -0.10) (-0.90, -0.50)};
+			\node at (0.10, 0.30) {$\mathcal{C}$};
+			
+			
+			%% ── Cerniera in A_1 (sul bordo sinistro, geometria esplicita) ──
+			%% Triangolo: apice in A_1, base verticale a sinistra
+			\draw[line width=0.8pt] 
+			(-1.45, 0.30) -- (-1.75, 0.05) -- (-1.75, 0.55) -- cycle;
+			%% Barra di terra (verticale, sinistra del triangolo)
+			\draw[line width=0.8pt] (-1.75, -0.05) -- (-1.75, 0.65);
+			%% Tratteggio del suolo (a sinistra della barra)
+			\foreach \y in {-0.05, 0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65}
+			\draw[thin] (-1.75, \y) -- ++(-0.13, -0.10);
+			%% Anellino in A_1
+			\draw[line width=0.8pt, fill=white] (-1.45, 0.30) circle (\rn);
+			%% Etichetta A_1 (sotto)
+			\node[anchor=north, font=\footnotesize] at (-1.15, 0.30) {$A_1$};
+			
+			
+			%% ── Pantografo (compatto, a destra del corpo) ──
+			\def\xBuno{1.50}      % poco oltre il bordo destro del corpo
+			\def\yBuno{0.50}
+			\def\xBdue{1.50}
+			\def\yBdue{0.05}      % più ravvicinato in verticale
+			\def\Lbiella{0.35}    % bielle più corte
+			
+			\pgfmathsetmacro{\xMuno}{\xBuno+\Lbiella}
+			\pgfmathsetmacro{\yMuno}{\yBuno-0.18}
+			\pgfmathsetmacro{\xMdue}{\xBdue+\Lbiella}
+			\pgfmathsetmacro{\yMdue}{\yBdue-0.18}
+			\pgfmathsetmacro{\xGuno}{\xMuno+\Lbiella}
+			\pgfmathsetmacro{\yGuno}{\yMuno+0.18}
+			\pgfmathsetmacro{\xGdue}{\xMdue+\Lbiella}
+			\pgfmathsetmacro{\yGdue}{\yMdue+0.18}
+			
+			
+			%% ── Bielle del pantografo ──
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xMuno, \yMuno);
+			\draw[line width=0.8pt] (\xBdue, \yBdue) -- (\xMdue, \yMdue);
+			\draw[line width=0.8pt] (\xMuno, \yMuno) -- (\xMdue, \yMdue);
+			\draw[line width=0.8pt] (\xMuno, \yMuno) -- (\xGuno, \yGuno);
+			\draw[line width=0.8pt] (\xMdue, \yMdue) -- (\xGdue, \yGdue);
+			
+			%% ── Anellini ──
+			\draw[line width=0.8pt, fill=white] (\xBuno, \yBuno) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xBdue, \yBdue) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xMuno, \yMuno) circle (3pt);
+			\draw[line width=0.8pt, fill=white] (\xMdue, \yMdue) circle (3pt);
+			\draw[line width=0.8pt, fill=white] (\xGuno, \yGuno) circle (3pt);
+			\draw[line width=0.8pt, fill=white] (\xGdue, \yGdue) circle (3pt);
+			
+			%% ── Parete del telaio (a destra) ──
+			\draw[line width=0.8pt] 
+			({\xGuno+0.10}, {\yGuno+0.15}) -- ({\xGdue+0.10}, {\yGdue-0.15});
+			\foreach \y in {-0.20,0,0.20,0.40,0.60}
+			\draw[thin] ({\xGdue+0.10}, \y) -- ++(0.13, -0.10);
+			
+			%% ── Annotazione su due righe (centrata, sotto il corpo) ──
+			\node[font=\footnotesize, anchor=north] at (0, -1.10) {cerniera: $C \in A_1$, \quad bipendolo: $C \in r_\infty$};
+			\node[font=\small, anchor=north] 	at (0, -1.45) {$\Rightarrow \quad \nexists\, C$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (0, -2.05) {$(c)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Teorema di intersezione.]{%
+		Il \CRa\ di un vincolo composto come intersezione dei luoghi 
+		del centro dei vincoli componenti: (a) cerniera, (b) glifo, 
+		(c) incastro.}
+	\label{fig:teorema_intersezione}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Statica: somma vettoriale delle reazioni.}
+Le reazioni di un vincolo composto sono la somma delle 
+reazioni dei componenti. Ogni carrello contribuisce con 
+una forza scalare diretta lungo il proprio asse, ogni 
+bipendolo con una coppia: un vincolo a molteplicità $m$ 
+ha quindi esattamente $m$ incognite scalari, in dualità 
+con le $m$ equazioni cinematiche.
+\begin{itemize}[noitemsep]
+	\item \textbf{cerniera}: due carrelli con assi $\ab_1, \ab_2$
+	contribuiscono con le forze scalari $R_1\,\ab_1$ e
+	$R_2\,\ab_2$. La reazione complessiva è la somma vettoriale
+	$\rb(A) = R_1\,\ab_1 + R_2\,\ab_2$. Per $\ab_1, \ab_2$
+	ortogonali si ottiene la decomposizione cartesiana
+	$\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y$ usata in
+	\FIGref{fig:cerniera_esterna};
+	
+	\item \textbf{glifo}: il carrello componente contribuisce
+	con una forza $R(A)\,\ab$ in $A$, il bipendolo con la
+	coppia $\mu(A)$. La reazione complessiva è la sovrapposizione
+	dei due contributi e coincide con quella riportata in
+	\FIGref{fig:glifo_esterno};
+	
+	\item \textbf{incastro}: la cerniera componente contribuisce
+	con la forza vettoriale $\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y$,
+	il bipendolo componente con la coppia $\mu(A)$. Le tre
+	incognite scalari $X(A), Y(A), \mu(A)$ sono in dualità con
+	le tre componenti scalari della cinematica
+	$u(A), v(A), \vartheta$: l'incastro chiude la sequenza dei
+	vincoli del piano, esaurendo i tre gradi di libertà del
+	corpo rigido.
+\end{itemize}
+
+Per il glifo, in particolare, la decomposizione in carrello e 
+bipendolo ammette una lettura più ricca, basata sulla 
+decomposizione modale delle reazioni e sulla loro dualità con 
+le componenti del cedimento vincolare; questo sviluppo è 
+trattato nel \PARref{sec:dualita_composti}, dopo
+l'introduzione del cedimento.
+
+\paragraph{Svincoli.}
+La decomposizione rende immediato il significato degli 
+\emph{svincoli}: introdurre uno svincolo equivale a rimuovere 
+uno dei vincoli semplici componenti. Da un incastro, la 
+rimozione del bipendolo libera la rotazione e il vincolo si 
+riduce a una cerniera; la rimozione di un carrello da una 
+cerniera lascia libero uno scorrimento e il vincolo si riduce 
+al carrello restante. Lo stesso vale per i vincoli interni e 
+sarà sviluppato sistematicamente per la trave rigida nel \PARref{sec:svincoli_interni}.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Tavola riepilogativa}\label{sec:tavola}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Il filo conduttore comune a tutti i vincoli esaminati è il
+\emph{principio dei lavori virtuali}: la reazione vincolare
+non compie lavoro su alcuno spostamento virtuale compatibile
+con il vincolo. Questo principio stabilisce una corrispondenza
+biunivoca fra le equazioni cinematiche imposte dal vincolo e
+le incognite statiche che esso introduce. Ad ogni componente
+di spostamento vincolata corrisponde una e una sola componente
+reattiva incognita: la forza reattiva $\rb(A)$, applicata nel
+punto $A$, è duale dello spostamento $\ub(A)$ vincolato; la
+coppia reattiva $\mu(A)$, applicata nello stesso punto, è
+duale della rotazione $\vartheta$ vincolata.
+
+Le componenti della forza reattiva si indicano con $X(A)$ e
+$Y(A)$, dove il punto di applicazione è esplicitato fra
+parentesi e le lettere identificano le direzioni $\ab_x$ e
+$\ab_y$ rispettivamente; per i vincoli che esplicano una sola
+componente scalare nella direzione $\ab$ si usa $R(A)$.\nomenclature[L]{$R(A)$}{intensità scalare della reazione vincolare lungo l'asse del vincolo}\nomenclature[L]{$X(A),\ Y(A)$}{componenti cartesiane della reazione vincolare}
+Le coppie attive (assegnate) si indicano con $\mu_a(A)$,
+quelle reattive (incognite) con $\mu_r(A)$.\nomenclature[G]{$\mu_a(A),\ \mu_r(A)$}{coppia attiva (assegnata) e coppia reattiva (incognita)}
+
+\begin{nota}
+	Negli Esempi, per alleggerire la notazione, il punto
+	di applicazione viene scritto come pedice anziché tra
+	parentesi: $X_A$, $Y_A$, $R_A$, $\mu_{A}$ in luogo
+	di $X(A)$, $Y(A)$, $R(A)$, $\mu(A)$. Le due notazioni
+	sono equivalenti.
+\end{nota}
+
+\medskip
+
+\noindent
+La tavola seguente riassume, per ciascun vincolo esterno, le
+equazioni cinematiche, il luogo del centro di rotazione
+assoluto e le reazioni vincolari.
+
+\medskip
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\renewcommand{\arraystretch}{1.8}
+		\small
+		\begin{tabular}{>{\bfseries}lcccc}
+			\toprule
+			Vincolo & Molt.
+			& Eq.\ cinematica
+			& Centro $C$
+			& Reazione\\
+			\midrule
+			Carrello & 1
+			& $\ub(A)\cdot\ab=0$
+			& retta per $A$ in direzione $\ab$
+			& $R(A)\,\ab$\\
+			Bipendolo & 1
+			& $\vartheta=0$
+			& $\infty$
+			& $\mu(A)$\\
+			Cerniera & 2
+			& $\ub(A)=\zerovb$
+			& $C=A$
+			& $X(A)\,\ab_x+Y(A)\,\ab_y$\\
+			Glifo & 2
+			& $\ub(A)\cdot\ab=0,\;\vartheta=0$
+			& $\infty$ in direzione $\ab$
+			& $R(A)\,\ab,\,\,\mu(A)$\\
+			Incastro & 3
+			& $\ub(A)=\zerovb,\;\vartheta=0$
+			& nessuno
+			& $X(A)\,\ab_x+Y(A)\,\ab_y,\,\,\mu(A)$\\
+			\bottomrule
+		\end{tabular}%
+	}
+	\caption[Tavola riepilogativa dei vincoli piani esterni]{%
+		Prestazioni cinematiche e statiche dei vincoli piani
+		esterni: molteplicità, equazioni cinematiche, centro
+		di rotazione assoluto e reazioni vincolari.}
+	\label{tab:vincoli_esterni}
+\end{table}
+
+
+\medskip
+
+\noindent
+\medskip
+
+\noindent
+La tavola analoga per i vincoli \textbf{interni} si ottiene
+sostituendo, per i vincoli puntiformi:
+\begin{itemize}[noitemsep]
+	\item $\ub(A)$ con il salto
+	$\llbracket \ub \rrbracket(A) = \ub_j(A) - \ub_i(A)$;
+	\item $\vartheta$ con il salto
+	$\llbracket \vartheta \rrbracket = \vartheta_j - \vartheta_i$;
+	\item il centro assoluto $C$ con il centro relativo
+	$C_{ij}$;
+	\item le reazioni con coppie di forze e momenti uguali
+	e opposti scambiati fra i due corpi nel punto $A$.
+\end{itemize}
+Per la biella di lunghezza finita, unico vincolo interno
+non puntiforme, l'equazione cinematica
+$\Delta\ub \cdot \ab = 0$ usa l'incremento fra i due punti
+di applicazione $A_i$ e $A_j$ anziché il salto, e le
+reazioni sono coppie di forze uguali e opposte applicate
+in $A_i$ e $A_j$ separatamente.
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Il cedimento vincolare}\label{sec:cedimento}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+\begin{definizione}[Cedimento vincolare]\label{def:cedimento}
+	Si chiama \emph{cedimento vincolare}\index{cedimento!vincolare|textbf}\index{cedimento|seealso{distorsione}} la prescrizione di
+	uno spostamento assegnato --- anziché nullo --- nella
+	direzione vincolata. Il cedimento è una condizione
+	cinematica attiva: come il vincolo perfetto, prescrive
+	una componente di spostamento; a differenza di esso,
+	la prescrive a un valore $\bar{s} \neq 0$\nomenclature[L]{$\bar{s}$}{cedimento: spostamento (o scorrimento relativo) assegnato lungo la direzione vincolata}\nomenclature[G]{$\bar{\vartheta}$}{cedimento rotazionale: rotazione (relativa) assegnata} assegnato
+	dall'esterno.
+\end{definizione}
+
+\begin{oss}
+	Il cedimento vincolare si distingue sia dal vincolo
+	perfetto (spostamento nullo) sia dal carico esterno
+	(forza assegnata). È una prescrizione cinematica, non
+	dinamica: non introduce alcuna forza nota nel sistema,
+	ma modifica la configurazione ammissibile del corpo.
+	Nella pratica ingegneristica i cedimenti vincolari
+	modellano, ad esempio, gli abbassamenti dei supporti
+	di una trave per effetto del consolidamento del terreno
+	o delle deformazioni elastiche dei dispositivi di
+	appoggio.
+\end{oss}
+
+\paragraph{Generalizzazione delle equazioni cinematiche.}
+Per ciascun vincolo, l'introduzione del cedimento si traduce
+nella sostituzione del valore zero nel membro destro
+dell'equazione cinematica con il valore assegnato $\bar{s}$.
+La struttura delle equazioni rimane invariata:
+
+\medskip
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\small
+	\begin{tabular}{>{\bfseries}lll}
+		\toprule
+		Vincolo
+		& Eq.\ cinematica perfetta
+		& Eq.\ cinematica con cedimento\\
+		\midrule
+		Carrello
+		& $\ub(A)\cdot\ab = 0$
+		& $\ub(A)\cdot\ab = \bar{s}(A)$\\
+		Bipendolo
+		& $\vartheta = 0$
+		& $\vartheta = \bar{\vartheta}(A)$\\
+		Cerniera
+		& $\ub(A) = \zerovb$
+		& $\ub(A) = \bar{u}(A)\,\ab_x
+		+ \bar{v}(A)\,\ab_y$\\
+		Glifo
+		& $\ub(A)\cdot\ab = 0,\;\vartheta=0$
+		& $\ub(A)\cdot\ab = \bar{s}(A),\;
+		\vartheta = \bar{\vartheta}(A)$\\
+		Incastro
+		& $\ub(A)=\zerovb,\;\vartheta=0$
+		& $\ub(A) = \bar{u}(A)\,\ab_x
+		+ \bar{v}(A)\,\ab_y,\;
+		\vartheta = \bar{\vartheta}(A)$\\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\smallskip
+
+\paragraph{Effetto sul centro di rotazione.}
+Il cedimento modifica la posizione del centro di rotazione
+ma ne preserva la struttura geometrica. Riprendiamo il caso
+del carrello: con cedimento $\bar{s}(A)$, la condizione
+$\ub(A)\cdot\ab = \bar{s}(A)$ sostituita
+nella~\eqref{eq:centro_campo} dà
+\begin{equation}
+	\bigl(\bm{\upvartheta}\times\overrightarrow{CA}\bigr)
+	\cdot\ab = \bar{s}(A),
+\end{equation}
+da cui, con la proprietà ciclica del prodotto misto:
+\begin{equation}
+	\vartheta\,\bigl(\overrightarrow{CA}\times\ab\bigr)
+	\cdot\ab_z = \bar{s}(A).
+\end{equation}
+Il centro non giace più sulla retta per $A$ in direzione
+$\ab$, ma su una retta parallela, traslata di una quantità
+$\bar{s}(A)/\vartheta$ nella direzione perpendicolare
+$\ab^{\perp}$:
+\begin{equation}\label{eq:CR_carrello_cedimento}
+	C = A + \frac{\bar{s}(A)}{\vartheta}\,\ab^{\perp}
+	+ \lambda\,\ab,
+	\qquad \lambda \in \mathbb{R}.
+\end{equation}
+Per $\bar{s}(A) = 0$ si ritrova il
+risultato~\eqref{eq:CR_carrello}. Lo stesso ragionamento
+si applica agli altri vincoli: il cedimento trasla il luogo
+del centro senza modificarne la direzione.
+
+
+\paragraph{Effetto sulla reazione vincolare.}
+La struttura della reazione vincolare non è modificata dal
+cedimento. Il principio dei lavori virtuali impone che la
+reazione compia lavoro nullo sugli \emph{spostamenti
+	virtuali} compatibili con il vincolo, non sullo spostamento
+assoluto: gli spostamenti virtuali sono variazioni
+infinitesime attorno alla configurazione corrente, e la
+presenza del cedimento non ne modifica la struttura. Quindi:
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\small
+	\begin{tabular}{>{\bfseries}ll}
+		\toprule
+		Vincolo & Reazione (con o senza cedimento)\\
+		\midrule
+		Carrello  & $\rb(A) = R(A)\,\ab$\\
+		Bipendolo & $\rb = \zerovb,\quad \mu$\\
+		Cerniera  & $\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y$\\
+		Glifo     & $\rb(A) = R(A)\,\ab,\quad \mu$\\
+		Incastro  & $\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y,
+		\quad \mu$\\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+\begin{oss}
+	Il fatto che la reazione non dipenda dal cedimento è
+	un risultato non banale: il cedimento modifica la
+	\emph{cinematica} del sistema (posizione del centro
+	di rotazione, spostamenti dei punti) ma non la
+	\emph{struttura delle incognite statiche}. Le
+	componenti della reazione rimangono le stesse
+	grandezze incognite del caso perfetto; sono i loro
+	valori numerici a cambiare, non la loro natura.
+	Questo principio è alla base del metodo degli
+	spostamenti imposti nell'analisi strutturale.
+\end{oss}
+
+\paragraph{Cedimento nei vincoli interni.}
+Per i vincoli interni il cedimento ha un significato
+analogo: anziché prescrivere uno spostamento relativo
+nullo, si prescrive uno spostamento relativo assegnato.
+Le equazioni cinematiche si generalizzano sostituendo
+le grandezze cinematiche relative --- il salto
+$\llbracket\ub\rrbracket(A)$ e $\llbracket\vartheta\rrbracket$
+per i vincoli puntiformi, l'incremento $\Delta\ub$ per la
+biella di lunghezza finita --- con i valori assegnati
+corrispondenti:
+
+\medskip
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\small
+	\begin{tabular}{>{\bfseries}lll}
+		\toprule
+		Vincolo
+		& Eq.\ interna perfetta
+		& Eq.\ interna con cedimento\\
+		\midrule
+		Biella
+		& $\Delta\ub\cdot\ab = 0$
+		& $\Delta\ub\cdot\ab = \bar{s}$\\
+		Carrello
+		& $\llbracket\ub\rrbracket(A)\cdot\ab = 0$
+		& $\llbracket\ub\rrbracket(A)\cdot\ab = \bar{s}(A)$\\
+		Bipendolo
+		& $\llbracket\vartheta\rrbracket = 0$
+		& $\llbracket\vartheta\rrbracket = \bar{\vartheta}(A)$\\
+		Cerniera
+		& $\llbracket\ub\rrbracket(A) = \zerovb$
+		& $\llbracket\ub\rrbracket(A) = \bar{u}(A)\,\ab_x
+		+ \bar{v}(A)\,\ab_y$\\
+		Glifo
+		& $\llbracket\ub\rrbracket(A)\cdot\ab = 0,\;
+		\llbracket\vartheta\rrbracket = 0$
+		& $\llbracket\ub\rrbracket(A)\cdot\ab = \bar{s}(A),\;
+		\llbracket\vartheta\rrbracket = \bar{\vartheta}(A)$\\
+		Incastro
+		& $\llbracket\ub\rrbracket(A) = \zerovb,\;
+		\llbracket\vartheta\rrbracket = 0$
+		& $\llbracket\ub\rrbracket(A) = \bar{u}(A)\,\ab_x
+		+ \bar{v}(A)\,\ab_y,\;
+		\llbracket\vartheta\rrbracket = \bar{\vartheta}(A)$\\
+		\bottomrule
+	\end{tabular}
+\end{center}
+
+
+\medskip
+
+\noindent
+Il cedimento relativo $\bar{s}(A)$ rappresenta lo
+scorrimento imposto fra i due corpi nella direzione
+vincolata; $\bar{\vartheta}$ rappresenta la rotazione
+relativa imposta. Come nel caso esterno, la struttura
+delle reazioni scambiate fra i due corpi non è
+modificata dalla presenza del cedimento: cambiano i
+valori delle incognite, non la loro natura.
+
+\begin{oss}
+	Un cedimento relativo in una cerniera interna
+	($\llbracket\ub\rrbracket(A) \neq \zerovb$) modella, ad esempio,
+	il gioco meccanico in un giunto: i due corpi non
+	sono più esattamente coincidenti nel punto $A$, ma
+	sono spostati l'uno rispetto all'altro di una
+	quantità nota e assegnata. Analogamente, un cedimento
+	relativo in un bipendolo interno
+	($\llbracket\vartheta\rrbracket \neq 0$) modella una rotazione
+	relativa imposta fra i due corpi, come quella
+	prodotta da un attuatore rotazionale interposto nel
+	giunto.
+\end{oss}
+% %
+
+\paragraph{Distorsioni del vincolo di rigidità.}
+Il vincolo di rigidità ammette anch'esso condizioni
+non nulle, dette \emph{distorsioni} (o distorsioni di
+Volterra): una o più delle tre condizioni cinematiche
+di rigidità --- uguaglianza delle due componenti di
+spostamento e della rotazione --- sono sostituite da
+valori assegnati non nulli. Come per i cedimenti dei
+vincoli di collegamento, la struttura delle reazioni
+interne resta invariata: cambiano i valori delle
+incognite, non la loro natura.
+La trattazione esplicita delle distorsioni --- con la
+loro espressione nel riferimento intrinseco al corpo e
+la distinzione fra distorsioni longitudinali, trasversali
+e rotazionali --- è sviluppata nei capitoli dedicati
+alla trave, sia rigida (cfr.~\CAPref{cap:Trave_Rigida}) che deformabile (Vol.~II.).
+
+
+\section{Dualità fra vincoli composti e componenti}
+\label{sec:dualita_composti}
+
+Riprendiamo la decomposizione dei vincoli composti
+introdotta nel \PARref{sec:vincoli_composti}, ora che
+disponiamo del concetto di cedimento. Ai cedimenti dei
+vincoli componenti corrispondono altrettante incognite
+statiche; le componenti del moto rigido residuo sono in
+dualità con le componenti delle reazioni. Il \PLV,
+richiedendo lavoro nullo sui moti compatibili, fornisce
+la verifica diretta della dualità. Per cerniera e incastro
+la verifica è immediata; per il glifo, invece, la
+decomposizione produce una struttura modale (sym/skw) di
+particolare interesse, che è il principale contenuto di
+questa sezione.
+
+\paragraph{Cerniera.}
+Detti $s_1, s_2$ i cedimenti dei due carrelli componenti e
+$R_1, R_2$ le rispettive intensità, il \PLV\ fornisce
+\begin{equation}
+	R_1\,s_1 + R_2\,s_2 = \rb(A) \cdot \ub(A),
+\end{equation}
+con $\rb(A) = R_1\,\ab_1 + R_2\,\ab_2$ e $\ub(A)$ lo
+spostamento di $A$. La dualità è perfetta: per
+$\ab_1, \ab_2$ ortogonali si recupera la decomposizione
+cartesiana $\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y$ duale a
+$\ub(A) = u(A)\,\ab_x + v(A)\,\ab_y$.
+
+\paragraph{Glifo: decomposizione modale sym/skw.}
+Letto come giustapposizione di due carrelli con assi
+paralleli ad $\ab$ a distanza $d$, applicati in punti
+$A_1, A_2$, il glifo trasmette al corpo le forze
+$R_1\,\ab, R_2\,\ab$ duali ai cedimenti $s_1, s_2$.
+
+Le grandezze \emph{naturali} per il vincolo composto non
+sono $R_1, R_2$ né $s_1, s_2$ separatamente, ma le loro
+combinazioni \emph{simmetrica} e \emph{antisimmetrica}:
+\begin{equation}\label{eq:sym_skw_R}
+	R_\text{sym} = \frac{R_1 + R_2}{2},
+	\qquad
+	R_\text{skw} = \frac{R_2 - R_1}{2},
+\end{equation}
+\begin{equation}\label{eq:sym_skw_s}
+	s_\text{sym} = \frac{s_1 + s_2}{2},
+	\qquad
+	\vartheta = \frac{s_2 - s_1}{d}.
+\end{equation}
+Le forze del glifo composto si scrivono in termini di
+queste combinazioni come
+\begin{equation}\label{eq:glifo_R_mu}
+	R(A) = 2\,R_\text{sym},
+	\qquad
+	\mu(A) = d\,R_\text{skw},
+\end{equation}
+dove $R(A)$ è la forza risultante (lungo $\ab$) e $\mu(A)$
+è la coppia di trasporto. Dualmente, $s_\text{sym}$ è la
+traslazione comune dei due punti di applicazione lungo
+$\ab$ ed è la grandezza cinematica vincolata dal carrello
+componente; $\vartheta$ è la rotazione del corpo ed è la
+grandezza vincolata dal bipendolo componente. La
+conservazione del lavoro virtuale si verifica direttamente:
+\begin{equation}\label{eq:lavoro_glifo}
+	R_1\,s_1 + R_2\,s_2
+	= R(A)\,s_\text{sym} + \mu(A)\,\vartheta,
+\end{equation}
+mostrando che $R(A)$ è duale alla traslazione comune
+$s_\text{sym}$ (equazione cinematica del carrello
+componente) e $\mu(A)$ è duale alla rotazione $\vartheta$
+(equazione cinematica del bipendolo componente).
+
+A differenza della cerniera --- la cui decomposizione
+duale produce una forza vettoriale in $A$ --- nel glifo
+essa produce una forza e una coppia. Il motivo è
+geometrico: gli assi dei due componenti sono
+\emph{paralleli} anziché concorrenti, e i due modi
+cinematici indipendenti del vincolo includono una
+rotazione anziché due traslazioni.
+
+\paragraph{Incastro.}
+La cerniera componente contribuisce con la forza
+vettoriale $\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y$, duale
+allo spostamento $\ub(A) = u(A)\,\ab_x + v(A)\,\ab_y$;
+il bipendolo componente con la coppia $\mu(A)$, duale
+alla rotazione $\vartheta$. Il \PLV\ assume la forma
+\begin{equation}\label{eq:lavoro_incastro}
+	\rb(A) \cdot \ub(A) + \mu(A)\,\vartheta
+	= X(A)\,u(A) + Y(A)\,v(A) + \mu(A)\,\vartheta,
+\end{equation}
+che chiude la sequenza dei vincoli del piano: tre
+incognite scalari $X(A), Y(A), \mu(A)$ in dualità con
+le tre componenti cinematiche $u(A), v(A), \vartheta$,
+esaurendo i gradi di libertà del corpo rigido.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Vincoli che collegano più corpi}\label{sec:vincoli_multipli}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Nelle sezioni precedenti i vincoli interni sono stati
+descritti nel caso più semplice: un vincolo che collega
+due corpi $\mathcal{C}_i$ e $\mathcal{C}_j$. In molte
+applicazioni strutturali --- nodi di telaio, archi a tre
+cerniere, sistemi reticolari --- uno stesso vincolo collega
+simultaneamente $k \geq 3$ corpi in un unico punto. In
+questi casi la molteplicità del vincolo non è semplicemente
+quella del vincolo binario, ma va calcolata contando le
+equazioni cinematiche indipendenti che il vincolo impone
+sull'insieme dei corpi collegati.
+
+Il principio generale è il seguente: fissato un corpo di
+riferimento $\mathcal{C}_1$, il vincolo impone che ciascuno
+degli altri $k-1$ corpi soddisfi le stesse condizioni
+cinematiche rispetto a $\mathcal{C}_1$. Ogni condizione
+binaria contribuisce con la propria molteplicità, e la
+molteplicità totale del vincolo multiplo è il prodotto
+della molteplicità binaria per $(k-1)$.
+
+Ci limiteremo qui ai due casi di interesse applicativo
+diretto: la \emph{cerniera multipla} e l'\emph{incastro
+	multiplo}, considerandoli sia come vincoli puramente
+interni, sia come vincoli interni il cui nodo è a sua
+volta collegato al suolo da un ulteriore vincolo esterno.
+
+\subsection{La cerniera multipla}
+\label{sec:cerniera_multipla}
+
+Una \emph{cerniera multipla}\index{cerniera!multipla|textbf} collegante $k$ corpi in un
+unico punto $A$ impone che tutti i corpi abbiano lo stesso
+spostamento in $A$:
+\begin{equation}\label{eq:cerniera_multipla}
+	\ub_2(A) = \ub_1(A), \quad
+	\ub_3(A) = \ub_1(A), \quad
+	\ldots, \quad
+	\ub_k(A) = \ub_1(A).
+\end{equation}
+Ciascuna delle $k-1$ condizioni di uguaglianza fornisce
+2 equazioni scalari indipendenti. La molteplicità totale
+del vincolo interno è quindi:
+\begin{equation}\label{eq:molt_cerniera_multipla}
+	m_\text{int} = 2(k-1).
+\end{equation}
+
+\begin{oss}
+	Per $k=2$ si ritrova la cerniera binaria di molteplicità
+	2. Per $k=3$ la molteplicità è 4: la cerniera tripla
+	non è equivalente a due cerniere binarie applicate
+	separatamente, ma introduce tante equazioni quante ne
+	introdurrebbero due cerniere binarie applicate nello
+	stesso punto.
+\end{oss}
+
+\paragraph{Prestazione statica.}
+Le forze scambiate fra i corpi sono applicate in $A$. Per il
+principio dei lavori virtuali, gli spostamenti virtuali
+compatibili con la cerniera multipla sono le rotazioni
+rigide indipendenti $\vartheta_1, \ldots, \vartheta_k$ di
+ciascun corpo attorno ad $A$. Detta $\rb_i(A)$ la forza che
+il vincolo trasmette al corpo $\mathcal{C}_i$, l'equilibrio
+del nodo si scrive:
+\begin{equation}
+	\sum_{i=1}^{k} \rb_i(A) = \zerovb.
+\end{equation}
+Le $2(k-1)$ incognite statiche indipendenti sono le
+componenti delle forze scambiate fra i corpi, in accordo
+con la molteplicità. La \FIGref{fig:cerniera_tripla}
+illustra le prestazioni cinematica e statica della cerniera
+multipla nel caso $k = 3$.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica della cerniera tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\rA{0.28}   % raggio del pallino della cerniera in A
+			\def\rcorpo{1.10}   % distanza del centro dei corpi da A
+			\def\rrot{0.32}  % raggio degli archi di rotazione
+			
+			
+			% Angoli di disposizione dei tre corpi (in gradi)
+			\def\angCuno{90}       % C_1 in alto
+			\def\angCdue{-30}      % C_2 in basso a destra
+			\def\angCtre{-150}     % C_3 in basso a sinistra
+			
+			% Coordinate dei centri dei corpi
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			%% ── Corpo C_1 (in alto) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.10, 0.40) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			
+			
+			
+			%% ── Corpo C_2 ──
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.20, 0.50) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			%% ── Corpo C_3 ──
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (0, 0) circle (\rA);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ── Equazioni di vincolo (a sinistra del pannello) ──
+			\node[font=\footnotesize, anchor=west] 	at (-3.4, 1.30) {$\ub_2(A) = \ub_1(A)$};
+			\node[font=\footnotesize, anchor=west] 	at (-3.40, 0.80) {$\ub_3(A) = \ub_1(A)$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica della cerniera tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\rA{0.28}
+			\def\rcorpo{1.10}
+			
+			\def\angCuno{90}
+			\def\angCdue{-30}
+			\def\angCtre{-150}
+			
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			%% ── Corpo C_1 (identico ad (a)) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.10, 0.40) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			%% ── Corpo C_2 (identico ad (a)) ──
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.30, 0.40) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			%% ── Corpo C_3 (identico ad (a)) ──
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (0, 0) circle (\rA);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: tre forze r_1, r_2, r_3 uscenti da A
+			%% radialmente verso i rispettivi corpi
+			%% ──────────────────────────────────────────────────
+			
+			\def\Lfreccia{0.50}
+			
+			% Reazione r_1 (verso C_1, in alto)
+			\draw[->, line width=1.4pt] 
+			({\rA*cos(\angCuno)}, {\rA*sin(\angCuno)}) 
+			-- ++({\Lfreccia*cos(\angCuno)}, {\Lfreccia*sin(\angCuno)});
+			\node[font=\small, anchor=west] 
+			at ({(\rA+\Lfreccia)*cos(\angCuno)+0.10}, 
+			{(\rA+\Lfreccia)*sin(\angCuno)}) {$\rb_1$};
+			
+			% Reazione r_2 (verso C_2, in basso a destra)
+			\draw[->, line width=1.4pt] 
+			({\rA*cos(\angCdue)}, {\rA*sin(\angCdue)}) 
+			-- ++({\Lfreccia*cos(\angCdue)}, {\Lfreccia*sin(\angCdue)});
+			\node[font=\small, anchor=west] 
+			at ({(\rA+\Lfreccia)*cos(\angCdue)+0.10}, 
+			{(\rA+\Lfreccia)*sin(\angCdue)-0.05}) {$\rb_2$};
+			
+			% Reazione r_3 (verso C_3, in basso a sinistra)
+			\draw[->, line width=1.4pt] 
+			({\rA*cos(\angCtre)}, {\rA*sin(\angCtre)}) 
+			-- ++({\Lfreccia*cos(\angCtre)}, {\Lfreccia*sin(\angCtre)});
+			\node[font=\small, anchor=east] 
+			at ({(\rA+\Lfreccia)*cos(\angCtre)-0.10}, 
+			{(\rA+\Lfreccia)*sin(\angCtre)-0.05}) {$\rb_3$};
+			
+			%% ── Equazione di equilibrio del nodo (a sinistra) ──
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.5) {$\rb_1 + \rb_2 + \rb_3 = \zerovb$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Cerniera multipla  fra tre corpi]{%
+		Cerniera multipla  fra i corpi $\mathcal{C}_1$,
+		$\mathcal{C}_2$, $\mathcal{C}_3$ nel punto $A$.
+		Prestazione cinematica (a):  le equazioni di vincolo
+		$\ub_2(A) = \ub_1(A)$ e $\ub_3(A) = \ub_1(A)$ impongono
+		l'uguaglianza degli spostamenti dei tre corpi in $A$;
+		le rotazioni dei tre corpi restano libere e non sono
+		rappresentate. Il \CRr\ di ogni coppia di corpi coincide
+		con $A$. Prestazione statica (b): i tre corpi si scambiano in $A$ tre forze
+		$\rb_1$, $\rb_2$, $\rb_3$ di direzione arbitraria,
+		soggette all'equilibrio del nodo $\sum_i \rb_i = \zerovb$;
+		nessuna coppia scambiata. Le incognite indipendenti
+		sono le componenti di $\rb_2$ e $\rb_3$ (per un totale
+		di $2(k-1) = 4$), in accordo con la molteplicità.}
+	\label{fig:cerniera_tripla}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{oss}[Lettura simmetrica delle forze interne]
+	Le equazioni cinematiche \eqref{eq:cerniera_multipla}
+	sono scritte rispetto al corpo $\mathcal{C}_1$, scelto
+	come riferimento, e impongono che ciascuno degli altri
+	$k-1$ corpi abbia in $A$ lo stesso spostamento di
+	$\mathcal{C}_1$. Coerentemente, la lettura delle reazioni
+	è binaria: per ciascun $j = 2, \ldots, k$, la coppia
+	azione-reazione $(\rb_j, -\rb_j)$ rappresenta la forza
+	scambiata in $A$ fra il corpo $\mathcal{C}_j$ e il corpo
+	$\mathcal{C}_1$, con $\rb_j$ agente su $\mathcal{C}_j$ e
+	$-\rb_j$ agente su $\mathcal{C}_1$. Le incognite
+	indipendenti sono le $k-1$ forze $\rb_2, \ldots, \rb_k$,
+	ciascuna con due componenti scalari libere, per un totale
+	di $2(k-1)$ in accordo con la molteplicità.
+	
+	La forza risultante che il corpo $\mathcal{C}_1$ riceve
+	dal vincolo è la somma delle reazioni provenienti dai
+	rimanenti corpi:
+	\begin{equation}\label{eq:cerniera_multipla_r1}
+		\rb_1 = -\sum_{j=2}^{k} \rb_j,
+	\end{equation}
+	che coincide con l'equazione di equilibrio del nodo
+	$\sum_{i=1}^{k} \rb_i = \zerovb$ del paragrafo
+	precedente. La scelta di $\mathcal{C}_1$ come corpo di
+	riferimento è arbitraria: qualsiasi altro corpo può
+	svolgere lo stesso ruolo, con un opportuno
+	riordinamento degli indici e una corrispondente
+	ridefinizione delle coppie azione-reazione.
+\end{oss}
+
+\paragraph{Forza esterna applicata al nodo.}
+Quando una forza esterna $\fb$ --- attiva o reattiva --- è
+applicata direttamente al nodo, l'equilibrio del nodo si
+modifica in
+\begin{equation}\label{eq:eq_nodo_F}
+	\sum_{i=1}^{k} \rb_i(A) = \fb,
+\end{equation}
+e la forza risultante sul corpo $\mathcal{C}_1$ diventa
+\begin{equation}
+	\rb_1 = \fb - \sum_{j=2}^{k} \rb_j(A).
+\end{equation}
+Due i casi di interesse. Se $\fb$ è una forza
+\emph{attiva} nota, essa è un dato del problema e non
+incrementa il numero delle incognite: queste rimangono le
+$2(k-1)$ componenti delle reazioni interne $\rb_2, \ldots,
+\rb_k$, esattamente come nel caso $\fb = \zerovb$. Se
+invece $\fb$ è la \emph{reazione} di un ulteriore vincolo
+esterno applicato al nodo, le sue $m_\text{ext}$
+componenti scalari libere si aggiungono alle incognite
+del problema; questo caso è trattato nel paragrafo
+successivo.
+
+
+
+\paragraph{Cerniera multipla vincolata al suolo.}
+Quando il nodo $A$ è collegato al suolo da un ulteriore
+vincolo esterno, le sue equazioni cinematiche si sommano
+a quelle interne: queste ultime coinvolgono spostamenti
+relativi (i salti $\ub_j - \ub_1$), mentre quelle esterne
+coinvolgono lo spostamento assoluto di $\mathcal{C}_1$ in
+$A$. I due gruppi di equazioni sono quindi indipendenti
+e la molteplicità complessiva è
+\begin{equation}\label{eq:molt_cerniera_multipla_tot}
+	m = 2(k-1) + m_\text{ext},
+\end{equation}
+con $m_\text{ext} \in \{1, 2\}$ a seconda del vincolo
+esterno (rispettivamente carrello o cerniera).
+
+Sul lato statico, la situazione corrisponde al caso del
+paragrafo precedente con $\fb = \rb_\text{ext}$, dove
+$\rb_\text{ext}$ è la reazione che il vincolo esterno
+trasmette al nodo. L'equilibrio del nodo è allora
+\begin{equation}
+	\sum_{i=1}^{k} \rb_i(A) = \rb_\text{ext}(A),
+\end{equation}
+con $\rb_\text{ext}$ a $m_\text{ext}$ componenti scalari
+libere ($R\,\ab$ se carrello, $X\,\ab_x + Y\,\ab_y$ se
+cerniera). A differenza del caso con forza attiva, qui
+$\rb_\text{ext}$ è incognita, e le sue componenti si
+aggiungono alle $2(k-1)$ delle reazioni interne, per un
+totale di $2(k-1) + m_\text{ext}$ incognite indipendenti
+in accordo con la \eqref{eq:molt_cerniera_multipla_tot}.
+
+\subsection{L'incastro multiplo}
+\label{sec:incastro_multiplo}
+
+Un \emph{incastro multiplo}\index{incastro!multiplo|textbf} collegante $k$ corpi impone
+che tutti abbiano lo stesso spostamento e la stessa
+rotazione:
+\begin{align}
+	\ub_2(A) &= \ub_1(A), \quad
+	\ldots, \quad
+	\ub_k(A) = \ub_1(A),\\
+	\vartheta_2 &= \vartheta_1, \quad
+	\ldots, \quad
+	\vartheta_k = \vartheta_1.
+\end{align}
+Ciascuna delle $k-1$ condizioni fornisce 3 equazioni
+scalari indipendenti. La molteplicità totale del vincolo
+interno è:
+\begin{equation}\label{eq:molt_incastro_multiplo}
+	m_\text{int} = 3(k-1).
+\end{equation}
+
+\paragraph{Prestazione statica.}
+Le forze e le coppie scambiate fra i corpi sono applicate
+in $A$. Per il principio dei lavori virtuali, gli spostamenti
+virtuali compatibili con l'incastro multiplo sono le
+traslazioni e rotazioni rigide \emph{comuni} ai $k$ corpi
+(che si comportano in $A$ come un unico corpo): qualunque
+sistema di forze e coppie applicato in $A$ con risultante
+e momento risultante nulli compie lavoro nullo su tali
+spostamenti. Detta $\rb_i(A)$ la forza e $\mu_i(A)$ la
+coppia che il vincolo trasmette al corpo $\mathcal{C}_i$,
+l'equilibrio del nodo si scrive:
+\begin{equation}
+	\sum_{i=1}^{k} \rb_i(A) = \zerovb,
+	\qquad
+	\sum_{i=1}^{k} \mu_i(A) = 0.
+\end{equation}
+Le $3(k-1)$ incognite statiche indipendenti sono le
+componenti delle forze e delle coppie scambiate fra i
+corpi, in accordo con la molteplicità. La
+\FIGref{fig:incastro_triplo} illustra le prestazioni
+cinematica e statica dell'incastro multiplo nel caso
+$k = 3$.
+
+\begin{oss}[Lettura simmetrica delle reazioni interne]
+	Come per la cerniera multipla, le equazioni cinematiche
+	dell'incastro multiplo sono scritte rispetto al corpo
+	$\mathcal{C}_1$, scelto come riferimento, e impongono
+	che ciascuno degli altri $k-1$ corpi abbia in $A$ lo
+	stesso spostamento e la stessa rotazione di
+	$\mathcal{C}_1$. Coerentemente, la lettura delle
+	reazioni è binaria: per ciascun $j = 2, \ldots, k$, la
+	coppia azione-reazione $(\rb_j, -\rb_j)$ rappresenta la
+	forza scambiata fra $\mathcal{C}_j$ e $\mathcal{C}_1$,
+	e $(\mu_j, -\mu_j)$ la coppia scambiata. Le incognite
+	indipendenti sono le $k-1$ forze $\rb_2, \ldots, \rb_k$
+	e le $k-1$ coppie $\mu_2, \ldots, \mu_k$, per un totale
+	di $3(k-1)$ in accordo con la molteplicità.
+	
+	La forza e la coppia risultanti che il corpo
+	$\mathcal{C}_1$ riceve dal vincolo sono le somme delle
+	reazioni provenienti dagli altri corpi:
+	\begin{equation}\label{eq:incastro_multiplo_r1_mu1}
+		\rb_1 = -\sum_{j=2}^{k} \rb_j,
+		\qquad
+		\mu_1 = -\sum_{j=2}^{k} \mu_j,
+	\end{equation}
+	che coincidono con le equazioni di equilibrio del nodo
+	del paragrafo precedente.
+\end{oss}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica dell'incastro tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\Lquadr{0.32}    % semi-lato del quadrato dell'incastro
+			\def\rcorpo{1.10}
+			\def\rrot{0.32}
+			
+			\def\angCuno{90}
+			\def\angCdue{-30}
+			\def\angCtre{-150}
+			
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			%% ── Corpi C_1, C_2, C_3 (identici alla cerniera multipla) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.10, -0.30) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.20, 0.30) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Quadrato grigio dell'incastro in A ──
+			\draw[line width=0.8pt, fill=gray!30] 
+			(-\Lquadr, -\Lquadr) rectangle (\Lquadr, \Lquadr);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ── Archi di rotazione ϑ_1=ϑ_2=ϑ_3 (semicerchi, 180°) ──
+			\draw[->, line width=1pt] 
+			({\xCuno+\rrot}, {\yCuno+0.40}) arc(0:180:\rrot);
+			\node[font=\small] 
+			at ({\xCuno-\rrot+0.3}, {\yCuno+0.40}) {$\vartheta_1$};
+			
+			\draw[->, line width=1pt] 
+			({\xCdue+\rrot}, {\yCdue+0.20}) arc(0:180:\rrot);
+			\node[font=\small] 
+			at ({\xCdue+\rrot-0.30}, {\yCdue+0.20}) {$\vartheta_2$};
+			
+			\draw[->, line width=1pt] 
+			({\xCtre+\rrot}, {\yCtre+0.20}) arc(0:180:\rrot);
+			\node[font=\small] 
+			at ({\xCtre-\rrot+0.30}, {\yCtre+0.20}) {$\vartheta_3$};
+			
+			%% ── Equazioni di vincolo (a sinistra del pannello) ──
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 1.50) {$\ub_2(A) = \ub_1(A)$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 1.00) {$\ub_3(A) = \ub_1(A)$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.50) {$\vartheta_2 = \vartheta_1$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.00) {$\vartheta_3 = \vartheta_1$};
+			
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica dell'incastro tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6cm]
+			
+			\def\Lquadr{0.32}
+			\def\rcorpo{1.10}
+			\def\rmu{0.30}
+			
+			\def\angCuno{90}
+			\def\angCdue{-30}
+			\def\angCtre{-150}
+			
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			
+			
+			%% ── Corpi (identici al pannello (a)) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.0) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.30, 0.40) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Quadrato grigio dell'incastro in A ──
+			\draw[line width=0.8pt, fill=gray!30] 
+			(-\Lquadr, -\Lquadr) rectangle (\Lquadr, \Lquadr);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ── Forze r_1, r_2, r_3 (radiali, dal bordo del quadrato) ──
+			\def\Lfreccia{0.50}
+			
+			% Reazione r_1
+			\draw[->, line width=1.4pt] 
+			({\Lquadr*cos(\angCuno)}, {\Lquadr*sin(\angCuno)}) 
+			-- ++({\Lfreccia*cos(\angCuno)}, {\Lfreccia*sin(\angCuno)});
+			\node[font=\small, anchor=west] 
+			at ({(\Lquadr+\Lfreccia)*cos(\angCuno)+0.10}, 
+			{(\Lquadr+\Lfreccia)*sin(\angCuno)}) {$\rb_1$};
+			
+			% Reazione r_2
+			\draw[->, line width=1.4pt] 
+			({\Lquadr*cos(\angCdue)}, {\Lquadr*sin(\angCdue)}) 
+			-- ++({\Lfreccia*cos(\angCdue)}, {\Lfreccia*sin(\angCdue)});
+			\node[font=\small, anchor=north] 
+			at ({(\Lquadr+\Lfreccia)*cos(\angCdue)+0.0}, 
+			{(\Lquadr+\Lfreccia)*sin(\angCdue)-0.05}) {$\rb_2$};
+			
+			% Reazione r_3
+			\draw[->, line width=1.4pt] 
+			({\Lquadr*cos(\angCtre)}, {\Lquadr*sin(\angCtre)}) 
+			-- ++({\Lfreccia*cos(\angCtre)}, {\Lfreccia*sin(\angCtre)});
+			\node[font=\small, anchor=west] 
+			at ({(\Lquadr+\Lfreccia)*cos(\angCtre)-0.10}, 
+			{(\Lquadr+\Lfreccia)*sin(\angCtre)-0.15}) {$\rb_3$};
+			
+			%% ── Coppie μ_1, μ_2, μ_3 (semicerchi dentro ai corpi) ──
+			% Coppia in C_1 (in alto, dentro al corpo, sotto la label)
+			
+			% Coppia μ_1
+			\draw[->, line width=1.4pt] 
+			({\xCuno+\rmu}, {\yCuno+0.40}) arc(0:180:\rmu);
+			\node[font=\small] 
+			at ({\xCuno-\rmu+0.30}, {\yCuno+0.40}) {$\mu_1$};
+			
+			% Coppia μ_2
+			\draw[->, line width=1.4pt] 
+			({\xCdue+\rmu}, {\yCdue+0.20}) arc(0:180:\rmu);
+			\node[font=\small] 
+			at ({\xCdue+\rmu-0.30}, {\yCdue+0.20}) {$\mu_2$};
+			
+			% Coppia μ_3
+			\draw[->, line width=1.4pt] 
+			({\xCtre+\rmu}, {\yCtre+0.20}) arc(0:180:\rmu);
+			\node[font=\small] 
+			at ({\xCtre-\rmu+0.30}, {\yCtre+0.20}) {$\mu_3$};
+			
+			
+			
+			%% ── Equazioni di equilibrio del nodo (a sinistra) ──
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.80) {$\sum_i \rb_i = \zerovb$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.30) {$\sum_i \mu_i = 0$};
+			
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Incastro multiplo fra tre corpi]{%
+		Incastro multiplo fra i corpi $\mathcal{C}_1$, $\mathcal{C}_2$,
+		$\mathcal{C}_3$ nel punto $A$. Prestazione cinematica (a):
+		le equazioni di vincolo $\ub_2(A) = \ub_1(A)$,
+		$\ub_3(A) = \ub_1(A)$, $\vartheta_2 = \vartheta_1$,
+		$\vartheta_3 = \vartheta_1$ impongono l'uguaglianza degli
+		spostamenti e delle rotazioni dei tre corpi in $A$; i tre
+		corpi si comportano come un unico corpo rigido nel nodo.
+		Prestazione statica (b): i tre corpi si scambiano in $A$
+		forze $\rb_1, \rb_2, \rb_3$ e coppie $\mu_1, \mu_2, \mu_3$
+		di direzione e verso arbitrari, soggette all'equilibrio
+		del nodo $\sum_i \rb_i = \zerovb$ e $\sum_i \mu_i = 0$.
+		Le incognite indipendenti sono le componenti delle
+		coppie e delle forze relative a $\mathcal{C}_2$ e
+		$\mathcal{C}_3$ (per un totale di $3(k-1) = 6$), in
+		accordo con la molteplicità.}
+	\label{fig:incastro_triplo}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\paragraph{Forza e coppia esterne applicate al nodo.}
+Quando una forza esterna $\fb$ e/o una coppia esterna $\mu$
+--- attive o reattive --- sono applicate direttamente al
+nodo, l'equilibrio del nodo si modifica in
+\begin{equation}\label{eq:eq_nodo_FC}
+	\sum_{i=1}^{k} \rb_i(A) = \fb,
+	\qquad
+	\sum_{i=1}^{k} \mu_i(A) = \mu,
+\end{equation}
+e la forza e la coppia risultanti sul corpo
+$\mathcal{C}_1$ diventano
+\begin{equation}
+	\rb_1 = \fb - \sum_{j=2}^{k} \rb_j(A),
+	\qquad
+	\mu_1 = \mu - \sum_{j=2}^{k} \mu_j(A).
+\end{equation}
+Se $\fb$ e $\mu$ sono \emph{attive} note, esse sono dati del
+problema e non incrementano il numero delle incognite,
+che rimangono $3(k-1)$. Se invece sono le \emph{reazioni}
+di un ulteriore vincolo esterno applicato al nodo, le
+loro componenti scalari libere si aggiungono alle
+incognite del problema; questo caso è trattato nel
+paragrafo successivo.
+
+\paragraph{Incastro multiplo vincolato al suolo.}
+Quando il nodo $A$ è collegato al suolo da un ulteriore
+vincolo esterno, le sue equazioni cinematiche si sommano
+a quelle interne, in modo del tutto analogo al caso della
+cerniera multipla. La molteplicità complessiva è
+\begin{equation}\label{eq:molt_incastro_multiplo_tot}
+	m = 3(k-1) + m_\text{ext},
+\end{equation}
+con $m_\text{ext} \in \{1, 2, 3\}$ a seconda che il nodo
+sia vincolato al suolo da un carrello, una cerniera o un
+incastro esterno.
+
+Sul lato statico, la situazione corrisponde al caso del
+paragrafo precedente con $\fb = \rb_\text{ext}$ e
+$C = \mu_\text{ext}$, dove $\rb_\text{ext}$ e
+$\mu_\text{ext}$ sono la forza e la coppia trasmesse dal
+vincolo esterno al nodo. L'equilibrio del nodo è allora
+\begin{equation}
+	\sum_{i=1}^{k} \rb_i(A) = \rb_\text{ext}(A),
+	\qquad
+	\sum_{i=1}^{k} \mu_i(A) = \mu_\text{ext}(A),
+\end{equation}
+con complessivamente $m_\text{ext}$ componenti scalari
+libere ($R\,\ab$ per il carrello, $X\,\ab_x + Y\,\ab_y$
+per la cerniera, $X\,\ab_x + Y\,\ab_y$ e $\mu$ per
+l'incastro esterno). A differenza del caso con forza
+attiva, qui $\rb_\text{ext}$ e $\mu_\text{ext}$ sono
+incognite, e le loro componenti si aggiungono alle
+$3(k-1)$ delle reazioni interne, per un totale di
+$3(k-1) + m_\text{ext}$ incognite indipendenti in accordo
+con la \eqref{eq:molt_incastro_multiplo_tot}.
+
+
+\medskip
+
+\noindent
+La tavola seguente riassume le molteplicità dei vincoli
+multipli in funzione del numero $k$ di corpi collegati.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\renewcommand{\arraystretch}{1.8}
+		\small
+		\begin{tabular}{>{\bfseries}lccc}
+			\toprule
+			Vincolo & Vincolo esterno
+			& Molteplicità
+			& Reazione scambiata\\
+			\midrule
+			Cerniera multipla & assente
+			& $2(k-1)$
+			& $k-1$ forze indipendenti\\
+			Cerniera multipla & carrello
+			& $2(k-1) + 1$
+			& $k-1$ forze interne $+$ $R\,\ab$ esterna\\
+			Cerniera multipla & cerniera
+			& $2(k-1) + 2$
+			& $k-1$ forze interne $+$ forza esterna\\
+			\midrule
+			Incastro multiplo & assente
+			& $3(k-1)$
+			& $k-1$ forze e coppie indipendenti\\
+			Incastro multiplo & carrello
+			& $3(k-1) + 1$
+			& precedenti $+$ $R\,\ab$ esterna\\
+			Incastro multiplo & cerniera
+			& $3(k-1) + 2$
+			& precedenti $+$ forza esterna\\
+			Incastro multiplo & incastro
+			& $3(k-1) + 3$
+			& precedenti $+$ forza e coppia esterne\\
+			\bottomrule
+		\end{tabular}%
+	}
+	\caption[Molteplicità dei vincoli multipli]{%
+		Molteplicità dei vincoli che collegano $k$ corpi
+		simultaneamente in un punto $A$, con eventuale vincolo
+		esterno che collega il nodo al suolo.}
+	\label{tab:vincoli_multipli}
+\end{table}
+
+\begin{oss}
+	L'equazione $m = m_\text{int} + m_\text{ext}$ ha una
+	lettura statica meno immediata di quella cinematica.
+	Sul lato cinematico la somma è trasparente: le
+	equazioni interne riguardano i salti
+	$\ub_j - \ub_1$ e $\vartheta_j - \vartheta_1$, quelle
+	esterne lo spostamento assoluto e la rotazione del
+	nodo, e i due gruppi sono manifestamente indipendenti.
+	Sul lato statico, invece, l'aggiunta del vincolo
+	esterno non aggiunge semplicemente $m_\text{ext}$
+	incognite: ne aggiunge $m_\text{ext}$ \emph{e
+		contemporaneamente} libera altrettante equazioni di
+	equilibrio del nodo. In assenza di vincolo esterno,
+	l'equilibrio $\sum_i \rb_i = \zerovb$ riduce le $2k$
+	componenti delle forze interne a $2(k-1)$ indipendenti;
+	in presenza, $\sum_i \rb_i + \rb_\text{ext} = \zerovb$
+	è soddisfatto identicamente nelle $m_\text{ext}$
+	componenti libere di $\rb_\text{ext}$ e impone solo le
+	rimanenti $2 - m_\text{ext}$ relazioni sulle incognite
+	interne. Il conteggio finale, $2(k-1) + m_\text{ext}$,
+	è lo stesso che si otterrebbe per somma diretta, ma il
+	bilancio è diverso: il vincolo esterno non si limita ad
+	aggiungere incognite, libera quelle interne dall'obbligo
+	di equilibrarsi da sole.
+\end{oss}
+
+\begin{oss}
+	I risultati di questa sezione costituiscono la base
+	per la formulazione del problema cinematico e statico
+	di sistemi di corpi rigidi, che sarà affrontata nel
+	\CAPref{cap:problemi_cin_stat_SCR}. Il dato fondamentale
+	che si trasferisce è la \emph{molteplicità} di ciascun
+	vincolo: essa conta simultaneamente il numero di
+	equazioni cinematiche indipendenti introdotte dal
+	vincolo e il numero di incognite statiche che esso
+	introduce. La classificazione del sistema --- labile,
+	isostatico o iperstatico --- dipende dal confronto fra
+	il numero totale di gradi di libertà dei corpi e la
+	somma delle molteplicità di tutti i vincoli, interni
+	ed esterni. In questo conteggio i vincoli multipli vanno
+	trattati con la molteplicità corretta ricavata in
+	questa sezione: sostituire una cerniera tripla con due
+	cerniere binarie applicate separatamente, o trascurare
+	l'aggiunta di un vincolo esterno al nodo, conduce a
+	conteggi errati e a classificazioni sbagliate del
+	sistema.
+\end{oss}
+
+\begin{oss}
+	La formulazione adottata in questa sezione --- al netto
+	dell'eventuale vincolo esterno --- esprime le equazioni
+	di vincolo con riferimento al corpo $\mathcal{C}_1$:
+	gli spostamenti degli altri corpi
+	$\mathcal{C}_2, \ldots, \mathcal{C}_k$ sono vincolati
+	a coincidere con quelli di $\mathcal{C}_1$ nel punto
+	(o nella direzione) comune. Questa scelta è conveniente
+	dal punto di vista formale ma nasconde una asimmetria:
+	i cedimenti relativi fra due corpi $\mathcal{C}_i$ e
+	$\mathcal{C}_j$ con $i,j \neq 1$ non possono essere
+	imposti direttamente, ma solo indirettamente attraverso
+	i cedimenti rispetto a $\mathcal{C}_1$. La formulazione
+	più generale richiede di scrivere le equazioni di
+	vincolo per ogni coppia $(\mathcal{C}_i, \mathcal{C}_j)$,
+	verificando che le equazioni risultanti siano
+	indipendenti.
+	
+	La stessa asimmetria si riflette nella descrizione delle
+	reazioni. Nel caso della cerniera multipla pura (senza
+	vincolo esterno), dette $\rb_j$ le forze reattive che il
+	vincolo esercita sui corpi $\mathcal{C}_j$ con $j = 2,
+	\ldots, k$, la forza reattiva sul corpo $\mathcal{C}_1$
+	è determinata dall'equilibrio del nodo:
+	\begin{equation}
+		\rb_1 = -\sum_{j=2}^{k} \rb_j.
+	\end{equation}
+	Le incognite statiche indipendenti sono quindi le $k-1$
+	forze $\rb_2, \ldots, \rb_k$, ciascuna con due
+	componenti scalari libere, per un totale di $2(k-1)$
+	incognite. La forza fra due corpi $\mathcal{C}_i$ e
+	$\mathcal{C}_j$ con $i,j \neq 1$ non è direttamente una
+	delle incognite, ma si ricava per differenza
+	$\rb_i - \rb_j$ una volta note le reazioni rispetto a
+	$\mathcal{C}_1$. In presenza di vincolo esterno
+	l'equilibrio del nodo coinvolge anche $\rb_\text{ext}$,
+	come illustrato nel paragrafo precedente.
+\end{oss}
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Cenno ai vincoli spaziali}\label{sec:spaziali}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+Nel caso spaziale il corpo rigido libero possiede sei gradi
+di libertà: tre componenti di traslazione e tre componenti
+di rotazione. I vincoli posizionali\index{vincolo!spaziale} hanno quindi molteplicità
+$m \in \{1,\ldots,6\}$ e le reazioni corrispondenti sono
+sistemi di forze e coppie in tre dimensioni.
+
+I vincoli piani studiati nelle sezioni precedenti si
+ritrovano come casi particolari di quelli spaziali,
+ottenuti confinando il moto in un piano. La struttura
+concettuale rimane invariata: ad ogni equazione cinematica
+scalare corrisponde una e una sola componente reattiva,
+determinata dal principio dei lavori virtuali.
+
+Vediamo i vincoli spaziali fondamentali.
+
+\paragraph{Piano di scorrimento (molteplicità 1).}\index{piano di scorrimento}\index{piano di scorrimento|seealso{vincolo}}
+Impedisce la traslazione del punto di applicazione $A$
+nella direzione del versore $\ab$, lasciando libere le
+due traslazioni nel piano perpendicolare e le tre
+rotazioni. È l'analogo spaziale del carrello piano.
+La reazione è una forza $R\,\ab$.
+
+\paragraph{Biella (molteplicità 1).}
+Impedisce la traslazione del punto di applicazione $A$
+lungo l'asse dell'asta. La reazione è una forza $R\,\ab$
+diretta lungo l'asse della biella. Coincide con il piano
+di scorrimento nel regime infinitesimo, in analogia con
+l'equivalenza biella-carrello già osservata nel caso
+piano (\FIGref{fig:carrello}).
+
+\paragraph{Bipendolo (molteplicità 1).}
+Impedisce la rotazione del corpo attorno a un asse
+assegnato $\ab$, lasciando libere le tre traslazioni e
+le due rotazioni attorno agli assi perpendicolari. La
+reazione è una coppia $\mu\,\ab$ diretta lungo $\ab$.
+
+\paragraph{Cerniera sferica (molteplicità 3).}\index{cerniera!sferica}
+Fissa la posizione del punto di applicazione $A$
+lasciando libere tutte e tre le rotazioni. È
+l'analogo spaziale della cerniera piana. La reazione
+è una forza arbitraria:
+\begin{equation}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y + Z(A)\,\ab_z.
+\end{equation}
+
+\paragraph{Perno scorrevole (molteplicità 4).}\index{perno scorrevole}\index{perno scorrevole|seealso{vincolo}}
+Impedisce le due traslazioni perpendicolari all'asse
+$\ab$ del perno e le due rotazioni attorno agli assi perpendicolari
+ad $\ab$, lasciando libere la traslazione lungo $\ab$ e
+la rotazione attorno ad $\ab$. Realizza il vincolo
+classico ``albero in un foro cilindrico'' in cui l'albero
+può scorrere lungo l'asse del foro e ruotare attorno ad
+esso. Posto $\ab = \ab_z$, la reazione è una forza nel
+piano perpendicolare ed una coppia nello stesso piano:
+\begin{equation}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y,
+	\qquad
+	\bm{\mu} = \mu_x\,\ab_x + \mu_y\,\ab_y.
+\end{equation}
+
+\paragraph{Glifo (molteplicità 5).}
+Impedisce le due traslazioni perpendicolari all'asse $\ab$
+e tutte e tre le rotazioni, lasciando libera la sola
+traslazione lungo $\ab$. Realizza una \emph{guida
+	prismatica}\index{guida prismatica|see{glifo}}: il corpo scorre lungo l'asse del vincolo
+mantenendo il proprio orientamento. Si ottiene aggiungendo
+al perno scorrevole un terzo bipendolo con asse $\ab$, che
+blocca anche la rotazione attorno ad $\ab$. Posto $\ab =
+\ab_z$, la reazione è una forza nel piano perpendicolare
+ed una coppia arbitraria:
+\begin{equation}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y,
+	\qquad
+	\bm{\mu} = \mu_x\,\ab_x + \mu_y\,\ab_y + \mu_z\,\ab_z.
+\end{equation}
+
+
+\paragraph{Cerniera cilindrica (molteplicità 5).}\index{cerniera!cilindrica}
+Impedisce tutte e tre le traslazioni e le due rotazioni
+attorno agli assi perpendicolari all'asse $\ab$,
+lasciando libera la sola rotazione attorno ad $\ab$. È
+il vincolo del perno scorrevole con l'aggiunta del
+blocco della traslazione lungo $\ab$, ossia un cardine
+in cui l'albero, oltre a non potersi sfilare, ruota
+soltanto attorno al proprio asse. Posto $\ab = \ab_z$,
+la reazione è una forza arbitraria ed una coppia nel
+piano perpendicolare:
+\begin{equation}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y + Z(A)\,\ab_z,
+	\qquad
+	\bm{\mu} = \mu_x\,\ab_x + \mu_y\,\ab_y.
+\end{equation}
+
+\paragraph{Incastro (molteplicità 6).}
+Blocca completamente il corpo: impedisce tutte e tre
+le traslazioni e tutte e tre le rotazioni. Non esiste
+alcun grado di libertà residuo. La reazione è un
+sistema generico di forza e coppia:
+\begin{equation}
+	\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y + Z(A)\,\ab_z,
+	\qquad
+	\bm{\mu} = \mu_x\,\ab_x + \mu_y\,\ab_y +
+	\mu_z\,\ab_z.
+\end{equation}
+
+\medskip
+
+\noindent
+La tavola seguente riassume le prestazioni dei vincoli
+spaziali, come estensione della
+tavola~\ref{tab:vincoli_esterni}.
+
+\begin{table}[H]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\renewcommand{\arraystretch}{1.8}
+		\small
+		\begin{tabular}{>{\bfseries}lccll}
+			\toprule
+			Vincolo & Molt.
+			& GdL res.
+			& Forza reattiva
+			& Coppia reattiva\\
+			\midrule
+			Piano di scorrimento & 1
+			& 5
+			& $R\,\ab$
+			& nessuna\\
+			Biella & 1
+			& 5
+			& $R\,\ab$
+			& nessuna\\
+			Bipendolo & 1
+			& 5
+			& nessuna
+			& $\mu\,\ab$\\
+			Cerniera sferica & 3
+			& 3
+			& $X\,\ab_x+Y\,\ab_y+Z\,\ab_z$
+			& nessuna\\
+			Perno scorrevole & 4
+			& 2
+			& $X\,\ab_x+Y\,\ab_y$
+			& $\mu_x\,\ab_x+\mu_y\,\ab_y$\\
+			Glifo & 5
+			& 1
+			& $X\,\ab_x+Y\,\ab_y$
+			& $\mu_x\,\ab_x+\mu_y\,\ab_y+\mu_z\,\ab_z$\\			
+			Cerniera cilindrica & 5
+			& 1
+			& $X\,\ab_x+Y\,\ab_y+Z\,\ab_z$
+			& $\mu_x\,\ab_x+\mu_y\,\ab_y$\\
+			Incastro & 6
+			& 0
+			& $X\,\ab_x+Y\,\ab_y+Z\,\ab_z$
+			& $\mu_x\,\ab_x+\mu_y\,\ab_y+\mu_z\,\ab_z$\\
+			\bottomrule
+		\end{tabular}%
+	}
+	\caption[Cenno ai vincoli spaziali]{%
+		Vincoli spaziali fondamentali: molteplicità,
+		gradi di libertà residui, forza reattiva e
+		coppia reattiva. L'asse del vincolo è denotato
+		con $\ab = \ab_z$.}
+	\label{tab:vincoli_spaziali}
+\end{table}
+
+\begin{oss}
+	Il piano di scorrimento e la biella hanno la stessa
+	prestazione cinematica e statica nel regime
+	infinitesimo: entrambi impongono
+	$\ub(A)\cdot\ab = 0$ e reagiscono con una forza
+	$R\,\ab$. La differenza è geometrica: nel piano di
+	scorrimento la direzione $\ab$ è fissa nello spazio
+	(normale al piano di scorrimento); nella biella la
+	direzione $\ab$ coincide con l'asse dell'asta e
+	ruota solidalmente con essa per spostamenti finiti.
+	Nel regime infinitesimo, che è quello adottato in
+	questo corso, i due vincoli sono equivalenti e
+	possono essere usati indifferentemente come
+	realizzazioni meccaniche l'uno dell'altro.
+\end{oss}
+
+\begin{oss}[Costruzione per giustapposizione]
+	Anche i vincoli spaziali si possono interpretare come
+	giustapposizioni di vincoli semplici, prendendo come
+	mattoni elementari la \emph{biella} (molteplicità 1,
+	una condizione di traslazione lungo una direzione
+	assegnata) e il \emph{bipendolo} (molteplicità 1,
+	una condizione di rotazione attorno a un asse
+	assegnato). La logica è quella sviluppata nel
+	\PARref{sec:vincoli_composti} per il caso piano: le
+	equazioni cinematiche dei componenti si sommano e
+	la molteplicità totale è la somma delle molteplicità.
+	Per esempio:
+	\begin{itemize}[noitemsep]
+		\item la \textbf{cerniera sferica} (molt.~3) è
+		la giustapposizione di tre bielle in $A$ con
+		direzioni indipendenti, che bloccano le tre
+		componenti di $\ub(A)$ lasciando libere le tre
+		rotazioni;
+		
+		\item il \textbf{perno scorrevole} (molt.~4),
+		con asse $\ab = \ab_z$, è la giustapposizione di
+		due bielle in $A$ di direzioni $\ab_x, \ab_y$
+		(che bloccano le traslazioni perpendicolari ad
+		$\ab$) e di due bipendoli con assi $\ab_x, \ab_y$
+		(che bloccano le rotazioni attorno agli assi
+		perpendicolari ad $\ab$);
+		
+		\item il \textbf{glifo} (molt.~5), con asse $\ab = \ab_z$,
+		si ottiene aggiungendo al perno scorrevole un terzo
+		bipendolo con asse $\ab_z$, che blocca anche la rotazione
+		attorno ad $\ab$;
+		
+		\item la \textbf{cerniera cilindrica} (molt.~5)
+		si ottiene aggiungendo al perno scorrevole una
+		terza biella di direzione $\ab_z$ (che blocca
+		anche la traslazione lungo l'asse), oppure
+		equivalentemente partendo da una cerniera sferica
+		e aggiungendo due bipendoli con assi $\ab_x,
+		\ab_y$;
+		
+		\item l'\textbf{incastro} (molt.~6) è la
+		giustapposizione di una cerniera sferica e di
+		tre bipendoli con assi indipendenti.
+	\end{itemize}
+	
+	\smallskip
+	
+	\noindent
+	Le decomposizioni proposte non sono uniche: ogni bipendolo,
+	che blocca una rotazione del corpo, può essere sostituito
+	da una biella applicata in un punto $B$ distinto, con
+	direzione opportunamente scelta. Per esempio, la cerniera
+	cilindrica di asse $\ab_z$ può essere realizzata
+	equivalentemente come cerniera sferica in $A$ con due
+	bipendoli di assi $\ab_x, \ab_y$, oppure come cerniera
+	sferica in $A$ con due bielle in un secondo punto $B$ sul
+	medesimo asse $\ab_z$, con direzioni $\ab_x$ e $\ab_y$:
+	le bielle bloccano lo spostamento di $B$ nel piano
+	perpendicolare ad $\ab_z$, equivalente al blocco delle
+	rotazioni attorno ad $\ab_x$ e $\ab_y$. La libertà nella
+	scelta della decomposizione riflette il fatto che la stessa
+	prestazione cinematica può essere realizzata da
+	configurazioni meccaniche diverse, ed è fonte di
+	flessibilità nelle applicazioni.
+	
+	I due ``mattoni'' elementari del caso piano --- biella
+	e bipendolo --- sono dunque sufficienti a costruire
+	tutti i vincoli posizionali dello spazio, e la
+	classificazione si estende in modo naturale dalla
+	dimensione due alla dimensione tre.
+\end{oss}
+
+
+
+
+%-------------------------------------------------------------------------------
+\section{Esercizi proposti}
+%-------------------------------------------------------------------------------
+
+\begin{esercizio}[Carrello]
+	\label{ex:C04_carrello}
+	
+	Un corpo rigido piano è vincolato da un carrello con asse $\ab$ applicato nel punto $A$.
+	(a) Scrivere l'equazione di vincolo~\eqref{eq:carrello_cin} e determinare il luogo geometrico dei centri di rotazione compatibili.
+	(b) Scrivere la reazione vincolare $\rb(A)$ e identificare le incognite statiche.
+	(c) Caso con cedimento $\bar{s}(A)$ nella direzione $\ab$, $\ub(A)\cdot\ab = \bar{s}(A)$: determinare il luogo dei centri di rotazione compatibili e confrontarlo con il caso $\bar{s}(A) = 0$.
+	
+	\risultato (a) Sostituendo $\ub(A) = \bm{\upvartheta} \times \overrightarrow{CA}$ in $\ub(A)\cdot\ab = 0$ si ottiene $(\bm{\upvartheta} \times \overrightarrow{CA})\cdot\ab = 0$, ovvero $\overrightarrow{CA}$ parallelo ad $\ab$. Il centro $C$ giace dunque sulla retta per $A$ parallela ad $\ab$. (b) Il PLV richiede $\rb(A)\cdot\ub(A) = 0$ per ogni $\ub(A)$ tale che $\ub(A)\cdot\ab = 0$, da cui $\rb(A) = R(A)\,\ab$, con $R(A) \in \mathbb{R}$ unica incognita scalare. (c) L'equazione $(\bm{\upvartheta} \times \overrightarrow{CA})\cdot\ab = \bar{s}(A)$ fornisce, sviluppando il prodotto misto nel piano, $\vartheta\,\overrightarrow{AC}\cdot\ab^{\perp} = \bar{s}(A)$. Il luogo dei centri compatibili è dunque la retta parallela ad $\ab$ traslata, rispetto al caso senza cedimento, di una distanza $\bar{s}(A)/\vartheta$ in direzione $\ab^{\perp}$. La struttura della reazione --- che dipende dalla sola prestazione cinematica --- non cambia.
+	
+\end{esercizio}
+
+\begin{esercizio}[Cerniera]
+	\label{ex:C04_cerniera}
+	
+	Un corpo rigido piano è vincolato da una cerniera in $A$.
+	(a) Scrivere le equazioni di vincolo~\eqref{eq:cerniera_cin} e determinare il centro di rotazione $C$.
+	(b) Scrivere la reazione $\rb(A)$ e identificare le incognite.
+	(c) Mostrare che la cerniera può essere interpretata come la sovrapposizione di due carrelli ortogonali, verificando che i luoghi dei centri dei due carrelli si intersecano in $A$.
+	
+	\risultato (a) La cerniera impone $\ub(A) = \zerovb$, ossia $u(A) = 0$ e $v(A) = 0$. Il centro di rotazione coincide con il punto fisso, dunque $C \equiv A$. (b) Il PLV non vincola la rotazione (la cerniera consente $\vartheta$ arbitraria), quindi la coppia reattiva è nulla, $\mu = 0$; non vincola lo spostamento di $A$ (ammesso solo $\ub(A) = \zerovb$, su cui ogni reazione compie lavoro nullo), quindi $\rb(A)$ ha entrambe le componenti libere: $\rb(A) = X(A)\,\ab_x + Y(A)\,\ab_y$, con $X(A)$ e $Y(A) \in \mathbb{R}$ incognite scalari. (c) Considerando due carrelli con assi $\ab_x$ e $\ab_y$, entrambi applicati in $A$: il primo ha luogo dei centri sulla retta per $A$ parallela ad $\ab_x$; il secondo, sulla retta per $A$ parallela ad $\ab_y$. L'unico punto comune ai due luoghi è $A$ stesso. Le reazioni dei due carrelli ($R_1\,\ab_x$ e $R_2\,\ab_y$) si sommano nelle due componenti $X(A) = R_1$ e $Y(A) = R_2$ della reazione della cerniera, in piena coerenza con la molteplicità due.
+	
+\end{esercizio}
+
+\begin{esercizio}[Glifo]
+	\label{ex:C04_glifo}
+	
+	Un corpo rigido piano è vincolato da un glifo con asse $\ab$ applicato in $A$.
+	(a) Scrivere le equazioni di vincolo~\eqref{eq:glifo_cin} e descrivere lo spostamento ammesso~\eqref{eq:glifo_moto_ammesso}.
+	(b) Scrivere la forza reattiva $\rb(A)$ e la coppia reattiva $\mu(A)$, motivando perché il glifo introduce due incognite scalari.
+	(c) Verificare che il lavoro della reazione sullo spostamento ammesso è identicamente nullo.
+	(d) Caso con cedimenti assegnati $\ub(A)\cdot\ab = \bar{s}(A)$ e $\vartheta = \bar{\vartheta}$: descrivere lo spostamento totale del corpo e interpretare geometricamente $\bar{s}(A)$.
+	
+	\risultato (a) Equazioni del glifo: $\ub(A)\cdot\ab = 0$ e $\vartheta = 0$. Lo spostamento ammesso è $\ub(P) = \alpha\,\ab^{\perp}$ per ogni $P$ del corpo, con $\alpha \in \mathbb{R}$: traslazione rigida lungo $\ab^{\perp}$. Il centro di rotazione è all'infinito nella direzione $\ab$. (b) Per il PLV: $\rb(A)\cdot(\alpha\,\ab^{\perp}) + \mu(A)\cdot 0 = 0$ per ogni $\alpha$, da cui $\rb(A)\cdot\ab^{\perp} = 0$, ovvero $\rb(A) = R(A)\,\ab$. La coppia $\mu(A)$ non è vincolata dal PLV (essendo $\vartheta = 0$) e resta incognita libera. Le due incognite scalari $R(A)$ e $\mu(A)$ corrispondono ai due movimenti bloccati dal vincolo (traslazione lungo $\ab$ e rotazione), in accordo con la molteplicità due. (c) Il lavoro è $\rb(A)\cdot(\alpha\,\ab^{\perp}) + \mu(A)\cdot 0 = R(A)(\ab\cdot\ab^{\perp})\,\alpha = 0$, per ortogonalità di $\ab$ e $\ab^{\perp}$. (d) Lo spostamento totale del corpo si decompone in: una traslazione $\bar{s}(A)\,\ab$ del punto $A$ lungo l'asse bloccato (cedimento lineare imposto), una traslazione libera $\alpha\,\ab^{\perp}$ ammessa dal vincolo, e una rotazione rigida $\bar{\vartheta}$ attorno al centro di rotazione (ora finito). Il cedimento $\bar{s}(A)$ rappresenta lo scostamento di $A$ in direzione perpendicolare al piano di scorrimento del glifo --- cioè uno spostamento nella direzione che il vincolo, in condizioni ideali, impedirebbe. La struttura delle reazioni $\rb(A) = R(A)\,\ab$ e $\mu(A)$ resta invariata.
+	
+\end{esercizio}
+
+\begin{esercizio}[Biella interna]
+	\label{ex:C04_pendolo_interno}
+	
+	Due corpi $\mathcal{C}_i$ e $\mathcal{C}_j$ sono connessi da una biella interna con punti di applicazione $A_i$ e $A_j$ e versore $\ab \coloneqq \overrightarrow{A_iA_j}/|\overrightarrow{A_iA_j}|$.
+	(a) Scrivere l'equazione di vincolo~\eqref{eq:carrello_int_punt}. Dati i centri assoluti $C_i$ e $C_j$, determinare il centro relativo $C_{ij}$ usando il teorema di allineamento del \CAPref{cap:cinematica_infinitesima}.
+	(b) Scrivere le reazioni scambiate fra i due corpi in $A_i$ e $A_j$.
+	(c) Caso con cedimento $\bar{s}(A)$, ovvero $\Delta\ub(A)\cdot\ab = \bar{s}(A)$ con $\Delta\ub(A) \coloneqq \ub(A_j) - \ub(A_i)$: interpretare fisicamente $\bar{s}(A)$ e determinare il luogo del centro relativo $C_{ij}$.
+	
+	\risultato (a) L'equazione di vincolo della biella interno è $\Delta\ub(A)\cdot\ab = 0$: il vincolo annulla la componente dello spostamento relativo nella direzione della biella. Per il teorema di allineamento, $C_i$, $C_j$ e $C_{ij}$ sono allineati. Per la cinematica della biella --- analoga a quella del carrello esterno --- $C_{ij}$ giace inoltre sulla retta passante per $A_i$ e $A_j$. Pertanto $C_{ij}$ è l'\textit{intersezione fra la retta $C_iC_j$ e la retta della biella} $A_iA_j$. (b) Le reazioni scambiate sono dirette lungo l'asse della biella, uguali in modulo e opposte in verso: $\rb_i(A_i) = -R\,\ab$ su $\mathcal{C}_i$ e $\rb_j(A_j) = +R\,\ab$ su $\mathcal{C}_j$, con $R \in \mathbb{R}$ unica incognita scalare. (c) Il cedimento $\bar{s}(A)$ rappresenta uno scorrimento relativo dei due corpi lungo l'asse della biella: la biella si comporta come se fosse stato allungata (o accorciata) di $\bar{s}(A)$. L'allineamento $C_i, C_j, C_{ij}$ persiste --- è una proprietà geometrica indipendente dal cedimento --- ma $C_{ij}$ non giace più sulla retta $A_iA_j$: si trasla in direzione perpendicolare ad essa di una distanza pari a $\bar{s}(A)/\vartheta_{ij}$, dove $\vartheta_{ij} = \vartheta_j - \vartheta_i$ è la rotazione relativa fra i due corpi.
+	
+\end{esercizio}
+
+\begin{esercizio}[Identificazione del vincolo]
+	\label{ex:C04_identificazione}
+	
+	Sono assegnati gli spostamenti di due punti di un corpo rigido piano:
+	\begin{equation*}
+		\ub(A) = \bar{u}(A)\,\ab_x, \qquad
+		\ub(B) = \bar{v}(B)\,\ab_y.
+	\end{equation*}
+	(a) Ricavare la rotazione $\vartheta$ e lo spostamento $\ub(O)$ di un polo $O$ a piacere dalla formula fondamentale~\eqref{eq:FFCI_piano_vett} del \CAPref{cap:cinematica_infinitesima}.
+	(b) Determinare il centro di rotazione $C$.
+	(c) Identificare una combinazione di vincoli con cedimento compatibile con i dati assegnati.
+	
+	\risultato (a) Dalla formula fondamentale: $\ub(B) - \ub(A) = \bm{\upvartheta} \times \overrightarrow{AB}$. In componenti, con $\overrightarrow{AB} = (x_B - x_A,\,y_B - y_A)^\top$: la prima componente fornisce $-\bar{u}(A) = -\vartheta(y_B - y_A)$, da cui $\vartheta = \bar{u}(A)/(y_B - y_A)$; la seconda componente fornisce $\bar{v}(B) = \vartheta(x_B - x_A)$, da cui $\vartheta = \bar{v}(B)/(x_B - x_A)$. La compatibilità richiede $\bar{u}(A)(x_B - x_A) = \bar{v}(B)(y_B - y_A)$: se vale, $\vartheta$ è determinata; altrimenti i dati non sono compatibili con un moto rigido. Scegliendo $O = A$ come polo: $\ub(O) = \ub(A) = \bar{u}(A)\,\ab_x$. (b) Centro di rotazione: $\overrightarrow{AC} = (0,\,\bar{u}(A)/\vartheta)^\top = (0,\,y_B - y_A)^\top$, dunque $C = (x_A,\,y_B)$. Geometricamente, $C$ è il punto di coordinate $(x_A,\,y_B)$, ovvero l'intersezione della verticale per $A$ con l'orizzontale per $B$. (c) Una combinazione naturale: \textit{carrello in $A$ con asse $\ab_y$ e cedimento $\bar{u}(A)$}, e \textit{carrello in $B$ con asse $\ab_x$ e cedimento $\bar{v}(B)$}. Il primo carrello consente lo spostamento di $A$ in direzione $\ab_x$ (consistente con $\ub(A) = \bar{u}(A)\,\ab_x$); il secondo, lo spostamento di $B$ in direzione $\ab_y$ (consistente con $\ub(B) = \bar{v}(B)\,\ab_y$). I due carrelli formano un sistema isostatico: due equazioni cinematiche per tre gradi di libertà del corpo, con un'unica configurazione cinematica ammessa.
+	
+\end{esercizio}
+
+

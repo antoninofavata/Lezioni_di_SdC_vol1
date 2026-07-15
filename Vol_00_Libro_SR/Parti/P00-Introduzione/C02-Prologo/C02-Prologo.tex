@@ -1,0 +1,155 @@
+%----------------------------------------------------------------------------------------------------------------------------
+\chapter*{Prologo: sull'arte di risolvere problemi}
+\addcontentsline{toc}{chapter}{Prologo: sull'arte di risolvere problemi}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Capire la teoria non basta. È una condizione necessaria, non sufficiente. Chiunque abbia insegnato una materia tecnica per qualche anno ha incontrato la stessa figura: lo studente che segue le lezioni con attenzione, che legge il testo con cura, che sa rispondere alle domande concettuali --- e poi si blocca davanti a un esercizio. Il blocco non è dovuto a ignoranza della teoria: è dovuto all'assenza di metodo. La teoria è stata acquisita come sapere dichiarativo --- ``so \textit{cosa} è il nucleo di un operatore'' --- ma non come sapere procedurale --- ``so \textit{come} usarlo per classificare un sistema strutturale''.
+
+Questo Prologo non è un'appendice metodologica opzionale. È la chiave per usare l'opera nel modo giusto.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section*{Perché gli esercizi}
+%----------------------------------------------------------------------------------------------------------------------------
+
+La matematica e la meccanica si capiscono facendole. Non nel senso banale che la pratica rende perfetti, ma in un senso più profondo: i concetti tecnico-scientifici hanno una stratificazione che la sola lettura non riesce a portare alla superficie. Leggere la definizione di rango di una matrice e capire perché il rango di una matrice di compatibilità cinematica determini la classificazione di un sistema strutturale sono due esperienze cognitive distinte. La seconda richiede di aver \textit{usato} il concetto, di averlo applicato a casi concreti, di aver sbagliato e corretto l'errore, di aver riconosciuto lo stesso meccanismo in contesti diversi.
+
+Gli esercizi servono a questo: non a verificare la conoscenza della teoria, ma a costruirla nel suo strato più profondo. Un problema risolto correttamente, con metodo e con tutti i controlli, vale più di tre pagine di testo rilette.
+
+L'opera è concepita in modo da rendere possibile questo tipo di apprendimento. Ogni capitolo introduce concetti attraverso le strutture logiche che li organizzano --- la dualità, i quattro casi dell'algebra lineare, il principio dei lavori virtuali --- e propone esercizi che ne richiedono l'applicazione in forme progressivamente più complesse. Ma l'efficacia di questo percorso dipende da come si affrontano quegli esercizi. Un esercizio risolto meccanicamente, per tentativi, senza comprendere perché ciascun passaggio è necessario, è un'occasione perduta.
+
+Le pagine che seguono propongono un metodo. Non è l'unico metodo possibile, e non è un algoritmo da seguire ciecamente: è una struttura logica che, interiorizzata, diventa un abito mentale. L'obiettivo non è applicare le sei fasi come un protocollo, ma acquisire il tipo di pensiero che esse rappresentano.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section*{Un metodo in sei fasi}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Qualunque problema della meccanica delle strutture --- un sistema lineare, un problema di classificazione cinematica, l'analisi di un telaio iperstatico --- ha la stessa struttura logica. Mentre le tre fasi dell'analisi strutturale presentate nell'Introduzione descrivono il workflow macroscopico davanti a una struttura reale, le sei fasi che seguono operano a livello microscopico: descrivono come affrontare il singolo problema, dall'enunciato alla verifica del risultato.
+
+
+\subsection*{Fase 1 --- Lettura e comprensione}
+
+Prima di scrivere qualsiasi formula, occorre leggere il testo del problema con attenzione. Le domande da porsi sono: \textit{di cosa parla il problema?} \textit{Cosa si chiede esattamente?} \textit{Quali sono le ipotesi, esplicite o implicite?}
+
+Questa fase sembra ovvia ma è spesso trascurata. Molti errori negli esercizi non nascono da insufficiente conoscenza della teoria: nascono da una lettura frettolosa che porta a rispondere a una domanda diversa da quella posta, a trascurare un'ipotesi, a non accorgersi che il problema ha una struttura particolare (una simmetria, un caso limite, una degenerazione) che semplifica la soluzione o ne modifica il metodo.
+
+La lettura deve essere lenta, critica, orientata a costruire un'immagine mentale precisa della situazione fisica o matematica descritta.
+
+
+\subsection*{Fase 2 --- Inventario dei dati}
+
+Una volta compreso il problema, si elencano sistematicamente le grandezze note: i valori assegnati, le condizioni al contorno, le ipotesi strutturali. Ogni dato va accompagnato dalla sua unità di misura e, ove rilevante, dal suo segno o dalla sua posizione.
+
+Questo inventario non è un adempimento burocratico: è il primo atto di traduzione dal linguaggio del testo al linguaggio della matematica. Spesso, nel compierlo, ci si accorge di dati impliciti che non compaiono esplicitamente nel testo ma sono necessari alla soluzione --- o, al contrario, di informazioni che sembrano dati ma sono in realtà conseguenze di altri.
+
+
+\subsection*{Fase 3 --- Inventario delle incognite}
+
+Si elencano le grandezze da determinare. Cruciale è il \textit{conteggio}: quante sono? Quante equazioni indipendenti sono disponibili? Il confronto fra il numero di equazioni e il numero di incognite non dà ancora la soluzione, ma fornisce la prima informazione qualitativa sul tipo di problema --- isodeterminato, sottodeterminato, sovradeterminato, degenere --- e orienta la scelta della strategia.
+
+Nel contesto dell'opera, questo conteggio è il primo passo della classificazione cinematica e statica: il numero di gradi di libertà, il numero di reazioni vincolari, il rango degli operatori cinematico e di equilibrio sono tutte manifestazioni di questa stessa struttura.
+
+\begin{oss}
+	Il conteggio equazioni-incognite è condizione necessaria ma non sufficiente per determinare se un problema ha soluzione unica. Un sistema di tre equazioni in tre incognite può essere degenere se le equazioni non sono indipendenti. La verifica del rango --- concetto sviluppato nel Capitolo~\ref{app:algebra_eqlineari} --- è il passo successivo indispensabile.
+\end{oss}
+
+
+\subsection*{Fase 4 --- Costruzione delle relazioni}
+
+Si scrivono le equazioni che legano dati e incognite. Nel contesto della meccanica strutturale, queste equazioni provengono dai tre pilastri concettuali introdotti nell'Introduzione: le \textit{equazioni di congruenza} (cinematica), le \textit{equazioni di equilibrio} (statica) e il \textit{legame costitutivo} (proprietà del materiale). La distinzione è essenziale: confondere la natura di un'equazione porta a errori concettuali, non solo numerici.
+
+Le equazioni vanno scritte in forma esplicita, verificandone la coerenza dimensionale e il numero. Se il sistema è lineare, conviene scriverlo immediatamente in forma matriciale: $\bm{A}\bm{x} = \bm{b}$. La struttura a blocchi della matrice spesso rivela, già a questo stadio, proprietà qualitative della soluzione.
+
+
+\subsection*{Fase 5 --- Scelta della strategia risolutiva}
+
+Con le equazioni in mano, si sceglie il metodo di soluzione. Questa è la fase che richiede il maggior giudizio: non esiste una regola unica, e due approcci diversi possono essere entrambi corretti.
+
+Alcuni criteri orientativi:
+
+\begin{enumerate}[label=(\alph*)]
+	\item \textit{sfruttare la struttura del problema}: simmetrie, disaccoppiamenti, casi particolari possono ridurre drasticamente il numero di equazioni da risolvere;
+	\item \textit{preferire la via più controllabile}: un metodo che produce risultati intermedi verificabili è preferibile a uno che dà il risultato finale in un solo passaggio opaco;
+	\item \textit{considerare la doppia via}: se il problema si presta a essere risolto per due strade indipendenti, vale la pena percorrerle entrambe --- non per duplicare il lavoro, ma per ottenere una verifica robusta (si veda la sezione successiva).
+\end{enumerate}
+
+Nel corso dell'opera, la scelta della strategia si traduce tipicamente nella scelta fra l'\textit{approccio cinematico} e l'\textit{approccio statico}, o fra il \textit{metodo delle forze} e il \textit{metodo degli spostamenti}. Queste non sono tecniche alternative intercambiabili: sono punti di vista duali sullo stesso problema, e la dualità fra i due è uno dei temi portanti dell'intera trattazione.
+
+\begin{oss}
+	La scelta della strategia non è un passo meccanico: è il momento in cui si esercita il giudizio ingegneristico. Due studenti che impostano lo stesso problema con lo stesso inventario di dati e incognite possono scegliere strade diverse, entrambe corrette. La differenza sta nella consapevolezza della scelta: sapere \textit{perché} si è scelta una via piuttosto che un'altra, e quali vantaggi e limiti essa comporta.
+\end{oss}
+
+
+\subsection*{Fase 6 --- Risoluzione}
+
+Scelta la strategia, si procede con il calcolo. Alcune buone pratiche:
+
+\begin{enumerate}[label=(\alph*)]
+	\item \textit{lavorare in forma simbolica} il più a lungo possibile, sostituendo i valori numerici solo alla fine --- i risultati parametrici sono più informativi e più facili da controllare;
+	\item \textit{mantenere le unità di misura} lungo il calcolo, come controllo dimensionale continuo;
+	\item \textit{esplicitare i passaggi chiave}, evitando salti logici che rendono difficile individuare eventuali errori;
+	\item \textit{semplificare progressivamente}: fattorizzare, raccogliere termini comuni, sfruttare simmetrie per ridurre il numero di equazioni da trattare.
+\end{enumerate}
+
+Il calcolo, eseguito con queste accortezze, produce un risultato. Ma un risultato non è ancora una soluzione: la soluzione richiede di essere verificata.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section*{I controlli}
+%----------------------------------------------------------------------------------------------------------------------------
+
+I controlli non sono un'appendice opzionale: sono parte integrante della soluzione. Un risultato privo di verifica è un risultato a metà.
+
+\paragraph{Controllo dimensionale.}
+Ogni risultato deve avere le unità di misura corrette. Questo controllo è banale e gratuito: non c'è ragione per ometterlo.
+
+\paragraph{Casi limite.}
+Cosa succede se un parametro tende a zero, a infinito, o a un valore particolare? Il risultato si riduce a un caso noto? Se la rigidezza di una molla estensionale tende a infinito, lo spostamento nel punto vincolato deve tendere a zero; se un carico è nullo, tutte le azioni interne devono annullarsi; se la struttura è simmetrica e il carico pure, la risposta deve rispettare la simmetria.
+
+\paragraph{Bilancio globale.}
+Nei problemi di equilibrio, la somma delle forze esterne --- carichi più reazioni vincolari --- deve essere nulla, così come la somma dei momenti rispetto a un polo qualsiasi. Questo controllo è indipendente dal metodo di risoluzione e pertanto particolarmente efficace: un errore nel calcolo delle reazioni emerge comunque.
+
+\paragraph{Coerenza del segno.}
+In meccanica strutturale i segni hanno un significato fisico preciso: una reazione vincolare con un certo segno indica che il vincolo è in trazione o in compressione, che lo spostamento è in un verso o nell'altro. Il segno ottenuto è coerente con l'intuizione fisica?
+
+\paragraph{Ordine di grandezza.}
+Con il progredire dello studio e, ancor più, con la pratica progettuale, si sviluppa la capacità di stimare intuitivamente l'ordine di grandezza di una risposta strutturale prima ancora di calcolarla. Questa \textit{sensibilità strutturale} --- riconoscere che uno spostamento è plausibile o palesemente fuori scala, che una reazione vincolare è compatibile con i carichi applicati --- è uno degli obiettivi di lungo periodo dell'intera formazione ingegneristica. Non è richiesta all'inizio: si costruisce nel tempo, attraverso l'accumulo di esperienze di calcolo e di confronto con la realtà fisica. Ma è bene sapere fin d'ora che esiste, e che ogni esercizio svolto con attenzione è un passo verso di essa.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section*{Il valore della doppia via}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Risolvere lo stesso problema per due vie indipendenti è il controllo più potente che si possa fare. Se le due vie conducono allo stesso risultato, la probabilità che entrambe contengano un errore che produce casualmente lo stesso numero è trascurabile. Se conducono a risultati diversi, almeno una contiene un errore, e il confronto aiuta a localizzarlo.
+
+Nei tre volumi la doppia via si manifesta in molte forme: verificare i risultati dell'approccio agli spostamenti con l'approccio alle forze; controllare le reazioni vincolari con le equazioni di equilibrio globale dopo averle ricavate dal metodo nodale; verificare il campo degli spostamenti per via cinematica e per via energetica. In tutti questi casi, il principio è lo stesso: la coerenza fra due vie indipendenti è una garanzia di correttezza che nessuna verifica parziale può offrire.
+
+Questa pratica non va intesa come un lusso per chi ha tempo in abbondanza. Va intesa come un abito mentale: l'abitudine a chiedersi sempre se esiste un secondo punto di vista, una seconda lettura, un secondo percorso verso lo stesso risultato.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section*{Riepilogo}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Si raccolgono le sei fasi in uno schema sinottico.
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.6}
+	\begin{tabularx}{\linewidth}{c l X}
+		\toprule
+		\textbf{Fase} & \textbf{Azione} & \textbf{Domanda guida} \\
+		\midrule
+		1 & Lettura e comprensione    & Di cosa parla il problema? Cosa si chiede? Quali ipotesi, esplicite o implicite? \\
+		2 & Inventario dei dati       & Quali grandezze sono note? Con quali unità e vincoli? \\
+		3 & Inventario delle incognite & Quante sono? Il conteggio equazioni/incognite è coerente? \\
+		4 & Costruzione delle relazioni & Quali equazioni legano dati e incognite? Sono indipendenti? Dimensionalmente coerenti? \\
+		5 & Scelta della strategia    & Quale via è la più naturale, economica, controllabile? È possibile una doppia via? \\
+		6 & Risoluzione               & Il calcolo è in forma simbolica? Le unità di misura sono mantenute lungo i passaggi? \\
+		\bottomrule
+	\end{tabularx}
+\end{center}
+
+\medskip
+
+Queste sei fasi non sono specifiche di un tipo di esercizio: si applicano a un sistema di equazioni lineari come a un problema di classificazione di un sistema strutturale complesso, a un calcolo di spostamenti come a una verifica di sicurezza. Ciò che cambia è il contenuto delle relazioni e il ventaglio delle strategie disponibili; ciò che resta invariato è la struttura logica. Interiorizzare questa struttura è il vero obiettivo degli esercizi --- e, in ultima analisi, dell'opera.\

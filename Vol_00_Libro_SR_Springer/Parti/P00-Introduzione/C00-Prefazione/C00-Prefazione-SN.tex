@@ -1,0 +1,159 @@
+% ============================================================================
+%  C00-Prefazione-SN.tex
+%  Prefazione nel formato SNmono.
+%  Sostituisce \chapter*{Prefazione} con il comando nativo \preface.
+% ============================================================================
+
+\preface
+
+Questi tre volumi nascono dall'esperienza didattica maturata negli anni di
+insegnamento della Scienza delle Costruzioni presso la Facoltà di Ingegneria
+dell'\textit{Università degli Studi di Roma ``La Sapienza''}. La
+trasformazione da appunti di lezione a testo scritto non è una semplice
+trascrizione: ha richiesto di rendere esplicita l'architettura logica che
+nei corsi si trasmette anche attraverso la voce, il gesto e il dialogo con
+gli studenti, e che sulla pagina deve reggersi da sola.
+
+% ── Sezioni della prefazione ─────────────────────────────────────────────
+% Le sezioni nella prefazione SNmono NON usano \section ma \section*
+% per evitare che appaiano nell'indice generale.
+
+\section*{I tre volumi e i corsi}
+
+I tre volumi sono pensati come percorso consecutivo --- il
+secondo presuppone gli argomenti del primo, il terzo quelli
+dei due precedenti --- ma ciascuno è autocontenuto: chi
+padroneggi i prerequisiti del volume scelto può leggerlo
+come unità singola.
+
+Il rapporto fra i tre volumi e l'insegnamento è articolato. Il
+primo volume è pensato per gli studenti della laurea
+triennale che seguono il corso di Scienza delle Costruzioni;
+il secondo volume copre la parte successiva del medesimo
+corso ed estende la trattazione alla visione nodale dei
+sistemi di travi e alla trave su suolo elastico; il terzo
+volume mescola argomenti del corso triennale --- analisi
+della capacità portante, carico critico, verifiche di
+sicurezza --- con argomenti che il primo anno della laurea
+magistrale dedica alle strutture bidimensionali, ovvero le
+travi curve e le funi. Questi ultimi capitoli (trave su
+suolo elastico, travi curve, funi) costituiscono propriamente
+la prima fase di un corso di meccanica delle strutture
+bidimensionali, e vi sono inclusi perché forniscono al
+lettore le chiavi per interpretare il funzionamento delle
+strutture bidimensionali piane e curve: sono il passaggio
+concettuale fra il modello monodimensionale della trave e i
+modelli di superficie. La parte di Vol.~II e Vol.~III che
+eccede i corsi triennali non è dunque un addendum: è ciò che
+permette ai tre volumi di essere consultati anche oltre la
+durata di un singolo corso.
+
+Nel loro insieme i tre volumi coprono in modo
+sostanzialmente completo la meccanica della trave in regime
+lineare e in alcune sue estensioni non lineari classiche
+(analisi limite, stabilità).
+
+Il dettaglio dei contenuti di ciascun volume è esposto nella
+\PARref{sec:i_tre_volumi} del capitolo introduttivo.
+
+\section*{A chi è rivolto questo volume}
+
+Questo primo volume è scritto per lo studente che affronta lo
+studio sistematico della meccanica della trave e dei sistemi
+di travi nel modello rigido. I prerequisiti sono ridotti a un
+nucleo essenziale: gli strumenti matematici di base appresi
+nei corsi del primo anno --- calcolo differenziale e
+integrale, geometria analitica nel piano e nello spazio,
+nozioni elementari di algebra lineare --- e una familiarità
+con la meccanica del corpo rigido nei suoi termini fisici:
+corpi, forze, vincoli, equilibrio. Tutti gli strumenti
+specifici --- algebra delle matrici e sistemi lineari,
+applicazioni lineari e dualità, vettori geometrici nelle loro
+varietà --- sono ripresi nella Parte~I (\textit{Preliminari})
+con il livello di dettaglio e l'orientamento richiesti dalle
+applicazioni strutturali. Il volume è quindi accessibile a
+chi affronta la disciplina per la prima volta, sia studente
+della laurea triennale in Ingegneria o in Architettura, sia
+lettore in autonomia che voglia rifondare in modo organico la
+propria comprensione del modello rigido.
+
+L'obiettivo non è fornire un ricettario di formule da
+applicare, ma costruire una comprensione profonda dei
+meccanismi fisici e della struttura logica della teoria. Chi
+avrà interiorizzato questa struttura --- la dualità fra
+cinematica e statica, la classificazione dei sistemi rigidi
+secondo i quattro casi dell'algebra lineare, il principio dei
+lavori virtuali come strumento operativo unitario --- sarà in
+grado di orientarsi in contesti nuovi, di riconoscere la
+stessa architettura in modelli diversi, di usare gli
+strumenti computazionali con consapevolezza critica anziché
+meccanicamente.
+
+\section*{La struttura dei tre volumi}
+
+I tre volumi costituiscono un percorso unitario che ha per
+protagonista la trave --- il modello strutturale più
+semplice e al tempo stesso il più ricco di conseguenze. Il
+primo volume si articola in tre parti. La prima
+(\emph{Preliminari}) raccoglie gli strumenti matematici e
+concettuali su cui poggia l'intera trattazione: algebra
+delle matrici e sistemi lineari, applicazioni lineari e
+dualità, vettori geometrici --- liberi, applicati, polari e
+assiali. La seconda parte sviluppa la \emph{cinematica e la
+	statica del corpo rigido e dei sistemi di corpi rigidi} in
+piena generalità, attraverso gli strumenti fondamentali
+della disciplina: classificazione cinematica e statica,
+dualità cinematica-statica, principio dei lavori virtuali.
+La terza parte specializza la trattazione al caso della
+\emph{trave e dei sistemi di travi rigide} --- travature a
+collegamento eterogeneo e travature a collegamento omogeneo,
+queste ultime nelle loro due famiglie classiche dei sistemi
+reticolari e dei telai piani. Il volume si chiude mettendo
+in evidenza le indeterminazioni statiche e le impossibilità
+cinematiche che il modello rigido non è in grado di
+risolvere, motivando l'introduzione della deformabilità.
+
+Il secondo volume applica questa grammatica alla trave
+rettilinea deformabile. Si apre con un capitolo di richiami
+della Meccanica dei Solidi --- cinematica della deformazione,
+equazioni di equilibrio di Cauchy, legame costitutivo
+elastico lineare --- che costituisce il ponte verso la
+derivazione delle equazioni della trave: i diagrammi di
+Tonti, presentati sistematicamente in un'appendice e
+utilizzati come strumento di lettura ricorrente, rendono
+visibile l'architettura logica della meccanica delle strutture
+e mostrano come le equazioni della trave si ottengano dal
+continuo tridimensionale per riduzione dimensionale. Si
+sviluppano la teoria della trave secondo i modelli di
+Eulero-Bernoulli e Timoshenko, le caratteristiche della
+sollecitazione e i metodi di analisi delle strutture
+isostatiche e iperstatiche, fino ai sistemi di travi
+deformabili nelle loro due letture --- per assemblaggi e
+nodale --- e alla trave su suolo elastico.
+
+Il terzo volume mette la grammatica alla prova, estendendola
+in direzioni che ne rivelano la portata: la trave curva e la
+fune, le non linearità costitutive e geometriche, le
+verifiche di sicurezza strutturale.
+
+
+
+Al termine di questo percorso lo studente possiede gli strumenti per affrontare qualsiasi teoria strutturale basata su ipotesi cinematiche. La stessa grammatica si ritrova immutata nei modelli bidimensionali --- lastre, piastre, membrane e gusci --- che costituiscono la naturale prosecuzione nei corsi avanzati. Non ci sarà nulla da reimparare da zero: solo la stessa architettura in nuove vesti.
+
+\section*{Un invito alla lettura}
+
+La meccanica delle strutture è un edificio logico di rara coerenza, costruito in oltre due secoli di lavoro scientifico da menti straordinarie. Studiarlo con attenzione --- non limitandosi a seguire i calcoli ma cercando di capire perché ogni passaggio è necessario, quale principio fisico lo giustifica, quale struttura logica lo organizza --- è un'esperienza intellettuale di prim'ordine.
+
+Questi volumi cercano di rendere accessibile questa esperienza. Le formule ci sono, i calcoli ci sono, gli esempi ci sono: ma l'obiettivo finale non è saper calcolare le travi. È acquisire quella \textit{sensibilità strutturale} --- la capacità di intuire il comportamento di una struttura prima ancora di calcolarla, di riconoscere le soluzioni efficaci da quelle problematiche, di anticipare i punti critici --- che distingue l'ingegnere strutturista dal calcolatore.
+
+Questa sensibilità si costruisce nel tempo e attraverso la pratica. Ma ha le sue radici nella comprensione profonda dei fondamenti. È lì che questi volumi cercano di portare il lettore.
+
+
+
+
+\vspace{\baselineskip}
+\begin{flushright}\noindent
+Roma,\hfill {\it Achille Paolone}\\
+giugno 2026\hfill {\it Antonino Favata}\\
+\hfill {\it Matteo Brunetti}\\
+\end{flushright}

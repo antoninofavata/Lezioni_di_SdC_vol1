@@ -1,0 +1,600 @@
+%---------------------------------------------------------------------------------------------------------------------------- 
+\graphicspath{{Parti/P03-Meccanica_SR/C11-TLV/Figure/}}
+\chapter{La triade meccanica: congruenza, equilibrio e principio dei lavori virtuali  }\label{cap:TLV}
+%\chaptermark{Classificazione e soluzione dei sistemi di corpi rigidi }
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+
+\begin{sommario}
+	Si formalizza la struttura triadica della meccanica
+	delle strutture rigide: congruenza, equilibrio e
+	principio dei lavori virtuali sono tre enunciati
+	equivalenti, nel senso che due qualsiasi di essi
+	implicano il terzo. Assunto il dualismo
+	$\bm{B} = \bm{A}^{\top}$ --- stabilito per ispezione
+	diretta nel capitolo precedente --- si deriva
+	l'\emph{identità bilineare}
+	$\bm{r}^{\top}\bm{s} + \bm{u}^{\top}\bm{f} = 0$,
+	valida per ogni coppia congruente $(\bm{u}, \bm{s})$
+	e ogni coppia equilibrata $(\bm{r}, \bm{f})$.
+	Dalla triade si ricavano quattro corollari operativi:
+	la condizione di compatibilità statica
+	($\bm{U}_q^{\top}\bm{f} = \bm{0}$), il \emph{teorema
+		degli spostamenti virtuali} (TSV) --- noto nella
+	tradizione come \emph{principio di Müller-Breslau}
+	--- per il calcolo delle reazioni, la condizione di
+	compatibilità cinematica
+	($\bm{R}_\chi^{\top}\bm{s} = \bm{0}$) e il
+	\emph{teorema delle forze virtuali} (TFV) --- noto
+	nella tradizione come \emph{metodo del carico unitario}
+	--- per il calcolo delle componenti di spostamento.
+	Si mostra infine come il TFV si estenda al calcolo di
+	qualsiasi grandezza cinematica lineare --- spostamento
+	assoluto, spostamento relativo, rotazione relativa ---
+	mediante la scelta appropriata del problema virtuale
+	statico.
+\end{sommario}
+
+
+
+
+\section{Il PLV come identità bilineare e il dualismo \texorpdfstring{$\bm{B} = \bm{A}^{\top}$}{B = A\textasciicircum T}}
+\label{sec:dualismo}
+
+Il dualismo $\bm{B} = \bm{A}^{\top}$, riconosciuto per
+ispezione diretta nel \PARref{sec:prob_stat} del
+\CAPref{cap:problemi_cin_stat_SCR}, permette di collegare
+il problema cinematico e quello statico attraverso il \PLV. Sia $(\bm{u}, \bm{s})$ una
+coppia congruente, con $\bm{A}\,\bm{u} = \bm{s}$, e sia
+$(\bm{r}, \bm{f})$ una coppia equilibrata, con
+$\bm{A}^{\top}\bm{r} = -\bm{f}$. Il lavoro virtuale
+delle reazioni per la configurazione $\bm{u}$ è:
+\begin{equation}
+	\delta\mathcal{W}_{\mathrm{rea}} =
+	\bm{r}^{\top}\bm{s} =
+	\bm{r}^{\top}(\bm{A}\,\bm{u}) =
+	(\bm{A}^{\top}\bm{r})^{\top}\bm{u} =
+	-\bm{f}^{\top}\bm{u} =
+	-\delta\mathcal{W}_{\mathrm{att}},
+\end{equation}
+dove $\delta\mathcal{W}_{\mathrm{att}} = \bm{f}^{\top}\bm{u}$
+è il lavoro virtuale delle forze attive. Il lavoro delle
+reazioni e quello delle forze attive si bilanciano: si
+ottiene così l'\emph{identità bilineare}\index{identità bilineare}:
+\begin{equation}\label{eq:id_bil_mec}
+	\boxed{\bm{r}^{\top}\bm{s} + \bm{u}^{\top}\bm{f} = 0,}
+\end{equation}
+valida ogni volta che $(\bm{u}, \bm{s})$ è congruente e
+$(\bm{r}, \bm{f})$ è equilibrata. I tre enunciati che
+strutturano il problema della meccanica delle strutture
+rigide --- congruenza, equilibrio e PLV --- formano la
+\emph{triade meccanica}\index{triade meccanica|textbf}:
+\begin{enumerate}[label=(\roman*), noitemsep]
+	\item \emph{congruenza}: $\bm{A}\,\bm{u} = \bm{s}$;
+	\item \emph{equilibrio}: $\bm{A}^{\top}\bm{r} = -\bm{f}$;
+	\item \emph{PLV}: $\bm{r}^{\top}\bm{s} +
+	\bm{u}^{\top}\bm{f} = 0$.
+\end{enumerate}
+Due qualsiasi dei tre enunciati implicano il terzo. In
+particolare, per cedimenti nulli ($\bm{s} = \bm{0}$),
+l'identità~\eqref{eq:id_bil_mec} si riduce a:
+\begin{equation}
+	\delta\mathcal{W} =
+	\bm{f}^{\top}\bm{u} = 0
+	\qquad
+	\forall\,\bm{u} \in \Ker(\Abb):
+\end{equation}
+le forze attive non compiono lavoro in alcuna
+configurazione cinematicamente ammissibile con vincoli
+perfetti. Questo è il contenuto classico del \PLV\ per
+i sistemi di corpi rigidi.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------- 
+\section{Applicazioni della triade}	\label{sec:applicazioni_triade}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+I tre vertici della triade --- congruenza, equilibrio e PLV
+--- implicano ciascuno gli altri due, come si mostrerà nelle
+due sottosezioni seguenti. Fissato il PLV nella forma
+dell'identità bilineare:
+\begin{equation}\label{eq:id_bil_mec_app}
+	\bm{r}^{\top}\bm{s} + \bm{u}^{\top}\bm{f} = 0,
+\end{equation}
+valida ogni volta che $\bm{A}\,\bm{u} = \bm{s}$ e
+$\bm{A}^{\top}\bm{r} = -\bm{f}$, si ottengono due famiglie
+di risultati a seconda di quale dei due vertici restanti
+costituisce il problema reale e quale il problema virtuale.
+La struttura della soluzione introdotta nel
+\PARref{sec:struttura_soluzione} del \CAPref{cap:problemi_cin_stat_SCR} permette ora di rendere
+esplicite le condizioni di compatibilità e di mostrare che esse sono una conseguenza diretta del dualismo
+$\bm{B} = \bm{A}^{\top}$.
+
+% ── Congruenza + PLV ─────────────────────────────────────
+\subsection{Congruenza e PLV implicano equilibrio}
+\label{sec:con_PLV}
+
+Si considera come problema reale il problema statico
+$\bm{A}^{\top}\bm{r} = -\bm{f}$ e si applica il
+PLV~\eqref{eq:id_bil_mec} con un problema virtuale
+cinematico $(\delta\bm{u},\,\delta\bm{s})$ arbitrario
+tale che $\bm{A}\,\delta\bm{u} = \delta\bm{s}$.
+Sostituendo nella~\eqref{eq:id_bil_mec}:
+\begin{equation}\label{eq:id_bil_stat}
+	\delta\bm{s}^{\top}\bm{r} +
+	\delta\bm{u}^{\top}\bm{f} = 0
+	\qquad
+	\forall\,(\delta\bm{u},\,\delta\bm{s})
+	\text{ congruenti}.
+\end{equation}
+
+\begin{corollario}[Compatibilità statica]\index{compatibilita@compatibilità!statica|textbf}
+	\label{cor:compat_stat}
+	Il problema statico $\bm{A}^{\top}\bm{r} = -\bm{f}$
+	ammette soluzione se e solo se:
+	\begin{equation}\label{eq:compat_stat}
+		\bm{U}_q^{\top}\bm{f} = \bm{0},
+	\end{equation}
+	ovvero le forze attive $\bm{f}$ compiono lavoro virtuale
+	nullo su ogni meccanismo $\delta\bm{u}_q \in \Ker(\Abb)$.
+\end{corollario}
+
+\begin{proof}
+	Il problema statico ammette soluzione se e solo se
+	$\bm{f} \in \Imm(\Abb^{\top})$, ovvero $\bm{f} \perp
+	\Ker(\Abb)$ (\APPref{app:applicazionilin_dualita},
+	\EQUref{eq:ortogonalita}). Applicando
+	la~\eqref{eq:id_bil_stat} con $\delta\bm{s} = \bm{0}$
+	e $\delta\bm{u} = \bm{U}_q\,\delta\bm{q}$ per ogni
+	$\delta\bm{q} \in \mathbb{R}^{g_\ell}$:
+	\begin{equation*}
+		\delta\bm{q}^{\top}\bm{U}_q^{\top}\bm{f} = 0
+		\qquad \forall\,\delta\bm{q},
+	\end{equation*}
+	da cui $\bm{U}_q^{\top}\bm{f} = \bm{0}$.
+\end{proof}
+
+\begin{oss}
+	La condizione di compatibilità statica
+	$\bm{U}_q^{\top}\bm{f} = \bm{0}$ mostra che la
+	matrice che governa la compatibilità è la trasposta
+	della base dei meccanismi: ogni riga di
+	$\bm{U}_q^{\top}$ è un meccanismo e impone che le
+	forze attive non compiano lavoro in quella direzione.
+	Un sistema labile è in equilibrio solo se le forze
+	attive sono ortogonali a tutti i meccanismi.
+\end{oss}
+
+\begin{corollario}[Teorema degli spostamenti virtuali (TSV)]\index{teorema!degli spostamenti virtuali|textbf}\index{TSV|see{teorema degli spostamenti virtuali}}\index{principio di Müller-Breslau|see{teorema degli spostamenti virtuali}}
+	\label{cor:TSV}
+	\label{cor:cedimento}
+	Si supponga che $\bm{f}$ soddisfi
+	la~\eqref{eq:compat_stat}. Sia $\bm{e}_k \in
+	\mathbb{R}^m$ il $k$-esimo versore della base canonica.
+	Si consideri il \emph{problema virtuale} cinematico
+	$\bm{A}\,\bm{u}^*_k = \bm{s}^*$ con
+	$\bm{s}^* = \bm{e}_k$. La $k$-esima reazione
+	$R_k$ si ottiene dalla soluzione $\bm{u}^*_k$:
+	\begin{equation}\label{eq:mueller_breslau}
+		R_k = -\bm{f}^{\top}\bm{u}^*_k.
+	\end{equation}
+\end{corollario}
+
+\begin{proof}
+	Si applica la~\eqref{eq:id_bil_stat} alla coppia reale
+	$(\bm{r},\,\bm{f})$ e alla coppia virtuale
+	$(\bm{u}^*_k,\,\delta\bm{s}^* = \bm{e}_k)$:
+	\begin{equation}
+		\bm{r}^{\top}\bm{e}_k +
+		\bm{f}^{\top}\bm{u}^*_k = 0.
+	\end{equation}
+	Il primo termine è per definizione $R_k$; riordinando:
+	\begin{equation}
+		R_k = -\bm{f}^{\top}\bm{u}^*_k. 
+	\end{equation}
+\end{proof}
+
+\begin{oss}
+	Il corollario trasforma il calcolo di una singola
+	reazione in un problema cinematico: si impone un
+	cedimento unitario al vincolo $k$ e si calcola il
+	lavoro delle forze attive nella configurazione che
+	ne risulta. Questo è il contenuto del \emph{teorema
+		degli spostamenti virtuali} (TSV), noto nella
+	tradizione come \emph{principio di Müller-Breslau};
+	è alla base della costruzione delle \emph{linee di
+		influenza} per le strutture isostatiche, sviluppate
+	nel \CAPref{cap:TLV_travi}.
+\end{oss}
+
+\begin{oss}[Forma operativa del TSV]
+	\label{oss:TSV_operativa}
+	La scelta del cedimento virtuale $\bm{s}^* = \bm{e}_k$
+	usata nella derivazione è quella più diretta dal punto
+	di vista matriciale, ma non quella più comoda nel
+	calcolo. Assegnando il cedimento in verso \emph{opposto}
+	al verso positivo della reazione --- ovvero $\bm{s}^* =
+	-\bm{e}_k$ --- l'identità bilineare~\eqref{eq:id_bil_stat}
+	dà direttamente
+	\begin{equation}\label{eq:mueller_breslau_op}
+		R_k = +\bm{f}^{\top}\bm{u}^*_k,
+	\end{equation}
+	senza cambio di segno. In questa forma $R_k$ coincide
+	con il lavoro virtuale delle forze attive negli
+	spostamenti del meccanismo, ed è la scrittura che
+	corrisponde al procedimento classico --- \emph{cedere}
+	il vincolo $k$-esimo di una quantità unitaria nel verso
+	opposto alla reazione assunta positiva, e calcolare il
+	lavoro delle forze attive nel conseguente moto rigido.
+	Le due forme sono naturalmente equivalenti; la
+	specializzazione ai sistemi di travi nel
+	\CAPref{cap:TLV_travi} adotta sistematicamente
+	la~\eqref{eq:mueller_breslau_op}.
+\end{oss}
+
+
+
+
+% ── Equilibrio + PLV ─────────────────────────────────────
+\subsection{Equilibrio e PLV implicano congruenza}
+\label{sec:eq_PLV}
+
+Si considera come problema reale il problema cinematico
+$\bm{A}\,\bm{u} = \bm{s}$ e si applica il
+PLV~\eqref{eq:id_bil_mec} con un problema virtuale
+statico $(\delta\bm{r},\,\delta\bm{f})$ arbitrario
+tale che $\bm{A}^{\top}\delta\bm{r} = -\delta\bm{f}$.
+Sostituendo nella~\eqref{eq:id_bil_mec}:
+\begin{equation}\label{eq:id_bil_cin}
+	\delta\bm{r}^{\top}\bm{s} +
+	\delta\bm{f}^{\top}\bm{u} = 0
+	\qquad
+	\forall\,(\delta\bm{r},\,\delta\bm{f})
+	\text{ equilibrati}.
+\end{equation}
+
+\begin{corollario}[Compatibilità cinematica]\index{compatibilita@compatibilità!cinematica|textbf}
+	\label{cor:compat_cin}
+	Il problema cinematico $\bm{A}\,\bm{u} = \bm{s}$
+	ammette soluzione se e solo se:
+	\begin{equation}\label{eq:compat_cin}
+		\bm{R}_\chi^{\top}\bm{s} = \bm{0},
+	\end{equation}
+	ovvero i cedimenti $\bm{s}$ compiono lavoro virtuale
+	nullo su ogni stato di autoequilibrio
+	$\delta\bm{r} \in \Ker(\Abb^{\top})$.
+\end{corollario}
+
+\begin{proof}
+	Il problema cinematico ammette soluzione se e solo se
+	$\bm{s} \in \Imm(\Abb)$, ovvero $\bm{s} \perp
+	\Ker(\Abb^{\top})$ (Lezione~04). Applicando
+	la~\eqref{eq:id_bil_cin} con $\delta\bm{f} = \bm{0}$
+	e $\delta\bm{r} = \bm{R}_\chi\,\delta\bm{\chi}$ per ogni
+	$\delta\bm{\chi} \in \mathbb{R}^{g_{\mathscr{i}}}$:
+	\begin{equation}
+		\delta\bm{\chi}^{\top}\bm{R}_\chi^{\top}\bm{s} = 0
+		\qquad \forall\,\delta\bm{\chi},
+	\end{equation}
+	da cui $\bm{R}_\chi^{\top}\bm{s} = \bm{0}$.
+\end{proof}
+
+\begin{oss}
+	La condizione di compatibilità cinematica
+	$\bm{R}_\chi^{\top}\bm{s} = \bm{0}$ mostra che la
+	matrice che governa la compatibilità è la trasposta
+	della base degli stati di autoequilibrio: ogni riga
+	di $\bm{R}_\chi^{\top}$ è uno stato di autoequilibrio
+	e impone che i cedimenti non compiano lavoro in quella
+	direzione. Un sistema iperstatico ammette una
+	configurazione compatibile con i cedimenti solo se
+	questi sono ortogonali a tutti gli stati di
+	autoequilibrio.
+\end{oss}
+
+\begin{corollario}[Teorema delle forze virtuali (TFV)]\index{teorema!delle forze virtuali|textbf}\index{TFV|see{teorema delle forze virtuali}}\index{metodo!del carico unitario|see{teorema delle forze virtuali}}
+	\label{cor:carico_unitario}
+	Si supponga che $\bm{s}$ soddisfi
+	la~\eqref{eq:compat_cin}. Sia $\bm{e}_j \in
+	\mathbb{R}^n$ il $j$-esimo versore della base canonica.
+	Si consideri il \emph{problema virtuale} statico
+	$\bm{A}^{\top}\bm{r}^*_j = -\bm{f}^*$ con
+	$\bm{f}^* = \bm{e}_j$. La $j$-esima componente
+	$u_j$ si ottiene dalla soluzione $\bm{r}^*_j$:
+	\begin{equation}\label{eq:carico_unitario}
+		u_j = -\bm{s}^{\top}\bm{r}^*_j.
+	\end{equation}
+\end{corollario}
+
+\begin{proof}
+	Si applica la~\eqref{eq:id_bil_cin} alla coppia reale
+	$(\bm{u},\,\bm{s})$ e alla coppia virtuale
+	$(\bm{r}^*_j,\,\bm{f}^* = \bm{e}_j)$:
+	\begin{equation}
+		\bm{s}^{\top}\bm{r}^*_j +
+		\bm{u}^{\top}\bm{e}_j = 0.
+	\end{equation}
+	Il secondo termine è per definizione $u_j$;
+	riordinando:
+	\begin{equation}
+		u_j = -\bm{s}^{\top}\bm{r}^*_j. 
+	\end{equation}
+\end{proof}
+
+\begin{oss}
+	Il corollario è il duale esatto del precedente:
+	il calcolo di una componente di spostamento si
+	riconduce a un problema statico, applicando una
+	forza unitaria nella direzione duale e calcolando
+	il lavoro delle reazioni nei cedimenti assegnati.
+	Questo è il contenuto del \emph{teorema delle forze
+		virtuali} (TFV), noto nella tradizione come
+	\emph{metodo del carico unitario}. La specializzazione
+	ai sistemi di travi --- in cui l'identità bilineare si
+	arricchisce del contributo delle distorsioni nelle
+	sezioni interne --- è sviluppata nel
+	\CAPref{cap:TLV_travi}, con applicazioni a sistemi
+	isostatici soggetti a cedimenti e distorsioni
+	assegnati. Nella versione per sistemi deformabili,
+	il TFV è inoltre alla base del \emph{metodo delle
+		forze} (Vol.~II).
+\end{oss}
+
+
+\begin{oss}[Il dualismo nelle matrici di compatibilità]
+	I quattro corollari mostrano che le condizioni di
+	compatibilità non sono indipendenti dalla struttura
+	della soluzione: la matrice di compatibilità del
+	problema statico è $\bm{U}_q^{\top}$, trasposta
+	della base dei meccanismi, e quella del problema
+	cinematico è $\bm{R}_\chi^{\top}$, trasposta della
+	base degli stati di autoequilibrio. Questo non è una
+	coincidenza: è la manifestazione diretta del dualismo
+	$\bm{B} = \bm{A}^{\top}$. La stessa geometria di
+	vincolo che genera i meccanismi (nucleo di $\Abb$)
+	determina anche le condizioni che le forze attive
+	devono soddisfare per essere equilibrabili, e
+	viceversa. Cinematica e statica sono governate dalla
+	stessa matrice, letta in direzioni opposte.
+\end{oss}
+
+
+\begin{oss}[Spostamento generico, relativo e rotazione]
+	Il Corollario~\ref{cor:carico_unitario} fornisce
+	direttamente le componenti $u_j$ del vettore di
+	configurazione, associate ai poli $O_i$. La sua
+	portata è però più generale, poiché la scelta del
+	problema virtuale statico è arbitraria.
+	
+	\medskip
+	\noindent\textit{Spostamento assoluto.}
+	Per calcolare lo spostamento $\eta_k$ di un punto
+	generico $P_k$ appartenente al corpo $\mathcal{C}_i$
+	secondo una direzione $\ab$, si costruisce il
+	problema virtuale con una forza fittizia unitaria
+	$F_k^* = 1$ applicata in $P_k$ nella direzione
+	$\ab$. La soluzione $\bm{r}^*_k$ del problema
+	$\bm{B}\,\bm{r}^*_k = -\bm{f}^*$ fornisce:
+	\begin{equation}\label{eq:carico_unitario_gen}
+		\eta_k = -\bm{s}^{\top}\bm{r}^*_k.
+	\end{equation}
+	
+	\medskip
+	\noindent\textit{Spostamento relativo.}
+	Per calcolare lo spostamento relativo
+	$\Delta\eta = \eta_i - \eta_j$ tra due punti $P_i$
+	e $P_j$ appartenenti a corpi distinti secondo la
+	direzione della congiungente $P_iP_j$, si applica
+	una coppia di forze fittizie unitarie antagoniste:
+	$F^* = 1$ in $P_i$ e $F^* = -1$ in $P_j$, entrambe
+	nella direzione $\ab = \overline{P_iP_j}/
+	\lvert\overline{P_iP_j}\rvert$. Il vettore $\bm{f}^*$
+	risultante è la sovrapposizione dei due contributi,
+	e la soluzione $\bm{r}^*$ fornisce:
+	\begin{equation}\label{eq:scorrimento_relativo}
+		\Delta\eta = -\bm{s}^{\top}\bm{r}^*.
+	\end{equation}
+	
+	\medskip
+	\noindent\textit{Rotazione relativa.}
+	Per calcolare la rotazione relativa
+	$\Delta\vartheta = \vartheta_j - \vartheta_i$
+	tra due corpi $\mathcal{C}_j$ e $\mathcal{C}_i$,
+	si applica una coppia di momenti fittizi unitari
+	antagonisti: $\mu^* = +1$ su $\mathcal{C}_j$ e
+	$\mu^* = -1$ su $\mathcal{C}_i$. La soluzione
+	$\bm{r}^*$ del corrispondente problema virtuale
+	fornisce:
+	\begin{equation}\label{eq:rotazione_relativa}
+		\Delta\vartheta = -\bm{s}^{\top}\bm{r}^*.
+	\end{equation}
+	
+	\medskip\noindent
+	In tutti e tre i casi la struttura è identica: la
+	quantità cinematica cercata è la duale del sistema
+	di forze fittizie applicato nel problema virtuale.
+	Il metodo del carico unitario si applica a qualsiasi
+	grandezza cinematica che sia un funzionale lineare
+	di $\bm{u}$, ovvero della forma $\bm{c}^{\top}\bm{u}$:
+	è sufficiente costruire il problema virtuale con il
+	sistema di forze che ha $\bm{c}$ come vettore delle
+	forze generalizzate.
+\end{oss}
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Esempi applicativi}
+\label{sec:esempi_PLV}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Gli esempi seguenti riprendono i sistemi già studiati
+nel \CAPref{cap:problemi_cin_stat_SCR}, dove sono stati
+costruiti la matrice dei vincoli $\bm{A}$, classificato
+il sistema e risolti i problemi cinematico e statico.
+Qui si applicano i corollari della triade per calcolare
+reazioni e spostamenti tramite problemi virtuali.
+
+
+\begin{esempio}[Trave semplicemente appoggiata ---
+	applicazione della triade]
+	\label{ex:trave_semplice_PLV}
+	Si riprende la trave semplicemente appoggiata
+	dell'\ESEref{ex:trave_semplice}: cerniera in $A$,
+	carrello in $B = (\ell, 0)$, sistema isostatico con
+	cedimento $\bar{v}_B$ al carrello $B$ e carico $F$
+	applicato in $x = a$. Calcolare la reazione $R_B$
+	tramite il principio di Müller-Breslau e lo spostamento
+	$v(a)$ tramite il metodo del carico unitario.
+
+
+\begin{svolgimento}
+	
+	\esottotit{Applicazione del principio di Müller-Breslau.}\index{teorema!degli spostamenti virtuali}
+	Si assegna cedimento unitario al vincolo~3
+	(carrello $B$):
+	\begin{equation*}
+		\bm{s}^* = \bm{e}_3 =
+		\Bigl\{0\; 0\; 1\Bigr\}^{\!\top}.
+	\end{equation*}
+	Il problema virtuale cinematico
+	$\bm{A}\,\bm{u}^* = \bm{s}^*$ dà:
+	\begin{equation*}
+		u^* = 0, \qquad v^* = 0, \qquad
+		\vartheta^* = \frac{1}{\ell}.
+	\end{equation*}
+	Il lavoro delle forze attive nel campo virtuale è:
+	\begin{equation*}
+		\bm{f}^{\top}\bm{u}^* =
+		\Bigl\{0\; {-F}\; {-Fa}\Bigr\}
+		\Bigl\{0\; 0\; 1/\ell\Bigr\}^{\!\top}
+		= -\frac{Fa}{\ell}.
+	\end{equation*}
+	Quindi, per la~\eqref{eq:mueller_breslau}:
+	\begin{equation*}
+		R_B = -\bm{f}^{\top}\bm{u}^* = \frac{Fa}{\ell},
+	\end{equation*}
+	in accordo con il risultato diretto del
+	\CAPref{cap:problemi_cin_stat_SCR}.
+	
+	\esottotit{Applicazione del metodo del carico unitario.}\index{teorema!delle forze virtuali}
+	Si vuole calcolare lo spostamento verticale $v(a)$
+	del punto di applicazione del carico $F$. Si riconosce
+	che:
+	\begin{equation*}
+		v(a) = v + a\vartheta,
+	\end{equation*}
+	ovvero $v(a)$ è un funzionale lineare di $\bm{u}$ con
+	coefficienti $\bm{c} = \Bigl\{0\; 1\; a\Bigr\}^{\!\top}$.
+	Il problema virtuale statico con $\bm{f}^* = \bm{c}$
+	è $\bm{B}\,\bm{r}^* = -\bm{f}^*$, da cui:
+	\begin{equation*}
+		R_B^* = \frac{a}{\ell}, \qquad
+		Y_A^* = 1 - \frac{a}{\ell}, \qquad
+		X_A^* = 0.
+	\end{equation*}
+	Con il cedimento reale
+	$\bm{s} = \Bigl\{0\; 0\; {-\bar{v}_B}\Bigr\}^{\!\top}$:
+	\begin{equation*}
+		v(a) = -\bm{s}^{\top}\bm{r}^* =
+		\frac{a}{\ell}\,\bar{v}_B.
+	\end{equation*}
+	
+	\begin{oss}
+		I due corollari mostrano la simmetria della triade
+		in azione: per calcolare $R_B$ si risolve un problema
+		cinematico virtuale con cedimento unitario al vincolo
+		$B$; per calcolare $v(a)$ si risolve un problema
+		statico virtuale con forza unitaria nel punto cercato.
+		Le due operazioni sono duali l'una dell'altra.
+	\end{oss}
+	
+\end{svolgimento}
+\end{esempio}
+
+
+\begin{esempio}[Trave di Gerber --- principio di Müller-Breslau]
+	\label{ex:gerber_PLV}
+	Si riprende la trave di Gerber
+	dell'\ESEref{ex:gerber}: sistema isostatico con
+	$n_c = 2$, carico $F$ nel punto medio di $\mathcal{C}_2$.
+	Calcolare la reazione $R_B$ tramite il principio di
+	Müller-Breslau.
+
+
+\begin{svolgimento}
+	
+	Si assegna cedimento unitario al vincolo~3
+	(carrello $B$): $\bm{s}^* = \bm{e}_3$.
+	Il problema virtuale $\bm{A}\,\bm{u}^* = \bm{e}_3$
+	si risolve sequenzialmente:
+	\begin{align*}
+		&\text{righe (i)--(ii):} & u_1^* &= v_1^* = 0;\\
+		&\text{riga (iii):} & \vartheta_1^* &= \tfrac{1}{2a};\\
+		&\text{riga (iv):} & u_2^* &= 0;\\
+		&\text{riga (v):} & v_2^* &= 3a\,\vartheta_1^*
+		= \tfrac{3}{2};\\
+		&\text{riga (vi):} & \vartheta_2^* &=
+		-\tfrac{v_2^*}{2a} = -\tfrac{3}{4a}.
+	\end{align*}
+	Con le forze attive reali
+	$\bm{f} = \Bigl\{0\; 0\; 0\; 0\;
+	{-F}\; {-Fa}\Bigr\}^{\!\top}$:
+	\begin{equation*}
+		\bm{f}^{\top}\bm{u}^* =
+		(-F)\cdot\tfrac{3}{2} + (-Fa)\cdot
+		\Bigl(-\tfrac{3}{4a}\Bigr)
+		= -\tfrac{3F}{4},
+	\end{equation*}
+	quindi:
+	\begin{equation*}
+		R_B = -\bm{f}^{\top}\bm{u}^* = \tfrac{3F}{4},
+	\end{equation*}
+	in accordo con il risultato diretto del
+	\CAPref{cap:problemi_cin_stat_SCR}.
+	
+\end{svolgimento}
+\end{esempio}
+
+
+\begin{esempio}[Sistema labile --- compatibilità statica]
+	\label{ex:gerber_labile_PLV}
+	Si riprende il sistema labile ottenuto dalla trave di
+	Gerber rimuovendo il carrello in $B$: $m = 5$,
+	$g_\ell = 1$, meccanismo
+	$\bm{U}_q = \bigl(0,\;0,\;1,\;0,\;3a,\;
+	-\tfrac{3}{2}\bigr)^{\top}$.
+	Verificare la compatibilità statica per il carico
+	$\bm{f} = \Bigl\{0\; 0\; 0\; 0\; {-F}\;
+	{-Fa}\Bigr\}^{\!\top}$.
+
+
+\begin{svolgimento}
+	
+	Per il Corollario~\ref{cor:compat_stat}, il problema
+	statico ammette soluzione se e solo se
+	$\bm{U}_q^{\top}\bm{f} = \bm{0}$, ovvero:
+	\begin{equation*}
+		\bm{U}_q^{\top}\bm{f} =
+		1\cdot \mu(O_1)
+		+ 3a\cdot Y_2
+		- \tfrac{3}{2}\cdot \mu(O_2) = 0.
+	\end{equation*}
+	Per il carico assegnato:
+	\begin{equation*}
+		\bm{U}_q^{\top}\bm{f} = -\tfrac{3Fa}{2} \neq 0.
+	\end{equation*}
+	La condizione non è soddisfatta: il sistema labile
+	non è in equilibrio sotto questo carico. Fisicamente,
+	manca il carrello $B$ che fornirebbe il momento
+	necessario a bilanciare il carico su $\mathcal{C}_2$.
+	
+	\begin{oss}
+		La condizione $\bm{U}_q^{\top}\bm{f} = \bm{0}$
+		è la riscrittura matriciale dell'equilibrio alla
+		rotazione del meccanismo: la stessa equazione che
+		uno studente di statica elementare scriverebbe
+		prendendo i momenti rispetto ad $A$.
+	\end{oss}
+	
+\end{svolgimento}
+\end{esempio}

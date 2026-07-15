@@ -1,0 +1,352 @@
+%----------------------------------------------------------------------------------------------------------------------------
+\graphicspath{{Parti/P00-Introduzione/C00-Introduzione/Figure/}}
+\chapter{Introduzione alla Meccanica delle Strutture}\label{cap:introduzione}
+%----------------------------------------------------------------------------------------------------------------------------
+
+\begin{sommario}
+	Si introduce la Scienza delle Costruzioni come disciplina che studia il comportamento meccanico delle strutture --- quella parte della costruzione deputata a resistere alle azioni che la sollecitano --- e se ne precisa la collocazione rispetto alla Meccanica dei Solidi. Si illustra come la sottigliezza geometrica dei corpi strutturali suggerisca ipotesi cinematiche, osservate sperimentalmente e formalizzate come restrizioni cinematiche, che consentono di ridurre il problema tridimensionale a modelli di dimensionalità inferiore. Si descrive come le strutture interagiscono con l'esterno attraverso vincoli e forze attive, introducendo la dualità cinematica-statica come filo conduttore dei tre volumi. Si chiarisce il ruolo del corpo rigido come fondamento cinematico e statico-vincolare di tutti i modelli strutturali, e si mostrano le due limitazioni duali che motivano l'introduzione della deformabilità: l'indeterminazione statica dei sistemi iperstatici e l'incompatibilità cinematica dei cedimenti e delle distorsioni. Si richiamano i requisiti prestazionali e il concetto di stato limite come strumenti per il confronto fra domanda e capacità strutturale, rimandando al terzo volume per la trattazione operativa. Si descrivono le tre fasi dell'analisi strutturale e i tre pilastri concettuali su cui essa poggia: congruenza, equilibrio e legame costitutivo. Si propone quindi un metodo in sei fasi per affrontare i problemi, con i relativi controlli e il valore della doppia via, e si conclude con una guida sintetica ai contenuti dei tre volumi.
+\end{sommario}
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Origine e collocazione disciplinare}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Il nome \textit{Scienza delle Costruzioni} è la traduzione italiana del tedesco  \textit{Bauwesen} (\textit{Bau}\,=\,costruzione, \textit{Wesen}\,=\,studio, essenza), denominazione introdotta nella tradizione accademica italiana a partire dagli anni Trenta del Novecento. Prima di questa, la disciplina era nota con nomi diversi, che ne riflettevano l'evoluzione concettuale: \textit{Meccanica applicata alle costruzioni}, \textit{Statica applicata alle costruzioni}, \textit{Statica delle costruzioni}. Il passaggio alla denominazione attuale segna il riconoscimento di un ambito disciplinare più ampio, che non si limita alla sola statica ma abbraccia l'intera analisi del comportamento meccanico delle costruzioni.
+
+La Scienza delle Costruzioni consta di due grandi branche:
+\begin{itemize}[nosep]
+	\item la \textbf{Meccanica dei Solidi}, che studia il comportamento dei corpi continui tridimensionali nella loro generalità, con particolare attenzione al legame fra azioni esterne, stati di tensione e deformazione;
+	\item la \textbf{Meccanica delle Strutture}, che sfrutta la forma particolare dei corpi strutturali --- la sottigliezza --- per ridurre il problema tridimensionale a modelli di dimensionalità inferiore, conservandone la struttura logica e il comportamento globale.
+\end{itemize}
+
+Le due branche non sono indipendenti: la Meccanica delle Strutture poggia sui risultati della Meccanica dei Solidi e li specializza verso i corpi di interesse applicativo. I tre volumi sono dedicati alla Meccanica delle Strutture; la Meccanica dei Solidi non vi è sviluppata come disciplina autonoma, ma richiamata nei punti in cui occorre derivare da essa le equazioni dei modelli strutturali. Il primo volume in particolare si concentra sul corpo rigido e sui sistemi di corpi rigidi, e ne richiede come prerequisiti soltanto i fondamenti del primo anno --- calcolo differenziale e integrale, geometria analitica nel piano e nello spazio, nozioni elementari di algebra lineare --- e una familiarità con la meccanica del corpo rigido nei suoi termini fisici: corpi, forze, vincoli, equilibrio. Le equazioni fondamentali del continuo di Cauchy --- cinematica della deformazione, equazioni di equilibrio, legame costitutivo elastico lineare --- entrano in gioco a partire dal secondo volume, dove la trave deformabile è derivata dal continuo tridimensionale per riduzione dimensionale.
+
+La Meccanica delle Strutture nasce precisamente da questa difficoltà e dalla possibilità di superarla sfruttando la \textit{forma} dei corpi strutturali. Le strutture che si incontrano nelle costruzioni --- travi, archi, lastre, piastre, gusci --- presentano quasi sempre una caratteristica geometrica comune: la \textit{sottigliezza}. Una trave è un cilindro allungato in cui due dimensioni sono molto più piccole della terza; una piastra è un solido in cui una sola dimensione --- lo spessore --- è molto più piccola delle altre due. Questa peculiarità geometrica suggerisce ipotesi cinematiche che l'osservazione sperimentale conferma: le sezioni trasversali di una trave restano approssimativamente piane dopo la deformazione; i segmenti normali alla superficie di una piastra restano approssimativamente rettilinei. Una volta formalizzate come restrizioni cinematiche, queste ipotesi consentono di ridurre il problema tridimensionale a un problema formulato su un dominio di dimensione inferiore --- una linea per la trave, una superficie per la piastra --- senza perdere la struttura logica della meccanica dei solidi né il comportamento globale del corpo.
+
+I corpi di interesse della Meccanica delle Strutture --- detti \textit{modelli strutturali} --- sono la trave rettilinea e curva, la lastra, la piastra e il guscio. L'opera tratta esplicitamente la trave, che è il modello strutturale più semplice e al tempo stesso il più ricco di conseguenze: il metodo con cui si costruisce e si risolve il modello di trave è esattamente lo stesso che si applica, con le opportune modifiche, a tutti gli altri modelli strutturali. Il continuo tridimensionale di Cauchy è richiamato nella misura necessaria a derivare le equazioni della trave deformabile dalle ipotesi cinematiche di riduzione dimensionale, ma non è sviluppato come disciplina autonoma. Chi ha interiorizzato la meccanica della trave possiede già la grammatica per affrontare lastre, piastre e gusci nei corsi successivi.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Costruzioni e strutture}
+%----------------------------------------------------------------------------------------------------------------------------
+
+\begin{definizione}[Costruzione]
+	Una \emph{costruzione} è un insieme organizzato di 	elementi atti ad assolvere determinate prestazioni,	ovvero a svolgere funzioni specifiche.
+\end{definizione}
+
+Il concetto di costruzione è trasversale a molteplici ambiti dell'ingegneria e non solo. Ne sono esempi: un edificio residenziale o un ponte nell'ingegneria civile; un telaio di automobile o il basamento di una macchina utensile nell'ingegneria meccanica; la fusoliera di un
+aeromobile o la struttura di un satellite nell'ingegneria aerospaziale; una sedia, una lampada o un padiglione espositivo nel campo del design e dell'architettura.
+
+Entro una costruzione, però, non tutti gli elementi concorrono allo stesso ufficio. Il colore delle pareti, la disposizione degli arredi, il rivestimento estetico di una facciata assolvono a funzioni certamente importanti, ma non riguardano la capacità della costruzione di resistere alle azioni che la cimentano. Ciò conduce a distinguere una parte ben precisa della costruzione.
+
+\begin{definizione}[Struttura]
+	La \emph{struttura} è quella parte della costruzione	che assolve all'ufficio di resistere alle azioni che	cimentano la costruzione medesima.
+\end{definizione}
+
+La Meccanica delle Strutture ha per oggetto lo studio del comportamento meccanico di questa componente della costruzione. A seconda del numero di dimensioni ``piccole'' e della forma del corpo, i modelli strutturali di interesse si distinguono nelle seguenti
+tipologie fondamentali:
+
+\begin{itemize}[nosep]
+	\item \textbf{Strutture monodimensionali rettilinee}:	corpi nei quali due dimensioni sono molto più piccole	della terza e l'asse è rettilineo. Si tratta dei	\textit{cilindri allungati retti}, ovvero le	\textit{travi rettilinee}.
+	\item \textbf{Strutture monodimensionali curve}: corpi	con la medesima sottigliezza delle precedenti, ma	dotati di un asse curvilineo. Ne sono esempi gli	archi, le funi e gli anelli.
+	\item \textbf{Strutture bidimensionali piane}: corpi nei quali una sola dimensione (lo spessore) è molto	più piccola delle altre due e la superficie media è	piana. Rientrano in questa categoria le	\textit{lastre} (sollecitate nel proprio piano) e	le \textit{piastre} (sollecitate ortogonalmente al	proprio piano).
+	\item \textbf{Strutture bidimensionali curve}: corpi	sottili la cui superficie media è curva. Sono le	\textit{membrane} (prive di rigidezza flessionale)	e i \textit{gusci} (dotati di rigidezza sia membranale sia flessionale).
+\end{itemize}
+
+
+Lo studio procede, in ogni caso, secondo un percorso  comune: si esamina dapprima il comportamento del \textit{singolo elemento} strutturale e successivamente si affronta il problema degli \textit{assemblaggi}, ovvero dei sistemi composti da più elementi
+interconnessi. Per ciascuna di queste tipologie, la descrizione del comportamento meccanico richiede una scelta di modello che va al di là della sola geometria: lo stesso corpo può essere trattato come rigido o come deformabile, a seconda delle grandezze che si vogliono determinare. Questa scelta è oggetto della sezione seguente.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Modelli di corpo strutturale}
+%----------------------------------------------------------------------------------------------------------------------------
+
+La descrizione del comportamento meccanico di una struttura richiede la costruzione di un \textit{modello}, ovvero una rappresentazione semplificata della realtà fisica che ne cattura gli aspetti essenziali ai fini dell'analisi. La scelta del modello è una delle decisioni più importanti del processo di analisi strutturale: un modello troppo semplice può non cogliere i fenomeni rilevanti, un modello troppo complesso può rendere l'analisi intrattabile senza un corrispondente guadagno in accuratezza.
+
+La scelta fondamentale riguarda il \textit{comportamento meccanico}: indipendentemente dalla geometria, ogni corpo strutturale può essere modellato come \textit{rigido} o come \textit{deformabile}.
+
+\begin{definizione}[Corpo rigido]
+	Un \emph{corpo rigido} è un modello in cui le distanze fra i punti del corpo restano invariate sotto qualsiasi azione esterna. Il corpo non si deforma: ogni configurazione ammissibile è ottenuta dalla configurazione di riferimento mediante una traslazione e una rotazione rigida.
+\end{definizione}
+
+\begin{definizione}[Corpo deformabile]
+	Un \emph{corpo deformabile} è un modello in cui le distanze fra i punti del corpo possono variare sotto l'azione di forze esterne. Il comportamento interno del corpo è descritto da un campo di deformazioni e da un campo di tensioni, legati fra loro da un \textit{legame costitutivo} che dipende dal materiale.
+\end{definizione}
+
+Nessun corpo reale è perfettamente rigido: qualsiasi materiale si deforma sotto l'azione di forze sufficienti. Il modello rigido è una idealizzazione che risulta appropriata quando le deformazioni sono trascurabili rispetto agli spostamenti globali del corpo, o quando si è interessati esclusivamente alla cinematica e alla statica globale del sistema --- senza voler determinare gli stati interni di tensione e deformazione. Il modello deformabile è invece necessario quando si vogliono determinare gli stati interni --- le tensioni e le deformazioni --- che sono le grandezze decisive per le verifiche di sicurezza strutturale.
+
+\begin{oss}
+	Il termine \textit{congruenza}, mutuato dalla geometria dove designa l'equivalenza fra figure che conservano distanze e angoli, assume in meccanica un significato più ampio. Per il corpo rigido la congruenza è quella geometrica in senso stretto: le distanze fra i punti restano invariate e le configurazioni ammissibili sono isometrie della configurazione di riferimento. Per il corpo deformabile questo vincolo viene rilassato: le distanze possono variare, ma la mappa che porta la configurazione di riferimento in quella deformata deve restare biunivoca --- escludendo lacerazioni e compenetrazioni di materia. È questa biunivocità, non l'invarianza delle distanze, la proprietà fondamentale che la congruenza conserva nel caso deformabile.
+\end{oss}
+
+\begin{oss}
+	La scelta fra modello rigido e deformabile non è una proprietà intrinseca del corpo, ma dipende dalle domande che si vogliono porre. Lo stesso corpo può essere modellato come rigido per determinare le reazioni vincolari di un sistema isostatico, e come deformabile per calcolarne le tensioni interne. La coerenza fra il modello adottato e le grandezze che si vogliono determinare è un requisito fondamentale di ogni analisi strutturale.
+\end{oss}
+
+Per la trave deformabile, la riduzione dimensionale introduce ulteriori ipotesi cinematiche sulla sezione trasversale --- nelle due forme classiche dovute a Eulero-Bernoulli e Timoshenko --- che il secondo volume sviluppa sistematicamente. Ipotesi analoghe, con le complicazioni introdotte dalla bidimensionalità del dominio e, nel caso dei gusci, dalla curvatura della superficie media, sono alla base dei modelli di lastra, piastra e guscio, che costituiscono la naturale prosecuzione nei corsi avanzati.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Interazione struttura-esterno}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Una struttura non esiste in isolamento: interagisce con l'ambiente esterno e, negli assemblaggi, con le altre strutture che la compongono. Questa interazione si manifesta attraverso due categorie di grandezze di natura duale --- cinematica e statica --- che costituiscono i dati e le incognite del problema strutturale.
+
+\subsection{Vincoli e azioni}
+
+Le \textit{azioni esterne} che agiscono su una struttura si distinguono in due categorie fondamentali: i \textbf{vincoli}, di natura cinematica, e le \textbf{forze attive}, di natura statica.
+
+\begin{itemize}[nosep]
+	\item i \textbf{vincoli}: dispositivi che limitano	la libertà di movimento del corpo, impedendo	determinati spostamenti o rotazioni. Sono condizioni	cinematiche assegnate: definiscono l'insieme degli	spostamenti ammissibili per la struttura.
+	\item le \textbf{forze attive}: forze e coppie	applicate direttamente al corpo dall'esterno ---	carichi gravitazionali, pressioni del vento, azioni	sismiche, carichi termici. Sono grandezze statiche	assegnate: costituiscono la \textit{domanda} cui	la struttura deve rispondere.
+	
+\end{itemize}
+
+Le due categorie sono di natura duale: a ogni condizione cinematica imposta da un vincolo corrisponde una grandezza statica incognita --- la \textit{reazione 	vincolare} --- che il vincolo esercita sul corpo per mantenere la condizione imposta. Questa dualità, che sarà formalizzata attraverso il principio dei lavori virtuali, è il filo conduttore dei tre volumi.
+
+\subsection{Tipologie di vincolo}
+
+I vincoli che agiscono su una struttura si distinguono in due categorie fondamentali, distinte per natura prima ancora che per posizione.
+
+Il vincolo interno di rigidità è il vincolo costitutivo del corpo rigido: esprime la condizione che le distanze fra i punti del corpo restino invariate sotto qualsiasi azione esterna. Non collega il corpo a nulla: descrive la natura stessa del corpo come oggetto cinematicamente vincolato all'indeformabilità. Le condizioni cinematiche che ne violano il dettato in modo controllato --- discontinuità relative imposte in corrispondenza di una sezione, sotto forma di traslazioni relative o di rotazioni relative concentrate --- sono dette \textbf{distorsioni}.
+
+I vincoli di collegamento mettono il corpo in relazione con qualcos'altro. Si distinguono in:
+
+\begin{itemize}[nosep]
+	\item \textbf{vincoli esterni di collegamento}: collegano la struttura a un riferimento fisso --- il suolo o un corpo esterno indeformabile. Limitano gli spostamenti assoluti del corpo;
+	\item \textbf{vincoli interni di collegamento}: collegano fra loro due o più parti della stessa struttura, o due strutture distinte di un assemblaggio. Limitano gli spostamenti relativi fra le parti collegate.
+\end{itemize}
+
+Le condizioni cinematiche imposte da un vincolo di collegamento, quando non nulle, sono dette \textbf{cedimenti} (assoluti per i vincoli esterni, relativi per quelli interni di collegamento).
+
+I cedimenti e le distorsioni, quando assegnati come dati del problema, sono \textit{cause cinematiche} della risposta strutturale: modificano la configurazione del sistema senza aggiungere carichi esterni a quelli assegnati. Esempi tipici di cedimenti sono gli abbassamenti dei supporti per effetto del consolidamento del terreno o delle deformazioni elastiche dei dispositivi di appoggio; cedimenti relativi possono manifestarsi nei vincoli interni di collegamento, ad esempio come piccoli scorrimenti o rotazioni residue nei dispositivi di giunzione fra elementi strutturali. Esempi di distorsioni sono le traslazioni o le rotazioni relative imposte in corrispondenza di una sezione interna della struttura. La risposta che ne segue --- in termini di reazioni vincolari e di caratteristiche della sollecitazione --- si somma a quella prodotta dalle forze attive.
+
+\begin{oss}
+	I vincoli rotazionali --- quelli che limitano la rotazione di una sezione o di un estremo --- presuppongono che il corpo vincolato abbia un \textit{assetto}, ovvero che ogni punto porti con sé un triedro orientato la cui rotazione sia una grandezza cinematica indipendente. Questa proprietà è propria del corpo rigido e dei modelli strutturali a dimensionalità ridotta --- la trave in particolare --- ma non del continuo tridimensionale di Cauchy, i cui punti sono privi di assetto. Nel continuo, ciò che nel modello di trave si chiama vincolo rotazionale diventa una condizione al contorno sul gradiente di spostamento.
+\end{oss}
+
+A ciascuna categoria di vincolo corrisponde una grandezza statica duale: il vincolo di rigidità ha per duale la caratteristica della sollecitazione, i vincoli di collegamento le reazioni vincolari (esterne o interne secondo il tipo). La struttura di queste dualità è raccolta nella sottosezione successiva.
+
+\subsection{La dualità cinematica-statica}
+
+L'interazione struttura-esterno è governata da una simmetria profonda: a ogni grandezza cinematica corrisponde una grandezza statica duale, e il loro prodotto ha il significato fisico di \textit{lavoro}. Questa dualità si manifesta a tutti i livelli:
+
+\begin{itemize}[nosep]
+	\item spostamento $\longleftrightarrow$ forza;
+	\item rotazione $\longleftrightarrow$ coppia;
+	\item deformazione $\longleftrightarrow$ tensione 	(dualità interna al corpo);
+	\item cedimento vincolare $\longleftrightarrow$
+	reazione vincolare;
+	\item distorsione $\longleftrightarrow$	caratteristica della sollecitazione.
+\end{itemize}
+
+Il \textit{principio dei lavori virtuali} formalizza questa dualità: una struttura è in equilibrio se e solo se il lavoro virtuale delle forze esterne è nullo per ogni spostamento virtuale compatibile con i vincoli. Questo principio --- che sarà dimostrato e applicato sistematicamente nel primo volume --- costituisce il fondamento comune di tutta la meccanica delle strutture, dal corpo rigido ai continui deformabili.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Il corpo rigido come fondamento della meccanica delle strutture}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Fra i modelli introdotti nella sezione precedente, il corpo rigido occupa uno statuto concettuale particolare: non è un modello strutturale finale --- nessuna struttura reale è perfettamente rigida --- ma è il \textit{fondamento cinematico e statico-vincolare} comune a tutti gli altri modelli. La sua centralità nell'impostazione dell'opera merita di essere dichiarata esplicitamente.
+
+\subsection{Il corpo rigido come fondamento cinematico}
+
+La cinematica del corpo rigido descrive i campi di spostamento in cui le distanze fra i punti restano invariate --- i cosiddetti \textit{spostamenti rigidi}. Questi spostamenti costituiscono il \textit{nucleo dell'operatore di deformazione}: sono precisamente quei campi di spostamento che non producono alcuna deformazione interna, indipendentemente dal modello strutturale adottato.
+
+Questa proprietà ha una conseguenza fondamentale: classificare una struttura come \textit{labile}, \textit{isostatica} o \textit{iperstatica} è un problema di cinematica del corpo rigido, indipendentemente dal fatto che la struttura sia deformabile. Il numero di gradi di libertà, la molteplicità dei vincoli, la posizione dei centri di rotazione --- tutto questo si determina trattando il corpo come rigido, anche se nella realtà si deforma. La deformabilità non modifica la classificazione cinematica del sistema: modifica solo la risposta interna una volta che il sistema è classificato.
+
+\subsection{Il corpo rigido come fondamento statico-vincolare}
+
+La caratterizzazione delle reazioni vincolari attraverso il principio dei lavori virtuali --- la reazione è quella grandezza statica che compie lavoro nullo su tutti gli spostamenti virtuali compatibili con il vincolo --- vale per qualsiasi modello strutturale, rigido o deformabile. La tipologia delle reazioni (forza in una direzione assegnata, forza arbitraria, forza e coppia) dipende esclusivamente dalla tipologia del vincolo, non dalla deformabilità del corpo vincolato.
+
+Analogamente, la dualità cinematica-statica --- a ogni componente di spostamento vincolata corrisponde una e una sola componente reattiva incognita --- è una proprietà strutturale dei vincoli posizionali che non dipende dalla deformabilità. Essa è introdotta e dimostrata per il corpo rigido nel primo volume, ma vale integralmente per la trave deformabile e, con le opportune generalizzazioni, per tutti gli altri modelli strutturali.
+
+\subsection{Il ruolo della deformabilità}
+
+Se la classificazione cinematica e la struttura delle reazioni vincolari sono determinate dalla cinematica del corpo rigido, cosa aggiunge la deformabilità?
+
+La deformabilità introduce tre elementi che il corpo rigido non può fornire:
+
+\begin{itemize}[nosep]
+	\item gli \textbf{stati interni}: il campo di deformazioni e il campo di tensioni all'interno del corpo, che sono le grandezze decisive per le verifiche di sicurezza strutturale;
+	\item la \textbf{solubilità dei sistemi iperstatici}: per un sistema iperstatico le sole equazioni di equilibrio sono insufficienti a determinare le reazioni vincolari. La deformabilità, attraverso il legame costitutivo, fornisce le equazioni aggiuntive necessarie a chiudere il problema sul versante statico;
+	\item la \textbf{compatibilità dei cedimenti e delle distorsioni}: nel corpo rigido, cedimenti vincolari e distorsioni imposti dall'esterno devono essere compatibili con il vincolo di rigidità interna --- devono cioè corrispondere a spostamenti rigidi. Quando non lo sono, il modello rigido non è in grado di soddisfarli. La deformabilità rimuove questo vincolo, consentendo al corpo di accomodare qualsiasi configurazione imposta sul versante cinematico.
+\end{itemize}
+
+I secondi e il terzo punto sono fra loro duali: l'iperstaticità e l'incompatibilità cinematica sono la stessa difficoltà vista dai due lati della dualità cinematica-statica. La deformabilità le risolve entrambe simultaneamente, introducendo gli stati interni e il legame costitutivo come ponte fra cinematica e statica.
+
+Il passaggio dal corpo rigido al corpo deformabile è dunque il passaggio dalla classificazione alla soluzione completa del problema strutturale. Il primo volume sviluppa la meccanica del corpo rigido --- cinematica, statica, vincoli, dualità, principio dei lavori virtuali --- nella sua generalità, senza presupporre alcuna forma particolare: i corpi sono indicati genericamente come $\mathcal{C}_i$, $\mathcal{C}_j$ e i risultati valgono per qualsiasi sistema di corpi rigidi, indipendentemente dalla loro geometria. La specializzazione alla trave --- prima come corpo rigido, poi come corpo deformabile mediante le ipotesi cinematiche di riduzione dimensionale dal continuo tridimensionale di Cauchy --- avviene progressivamente nel corso del primo volume e costituisce il punto di partenza dei volumi successivi: la trave rettilinea deformabile nel secondo, la trave curva, la fune e i problemi non lineari nel terzo.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Requisiti prestazionali e stati limite}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Una struttura deve soddisfare due requisiti prestazionali fondamentali durante la propria vita di servizio: la \textbf{fruibilità} --- consentire l'uso previsto della costruzione, limitando deformazioni, vibrazioni e fessurazioni entro soglie compatibili con il normale esercizio --- e la \textbf{resistenza} --- sopportare le azioni che la sollecitano senza raggiungere condizioni di collasso. Il soddisfacimento di tali requisiti si formalizza attraverso il concetto di \textit{stato limite}: la condizione al di là della quale la struttura non soddisfa più un determinato requisito prestazionale. In corrispondenza dei due requisiti si distinguono lo \textbf{stato limite di esercizio} (SLE), associato alla fruibilità, e lo \textbf{stato limite ultimo} (SLU), associato alla resistenza.
+
+La verifica strutturale consiste nel confronto, in corrispondenza di ciascuno stato limite, fra la \textit{domanda strutturale} --- l'insieme degli effetti prodotti dalle azioni esterne (carichi permanenti e variabili, azioni ambientali, cedimenti, distorsioni) --- e la \textit{capacità strutturale}, ovvero la risposta che la struttura è in grado di fornire, dipendente dalla geometria, dai materiali e dai vincoli. Determinare la risposta strutturale sotto azioni assegnate è l'obiettivo dell'analisi strutturale e costituisce il contenuto centrale dei tre volumi; il quadro normativo e operativo entro cui domanda e capacità vengono confrontate --- metodo semiprobabilistico agli stati limite, coefficienti parziali di sicurezza, combinazioni di carico --- è oggetto del terzo volume e dei corsi applicativi di progettazione strutturale.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{L'analisi strutturale}
+%----------------------------------------------------------------------------------------------------------------------------
+
+La Meccanica delle Strutture si articola in due grandi branche complementari:
+
+\begin{itemize}[nosep]
+	\item l'\textbf{analisi strutturale}: data una struttura di geometria, materiale e vincoli noti, soggetta ad azioni assegnate, si determina la sua risposta in termini di spostamenti, deformazioni, sollecitazioni e tensioni;
+	\item la \textbf{progettazione strutturale}: si concepisce e si dimensiona la struttura affinché soddisfi i requisiti prestazionali richiesti, scegliendo la forma, i materiali, le sezioni e la disposizione dei vincoli.
+\end{itemize}
+
+L'analisi strutturale muove da un modello già definito e ne studia il comportamento; la progettazione strutturale, viceversa, parte dai requisiti da soddisfare e perviene alla definizione del modello. Nella pratica ingegneristica i due processi si intrecciano in un procedimento iterativo: si progetta una struttura, se ne analizza la risposta, si verifica il soddisfacimento dei requisiti e, ove necessario, si modifica il progetto.
+
+\subsection{Le fasi dell'analisi strutturale}
+
+Il processo di analisi strutturale si articola in tre fasi:
+
+\begin{enumerate}[nosep]
+	\item \textbf{Modellazione}: si costruisce il modello meccanico della struttura e delle azioni che la sollecitano. Per quanto riguarda la struttura, ciò comporta la scelta del modello --- corpo rigido o trave deformabile --- la definizione delle proprietà meccaniche del materiale, del legame costitutivo e delle condizioni di vincolo. Per quanto riguarda le azioni, occorre tradurre gli scenari di carico reali in forze, coppie, cedimenti e distorsioni da applicare al modello.
+	
+	\item \textbf{Analisi della risposta}: si risolvono le equazioni del problema strutturale --- congruenza, equilibrio, legame costitutivo --- per determinare i campi di spostamento, deformazione, sollecitazione e tensione che descrivono lo stato della struttura sotto le azioni assegnate. Questa fase è l'oggetto centrale dei tre volumi.
+	
+	\item \textbf{Verifica di sicurezza}: si confrontano le grandezze ottenute dall'analisi con i valori limite ammissibili, accertando il soddisfacimento dei requisiti prestazionali per ciascuno stato limite considerato.
+\end{enumerate}
+
+\subsection{I tre pilastri dell'analisi}
+
+Le equazioni del problema strutturale poggiano su tre pilastri concettuali distinti, ciascuno con una natura e un ruolo precisi:
+
+\begin{itemize}[nosep]
+	\item le \textbf{equazioni di congruenza}: esprimono la compatibilità geometrica degli spostamenti --- il fatto che il corpo si deformi senza lacerazioni né sovrapposizioni. Sono equazioni di natura puramente cinematica, indipendenti dal materiale;
+	\item le \textbf{equazioni di equilibrio}: esprimono il bilanciamento delle forze interne ed esterne. Sono equazioni di natura puramente statica, anch'esse indipendenti dal materiale;
+	\item il \textbf{legame costitutivo}: esprime la relazione fra deformazioni e tensioni, ovvero il comportamento meccanico del materiale. È l'unica componente del problema che dipende dal materiale specifico e che distingue un corpo elastico da uno plastico, un metallo da un calcestruzzo.
+\end{itemize}
+
+Questa tripartizione --- congruenza, equilibrio, legame costitutivo --- è la struttura logica comune a tutti i modelli strutturali, dal corpo rigido alla trave deformabile. I diagrammi di Tonti --- rappresentazioni grafiche delle teorie fisiche che rendono visibile questa struttura logica --- sono introdotti nel capitolo di richiami della Meccanica dei Solidi che apre il secondo volume, dove la tripartizione è presente nella sua forma più generale, e ripresi sistematicamente nel seguito.
+
+\begin{oss}
+	Nel corpo rigido le equazioni di congruenza si riducono al vincolo di indeformabilità e le equazioni di equilibrio sono sufficienti a determinare la risposta dei sistemi isostatici. Il legame costitutivo è assente: non ci sono stati interni. È questa la ragione per cui il corpo rigido non è un modello strutturale finale ma uno strumento di analisi --- potente e indispensabile, ma incompleto. La deformabilità, introdotta dal legame costitutivo, è il completamento necessario per affrontare i sistemi iperstatici e per determinare gli stati interni di tensione e deformazione che sono l'oggetto delle verifiche di sicurezza.
+\end{oss}
+
+\begin{oss}
+	I tre volumi si concentrano sulla risposta statica delle strutture, determinata con metodi analitici. L'analisi della risposta dinamica --- nella quale le azioni e la risposta strutturale dipendono dal tempo e intervengono le forze d'inerzia --- è oggetto di corsi specialistici. I metodi di soluzione numerica, fondati sulla discretizzazione del problema continuo, sono sviluppati nei corsi di Meccanica Computazionale. Entrambi presuppongono la padronanza dei contenuti qui sviluppati, che ne costituiscono il fondamento analitico.
+\end{oss}
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Sull'arte di risolvere i problemi}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Capire la teoria è condizione necessaria ma non sufficiente: i concetti
+tecnico-scientifici hanno una stratificazione che la sola lettura non porta
+alla superficie e che si acquisisce solo \emph{usandoli} --- applicandoli a
+casi concreti, sbagliando e correggendo l'errore, riconoscendo lo stesso
+meccanismo in contesti diversi. È a questo che servono gli esercizi proposti
+nei tre volumi: non a verificare la conoscenza della teoria, ma a costruirla
+nel suo strato più profondo. Le pagine che seguono ne propongono un metodo:
+non un algoritmo da applicare ciecamente, ma una struttura logica che,
+interiorizzata, diventa un abito mentale.
+
+Mentre le tre fasi dell'analisi strutturale appena viste descrivono il flusso
+di lavoro macroscopico davanti a una struttura reale, le sei fasi che seguono
+operano a livello microscopico: descrivono come affrontare il singolo
+problema, dall'enunciato alla verifica del risultato. Esse non sono specifiche
+di un tipo di esercizio --- valgono per un sistema di equazioni lineari come
+per la classificazione di un sistema strutturale o per un calcolo di
+spostamenti: ciò che cambia è il contenuto delle relazioni, non la struttura
+logica.
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*]
+	\item \textbf{Lettura e comprensione.} Prima di scrivere qualsiasi formula:
+	di cosa parla il problema? Cosa si chiede esattamente? Quali sono le
+	ipotesi, esplicite o implicite? Molti errori non nascono da carenze
+	teoriche, ma da una lettura frettolosa che trascura un'ipotesi o non coglie
+	una struttura particolare --- una simmetria, un caso limite --- capace di
+	semplificare la soluzione o di modificarne il metodo.
+	
+	\item \textbf{Inventario dei dati.} Si elencano sistematicamente le
+	grandezze note, ciascuna con la propria unità di misura e, ove rilevante,
+	con segno e posizione. È il primo atto di traduzione dal linguaggio del
+	testo a quello della matematica e spesso, nel compierlo, ci si accorge di
+	dati impliciti necessari alla soluzione.
+	
+	\item \textbf{Inventario delle incognite.} Si elencano le grandezze da
+	determinare e --- passo cruciale --- se ne fa il \emph{conteggio}: quante
+	sono, quante equazioni indipendenti sono disponibili. Il confronto fra
+	equazioni e incognite fornisce la prima informazione qualitativa sul tipo di
+	problema (isodeterminato, sotto- o sovradeterminato, degenere) ed è il primo
+	passo della classificazione cinematica e statica; resta però condizione
+	necessaria ma non sufficiente, da completare con la verifica del rango
+	(Capitolo~\ref{app:algebra_eqlineari}).
+	
+	\item \textbf{Costruzione delle relazioni.} Si scrivono le equazioni che
+	legano dati e incognite. In meccanica strutturale esse provengono dai tre
+	pilastri appena richiamati --- congruenza, equilibrio, legame costitutivo
+	--- e confonderne la natura porta a errori concettuali, non solo numerici.
+	Conviene scriverle in forma esplicita, verificandone la coerenza
+	dimensionale e il numero, e --- se il sistema è lineare --- porle subito in
+	forma matriciale $\bm{A}\bm{x} = \bm{b}$.
+	
+	\item \textbf{Scelta della strategia.} È la fase che richiede il maggior
+	giudizio: sfruttare la struttura del problema (simmetrie, disaccoppiamenti,
+	casi particolari), preferire la via più controllabile --- quella con
+	risultati intermedi verificabili --- e considerare la doppia via quando il
+	problema si presta. Nell'opera la scelta si traduce tipicamente
+	nell'alternativa fra approccio cinematico e statico, o fra metodo delle
+	forze e metodo degli spostamenti: non tecniche intercambiabili, ma punti di
+	vista duali sullo stesso problema. Due soluzioni impostate diversamente
+	possono essere entrambe corrette; ciò che conta è la consapevolezza della
+	scelta.
+	
+	\item \textbf{Risoluzione.} Si procede con il calcolo, lavorando in forma
+	simbolica il più a lungo possibile (i risultati parametrici sono più
+	informativi e più facili da controllare), mantenendo le unità di misura come
+	controllo dimensionale continuo, esplicitando i passaggi chiave e
+	semplificando progressivamente. Il calcolo produce un risultato; ma un
+	risultato non è ancora una soluzione: la soluzione richiede di essere
+	verificata.
+\end{enumerate}
+
+\subsection{I controlli}
+
+I controlli non sono un'appendice opzionale: sono parte integrante della
+soluzione, e un risultato privo di verifica è un risultato a metà. I
+principali sono il \emph{controllo dimensionale} --- le unità di misura devono
+essere corrette, verifica banale e gratuita; i \emph{casi limite} --- se un
+parametro tende a zero, a infinito o a un valore particolare, il risultato si
+riduce a un caso noto?\ e a struttura e carico simmetrici la risposta rispetta
+la simmetria?; il \emph{bilancio globale} --- in equilibrio, la somma delle
+forze esterne e dei momenti rispetto a un polo qualsiasi deve annullarsi, ed è
+un controllo indipendente dal metodo di risoluzione e perciò particolarmente
+efficace; la \emph{coerenza del segno} --- il segno ottenuto ha senso fisico
+(trazione o compressione, uno spostamento in un verso o nell'altro)?; e
+l'\emph{ordine di grandezza} --- la risposta è plausibile o palesemente fuori
+scala? Quest'ultima capacità è una \emph{sensibilità strutturale} che si
+costruisce nel tempo, attraverso la pratica; non è richiesta all'inizio, ma è
+bene sapere fin d'ora che esiste e che ogni esercizio svolto con attenzione è
+un passo verso di essa.
+
+\subsection{Il valore della doppia via}
+
+Risolvere lo stesso problema per due vie indipendenti è il controllo più
+potente che si possa fare. Se le due vie conducono allo stesso risultato, la
+probabilità che entrambe contengano un errore tale da produrre per caso lo
+stesso numero è trascurabile; se conducono a risultati diversi, almeno una
+contiene un errore, e il confronto aiuta a localizzarlo. Nei tre volumi la
+doppia via ricorre in molte forme --- verificare l'approccio agli spostamenti
+con quello alle forze, controllare le reazioni vincolari con le equazioni di
+equilibrio globale, confrontare il campo degli spostamenti ottenuto per via
+cinematica con quello ottenuto per via energetica. Più che un lusso per chi ha
+tempo in abbondanza, è un abito mentale: l'abitudine a chiedersi sempre se
+esiste un secondo punto di vista, una seconda lettura, un secondo percorso
+verso lo stesso risultato.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{I tre volumi}\label{sec:i_tre_volumi}
+%----------------------------------------------------------------------------------------------------------------------------
+
+I tre volumi sono concepiti come parti di un insieme unitario --- condividono la notazione, i fondamenti concettuali e il filo conduttore della dualità cinematica-statica --- ma sono sufficientemente autocontenuti da poter essere consultati indipendentemente.
+
+\paragraph{Volume I --- Meccanica della trave e dei sistemi di travi rigide.}
+Il primo volume si apre con una parte preliminare (\emph{Preliminari}) che raccoglie gli strumenti matematici e concettuali necessari: algebra delle matrici e sistemi lineari, applicazioni lineari e dualità, vettori geometrici nelle loro varietà di liberi, applicati, polari e assiali. Sviluppa quindi la meccanica del corpo rigido nella sua generalità: cinematica, classificazione dei sistemi (labile, isostatico, iperstatico), statica, dualità cinematica-statica formalizzata attraverso il principio dei lavori virtuali. I corpi sono trattati senza presupporre alcuna forma particolare --- i risultati valgono per qualsiasi sistema di corpi rigidi --- e la specializzazione alla trave avviene progressivamente. Si studiano i sistemi di travi rigide a collegamento eterogeneo e a collegamento omogeneo, queste ultime nelle due famiglie classiche dei sistemi reticolari e dei telai piani. Il volume si chiude mettendo in evidenza le indeterminazioni statiche e le impossibilità cinematiche che il modello rigido non è in grado di risolvere, motivando l'introduzione della deformabilità nel volume successivo.
+
+\paragraph{Volume II --- Travi rettilinee.}
+Il secondo volume è dedicato alla trave rettilinea deformabile. Si apre con un capitolo di richiami della Meccanica dei Solidi --- cinematica della deformazione, equazioni di equilibrio di Cauchy, legame costitutivo elastico lineare --- presentati attraverso i diagrammi di Tonti, che ne rendono visibile l'architettura logica e costituiscono il ponte verso la derivazione delle equazioni della trave per riduzione dimensionale. Si sviluppa quindi la teoria della trave secondo i modelli di Eulero-Bernoulli e Timoshenko, si introducono le caratteristiche della sollecitazione come reazioni del vincolo di continuità nel riferimento intrinseco alla trave, e si studiano i problemi di travi isostatiche e iperstatiche sotto carichi e cedimenti, attraverso i diagrammi delle caratteristiche della sollecitazione, il metodo delle forze e il metodo degli spostamenti. Si trattano i sistemi di travi deformabili nelle loro due letture --- per assemblaggi e nodale --- e la trave su suolo elastico.
+
+\paragraph{Volume III --- Travi curve, funi, non linearità e sicurezza strutturale.}
+Il terzo volume estende la teoria della trave in quattro direzioni. La prima è geometrica: si abbandona l'ipotesi di asse rettilineo e si studia la trave curva nel piano e nello spazio, dove la curvatura introduce un accoppiamento fra le componenti scalari delle equazioni di congruenza e di equilibrio e fa emergere il meccanismo di portanza funicolare. La seconda e la terza direzione riguardano il superamento dell'ipotesi di linearità: la \textit{non linearità costitutiva} introduce il comportamento elasto-plastico e conduce all'analisi limite e al calcolo del carico di collasso; la \textit{non linearità geometrica} richiede di formulare l'equilibrio sulla configurazione deformata e porta allo studio della stabilità e dell'instabilità delle travi compresse. In questo contesto trova collocazione anche il modello di fune, caso limite di trave priva di rigidezza flessionale in cui la configurazione stessa è incognita del problema. La quarta direzione è il passaggio dall'analisi alla verifica: il confronto fra domanda e capacità strutturale, sviluppato attraverso i modelli di capacità a scala puntuale, sezionale e strutturale, colloca nel quadro delle verifiche di sicurezza tutti gli strumenti di analisi sviluppati nei volumi precedenti.

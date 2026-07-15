@@ -1,0 +1,914 @@
+%---------------------------------------------------------------------------------------------------------------------------- 
+\graphicspath{{Parti/P01-Preliminari/A02-Algebra_Matrici_Sistemi_Lineari/Figure/}}
+\chapter{Algebra delle matrici e  sistemi di equazioni lineari}\label{app:algebra_eqlineari}
+\chaptermark{Algebra delle matrici e  sistemi di equazioni lineari}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+\begin{sommario}
+	Si richiamano le nozioni fondamentali su vettori numerici 
+	e matrici, le principali operazioni dell'algebra lineare e 
+	le proprietà delle matrici quadrate. Si formulano quindi i 
+	sistemi di equazioni lineari algebriche, se ne discute 
+	l'esistenza e l'unicità della soluzione attraverso il 
+	teorema di Rouché-Capelli, e se ne classificano i quattro 
+	casi --- isodeterminato, sottodeterminato, sovradeterminato, 
+	degenere --- fornendo per ciascuno la procedura risolutiva. 
+	Le interpretazioni geometriche, fondate sui concetti di 
+	applicazione lineare, nucleo, immagine e dualità, sono 
+	oggetto del capitolo successivo.
+\end{sommario}
+%	
+
+
+%-------------------------------------------------------------------------------------------------------------------
+\section{Richiami su vettori numerici e matrici}
+%-------------------------------------------------------------------------------------------------------------------
+
+La formulazione e la risoluzione dei problemi della meccanica delle strutture si appoggiano in modo sistematico sul linguaggio dell'algebra lineare. In questo capitolo si richiamano le nozioni e le operazioni 	fondamentali su vettori numerici e matrici, con particolare attenzione 	alle condizioni di consistenza dimensionale e alla tecnica della partizione a blocchi, strumenti impiegati sistematicamente nel testo.
+
+
+\subsection{Vettori numerici}
+
+Un \textit{vettore numerico} (o \textit{vettore colonna}) di $n$ componenti reali \`e un elemento di $\mathbb{R}^n$:
+\begin{equation}
+	\bm{x} = \begin{Bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{Bmatrix} \in \mathbb{R}^{n}.
+\end{equation}
+Il \textit{trasposto} di $\bm{x}$ \`e il vettore riga $\bm{x}^\top = \{x_1 \;\; x_2 \;\; \cdots \;\; x_n\} \in \mathbb{R}^{1\times n}$. Il vettore nullo si indica con $\bm{0}$.
+
+
+\subsection{Matrici}
+
+Una \textit{matrice}\index{matrice|textbf} reale di $m$ righe e $n$ colonne \`e un elemento di $\mathbb{R}^{m \times n}$:
+\begin{equation}
+	\bm{A} = \begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{bmatrix} \in \mathbb{R}^{m \times n}.
+\end{equation}
+Le colonne di $\bm{A}$ si indicano con $\bm{a}_1, \bm{a}_2, \ldots, \bm{a}_n \in \mathbb{R}^m$; le righe, intese come vettori riga, con $\bm{a}^1, \bm{a}^2, \ldots, \bm{a}^m \in \mathbb{R}^{1\times n}$.\footnote{La notazione segue un'analogia mnemonica bilingue:
+	il \emph{pedice} evoca \textit{cellar} (cantina, in basso)
+	o \textit{column} (colonna), entrambi con la \textit{c}
+	minuscola; l'\emph{apice} evoca \textit{roof} (tetto, in
+	alto) o \textit{row} (riga), entrambi con la \textit{r}.
+	Pedice $\to$ colonna, apice $\to$ riga.}
+
+
+Se $m=n$ la matrice si dice \textit{quadrata}; se $m>n$ si dice \textit{rettangolare alta}; se $m<n$ si dice \textit{rettangolare bassa}.
+
+Il \textit{rango}\index{rango|textbf}\nomenclature[O]{$\rg\bm{A}$}{rango della matrice} di $\bm{A}$, indicato con $\rg\bm{A}$, \`e il massimo numero di righe (o, equivalentemente, di colonne) linearmente indipendenti. Vale sempre $\rg\bm{A} \leq \min(m,n)$; quando $\rg\bm{A} = \min(m,n)$ la matrice si dice \textit{a rango pieno} (o \textit{massimo}).
+
+
+La \textit{trasposta}\index{matrice!trasposta}\nomenclature[O]{$\bm{A}^{\top}$}{matrice trasposta} $\bm{A}^\top \in \mathbb{R}^{n \times m}$ si ottiene
+scambiando righe e colonne: $(\bm{A}^\top)_{ij} = a_{ji}$.  La trasposta della trasposta restituisce la matrice di partenza:
+$(\bm{A}^\top)^\top = \bm{A}$. 
+
+
+\subsection{Operazioni fra matrici}
+
+\paragraph{Somma e differenza.}
+La somma (o la differenza) di due matrici \`e definita solo se le due matrici hanno le \textit{stesse dimensioni}. Date $\bm{A}, \bm{B} \in \mathbb{R}^{m \times n}$:
+\begin{equation}
+	\bm{C} = \bm{A} \pm \bm{B} \in \mathbb{R}^{m \times n}, \qquad c_{ij} = a_{ij} \pm b_{ij}.
+\end{equation}
+
+\paragraph{Prodotto per uno scalare.}
+Per ogni $\alpha \in \mathbb{R}$ e $\bm{A} \in \mathbb{R}^{m \times n}$:
+\begin{equation}
+	\bm{C} = \alpha\,\bm{A} \in \mathbb{R}^{m \times n}, \qquad c_{ij} = \alpha\, a_{ij}.
+\end{equation}
+
+
+\paragraph{Prodotto matrice-matrice.}
+Il prodotto di $\bm{A} \in \mathbb{R}^{m \times p}$ per $\bm{B} \in \mathbb{R}^{p \times n}$ \`e definito quando il numero di colonne di $\bm{A}$ \`e uguale al numero di righe di $\bm{B}$, e produce una matrice di $\mathbb{R}^{m \times n}$:
+\begin{equation}\label{eq:prod_mat_mat}
+	\bm{C} = \bm{A}\bm{B} \in \mathbb{R}^{m \times n}, \qquad c_{ij} = \sum_{k=1}^{p} a_{ik}\, b_{kj}.
+\end{equation}
+\begin{equation}\label{eq:consist_mat_mat}
+	\underbrace{\bm{A}}_{m \times p}\;\underbrace{\bm{B}}_{p \times n} = \underbrace{\bm{C}}_{m \times n}.
+\end{equation}
+Il prodotto matriciale non \`e in generale commutativo:
+$\bm{A}\bm{B} \neq \bm{B}\bm{A}$, e la commutazione pu\`o non essere
+neppure definita se le dimensioni non lo consentono. Stante l'importanza
+dell'ordine dei fattori, si dice che $\bm{A}$ \textit{premoltiplica}
+$\bm{B}$ e, equivalentemente, che $\bm{B}$ \textit{postmoltiplica}
+$\bm{A}$: una distinzione assente nel prodotto fra scalari, dove l'ordine
+\`e irrilevante.\footnote{Una matrice $\bm{A} \in \mathbb{R}^{m \times n}$
+	è a tutti gli effetti un vettore di $mn$ componenti reali:
+	la somma e il prodotto per uno scalare agiscono
+	componente per componente, esattamente come per i vettori.
+	Il prodotto matriciale $\bm{A}\bm{B}$ fa eccezione: non
+	è un'operazione componente per componente, ma sfrutta
+	la struttura a due indici per contrarre una dimensione
+	--- le colonne di $\bm{A}$ contro le righe di $\bm{B}$
+	--- producendo una nuova matrice. È questa contrazione,
+	assente nei vettori ordinari, che rende il prodotto
+	matriciale uno strumento così potente.} 
+Valgono le propriet\`a:
+
+\begin{enumerate}[label=(\roman*)]
+	\item associativit\`a: $(\bm{A}\bm{B})\bm{C} = \bm{A}(\bm{B}\bm{C})$;
+	\item distributivit\`a: $\bm{A}(\bm{B}+\bm{C}) = \bm{A}\bm{B}+\bm{A}\bm{C}$;
+	\item trasposizione del prodotto: $(\bm{A}\bm{B})^\top = \bm{B}^\top\bm{A}^\top$.
+\end{enumerate}
+
+
+\paragraph{Prodotto matrice-vettore.}
+Il prodotto di una matrice $\bm{A} \in \mathbb{R}^{m \times n}$ per un vettore $\bm{x} \in \mathbb{R}^{n}$ \`e definito quando il numero di colonne di $\bm{A}$ \`e uguale al numero di componenti di $\bm{x}$, e produce un vettore di $\mathbb{R}^{m}$:
+\begin{equation}\label{eq:prod_mat_vec}
+	\bm{b} = \bm{A}\bm{x} \in \mathbb{R}^{m}, \qquad b_{i} = \sum_{j=1}^{n} a_{ij}\, x_j, \quad i=1,\ldots,m.
+\end{equation}
+\begin{equation}\label{eq:consist_mat_vec}
+	\underbrace{\bm{A}}_{m \times n}\;\underbrace{\bm{x}}_{n \times 1} = \underbrace{\bm{b}}_{m \times 1}.
+\end{equation}
+
+\paragraph{Partizione a blocchi.}
+Una matrice $\bm{A} \in \mathbb{R}^{m \times n}$ pu\`o essere suddivisa in \textit{sottomatrici} (o \textit{blocchi})\index{partizione a blocchi|textbf}\index{matrice!a blocchi} raggruppando righe e colonne contigue. Ad esempio, partizionando le $m$ righe in due gruppi di $m_1$ e $m_2$ righe ($m_1+m_2=m$) e le $n$ colonne in due gruppi di $n_1$ e $n_2$ colonne ($n_1+n_2=n$):
+\begin{equation}
+	\bm{A} = \left[\begin{array}{c|c}
+		\bm{A}_{11} & \bm{A}_{12} \\ \hline
+		\bm{A}_{21} & \bm{A}_{22}
+	\end{array}\right],
+\end{equation}
+con $\bm{A}_{11} \in \mathbb{R}^{m_1 \times n_1}$, $\bm{A}_{12} \in \mathbb{R}^{m_1 \times n_2}$, $\bm{A}_{21} \in \mathbb{R}^{m_2 \times n_1}$, $\bm{A}_{22} \in \mathbb{R}^{m_2 \times n_2}$. Analogamente, un vettore $\bm{x} \in \mathbb{R}^n$ pu\`o essere partizionato in sottovettori conformi alla partizione delle colonne:
+\begin{equation}
+	\bm{x} = \left\{\begin{array}{c} \bm{x}_1 \\ \hline \bm{x}_2 \end{array}\right\},
+	\qquad \bm{x}_1 \in \mathbb{R}^{n_1},\;\; \bm{x}_2 \in \mathbb{R}^{n_2}.
+\end{equation}
+Le regole ordinarie delle operazioni matriciali --- somma, prodotto matrice-vettore, prodotto matrice-matrice --- restano valide a livello di blocchi, a condizione che le dimensioni dei sottoblocchi siano mutuamente consistenti. Ad esempio, il prodotto $\bm{A}\bm{x}$ si calcola come
+\begin{equation}
+	\bm{A}\bm{x} =
+	\left[\begin{array}{c|c}
+		\bm{A}_{11} & \bm{A}_{12} \\ \hline
+		\bm{A}_{21} & \bm{A}_{22}
+	\end{array}\right]
+	\left\{\begin{array}{c} \bm{x}_1 \\ \hline \bm{x}_2 \end{array}\right\}
+	= \left\{\begin{array}{c}
+		\bm{A}_{11}\bm{x}_1 + \bm{A}_{12}\bm{x}_2 \\ \hline
+		\bm{A}_{21}\bm{x}_1 + \bm{A}_{22}\bm{x}_2
+	\end{array}\right\},
+\end{equation}
+e, date due matrici $\bm{A}$ e $\bm{B}$ partizionate in modo conforme,
+il prodotto $\bm{A}\bm{B}$ si esegue con la regola ``righe per colonne''
+applicata ai blocchi. Pi\`u precisamente, nel prodotto
+$\bm{C}=\bm{A}\bm{B}$, la partizione per righe di $\bm{A}$ (linee
+orizzontali) si trasmette alla partizione per righe di $\bm{C}$, mentre
+la partizione per colonne di $\bm{B}$ (linee verticali) si trasmette
+alla partizione per colonne di $\bm{C}$; la partizione per colonne di
+$\bm{A}$ deve invece essere conforme alla partizione per righe di
+$\bm{B}$, poich\'e corrisponde alla dimensione interna che si contrae
+nella sommatoria --- esattamente come l'indice $k$ nel prodotto scalare
+$c_{ij}=\sum_k a_{ik}\,b_{kj}$.
+
+Un caso particolare notevole si ottiene quando la partizione delle colonne
+\`e la pi\`u fine possibile: ogni blocco \`e costituito da una singola colonna
+$\bm{a}_j$ di $\bm{A}$ e dalla corrispondente componente $x_j$ di $\bm{x}$.
+Il prodotto $\bm{A}\bm{x}$ si interpreta allora come \textit{combinazione
+	lineare delle colonne}\index{combinazione lineare|textbf} di $\bm{A}$ con coefficienti dati dalle componenti
+di $\bm{x}$:
+\begin{equation}\label{eq:comb_lin_colonne}
+	\bm{A}\bm{x} = x_1\,\bm{a}_1 + x_2\,\bm{a}_2 + \cdots + x_n\,\bm{a}_n
+	= \sum_{j=1}^{n} x_j\,\bm{a}_j.
+\end{equation}
+Questa lettura del prodotto matrice-vettore sar\`a centrale nell'interpretazione
+dei sistemi lineari: risolvere $\bm{A}\bm{x}=\bm{b}$ equivale a determinare
+i coefficienti $x_j$ che esprimono $\bm{b}$ come combinazione lineare delle
+colonne di $\bm{A}$. Questa tecnica sar\`a sistematicamente impiegata nella classificazione e risoluzione dei sistemi lineari (\PARref{sec:sistemi_lineari}).
+
+
+
+\begin{oss}
+	Le condizioni di consistenza dimensionale espresse nelle  \eqref{eq:consist_mat_mat} e \eqref{eq:consist_mat_vec} sono un aspetto operativo essenziale: prima di eseguire qualunque prodotto occorre verificare che le dimensioni interne coincidano. Le dimensioni esterne determinano il formato del risultato. Questa regola sar\`a costantemente applicata nella formulazione dei problemi strutturali, dove le matrici rappresentano operatori cinematici o statici con significato fisico preciso.
+\end{oss}
+
+\begin{oss}
+	La consistenza dimensionale permette di distinguere due prodotti
+	fra vettori di aspetto simile ma natura profondamente diversa. Dato
+	$\bm{x}\in\mathbb{R}^n$:
+	\begin{enumerate}[label=(\roman*)]
+		\item il prodotto $\bm{x}^\top\bm{x}$ \`e un prodotto
+		$(1\times n)(n\times 1) = (1\times 1)$, cio\`e uno
+		\textit{scalare} --- la somma dei quadrati delle componenti,
+		pari al quadrato della norma euclidea:
+		$\bm{x}^\top\bm{x} = \sum_{i=1}^n x_i^2 = \|\bm{x}\|^2$;
+		\item il prodotto $\bm{x}\bm{x}^\top$ \`e un prodotto
+		$(n\times 1)(1\times n) = (n\times n)$, cio\`e una
+		\textit{matrice} di rango~1:
+		$(\bm{x}\bm{x}^\top)_{ij} = x_i\, x_j$.
+	\end{enumerate}
+	L'ordine dei fattori, irrilevante nel prodotto fra scalari,
+	\`e dunque essenziale nel calcolo matriciale.
+\end{oss}
+
+\subsection{Matrici quadrate}\label{par:matrici_quadrate}
+
+Se $m=n$, la matrice $\bm{A} \in \mathbb{R}^{n \times n}$ si dice \textit{quadrata}\index{matrice!quadrata}.
+La \textit{diagonale principale} \`e costituita dagli elementi $a_{11}, a_{22},
+\ldots, a_{nn}$. La \textit{matrice identit\`a}\index{matrice!identità}\nomenclature[L]{$\bm{I}_n$}{matrice identità} $\bm{I}_n \in \mathbb{R}^{n\times n}$
+ha elementi $\delta_{ij}$ (simbolo di Kronecker) ed \`e l'elemento neutro del
+prodotto matriciale: $\bm{A}\bm{I}_n = \bm{I}_n\bm{A} = \bm{A}$.
+
+
+Una matrice	quadrata tale che $\bm{A}^\top = \bm{A}$ si dice \textit{simmetrica};
+se invece $\bm{A}^\top = -\bm{A}$ si dice \textit{emisimmetrica}
+(o \textit{antisimmetrica}), e i suoi elementi diagonali sono necessariamente nulli.	
+Ogni matrice quadrata $\bm{A}$ ammette un'unica decomposizione nella somma
+di una parte simmetrica e di una parte emisimmetrica:
+\begin{equation}
+	\bm{A} = \sym\bm{A} + \skw\bm{A},
+	\qquad
+	\sym\bm{A} = \dfrac{\bm{A}+\bm{A}^\top}{2},
+	\qquad
+	\skw\bm{A} = \dfrac{\bm{A}-\bm{A}^\top}{2}.
+\end{equation}
+Per $n = 3$, la parte simmetrica possiede $6$ componenti
+indipendenti, la parte emisimmetrica $3$: la somma restituisce
+le $9$ componenti della matrice generica. Lo studente
+riconoscerà in questa ripartizione la decomposizione del
+gradiente di spostamento già incontrata nella meccanica dei
+continui: le sei componenti simmetriche descrivono la
+deformazione, le tre emisimmetriche la rotazione rigida locale.
+La parte simmetrica ammette a sua volta una decomposizione
+unica nella somma di una parte \textit{isotropa} (o sferica)
+e di una parte \textit{deviatorica}:
+\begin{equation}
+	\sym\bm{A} = \sph(\sym\bm{A}) + \dev(\sym\bm{A}),
+\end{equation}
+con
+\begin{equation}
+	\sph(\sym\bm{A})
+	= \frac{\tr(\bm{A})}{3}\,\bm{I},
+	\qquad
+	\dev(\sym\bm{A})
+	= \sym\bm{A}
+	- \frac{\tr(\bm{A})}{3}\,\bm{I}.
+\end{equation}
+La parte isotropa è proporzionale all'identità e possiede un
+solo parametro indipendente (la traccia); la parte deviatorica,
+simmetrica e a traccia nulla, ne possiede cinque. Anche questa
+decomposizione è nota dalla meccanica dei continui, dove separa
+gli effetti volumetrici (dilatazione) da quelli distorsionali
+(cambiamento di forma a volume costante), tanto nel tensore di
+deformazione quanto in quello di sforzo.
+
+Il \textit{determinante}\index{determinante|textbf}\nomenclature[O]{$\det\bm{A}$}{determinante della matrice} $\det\bm{A}$ \`e uno scalare associato a ogni matrice
+quadrata. Esso pu\`o essere calcolato mediante la \textit{regola di Laplace}\index{regola di Laplace}
+(sviluppo secondo una riga o una colonna). Lo sviluppo secondo la $i$-esima
+riga \`e:
+\begin{equation}\label{eq:laplace}
+	\det\bm{A} = \sum_{j=1}^{n} (-1)^{i+j}\, a_{ij}\, M_{ij},
+\end{equation}
+dove $M_{ij}$ \`e il \textit{minore complementare} dell'elemento $a_{ij}$,
+ossia il determinante della sottomatrice $(n{-}1)\times(n{-}1)$ ottenuta
+sopprimendo la $i$-esima riga e la $j$-esima colonna di $\bm{A}$. Il prodotto
+$(-1)^{i+j} M_{ij}$ prende il nome di \textit{cofattore} (o \textit{complemento
+	algebrico}) di $a_{ij}$. Un'espressione analoga vale per lo sviluppo secondo
+la $j$-esima colonna. Il risultato \`e indipendente dalla linea scelta per lo
+sviluppo.
+
+Per il prodotto di due matrici quadrate vale il \textit{teorema di Binet}\index{teorema!di Binet}:
+\begin{equation}\label{eq:binet}
+	\det(\bm{A}\bm{B}) = \det\bm{A}\cdot\det\bm{B}.
+\end{equation}
+
+Se $\det\bm{A} \neq 0$ la matrice si dice \textit{non singolare}
+(o \textit{invertibile}) e il suo rango \`e massimo ($\rg\bm{A}=n$);
+se $\det\bm{A} = 0$ la matrice si dice \textit{singolare} e $\rg\bm{A}<n$.
+
+La \textit{matrice inversa}\index{matrice!inversa}\nomenclature[O]{$\bm{A}^{-1}$}{matrice inversa} $\bm{A}^{-1} \in \mathbb{R}^{n \times n}$,
+definita solo per matrici non singolari, \`e l'unica matrice tale che
+\begin{equation}
+	\bm{A}\bm{A}^{-1} = \bm{A}^{-1}\bm{A} = \bm{I}_n.
+\end{equation}
+Dal teorema di Binet segue immediatamente che
+$\det(\bm{A}^{-1}) = (\det\bm{A})^{-1}$.
+
+
+
+%-------------------------------------------------------------------------------------------------------------------
+\section{Sistemi di equazioni lineari algebriche}\label{sec:sistemi_lineari}
+%-------------------------------------------------------------------------------------------------------------------
+
+
+In questo paragrafo si richiamano gli strumenti algebrici e le 
+procedure risolutive per i sistemi di equazioni lineari. Le 
+interpretazioni geometriche, attraverso i concetti di applicazione 
+lineare, nucleo, immagine e dualità, sono oggetto del capitolo
+successivo.
+
+
+
+\subsection{Formulazione del problema}
+
+Un sistema di $m$ equazioni lineari\index{sistema di equazioni lineari|textbf} in $n$ incognite $x_1, x_2, \ldots, x_n$ si scrive, in forma estesa:
+\begin{equation}\label{eq:sist_esteso}
+	\left\{
+	\begin{aligned}
+		a_{11}\,x_1 + a_{12}\,x_2 + \cdots + a_{1n}\,x_n &= b_1 \\
+		a_{21}\,x_1 + a_{22}\,x_2 + \cdots + a_{2n}\,x_n &= b_2 \\
+		&\;\;\vdots \\
+		a_{m1}\,x_1 + a_{m2}\,x_2 + \cdots + a_{mn}\,x_n &= b_m
+	\end{aligned}
+	\right.
+\end{equation}
+dove $a_{ij}$ sono i coefficienti noti e $b_i$ i termini noti. Definendo la matrice dei coefficienti\index{matrice!dei coefficienti} $\bm{A}\in\mathbb{R}^{m\times n}$, il vettore delle incognite $\bm{x} \in \mathbb{R}^{n}$ e il vettore dei termini noti\index{termine noto} $\bm{b} \in \mathbb{R}^{m}$:
+\begin{equation}
+	\bm{A}=\begin{bmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n}\\
+		a_{21} & a_{22} & \cdots & a_{2n}\\
+		\vdots & \vdots & \ddots & \vdots\\
+		a_{m1} & a_{m2} & \cdots & a_{mn}
+	\end{bmatrix}, \qquad
+	\bm{x}=\begin{Bmatrix} x_{1}\\ x_{2}\\ \vdots \\ x_{n} \end{Bmatrix}, \qquad
+	\bm{b}=\begin{Bmatrix} b_{1}\\ b_{2}\\ \vdots \\ b_{m} \end{Bmatrix},
+\end{equation}
+il sistema \eqref{eq:sist_esteso} assume la forma compatta
+\begin{equation}\label{eq:sist_lin}
+	\bm{A}\bm{x} = \bm{b},
+\end{equation}
+dove il prodotto $\bm{A}\bm{x}$ \`e quello matrice-vettore definito in \eqref{eq:prod_mat_vec}. Il sistema \`e \textit{omogeneo}\index{sistema di equazioni lineari!omogeneo} se $\bm{b}=\bm{0}$, \textit{non omogeneo} altrimenti.
+
+La risoluzione del sistema \eqref{eq:sist_lin} richiede risposta a due quesiti: \textit{(i)}~il sistema ammette soluzioni? (problema di \textit{esistenza}); \textit{(ii)}~se ammette soluzioni, quante ne ammette? (problema di \textit{unicit\`a}).
+
+
+\subsection{Teorema di Rouch\'e-Capelli e struttura della soluzione}
+
+\begin{teorema}[Rouch\'e-Capelli]\index{teorema!di Rouché-Capelli|textbf}
+	Dato il sistema $\bm{A}\bm{x}=\bm{b}$ e la matrice completa\index{matrice!completa} $[\bm{A}|\bm{b}]$:
+	\begin{enumerate}[label=(\roman*)]
+		\item il sistema ammette soluzioni se e solo se $\rg\bm{A}=\rg[\bm{A}|\bm{b}]$;
+		\item quando ammette soluzioni, queste formano un sottospazio affine di dimensione $n-r$, con $r=\rg\bm{A}$.
+	\end{enumerate}
+\end{teorema}
+
+\noindent In modo equivalente: il sistema \`e compatibile se e solo se
+$\bm{b}$ \`e combinazione lineare delle colonne di $\bm{A}$, condizione
+sempre verificata per $\bm{b}=\bm{0}$.
+
+Quando il sistema \`e compatibile, la soluzione generale\index{soluzione (di un sistema lineare)!generale} ha la forma
+\begin{equation}\label{eq:sol_gen}
+	\bm{x} = \bm{x}_0 + \bm{X}_{\alpha}\,\bm{\alpha}
+	= \bm{x}_0 + \sum_{j=1}^{n-r} \alpha_j \bm{x}_j ,
+\end{equation}
+dove $\bm{x}_0$ \`e una soluzione particolare\index{soluzione (di un sistema lineare)!particolare} del sistema non omogeneo, le
+colonne $\bm{x}_j$ di $\bm{X}_{\alpha}$ sono $n-r$ soluzioni linearmente
+indipendenti del sistema omogeneo $\bm{A}\bm{x}=\bm{0}$, e
+$\bm{\alpha} \in \mathbb{R}^{n-r}$ \`e un vettore di parametri liberi\index{parametro libero|textbf}\nomenclature[G]{$\bm{\alpha}$}{vettore di parametri liberi}.
+
+
+Il teorema fornisce la risposta nel caso generale. Nelle applicazioni alla meccanica delle strutture è tuttavia utile distinguere quattro situazioni particolari, determinate dal confronto tra il rango $r$ della matrice $\bm{A}$ e le dimensioni $m$ ed $n$: nelle prime tre il rango è massimo ($r=\min(m,n)$), nella quarta vi è una caduta di rango ($r<\min(m,n)$). Per ciascuna si forniscono le espressioni esplicite di $\bm{x}_0$, $\bm{X}_\alpha$ e, ove presenti, delle condizioni di compatibilità $\bm{Q}\bm{b}=\bm{0}$.
+
+
+\begin{oss}[\textbf{Principio di sovrapposizione}]\index{principio di sovrapposizione|textbf}
+	Il legame lineare \eqref{eq:sist_lin} implica che alla somma delle cause corrisponde la somma degli effetti. Formalmente, se $\bm{A}\bm{x}_1 = \bm{b}_1$ e $\bm{A}\bm{x}_2 = \bm{b}_2$, allora
+	\begin{equation}
+		\bm{A}(\alpha_1\bm{x}_1 + \alpha_2\bm{x}_2) = \alpha_1\bm{b}_1 + \alpha_2\bm{b}_2.
+	\end{equation}
+\end{oss}
+
+
+\subsection{Sistemi isodeterminati}\label{par:isodeterminati}\index{sistema di equazioni lineari!isodeterminato|textbf}
+
+
+È il caso di sistemi in cui il numero di equazioni, fra loro
+indipendenti, eguaglia il numero di incognite, ovvero $m=n=r$.
+La matrice $\bm{A}$ è quadrata e non singolare e il sistema
+ammette un'unica soluzione per ogni $\bm{b}$, che si ottiene
+premoltiplicando entrambi i membri per $\bm{A}^{-1}$:
+\begin{equation}\label{sol_iso}
+	\bm{x}=\bm{A}^{-1} \bm{b}.
+\end{equation}
+In particolare, il sistema omogeneo $\bm{A}\bm{x}=\bm{0}$ ammette
+la sola soluzione banale $\bm{x}=\bm{0}$. Il principio di
+sovrapposizione assume la forma
+\begin{equation}
+	\bm{x} = \bm{A}^{-1}\bm{b} = \sum_{j=1}^n b_j \bm{x}_j ,
+\end{equation}
+con $\bm{x}_j = \bm{A}^{-1}\bm{e}_j$ e $\bm{e}_j$ il $j$-esimo
+vettore della base canonica.
+
+
+
+\subsection{Sistemi sottodeterminati}\label{par:sottodeterminati}\index{sistema di equazioni lineari!sottodeterminato|textbf}
+
+È il caso di sistemi in cui il numero di equazioni indipendenti	è inferiore al numero di incognite, ovvero $m=r<n$. La matrice
+$\bm{A}$ è rettangolare bassa a rango pieno, il sistema è	compatibile per ogni $\bm{b}$ e ammette $\infty^{n-m}$ soluzioni.
+Partizionando le $n$ colonne di $\bm{A}$ in $m$ colonne di base ($\bm{A}_B$, quadrata e invertibile) e $n-m$ colonne fuori base ($\bm{A}_F$), e le incognite corrispondentemente in $\bm{x}_B$ e $\bm{x}_F$:
+\begin{equation}\label{eq:sist_sottod}
+	\bigl[ \bm{A}_B \;\big|\; \bm{A}_F \bigr]
+	\left\{ \begin{array}{c} \bm{x}_{B} \\ \hline \bm{x}_{F} \end{array} \right\}
+	= \left\{ \bm{b}\right\},
+\end{equation}
+la soluzione si ottiene ponendo $\bm{\alpha} := \bm{x}_F$ (parametri liberi) e risolvendo nelle variabili di base:
+\begin{equation}\label{eq:sol_sottod}
+	\bm{x}_B = \bm{A}_B^{-1} \bm{b} - \bm{A}_B^{-1} \bm{A}_F \, \bm{\alpha}.
+\end{equation}
+In forma compatta:
+\begin{equation}\label{eq:sol_sottod_blocchi}
+	\bm{x} = \underbrace{\begin{bmatrix} \bm{A}_B^{-1}\bm{b} \\ \bm{0} \end{bmatrix}}_{\bm{x}_0}
+	+ \underbrace{\begin{bmatrix} -\bm{A}_B^{-1}\bm{A}_F \\ \bm{I}_{n-m} \end{bmatrix}}_{\bm{X}_\alpha} \bm{\alpha}.
+\end{equation}
+In particolare, il sistema omogeneo $\bm{A}\bm{x}=\bm{0}$ ammette 	$\infty^{n-m}$ soluzioni non banali, generate dalle colonne di	$\bm{X}_\alpha$.
+La soluzione \eqref{eq:sol_sottod_blocchi} si presta a una lettura
+istruttiva. Indicando con $\bm{x}_j$ la $j$-esima colonna di
+$\bm{X}_\alpha$ e con $\alpha_j$ la $j$-esima componente di
+$\bm{\alpha}$, si ha:
+\begin{equation}\label{eq:sovrapposizione_sottod}
+	\bm{x} = \bm{x}_0
+	+ \alpha_1\,\bm{x}_1
+	+ \alpha_2\,\bm{x}_2
+	+ \cdots
+	+ \alpha_{n-m}\,\bm{x}_{n-m}
+	= \bm{x}_0 + \sum_{j=1}^{n-m} \alpha_j\,\bm{x}_j.
+\end{equation}
+La soluzione generale \`e dunque la sovrapposizione di $n-m+1$
+problemi elementari:
+\begin{enumerate}[label=(\roman*)]
+	\item il \textit{problema~0}, definito da $\bm{\alpha}=\bm{0}$:
+	\begin{equation}
+		\bm{A}\bm{x}_0 = \bm{b};
+	\end{equation}
+	\item gli $n-m$ \textit{problemi~$j$} ($j=1,\ldots,n-m$),
+	ciascuno definito da $\alpha_j=1$ e $\alpha_k=0$ per
+	$k\neq j$:
+	\begin{equation}
+		\bm{A}\bm{x}_j = \bm{0}.
+	\end{equation}
+\end{enumerate}
+Il problema~0 \`e l'unico con termine noto non nullo e fornisce
+la soluzione particolare $\bm{x}_0$; i problemi~$j$ sono omogenei
+e i vettori $\bm{x}_j$ sono $n-m$ soluzioni linearmente
+indipendenti del sistema omogeneo associato $\bm{A}\bm{x}=\bm{0}$.
+La soluzione generale \`e dunque somma di una soluzione particolare
+del sistema completo e di una combinazione lineare delle soluzioni
+del sistema omogeneo --- una struttura che si ritrova identica
+nelle equazioni differenziali lineari. La coerenza della
+sovrapposizione si verifica immediatamente:
+\begin{equation}
+	\bm{A}\bm{x}
+	= \bm{A}\bm{x}_0
+	+ \sum_{j=1}^{n-m} \alpha_j\,\bm{A}\bm{x}_j
+	= \bm{b} + \sum_{j=1}^{n-m} \alpha_j\,\bm{0}
+	= \bm{b}.
+\end{equation}
+Per linearit\`a, una volta risolti separatamente questi $n-m+1$
+problemi, la soluzione per qualunque valore dei parametri
+$\bm{\alpha}$ si ottiene per semplice combinazione lineare.
+
+\begin{oss}
+	Il problema~$j$, letto come combinazione lineare delle colonne di
+	$\bm{A}$, si scrive
+	\begin{equation}
+		\bm{A}_B\bm{x}_{B_j} + \bm{a}_{F_j}\cdot 1 = \bm{0},
+		\qquad\text{cio\`e}\qquad
+		\bm{a}_{F_j} = -\bm{A}_B\bm{x}_{B_j},
+	\end{equation}
+	dove $\bm{a}_{F_j}$ \`e la colonna di $\bm{A}$ associata al
+	parametro $\alpha_j$ e $\bm{x}_{B_j}$ \`e la parte di base del
+	vettore $\bm{x}_j$. La soluzione del problema~$j$ non coincide
+	dunque con la colonna $\bm{a}_{F_j}$, ma esprime i coefficienti
+	della relazione di dipendenza lineare fra quella colonna e le
+	colonne di base: \`e proprio l'esistenza di tale dipendenza a
+	generare il corrispondente grado di libert\`a nella soluzione.
+\end{oss}
+
+\begin{oss}
+	Della procedura risolutiva sopra esposta può darsi un'efficace interpretazione matematica: questa consiste nell'aggiungere alle $m$ equazioni del sistema $n-m$ identità della forma
+	\begin{equation}\label{sist_ind4}
+		\left[ \begin{array}{c|c}
+			\bm{A}_B & \bm{A}_F \\
+			\hline
+			\bm{0}_{(n-m)\times m} & \bm{I}_{n-m}
+		\end{array} \right]
+		\left\{ \begin{array}{c}
+			\bm{x}_{B} \\
+			\hline
+			\bm{x}_{F}
+		\end{array} \right\}
+		=
+		\left\{ \begin{array}{c}
+			\bm{b} \\
+			\hline
+			\bm{\alpha}
+		\end{array} \right\}.
+	\end{equation}
+	Il sistema determinato che così si ottiene è detto \textit{sistema principale}\index{sistema principale|textbf} associato a quello sottodeterminato di partenza: naturalmente quello indicato è solo uno degli $\infty^{n-m}$ modi di ottenere un sistema determinato a partire da quello sottodeterminato di origine. Si noti che la matrice ampliata nell'equazione precedente è quadrata e ha rango massimo.
+\end{oss}
+
+\begin{oss}\label{sol_in_base_outbase}
+	Se si desidera ottenere la soluzione $\bm{x}$ nell'ordinamento originale delle variabili (precedente al riordino introdotto nell'equazione \eqref{eq:sist_sottod}), è necessario permutare opportunamente le righe di $\bm{x}_0$ e $\bm{X}_{\alpha}$ per ripristinare l'ordine iniziale delle variabili.
+\end{oss}
+
+
+
+\subsection{Sistemi sovradeterminati}\label{par:sovradeterminati}\index{sistema di equazioni lineari!sovradeterminato|textbf}
+
+È il caso di sistemi in cui il numero di incognite è inferiore 	al numero di equazioni, ovvero $m>r=n$. La matrice $\bm{A}$ è 
+rettangolare alta a rango pieno e il sistema ammette al più un'unica soluzione, subordinata a condizioni di compatibilit\`a.
+Partizionando le $m$ righe di $\bm{A}$ in $n$ righe indipendenti ($\bm{A}_I$, quadrata e invertibile) e $m-n$ righe ridondanti ($\bm{A}_R$):
+\begin{equation}\label{eq:sist_sovrad}
+	\left[ \begin{array}{c} \bm{A}_{I} \\ \hline \bm{A}_{R} \end{array} \right]
+	\left\{ \bm{x}\right\}
+	= \left\{ \begin{array}{c} \bm{b}_{I} \\ \hline \bm{b}_{R} \end{array} \right\},
+\end{equation}
+le condizioni di compatibilit\`a sono
+\begin{equation}\label{eq:comp_sovrad}
+	\bm{Q} \bm{b} = \bm{0},
+	\qquad
+	\bm{Q} := \bigl[\bm{A}_{R}\bm{A}_{I}^{-1} \;\; -\bm{I}_{m-n}\bigr] \in \mathbb{R}^{(m-n)\times m},
+\end{equation}
+ovvero, in forma esplicita:
+\begin{equation}\label{eq:cond_comp1}
+	\bm{A}_{R} \bm{A}_I^{-1} \bm{b}_{I} - \bm{b}_{R} = \bm{0}.
+\end{equation}
+Le $m-n$ righe di $\bm{Q}$ sono linearmente indipendenti e le condizioni
+$\bm{Q}\bm{b}=\bm{0}$ esprimono il fatto che le equazioni ridondanti non
+aggiungono informazione contraddittoria rispetto a quelle indipendenti.
+
+Se il sistema \`e compatibile, la soluzione unica \`e $\bm{x} = \bm{A}_I^{-1} \bm{b}_I$. Questa soluzione coincide con quella che si ottiene ponendo a $\bm{0}$ tutti i termini noti associati alle equazioni 
+ridondanti, ovvero $\bm{b}_R=\bm{0}$.
+
+\begin{oss}
+	I risultati in \eqref{eq:cond_comp1} possono essere ottenuti scrivendo il sistema di equazioni lineari nella seguente forma:
+	\begin{equation}\label{sist_sovrad_AL}
+		\left[ \begin{array}{c|c}
+			\bm{A}_I & \bm{0}_{n \times (m-n)} \\
+			\hline
+			\bm{A}_R & \bm{I}_{m-n}
+		\end{array} \right]
+		\left\{ \begin{array}{c}
+			\bm{x} \\
+			\hline
+			-\bm{b}_{R}
+		\end{array} \right\}
+		=
+		\left\{ \begin{array}{c}
+			\bm{b}_{I} \\
+			\hline
+			\bm{0}
+		\end{array} \right\}
+	\end{equation}
+	in cui il termine noto è invece considerato come un'incognita. Si noti che la matrice aumentata nell'equazione precedente è quadrata e ha rango massimo.
+\end{oss}
+
+
+
+\subsection{Sistemi degeneri}\label{par:degeneri}\index{sistema di equazioni lineari!degenere|textbf}
+
+È il caso di sistemi in cui il numero di equazioni indipendenti è inferiore sia al numero di equazioni che al numero di incognite, 
+ovvero $r<\min(m,n)$. La matrice $\bm{A}$ presenta una caduta di rango e il sistema combina le caratteristiche dei sottodeterminati ($n-r$ parametri liberi) e dei sovradeterminati ($m-r$ condizioni di compatibilità). Partizionando $\bm{A}$ nei blocchi di rango ($\bm{A}_r \in \mathbb{R}^{r \times r}$, invertibile), dipendente ($\bm{A}_d$), sovradeterminato ($\bm{A}_s$) e totalmente dipendente ($\bm{A}_t$):
+\begin{equation}\label{eq:sist_deg}
+	\left[ \begin{array}{c|c}
+		\bm{A}_r & \bm{A}_d \\
+		\hline
+		\bm{A}_s & \bm{A}_t
+	\end{array} \right]
+	\left\{ \begin{array}{c}
+		\bm{x}_r \\ \hline \bm{x}_d
+	\end{array} \right\} =
+	\left\{ \begin{array}{c}
+		\bm{b}_r \\ \hline \bm{b}_s
+	\end{array} \right\},
+\end{equation}
+le condizioni di compatibilit\`a sono
+\begin{equation}\label{eq:comp_deg}
+	\bm{Q} \bm{b} = \bm{0},
+	\qquad
+	\bm{Q} := \bigl[\bm{A}_{s}\bm{A}_{r}^{-1} \;\; -\bm{I}_{m-r}\bigr] \in \mathbb{R}^{(m-r)\times m},
+\end{equation}
+essendo inoltre automaticamente verificata la relazione $\bm{A}_t = \bm{A}_s\bm{A}_r^{-1}\bm{A}_d$.
+
+Se il sistema \`e compatibile, la soluzione generale \`e
+\begin{equation}\label{eq:sol_deg}
+	\bm{x} = \underbrace{\begin{bmatrix} \bm{A}_r^{-1}\bm{b}_r \\ \bm{0} \end{bmatrix}}_{\bm{x}_0}
+	+ \underbrace{\begin{bmatrix} -\bm{A}_r^{-1}\bm{A}_d \\ \bm{I}_{n-r} \end{bmatrix}}_{\bm{X}_\alpha} \bm{\alpha}	= \bm{x}_0 + \sum_{j=1}^{n-r} \alpha_j\,\bm{x}_j,
+\end{equation}
+con $\bm{\alpha} := \bm{x}_d \in \mathbb{R}^{n-r}$ parametri liberi. I sistemi degeneri combinano quindi le caratteristiche dei sistemi sottodeterminati ($n-r$ gradi di libert\`a nella soluzione) e sovradeterminati ($m-r$ condizioni di compatibilit\`a).
+
+\begin{oss}
+	Dalla partizione corretta del sistema \eqref{eq:sist_deg}, si osservano le seguenti proprietà:
+	\begin{enumerate}
+		\item L'uguaglianza $\bm{A}_t = \bm{A}_s \bm{A}_r^{-1} \bm{A}_d$ è sempre verificata in un sistema partizionato correttamente.
+		\item Tale uguaglianza non rappresenta una condizione di compatibilità aggiuntiva, ma una proprietà intrinseca della partizione stessa.
+		\item L'unica condizione di compatibilità effettiva è $\bm{Q} \bm{b} = \bm{0}$.
+		\item La parte $\bm{x}_d$ può essere scelta arbitrariamente senza compromettere la consistenza del sistema.
+	\end{enumerate}
+\end{oss}
+
+
+\subsection{Riepilogo della classificazione}
+
+La \TABref{tab:classificazione_eqlineari} riassume la	classificazione dei sistemi di equazioni lineari algebriche	in funzione del rango $r$ della matrice	$\bm{A} \in \mathbb{R}^{m \times n}$.
+
+
+
+\begin{table}[ht]
+	\centering
+	\small
+	\renewcommand{\arraystretch}{1.4}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{@{}lcccc@{}}
+			\toprule
+			\textbf{Tipo} & \textbf{Condizione} & \textbf{Param.\ liberi} & \textbf{Cond.\ di compat.} & \textbf{Soluzione} \\
+			\midrule
+			Isodeterminato   & $r=m=n$         & $0$     & $0$     & unica $\forall\,\bm{b}$ \\
+			Sottodeterminato & $r=m<n$         & $n-m$   & $0$     & $\infty^{n-m}$ $\forall\,\bm{b}$ \\
+			Sovradeterminato & $r=n<m$         & $0$     & $m-n$   & unica se $\bm{Q}\bm{b}=\bm{0}$ \\
+			Degenere         & $r<\min(m,n)$   & $n-r$   & $m-r$   & $\infty^{n-r}$ se $\bm{Q}\bm{b}=\bm{0}$ \\
+			\bottomrule
+	\end{tabular}}
+	\caption{Classificazione dei sistemi lineari $\bm{A}\bm{x}=\bm{b}$.}
+	\label{tab:classificazione_sistlin}
+\end{table}
+
+
+
+\begin{oss}
+	Le quattro classi esauriscono tutte le possibilit\`a. Nelle prime tre il rango \`e massimo ($r=\min(m,n)$); nella quarta vi \`e una caduta di rango. In tutti i casi, le espressioni esplicite di $\bm{x}_0$, $\bm{X}_\alpha$ e $\bm{Q}$ sono costruite mediante la stessa strategia: isolare un blocco invertibile di dimensione $r\times r$, esprimere la soluzione particolare e la base del nucleo in funzione di esso, e ricavare le condizioni di compatibilit\`a dal fatto che le relazioni di dipendenza lineare fra le righe di $\bm{A}$ devono valere anche per $\bm{b}$.
+\end{oss}
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Esempi numerici}
+%----------------------------------------------------------------------------------------------------------------------------
+
+
+Si illustrano le quattro classi di sistemi lineari mediante esempi di dimensione minima.
+
+\subsection{Sistema isodeterminato
+	(\texorpdfstring{$m=n=r=2$}{m=n=r=2})}
+
+\begin{equation}
+	\underbrace{\begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix}}_{\bm{A}}
+	\begin{Bmatrix} x_1 \\ x_2 \end{Bmatrix}
+	= \begin{Bmatrix} 3 \\ 2 \end{Bmatrix}.
+\end{equation}
+La matrice \`e quadrata con $\det\bm{A}=1 \neq 0$, dunque \`e non singolare. La soluzione unica \`e:
+\begin{equation}
+	\bm{x} = \bm{A}^{-1}\bm{b}
+	= \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix}
+	\begin{Bmatrix} 3 \\ 2 \end{Bmatrix}
+	= \begin{Bmatrix} 1 \\ 1 \end{Bmatrix}.
+\end{equation}
+Il sistema ammette un'unica soluzione per qualunque termine noto
+(nessun parametro libero, nessuna condizione di compatibilit\`a).
+
+
+\subsection{Sistema sottodeterminato	(\texorpdfstring{$m=r=1$, $n=2$}{m=r=1, n=2})}
+
+\begin{equation}
+	\underbrace{\begin{bmatrix} 1 & 2 \end{bmatrix}}_{\bm{A}}
+	\begin{Bmatrix} x_1 \\ x_2 \end{Bmatrix}
+	= \begin{Bmatrix} 4 \end{Bmatrix}.
+\end{equation}
+Si ha un'equazione in due incognite. Scegliendo $A_B=[1]$ e $A_F=[2]$, con $\alpha:=x_2$ parametro libero:
+\begin{equation}
+	\bm{x}
+	= \underbrace{\begin{Bmatrix} 4 \\ 0 \end{Bmatrix}}_{\bm{x}_0}
+	+ \underbrace{\begin{Bmatrix} -2 \\ 1 \end{Bmatrix}}_{\bm{X}_\alpha} \alpha.
+\end{equation}
+Per ogni valore di $\alpha$ si ottiene una soluzione diversa: il vettore
+$(-2,\;1)^\top$ \`e l'unica soluzione linearmente indipendente del sistema
+omogeneo $\bm{A}\bm{x}=\bm{0}$, e il numero di parametri liberi \`e $n-m=1$.
+
+
+La scelta della variabile libera non \`e unica. Se si pone
+$\alpha:=x_1$ (cio\`e $A_B=[2]$, $A_F=[1]$), si ottiene una
+parametrizzazione diversa della stessa soluzione:
+\begin{equation}
+	\bm{x}
+	= \begin{Bmatrix} 0 \\ 2 \end{Bmatrix}
+	+ \begin{Bmatrix} 1 \\ -1/2 \end{Bmatrix} \alpha.
+\end{equation}
+Le due forme descrivono lo stesso insieme di punti --- la retta
+$x_1 + 2x_2 = 4$ nel piano $(x_1,x_2)$ --- ma lo parametrizzano
+in modo diverso: la prima esprime $x_1 = 4-2x_2$ (relazione
+funzionale $x_1=f(x_2)$), la seconda esprime $x_2=2-x_1/2$
+(relazione funzionale $x_2=g(x_1)$). La scelta del parametro
+libero equivale dunque a scegliere quale variabile \`e
+``indipendente'' e quale ``dipendente'': l'equazione
+$x_1+2x_2=4$ \`e un'eguaglianza condizionata, ma una volta
+risolta si traduce in una relazione funzionale la cui forma
+dipende da tale scelta.
+
+\begin{esempio}[\textbf{Caso $2\times 3$ con riarrangiamento delle colonne}]
+	Si consideri il sistema
+	\begin{equation}
+		\underbrace{\begin{bmatrix} 1 & 2 & 1 \\ 2 & 4 & 3 \end{bmatrix}}_{\bm{A}}
+		\begin{Bmatrix} x_1 \\ x_2 \\ x_3 \end{Bmatrix}
+		= \begin{Bmatrix} 3 \\ 7 \end{Bmatrix}.
+	\end{equation}
+	La scelta ``ingenua'' delle prime due colonne come matrice di base
+	conduce a $\bm{A}_B=\bigl[\begin{smallmatrix}1 & 2\\ 2 &
+		4\end{smallmatrix}\bigr]$, il cui determinante \`e nullo: le prime
+	due colonne di $\bm{A}$ sono proporzionali e non possono formare una
+	base. Occorre individuare due colonne linearmente indipendenti.
+	Scegliendo le colonne 1 e 3 si ottiene
+	$\bm{A}_B=\bigl[\begin{smallmatrix}1 & 1\\ 2 &
+		3\end{smallmatrix}\bigr]$ ($\det\bm{A}_B=1\neq 0$), mentre la
+	colonna restante costituisce
+	$\bm{A}_F=\bigl(\begin{smallmatrix}2\\ 4\end{smallmatrix}\bigr)$,
+	con $\alpha:=x_2$ parametro libero. La soluzione nelle variabili di
+	base $\bm{x}_B=(x_1,\;x_3)^\top$ \`e:
+	\begin{equation}
+		\bm{x}_B = \bm{A}_B^{-1}\bm{b} - \bm{A}_B^{-1}\bm{A}_F\,\alpha
+		= \underbrace{\begin{bmatrix} 3 & -1 \\ -2 & 1 \end{bmatrix}
+			\begin{Bmatrix} 3 \\ 7 \end{Bmatrix}}_{\bm{A}_B^{-1}\bm{b}}
+		- \underbrace{\begin{bmatrix} 3 & -1 \\ -2 & 1 \end{bmatrix}
+			\begin{Bmatrix} 2 \\ 4 \end{Bmatrix}}_{\bm{A}_B^{-1}\bm{A}_F}\,\alpha
+		= \begin{Bmatrix} 2 \\ 1 \end{Bmatrix}
+		- \begin{Bmatrix} 2 \\ 0 \end{Bmatrix}\alpha.
+	\end{equation}
+	Ricomponendo nell'ordine originale delle incognite
+	$(x_1,\;x_2,\;x_3)$:
+	\begin{equation}
+		\bm{x}
+		= \underbrace{\begin{Bmatrix} 2 \\ 0 \\ 1 \end{Bmatrix}}_{\bm{x}_0}
+		+ \underbrace{\begin{Bmatrix} -2 \\ 1 \\ 0 \end{Bmatrix}}_{\bm{X}_\alpha}\,\alpha.
+	\end{equation}
+	La partizione base/fuori base non \`e dunque dettata dall'ordine in
+	cui compaiono le colonne, ma dalla loro indipendenza lineare:
+	quando le prime $m$ colonne non formano una sottomatrice invertibile,
+	\`e necessario cercare altrove le colonne di base e riordinare di
+	conseguenza le incognite.
+\end{esempio}
+
+
+\subsection{Sistema sovradeterminato (\texorpdfstring{$m=3$, $n=r=2$}{m=3, n=r=2})}
+
+\begin{equation}
+	\underbrace{\left[\begin{array}{cc} 1 & 0 \\ 0 & 1 \\ 1 & 1 \end{array}\right]}_{\bm{A}}
+	\begin{Bmatrix} x_1 \\ x_2 \end{Bmatrix}
+	= \begin{Bmatrix} b_1 \\ b_2 \\ b_3 \end{Bmatrix}.
+\end{equation}
+Partizionando con $\bm{A}_I=\bigl[\begin{smallmatrix}1 & 0\\ 0 & 1\end{smallmatrix}\bigr]$ (righe 1 e 2) e $\bm{A}_R=[1\;\;1]$ (riga 3):
+\begin{equation}
+	\bm{Q}\bm{b}
+	= \bigl[\bm{A}_R\bm{A}_I^{-1}\;\;{-1}\bigr]\bm{b}
+	= \bigl[1\;\;1\;\;{-1}\bigr]
+	\begin{Bmatrix} b_1 \\ b_2 \\ b_3 \end{Bmatrix}
+	= b_1 + b_2 - b_3 = 0.
+\end{equation}
+La condizione di compatibilit\`a richiede $b_3 = b_1 + b_2$ (la terza equazione deve essere la somma delle prime due).
+
+Per $\bm{b}=(1,\;2,\;3)^\top$ la condizione \`e soddisfatta e la soluzione unica \`e $\bm{x}=(1,\;2)^\top$.
+
+Per $\bm{b}=(1,\;2,\;4)^\top$ la condizione non \`e soddisfatta ($1+2-4=-1\neq 0$) e il sistema non ammette soluzione.
+
+
+\subsection{Sistema degenere (\texorpdfstring{$m=n=3$, $r=2$}{m=n=3, r=2})}
+
+\begin{equation}
+	\underbrace{\begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 1 \\ 1 & 1 & 2 \end{bmatrix}}_{\bm{A}}
+	\begin{Bmatrix} x_1 \\ x_2 \\ x_3 \end{Bmatrix}
+	= \begin{Bmatrix} b_1 \\ b_2 \\ b_3 \end{Bmatrix}.
+\end{equation}
+La terza riga \`e somma delle prime due, dunque $r=2<\min(3,3)$. Partizionando:
+\begin{equation}
+	\bm{A}_r = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}, \quad
+	\bm{A}_d = \begin{Bmatrix} 1 \\ 1 \end{Bmatrix}, \quad
+	\bm{A}_s = \begin{bmatrix} 1 & 1 \end{bmatrix}, \quad
+	\bm{A}_t = [2].
+\end{equation}
+\noindent Si verifica innanzitutto che il blocco $\bm{A}_t$ non \`e
+indipendente dagli altri tre, ma \`e completamente determinato da essi
+attraverso la relazione:
+\begin{equation}
+	\bm{A}_s\bm{A}_r^{-1}\bm{A}_d
+	= \begin{bmatrix} 1 & 1 \end{bmatrix}
+	\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}
+	\begin{Bmatrix} 1 \\ 1 \end{Bmatrix}
+	= \begin{bmatrix} 1 & 1 \end{bmatrix}
+	\begin{Bmatrix} 1 \\ 1 \end{Bmatrix}
+	= 2 = \bm{A}_t.
+\end{equation}
+\`E proprio questa dipendenza a rendere il rango della matrice
+deficitario ($r=2<3$).
+
+\noindent\textit{Condizione di compatibilit\`a} ($m-r=1$ condizione):
+\begin{equation}
+	\bm{Q}\bm{b}
+	= \bigl[\bm{A}_s\bm{A}_r^{-1}\;\;{-1}\bigr]\bm{b}
+	= \bigl[1\;\;1\;\;{-1}\bigr]
+	\begin{Bmatrix} b_1 \\ b_2 \\ b_3 \end{Bmatrix}
+	= b_1 + b_2 - b_3 = 0.
+\end{equation}
+
+\noindent\textit{Soluzione} (per $\bm{b}=(2,\;1,\;3)^\top$, compatibile):
+\begin{equation}
+	\bm{x}
+	= \underbrace{\begin{Bmatrix} 2 \\ 1 \\ 0 \end{Bmatrix}}_{\bm{x}_0}
+	+ \underbrace{\begin{Bmatrix} -1 \\ -1 \\ 1 \end{Bmatrix}}_{\bm{X}_\alpha} \alpha.
+\end{equation}
+Il sistema presenta contemporaneamente una condizione di compatibilit\`a (come
+i sovradeterminati) e un parametro libero $\alpha := x_3$ (come i
+sottodeterminati). Il vettore $(-1,\;-1,\;1)^\top$ \`e l'unica soluzione
+linearmente indipendente del sistema omogeneo $\bm{A}\bm{x}=\bm{0}$.
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+
+\section{Esercizi proposti}
+%----------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{esercizio} [Consistenza dimensionale]
+	Per ciascuna delle seguenti coppie, stabilire se il prodotto
+	$\bm{A}\bm{x}$ \`e definito e, in caso affermativo, indicare le
+	dimensioni del vettore risultante:
+	\begin{equation*}
+		\text{(a)}\;\;
+		\bm{A}\in\mathbb{R}^{3\times 2},\;\bm{x}\in\mathbb{R}^{2};
+		\qquad
+		\text{(b)}\;\;
+		\bm{A}\in\mathbb{R}^{2\times 3},\;\bm{x}\in\mathbb{R}^{2};
+		\qquad
+		\text{(c)}\;\;
+		\bm{A}\in\mathbb{R}^{4\times 1},\;\bm{x}\in\mathbb{R}^{1}.
+	\end{equation*}
+\end{esercizio} 
+
+
+\begin{esercizio} [Prodotto matrice-vettore e combinazione	lineare delle colonne]
+	Data la matrice e il vettore
+	\begin{equation*}
+		\bm{A} = \begin{bmatrix} 1 & 3 \\ 2 & 1 \\ 0 & 4 \end{bmatrix},
+		\qquad
+		\bm{x} = \begin{Bmatrix} 2 \\ -1 \end{Bmatrix},
+	\end{equation*}
+	calcolare il prodotto $\bm{A}\bm{x}$ in due modi: (i) applicando
+	la regola righe-per-colonne $(\bm{A}\bm{x})_i = \sum_j a_{ij}x_j$;
+	(ii) come combinazione lineare delle colonne
+	$x_1\bm{a}_1+x_2\bm{a}_2$. Verificare che i risultati coincidono.
+\end{esercizio} 
+
+\begin{esercizio} [Partizione a blocchi]
+	Siano
+	\begin{equation*}
+		\bm{A} = \left[\begin{array}{cc|c}
+			1 & 0 & 2 \\
+			0 & 1 & 3 \\ \hline
+			1 & 1 & 1
+		\end{array}\right],
+		\qquad
+		\bm{x} = \left\{\begin{array}{c}
+			1 \\ 2 \\ \hline 3
+		\end{array}\right\}.
+	\end{equation*}
+	Calcolare il prodotto $\bm{A}\bm{x}$ operando a livello di blocchi
+	e verificare il risultato con il prodotto righe-per-colonne ordinario.
+\end{esercizio} 
+
+\begin{esercizio} [Sistema isodeterminato]
+	Risolvere il sistema
+	\begin{equation*}
+		\begin{bmatrix} 3 & 1 \\ 1 & 2 \end{bmatrix}
+		\begin{Bmatrix} x_1 \\ x_2 \end{Bmatrix}
+		= \begin{Bmatrix} 5 \\ 5 \end{Bmatrix}.
+	\end{equation*}
+	Verificare la soluzione per sostituzione diretta.
+\end{esercizio} 
+
+\begin{esercizio} [Sistema sottodeterminato]
+	Dato il sistema
+	\begin{equation*}
+		\begin{bmatrix} 1 & 1 & 2 \\ 2 & 1 & 1 \end{bmatrix}
+		\begin{Bmatrix} x_1 \\ x_2 \\ x_3 \end{Bmatrix}
+		= \begin{Bmatrix} 1 \\ 4 \end{Bmatrix},
+	\end{equation*}
+	(a) scegliere $\bm{A}_B$ formata dalle colonne 1 e 2, determinare
+	$\bm{x}_0$ e $\bm{X}_\alpha$; (b) ripetere scegliendo $\bm{A}_B$
+	formata dalle colonne 1 e 3; (c) verificare che per uno stesso
+	valore del parametro libero le due parametrizzazioni producono la
+	stessa soluzione. Applicare la decomposizione in problema~0 e
+	problema~1.
+\end{esercizio} 
+
+\begin{esercizio} [Sistema sovradeterminato]
+	Dato il sistema
+	\begin{equation*}
+		\begin{bmatrix} 1 & 1 \\ 1 & -1 \\ 3 & 1 \end{bmatrix}
+		\begin{Bmatrix} x_1 \\ x_2 \end{Bmatrix}
+		= \begin{Bmatrix} b_1 \\ b_2 \\ b_3 \end{Bmatrix},
+	\end{equation*}
+	(a) determinare la matrice $\bm{Q}$ e la condizione di compatibilit\`a;
+	(b) verificare che $\bm{b}=(2\,\;0\,\;4)^\top$ \`e compatibile e
+	determinare la soluzione; (c) mostrare che
+	$\bm{b}=(1\,\;1\,\;1)^\top$ non \`e compatibile.
+\end{esercizio} 
+
+\begin{esercizio} [Sistema degenere]
+	Dato il sistema
+	\begin{equation*}
+		\begin{bmatrix} 2 & 1 & 3 \\ 1 & 1 & 2 \\ 3 & 2 & 5 \end{bmatrix}
+		\begin{Bmatrix} x_1 \\ x_2 \\ x_3 \end{Bmatrix}
+		= \begin{Bmatrix} b_1 \\ b_2 \\ b_3 \end{Bmatrix},
+	\end{equation*}
+	(a) verificare che $r=2$ e individuare la partizione
+	$\bm{A}_r$, $\bm{A}_d$, $\bm{A}_s$, $\bm{A}_t$;
+	(b) verificare la relazione
+	$\bm{A}_t=\bm{A}_s\bm{A}_r^{-1}\bm{A}_d$;
+	(c) determinare la condizione di compatibilit\`a;
+	(d) per $\bm{b}=(4\,\;3\,\;7)^\top$ determinare $\bm{x}_0$ e
+	$\bm{X}_\alpha$.
+\end{esercizio}

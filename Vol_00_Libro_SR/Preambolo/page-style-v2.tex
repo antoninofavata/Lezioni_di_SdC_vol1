@@ -1,0 +1,69 @@
+\usepackage{epigraph}
+\usepackage[pagestyles]{titlesec}
+
+% --------------------------------
+% TESTATINE
+% --------------------------------
+\usepackage{fancyhdr}
+\fancypagestyle{epigraph}{
+  \fancyhf{}
+  \fancyhead{}
+  \fancyhead[CO]{\leftmark}
+  \fancyhead[LO, RE]{\small\thepage}
+  \fancyhead[LE, RO]{}
+  \fancyhead[CE]{\small \itshape \nouppercase \rightmark}
+  \fancyfoot{}
+  %\fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.1pt}
+  }
+\pagestyle{epigraph}
+
+% \renewcommand{\chaptermark}[1]{%
+% \markboth{\small \scshape \MakeLowercase{\thechapter.\ #1}}{}%
+% }
+\renewcommand{\chaptermark}[1]{%
+\markboth{\small \thechapter.\ #1}{}%
+}
+
+% --------------------------------
+% PARTI
+% --------------------------------
+\newcommand{\partepigraphstyle}{\thispagestyle{epigraph}}
+\titleformat{\part}[display]
+  {\Huge\filright}
+  {\partname~\thepart.}
+  {5pt}
+  {\thispagestyle{plain}}
+\setlength\epigraphwidth{.6\textwidth}
+
+% --------------------------------
+% CAPITOLI
+% --------------------------------
+\titleformat{\chapter}[hang]
+  {\Large\bfseries}
+  {\thechapter.}
+  {5pt}
+  {\thispagestyle{empty}} % Or define a "chapter" page style
+\titlespacing*{\chapter}{0cm}{2.5cm}{1.5cm}
+
+% --------------------------------
+% SEZIONI
+% --------------------------------
+\titleformat{\section}[hang]{\bfseries}{\thesection}{0.5em}{}
+\titlespacing*{\section} {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+
+% --------------------------------
+% SOTTOSEZIONI
+% --------------------------------
+\titleformat{\subsection}
+  {\bfseries\itshape}{\thesubsection}{1em}{}
+\titlespacing*{\subsection} {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% --------------------------------
+% SOTTOSEZIONI
+% --------------------------------
+\titleformat{\subsubsection}[runin]
+  {\normalfont\small\bfseries\itshape}
+  {}{.5em}{}[.]
+\titlespacing{\subsubsection}
+  {\parindent}{1.5ex plus .1ex minus .2ex}{4pt}

@@ -1,0 +1,166 @@
+% ============================================================
+%  Introduzione alla Parte II: Meccanica del corpo rigido
+% ============================================================
+
+\chapter*{Introduzione Parte~II}
+\addcontentsline{toc}{chapter}{Introduzione alla Parte~II}
+
+La meccanica del corpo rigido è il fondamento su cui poggia l'intera teoria delle strutture.
+Prima di introdurre la deformabilità --- che è la caratteristica fisica essenziale di qualsiasi
+struttura reale --- occorre comprendere a fondo ciò che il vincolo di rigidità implica: quali
+configurazioni sono cinematicamente ammissibili, quante e quali forze sono necessarie per
+garantire l'equilibrio, come si caratterizzano le reazioni dei dispositivi che limitano il
+movimento. Questo fondamento non è specifico della trave né di alcuna forma geometrica
+particolare: vale per corpi di forma qualsiasi, e la sua generalità è una delle ragioni per cui
+viene sviluppato prima di qualsiasi specializzazione.
+
+La Parte~I ha fornito gli strumenti: l'algebra delle matrici e i sistemi lineari, la geometria
+delle applicazioni lineari e la dualità, i vettori geometrici. La
+Parte~II li mette al lavoro. Ogni concetto introdotto come strumento astratto --- i quattro
+sottospazi fondamentali, l'operatore aggiunto, l'identità bilineare --- trova qui la sua prima
+incarnazione meccanica concreta, e il lettore che ha attraversato la Parte~I con attenzione
+riconoscerà, capitolo dopo capitolo, la struttura che era stata anticipata.
+
+\section*{Il programma della parte}
+
+Il \textbf{Capitolo~\ref{cap:cinematica_infinitesima}} affronta la \emph{cinematica
+	infinitesima del corpo rigido}. Si introducono i gradi di libertà come proprietà del vincolo
+di rigidità, indipendente dall'ipotesi di spostamenti infinitesimi. La formula fondamentale
+che lega lo spostamento di un punto generico allo spostamento di un polo e alla rotazione
+del corpo è derivata con due approcci indipendenti --- la linearizzazione della rotazione
+finita e il principio di invarianza delle distanze --- e presentata nella sua forma matriciale.
+Si studiano gli invarianti del campo di spostamento, si introduce l'asse centrale con una
+costruzione geometrica e si classifica la varietà dei moti rigidi infinitesimi. La
+specializzazione al caso piano conduce alla determinazione del centro di rotazione, che
+costituirà il principale strumento geometrico per la classificazione dei sistemi vincolati.
+
+Il \textbf{Capitolo~\ref{cap:statica_CR}} affronta la \emph{statica del corpo rigido} in
+perfetto parallelo con il precedente. Punto di partenza sono le equazioni di equilibrio,
+che motivano la riduzione di un sistema di forze alle sue grandezze globali: risultante e
+momento risultante. Si introduce la coppia di forze, si deriva la legge di variazione del
+momento al variare del polo e si studiano gli invarianti del campo dei momenti, con la
+determinazione dell'asse centrale del sistema di forze mediante una costruzione geometrica
+che rispecchia quella cinematica. La specializzazione al caso piano porta al centro di
+riduzione e alla classificazione dei sistemi equivalenti. Il parallelo con il
+Capitolo~\ref{cap:cinematica_infinitesima} non è casuale: è la prima manifestazione
+visibile della dualità cinematica-statica.
+
+Il \textbf{Capitolo~\ref{cap:dualismo_CR}} porta in primo piano il \emph{dualismo tra
+	cinematica e statica}. Le due leggi di distribuzione --- il campo degli spostamenti rigidi
+e il campo dei momenti --- hanno la medesima struttura affine, e a ogni concetto cinematico
+corrisponde un concetto statico duale. Nel caso piano questo dualismo si manifesta nello
+scambio di ruolo tra grandezze scalari e vettoriali che trasforma il centro di rotazione
+nell'asse di sollecitazione. Il capitolo introduce il lavoro virtuale come forma bilineare
+che accoppia le grandezze cinematiche e statiche, ne calcola l'espressione per forze
+concentrate, coppie e forze distribuite, e mostra come la condizione di lavoro virtuale nullo
+per ogni spostamento rigido sia esattamente equivalente alle equazioni di equilibrio. Il
+principio dei lavori virtuali cessa così di essere un enunciato autonomo e diventa la
+traduzione bilineare dell'equilibrio.
+
+Il \textbf{Capitolo~\ref{cap:vincoli_CR}} studia le \emph{prestazioni cinematiche e statiche
+	dei vincoli}. Si distingue preliminarmente il vincolo di rigidità --- proprietà interna
+del corpo che impone l'uguaglianza di spostamento e rotazione nelle zone di connessione,
+con le relative nozioni di distorsione e svincolo --- dai vincoli di collegamento, che sono
+l'oggetto principale del capitolo. Per ciascuno dei cinque vincoli elementari --- carrello,
+bipendolo, cerniera, glifo e incastro --- si ricavano l'equazione cinematica, il luogo
+imposto al centro di rotazione assoluto o relativo e la reazione vincolare, ottenuta
+applicando il principio dei lavori virtuali: la reazione è quella grandezza statica che
+compie lavoro nullo su tutti gli spostamenti compatibili con il vincolo. Si trattano i
+vincoli composti, il cedimento vincolare e i vincoli che collegano più di due corpi.
+
+Il \textbf{Capitolo~\ref{cap:problemi_cin_stat_SCR}} sviluppa la \emph{formulazione
+	matriciale dei problemi cinematico e statico} per un sistema di corpi rigidi piani. La
+matrice dei vincoli, le cui righe codificano le equazioni cinematiche di ogni vincolo
+posizionale, governa entrambi i problemi: il problema cinematico vi appare direttamente,
+il problema di equilibrio ne utilizza la trasposta. Questo dualismo --- la matrice
+dell'equilibrio è la trasposta della matrice di congruenza --- non è una coincidenza
+formale, ma la conseguenza diretta della struttura bilineare del lavoro virtuale.
+I quattro sottospazi fondamentali della matrice dei vincoli individuano meccanismi,
+stati di autoequilibrio, cedimenti ammissibili e forze non equilibrabili, e la relazione
+tra le loro dimensioni generalizza il conteggio dei gradi di libertà del sistema.
+
+Il \textbf{Capitolo~\ref{cap:classificazione_sol_SCR}} ha carattere \emph{operativo}:
+fornisce strategie pratiche di soluzione per sistemi di corpi rigidi piani di qualsiasi
+tipo, senza costruire esplicitamente la matrice dei vincoli. I problemi cinematico e
+statico sono trattati in parallelo, così da rendere visibile il dualismo ad ogni passo
+della procedura. Per i sistemi determinati si presentano il metodo grafo-analitico e
+il metodo dei corpi liberi; per i sistemi labili e iperstatici si sviluppano le procedure
+operative duali --- vincoli fittizi e vincoli ridondanti --- con le relative condizioni
+di compatibilità. Si introduce infine la gerarchia strutturale, che consente di
+decomporre sistemi complessi in sottosistemi risolvibili in cascata.
+
+Il \textbf{Capitolo~\ref{cap:classificazione_SCR}} sviluppa gli strumenti per
+\emph{riconoscere e classificare} i sistemi di corpi rigidi piani. Il conteggio
+dei gradi di libertà nominali costituisce un criterio necessario ma non sufficiente:
+fissa le dimensioni della matrice di congruenza senza determinarne il rango. A parità
+di conteggio, la disposizione geometrica dei vincoli può produrre classificazioni
+diverse. Il nucleo del capitolo è un catalogo sistematico delle sottostrutture
+elementari più frequenti, da un singolo corpo fino a tre corpi, nel quale i casi
+regolari e degeneri sono affiancati e le cause geometriche della degenerazione ---
+parallelismo o concorrenza degli assi di vincolo, allineamento dei centri di
+rotazione --- sono identificate e interpretate. Il catalogo abilita la classificazione
+per decomposizione gerarchica e per riduzione a schema noto, e si raccorda con le
+strategie di soluzione del capitolo precedente.
+
+Il \textbf{Capitolo~\ref{cap:TLV}} chiude la parte formalizzando la \emph{triade
+	meccanica}: congruenza, equilibrio e principio dei lavori virtuali sono tre enunciati
+equivalenti, nel senso che due qualsiasi di essi implicano il terzo. Dal dualismo tra
+la matrice di congruenza e la matrice di equilibrio si deriva un'identità bilineare
+valida per ogni coppia congruente e ogni coppia equilibrata, che costituisce la forma
+matriciale esatta del principio dei lavori virtuali. Dalla triade discendono quattro
+corollari operativi: la condizione di compatibilità statica, il principio di
+Müller-Breslau per il calcolo delle reazioni, la condizione di compatibilità
+cinematica e il metodo del carico unitario per il calcolo degli spostamenti. Il
+capitolo ha dunque il carattere di un epilogo sintetico: raccoglie in un'unica
+struttura coerente i risultati elaborati nei capitoli precedenti e li eleva a
+strumenti generali, pronti per essere trasferiti alla meccanica della trave.
+
+%-------------------------------------------------------------------------------------------------------------------
+\section*{Generalità e specializzazione}
+%-------------------------------------------------------------------------------------------------------------------
+
+Un aspetto metodologico merita di essere dichiarato esplicitamente. I risultati
+sviluppati in questa parte valgono per corpi rigidi di forma qualsiasi: i corpi
+sono indicati genericamente come $\mathcal{C}_i$, $\mathcal{C}_j$ senza alcuna
+ipotesi sulla geometria. La specializzazione alla trave --- prima come corpo rigido,
+poi come corpo deformabile --- avviene nella Parte~III e nel Volume~II rispettivamente.
+Questa scelta non è soltanto una questione di ordine espositivo: la generalità della
+Parte~II garantisce che la struttura logica della teoria --- dualità, lavoro virtuale,
+classificazione dei sistemi vincolati --- sia acquisita una volta per tutte, prima
+di qualsiasi ipotesi geometrica. Le specializzazioni successive non aggiungono nuovi
+principi: applicano quelli già stabiliti a contesti via via più concreti.
+
+In particolare, il vincolo di rigidità introdotto nel
+Capitolo~\ref{cap:vincoli_CR} --- con le nozioni di distorsione e svincolo --- anticipa
+già la specializzazione alla trave: le reazioni del vincolo di continuità si
+identificheranno con le caratteristiche della sollecitazione, e le distorsioni di
+Volterra troveranno in quella struttura la loro collocazione naturale. Questi ponti
+tra la meccanica del corpo rigido e la meccanica della trave deformabile saranno
+resi espliciti nel momento in cui la specializzazione geometrica lo renderà possibile.
+
+%-------------------------------------------------------------------------------------------------------------------
+\section*{Il filo conduttore: la dualità}
+%-------------------------------------------------------------------------------------------------------------------
+
+Il filo conduttore di questa parte --- e dell'intera opera --- è la dualità tra
+cinematica e statica. La cinematica del corpo rigido descrive il nucleo dell'operatore
+di deformazione: gli spostamenti che non producono deformazione interna. La statica
+descrive le forze in equilibrio: i sistemi di forze il cui lavoro virtuale è nullo su
+tutti gli spostamenti rigidi. Le due descrizioni sono duali nel senso preciso
+stabilito dalla Parte~I: a ogni grandezza cinematica corrisponde una grandezza
+statica duale, e il loro prodotto ha il significato fisico di lavoro.
+
+Questa simmetria percorre la parte in modo progressivo. Emerge per la prima volta nel
+confronto tra i Capitoli~\ref{cap:cinematica_infinitesima} e~\ref{cap:statica_CR},
+dove le due trattazioni procedono in parallelo con struttura identica. Viene dichiarata
+e formalizzata nel Capitolo~\ref{cap:dualismo_CR}, attraverso il lavoro virtuale come
+forma bilineare. Si riflette nella formulazione matriciale del
+Capitolo~\ref{cap:problemi_cin_stat_SCR}, dove il dualismo tra la matrice di congruenza
+e la matrice di equilibrio è la trascrizione algebrica dello stesso principio. Si
+manifesta infine nelle procedure operative del Capitolo~\ref{cap:classificazione_sol_SCR},
+dove ogni metodo cinematico ha il suo esatto corrispondente statico. Il
+Capitolo~\ref{cap:TLV} raccoglie questo percorso nella triade meccanica: non una
+conclusione che chiude, ma una sintesi che apre verso la meccanica della trave.
+
+
+

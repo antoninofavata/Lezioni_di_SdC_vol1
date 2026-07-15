@@ -1,0 +1,536 @@
+\begin{theindex}
+
+  \item allineamento dei centri di rotazione, 
+		\hyperindexformat{\textbf}{111}
+  \item analisi qualitativa, \hyperpage{314}
+  \item anello a tre cerniere, \hyperindexformat{\textbf}{262}
+  \item applicazione, \hyperpage{51}
+    \subitem biiettiva, \hyperpage{52}
+    \subitem iniettiva, \hyperpage{52}
+    \subitem suriettiva, \hyperpage{52}
+  \item applicazione lineare, \hyperpage{27}, 
+		\hyperindexformat{\textbf}{53}
+  \item arco
+    \subitem a tre cerniere, \hyperpage{210}, 
+		\hyperindexformat{\textbf}{260}, \hyperpage{392}
+    \subitem a tutto sesto, \hyperpage{236}
+  \item asse centrale
+    \subitem degli spostamenti, \hyperindexformat{\textbf}{100}
+    \subitem del sistema di forze, \hyperindexformat{\textbf}{120}
+  \item asse di sollecitazione, \hyperindexformat{\textbf}{126}
+  \item assemblaggio di travi, \hyperindexformat{\textbf}{371}
+  \item asta, \hyperindexformat{\textbf}{426}
+    \subitem di parete, \hyperindexformat{\textbf}{430}
+    \subitem ridondante, \hyperindexformat{\textbf}{429}
+    \subitem scarica, \hyperindexformat{\textbf}{450}
+  \item autosoluzione, \hyperpage{449}
+
+  \indexspace
+
+  \item baricentro delle forze, \hyperindexformat{\textbf}{128}
+  \item base ortonormale, \hyperindexformat{\textbf}{26}
+  \item biella, \hyperindexformat{\seealso{carrello}}{144}, 
+		\hyperindexformat{\textbf}{144}
+    \subitem longitudinale, \hyperindexformat{\textbf}{308}
+    \subitem trasversale, \hyperindexformat{\textbf}{308}
+  \item bipendolo, \hyperindexformat{\seealso{vincolo}}{148}, 
+		\hyperindexformat{\textbf}{148}
+    \subitem interno, \hyperpage{149}, \hyperpage{308}
+  \item braccio, \hyperindexformat{\textbf}{75}, \hyperpage{117}
+
+  \indexspace
+
+  \item campata, \hyperpage{416}
+  \item caratteristiche della sollecitazione, 
+		\hyperindexformat{\textbf}{295}
+    \subitem forza normale, \hyperpage{295}
+    \subitem momento flettente, \hyperpage{295}
+    \subitem taglio, \hyperpage{295}
+  \item carico
+    \subitem attivo, \hyperpage{385}
+    \subitem distribuito, \hyperpage{118}
+    \subitem sostituzione con la risultante, \hyperpage{352}
+  \item carrello, \hyperindexformat{\seealso{vincolo}}{144}, 
+		\hyperindexformat{\textbf}{144}
+    \subitem interno, \hyperpage{146}, \hyperpage{376}
+  \item cedimento, \hyperindexformat{\seealso{distorsione}}{162}
+    \subitem ammissibile, \hyperpage{191}
+    \subitem vincolare, \hyperindexformat{\textbf}{162}
+  \item centro di riduzione, 
+		\hyperindexformat{\seealso{asse di sollecitazione}}{127}
+  \item centro di rotazione, \hyperindexformat{\textbf}{103}
+    \subitem assoluto, \hyperpage{111}
+    \subitem istantaneo, \hyperpage{95}
+    \subitem luogo geometrico, \hyperpage{143}
+    \subitem relativo, \hyperindexformat{\textbf}{109}
+  \item cerniera, \hyperindexformat{\seealso{vincolo}}{151}, 
+		\hyperindexformat{\textbf}{151}
+    \subitem cilindrica, \hyperpage{174}
+    \subitem impropria, \hyperpage{154}
+    \subitem in chiave, \hyperpage{392}
+    \subitem interna, \hyperpage{152}, \hyperpage{308}, \hyperpage{375}
+    \subitem multipla, \hyperindexformat{\textbf}{166}
+    \subitem sferica, \hyperpage{174}
+  \item cinematica grafica, \hyperindexformat{\textbf}{110}
+  \item CIR, \hyperindexformat{\see{centro di rotazione}}{95}
+  \item classificazione dei sistemi di corpi rigidi, 
+		\hyperindexformat{\textbf}{243}
+    \subitem formula fondamentale, \hyperpage{192}
+    \subitem per decomposizione, \hyperpage{264}
+    \subitem per ispezione diretta, \hyperindexformat{\textbf}{267}
+    \subitem per riduzione a schema noto, \hyperpage{265}
+  \item collegamento, vincolo di, 
+		\hyperindexformat{\see{vincolo (interno)}}{142}
+  \item colonna, \hyperindexformat{\textbf}{482}
+  \item combinazione lineare, \hyperindexformat{\textbf}{38}
+  \item compatibilità
+    \subitem cinematica, \hyperpage{229}, 
+		\hyperindexformat{\textbf}{276}
+    \subitem nodale, \hyperindexformat{\textbf}{484}
+    \subitem statica, \hyperpage{223}, \hyperindexformat{\textbf}{274}
+  \item complemento ortogonale, \hyperindexformat{\textbf}{55}
+  \item comportamento esterno, \hyperindexformat{\textbf}{372}
+  \item comportamento interno, \hyperindexformat{\textbf}{372}
+  \item composizione gerarchica, \hyperindexformat{\textbf}{428}
+  \item condizioni al contorno, \hyperpage{298}
+  \item condizioni di chiusura dell'anello, 
+		\hyperindexformat{\textbf}{306}
+  \item configurazione cinematicamente ammissibile, \hyperpage{185}
+  \item congruenza
+    \subitem esterna, \hyperpage{182}
+    \subitem interna, \hyperpage{183}
+  \item connessione, \hyperindexformat{\textbf}{373}
+    \subitem eterogenea, \hyperindexformat{\textbf}{380}, 
+		\hyperpage{383}
+    \subitem omogenea, \hyperindexformat{\textbf}{380}
+  \item conteggio dei gradi di libertà, 
+		\hyperindexformat{\textbf}{243}
+    \subitem globale, \hyperpage{253}
+    \subitem locale, \hyperpage{253}
+  \item controimmagine, \hyperpage{52}
+  \item coordinate lagrangiane, \hyperpage{194}
+  \item coppia, \hyperindexformat{\textbf}{116}
+    \subitem pura, \hyperpage{125}
+  \item corpo
+    \subitem biconnesso, \hyperindexformat{\textbf}{250}
+    \subitem pluriconnesso, \hyperindexformat{\textbf}{250}
+  \item corpo rigido, \hyperindexformat{\textbf}{91}
+  \item corrente, \hyperindexformat{\textbf}{430}
+    \subitem inferiore, \hyperindexformat{\textbf}{430}
+    \subitem superiore, \hyperindexformat{\textbf}{430}
+  \item costante (nel tempo), \hyperindexformat{\textbf}{33}
+
+  \indexspace
+
+  \item degenerazione geometrica, \hyperindexformat{\textbf}{193}, 
+		\hyperpage{244}
+  \item densità di forze, \hyperindexformat{\textbf}{118}
+  \item determinante, \hyperindexformat{\textbf}{39}
+  \item diagonale, \hyperindexformat{\textbf}{430}
+  \item diagramma, \hyperindexformat{\textbf}{311}
+    \subitem del momento flettente, \hyperpage{314}
+    \subitem del taglio, \hyperpage{314}
+    \subitem della forza normale, \hyperpage{314}
+  \item disaccoppiamento longitudinale e trasversale, 
+		\hyperindexformat{\textbf}{312}
+  \item distorsione, \hyperindexformat{\seealso{cedimento}}{140}, 
+		\hyperindexformat{\textbf}{140}, \hyperpage{294}
+    \subitem di Volterra, \hyperpage{140}
+    \subitem estensionale, \hyperindexformat{\textbf}{294}
+    \subitem rotazionale, \hyperindexformat{\textbf}{294}
+    \subitem trasversale, \hyperindexformat{\textbf}{294}
+  \item dualismo, \hyperindexformat{\see{dualità}}{133}
+  \item dualità
+    \subitem cinematica--statica, \hyperindexformat{\textbf}{133}, 
+		\hyperpage{186}
+  \item dualità
+    \subitem algebra lineare, \hyperindexformat{\textbf}{58}
+
+  \indexspace
+
+  \item equazioni indefinite di equilibrio, 
+		\hyperindexformat{\textbf}{300}
+  \item equilibrio, \hyperindexformat{\textbf}{115}, \hyperpage{137}
+    \subitem equazioni di, \hyperpage{115}
+    \subitem equazioni di momento, \hyperpage{215}
+    \subitem globale, \hyperpage{293}
+    \subitem nodale, \hyperindexformat{\textbf}{486}
+  \item equiproiettività, \hyperindexformat{\textbf}{97}, 
+		\hyperpage{119}
+  \item equivalenza, \hyperindexformat{\see{sistema di forze}}{122}
+  \item estradosso, \hyperpage{430}
+
+  \indexspace
+
+  \item fibra inferiore, \hyperpage{290}, \hyperpage{386}
+  \item formula delle maglie, \hyperindexformat{\textbf}{479}
+  \item formula di Müller-Breslau, \hyperindexformat{\textbf}{427}
+  \item forza normale, \hyperindexformat{\textbf}{295}
+  \item forze generalizzate, \hyperindexformat{\textbf}{186}
+  \item fusione di corpi rigidi, \hyperindexformat{\textbf}{249}
+    \subitem aperta, \hyperpage{249}
+    \subitem chiusa, \hyperpage{249}
+
+  \indexspace
+
+  \item gerarchia strutturale, \hyperindexformat{\textbf}{232}, 
+		\hyperpage{264}, \hyperpage{385}
+    \subitem portante, \hyperpage{234}, \hyperpage{264}
+    \subitem portato, \hyperpage{234}, \hyperpage{264}
+    \subitem trascinante, \hyperpage{233}
+    \subitem trascinato, \hyperpage{233}
+  \item giunto prismatico, \hyperindexformat{\see{glifo}}{153}
+  \item giustapposizione di vincoli, 
+		\hyperindexformat{\see{vincolo (composto)}}{158}
+  \item glifo, \hyperindexformat{\seealso{vincolo}}{153}, 
+		\hyperindexformat{\textbf}{153}
+    \subitem interno, \hyperpage{155}, \hyperpage{501}
+  \item grado di connessione, \hyperindexformat{\textbf}{305}
+  \item grado di libertà, \hyperindexformat{\textbf}{91}
+    \subitem del sistema, \hyperpage{182}
+  \item grado di vincolo, \hyperindexformat{\see{vincolo}}{141}
+  \item guida prismatica, \hyperindexformat{\see{glifo}}{174}
+
+  \indexspace
+
+  \item identità bilineare, \hyperpage{497}
+  \item identità bilineare, \hyperindexformat{\textbf}{59}, 
+		\hyperpage{190}, \hyperpage{273}
+  \item immagine, \hyperindexformat{\textbf}{53}
+  \item incastro, \hyperindexformat{\seealso{vincolo}}{156}, 
+		\hyperindexformat{\textbf}{156}
+    \subitem interno, \hyperpage{157}
+    \subitem multiplo, \hyperindexformat{\textbf}{169}
+  \item incremento, \hyperindexformat{\textbf}{32}
+  \item inestensibilità, \hyperpage{426}
+  \item integrali di Mohr, \hyperpage{491}
+  \item intradosso, \hyperpage{430}
+  \item iperstaticità, \hyperpage{194}, \hyperpage{224}, 
+		\hyperindexformat{\seealso{labilità, stato di autoequilibrio}}{244}, 
+		\hyperindexformat{\textbf}{244}
+    \subitem esterna, \hyperpage{379}
+    \subitem grado di, \hyperindexformat{\textbf}{188}
+    \subitem incognita iperstatica, \hyperindexformat{\textbf}{225}, 
+		\hyperpage{360}, \hyperpage{379}, \hyperpage{420}, 
+		\hyperpage{472}
+    \subitem interna, \hyperindexformat{\textbf}{305}, \hyperpage{373}
+    \subitem intrinseca, \hyperpage{478}
+  \item isostaticità, \hyperpage{194}, \hyperpage{208}, 
+		\hyperindexformat{\seealso{labilità, iperstaticità}}{244}, 
+		\hyperindexformat{\textbf}{244}
+    \subitem completa, \hyperindexformat{\textbf}{254}
+    \subitem esterna, \hyperpage{372}
+    \subitem globale, \hyperindexformat{\textbf}{253}
+    \subitem locale, \hyperindexformat{\textbf}{253}
+
+  \indexspace
+
+  \item labilità, \hyperpage{194}, \hyperpage{217}, 
+		\hyperindexformat{\seealso{iperstaticità, meccanismo}}{244}, 
+		\hyperindexformat{\textbf}{244}
+    \subitem esterna, \hyperpage{379}
+    \subitem grado di, \hyperindexformat{\textbf}{186}
+    \subitem interna, \hyperpage{373}
+  \item lavoro virtuale, \hyperindexformat{\textbf}{135}
+  \item lettura topologica, \hyperindexformat{\textbf}{380}
+    \subitem seconda, \hyperpage{380}, \hyperpage{426}
+  \item linea d'asse, \hyperindexformat{\textbf}{289}
+  \item linea di influenza, \hyperindexformat{\textbf}{504}
+  \item linea di percorrenza, \hyperpage{504}
+
+  \indexspace
+
+  \item maglia chiusa, \hyperpage{250}, \hyperpage{477}
+    \subitem taglio, \hyperpage{250}
+  \item matrice, \hyperindexformat{\textbf}{36}
+    \subitem a blocchi, \hyperpage{37}
+    \subitem completa, \hyperpage{41}
+    \subitem dei coefficienti, \hyperpage{40}
+    \subitem identità, \hyperpage{39}
+    \subitem inversa, \hyperpage{40}
+    \subitem quadrata, \hyperpage{39}
+    \subitem trasposta, \hyperpage{36}
+  \item matrice dei vincoli, \hyperindexformat{\textbf}{182}
+    \subitem struttura a blocchi triangolare, \hyperpage{233}, 
+		\hyperpage{416}
+  \item matrice di equilibrio, 
+		\hyperindexformat{\seealso{matrice dei vincoli}}{188}, 
+		\hyperindexformat{\textbf}{188}
+  \item matrice di flessibilità, \hyperpage{491}
+  \item matrice rappresentativa, \hyperindexformat{\textbf}{27}
+  \item meccanismo, \hyperindexformat{\seealso{labilità}}{186}, 
+		\hyperindexformat{\textbf}{186}
+  \item mensola, \hyperindexformat{\textbf}{256}
+  \item metodo
+    \subitem dei corpi liberi, \hyperindexformat{\textbf}{214}
+    \subitem dei nodi, \hyperindexformat{\textbf}{449}
+    \subitem del carico unitario, 
+		\hyperindexformat{\see{teorema delle forze virtuali}}{276}
+    \subitem del sistema principale, \hyperindexformat{\textbf}{360}
+    \subitem delle forze, \hyperpage{472}
+    \subitem delle rette di proiezione, \hyperindexformat{\textbf}{209}
+    \subitem delle sezioni di Ritter, \hyperindexformat{\textbf}{456}
+    \subitem grafo-analitico, \hyperindexformat{\textbf}{208}
+    \subitem per equivalenza, \hyperindexformat{\textbf}{296}, 
+		\hyperpage{311}
+  \item molteplicità, \hyperindexformat{\see{vincolo}}{141}
+  \item molteplicità nodale, \hyperindexformat{\textbf}{488}
+  \item momento
+    \subitem assiale, \hyperindexformat{\textbf}{77}
+    \subitem di una forza, \hyperpage{116}
+    \subitem legge di variazione, \hyperindexformat{\textbf}{118}
+    \subitem polare, \hyperindexformat{\textbf}{75}
+    \subitem risultante, \hyperindexformat{\textbf}{116}
+    \subitem variazione al variare del polo, \hyperpage{76}
+  \item momento flettente, \hyperindexformat{\textbf}{295}
+  \item montante, \hyperindexformat{\textbf}{430}
+  \item moto rigido infinitesimo, \hyperindexformat{\textbf}{102}
+    \subitem rototraslazione, \hyperpage{102}
+    \subitem traslazione elicoidale, \hyperpage{102}
+
+  \indexspace
+
+  \item nodo
+    \subitem canonico, \hyperindexformat{\textbf}{449}
+    \subitem di reticolo, \hyperindexformat{\textbf}{426}
+    \subitem equilibrio del, \hyperpage{449}
+    \subitem incastro, \hyperindexformat{\textbf}{478}
+    \subitem rigido, \hyperindexformat{\textbf}{374}
+  \item nucleo, \hyperindexformat{\textbf}{53}
+  \item nullità, \hyperindexformat{\textbf}{53}
+  \item numero ciclomatico, \hyperindexformat{\textbf}{479}
+
+  \indexspace
+
+  \item operatore aggiunto, \hyperindexformat{\textbf}{54}
+
+  \indexspace
+
+  \item pantografo, \hyperindexformat{\seealso{bipendolo}}{148}
+  \item parametro libero, \hyperindexformat{\textbf}{41}, 
+		\hyperpage{63}
+  \item partizione a blocchi, \hyperindexformat{\textbf}{37}
+  \item pendolo
+    \subitem doppio, \hyperindexformat{\see{bipendolo}}{148}
+  \item perno scorrevole, \hyperindexformat{\seealso{vincolo}}{174}, 
+		\hyperpage{174}
+  \item piano di scorrimento, \hyperindexformat{\seealso{vincolo}}{173}, 
+		\hyperpage{173}
+  \item PLV, 
+		\hyperindexformat{\see{principio dei lavori virtuali}}{137}
+  \item polo, \hyperpage{75}
+  \item polo dell'asta, \hyperpage{445}
+  \item portale, \hyperindexformat{\textbf}{482}
+  \item portante, \hyperindexformat{\see{gerarchia strutturale}}{234}
+  \item portato, \hyperindexformat{\see{gerarchia strutturale}}{234}
+  \item principio dei lavori virtuali, \hyperindexformat{\textbf}{137}
+  \item principio di equilibrio delle parti, 
+		\hyperindexformat{\textbf}{448}
+  \item principio di Müller-Breslau, 
+		\hyperindexformat{\see{teorema degli spostamenti virtuali}}{275}
+  \item principio di sostituzione asta-vincolo, 
+		\hyperindexformat{\textbf}{446}
+  \item principio di sovrapposizione, \hyperindexformat{\textbf}{41}, 
+		\hyperpage{314}
+  \item problema cinematico, \hyperindexformat{\seealso{dualità}}{185}, 
+		\hyperindexformat{\textbf}{185}, \hyperpage{303}
+  \item problema duale, \hyperindexformat{\textbf}{57}
+  \item problema inverso, \hyperindexformat{\textbf}{52}
+  \item problema primale, \hyperindexformat{\textbf}{57}
+  \item problema statico, \hyperindexformat{\seealso{dualità}}{188}, 
+		\hyperindexformat{\textbf}{188}, \hyperpage{303}
+    \subitem longitudinale, \hyperpage{312}
+    \subitem misto, \hyperpage{312}
+    \subitem trasversale, \hyperpage{312}
+  \item prodotto misto, \hyperindexformat{\textbf}{73}
+  \item prodotto scalare, \hyperindexformat{\textbf}{71}
+  \item prodotto tensoriale, \hyperindexformat{\textbf}{74}
+  \item prodotto vettoriale, \hyperindexformat{\textbf}{71}
+  \item pseudovettore, \hyperindexformat{\see{vettore (assiale)}}{79}
+
+  \indexspace
+
+  \item rango, \hyperindexformat{\textbf}{36}, \hyperpage{53}
+  \item reazione vincolare, \hyperindexformat{\textbf}{143}
+    \subitem coppia reattiva, \hyperpage{143}
+    \subitem forza reattiva, \hyperpage{143}
+  \item regola di complementarità, \hyperpage{309}
+  \item regola di Laplace, \hyperpage{39}
+  \item relazioni per aree, \hyperindexformat{\textbf}{313}
+  \item riferimento intrinseco, \hyperindexformat{\textbf}{290}
+  \item risultante, \hyperindexformat{\textbf}{116}
+  \item rotazione, \hyperindexformat{\textbf}{91}
+    \subitem composizione di rotazioni infinitesime, 
+		\hyperindexformat{\textbf}{104}
+    \subitem finita, \hyperpage{92}
+    \subitem infinitesima, \hyperindexformat{\textbf}{94}
+    \subitem pura, \hyperpage{102}
+    \subitem relativa, \hyperpage{108}
+
+  \indexspace
+
+  \item salto
+    \subitem delle caratteristiche della sollecitazione, 
+		\hyperpage{298}
+  \item salto (di una funzione), \hyperindexformat{\textbf}{32}
+  \item schema del corpo libero, \hyperpage{214}
+  \item semiarco, \hyperpage{392}
+  \item sezione canonica, \hyperindexformat{\textbf}{456}
+  \item sezione trasversale, \hyperindexformat{\textbf}{289}
+  \item sistema di equazioni lineari, \hyperindexformat{\textbf}{40}
+    \subitem degenere, \hyperindexformat{\textbf}{44}
+    \subitem isodeterminato, \hyperindexformat{\textbf}{41}
+    \subitem omogeneo, \hyperpage{40}
+    \subitem sottodeterminato, \hyperindexformat{\textbf}{42}
+    \subitem sovradeterminato, \hyperindexformat{\textbf}{43}
+  \item sistema di forze, \hyperindexformat{\textbf}{116}
+    \subitem classificazione, \hyperindexformat{\textbf}{125}
+    \subitem dinamo (sistema avvitante), \hyperpage{125}
+    \subitem equilibrato, \hyperpage{123}
+    \subitem equiorientate, \hyperpage{128}
+    \subitem equivalenza, \hyperindexformat{\textbf}{122}, 
+		\hyperpage{352}
+    \subitem forza unica, \hyperpage{125}
+    \subitem riduzione, \hyperindexformat{\textbf}{115}
+    \subitem sistema ridotto al polo, \hyperpage{125}
+    \subitem trasporto di una forza, \hyperpage{124}
+  \item sistema di travi, \hyperpage{372}
+  \item sistema principale, \hyperindexformat{\textbf}{43}, 
+		\hyperpage{218}, \hyperpage{360}, \hyperpage{420}, 
+		\hyperpage{449}, \hyperpage{490}
+  \item sistema reticolare, \hyperpage{380}, 
+		\hyperindexformat{\textbf}{426}
+    \subitem a correnti paralleli, \hyperpage{460}
+    \subitem metodo dei nodi, \hyperpage{449}
+    \subitem metodo delle sezioni, \hyperpage{456}
+  \item soluzione (di un sistema lineare)
+    \subitem generale, \hyperpage{41}
+    \subitem particolare, \hyperpage{41}
+  \item soluzione particolare, \hyperpage{490}
+  \item sottospazi fondamentali, \hyperindexformat{\textbf}{55}, 
+		\hyperpage{189}
+  \item sottostruttura elementare, \hyperpage{256}
+  \item sovradeterminazione
+    \subitem esterna, \hyperpage{428}
+    \subitem interna, \hyperpage{429}
+  \item spazio delle traslazioni, \hyperindexformat{\textbf}{26}
+  \item spazio euclideo, \hyperindexformat{\textbf}{26}
+  \item spostamento
+    \subitem campo di, \hyperpage{99}
+    \subitem infinitesimo, \hyperindexformat{\textbf}{96}
+    \subitem relativo, \hyperpage{108}
+    \subitem rigido, \hyperindexformat{\textbf}{91}
+  \item stato di autoequilibrio, \hyperindexformat{\textbf}{190}
+  \item struttura mista, \hyperindexformat{\textbf}{482}
+  \item svincolo, \hyperindexformat{\seealso{vincolo}}{140}, 
+		\hyperindexformat{\textbf}{140}
+    \subitem interno, \hyperpage{250}, \hyperpage{308}, \hyperpage{501}
+    \subitem multiplo, \hyperindexformat{\textbf}{308}
+    \subitem rotazionale, \hyperindexformat{\textbf}{308}
+    \subitem semplice, \hyperindexformat{\textbf}{308}
+    \subitem traslazionale, \hyperindexformat{\textbf}{308}
+
+  \indexspace
+
+  \item taglio, \hyperindexformat{\textbf}{295}
+  \item taglio ideale, \hyperpage{303}
+  \item tangenza del diagramma del momento, 
+		\hyperindexformat{\textbf}{339}
+    \subitem agli estremi, \hyperpage{340}
+    \subitem in mezzeria, \hyperpage{340}
+  \item telaio, \hyperpage{380}, \hyperindexformat{\textbf}{477}
+    \subitem a più campate, \hyperindexformat{\textbf}{482}
+    \subitem a più piani, \hyperindexformat{\textbf}{482}
+    \subitem a una campata, \hyperindexformat{\textbf}{482}
+  \item teorema
+    \subitem degli spostamenti virtuali, 
+		\hyperindexformat{\textbf}{275}, \hyperpage{278}, 
+		\hyperpage{500}
+    \subitem dei lavori virtuali, \hyperpage{497}
+    \subitem delle forze virtuali, \hyperindexformat{\textbf}{276}, 
+		\hyperpage{278}, \hyperpage{502}
+    \subitem di allineamento dei centri, \hyperpage{111}
+    \subitem di Binet, \hyperpage{40}
+    \subitem di intersezione, \hyperpage{159}
+    \subitem di nullità più rango, \hyperindexformat{\textbf}{54}
+    \subitem di reciprocità cinematico-statica, 
+		\hyperindexformat{\textbf}{522}
+    \subitem di Rouché-Capelli, \hyperindexformat{\textbf}{41}
+  \item termine noto, \hyperpage{40}
+  \item TFV, \hyperindexformat{\see{teorema delle forze virtuali}}{276}
+  \item traliccio di Ritter-Mörsch, \hyperindexformat{\textbf}{463}
+  \item trascinante, 
+		\hyperindexformat{\see{gerarchia strutturale}}{233}
+  \item trascinato, \hyperindexformat{\see{gerarchia strutturale}}{233}
+  \item traslazione, \hyperindexformat{\textbf}{91}
+    \subitem pura, \hyperpage{102}
+  \item tratto regolare, \hyperindexformat{\textbf}{299}
+  \item travatura
+    \subitem di Warren, \hyperpage{463}
+  \item trave, \hyperindexformat{\textbf}{289}
+    \subitem ad anello, \hyperindexformat{\textbf}{305}
+    \subitem biconnessa, \hyperindexformat{\textbf}{305}
+    \subitem con glifo, \hyperindexformat{\textbf}{257}
+    \subitem con svincolo, \hyperindexformat{\textbf}{489}
+    \subitem con tre carrelli, \hyperindexformat{\textbf}{258}
+    \subitem continua, \hyperpage{380}, \hyperindexformat{\textbf}{419}
+    \subitem di Gerber, \hyperpage{235}, \hyperpage{380}, 
+		\hyperindexformat{\textbf}{414}
+    \subitem di telaio, \hyperindexformat{\textbf}{482}
+    \subitem equivalente, \hyperindexformat{\textbf}{460}
+    \subitem inclinata, \hyperpage{353}
+    \subitem monoconnessa, \hyperindexformat{\textbf}{305}
+    \subitem piana, \hyperindexformat{\textbf}{289}
+    \subitem pluriconnessa, \hyperindexformat{\textbf}{305}
+    \subitem ramificata, \hyperpage{387}
+    \subitem rigida, \hyperindexformat{\textbf}{289}
+    \subitem semplicemente appoggiata, \hyperindexformat{\textbf}{256}
+    \subitem singola, \hyperpage{291}
+    \subitem su più appoggi, \hyperindexformat{\textbf}{414}
+    \subitem triconnessa, \hyperindexformat{\textbf}{305}
+  \item traverso, \hyperindexformat{\textbf}{482}
+  \item triade meccanica, \hyperindexformat{\textbf}{274}
+  \item TSV, 
+		\hyperindexformat{\see{teorema degli spostamenti virtuali}}{275}
+
+  \indexspace
+
+  \item uniforme (nello spazio), \hyperindexformat{\textbf}{33}
+
+  \indexspace
+
+  \item velocità angolare, \hyperpage{95}
+  \item vettore
+    \subitem applicato, \hyperindexformat{\textbf}{74}
+    \subitem assiale, \hyperindexformat{\textbf}{79}
+    \subitem geometrico, \hyperindexformat{\textbf}{27}
+    \subitem libero, \hyperindexformat{\textbf}{69}
+    \subitem numerico, \hyperindexformat{\textbf}{27}
+    \subitem polare, \hyperindexformat{\textbf}{79}
+  \item vettore delle incognite iperstatiche, \hyperpage{195}
+  \item vettore di configurazione, \hyperindexformat{\textbf}{182}, 
+		\hyperpage{291}
+  \item vettore di vincolo, \hyperpage{182}
+  \item vincolo, \hyperindexformat{\textbf}{141}
+    \subitem anolonomo, \hyperpage{141}
+    \subitem cinematico, \hyperpage{141}
+    \subitem composto, \hyperindexformat{\textbf}{158}
+    \subitem di collegamento, \hyperpage{498}
+    \subitem di rigidità, \hyperpage{499}
+    \subitem di rigidità, \hyperpage{91}, 
+		\hyperindexformat{\textbf}{139}, \hyperpage{293}
+    \subitem doppio, \hyperpage{150}
+    \subitem esterno, \hyperindexformat{\textbf}{142}
+    \subitem fittizio, \hyperindexformat{\textbf}{218}
+    \subitem grado di, \hyperindexformat{\textbf}{141}
+    \subitem interno, \hyperindexformat{\textbf}{142}
+    \subitem molteplicità, \hyperindexformat{\textbf}{141}
+    \subitem molteplicità, \hyperpage{373}
+    \subitem multiplo, \hyperpage{245}
+    \subitem ridondante, \hyperindexformat{\textbf}{225}
+    \subitem semplice, \hyperpage{144}
+    \subitem sovrabbondante, \hyperpage{360}
+    \subitem spaziale, \hyperpage{173}
+    \subitem triplo, \hyperpage{156}
+
+\end{theindex}

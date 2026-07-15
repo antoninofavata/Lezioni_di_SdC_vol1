@@ -1,0 +1,475 @@
+%-------------------------------------------------------------------------------
+\graphicspath{{Parti/P01-Preliminari/A01-Notazioni-Convenzioni/Figure/}}
+\chapter{Notazioni e convenzioni}\label{app:notazioni}
+%-------------------------------------------------------------------------------
+
+\begin{sommario}
+	Si raccolgono in questo capitolo le notazioni e le convenzioni
+	utilizzate sistematicamente nel testo. Dopo aver definito lo 
+	spazio euclideo e lo spazio delle traslazioni, si distinguono 
+	punti, vettori geometrici e vettori numerici, applicazioni 
+	lineari e matrici rappresentative. 
+	Si discutono infine quattro casi in cui simboli o termini 
+	apparentemente sinonimi denotano oggetti distinti: il segno 
+	di eguaglianza con i suoi quattro significati, le diverse 
+	nature dei simboli che gli compaiono attorno, la differenza 
+	fra salto e incremento di una funzione, la distinzione fra 
+	costante (nel tempo) e uniforme (nello spazio).
+\end{sommario}
+
+Le convenzioni raccolte in questo capitolo hanno carattere generale: 
+riguardano la tipografia del testo --- come si rappresentano punti, 
+vettori, applicazioni lineari e le loro componenti --- e il 
+significato di simboli matematici di uso ricorrente. Le convenzioni 
+\emph{specialistiche} --- la distinzione fra vettori polari e 
+vettori assiali, i segni delle caratteristiche della sollecitazione 
+e delle distorsioni, il riferimento intrinseco sulla trave, la regola 
+concorde/discorde nel calcolo dei lavori virtuali, e altre ancora 
+--- sono invece introdotte nei rispettivi capitoli, al momento del 
+loro primo impiego, dove possono essere motivate e discusse nel 
+contesto proprio.
+
+%-------------------------------------------------------------------------------
+\section{Spazio e vettori}\label{sec:spazio_vettori}
+%-------------------------------------------------------------------------------
+
+In questa sezione si fissano gli oggetti geometrici fondamentali e 
+le rispettive convenzioni tipografiche. La distinzione che la 
+attraversa è quella fra l'\emph{oggetto geometrico} --- punto, 
+vettore, applicazione lineare --- e la sua \emph{rappresentazione 
+	numerica} rispetto a una base fissata --- coordinate, vettore 
+colonna, matrice: sono enti di natura diversa, che il testo 
+distingue tipograficamente in modo sistematico. La presentazione 
+è limitata all'essenziale; le proprietà strutturali di questi 
+oggetti --- algebra dei vettori, nucleo e immagine delle 
+applicazioni lineari, dualità --- sono oggetto dei capitoli 
+successivi della parte.
+
+
+%-------------------------------------------------------------------------------
+\subsection{Lo spazio euclideo e lo spazio delle traslazioni}
+\label{sec:spazio_euclideo}
+%-------------------------------------------------------------------------------
+
+Si denota con $\Ec$ lo \emph{spazio euclideo tridimensionale}%
+\index{spazio euclideo|textbf}\nomenclature[S]{$\Ec$}{spazio euclideo tridimensionale}, 
+ambiente geometrico dell'intera trattazione.\footnote{Avendo a che 
+	fare esclusivamente con spazi tridimensionali, nel testo non si 
+	distinguono esplicitamente gli spazi euclidei di dimensione $1$, 
+	$2$ e $3$: la notazione $\Ec$ designa indistintamente la retta, 
+	il piano o lo spazio tridimensionale, secondo il contesto.} Gli 
+elementi di $\Ec$ --- i \emph{punti} --- si indicano con lettere 
+maiuscole in corsivo: $A$, $B$, $P$, $\ldots$.
+
+La differenza di due punti $A, B \in \Ec$ è un \textit{vettore} 
+$\ub = B - A$, elemento dello \textit{spazio delle traslazioni}\index{spazio delle traslazioni|textbf} 
+$\Uc$\nomenclature[S]{$\Uc$}{spazio delle traslazioni} associato a $\Ec$, spazio vettoriale reale di dimensione 
+tre.\footnote{La dizione si comprende considerando una copia 
+	$\Ec_\star$ dello spazio euclideo: il vettore $\ub$ individua 
+	l'isometria --- la \emph{traslazione} --- che porta ogni punto 
+	$A \in \Ec$ nel punto $A_\star = A + \ub \in \Ec_\star$.} Lo 
+spazio $\Uc$ è dotato di una \textit{base ortonormale destra}\index{base ortonormale|textbf} 
+$\{\ab_x, \ab_y, \ab_z\}$, fissata una volta per tutte. Tale 
+base consente di rappresentare ogni vettore mediante una 
+tripletta di componenti, come si vedrà nel paragrafo seguente.
+
+%-------------------------------------------------------------------------------
+\subsection{Vettori geometrici e vettori numerici}
+\label{sec:vettori_geom_num}
+%-------------------------------------------------------------------------------
+
+Rispetto alla base ortonormale fissata, ogni vettore $\vb \in \Uc$ 
+ammette la rappresentazione
+\begin{equation}
+	\vb = v_x\,\ab_x + v_y\,\ab_y + v_z\,\ab_z,
+\end{equation}
+dove gli scalari $v_x, v_y, v_z \in \mathbb{R}$ sono le 
+\textit{componenti} di $\vb$. La tripletta ordinata delle componenti 
+è essa stessa un vettore --- nel senso dell'algebra lineare --- 
+elemento dello spazio $\mathbb{R}^3$, scritto come \textit{vettore 
+	colonna}:
+\begin{equation}
+	\bm{v} = \begin{Bmatrix} v_x \\ v_y \\ v_z \end{Bmatrix} 
+	\in \mathbb{R}^3.
+\end{equation}
+Il corrispondente \textit{vettore riga} è il trasposto
+\begin{equation}
+	\bm{v}^\top = \{ v_x \;\; v_y \;\; v_z \},
+\end{equation}
+nel quale le componenti sono separate da spazi e non da virgole: 
+la virgola è riservata alla separazione di voci di una lista 
+generica $(a, b, c)$, mentre le componenti di un vettore numerico 
+sono coordinate di un medesimo oggetto.
+
+È essenziale distinguere il vettore $\vb$ --- oggetto geometrico, 
+elemento dello spazio delle traslazioni $\Uc$ --- dalla tripletta 
+delle sue componenti $\bm{v}$, lista di tre numeri reali ed 
+elemento di $\mathbb{R}^3$. La corrispondenza $\vb \leftrightarrow 
+\bm{v}$ è un isomorfismo che \textit{dipende dalla base}: una diversa 
+scelta di base produrrebbe, per lo stesso $\vb$, una diversa 
+tripletta di componenti. Vettore geometrico e vettore numerico 
+sono dunque oggetti di natura diversa, e il testo li distingue 
+tipograficamente.
+
+\paragraph{Convenzioni tipografiche.}
+I \textit{vettori geometrici}\index{vettore!geometrico|textbf} si denotano con lettere minuscole 
+in \textit{grassetto tondo}: $\ab$, $\ub$, $\vb$, $\fb$, 
+$\ldots$; per i vettori greci si adotta il \textit{grassetto 
+	tondo upright}: $\bm{\upalpha}$, $\bm{\upomega}$, $\bm{\upmu}$, 
+$\ldots$. I \textit{vettori numerici}\index{vettore!numerico|textbf} si denotano con lettere 
+minuscole in \textit{grassetto italico}: $\bm{a}$, $\bm{u}$, 
+$\bm{v}$, $\bm{f}$, $\ldots$; analogamente per i vettori 
+numerici greci: $\bm{\alpha}$, $\bm{\omega}$, $\bm{\mu}$, 
+$\ldots$. La marca distintiva è dunque la distinzione fra 
+tondo e italico a stampa, fra freccia e sottolineatura nei 
+manoscritti: $\ub$ (geometrico) e $\bm{u}$ (numerico) sono 
+oggetti diversi, non due notazioni per lo stesso 
+oggetto.\footnote{Nei manoscritti, dove la distinzione fra 
+	grassetto tondo e grassetto italico non è praticabile, è uso 
+	comune denotare il vettore geometrico con una freccia 
+	soprascritta ($\overrightarrow{u}$) e il vettore numerico con 
+	la sottolineatura ($\underline{u}$), conservando così anche 
+	nella scrittura a mano la distinzione fra i due oggetti.}
+
+%-------------------------------------------------------------------------------
+\subsection{Applicazioni lineari e matrici rappresentative}
+\label{sec:applic_matrici}
+%-------------------------------------------------------------------------------
+
+La stessa distinzione fra oggetto geometrico e rappresentazione 
+numerica si presenta, un livello più in alto, per le applicazioni 
+lineari. Un'\textit{applicazione lineare}\index{applicazione lineare} $\Abb : X \to Y$ fra 
+due spazi vettoriali reali di dimensione finita è una legge che 
+associa a ogni vettore $\xb \in X$ un vettore $\yb=\Abb\xb \in Y$, in 
+modo compatibile con le operazioni di somma e moltiplicazione 
+per uno scalare. Fissata una base in $X$ e una in $Y$, 
+l'applicazione $\Abb$ è completamente individuata dalle sue 
+componenti, raccolte nella \textit{matrice rappresentativa}\index{matrice rappresentativa|textbf} 
+$\bm{A} \in \mathbb{R}^{m \times n}$, dove $n = \dim X$ ed 
+$m = \dim Y$. Come per i vettori, applicazione lineare $\Abb$ e 
+matrice rappresentativa $\bm{A}$ sono oggetti di natura diversa: 
+la prima è una legge fra spazi vettoriali, la seconda una 
+tabella di numeri reali la cui forma dipende dalle basi scelte. 
+Il testo li distingue tipograficamente come per i vettori, 
+applicando ai simboli maiuscoli la stessa marca tipografica 
+--- tondo per le applicazioni, italico per le matrici --- già 
+adottata per i minuscoli.
+
+\paragraph{Convenzioni tipografiche.}
+Le \textit{applicazioni lineari} si denotano con lettere 
+maiuscole in \textit{grassetto tondo}: $\Abb$, $\Bb$, 
+$\Tb$, $\ldots$. Le \textit{matrici rappresentative} si 
+denotano con lettere maiuscole in \textit{grassetto italico}: 
+$\bm{A}$, $\bm{B}$, $\bm{T}$, $\ldots$. Anche in questo caso 
+la marca distintiva è la distinzione fra tondo e italico: 
+$\Abb$ (applicazione) e $\bm{A}$ (matrice) sono oggetti 
+diversi, non due notazioni per lo stesso oggetto.
+
+Lo studio sistematico delle applicazioni lineari, dei loro 
+sottospazi fondamentali e della loro rappresentazione matriciale 
+è oggetto del \CAPref{app:applicazionilin_dualita}.
+
+
+\paragraph{Componenti scalari di una grandezza vettoriale puntuale.}
+Per una grandezza vettoriale applicata in un punto --- reazione
+vincolare, forza concentrata, spostamento --- le componenti scalari
+rispetto agli assi della terna si denotano, nella forma \emph{estesa},
+con il punto di applicazione fra parentesi: $X(A)$, $Y(A)$ per le
+componenti cartesiane di una reazione applicata in $A$, $\mu(A)$ per la
+coppia, $R(A)$ per una componente direzionale singola (proiezione su un
+asse assegnato), $\ub(A)$ per lo spostamento del punto $A$. In forma
+\emph{compatta} il punto di applicazione si riduce a pedice: $X_A$,
+$Y_A$, $\mu_A$, $R_A$ per le reazioni, $u_A$, $v_A$ per le componenti
+dello spostamento, $\ub_A$ per lo spostamento vettoriale (o $\ub_i$,
+quando il pedice è l'indice del corpo in un sistema). Le due scritture
+sono equivalenti e denotano la stessa grandezza; la scelta dipende dal
+\emph{contesto}, non dal tipo di grandezza: la forma estesa, che rende
+esplicita la natura funzionale della componente, prevale nel testo
+discorsivo; la forma compatta, che alleggerisce le espressioni dense,
+prevale negli esempi numerici e nelle figure. La convenzione vale
+dunque allo stesso modo per reazioni e spostamenti, vettoriali e
+scalari.
+
+
+
+%-------------------------------------------------------------------------------
+\section{Sui simboli e le notazioni}\label{sec:simboli}
+%-------------------------------------------------------------------------------
+
+La precisione notazionale --- usare ciascun simbolo nel suo 
+significato proprio e ciascun nome nella sua categoria --- è la 
+prima forma di rigore matematico. Le sottosezioni che seguono 
+illustrano altrettanti casi in cui simboli o termini apparentemente 
+sinonimi denotano oggetti distinti: il segno di eguaglianza con i 
+suoi quattro significati, le diverse nature dei simboli che vi 
+compaiono attorno, la differenza fra il salto $\llbracket f 
+\rrbracket$ e l'incremento $\Delta f$ di una funzione, infine la 
+distinzione fra costante (nel tempo) e uniforme (nello spazio).
+
+
+%-------------------------------------------------------------------------------------------------------------------
+\subsection{Il simbolo di eguaglianza}\label{sec:eguaglianza}
+%-------------------------------------------------------------------------------------------------------------------
+
+Il simbolo $=$ compare in matematica con quattro significati distinti, che \`e
+essenziale saper riconoscere.
+
+\paragraph{Definizione.}
+L'eguaglianza introduce un nuovo oggetto o una notazione abbreviata. Si scrive talvolta con il simbolo $\coloneqq$\nomenclature[O]{$\coloneqq$}{uguaglianza di definizione}
+o $\stackrel{\mathrm{def}}{=}$ per sottolineare il carattere definitorio:
+\begin{equation}
+	\cosh x \coloneqq \frac{e^x + e^{-x}}{2}, \qquad
+	\bm{C} \coloneqq \bm{A}\bm{B}.
+\end{equation}
+Il membro di sinistra \textit{non ha significato} prima della definizione; è l'eguaglianza stessa a conferirglielo. Il simbolo $\coloneqq$ è asimmetrico: i due punti stanno dalla parte della grandezza \emph{definita}, ovvero quella introdotta per la prima volta. Negli esempi precedenti, $\cosh x$ e $\bm{C}$ sono le grandezze nuove --- a sinistra --- mentre il membro di destra ne esprime il
+contenuto in termini di oggetti già noti. Qualora la grandezza definita stia a destra, si usa il simbolo speculare $\eqqcolon$, con i due punti a destra: $\bm{A}\bm{B} \eqqcolon \bm{C}$ ha il medesimo significato di $\bm{C} \coloneqq \bm{A}\bm{B}$.
+
+\paragraph{Identit\`a (eguaglianza incondizionata).}
+L'eguaglianza \`e soddisfatta per \textit{ogni} valore ammissibile delle variabili coinvolte. In ambito algebrico:
+\begin{equation}
+	(a+b)^2 = a^2 + 2ab + b^2 \qquad \forall\, a,b \in \mathbb{R};
+\end{equation}
+in ambito trigonometrico:
+\begin{equation}
+	\sin^2\alpha + \cos^2\alpha = 1 \qquad \forall\, \alpha \in \mathbb{R};
+\end{equation}
+in ambito vettoriale (identit\`a di Lagrange)\footnote{La
+	dimostrazione discende dall'identit\`a trigonometrica appena
+	citata. Poich\'e $|\ab\times\bb| = |\ab|\,|\bb|\sin\alpha$
+	e $\ab\cdot\bb = |\ab|\,|\bb|\cos\alpha$, dove $\alpha$
+	\`e l'angolo convesso fra i due vettori, si ha
+	$|\ab\times\bb|^2 + (\ab\cdot\bb)^2
+	= |\ab|^2|\bb|^2(\sin^2\alpha + \cos^2\alpha)
+	= |\ab|^2|\bb|^2$.}:
+\begin{equation}
+	|\ab\times\bb|^2
+	= |\ab|^2\,|\bb|^2 - (\ab\cdot\bb)^2
+	\qquad \forall\, \ab,\bb \in \mathbb{R}^3;
+\end{equation}
+in ambito differenziale:
+\begin{equation}
+	\frac{\dd}{\dd x}\bigl(e^x\bigr) = e^x \qquad \forall\, x \in \mathbb{R}.
+\end{equation}
+Un'identit\`a non pone alcun problema risolutivo: \`e vera sempre.
+
+\paragraph{Equazione (eguaglianza condizionata).}
+L'eguaglianza \`e soddisfatta solo per \textit{particolari} valori delle
+incognite, che costituiscono le soluzioni. In ambito algebrico:
+\begin{equation}
+	2x + 1 = 0 \qquad \Longrightarrow \qquad x = -\tfrac{1}{2};
+\end{equation}
+in ambito trigonometrico:
+\begin{equation}
+	\sin\alpha = \tfrac{1}{2} \qquad \Longrightarrow \qquad
+	\alpha = \tfrac{\pi}{6} + 2k\pi \;\;\text{oppure}\;\;
+	\alpha = \tfrac{5\pi}{6} + 2k\pi, \quad k \in \mathbb{Z};
+\end{equation}
+in ambito differenziale (equazione differenziale):
+\begin{equation}
+	y' + y = 0 \qquad \Longrightarrow \qquad y(x) = C\, e^{-x},
+	\quad C \in \mathbb{R}.
+\end{equation}
+Un'equazione pone un \textit{problema inverso}: determinare i valori delle
+incognite --- se esistono --- per i quali l'eguaglianza \`e verificata. I
+sistemi di equazioni lineari algebriche, oggetto della prossima sezione,
+costituiscono la classe pi\`u importante di tali problemi inversi nel
+contesto dell'analisi strutturale.
+
+\paragraph{Relazione (legame fra variabili).}
+L'eguaglianza esprime un \textit{vincolo} fra grandezze che hanno
+significato indipendente, restringendo le combinazioni ammissibili
+dei loro valori. In ambito funzionale:
+\begin{equation}
+	y = f(x),
+\end{equation}
+che riduce le $\infty^2$ coppie $(x,y)$ del piano ai soli punti
+della curva grafico di $f$ ($\infty^1$ punti). In ambito fisico,
+le leggi della meccanica e della fisica dei materiali hanno questa
+natura; ad esempio la legge costitutiva elastica lineare:
+\begin{equation}
+	\sigma = E\,\varepsilon,
+\end{equation}
+che vincola tensione e deformazione a stare su una retta di
+pendenza $E$ nel piano $(\varepsilon,\sigma)$. A differenza di
+una definizione, entrambi i membri possiedono significato
+autonomo; a differenza di un'identit\`a, l'eguaglianza non \`e
+vera per ogni valore delle variabili; a differenza di
+un'equazione, non vi sono incognite da determinare --- la
+relazione descrive un \textit{legame} fra grandezze, non pone un
+problema da risolvere.
+
+
+\begin{oss}
+	La stessa scrittura può cambiare categoria a seconda del
+	contesto. Ad esempio $\sigma = E\,\varepsilon$ è una
+	\textit{relazione} quando esprime il legame costitutivo del
+	materiale; diventa un'\textit{equazione} se si conosce $\sigma$
+	e si cerca $\varepsilon = \sigma/E$; e può essere letta come
+	una \textit{definizione} se introduce il modulo elastico
+	$E \coloneqq \sigma/\varepsilon$. Riconoscere con quale
+	significato si sta usando il segno di eguaglianza è il primo
+	passo per impostare correttamente un problema. In questo testo 
+	il simbolo $=$ viene usato indistintamente per identità, 
+	equazioni e relazioni --- come è prassi consolidata --- mentre 
+	il simbolo $\coloneqq$ è riservato alle definizioni: solo lì 
+	una notazione specifica produce un guadagno di chiarezza che 
+	giustifica il costo tipografico.
+\end{oss}
+
+%-------------------------------------------------------------------------------
+\subsection{Costanti, parametri e variabili}\label{sec:costanti_parametri}
+%-------------------------------------------------------------------------------
+
+I simboli che compaiono in un'eguaglianza possono svolgere ruoli diversi, che \`e essenziale distinguere. Le \textit{costanti
+	universali} --- quali $\pi$, $e$, la velocit\`a della luce $c$, la	costante di gravitazione $G$ --- hanno un valore fisso, determinato	dalla matematica o dalla natura, indipendente dal problema	considerato. Un \textit{parametro} \`e una grandezza il cui valore \`e	assegnato nel contesto di un dato problema, eventualmente lasciato in	forma letterale per studiare come la soluzione dipende da esso. Una \textit{variabile} \`e una grandezza che pu\`o assumere valori	diversi entro un insieme assegnato. Quando il valore di una	variabile \`e vincolato da un'equazione e deve essere determinato,	la variabile prende il nome di \textit{incognita}. La distinzione fra parametro e	incognita non \`e intrinseca al simbolo, ma dipende dal contesto. Ad esempio, nel sistema $\bm{A}\bm{x}=\bm{b}$, le componenti di	$\bm{x}$ sono le incognite e quelle di $\bm{b}$ i parametri (dati del problema); ma se il problema fosse quello di progettare il carico	$\bm{b}$ capace di produrre un assegnato stato $\bm{x}$, i ruoli si	invertirebbero. Nei sistemi sottodeterminati si incontrer\`a	un'ulteriore sfumatura: alcune componenti di $\bm{x}$ vengono elette	a \textit{parametri liberi} $\bm{\alpha}$, e le rimanenti si esprimono	in funzione di esse --- cosicch\'e una stessa grandezza, nata come	incognita, assume il ruolo di parametro nella soluzione.
+
+
+\paragraph{Dimensioni fisiche nelle espressioni funzionali.}
+Nelle applicazioni fisiche e ingegneristiche le variabili hanno in generale
+\emph{dimensioni fisiche}: lunghezze, forze, tempi, ecc.\ La consistenza
+dimensionale impone vincoli precisi sia sui coefficienti dei polinomi sia
+sugli argomenti delle funzioni trascendenti.
+
+\textit{Polinomi.}
+Sia $x$ una variabile con dimensione $[x] = L$ e sia $f(x)$ una
+grandezza con dimensione $[f] = F$. Il polinomio di secondo grado
+\begin{equation}
+	f(x) = c_0 + c_1\,x + c_2\,x^2
+\end{equation}
+è dimensionalmente consistente solo se ogni termine ha la stessa dimensione
+di $f$; pertanto
+\begin{equation}
+	[c_0] = F, \qquad
+	[c_1] = \frac{F}{L}, \qquad
+	[c_2] = \frac{F}{L^2}.
+\end{equation}
+I coefficienti sono grandezze dimensionali con dimensioni \emph{diverse} fra
+loro: il coefficiente del termine di grado $k$ ha dimensione
+$F/L^k$.
+
+\textit{Funzioni trascendenti.}
+Le funzioni elementari --- seno, coseno, esponenziale, logaritmo, funzioni
+iperboliche --- richiedono argomenti \emph{adimensionali}. Lo sviluppo in
+serie, ad esempio $\sin u = u - u^3/6 + \cdots$, somma potenze di $u$ di
+grado diverso: se $u$ avesse una dimensione fisica, si starebbero sommando
+grandezze di dimensioni diverse, operazione priva di significato fisico.
+Se la variabile indipendente $x$ ha dimensione $[x] = L$ e $\ell$
+è un parametro di lunghezza caratteristico del problema, occorre introdurre
+la variabile adimensionale
+\begin{equation}
+	\tilde{x} \coloneqq \frac{x}{\ell}, \qquad [\tilde{x}] = 1,
+\end{equation}
+e solo allora risulta corretta la scrittura $\sin(\pi\tilde{x})$ oppure
+$e^{-\tilde{x}}$.
+
+Per le funzioni trigonometriche la natura fisica del parametro che rende
+adimensionale l'argomento dipende dal contesto. Se la variabile
+indipendente è il \emph{tempo} $t$, con $[t] = T$, il fattore
+di scala è la \emph{pulsazione} (o frequenza angolare)
+\begin{equation}
+	\omega \coloneqq \frac{2\pi}{T_0}, \qquad [\omega] = \frac{1}{T},
+\end{equation}
+dove $T_0$ è il \emph{periodo temporale}; l'argomento adimensionale è
+$\omega t$, e la funzione si scrive $\sin(\omega t)$.
+Se invece la variabile indipendente è una \emph{coordinata spaziale} $x$,
+con $[x] = L$, il fattore di scala è il \emph{numero d'onda}
+\begin{equation}
+	k \coloneqq \frac{2\pi}{\lambda}, \qquad [k] = \frac{1}{L},
+\end{equation}
+dove $\lambda$ è la \emph{lunghezza d'onda}; l'argomento adimensionale è
+$kx$, e la funzione si scrive $\sin(kx)$.
+In entrambi i casi la struttura è la stessa: una grandezza fisica
+($\omega$ o $k$) con la dimensione reciproca della variabile indipendente
+moltiplica quest'ultima per formare un argomento puro. La distinzione fra
+periodo temporale e lunghezza d'onda non è quindi una questione di
+nomenclatura, ma riflette la natura fisica della variabile indipendente.
+
+\textit{Il caso lineare come raccordo.}
+Il polinomio lineare illustra in modo elementare entrambi gli aspetti. Nella
+variabile dimensionale $x \in [0, \ell]$:
+\begin{equation}\label{eq:lineare_dim}
+	f(x) = c_0 + c_1\,x, \qquad
+	[c_0] = F, \quad [c_1] = \frac{F}{L},
+\end{equation}
+i due coefficienti hanno dimensioni diverse. Riscritta nella variabile
+adimensionale $\tilde{x} = x/\ell \in [0,1]$, la stessa funzione diventa
+\begin{equation}\label{eq:lineare_adim}
+	f(\tilde{x}) = f_0\,(1 - \tilde{x}) + f_1\,\tilde{x},
+\end{equation}
+dove $f_0 \coloneqq f(0)$ e $f_1 \coloneqq f(\ell)$ sono i valori della
+grandezza fisica agli estremi dell'intervallo, entrambi con dimensione
+$F$. Il coefficiente angolare nella variabile adimensionale è
+$(f_1 - f_0)$, grandezza con la \emph{stessa} dimensione di $f$: poiché
+$\tilde{x}$ è un numero puro, non c'è più disomogeneità fra i coefficienti.
+Le due scritture \eqref{eq:lineare_dim} e \eqref{eq:lineare_adim}
+descrivono il medesimo andamento fisico; la scelta della variabile
+determina l'interpretazione e la dimensione dei coefficienti.
+
+\begin{oss}
+	La regola è semplice: in un polinomio con variabile dimensionale il
+	coefficiente del termine di grado $k$ deve compensare dimensionalmente
+	la potenza $k$-esima della variabile; nelle funzioni trascendenti
+	l'argomento deve essere reso adimensionale prima di applicare la
+	funzione. Confondere i due casi --- ad esempio scrivere $\sin(x)$ con
+	$x$ una lunghezza, o attribuire ai coefficienti polinomiali tutti la
+	stessa dimensione --- è un errore concettuale, non soltanto formale.
+\end{oss}
+
+%-------------------------------------------------------------------------------
+\subsection{Salto e incremento}\label{sec:salto_incremento}
+%-------------------------------------------------------------------------------
+
+Anche due simboli che denotano una \emph{differenza} fra due 
+valori di una grandezza possono avere significato distinto. 
+L'\textit{incremento}\index{incremento|textbf} $\Delta f$ misura la differenza di una 
+funzione fra due punti $P_1$ e $P_2$ del suo dominio, 
+$\Delta f \coloneqq f(P_2) - f(P_1)$, e presuppone implicitamente un 
+\emph{percorso} continuo che congiunge i due punti. È la 
+notazione naturale per variazioni temporali ($\Delta T$, 
+variazione di temperatura fra istante iniziale e finale), o 
+spaziali lungo un cammino regolare ($\Delta L$, allungamento 
+di un'asta fra due configurazioni). 
+
+Il \textit{salto}\index{salto (di una funzione)|textbf}\nomenclature[O]{$\llbracket\,\cdot\,\rrbracket$}{salto di una funzione} $\llbracket f \rrbracket$ misura invece la 
+differenza fra i due limiti laterali della funzione 
+\emph{nello stesso punto}, in corrispondenza di una 
+discontinuità: $\llbracket f \rrbracket \coloneqq f^+ - f^-$ con 
+$f^\pm \coloneqq \lim_{x\to x_0^\pm} f(x)$. Non c'è cammino, non c'è 
+percorrenza: la grandezza assume due valori distinti 
+contemporaneamente nel medesimo punto $x_0$, frontiera di 
+discontinuità. 	Usare $\Delta$ al posto di $\llbracket\cdot\rrbracket$, 
+benché letteralmente corretto, oscura la natura puntuale e 
+istantanea della discontinuità: i due simboli non sono 
+sinonimi.
+
+%-------------------------------------------------------------------------------
+\subsection{Costante e uniforme}\label{sec:costante_uniforme}
+%-------------------------------------------------------------------------------
+
+Anche due aggettivi che denotano l'\emph{invarianza} di una
+grandezza possono avere significato distinto. Si dice 
+\textit{costante}\index{costante (nel tempo)|textbf} una grandezza che non varia nel tempo, e si
+parla in tal caso di invarianza temporale: una temperatura
+costante, una velocità costante, una forza costante. Si dice
+\textit{uniforme}\index{uniforme (nello spazio)|textbf} una grandezza che non varia nello spazio, e
+si parla in tal caso di invarianza spaziale: un campo elettrico
+uniforme, una temperatura uniforme in un corpo, un carico
+distribuito uniforme.
+
+Una grandezza può essere indipendentemente costante o variabile
+nel tempo, uniforme o variabile nello spazio: le due categorie
+sono ortogonali. Una pressione atmosferica può essere costante
+nel tempo (in quiete meteorologica) ma non uniforme (varia con
+la quota); un'onda sismica può essere uniforme in una piccola
+regione (al passaggio del fronte) ma non costante (l'ampiezza
+oscilla nel tempo). Confondere le due nozioni significa
+sovrapporre tempo e spazio, due dimensioni indipendenti del
+problema fisico.
+
+Nel presente testo, dedicato a sistemi statici, il tempo non
+compare esplicitamente: tutte le grandezze sono implicitamente
+costanti. L'aggettivo che ricorrerà sarà dunque
+\emph{uniforme} --- riferito alla distribuzione spaziale di un
+carico, di una temperatura, di una proprietà materiale.
+
+
