@@ -1,476 +1,226 @@
-\indexentry{spazio euclideo|textbf}{46}
-\indexentry{spazio delle traslazioni|textbf}{46}
-\indexentry{base ortonormale|textbf}{46}
-\indexentry{vettore!geometrico|textbf}{46}
-\indexentry{vettore!numerico|textbf}{46}
-\indexentry{applicazione lineare}{47}
-\indexentry{matrice rappresentativa|textbf}{47}
-\indexentry{incremento|textbf}{52}
-\indexentry{salto (di una funzione)|textbf}{52}
-\indexentry{costante (nel tempo)|textbf}{52}
-\indexentry{uniforme (nello spazio)|textbf}{52}
-\indexentry{matrice|textbf}{56}
-\indexentry{rango|textbf}{56}
-\indexentry{matrice!trasposta}{56}
-\indexentry{partizione a blocchi|textbf}{57}
-\indexentry{matrice!a blocchi}{57}
-\indexentry{combinazione lineare|textbf}{58}
-\indexentry{matrice!quadrata}{59}
-\indexentry{matrice!identità}{59}
-\indexentry{determinante|textbf}{59}
-\indexentry{regola di Laplace}{59}
-\indexentry{teorema!di Binet}{60}
-\indexentry{matrice!inversa}{60}
-\indexentry{sistema di equazioni lineari|textbf}{60}
-\indexentry{matrice!dei coefficienti}{60}
-\indexentry{termine noto}{60}
-\indexentry{sistema di equazioni lineari!omogeneo}{60}
-\indexentry{teorema!di Rouché-Capelli|textbf}{61}
-\indexentry{matrice!completa}{61}
-\indexentry{soluzione (di un sistema lineare)!generale}{61}
-\indexentry{soluzione (di un sistema lineare)!particolare}{61}
-\indexentry{parametro libero|textbf}{61}
-\indexentry{principio di sovrapposizione|textbf}{61}
-\indexentry{sistema di equazioni lineari!isodeterminato|textbf}{61}
-\indexentry{sistema di equazioni lineari!sottodeterminato|textbf}{62}
-\indexentry{sistema principale|textbf}{63}
-\indexentry{sistema di equazioni lineari!sovradeterminato|textbf}{63}
-\indexentry{sistema di equazioni lineari!degenere|textbf}{64}
-\indexentry{applicazione}{71}
-\indexentry{applicazione!iniettiva}{72}
-\indexentry{applicazione!suriettiva}{72}
-\indexentry{applicazione!biiettiva}{72}
-\indexentry{problema inverso|textbf}{72}
-\indexentry{controimmagine}{72}
-\indexentry{applicazione lineare|textbf}{73}
-\indexentry{nucleo|textbf}{73}
-\indexentry{immagine|textbf}{73}
-\indexentry{rango}{73}
-\indexentry{nullità|textbf}{73}
-\indexentry{teorema!di nullità più rango|textbf}{74}
-\indexentry{operatore aggiunto|textbf}{74}
-\indexentry{sottospazi fondamentali|textbf}{75}
-\indexentry{complemento ortogonale|textbf}{75}
-\indexentry{problema primale|textbf}{77}
-\indexentry{problema duale|textbf}{77}
-\indexentry{dualità!algebra lineare|textbf}{78}
-\indexentry{identità bilineare|textbf}{79}
-\indexentry{parametro libero}{83}
-\indexentry{vettore!libero|textbf}{89}
-\indexentry{prodotto scalare|textbf}{91}
-\indexentry{prodotto vettoriale|textbf}{91}
-\indexentry{prodotto misto|textbf}{93}
-\indexentry{prodotto tensoriale|textbf}{93}
-\indexentry{vettore!applicato|textbf}{94}
-\indexentry{polo}{94}
-\indexentry{momento!polare|textbf}{94}
-\indexentry{braccio|textbf}{94}
-\indexentry{momento!variazione al variare del polo}{96}
-\indexentry{momento!assiale|textbf}{96}
-\indexentry{vettore!polare|textbf}{98}
-\indexentry{vettore!assiale|textbf}{98}
-\indexentry{pseudovettore|see{vettore (assiale)}}{98}
-\indexentry{spostamento!rigido|textbf}{111}
-\indexentry{corpo rigido|textbf}{111}
-\indexentry{rotazione|textbf}{111}
-\indexentry{traslazione|textbf}{111}
-\indexentry{grado di liberta@grado di libertà|textbf}{111}
-\indexentry{vincolo!di rigidità}{111}
-\indexentry{rotazione!finita}{112}
-\indexentry{rotazione!infinitesima|textbf}{114}
-\indexentry{velocita angolare@velocità angolare}{115}
-\indexentry{centro di rotazione!istantaneo}{115}
-\indexentry{CIR|see{centro di rotazione}}{115}
-\indexentry{spostamento!infinitesimo|textbf}{116}
-\indexentry{equiproiettivita@equiproiettività|textbf}{117}
-\indexentry{spostamento!campo di}{119}
-\indexentry{asse centrale!degli spostamenti|textbf}{119}
-\indexentry{moto rigido infinitesimo|textbf}{122}
-\indexentry{moto rigido infinitesimo!rototraslazione}{122}
-\indexentry{moto rigido infinitesimo!traslazione elicoidale}{122}
-\indexentry{rotazione!pura}{122}
-\indexentry{traslazione!pura}{122}
-\indexentry{centro di rotazione|textbf}{123}
-\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{125}
-\indexentry{spostamento!relativo}{128}
-\indexentry{rotazione!relativa}{128}
-\indexentry{centro di rotazione!relativo|textbf}{129}
-\indexentry{cinematica grafica|textbf}{130}
-\indexentry{centro di rotazione!assoluto}{131}
-\indexentry{allineamento dei centri di rotazione|textbf}{131}
-\indexentry{teorema!di allineamento dei centri}{131}
-\indexentry{equilibrio|textbf}{135}
-\indexentry{equilibrio!equazioni di}{135}
-\indexentry{sistema di forze!riduzione|textbf}{135}
-\indexentry{sistema di forze|textbf}{135}
-\indexentry{risultante|textbf}{136}
-\indexentry{momento!risultante|textbf}{136}
-\indexentry{momento!di una forza}{136}
-\indexentry{coppia|textbf}{137}
-\indexentry{braccio}{137}
-\indexentry{densita di forze@densità di forze|textbf}{138}
-\indexentry{carico!distribuito}{138}
-\indexentry{momento!legge di variazione|textbf}{138}
-\indexentry{equiproiettivita@equiproiettività}{139}
-\indexentry{asse centrale!del sistema di forze|textbf}{140}
-\indexentry{sistema di forze!equivalenza|textbf}{142}
-\indexentry{equivalenza|see{sistema di forze}}{142}
-\indexentry{sistema di forze!equilibrato}{143}
-\indexentry{sistema di forze!trasporto di una forza}{144}
-\indexentry{sistema di forze!sistema ridotto al polo}{144}
-\indexentry{sistema di forze!classificazione|textbf}{144}
-\indexentry{sistema di forze!dinamo (sistema avvitante)}{144}
-\indexentry{sistema di forze!forza unica}{145}
-\indexentry{coppia!pura}{145}
-\indexentry{asse di sollecitazione|textbf}{146}
-\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{147}
-\indexentry{sistema di forze!equiorientate}{148}
-\indexentry{baricentro delle forze|textbf}{148}
-\indexentry{dualita@dualità!cinematica--statica|textbf}{153}
-\indexentry{dualismo|see{dualità}}{153}
-\indexentry{lavoro virtuale|textbf}{155}
-\indexentry{equilibrio}{157}
-\indexentry{principio dei lavori virtuali|textbf}{157}
-\indexentry{PLV|see{principio dei lavori virtuali}}{157}
-\indexentry{vincolo!di rigidità|textbf}{159}
-\indexentry{distorsione|textbf}{160}
-\indexentry{distorsione!di Volterra}{160}
-\indexentry{distorsione|seealso{cedimento}}{160}
-\indexentry{svincolo|textbf}{160}
-\indexentry{svincolo|seealso{vincolo}}{160}
-\indexentry{vincolo|textbf}{161}
-\indexentry{vincolo!cinematico}{161}
-\indexentry{vincolo!anolonomo}{161}
-\indexentry{vincolo!molteplicita@molteplicità|textbf}{161}
-\indexentry{molteplicita@molteplicità|see{vincolo}}{161}
-\indexentry{vincolo!grado di|textbf}{161}
-\indexentry{grado di vincolo|see{vincolo}}{161}
-\indexentry{vincolo!esterno|textbf}{162}
-\indexentry{vincolo!interno|textbf}{162}
-\indexentry{collegamento, vincolo di|see{vincolo (interno)}}{162}
-\indexentry{centro di rotazione!luogo geometrico}{163}
-\indexentry{reazione vincolare|textbf}{163}
-\indexentry{reazione vincolare!forza reattiva}{164}
-\indexentry{reazione vincolare!coppia reattiva}{164}
-\indexentry{vincolo!semplice}{164}
-\indexentry{carrello|textbf}{164}
-\indexentry{carrello|seealso{vincolo}}{164}
-\indexentry{biella|textbf}{165}
-\indexentry{biella|seealso{carrello}}{165}
-\indexentry{carrello!interno}{166}
-\indexentry{bipendolo|textbf}{168}
-\indexentry{bipendolo|seealso{vincolo}}{168}
-\indexentry{pendolo!doppio|see{bipendolo}}{168}
-\indexentry{pantografo|seealso{bipendolo}}{168}
-\indexentry{bipendolo!interno}{169}
-\indexentry{vincolo!doppio}{170}
-\indexentry{cerniera|textbf}{170}
-\indexentry{cerniera|seealso{vincolo}}{170}
-\indexentry{cerniera!interna}{171}
-\indexentry{glifo|textbf}{172}
-\indexentry{glifo|seealso{vincolo}}{172}
-\indexentry{giunto prismatico|see{glifo}}{172}
-\indexentry{cerniera!impropria}{174}
-\indexentry{glifo!interno}{175}
-\indexentry{incastro|textbf}{175}
-\indexentry{incastro|seealso{vincolo}}{175}
-\indexentry{vincolo!triplo}{175}
-\indexentry{incastro!interno}{176}
-\indexentry{vincolo!composto|textbf}{177}
-\indexentry{giustapposizione di vincoli|see{vincolo (composto)}}{177}
-\indexentry{teorema!di intersezione}{178}
-\indexentry{cedimento!vincolare|textbf}{181}
-\indexentry{cedimento|seealso{distorsione}}{181}
-\indexentry{cerniera!multipla|textbf}{185}
-\indexentry{incastro!multiplo|textbf}{188}
-\indexentry{vincolo!spaziale}{192}
-\indexentry{piano di scorrimento}{192}
-\indexentry{piano di scorrimento|seealso{vincolo}}{192}
-\indexentry{cerniera!sferica}{192}
-\indexentry{perno scorrevole}{192}
-\indexentry{perno scorrevole|seealso{vincolo}}{192}
-\indexentry{guida prismatica|see{glifo}}{193}
-\indexentry{cerniera!cilindrica}{193}
-\indexentry{vettore di configurazione|textbf}{200}
-\indexentry{grado di liberta@grado di libertà!del sistema}{200}
-\indexentry{matrice dei vincoli|textbf}{200}
-\indexentry{vettore di vincolo}{200}
-\indexentry{congruenza!esterna}{200}
-\indexentry{congruenza!interna}{201}
-\indexentry{problema cinematico|textbf}{203}
-\indexentry{problema cinematico|seealso{dualità}}{203}
-\indexentry{configurazione cinematicamente ammissibile}{203}
-\indexentry{meccanismo|textbf}{203}
-\indexentry{meccanismo|seealso{labilità}}{203}
-\indexentry{labilita@labilità!grado di|textbf}{203}
-\indexentry{dualita@dualità!cinematica--statica}{203}
-\indexentry{forze generalizzate|textbf}{204}
-\indexentry{problema statico|textbf}{205}
-\indexentry{problema statico|seealso{dualità}}{205}
-\indexentry{matrice di equilibrio|textbf}{206}
-\indexentry{matrice di equilibrio|seealso{matrice dei vincoli}}{206}
-\indexentry{iperstaticita@iperstaticità!grado di|textbf}{206}
-\indexentry{sottospazi fondamentali}{207}
-\indexentry{identità bilineare}{208}
-\indexentry{stato di autoequilibrio|textbf}{208}
-\indexentry{cedimento!ammissibile}{208}
-\indexentry{classificazione dei sistemi di corpi rigidi!formula fondamentale}{209}
-\indexentry{degenerazione geometrica|textbf}{210}
-\indexentry{isostaticita@isostaticità}{210}
-\indexentry{labilita@labilità}{212}
-\indexentry{coordinate lagrangiane}{212}
-\indexentry{iperstaticita@iperstaticità}{212}
-\indexentry{vettore delle incognite iperstatiche}{212}
-\indexentry{isostaticita@isostaticità}{224}
-\indexentry{metodo!grafo-analitico|textbf}{224}
-\indexentry{metodo!delle rette di proiezione|textbf}{225}
-\indexentry{arco!a tre cerniere}{227}
-\indexentry{metodo!dei corpi liberi|textbf}{230}
-\indexentry{schema del corpo libero}{231}
-\indexentry{equilibrio!equazioni di momento}{231}
-\indexentry{labilita@labilità}{234}
-\indexentry{vincolo!fittizio|textbf}{234}
-\indexentry{sistema principale}{234}
-\indexentry{compatibilita@compatibilità!statica}{240}
-\indexentry{iperstaticita@iperstaticità}{241}
-\indexentry{vincolo!ridondante|textbf}{242}
-\indexentry{iperstaticita@iperstaticità!incognita iperstatica|textbf}{242}
-\indexentry{compatibilita@compatibilità!cinematica}{246}
-\indexentry{gerarchia strutturale|textbf}{250}
-\indexentry{gerarchia strutturale!trascinato}{250}
-\indexentry{trascinato|see{gerarchia strutturale}}{250}
-\indexentry{gerarchia strutturale!trascinante}{250}
-\indexentry{trascinante|see{gerarchia strutturale}}{250}
-\indexentry{matrice dei vincoli!struttura a blocchi triangolare}{250}
-\indexentry{gerarchia strutturale!portato}{251}
-\indexentry{portato|see{gerarchia strutturale}}{251}
-\indexentry{gerarchia strutturale!portante}{251}
-\indexentry{portante|see{gerarchia strutturale}}{251}
-\indexentry{trave!di Gerber}{252}
-\indexentry{arco!a tutto sesto}{254}
-\indexentry{classificazione dei sistemi di corpi rigidi|textbf}{259}
-\indexentry{conteggio dei gradi di libertà|textbf}{259}
-\indexentry{labilita@labilità|textbf}{259}
-\indexentry{labilita@labilità|seealso{iperstaticità, meccanismo}}{259}
-\indexentry{isostaticita@isostaticità|textbf}{260}
-\indexentry{isostaticita@isostaticità|seealso{labilità, iperstaticità}}{260}
-\indexentry{iperstaticita@iperstaticità|textbf}{260}
-\indexentry{iperstaticita@iperstaticità|seealso{labilità, stato di autoequilibrio}}{260}
-\indexentry{degenerazione geometrica}{260}
-\indexentry{vincolo!multiplo}{261}
-\indexentry{fusione di corpi rigidi|textbf}{265}
-\indexentry{fusione di corpi rigidi!aperta}{266}
-\indexentry{fusione di corpi rigidi!chiusa}{266}
-\indexentry{corpo!biconnesso|textbf}{266}
-\indexentry{maglia chiusa}{266}
-\indexentry{corpo!pluriconnesso|textbf}{266}
-\indexentry{svincolo!interno}{266}
-\indexentry{maglia chiusa!taglio}{266}
-\indexentry{conteggio dei gradi di libertà!globale}{269}
-\indexentry{isostaticita@isostaticità!globale|textbf}{269}
-\indexentry{conteggio dei gradi di libertà!locale}{269}
-\indexentry{isostaticita@isostaticità!locale|textbf}{269}
-\indexentry{isostaticita@isostaticità!completa|textbf}{270}
-\indexentry{sottostruttura elementare}{272}
-\indexentry{mensola|textbf}{273}
-\indexentry{trave!semplicemente appoggiata|textbf}{273}
-\indexentry{trave!con glifo|textbf}{273}
-\indexentry{trave!con tre carrelli|textbf}{275}
-\indexentry{arco!a tre cerniere|textbf}{277}
-\indexentry{anello a tre cerniere|textbf}{279}
-\indexentry{classificazione dei sistemi di corpi rigidi!per decomposizione}{280}
-\indexentry{gerarchia strutturale!portante}{280}
-\indexentry{gerarchia strutturale!portato}{281}
-\indexentry{gerarchia strutturale}{281}
-\indexentry{classificazione dei sistemi di corpi rigidi!per riduzione a schema noto}{281}
-\indexentry{classificazione dei sistemi di corpi rigidi!per ispezione diretta|textbf}{284}
-\indexentry{identità bilineare}{289}
-\indexentry{triade meccanica|textbf}{290}
-\indexentry{compatibilita@compatibilità!statica|textbf}{290}
-\indexentry{teorema!degli spostamenti virtuali|textbf}{291}
-\indexentry{TSV|see{teorema degli spostamenti virtuali}}{291}
-\indexentry{principio di Müller-Breslau|see{teorema degli spostamenti virtuali}}{291}
-\indexentry{compatibilita@compatibilità!cinematica|textbf}{292}
-\indexentry{teorema!delle forze virtuali|textbf}{292}
-\indexentry{TFV|see{teorema delle forze virtuali}}{292}
-\indexentry{metodo!del carico unitario|see{teorema delle forze virtuali}}{292}
-\indexentry{teorema!degli spostamenti virtuali}{294}
-\indexentry{teorema!delle forze virtuali}{295}
-\indexentry{trave|textbf}{305}
-\indexentry{trave!rigida|textbf}{305}
-\indexentry{linea d'asse|textbf}{305}
-\indexentry{sezione trasversale|textbf}{305}
-\indexentry{trave!piana|textbf}{305}
-\indexentry{riferimento intrinseco|textbf}{306}
-\indexentry{fibra inferiore}{306}
-\indexentry{trave!singola}{307}
-\indexentry{vettore di configurazione}{308}
-\indexentry{equilibrio!globale}{309}
-\indexentry{vincolo!di rigidità}{309}
-\indexentry{distorsione}{310}
-\indexentry{distorsione!estensionale|textbf}{310}
-\indexentry{distorsione!trasversale|textbf}{310}
-\indexentry{distorsione!rotazionale|textbf}{311}
-\indexentry{caratteristiche della sollecitazione|textbf}{311}
-\indexentry{forza normale|textbf}{311}
-\indexentry{caratteristiche della sollecitazione!forza normale}{311}
-\indexentry{taglio|textbf}{311}
-\indexentry{caratteristiche della sollecitazione!taglio}{311}
-\indexentry{momento flettente|textbf}{311}
-\indexentry{caratteristiche della sollecitazione!momento flettente}{311}
-\indexentry{metodo!per equivalenza|textbf}{313}
-\indexentry{condizioni al contorno}{314}
-\indexentry{salto!delle caratteristiche della sollecitazione}{315}
-\indexentry{tratto regolare|textbf}{315}
-\indexentry{equazioni indefinite di equilibrio|textbf}{316}
-\indexentry{taglio ideale}{320}
-\indexentry{problema cinematico}{320}
-\indexentry{problema statico}{320}
-\indexentry{grado di connessione|textbf}{322}
-\indexentry{trave!monoconnessa|textbf}{322}
-\indexentry{trave!pluriconnessa|textbf}{322}
-\indexentry{trave!biconnessa|textbf}{322}
-\indexentry{trave!triconnessa|textbf}{322}
-\indexentry{trave!ad anello|textbf}{322}
-\indexentry{iperstaticita@iperstaticità!interna|textbf}{322}
-\indexentry{condizioni di chiusura dell'anello|textbf}{323}
-\indexentry{svincolo!interno}{324}
-\indexentry{svincolo!semplice|textbf}{325}
-\indexentry{svincolo!multiplo|textbf}{325}
-\indexentry{svincolo!rotazionale|textbf}{325}
-\indexentry{cerniera!interna}{325}
-\indexentry{svincolo!traslazionale|textbf}{325}
-\indexentry{biella!longitudinale|textbf}{325}
-\indexentry{biella!trasversale|textbf}{325}
-\indexentry{bipendolo!interno}{325}
-\indexentry{regola di complementarita@regola di complementarità}{326}
-\indexentry{diagramma|textbf}{329}
-\indexentry{metodo!per equivalenza}{330}
-\indexentry{disaccoppiamento longitudinale e trasversale|textbf}{330}
-\indexentry{problema statico!longitudinale}{330}
-\indexentry{problema statico!trasversale}{330}
-\indexentry{problema statico!misto}{330}
-\indexentry{relazioni per aree|textbf}{331}
-\indexentry{principio di sovrapposizione}{332}
-\indexentry{diagramma!della forza normale}{332}
-\indexentry{diagramma!del taglio}{332}
-\indexentry{diagramma!del momento flettente}{332}
-\indexentry{analisi qualitativa}{332}
-\indexentry{tangenza del diagramma del momento|textbf}{358}
-\indexentry{tangenza del diagramma del momento!agli estremi}{359}
-\indexentry{tangenza del diagramma del momento!in mezzeria}{359}
-\indexentry{carico!sostituzione con la risultante}{371}
-\indexentry{sistema di forze!equivalenza}{371}
-\indexentry{trave!inclinata}{373}
-\indexentry{iperstaticita@iperstaticità!incognita iperstatica}{380}
-\indexentry{metodo!del sistema principale|textbf}{380}
-\indexentry{vincolo!sovrabbondante}{380}
-\indexentry{sistema principale}{380}
-\indexentry{assemblaggio di travi|textbf}{391}
-\indexentry{sistema di travi}{392}
-\indexentry{comportamento esterno|textbf}{392}
-\indexentry{isostaticita@isostaticità!esterna}{392}
-\indexentry{comportamento interno|textbf}{392}
-\indexentry{labilita@labilità!interna}{393}
-\indexentry{iperstaticita@iperstaticità!interna}{393}
-\indexentry{vincolo!molteplicità}{393}
-\indexentry{connessione|textbf}{393}
-\indexentry{nodo!rigido|textbf}{394}
-\indexentry{cerniera!interna}{395}
-\indexentry{carrello!interno}{396}
-\indexentry{labilita@labilità!esterna}{399}
-\indexentry{iperstaticita@iperstaticità!esterna}{399}
-\indexentry{iperstaticita@iperstaticità!incognita iperstatica}{399}
-\indexentry{connessione!eterogenea|textbf}{399}
-\indexentry{lettura topologica|textbf}{399}
-\indexentry{trave!di Gerber}{400}
-\indexentry{trave!continua}{400}
-\indexentry{connessione!omogenea|textbf}{400}
-\indexentry{sistema reticolare}{400}
-\indexentry{telaio}{400}
-\indexentry{lettura topologica!seconda}{400}
-\indexentry{connessione!eterogenea}{403}
-\indexentry{gerarchia strutturale}{405}
-\indexentry{carico!attivo}{405}
-\indexentry{fibra inferiore}{406}
-\indexentry{trave!ramificata}{408}
-\indexentry{arco!a tre cerniere}{413}
-\indexentry{semiarco}{413}
-\indexentry{cerniera!in chiave}{413}
-\indexentry{trave!su più appoggi|textbf}{437}
-\indexentry{trave!di Gerber|textbf}{437}
-\indexentry{campata}{439}
-\indexentry{matrice dei vincoli!struttura a blocchi triangolare}{439}
-\indexentry{trave!continua|textbf}{442}
-\indexentry{sistema principale}{443}
-\indexentry{iperstaticita@iperstaticità!incognita iperstatica}{443}
-\indexentry{sistema reticolare|textbf}{463}
-\indexentry{asta|textbf}{463}
-\indexentry{lettura topologica!seconda}{464}
-\indexentry{nodo!di reticolo|textbf}{464}
-\indexentry{inestensibilita@inestensibilità}{464}
-\indexentry{formula di Muller-Breslau@formula di Müller-Breslau|textbf}{465}
-\indexentry{composizione gerarchica|textbf}{466}
-\indexentry{sovradeterminazione!esterna}{466}
-\indexentry{sovradeterminazione!interna}{467}
-\indexentry{asta!ridondante|textbf}{467}
-\indexentry{corrente|textbf}{468}
-\indexentry{corrente!superiore|textbf}{468}
-\indexentry{estradosso}{468}
-\indexentry{corrente!inferiore|textbf}{468}
-\indexentry{intradosso}{468}
-\indexentry{asta!di parete|textbf}{468}
-\indexentry{montante|textbf}{468}
-\indexentry{diagonale|textbf}{468}
-\indexentry{polo dell'asta}{483}
-\indexentry{principio di sostituzione asta-vincolo|textbf}{485}
-\indexentry{principio di equilibrio delle parti|textbf}{487}
-\indexentry{sistema principale}{488}
-\indexentry{autosoluzione}{488}
-\indexentry{metodo!dei nodi|textbf}{488}
-\indexentry{sistema reticolare!metodo dei nodi}{488}
-\indexentry{nodo!equilibrio del}{488}
-\indexentry{nodo!canonico|textbf}{488}
-\indexentry{asta!scarica|textbf}{489}
-\indexentry{metodo!delle sezioni di Ritter|textbf}{495}
-\indexentry{sistema reticolare!metodo delle sezioni}{495}
-\indexentry{sezione canonica|textbf}{495}
-\indexentry{sistema reticolare!a correnti paralleli}{499}
-\indexentry{trave!equivalente|textbf}{499}
-\indexentry{travatura!di Warren}{502}
-\indexentry{traliccio di Ritter-Morsch@traliccio di Ritter-Mörsch|textbf}{502}
-\indexentry{iperstaticita@iperstaticità!incognita iperstatica}{512}
-\indexentry{metodo!delle forze}{512}
-\indexentry{telaio|textbf}{531}
-\indexentry{maglia chiusa}{531}
-\indexentry{iperstaticita@iperstaticità!intrinseca}{532}
-\indexentry{nodo!incastro|textbf}{532}
-\indexentry{formula delle maglie|textbf}{533}
-\indexentry{numero ciclomatico|textbf}{533}
-\indexentry{traverso|textbf}{536}
-\indexentry{colonna|textbf}{536}
-\indexentry{trave!di telaio|textbf}{536}
-\indexentry{telaio!a una campata|textbf}{536}
-\indexentry{portale|textbf}{536}
-\indexentry{telaio!a più campate|textbf}{536}
-\indexentry{telaio!a più piani|textbf}{536}
-\indexentry{struttura mista|textbf}{537}
-\indexentry{compatibilita@compatibilità!nodale|textbf}{539}
-\indexentry{equilibrio!nodale|textbf}{540}
-\indexentry{molteplicita nodale@molteplicità nodale|textbf}{543}
-\indexentry{trave!con svincolo|textbf}{543}
-\indexentry{sistema principale}{543}
-\indexentry{soluzione particolare}{544}
-\indexentry{matrice di flessibilità}{545}
-\indexentry{integrali di Mohr}{545}
-\indexentry{teorema!dei lavori virtuali}{551}
-\indexentry{identita bilineare@identità bilineare}{551}
-\indexentry{vincolo!di collegamento}{552}
-\indexentry{vincolo!di rigidita@di rigidità}{553}
-\indexentry{teorema!degli spostamenti virtuali}{554}
-\indexentry{svincolo!interno}{555}
-\indexentry{glifo!interno}{555}
-\indexentry{teorema!delle forze virtuali}{556}
-\indexentry{linea di percorrenza}{558}
-\indexentry{linea di influenza|textbf}{558}
-\indexentry{teorema!di reciprocita cinematico-statica@di reciprocità cinematico-statica|textbf}{578}
+\indexentry{spostamento!rigido|textbf}{9}
+\indexentry{corpo rigido|textbf}{9}
+\indexentry{rotazione|textbf}{9}
+\indexentry{traslazione|textbf}{9}
+\indexentry{grado di liberta@grado di libertà|textbf}{9}
+\indexentry{vincolo!di rigidità}{10}
+\indexentry{rotazione!finita}{10}
+\indexentry{rotazione!infinitesima|textbf}{12}
+\indexentry{velocita angolare@velocità angolare}{13}
+\indexentry{centro di rotazione!istantaneo}{13}
+\indexentry{CIR|see{centro di rotazione}}{13}
+\indexentry{spostamento!infinitesimo|textbf}{14}
+\indexentry{equiproiettivita@equiproiettività|textbf}{14}
+\indexentry{spostamento!campo di}{17}
+\indexentry{asse centrale!degli spostamenti|textbf}{18}
+\indexentry{moto rigido infinitesimo|textbf}{20}
+\indexentry{moto rigido infinitesimo!rototraslazione}{20}
+\indexentry{moto rigido infinitesimo!traslazione elicoidale}{20}
+\indexentry{rotazione!pura}{20}
+\indexentry{traslazione!pura}{20}
+\indexentry{centro di rotazione|textbf}{21}
+\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{22}
+\indexentry{spostamento!relativo}{27}
+\indexentry{rotazione!relativa}{27}
+\indexentry{centro di rotazione!relativo|textbf}{27}
+\indexentry{cinematica grafica|textbf}{29}
+\indexentry{centro di rotazione!assoluto}{30}
+\indexentry{allineamento dei centri di rotazione|textbf}{30}
+\indexentry{teorema!di allineamento dei centri}{30}
+\indexentry{equilibrio|textbf}{35}
+\indexentry{equilibrio!equazioni di}{35}
+\indexentry{sistema di forze!riduzione|textbf}{35}
+\indexentry{sistema di forze|textbf}{35}
+\indexentry{risultante|textbf}{36}
+\indexentry{momento!risultante|textbf}{36}
+\indexentry{momento!di una forza}{36}
+\indexentry{coppia|textbf}{37}
+\indexentry{braccio}{37}
+\indexentry{densita di forze@densità di forze|textbf}{38}
+\indexentry{carico!distribuito}{38}
+\indexentry{momento!legge di variazione|textbf}{38}
+\indexentry{equiproiettivita@equiproiettività}{39}
+\indexentry{asse centrale!del sistema di forze|textbf}{40}
+\indexentry{sistema di forze!equivalenza|textbf}{42}
+\indexentry{equivalenza|see{sistema di forze}}{42}
+\indexentry{sistema di forze!equilibrato}{43}
+\indexentry{sistema di forze!trasporto di una forza}{44}
+\indexentry{sistema di forze!sistema ridotto al polo}{44}
+\indexentry{sistema di forze!classificazione|textbf}{44}
+\indexentry{sistema di forze!dinamo (sistema avvitante)}{44}
+\indexentry{sistema di forze!forza unica}{45}
+\indexentry{coppia!pura}{45}
+\indexentry{asse di sollecitazione|textbf}{46}
+\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{47}
+\indexentry{sistema di forze!equiorientate}{48}
+\indexentry{baricentro delle forze|textbf}{48}
+\indexentry{dualita@dualità!cinematica--statica|textbf}{53}
+\indexentry{dualismo|see{dualità}}{53}
+\indexentry{lavoro virtuale|textbf}{55}
+\indexentry{equilibrio}{57}
+\indexentry{principio dei lavori virtuali|textbf}{57}
+\indexentry{PLV|see{principio dei lavori virtuali}}{57}
+\indexentry{vincolo!di rigidità|textbf}{59}
+\indexentry{distorsione|textbf}{60}
+\indexentry{distorsione!di Volterra}{60}
+\indexentry{distorsione|seealso{cedimento}}{60}
+\indexentry{svincolo|textbf}{60}
+\indexentry{svincolo|seealso{vincolo}}{60}
+\indexentry{vincolo|textbf}{61}
+\indexentry{vincolo!cinematico}{61}
+\indexentry{vincolo!anolonomo}{61}
+\indexentry{vincolo!molteplicita@molteplicità|textbf}{61}
+\indexentry{molteplicita@molteplicità|see{vincolo}}{61}
+\indexentry{vincolo!grado di|textbf}{61}
+\indexentry{grado di vincolo|see{vincolo}}{61}
+\indexentry{vincolo!esterno|textbf}{62}
+\indexentry{vincolo!interno|textbf}{62}
+\indexentry{collegamento, vincolo di|see{vincolo (interno)}}{62}
+\indexentry{centro di rotazione!luogo geometrico}{63}
+\indexentry{reazione vincolare|textbf}{63}
+\indexentry{reazione vincolare!forza reattiva}{64}
+\indexentry{reazione vincolare!coppia reattiva}{64}
+\indexentry{vincolo!semplice}{64}
+\indexentry{carrello|textbf}{64}
+\indexentry{carrello|seealso{vincolo}}{64}
+\indexentry{biella|textbf}{65}
+\indexentry{biella|seealso{carrello}}{65}
+\indexentry{carrello!interno}{66}
+\indexentry{bipendolo|textbf}{68}
+\indexentry{bipendolo|seealso{vincolo}}{68}
+\indexentry{pendolo!doppio|see{bipendolo}}{68}
+\indexentry{pantografo|seealso{bipendolo}}{68}
+\indexentry{bipendolo!interno}{69}
+\indexentry{vincolo!doppio}{70}
+\indexentry{cerniera|textbf}{70}
+\indexentry{cerniera|seealso{vincolo}}{70}
+\indexentry{cerniera!interna}{71}
+\indexentry{glifo|textbf}{72}
+\indexentry{glifo|seealso{vincolo}}{72}
+\indexentry{giunto prismatico|see{glifo}}{72}
+\indexentry{cerniera!impropria}{74}
+\indexentry{glifo!interno}{75}
+\indexentry{incastro|textbf}{75}
+\indexentry{incastro|seealso{vincolo}}{75}
+\indexentry{vincolo!triplo}{75}
+\indexentry{incastro!interno}{76}
+\indexentry{vincolo!composto|textbf}{77}
+\indexentry{giustapposizione di vincoli|see{vincolo (composto)}}{77}
+\indexentry{teorema!di intersezione}{78}
+\indexentry{cedimento!vincolare|textbf}{81}
+\indexentry{cedimento|seealso{distorsione}}{81}
+\indexentry{cerniera!multipla|textbf}{85}
+\indexentry{incastro!multiplo|textbf}{88}
+\indexentry{vincolo!spaziale}{92}
+\indexentry{piano di scorrimento}{92}
+\indexentry{piano di scorrimento|seealso{vincolo}}{92}
+\indexentry{cerniera!sferica}{92}
+\indexentry{perno scorrevole}{92}
+\indexentry{perno scorrevole|seealso{vincolo}}{92}
+\indexentry{guida prismatica|see{glifo}}{93}
+\indexentry{cerniera!cilindrica}{93}
+\indexentry{vettore di configurazione|textbf}{100}
+\indexentry{grado di liberta@grado di libertà!del sistema}{100}
+\indexentry{matrice dei vincoli|textbf}{100}
+\indexentry{vettore di vincolo}{100}
+\indexentry{congruenza!esterna}{100}
+\indexentry{congruenza!interna}{101}
+\indexentry{problema cinematico|textbf}{103}
+\indexentry{problema cinematico|seealso{dualità}}{103}
+\indexentry{configurazione cinematicamente ammissibile}{103}
+\indexentry{meccanismo|textbf}{103}
+\indexentry{meccanismo|seealso{labilità}}{103}
+\indexentry{labilita@labilità!grado di|textbf}{103}
+\indexentry{dualita@dualità!cinematica--statica}{103}
+\indexentry{forze generalizzate|textbf}{104}
+\indexentry{problema statico|textbf}{105}
+\indexentry{problema statico|seealso{dualità}}{105}
+\indexentry{matrice di equilibrio|textbf}{106}
+\indexentry{matrice di equilibrio|seealso{matrice dei vincoli}}{106}
+\indexentry{iperstaticita@iperstaticità!grado di|textbf}{106}
+\indexentry{sottospazi fondamentali}{107}
+\indexentry{identità bilineare}{108}
+\indexentry{stato di autoequilibrio|textbf}{108}
+\indexentry{cedimento!ammissibile}{108}
+\indexentry{classificazione dei sistemi di corpi rigidi!formula fondamentale}{110}
+\indexentry{degenerazione geometrica|textbf}{110}
+\indexentry{isostaticita@isostaticità}{112}
+\indexentry{labilita@labilità}{112}
+\indexentry{coordinate lagrangiane}{112}
+\indexentry{iperstaticita@iperstaticità}{112}
+\indexentry{vettore delle incognite iperstatiche}{112}
+\indexentry{isostaticita@isostaticità}{126}
+\indexentry{metodo!grafo-analitico|textbf}{126}
+\indexentry{metodo!delle rette di proiezione|textbf}{127}
+\indexentry{arco!a tre cerniere}{129}
+\indexentry{metodo!dei corpi liberi|textbf}{132}
+\indexentry{schema del corpo libero}{133}
+\indexentry{equilibrio!equazioni di momento}{133}
+\indexentry{labilita@labilità}{136}
+\indexentry{vincolo!fittizio|textbf}{136}
+\indexentry{sistema principale}{136}
+\indexentry{compatibilita@compatibilità!statica}{142}
+\indexentry{iperstaticita@iperstaticità}{143}
+\indexentry{vincolo!ridondante|textbf}{144}
+\indexentry{iperstaticita@iperstaticità!incognita iperstatica|textbf}{144}
+\indexentry{compatibilita@compatibilità!cinematica}{148}
+\indexentry{gerarchia strutturale|textbf}{152}
+\indexentry{gerarchia strutturale!trascinato}{152}
+\indexentry{trascinato|see{gerarchia strutturale}}{152}
+\indexentry{gerarchia strutturale!trascinante}{152}
+\indexentry{trascinante|see{gerarchia strutturale}}{152}
+\indexentry{matrice dei vincoli!struttura a blocchi triangolare}{152}
+\indexentry{gerarchia strutturale!portato}{153}
+\indexentry{portato|see{gerarchia strutturale}}{153}
+\indexentry{gerarchia strutturale!portante}{153}
+\indexentry{portante|see{gerarchia strutturale}}{153}
+\indexentry{trave!di Gerber}{154}
+\indexentry{arco!a tutto sesto}{156}
+\indexentry{classificazione dei sistemi di corpi rigidi|textbf}{161}
+\indexentry{conteggio dei gradi di libertà|textbf}{161}
+\indexentry{labilita@labilità|textbf}{161}
+\indexentry{labilita@labilità|seealso{iperstaticità, meccanismo}}{161}
+\indexentry{isostaticita@isostaticità|textbf}{162}
+\indexentry{isostaticita@isostaticità|seealso{labilità, iperstaticità}}{162}
+\indexentry{iperstaticita@iperstaticità|textbf}{162}
+\indexentry{iperstaticita@iperstaticità|seealso{labilità, stato di autoequilibrio}}{162}
+\indexentry{degenerazione geometrica}{162}
+\indexentry{vincolo!multiplo}{163}
+\indexentry{fusione di corpi rigidi|textbf}{167}
+\indexentry{fusione di corpi rigidi!aperta}{168}
+\indexentry{fusione di corpi rigidi!chiusa}{168}
+\indexentry{corpo!biconnesso|textbf}{168}
+\indexentry{maglia chiusa}{168}
+\indexentry{corpo!pluriconnesso|textbf}{168}
+\indexentry{svincolo!interno}{168}
+\indexentry{maglia chiusa!taglio}{168}
+\indexentry{conteggio dei gradi di libertà!globale}{171}
+\indexentry{isostaticita@isostaticità!globale|textbf}{171}
+\indexentry{conteggio dei gradi di libertà!locale}{171}
+\indexentry{isostaticita@isostaticità!locale|textbf}{171}
+\indexentry{isostaticita@isostaticità!completa|textbf}{172}
+\indexentry{sottostruttura elementare}{174}
+\indexentry{mensola|textbf}{175}
+\indexentry{trave!semplicemente appoggiata|textbf}{175}
+\indexentry{trave!con glifo|textbf}{175}
+\indexentry{trave!con tre carrelli|textbf}{177}
+\indexentry{arco!a tre cerniere|textbf}{179}
+\indexentry{anello a tre cerniere|textbf}{181}
+\indexentry{classificazione dei sistemi di corpi rigidi!per decomposizione}{182}
+\indexentry{gerarchia strutturale!portante}{182}
+\indexentry{gerarchia strutturale!portato}{183}
+\indexentry{gerarchia strutturale}{183}
+\indexentry{classificazione dei sistemi di corpi rigidi!per riduzione a schema noto}{183}
+\indexentry{classificazione dei sistemi di corpi rigidi!per ispezione diretta|textbf}{186}
+\indexentry{identità bilineare}{191}
+\indexentry{triade meccanica|textbf}{192}
+\indexentry{compatibilita@compatibilità!statica|textbf}{192}
+\indexentry{teorema!degli spostamenti virtuali|textbf}{193}
+\indexentry{TSV|see{teorema degli spostamenti virtuali}}{193}
+\indexentry{principio di Müller-Breslau|see{teorema degli spostamenti virtuali}}{193}
+\indexentry{compatibilita@compatibilità!cinematica|textbf}{194}
+\indexentry{teorema!delle forze virtuali|textbf}{194}
+\indexentry{TFV|see{teorema delle forze virtuali}}{194}
+\indexentry{metodo!del carico unitario|see{teorema delle forze virtuali}}{194}
+\indexentry{teorema!degli spostamenti virtuali}{196}
+\indexentry{teorema!delle forze virtuali}{197}

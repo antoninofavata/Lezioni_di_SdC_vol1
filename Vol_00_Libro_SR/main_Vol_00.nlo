@@ -1,69 +1,29 @@
-\nomenclatureentry{S$\Ec$@[{$\Ec$}]\begingroup spazio euclideo tridimensionale\nomeqref {2.0}|nompageref}{46}
-\nomenclatureentry{S$\Uc$@[{$\Uc$}]\begingroup spazio delle traslazioni\nomeqref {2.0}|nompageref}{46}
-\nomenclatureentry{O$\coloneqq$@[{$\coloneqq$}]\begingroup uguaglianza di definizione\nomeqref {2.3}|nompageref}{48}
-\nomenclatureentry{O$\llbracket\,\cdot\,\rrbracket$@[{$\llbracket\,\cdot\,\rrbracket$}]\begingroup salto di una funzione\nomeqref {2.20}|nompageref}{52}
-\nomenclatureentry{O$\rg\bm{A}$@[{$\rg\bm{A}$}]\begingroup rango della matrice\nomeqref {3.2}|nompageref}{56}
-\nomenclatureentry{O$\bm{A}^{\top}$@[{$\bm{A}^{\top}$}]\begingroup matrice trasposta\nomeqref {3.2}|nompageref}{56}
-\nomenclatureentry{L$\bm{I}_n$@[{$\bm{I}_n$}]\begingroup matrice identità\nomeqref {3.12}|nompageref}{59}
-\nomenclatureentry{O$\det\bm{A}$@[{$\det\bm{A}$}]\begingroup determinante della matrice\nomeqref {3.15}|nompageref}{59}
-\nomenclatureentry{O$\bm{A}^{-1}$@[{$\bm{A}^{-1}$}]\begingroup matrice inversa\nomeqref {3.17}|nompageref}{60}
-\nomenclatureentry{G$\bm{\alpha}$@[{$\bm{\alpha}$}]\begingroup vettore di parametri liberi\nomeqref {3.22}|nompageref}{61}
-\nomenclatureentry{O$\Ker\Abb$@[{$\Ker\Abb$}]\begingroup nucleo di un'applicazione lineare\nomeqref {4.3}|nompageref}{73}
-\nomenclatureentry{O$\Imm\Abb$@[{$\Imm\Abb$}]\begingroup immagine di un'applicazione lineare\nomeqref {4.3}|nompageref}{73}
-\nomenclatureentry{O$\nl\Abb$@[{$\nl\Abb$}]\begingroup nullità di un'applicazione lineare\nomeqref {4.3}|nompageref}{73}
-\nomenclatureentry{O$\Abb^{\ast}$@[{$\Abb^{\ast}$}]\begingroup operatore aggiunto\nomeqref {4.6}|nompageref}{74}
-\nomenclatureentry{O$W^{\perp}$@[{$W^{\perp}$}]\begingroup complemento ortogonale di un sottospazio\nomeqref {4.9}|nompageref}{75}
-\nomenclatureentry{G$\bm{\beta}$@[{$\bm{\beta}$}]\begingroup vettore di parametri liberi del problema duale\nomeqref {4.24}|nompageref}{83}
-\nomenclatureentry{O$\ub\cdot\vb$@[{$\ub\cdot\vb$}]\begingroup prodotto scalare\nomeqref {5.3}|nompageref}{91}
-\nomenclatureentry{O$\ub\times\vb$@[{$\ub\times\vb$}]\begingroup prodotto vettoriale\nomeqref {5.5}|nompageref}{91}
-\nomenclatureentry{O$\ub\otimes\vb$@[{$\ub\otimes\vb$}]\begingroup prodotto tensoriale\nomeqref {5.12}|nompageref}{93}
-\nomenclatureentry{G$\bm{\upmu}$@[{$\bm{\upmu}$}]\begingroup momento polare di un vettore applicato\nomeqref {5.14}|nompageref}{94}
-\nomenclatureentry{G$\mu_r$@[{$\mu_r$}]\begingroup momento assiale\nomeqref {5.20}|nompageref}{96}
-\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {6.0}|nompageref}{111}
-\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup rotazione infinitesima nel piano (angolo)\nomeqref {6.0}|nompageref}{112}
-\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {6.0}|nompageref}{112}
-\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {6.1}|nompageref}{112}
-\nomenclatureentry{G$\bm{\upvartheta}$@[{$\bm{\upvartheta}$}]\begingroup vettore rotazione infinitesima\nomeqref {6.7}|nompageref}{114}
-\nomenclatureentry{L$\vb(P)$@[{$\vb(P)$}]\begingroup velocità del punto $P$ (campo vettoriale)\nomeqref {6.9}|nompageref}{115}
-\nomenclatureentry{G$\bm{\upomega}$@[{$\bm{\upomega}$}]\begingroup velocità angolare\nomeqref {6.9}|nompageref}{115}
-\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {6.18}|nompageref}{117}
-\nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {7.1}|nompageref}{136}
-\nomenclatureentry{G$\bm{\upmu}(O)$@[{$\bm{\upmu}(O)$}]\begingroup momento risultante rispetto al polo $O$ (vettore assiale)\nomeqref {7.2}|nompageref}{136}
-\nomenclatureentry{G$\mu_z(O)$@[{$\mu_z(O)$}]\begingroup momento risultante nel piano (scalare con segno), rispetto a $O$\nomeqref {7.23}|nompageref}{145}
-\nomenclatureentry{L$\Wc$@[{$\Wc$}]\begingroup lavoro virtuale\nomeqref {8.1}|nompageref}{155}
-\nomenclatureentry{L$\rb(A)$@[{$\rb(A)$}]\begingroup forza reattiva (reazione vincolare nel punto $A$)\nomeqref {9.4}|nompageref}{164}
-\nomenclatureentry{L$R(A)$@[{$R(A)$}]\begingroup intensità scalare della reazione vincolare lungo l'asse del vincolo\nomeqref {9.34}|nompageref}{180}
-\nomenclatureentry{L$X(A),\ Y(A)$@[{$X(A),\ Y(A)$}]\begingroup componenti cartesiane della reazione vincolare\nomeqref {9.34}|nompageref}{180}
-\nomenclatureentry{G$\mu_a(A),\ \mu_r(A)$@[{$\mu_a(A),\ \mu_r(A)$}]\begingroup coppia attiva (assegnata) e coppia reattiva (incognita)\nomeqref {9.34}|nompageref}{180}
-\nomenclatureentry{L$\bar{s}$@[{$\bar{s}$}]\begingroup cedimento: spostamento (o scorrimento relativo) assegnato lungo la direzione vincolata\nomeqref {9.34}|nompageref}{181}
-\nomenclatureentry{G$\bar{\vartheta}$@[{$\bar{\vartheta}$}]\begingroup cedimento rotazionale: rotazione (relativa) assegnata\nomeqref {9.34}|nompageref}{181}
-\nomenclatureentry{L$\bm{u}$@[{$\bm{u}$}]\begingroup vettore di configurazione del sistema ($\in\mathbb{R}^n$, $n=3n_c$)\nomeqref {10.2}|nompageref}{200}
-\nomenclatureentry{L$\bm{A}$@[{$\bm{A}$}]\begingroup matrice dei vincoli (cinematica) del sistema, $\bm{A}\in\mathbb{R}^{m\times n}$\nomeqref {10.13}|nompageref}{203}
-\nomenclatureentry{L$\bm{s}$@[{$\bm{s}$}]\begingroup vettore dei cedimenti del sistema\nomeqref {10.13}|nompageref}{203}
-\nomenclatureentry{L$g_\ell$@[{$g_\ell$}]\begingroup grado di labilità del sistema ($\dim\Nc(\bm{A})$)\nomeqref {10.14}|nompageref}{203}
-\nomenclatureentry{L$\bm{f}$@[{$\bm{f}$}]\begingroup vettore (globale) delle forze generalizzate\nomeqref {10.16}|nompageref}{204}
-\nomenclatureentry{L$\bm{r}$@[{$\bm{r}$}]\begingroup vettore delle reazioni vincolari (intensità scalari $R_k$)\nomeqref {10.18}|nompageref}{204}
-\nomenclatureentry{L$\bm{B}$@[{$\bm{B}$}]\begingroup matrice di equilibrio del sistema ($\bm{B}=\bm{A}^\top$)\nomeqref {10.22}|nompageref}{206}
-\nomenclatureentry{L$g_i$@[{$g_i$}]\begingroup grado di iperstaticità del sistema ($\dim\Nc(\bm{A}^\top)$)\nomeqref {10.23}|nompageref}{206}
-\nomenclatureentry{G$\nu$@[{$\nu$}]\begingroup numero nominale di gradi di libertà ($n-m$)\nomeqref {10.29}|nompageref}{210}
-\nomenclatureentry{L$\bm{q}$@[{$\bm{q}$}]\begingroup coordinate lagrangiane (di meccanismo)\nomeqref {10.32}|nompageref}{212}
-\nomenclatureentry{G$\bm{\chi}$@[{$\bm{\chi}$}]\begingroup vettore delle incognite iperstatiche\nomeqref {10.38}|nompageref}{212}
-\nomenclatureentry{L$(O^e;\,y^e,\,z^e)$@[{$(O^e;\,y^e,\,z^e)$}]\begingroup riferimento intrinseco della trave\nomeqref {14.0}|nompageref}{306}
-\nomenclatureentry{L$q$@[{$q$}]\begingroup densità di forza assiale (per unità di lunghezza)\nomeqref {14.3}|nompageref}{308}
-\nomenclatureentry{L$p$@[{$p$}]\begingroup densità di forza trasversale (per unità di lunghezza)\nomeqref {14.3}|nompageref}{308}
-\nomenclatureentry{L$c$@[{$c$}]\begingroup densità di coppia (per unità di lunghezza)\nomeqref {14.3}|nompageref}{308}
-\nomenclatureentry{G$\varrho_w,\,\varrho_v,\,\varrho_\vartheta$@[{$\varrho_w,\,\varrho_v,\,\varrho_\vartheta$}]\begingroup distorsioni: estensionale, trasversale, rotazionale\nomeqref {14.11}|nompageref}{310}
-\nomenclatureentry{L$N$@[{$N$}]\begingroup forza normale (caratteristica della sollecitazione)\nomeqref {14.11}|nompageref}{311}
-\nomenclatureentry{L$T$@[{$T$}]\begingroup taglio (caratteristica della sollecitazione)\nomeqref {14.11}|nompageref}{311}
-\nomenclatureentry{L$M$@[{$M$}]\begingroup momento flettente (caratteristica della sollecitazione)\nomeqref {14.11}|nompageref}{311}
-\nomenclatureentry{G$\bm{\sigma}$@[{$\bm{\sigma}$}]\begingroup vettore delle caratteristiche della sollecitazione\nomeqref {14.12}|nompageref}{312}
-\nomenclatureentry{G$\bm{\varrho}$@[{$\bm{\varrho}$}]\begingroup vettore delle distorsioni\nomeqref {14.12}|nompageref}{312}
-\nomenclatureentry{L$H,\,V$@[{$H,\,V$}]\begingroup componenti orizzontale e verticale della reazione vincolare\nomeqref {15.2}|nompageref}{331}
-\nomenclatureentry{O$(\cdot)'$@[{$(\cdot)'$}]\begingroup derivazione rispetto all'ascissa assiale $z^e$\nomeqref {15.5}|nompageref}{332}
-\nomenclatureentry{L$n_e$@[{$n_e$}]\begingroup numero di travi (elementi) del sistema\nomeqref {16.1}|nompageref}{392}
-\nomenclatureentry{L$m_{\text{est}},\,m_{\text{int}}$@[{$m_{\text{est}},\,m_{\text{int}}$}]\begingroup molteplicità complessiva dei vincoli esterni e interni\nomeqref {16.3}|nompageref}{393}
-\nomenclatureentry{L$e_i$@[{$e_i$}]\begingroup numero di travi convergenti nel nodo $i$\nomeqref {16.4}|nompageref}{394}
-\nomenclatureentry{L$m_i$@[{$m_i$}]\begingroup molteplicità della connessione interna $i$\nomeqref {16.4}|nompageref}{394}
-\nomenclatureentry{L$n_a$@[{$n_a$}]\begingroup numero di appoggi (vincoli al suolo)\nomeqref {17.1}|nompageref}{437}
-\nomenclatureentry{L$n_n$@[{$n_n$}]\begingroup numero di nodi della travatura\nomeqref {18.0}|nompageref}{464}
-\nomenclatureentry{L$n_p$@[{$n_p$}]\begingroup numero di piani del telaio\nomeqref {19.5}|nompageref}{536}
+\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {1.0}|nompageref}{9}
+\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup rotazione infinitesima nel piano (angolo)\nomeqref {1.0}|nompageref}{10}
+\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {1.0}|nompageref}{10}
+\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {1.1}|nompageref}{11}
+\nomenclatureentry{G$\bm{\upvartheta}$@[{$\bm{\upvartheta}$}]\begingroup vettore rotazione infinitesima\nomeqref {1.7}|nompageref}{12}
+\nomenclatureentry{L$\vb(P)$@[{$\vb(P)$}]\begingroup velocità del punto $P$ (campo vettoriale)\nomeqref {1.9}|nompageref}{13}
+\nomenclatureentry{G$\bm{\upomega}$@[{$\bm{\upomega}$}]\begingroup velocità angolare\nomeqref {1.9}|nompageref}{13}
+\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {1.18}|nompageref}{15}
+\nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {2.1}|nompageref}{36}
+\nomenclatureentry{G$\bm{\upmu}(O)$@[{$\bm{\upmu}(O)$}]\begingroup momento risultante rispetto al polo $O$ (vettore assiale)\nomeqref {2.2}|nompageref}{36}
+\nomenclatureentry{G$\mu_z(O)$@[{$\mu_z(O)$}]\begingroup momento risultante nel piano (scalare con segno), rispetto a $O$\nomeqref {2.23}|nompageref}{45}
+\nomenclatureentry{L$\Wc$@[{$\Wc$}]\begingroup lavoro virtuale\nomeqref {3.1}|nompageref}{55}
+\nomenclatureentry{L$\rb(A)$@[{$\rb(A)$}]\begingroup forza reattiva (reazione vincolare nel punto $A$)\nomeqref {4.4}|nompageref}{64}
+\nomenclatureentry{L$R(A)$@[{$R(A)$}]\begingroup intensità scalare della reazione vincolare lungo l'asse del vincolo\nomeqref {4.34}|nompageref}{80}
+\nomenclatureentry{L$X(A),\ Y(A)$@[{$X(A),\ Y(A)$}]\begingroup componenti cartesiane della reazione vincolare\nomeqref {4.34}|nompageref}{80}
+\nomenclatureentry{G$\mu_a(A),\ \mu_r(A)$@[{$\mu_a(A),\ \mu_r(A)$}]\begingroup coppia attiva (assegnata) e coppia reattiva (incognita)\nomeqref {4.34}|nompageref}{80}
+\nomenclatureentry{L$\bar{s}$@[{$\bar{s}$}]\begingroup cedimento: spostamento (o scorrimento relativo) assegnato lungo la direzione vincolata\nomeqref {4.34}|nompageref}{81}
+\nomenclatureentry{G$\bar{\vartheta}$@[{$\bar{\vartheta}$}]\begingroup cedimento rotazionale: rotazione (relativa) assegnata\nomeqref {4.34}|nompageref}{81}
+\nomenclatureentry{L$\bm{u}$@[{$\bm{u}$}]\begingroup vettore di configurazione del sistema ($\in\mathbb{R}^n$, $n=3n_c$)\nomeqref {5.2}|nompageref}{100}
+\nomenclatureentry{L$\bm{A}$@[{$\bm{A}$}]\begingroup matrice dei vincoli (cinematica) del sistema, $\bm{A}\in\mathbb{R}^{m\times n}$\nomeqref {5.13}|nompageref}{103}
+\nomenclatureentry{L$\bm{s}$@[{$\bm{s}$}]\begingroup vettore dei cedimenti del sistema\nomeqref {5.13}|nompageref}{103}
+\nomenclatureentry{L$g_\ell$@[{$g_\ell$}]\begingroup grado di labilità del sistema ($\dim\Nc(\bm{A})$)\nomeqref {5.14}|nompageref}{103}
+\nomenclatureentry{L$\bm{f}$@[{$\bm{f}$}]\begingroup vettore (globale) delle forze generalizzate\nomeqref {5.16}|nompageref}{104}
+\nomenclatureentry{L$\bm{r}$@[{$\bm{r}$}]\begingroup vettore delle reazioni vincolari (intensità scalari $R_k$)\nomeqref {5.18}|nompageref}{104}
+\nomenclatureentry{L$\bm{B}$@[{$\bm{B}$}]\begingroup matrice di equilibrio del sistema ($\bm{B}=\bm{A}^\top$)\nomeqref {5.22}|nompageref}{106}
+\nomenclatureentry{L$g_i$@[{$g_i$}]\begingroup grado di iperstaticità del sistema ($\dim\Nc(\bm{A}^\top)$)\nomeqref {5.23}|nompageref}{106}
+\nomenclatureentry{G$\nu$@[{$\nu$}]\begingroup numero nominale di gradi di libertà ($n-m$)\nomeqref {5.29}|nompageref}{110}
+\nomenclatureentry{L$\bm{q}$@[{$\bm{q}$}]\begingroup coordinate lagrangiane (di meccanismo)\nomeqref {5.32}|nompageref}{112}
+\nomenclatureentry{G$\bm{\chi}$@[{$\bm{\chi}$}]\begingroup vettore delle incognite iperstatiche\nomeqref {5.38}|nompageref}{112}
