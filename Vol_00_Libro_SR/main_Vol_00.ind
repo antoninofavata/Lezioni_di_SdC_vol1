@@ -30,7 +30,7 @@
   \item centro di riduzione, \seealso{asse di sollecitazione}{47}
   \item centro di rotazione, \textbf{21}
     \subitem assoluto, 30
-    \subitem istantaneo, 13
+    \subitem istantaneo, 14
     \subitem luogo geometrico, 63
     \subitem relativo, \textbf{27}
   \item cerniera, \seealso{vincolo}{70}, \textbf{70}
@@ -40,7 +40,7 @@
     \subitem multipla, \textbf{85}
     \subitem sferica, 92
   \item cinematica grafica, \textbf{29}
-  \item CIR, \see{centro di rotazione}{13}
+  \item CIR, \see{centro di rotazione}{14}
   \item classificazione dei sistemi di corpi rigidi, \textbf{161}
     \subitem formula fondamentale, 110
     \subitem per decomposizione, 182
@@ -63,7 +63,7 @@
   \item corpo
     \subitem biconnesso, \textbf{168}
     \subitem pluriconnesso, \textbf{168}
-  \item corpo rigido, \textbf{9}
+  \item corpo rigido, \textbf{10}
 
   \indexspace
 
@@ -80,7 +80,7 @@
   \item equilibrio, \textbf{35}, 57
     \subitem equazioni di, 35
     \subitem equazioni di momento, 133
-  \item equiproiettività, \textbf{14}, 39
+  \item equiproiettività, \textbf{15}, 39
   \item equivalenza, \see{sistema di forze}{42}
 
   \indexspace
@@ -101,7 +101,7 @@
   \item giustapposizione di vincoli, \see{vincolo (composto)}{77}
   \item glifo, \seealso{vincolo}{72}, \textbf{72}
     \subitem interno, 75
-  \item grado di libertà, \textbf{9}
+  \item grado di libertà, \textbf{10}
     \subitem del sistema, 100
   \item grado di vincolo, \see{vincolo}{61}
   \item guida prismatica, \see{glifo}{93}
@@ -177,11 +177,11 @@
     \subitem coppia reattiva, 64
     \subitem forza reattiva, 64
   \item risultante, \textbf{36}
-  \item rotazione, \textbf{9}
-    \subitem composizione di rotazioni infinitesime, \textbf{22}
+  \item rotazione, \textbf{10}
+    \subitem composizione di rotazioni infinitesime, \textbf{23}
     \subitem finita, 10
-    \subitem infinitesima, \textbf{12}
-    \subitem pura, 20
+    \subitem infinitesima, \textbf{13}
+    \subitem pura, 21
     \subitem relativa, 27
 
   \indexspace
@@ -201,10 +201,10 @@
   \item sottospazi fondamentali, 107
   \item sottostruttura elementare, 174
   \item spostamento
-    \subitem campo di, 17
-    \subitem infinitesimo, \textbf{14}
+    \subitem campo di, 18
+    \subitem infinitesimo, \textbf{15}
     \subitem relativo, 27
-    \subitem rigido, \textbf{9}
+    \subitem rigido, \textbf{10}
   \item stato di autoequilibrio, \textbf{108}
   \item svincolo, \seealso{vincolo}{60}, \textbf{60}
     \subitem interno, 168
@@ -219,8 +219,8 @@
   \item TFV, \see{teorema delle forze virtuali}{194}
   \item trascinante, \see{gerarchia strutturale}{152}
   \item trascinato, \see{gerarchia strutturale}{152}
-  \item traslazione, \textbf{9}
-    \subitem pura, 20
+  \item traslazione, \textbf{10}
+    \subitem pura, 21
   \item trave
     \subitem con glifo, \textbf{175}
     \subitem con tre carrelli, \textbf{177}
@@ -231,7 +231,7 @@
 
   \indexspace
 
-  \item velocità angolare, 13
+  \item velocità angolare, 14
   \item vettore delle incognite iperstatiche, 112
   \item vettore di configurazione, \textbf{100}
   \item vettore di vincolo, 100

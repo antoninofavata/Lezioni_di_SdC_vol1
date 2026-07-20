@@ -1,11 +1,11 @@
-\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {1.0}|nompageref}{9}
-\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup rotazione infinitesima nel piano (angolo)\nomeqref {1.0}|nompageref}{10}
-\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {1.0}|nompageref}{10}
-\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {1.1}|nompageref}{11}
-\nomenclatureentry{G$\bm{\upvartheta}$@[{$\bm{\upvartheta}$}]\begingroup vettore rotazione infinitesima\nomeqref {1.7}|nompageref}{12}
-\nomenclatureentry{L$\vb(P)$@[{$\vb(P)$}]\begingroup velocità del punto $P$ (campo vettoriale)\nomeqref {1.9}|nompageref}{13}
-\nomenclatureentry{G$\bm{\upomega}$@[{$\bm{\upomega}$}]\begingroup velocità angolare\nomeqref {1.9}|nompageref}{13}
-\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {1.18}|nompageref}{15}
+\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {1.1}|nompageref}{10}
+\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup rotazione infinitesima nel piano (angolo)\nomeqref {1.1}|nompageref}{11}
+\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {1.1}|nompageref}{11}
+\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {1.2}|nompageref}{11}
+\nomenclatureentry{G$\bm{\upvartheta}$@[{$\bm{\upvartheta}$}]\begingroup vettore rotazione infinitesima\nomeqref {1.8}|nompageref}{13}
+\nomenclatureentry{L$\vb(P)$@[{$\vb(P)$}]\begingroup velocità del punto $P$ (campo vettoriale)\nomeqref {1.10}|nompageref}{14}
+\nomenclatureentry{G$\bm{\upomega}$@[{$\bm{\upomega}$}]\begingroup velocità angolare\nomeqref {1.10}|nompageref}{14}
+\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {1.19}|nompageref}{16}
 \nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {2.1}|nompageref}{36}
 \nomenclatureentry{G$\bm{\upmu}(O)$@[{$\bm{\upmu}(O)$}]\begingroup momento risultante rispetto al polo $O$ (vettore assiale)\nomeqref {2.2}|nompageref}{36}
 \nomenclatureentry{G$\mu_z(O)$@[{$\mu_z(O)$}]\begingroup momento risultante nel piano (scalare con segno), rispetto a $O$\nomeqref {2.23}|nompageref}{45}

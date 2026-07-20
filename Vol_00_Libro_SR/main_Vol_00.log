@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  19 JUL 2026 09:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  20 JUL 2026 06:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2001,43 +2001,50 @@ Capitolo 1.
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
 ine 7.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 10.0pt on input line 32.
+(Font)              scaled to size 10.0pt on input line 47.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 7.0pt on input line 32.
+(Font)              scaled to size 7.0pt on input line 47.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 5.0pt on input line 32.
+(Font)              scaled to size 5.0pt on input line 47.
+<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf, id=714, 195.06677pt
+ x 164.67322pt>
+File: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf Graphic file (t
+ype pdf)
+<use Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf>
+Package pdftex.def Info: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.
+pdf  used on input line 47.
+(pdftex.def)             Requested size: 195.06628pt x 164.6728pt.
 [9
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 55.
+(Font)              <8> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 55.
+(Font)              <6> on input line 70.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 8.0pt on input line 55.
+(Font)              scaled to size 8.0pt on input line 70.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 6.0pt on input line 55.
-
+(Font)              scaled to size 6.0pt on input line 70.
+ [10 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf>]
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 59.
+(Font)              using `U/stmry/m/n' instead on input line 74.
 
-[10]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-02.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
+17.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [11{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr
 /local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}] [12] [13] [14] [
 15]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 694.
+(Font)              <9> on input line 709.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 9.0pt on input line 694.
+(Font)              scaled to size 9.0pt on input line 709.
  [16]
 
 LaTeX Warning: Reference `app:vettori_geometrici' on page 17 undefined on input
- line 789.
+ line 804.
 
 [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31]
 [32]) (./Parti/P03-Meccanica_SR/C02-Statica_CR/C02-Statica_CR.tex [33] [34
@@ -9805,7 +9812,7 @@ ine 603.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 603.
 <Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_apertifinti.pdf, id=
-2318, 274.83388pt x 101.30478pt>
+2373, 274.83388pt x 101.30478pt>
 File: Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_apertifinti.pdf
  Graphic file (type pdf)
 <use Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_apertifinti.pdf>
@@ -9849,7 +9856,7 @@ ine 656.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 658.
 <Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_multipiano.pdf, id=2
-328, 418.52423pt x 240.0697pt>
+383, 418.52423pt x 240.0697pt>
 File: Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_multipiano.pdf 
 Graphic file (type pdf)
 <use Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/cin_multipiano.pdf>
@@ -12432,13 +12439,13 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
-(rerunfilecheck)             Checksum: 7601D0C10CABB1411BEA07F953F233D4;30907.
+(rerunfilecheck)             Checksum: D3F92919D367D036DA40590F62ED6542;30907.
  ) 
 Here is how much of TeX's memory you used:
- 41976 strings out of 474116
- 803759 string characters out of 5743681
- 2000187 words of memory out of 5000000
- 62492 multiletter control sequences out of 15000+600000
+ 41988 strings out of 474116
+ 804391 string characters out of 5743681
+ 1999187 words of memory out of 5000000
+ 62502 multiletter control sequences out of 15000+600000
  706177 words of font info for 165 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,27n,121p,1556b,1485s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -12482,10 +12489,10 @@ ublic/stmaryrd/stmary10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pub
 lic/stmaryrd/stmary8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
 /stmaryrd/stmary9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/bo
 ondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (202 pages, 1544967 bytes).
+Output written on main_Vol_00.pdf (202 pages, 1876108 bytes).
 PDF statistics:
- 3037 PDF objects out of 3580 (max. 8388607)
- 2685 compressed objects within 27 object streams
- 931 named destinations out of 1000 (max. 500000)
- 1071 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3092 PDF objects out of 3580 (max. 8388607)
+ 2715 compressed objects within 28 object streams
+ 933 named destinations out of 1000 (max. 500000)
+ 1076 words of extra memory for PDF output out of 10000 (max. 10000000)
 
