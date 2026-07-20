@@ -22,8 +22,8 @@
 	infinitesimi e campo di velocità.
 \end{sommario}
 
-\tR{
-\section{Il corpo rigido}\label{sez.CR}
+
+\section{Il corpo rigido e il campo di spostamento infinitesimo}\label{sez.CR}
 Non daremo nella nostra trattazione una definizione di corpo, ma piuttosto lo assumeremo come un ente primitivo.
 Assumiamo  che i corpi possano avere diverse configurazioni, occupando diverse regioni dello spazio Euclideo $\Ec$; identifichiamo dunque un corpo con una delle sue possibili configurazioni $\Cc$, ovvero una regione limitata e regolare di $\Ec$, i cui elementi sono punti.
 
@@ -37,16 +37,221 @@ Il corpo $\Cc$ può subire una certa trasformazione, andando ad occupare una dif
 \end{figure}
 
 Lo \textit{spostamento} del punto $P$ è definito come
-\begin{equation}
+\begin{equation}\label{displ}
 \ub(P):=P_*-P=\overrightarrow{OP_*}-\overrightarrow{OP},
 \end{equation}
-ovvero il vettore che porta $P$ in $P_*$.
+ovvero il vettore che porta $P$ in $P_*$. 
 
-Un corpo è \textit{rigido} se, presi due qualunque punti $P, Q \in\Cc$ 
+Un corpo è \textit{rigido} se, presi due qualunque punti $P, Q \in\Cc$, la loro mutua distanza resta immutata dopo una qualunque trasformazione:
+\begin{equation}\label{CR}
+|\overrightarrow{PQ}|=|\overrightarrow{P_*Q_*}| \qquad \forall P,Q\in\Cc.
+\end{equation}
 
+Questa condizione, in virtù della \eqref{displ}, pone delle restrizioni sulla possibile forma che il campo di spostamento può avere. In particolare, la  \eqref{CR} 
+è equivalente a 
+\begin{equation}\label{eq:rigidita_esatta}
+\bigl|\overrightarrow{PQ}\bigr|^2=|Q_*-P_*|^2=|Q+\ub(Q)-P-\ub(P)|^2=\bigl|\overrightarrow{PQ} + \ub(Q) - \ub(P)\bigr|^2,
+\end{equation}
+ovvero, sviluppando il quadrato del secondo membro:
+\begin{equation}\label{eq:rigidita_sviluppo}
+\bigl|\overrightarrow{PQ}\bigr|^2=\bigl|\overrightarrow{PQ}\bigr|^2 
++ 2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr],
++ \bigl|\ub(Q) - \ub(P)\bigr|^2
+\end{equation}
+da cui:
+%Semplificando $|\overrightarrow{PQ}|^2$:
+\begin{equation}\label{eq:rigidita_semplificata}
+2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr]
++ \bigl|\ub(Q) - \ub(P)\bigr|^2 = 0.
+\end{equation}
+Per valutare il peso relativo dei due termini, dividiamo per 
+$|\overrightarrow{PQ}|^2$, introducendo il versore 
+$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$ e lo 
+\textit{spostamento relativo adimensionalizzato} 
+$\bm{\updelta}_{PQ} = [\ub(Q)-\ub(P)]/|\overrightarrow{PQ}|$:
+\begin{equation}\label{eq:rigidita_adim}
+2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ} + |\bm{\updelta}_{PQ}|^2 = 0.
+\end{equation}
+
+\vspace{1cm}
+\todo[inline]{Riscivere la parte sotto}
+Il parametro $|\bm{\updelta}_{PQ}|$ confronta lo spostamento relativo con la 
+distanza fra i due punti: è il rapporto fra la variazione di posizione 
+relativa e la dimensione caratteristica del corpo. La condizione di 
+\textit{spostamenti infinitesimi}\index{spostamento!infinitesimo|textbf} consiste nel richiedere che
+\begin{equation}
+|\bm{\updelta}_{PQ}| = \frac{|\ub(Q)-\ub(P)|}{|\overrightarrow{PQ}|} \ll 1
+\qquad \forall\, P,\, Q,
+\end{equation}
+ovvero che gli spostamenti relativi siano piccoli rispetto alle distanze 
+fra i punti del corpo. Sotto questa ipotesi il termine $|\bm{\updelta}_{PQ}|^2$ 
+nella~\eqref{eq:rigidita_adim} è trascurabile rispetto al termine 
+$2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ}$, che è del primo ordine in 
+$|\bm{\updelta}_{PQ}|$. La condizione di rigidità linearizzata è dunque
+\begin{equation}\label{eq:ortogonalita_CR}
+\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr] = 0
+\qquad \forall\, P,\, Q.
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!htbp]
+\centering
+\usetikzlibrary{arrows.meta,calc,decorations.markings}
+
+% --- helper per le figure ---
+\tikzset{midarrow/.style={postaction={decorate},
+		decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
+
+\newcommand{\rightangle}[3]{%
+	\coordinate (ra1) at ($(#2)!2mm!(#1)$);
+	\coordinate (ra3) at ($(#2)!2mm!(#3)$);
+	\draw[line width=0.4pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+\resizebox{0.9\textwidth}{!}{%
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
+		pt/.style={circle,fill,inner sep=1.3pt},
+		open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
+		\coordinate (O)  at (1.8,-0.5);
+		\coordinate (P)  at (0,0.5);
+		\coordinate (Q)  at (3.4,1.2);
+		\coordinate (aA) at (3.645,1.250);
+		\coordinate (aB) at (4.477,1.422);
+		\coordinate (Ps) at (0.770,1.221);
+		\coordinate (Qs) at (3.938,3.047);
+		\coordinate (QuP) at (4.170,1.921);
+		
+		\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
+		\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
+		
+		\draw[thick, midarrow] (P) -- (Q) node[pos=0.6,below=2pt] {$\overrightarrow{PQ}$};
+		%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
+		
+		% retta d'azione di PQ (grigia) da Q verso destra
+		\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
+		
+		% versore a_PQ (nero) disegnato su quella retta
+		\coordinate (aA) at ($(P)!1.28!(Q)$);
+		\coordinate (aB) at ($(P)!1.52!(Q)$);
+		\draw[->, thick] (aA) -- (aB) node[pos=0.97,below=1pt] {$\ab_{PQ}$};
+		
+		\draw[thin, midarrow] (Ps) -- (QuP);   % chiude il parallelogramma P Q (Q+u_P) P*
+		
+		\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
+		\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
+		\draw[thick, midarrow] (Q) -- (QuP) node[pos=0.55,below right=-6pt] {$\ub_P$};
+		\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
+		
+		\draw[thick, midarrow] (Ps) -- (Qs) node[pos=0.5,above left=-2pt] {$\overrightarrow{P_*Q_*}$};
+		
+		\node[open,label={below:$O$}] at (O) {};
+		\node[pt,label={left:$P$}]  at (P) {};
+		\node[pt,label={[xshift=2pt]below right:$Q$}] at (Q) {};
+		\node[pt,label={[yshift=1pt]above :$P_*$}]  at (Ps) {};
+		\node[pt,label={ above:$Q_*$}] at (Qs) {};
+		
+		\node at (3.6,-1.0) {(a)};
+	\end{tikzpicture}
+	\quad
+	% ---- pannello (b) ----
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
+		pt/.style={circle,fill,inner sep=1.3pt},
+		open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
+		\coordinate (O)  at (1.8,-0.5);
+		\coordinate (P)  at (0,0.5);
+		\coordinate (Q)  at (3.4,1.2);
+		\coordinate (aA) at (3.645,1.250);
+		\coordinate (aB) at (4.477,1.422);
+		\coordinate (Ps) at (0.770,1.221);
+		\coordinate (Qs) at (3.938,3.047);
+		\coordinate (QuP) at (4.170,1.921);
+		\coordinate (FP) at (0.881,0.682);
+		\coordinate (FQ) at (4.281,1.382);
+		
+		\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
+		\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
+		
+		\draw[thick, midarrow] (P) -- (Q) node[pos=0.42,above=1pt] {$\overrightarrow{PQ}$};
+		%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
+		% retta d'azione di PQ (grigia) da Q verso destra
+		\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
+		
+		% versore a_PQ (nero) disegnato su quella retta
+		\coordinate (aA) at ($(P)!1.28!(Q)$);
+		\coordinate (aB) at ($(P)!1.52!(Q)$);
+		\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
+		
+		% proiezioni grigie tratteggiate (PRIMA di u_Q-u_P) + angoli retti
+		\draw[dashed, gray!60] (Ps) -- (FP);
+		\draw[dashed, gray!60] (Qs) -- (FQ);
+		\rightangle{P}{FP}{Ps}
+		\rightangle{aB}{FQ}{Qs}
+		
+		% spostamenti (DOPO: sovrascrivono il grigio)
+		\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
+		\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
+		\draw[->, thick] (Q) -- (QuP);
+		\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
+		
+		% etichette delle proiezioni collegate con una freccia di richiamo
+		%\node (lpP) at (1.85,0.02) {$\ub_P\!\cdot\ab_{PQ}$};
+		%\draw[gray!60] (P) -- (FP);
+		\node (lpP) at (1.80,0.45) {$\ub_P\!\cdot\ab_{PQ}$};
+		\draw[->, thin] (lpP) -- ($(P)!0.45!(FP)$);
+		\node (lpQ) at (4.75,0.72) {$\ub_Q\!\cdot\ab_{PQ}$};
+		\draw[->, thin] (lpQ) -- ($(Q)!0.5!(FQ)$);
+		
+		\node[open,label={below:$O$}] at (O) {};
+		\node[pt,label={left:$P$}]  at (P) {};
+		\node[pt,label={[xshift=2pt]above left:$Q$}] at (Q) {};
+		\node at (3.6,-1.0) {(b)};
+	\end{tikzpicture}
 }
+\caption{(a)~Spostamenti rigidi e (b)~interpretazione geometrica della condizione di ortogonalità fra il vettore posizione relativo $\protect\overrightarrow{PQ}$ e il vettore relativo degli spostamenti infinitesimi $\ub_Q - \ub_P$.}
+\label{fig:orto_PQ_spost_relat}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Questa condizione di \textit{ortogonalità} fra il vettore congiungente e 
+lo spostamento relativo ha un significato geometrico limpido: le proiezioni 
+di $\ub(P)$ e $\ub(Q)$ lungo la direzione che congiunge i due punti sono 
+uguali. In altre parole, i due punti si spostano della stessa quantità nella 
+direzione $\overrightarrow{PQ}$; ciò che può differire è solo la componente 
+dello spostamento perpendicolare alla congiungente, che non altera la distanza 
+(al primo ordine, cfr.~\FIGref{fig:orto_PQ_spost_relat}(b)).
+Questa proprietà prende il nome di \textit{equiproiettività}\index{equiproiettivita@equiproiettività|textbf}
+del campo degli spostamenti rigidi: in formule,
+$\ub(P) \cdot \ab_{PQ} = \ub(Q) \cdot \ab_{PQ}$ per ogni
+coppia di punti, dove
+$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$. Il
+termine sarà ritrovato nel \CAPref{cap:statica_CR} come equiproiettività
+del campo dei momenti.
+
+\begin{oss}
+La linearizzazione non richiede che gli spostamenti siano	piccoli in assoluto, ma solo che gli spostamenti
+\textit{relativi} lo siano rispetto alle distanze fra i	punti. Una traslazione rigida di ampiezza arbitraria
+($\ub(P) = \ub(Q)$ per ogni coppia) soddisfa esattamente	la~\eqref{eq:rigidita_esatta} e non richiede alcuna
+approssimazione. È la rotazione a introdurre spostamenti	relativi non nulli: dalla formula~\eqref{eq:FFCI},
+$|\ub(Q)-\ub(P)| =	|\bm{\upvartheta}|\,|\overrightarrow{PQ}|\sin\alpha$,	dove $\alpha$ è l'angolo fra $\bm{\upvartheta}$ e
+$\overrightarrow{PQ}$. La condizione	$|\bm{\updelta}_{PQ}| \ll 1$ si traduce dunque in	$|\bm{\upvartheta}| \ll 1$: l'ipotesi di spostamenti	infinitesimi è in realtà un'ipotesi sulla sola	\textit{rotazione}.
+\end{oss}
+
+Si verifica che il campo~\eqref{eq:FFCI} soddisfa la~\eqref{eq:ortogonalita_CR}. 
+Infatti:
+\begin{equation}
+\ub(Q) - \ub(P) = \bm{\upvartheta} \times \overrightarrow{PQ},
+\end{equation}
+e dunque
+\begin{equation}
+\overrightarrow{PQ} \cdot (\bm{\upvartheta} \times \overrightarrow{PQ}) = 0,
+\end{equation}
+essendo nullo il prodotto misto con due fattori uguali. Lo spostamento 
+relativo è perpendicolare alla congiungente, coerentemente con 
+l'interpretazione geometrica della condizione~\eqref{eq:ortogonalita_CR}: 
+nella cinematica rigida infinitesima, tutta la variazione di spostamento 
+fra due punti è tangenziale.
 
 
+
+
+\newpage
 
 %---------------------------------------------------------------------------------------------------------------------------- 
 \section{Spostamento rigido finito e gradi di libertà}\label{sez:SRF}
@@ -399,202 +604,7 @@ Un approccio alternativo parte dal principio di rigidità: la distanza fra
 due punti qualsiasi del corpo non cambia. Se $P$ e $Q$ sono due punti del 
 corpo, con spostamenti $\ub(P)$ e $\ub(Q)$, la condizione di rigidità si 
 scrive (cfr.~\FIGref{fig:orto_PQ_spost_relat}(a))
-\begin{equation}\label{eq:rigidita_esatta}
-	\bigl|\overrightarrow{PQ} + \ub(Q) - \ub(P)\bigr|^2 
-	= \bigl|\overrightarrow{PQ}\bigr|^2.
-\end{equation}
-Sviluppando il quadrato del primo membro:
-\begin{equation}\label{eq:rigidita_sviluppo}
-	\bigl|\overrightarrow{PQ}\bigr|^2 
-	+ 2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr]
-	+ \bigl|\ub(Q) - \ub(P)\bigr|^2
-	= \bigl|\overrightarrow{PQ}\bigr|^2.
-\end{equation}
-Semplificando $|\overrightarrow{PQ}|^2$:
-\begin{equation}\label{eq:rigidita_semplificata}
-	2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr]
-	+ \bigl|\ub(Q) - \ub(P)\bigr|^2 = 0.
-\end{equation}
-Per valutare il peso relativo dei due termini, dividiamo per 
-$|\overrightarrow{PQ}|^2$, introducendo il versore 
-$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$ e lo 
-\textit{spostamento relativo adimensionalizzato} 
-$\bm{\updelta}_{PQ} = [\ub(Q)-\ub(P)]/|\overrightarrow{PQ}|$:
-\begin{equation}\label{eq:rigidita_adim}
-	2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ} + |\bm{\updelta}_{PQ}|^2 = 0.
-\end{equation}
-Il parametro $|\bm{\updelta}_{PQ}|$ confronta lo spostamento relativo con la 
-distanza fra i due punti: è il rapporto fra la variazione di posizione 
-relativa e la dimensione caratteristica del corpo. La condizione di 
-\textit{spostamenti infinitesimi}\index{spostamento!infinitesimo|textbf} consiste nel richiedere che
-\begin{equation}
-	|\bm{\updelta}_{PQ}| = \frac{|\ub(Q)-\ub(P)|}{|\overrightarrow{PQ}|} \ll 1
-	\qquad \forall\, P,\, Q,
-\end{equation}
-ovvero che gli spostamenti relativi siano piccoli rispetto alle distanze 
-fra i punti del corpo. Sotto questa ipotesi il termine $|\bm{\updelta}_{PQ}|^2$ 
-nella~\eqref{eq:rigidita_adim} è trascurabile rispetto al termine 
-$2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ}$, che è del primo ordine in 
-$|\bm{\updelta}_{PQ}|$. La condizione di rigidità linearizzata è dunque
-\begin{equation}\label{eq:ortogonalita_CR}
-	\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr] = 0
-	\qquad \forall\, P,\, Q.
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!htbp]
-	\centering
-	\usetikzlibrary{arrows.meta,calc,decorations.markings}
-	
-	% --- helper per le figure ---
-	\tikzset{midarrow/.style={postaction={decorate},
-			decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
-	
-	\newcommand{\rightangle}[3]{%
-		\coordinate (ra1) at ($(#2)!2mm!(#1)$);
-		\coordinate (ra3) at ($(#2)!2mm!(#3)$);
-		\draw[line width=0.4pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
-	\resizebox{0.9\textwidth}{!}{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
-			pt/.style={circle,fill,inner sep=1.3pt},
-			open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
-			\coordinate (O)  at (1.8,-0.5);
-			\coordinate (P)  at (0,0.5);
-			\coordinate (Q)  at (3.4,1.2);
-			\coordinate (aA) at (3.645,1.250);
-			\coordinate (aB) at (4.477,1.422);
-			\coordinate (Ps) at (0.770,1.221);
-			\coordinate (Qs) at (3.938,3.047);
-			\coordinate (QuP) at (4.170,1.921);
-			
-			\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
-			\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
-			
-			\draw[thick, midarrow] (P) -- (Q) node[pos=0.6,below=2pt] {$\overrightarrow{PQ}$};
-			%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-			
-			% retta d'azione di PQ (grigia) da Q verso destra
-			\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
-			
-			% versore a_PQ (nero) disegnato su quella retta
-			\coordinate (aA) at ($(P)!1.28!(Q)$);
-			\coordinate (aB) at ($(P)!1.52!(Q)$);
-			\draw[->, thick] (aA) -- (aB) node[pos=0.97,below=1pt] {$\ab_{PQ}$};
-			
-			\draw[thin, midarrow] (Ps) -- (QuP);   % chiude il parallelogramma P Q (Q+u_P) P*
-			
-			\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
-			\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
-			\draw[thick, midarrow] (Q) -- (QuP) node[pos=0.55,below right=-6pt] {$\ub_P$};
-			\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
-			
-			\draw[thick, midarrow] (Ps) -- (Qs) node[pos=0.5,above left=-2pt] {$\overrightarrow{P_*Q_*}$};
-			
-			\node[open,label={below:$O$}] at (O) {};
-			\node[pt,label={left:$P$}]  at (P) {};
-			\node[pt,label={[xshift=2pt]below right:$Q$}] at (Q) {};
-			\node[pt,label={[yshift=1pt]above :$P_*$}]  at (Ps) {};
-			\node[pt,label={ above:$Q_*$}] at (Qs) {};
-			
-			\node at (3.6,-1.0) {(a)};
-		\end{tikzpicture}
-		\quad
-		% ---- pannello (b) ----
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
-			pt/.style={circle,fill,inner sep=1.3pt},
-			open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
-			\coordinate (O)  at (1.8,-0.5);
-			\coordinate (P)  at (0,0.5);
-			\coordinate (Q)  at (3.4,1.2);
-			\coordinate (aA) at (3.645,1.250);
-			\coordinate (aB) at (4.477,1.422);
-			\coordinate (Ps) at (0.770,1.221);
-			\coordinate (Qs) at (3.938,3.047);
-			\coordinate (QuP) at (4.170,1.921);
-			\coordinate (FP) at (0.881,0.682);
-			\coordinate (FQ) at (4.281,1.382);
-			
-			\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
-			\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
-			
-			\draw[thick, midarrow] (P) -- (Q) node[pos=0.42,above=1pt] {$\overrightarrow{PQ}$};
-			%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-			% retta d'azione di PQ (grigia) da Q verso destra
-			\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
-			
-			% versore a_PQ (nero) disegnato su quella retta
-			\coordinate (aA) at ($(P)!1.28!(Q)$);
-			\coordinate (aB) at ($(P)!1.52!(Q)$);
-			\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-			
-			% proiezioni grigie tratteggiate (PRIMA di u_Q-u_P) + angoli retti
-			\draw[dashed, gray!60] (Ps) -- (FP);
-			\draw[dashed, gray!60] (Qs) -- (FQ);
-			\rightangle{P}{FP}{Ps}
-			\rightangle{aB}{FQ}{Qs}
-			
-			% spostamenti (DOPO: sovrascrivono il grigio)
-			\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
-			\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
-			\draw[->, thick] (Q) -- (QuP);
-			\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
-			
-			% etichette delle proiezioni collegate con una freccia di richiamo
-			%\node (lpP) at (1.85,0.02) {$\ub_P\!\cdot\ab_{PQ}$};
-			%\draw[gray!60] (P) -- (FP);
-			\node (lpP) at (1.80,0.45) {$\ub_P\!\cdot\ab_{PQ}$};
-			\draw[->, thin] (lpP) -- ($(P)!0.45!(FP)$);
-			\node (lpQ) at (4.75,0.72) {$\ub_Q\!\cdot\ab_{PQ}$};
-			\draw[->, thin] (lpQ) -- ($(Q)!0.5!(FQ)$);
-			
-			\node[open,label={below:$O$}] at (O) {};
-			\node[pt,label={left:$P$}]  at (P) {};
-			\node[pt,label={[xshift=2pt]above left:$Q$}] at (Q) {};
-			\node at (3.6,-1.0) {(b)};
-		\end{tikzpicture}
-	}
-	\caption{(a)~Spostamenti rigidi e (b)~interpretazione geometrica della condizione di ortogonalità fra il vettore posizione relativo $\protect\overrightarrow{PQ}$ e il vettore relativo degli spostamenti infinitesimi $\ub_Q - \ub_P$.}
-	\label{fig:orto_PQ_spost_relat}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Questa condizione di \textit{ortogonalità} fra il vettore congiungente e 
-lo spostamento relativo ha un significato geometrico limpido: le proiezioni 
-di $\ub(P)$ e $\ub(Q)$ lungo la direzione che congiunge i due punti sono 
-uguali. In altre parole, i due punti si spostano della stessa quantità nella 
-direzione $\overrightarrow{PQ}$; ciò che può differire è solo la componente 
-dello spostamento perpendicolare alla congiungente, che non altera la distanza 
-(al primo ordine, cfr.~\FIGref{fig:orto_PQ_spost_relat}(b)).
-Questa proprietà prende il nome di \textit{equiproiettività}\index{equiproiettivita@equiproiettività|textbf}
-del campo degli spostamenti rigidi: in formule,
-$\ub(P) \cdot \ab_{PQ} = \ub(Q) \cdot \ab_{PQ}$ per ogni
-coppia di punti, dove
-$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$. Il
-termine sarà ritrovato nel \CAPref{cap:statica_CR} come equiproiettività
-del campo dei momenti.
-
-\begin{oss}
-	La linearizzazione non richiede che gli spostamenti siano	piccoli in assoluto, ma solo che gli spostamenti
-	\textit{relativi} lo siano rispetto alle distanze fra i	punti. Una traslazione rigida di ampiezza arbitraria
-	($\ub(P) = \ub(Q)$ per ogni coppia) soddisfa esattamente	la~\eqref{eq:rigidita_esatta} e non richiede alcuna
-	approssimazione. È la rotazione a introdurre spostamenti	relativi non nulli: dalla formula~\eqref{eq:FFCI},
-	$|\ub(Q)-\ub(P)| =	|\bm{\upvartheta}|\,|\overrightarrow{PQ}|\sin\alpha$,	dove $\alpha$ è l'angolo fra $\bm{\upvartheta}$ e
-	$\overrightarrow{PQ}$. La condizione	$|\bm{\updelta}_{PQ}| \ll 1$ si traduce dunque in	$|\bm{\upvartheta}| \ll 1$: l'ipotesi di spostamenti	infinitesimi è in realtà un'ipotesi sulla sola	\textit{rotazione}.
-\end{oss}
-
-Si verifica che il campo~\eqref{eq:FFCI} soddisfa la~\eqref{eq:ortogonalita_CR}. 
-Infatti:
-\begin{equation}
-	\ub(Q) - \ub(P) = \bm{\upvartheta} \times \overrightarrow{PQ},
-\end{equation}
-e dunque
-\begin{equation}
-	\overrightarrow{PQ} \cdot (\bm{\upvartheta} \times \overrightarrow{PQ}) = 0,
-\end{equation}
-essendo nullo il prodotto misto con due fattori uguali. Lo spostamento 
-relativo è perpendicolare alla congiungente, coerentemente con 
-l'interpretazione geometrica della condizione~\eqref{eq:ortogonalita_CR}: 
-nella cinematica rigida infinitesima, tutta la variazione di spostamento 
-fra due punti è tangenziale.
+\
 
 
 
