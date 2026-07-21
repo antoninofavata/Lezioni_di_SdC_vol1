@@ -1,57 +1,6 @@
 This is makeindex, version 2.17 [TeX Live 2024] (kpathsea + Thai support).
-Scanning input file main_Vol_00.idx....done (226 entries accepted, 0 rejected).
-Sorting entries.....done (1940 comparisons).
-Generating output file main_Vol_00.ind....
-## Warning (input = main_Vol_00.idx, line = 86; output = main_Vol_00.ind, line = 16):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 89; output = main_Vol_00.ind, line = 17):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 84; output = main_Vol_00.ind, line = 25):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 95; output = main_Vol_00.ind, line = 36):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 64; output = main_Vol_00.ind, line = 72):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 98; output = main_Vol_00.ind, line = 102):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 103; output = main_Vol_00.ind, line = 112):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 185; output = main_Vol_00.ind, line = 116):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 183; output = main_Vol_00.ind, line = 121):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 181; output = main_Vol_00.ind, line = 128):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 138; output = main_Vol_00.ind, line = 139):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 131; output = main_Vol_00.ind, line = 141):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 119; output = main_Vol_00.ind, line = 163):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 116; output = main_Vol_00.ind, line = 164):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 128; output = main_Vol_00.ind, line = 171):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 136; output = main_Vol_00.ind, line = 172):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-
-## Warning (input = main_Vol_00.idx, line = 67; output = main_Vol_00.ind, line = 209):
-   -- Conflicting entries: multiple encaps for the same page under same key.
-done (255 lines written, 17 warnings).
+Scanning input file main_Vol_00.idx....done (36 entries accepted, 0 rejected).
+Sorting entries....done (218 comparisons).
+Generating output file main_Vol_00.ind....done (75 lines written, 0 warnings).
 Output written in main_Vol_00.ind.
 Transcript written in main_Vol_00.ilg.

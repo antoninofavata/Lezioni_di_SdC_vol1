@@ -1,251 +1,60 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{7}{part.1}%
-\contentsline {chapter}{\numberline {1}Cinematica infinitesima del corpo rigido}{9}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Il corpo rigido e il campo di spostamento infinitesimo}{9}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Spostamento rigido finito e gradi di libertà}{13}{section.1.2}%
-\contentsline {section}{\numberline {1.3}La formula fondamentale della cinematica infinitesima}{13}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Derivazione per linearizzazione della rotazione}{14}{subsection.1.3.1}%
-\contentsline {paragraph}{Il caso piano.}{14}{subsection.1.3.1}%
-\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{14}{equation.1.3.15}%
-\contentsline {subsection}{\numberline {1.3.2}Derivazione per invarianza delle distanze}{17}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Forma matriciale}{17}{subsection.1.3.3}%
-\contentsline {paragraph}{Il caso tridimensionale.}{17}{subsection.1.3.3}%
-\contentsline {paragraph}{Restrizione al caso piano.}{17}{figure.caption.8}%
-\contentsline {section}{\numberline {1.4}Invarianti del campo di spostamento}{19}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Asse centrale degli spostamenti rigidi infinitesimi}{19}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}Decomposizione dello spostamento}{19}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Invarianza della componente parallela}{20}{subsection.1.5.2}%
-\contentsline {subsection}{\numberline {1.5.3}Annullamento della componente ortogonale}{20}{subsection.1.5.3}%
-\contentsline {subsection}{\numberline {1.5.4}Proprietà dell'asse centrale}{20}{subsection.1.5.4}%
-\contentsline {section}{\numberline {1.6}Classificazione dei moti rigidi infinitesimi}{21}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Particolarizzazione al caso piano}{22}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}Formula fondamentale nel piano}{22}{subsection.1.7.1}%
-\contentsline {subsection}{\numberline {1.7.2}Centro di rotazione}{22}{subsection.1.7.2}%
-\contentsline {paragraph}{Coordinate del centro di rotazione.}{23}{ossinner.1.9}%
-\contentsline {subsection}{\numberline {1.7.3}Composizione di rotazioni infinitesime nel piano}{24}{subsection.1.7.3}%
-\contentsline {paragraph}{Caso di due rotazioni.}{26}{ossinner.1.12}%
-\contentsline {subsection}{\numberline {1.7.4}Centro di rotazione relativo e allineamento dei centri}{28}{subsection.1.7.4}%
-\contentsline {paragraph}{Spostamento e rotazione relativi.}{28}{subsection.1.7.4}%
-\contentsline {paragraph}{Espressione dello spostamento relativo.}{28}{subsection.1.7.4}%
-\contentsline {paragraph}{Centro di rotazione relativo.}{28}{equation.1.7.54}%
-\contentsline {paragraph}{Allineamento dei centri.}{29}{equation.1.7.55}%
-\contentsline {subsection}{\numberline {1.7.5}Allineamento dei centri di rotazione relativi}{31}{subsection.1.7.5}%
-\contentsline {paragraph}{Teorema di allineamento.}{31}{subsection.1.7.5}%
-\contentsline {section}{\numberline {1.8}Esercizi proposti}{32}{section.1.8}%
-\contentsline {chapter}{\numberline {2}Statica del corpo rigido}{35}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Considerazioni introduttive}{35}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Riduzione di un sistema di forze}{35}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Risultante e momento risultante}{36}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Coppia di forze}{37}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Densità di forze}{37}{subsection.2.2.3}%
-\contentsline {section}{\numberline {2.3}Legge di variazione del momento}{38}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Invarianti del campo dei momenti}{39}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Asse centrale del sistema di forze}{40}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Decomposizione del momento}{40}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Invarianza della componente parallela}{40}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}Annullamento della componente ortogonale}{40}{subsection.2.5.3}%
-\contentsline {subsection}{\numberline {2.5.4}Proprietà dell'asse centrale}{41}{subsection.2.5.4}%
-\contentsline {section}{\numberline {2.6}Equivalenza di sistemi di forze}{42}{section.2.6}%
-\contentsline {subsection}{\numberline {2.6.1}Definizione di equivalenza}{42}{subsection.2.6.1}%
-\contentsline {paragraph}{Equivalenza al sistema nullo.}{43}{ossinner.2.7}%
-\contentsline {subsection}{\numberline {2.6.2}Operazioni elementari di equivalenza}{43}{subsection.2.6.2}%
-\contentsline {paragraph}{Traslazione lungo la linea d'azione.}{43}{subsection.2.6.2}%
-\contentsline {paragraph}{Composizione di forze concorrenti.}{43}{equation.2.6.22}%
-\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{43}{figure.caption.20}%
-\contentsline {section}{\numberline {2.7}Classificazione dei sistemi equivalenti}{44}{section.2.7}%
-\contentsline {section}{\numberline {2.8}Particolarizzazione al caso piano}{45}{section.2.8}%
-\contentsline {subsection}{\numberline {2.8.1}Legge di variazione nel piano}{46}{subsection.2.8.1}%
-\contentsline {subsection}{\numberline {2.8.2}Asse di sollecitazione}{46}{subsection.2.8.2}%
-\contentsline {paragraph}{Coordinate dell'asse di sollecitazione.}{47}{figure.caption.22}%
-\contentsline {subsection}{\numberline {2.8.3}Sistemi di forze equiorientate nel piano}{48}{subsection.2.8.3}%
-\contentsline {paragraph}{Forze concentrate equiorientate.}{48}{subsection.2.8.3}%
-\contentsline {paragraph}{Densità di forze equiorientate.}{49}{ossinner.2.14}%
-\contentsline {section}{\numberline {2.9}Esercizi proposti}{50}{section.2.9}%
-\contentsline {chapter}{\numberline {3}Dualismo tra cinematica e statica del corpo rigido}{53}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Dualismo cinematico-statico}{53}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Il caso piano}{54}{subsection.3.1.1}%
-\contentsline {section}{\numberline {3.2}Lavoro virtuale}{55}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Forze concentrate}{55}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Coppie concentrate}{55}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Forze distribuite}{56}{subsection.3.2.3}%
-\contentsline {paragraph}{Scrittura alternativa.}{56}{equation.3.2.11}%
-\contentsline {section}{\numberline {3.3}Equilibrio e lavoro virtuale}{57}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Esercizi proposti}{57}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Prestazioni cinematiche e statiche dei vincoli}{59}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Il vincolo di rigidità e i vincoli di collegamento}{59}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Prestazione cinematica}{60}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Prestazione statica}{60}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Distorsioni e svincoli}{60}{subsection.4.1.3}%
-\contentsline {section}{\numberline {4.2}Il vincolo posizionale: definizione e classificazione}{61}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Vincoli esterni e vincoli interni}{62}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}Richiamo: il campo di spostamento e il centro di rotazione}{62}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Vincoli semplici: molteplicità uno}{64}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Il carrello}{64}{subsection.4.4.1}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{64}{subsection.4.4.1}%
-\contentsline {paragraph}{Caso esterno.}{65}{figure.caption.25}%
-\contentsline {paragraph}{Equazione cinematica.}{65}{figure.caption.25}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{66}{equation.4.4.5}%
-\contentsline {paragraph}{Reazione vincolare.}{66}{equation.4.4.8}%
-\contentsline {paragraph}{Caso interno.}{66}{figure.caption.26}%
-\contentsline {subsection}{\numberline {4.4.2}Il bipendolo}{68}{subsection.4.4.2}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{68}{subsection.4.4.2}%
-\contentsline {paragraph}{Caso esterno.}{68}{subsection.4.4.2}%
-\contentsline {paragraph}{Equazione cinematica.}{68}{subsection.4.4.2}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{68}{equation.4.4.13}%
-\contentsline {paragraph}{Reazione vincolare.}{68}{figure.caption.28}%
-\contentsline {paragraph}{Caso interno.}{69}{ossinner.4.6}%
-\contentsline {section}{\numberline {4.5}Vincoli doppi: molteplicità due}{70}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}La cerniera}{70}{subsection.4.5.1}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{70}{subsection.4.5.1}%
-\contentsline {paragraph}{Caso esterno.}{70}{subsection.4.5.1}%
-\contentsline {paragraph}{Equazione cinematica.}{70}{subsection.4.5.1}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{70}{equation.4.5.17}%
-\contentsline {paragraph}{Reazione vincolare.}{71}{ossinner.4.7}%
-\contentsline {paragraph}{Caso interno.}{71}{figure.caption.30}%
-\contentsline {subsection}{\numberline {4.5.2}Il glifo}{72}{subsection.4.5.2}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{72}{subsection.4.5.2}%
-\contentsline {paragraph}{Caso esterno.}{73}{Item.36}%
-\contentsline {paragraph}{Equazione cinematica.}{73}{Item.36}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{73}{ossinner.4.8}%
-\contentsline {paragraph}{Reazione vincolare.}{74}{figure.caption.32}%
-\contentsline {paragraph}{Caso interno.}{75}{equation.4.5.27}%
-\contentsline {section}{\numberline {4.6}Vincolo triplo: l'incastro}{75}{section.4.6}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{75}{section.4.6}%
-\contentsline {paragraph}{Caso esterno.}{75}{section.4.6}%
-\contentsline {paragraph}{Equazioni cinematiche.}{76}{section.4.6}%
-\contentsline {paragraph}{Posizione del centro di rotazione.}{76}{ossinner.4.10}%
-\contentsline {paragraph}{Reazione vincolare.}{76}{ossinner.4.10}%
-\contentsline {paragraph}{Caso interno.}{76}{figure.caption.34}%
-\contentsline {section}{\numberline {4.7}Vincoli composti: giustapposizione di vincoli semplici}{77}{section.4.7}%
-\contentsline {paragraph}{Cinematica: teorema di intersezione.}{78}{ossinner.4.12}%
-\contentsline {paragraph}{Statica: somma vettoriale delle reazioni.}{78}{figure.caption.35}%
-\contentsline {paragraph}{Svincoli.}{79}{figure.caption.35}%
-\contentsline {section}{\numberline {4.8}Tavola riepilogativa}{79}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Il cedimento vincolare}{81}{section.4.9}%
-\contentsline {paragraph}{Generalizzazione delle equazioni cinematiche.}{81}{ossinner.4.13}%
-\contentsline {paragraph}{Effetto sul centro di rotazione.}{81}{ossinner.4.13}%
-\contentsline {paragraph}{Effetto sulla reazione vincolare.}{82}{equation.4.9.37}%
-\contentsline {paragraph}{Cedimento nei vincoli interni.}{82}{ossinner.4.14}%
-\contentsline {paragraph}{Distorsioni del vincolo di rigidità.}{83}{ossinner.4.15}%
-\contentsline {section}{\numberline {4.10}Dualità fra vincoli composti e componenti}{83}{section.4.10}%
-\contentsline {paragraph}{Cerniera.}{84}{section.4.10}%
-\contentsline {paragraph}{Glifo: decomposizione modale sym/skw.}{84}{equation.4.10.38}%
-\contentsline {paragraph}{Incastro.}{85}{equation.4.10.42}%
-\contentsline {section}{\numberline {4.11}Vincoli che collegano più corpi}{85}{section.4.11}%
-\contentsline {subsection}{\numberline {4.11.1}La cerniera multipla}{85}{subsection.4.11.1}%
-\contentsline {paragraph}{Prestazione statica.}{86}{ossinner.4.16}%
-\contentsline {paragraph}{Forza esterna applicata al nodo.}{87}{equation.4.11.47}%
-\contentsline {paragraph}{Cerniera multipla vincolata al suolo.}{87}{equation.4.11.49}%
-\contentsline {subsection}{\numberline {4.11.2}L'incastro multiplo}{88}{subsection.4.11.2}%
-\contentsline {paragraph}{Prestazione statica.}{88}{equation.4.11.54}%
-\contentsline {paragraph}{Forza e coppia esterne applicate al nodo.}{89}{figure.caption.38}%
-\contentsline {paragraph}{Incastro multiplo vincolato al suolo.}{89}{equation.4.11.58}%
-\contentsline {section}{\numberline {4.12}Cenno ai vincoli spaziali}{92}{section.4.12}%
-\contentsline {paragraph}{Piano di scorrimento (molteplicità 1).}{92}{section.4.12}%
-\contentsline {paragraph}{Biella (molteplicità 1).}{92}{section.4.12}%
-\contentsline {paragraph}{Bipendolo (molteplicità 1).}{92}{section.4.12}%
-\contentsline {paragraph}{Cerniera sferica (molteplicità 3).}{92}{section.4.12}%
-\contentsline {paragraph}{Perno scorrevole (molteplicità 4).}{92}{equation.4.12.62}%
-\contentsline {paragraph}{Glifo (molteplicità 5).}{93}{equation.4.12.63}%
-\contentsline {paragraph}{Cerniera cilindrica (molteplicità 5).}{93}{equation.4.12.64}%
-\contentsline {paragraph}{Incastro (molteplicità 6).}{93}{equation.4.12.65}%
-\contentsline {section}{\numberline {4.13}Esercizi proposti}{95}{section.4.13}%
-\contentsline {chapter}{\numberline {5}I problemi cinematico e statico dei SCR}{99}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Il vettore di configurazione del sistema}{99}{section.5.1}%
-\contentsline {section}{\numberline {5.2}La matrice dei vincoli e il problema cinematico}{100}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Struttura delle equazioni di vincolo}{100}{subsection.5.2.1}%
-\contentsline {paragraph}{Vincoli esterni.}{100}{equation.5.2.4}%
-\contentsline {paragraph}{Vincoli interni.}{101}{equation.5.2.8}%
-\contentsline {subsection}{\numberline {5.2.2}Congruenza del sistema: il problema cinematico}{103}{subsection.5.2.2}%
-\contentsline {section}{\numberline {5.3}Il problema statico e il dualismo $\bm {B} = \bm {A}^{\top }$}{103}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Forze generalizzate delle forze attive}{104}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Forze generalizzate delle reazioni vincolari}{104}{subsection.5.3.2}%
-\contentsline {paragraph}{Vincolo esterno.}{105}{equation.5.3.19}%
-\contentsline {paragraph}{Vincolo interno.}{105}{equation.5.3.21}%
-\contentsline {subsection}{\numberline {5.3.3}Equilibrio del sistema: il problema statico}{105}{subsection.5.3.3}%
-\contentsline {section}{\numberline {5.4}I quattro sottospazi e la classificazione}{107}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Struttura duale dei due problemi}{107}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}I quattro sottospazi fondamentali di $\bm {A}$}{109}{subsection.5.4.2}%
-\contentsline {subsection}{\numberline {5.4.3}La formula fondamentale di classificazione}{109}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Struttura della soluzione}{110}{subsection.5.4.4}%
-\contentsline {paragraph}{Sistema isostatico ($g_\ell = 0$, $g_i = 0$).}{112}{subsection.5.4.4}%
-\contentsline {paragraph}{Sistema labile ($g_\ell > 0$, $g_i = 0$).}{112}{equation.5.4.30}%
-\contentsline {paragraph}{Sistema iperstatico ($g_\ell = 0$, $g_i > 0$).}{112}{equation.5.4.34}%
-\contentsline {paragraph}{Sistema labile-iperstatico ($g_\ell > 0$, $g_i > 0$).}{113}{equation.5.4.38}%
-\contentsline {section}{\numberline {5.5}Esempi applicativi}{113}{section.5.5}%
-\contentsline {section}{\numberline {5.6}Esercizi proposti}{118}{section.5.6}%
-\contentsline {chapter}{\numberline {6}Analisi operativa dei SCR }{125}{chapter.6}%
-\contentsline {section}{\numberline {6.1}I due problemi in forma matriciale}{125}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Sistemi cinematicamente e staticamente determinati}{126}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Problema cinematico: metodo grafo-analitico}{126}{subsection.6.2.1}%
-\contentsline {paragraph}{Procedura.}{126}{subsection.6.2.1}%
-\contentsline {paragraph}{Metodo delle rette di proiezione.}{127}{Item.41}%
-\contentsline {subsection}{\numberline {6.2.2}Problema statico: metodo dei corpi liberi}{132}{subsection.6.2.2}%
-\contentsline {paragraph}{Procedura.}{133}{subsection.6.2.2}%
-\contentsline {paragraph}{Indipendenza delle equazioni di momento.}{133}{Item.47}%
-\contentsline {section}{\numberline {6.3}Sistemi labili}{136}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Problema cinematico: vincoli fittizi e coordinate lagrangiane}{136}{subsection.6.3.1}%
-\contentsline {paragraph}{Procedura.}{136}{equation.6.3.9}%
-\contentsline {subsection}{\numberline {6.3.2}Problema statico: condizione di compatibilità}{141}{subsection.6.3.2}%
-\contentsline {paragraph}{Interpretazione fisica.}{142}{equation.6.3.11}%
-\contentsline {section}{\numberline {6.4}Sistemi iperstatici}{143}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Problema statico: vincoli ridondanti e iperstatiche}{143}{subsection.6.4.1}%
-\contentsline {paragraph}{Procedura.}{144}{equation.6.4.12}%
-\contentsline {subsection}{\numberline {6.4.2}Problema cinematico: condizione di compatibilità}{148}{subsection.6.4.2}%
-\contentsline {paragraph}{Interpretazione fisica.}{148}{equation.6.4.14}%
-\contentsline {section}{\numberline {6.5}Il caso labile-iperstatico: condizioni operative di compatibilità}{149}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Gerarchia strutturale}{152}{section.6.6}%
-\contentsline {subsection}{\numberline {6.6.1}Trascinante e trascinato nel problema cinematico}{152}{subsection.6.6.1}%
-\contentsline {paragraph}{Risoluzione in cascata.}{152}{subsection.6.6.1}%
-\contentsline {subsection}{\numberline {6.6.2}Portante e portato nel problema statico}{153}{subsection.6.6.2}%
-\contentsline {paragraph}{Risoluzione in cascata.}{154}{subsection.6.6.2}%
-\contentsline {subsection}{\numberline {6.6.3}Riconoscimento della gerarchia per ispezione}{155}{subsection.6.6.3}%
-\contentsline {chapter}{\numberline {7}Classificazione dei sistemi di corpi rigidi}{161}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Il conteggio come criterio necessario}{161}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Come si conta $m$: dalla geometria del sistema alla matrice}{163}{section.7.2}%
-\contentsline {paragraph}{Caso standard.}{163}{section.7.2}%
-\contentsline {paragraph}{Vincoli multipli propri.}{163}{esempioinner.7.2}%
-\contentsline {paragraph}{Incastro multiplo e vincolo di rigidità.}{164}{esempioinner.7.3}%
-\contentsline {paragraph}{Procedura di conteggio.}{164}{equation.7.2.4}%
-\contentsline {paragraph}{Primo conteggio: tre corpi composti.}{165}{figure.caption.68}%
-\contentsline {paragraph}{Secondo conteggio: nove aste come corpi distinti.}{166}{figure.caption.68}%
-\contentsline {section}{\numberline {7.3}Riduzione tramite vincolo di rigidità}{167}{section.7.3}%
-\contentsline {paragraph}{Invarianza di $\nu $ per fusione.}{167}{section.7.3}%
-\contentsline {paragraph}{Applicazione iterata.}{167}{ossinner.7.5}%
-\contentsline {paragraph}{Fusione aperta e fusione chiusa.}{168}{ossinner.7.6}%
-\contentsline {paragraph}{Svincoli interni.}{168}{equation.7.3.7}%
-\contentsline {section}{\numberline {7.4}Isostaticità globale e locale}{171}{section.7.4}%
-\contentsline {subsection}{\numberline {7.4.1}Definizioni e decomposizione di $\nu $}{171}{subsection.7.4.1}%
-\contentsline {paragraph}{Conteggio globale.}{171}{subsection.7.4.1}%
-\contentsline {paragraph}{Conteggio locale.}{171}{equation.7.4.8}%
-\contentsline {paragraph}{Decomposizione di $\nu $.}{172}{equation.7.4.9}%
-\contentsline {subsection}{\numberline {7.4.2}Casi possibili e loro significato}{172}{subsection.7.4.2}%
-\contentsline {section}{\numberline {7.5}Catalogo delle sottostrutture elementari}{174}{section.7.5}%
-\contentsline {subsection}{\numberline {7.5.1}Un corpo: mensola e trave appoggiata}{174}{subsection.7.5.1}%
-\contentsline {paragraph}{Mensola.}{175}{subsection.7.5.1}%
-\contentsline {paragraph}{Trave semplicemente appoggiata.}{175}{figure.caption.72}%
-\contentsline {paragraph}{Trave con glifo.}{175}{figure.caption.73}%
-\contentsline {paragraph}{Trave con tre carrelli.}{177}{ossinner.7.11}%
-\contentsline {subsection}{\numberline {7.5.2}Due corpi: arco a tre cerniere}{179}{subsection.7.5.2}%
-\contentsline {paragraph}{Caso regolare.}{179}{subsection.7.5.2}%
-\contentsline {paragraph}{Caso degenere.}{179}{subsection.7.5.2}%
-\contentsline {subsection}{\numberline {7.5.3}Tre corpi: anello a tre cerniere}{181}{subsection.7.5.3}%
-\contentsline {paragraph}{Anello vincolato al suolo.}{181}{subsection.7.5.3}%
-\contentsline {subsection}{\numberline {7.5.4}Composizione di sottostrutture}{182}{subsection.7.5.4}%
-\contentsline {paragraph}{Regola di composizione.}{182}{subsection.7.5.4}%
-\contentsline {subsection}{\numberline {7.5.5}Classificazione per decomposizione e per riduzione}{182}{subsection.7.5.5}%
-\contentsline {subsubsection}{Decomposizione gerarchica}{182}{subsection.7.5.5}%
-\contentsline {paragraph}{Regola operativa.}{183}{teorema.7.5.1}%
-\contentsline {subsubsection}{Riduzione a schema noto}{183}{ossinner.7.16}%
-\contentsline {paragraph}{Operazioni elementari di riduzione.}{183}{ossinner.7.16}%
-\contentsline {paragraph}{Procedura.}{183}{ossinner.7.16}%
-\contentsline {section}{\numberline {7.6}Procedura di ispezione diretta}{186}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}Passi della procedura}{186}{subsection.7.6.1}%
-\contentsline {chapter}{\numberline {8}La triade meccanica: congruenza, equilibrio e principio dei lavori virtuali }{191}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Il PLV come identità bilineare e il dualismo $\bm {B} = \bm {A}^{\top }$}{191}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Applicazioni della triade}{192}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Congruenza e PLV implicano equilibrio}{192}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Equilibrio e PLV implicano congruenza}{194}{subsection.8.2.2}%
-\contentsline {section}{\numberline {8.3}Esempi applicativi}{196}{section.8.3}%
-\contentsline {chapter}{Indice analitico}{199}{section*.81}%
+\contentsline {chapter}{\numberline {1}Vettori geometrici: liberi, applicati, polari e assiali}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Vettori liberi e algebra vettoriale}{5}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Somma e prodotto per uno scalare}{6}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Prodotto scalare}{7}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Prodotto vettoriale}{7}{subsection.1.1.3}%
+\contentsline {subsection}{\numberline {1.1.4}Doppio prodotto vettoriale}{9}{subsection.1.1.4}%
+\contentsline {subsection}{\numberline {1.1.5}Prodotto misto}{9}{subsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.1.6}Prodotto tensoriale}{9}{subsection.1.1.6}%
+\contentsline {section}{\numberline {1.2}Vettori applicati}{10}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Momento polare}{10}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Legge di variazione del momento al variare del polo}{12}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}Momento assiale}{12}{subsection.1.2.3}%
+\contentsline {section}{\numberline {1.3}Vettori polari e vettori assiali}{14}{section.1.3}%
+\contentsline {paragraph}{Vettori polari.}{14}{section.1.3}%
+\contentsline {paragraph}{Vettori assiali (o pseudovettori).}{14}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Comportamento sotto riflessione}{14}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Regole di composizione}{15}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Rappresentazione grafica}{16}{subsection.1.3.3}%
+\contentsline {section}{\numberline {1.4}Il caso piano}{16}{section.1.4}%
+\contentsline {paragraph}{Vettori polari nel piano.}{16}{section.1.4}%
+\contentsline {paragraph}{Vettori assiali nel piano.}{17}{equation.1.4.26}%
+\contentsline {paragraph}{Rappresentazione grafica nel piano.}{17}{equation.1.4.27}%
+\contentsline {section}{\numberline {1.5}Esercizi proposti}{17}{section.1.5}%
+\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{21}{part.1}%
+\contentsline {chapter}{\numberline {2}Cinematica infinitesima del corpo rigido}{23}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Il corpo rigido e il campo di spostamento}{23}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Rappresentazione del campo di spostamento}{25}{subsection.2.1.1}%
+\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{26}{equation.2.1.13}%
+\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{26}{equation.2.1.15}%
+\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{27}{equation.2.1.19}%
+\contentsline {subsection}{\numberline {2.1.2}La rotazione infinitesima}{27}{subsection.2.1.2}%
+\contentsline {paragraph}{Il caso piano.}{28}{equation.2.1.24}%
+\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{30}{equation.2.1.29}%
+\contentsline {subsection}{\numberline {2.1.3}Forma matriciale}{32}{subsection.2.1.3}%
+\contentsline {paragraph}{Il caso tridimensionale.}{32}{subsection.2.1.3}%
+\contentsline {paragraph}{Restrizione al caso piano.}{33}{figure.caption.19}%
+\contentsline {section}{\numberline {2.2}Invarianti del campo di spostamento}{33}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Asse centrale degli spostamenti rigidi infinitesimi}{34}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Decomposizione dello spostamento}{34}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Invarianza della componente parallela}{34}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Annullamento della componente ortogonale}{34}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Proprietà dell'asse centrale}{35}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Classificazione dei moti rigidi infinitesimi}{36}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Particolarizzazione al caso piano}{36}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Formula fondamentale nel piano}{36}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}Centro di rotazione}{37}{subsection.2.5.2}%
+\contentsline {paragraph}{Coordinate del centro di rotazione.}{38}{ossinner.2.7}%
+\contentsline {subsection}{\numberline {2.5.3}Composizione di rotazioni infinitesime nel piano}{38}{subsection.2.5.3}%
+\contentsline {paragraph}{Caso di due rotazioni.}{41}{ossinner.2.10}%
+\contentsline {subsection}{\numberline {2.5.4}Centro di rotazione relativo e allineamento dei centri}{43}{subsection.2.5.4}%
+\contentsline {paragraph}{Spostamento e rotazione relativi.}{43}{subsection.2.5.4}%
+\contentsline {paragraph}{Espressione dello spostamento relativo.}{43}{subsection.2.5.4}%
+\contentsline {paragraph}{Centro di rotazione relativo.}{43}{equation.2.5.69}%
+\contentsline {paragraph}{Allineamento dei centri.}{43}{equation.2.5.70}%
+\contentsline {subsection}{\numberline {2.5.5}Allineamento dei centri di rotazione relativi}{46}{subsection.2.5.5}%
+\contentsline {paragraph}{Teorema di allineamento.}{46}{subsection.2.5.5}%
+\contentsline {section}{\numberline {2.6}Esercizi proposti}{47}{section.2.6}%
+\contentsline {chapter}{Indice analitico}{51}{section*.27}%

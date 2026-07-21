@@ -23,7 +23,8 @@
 \end{sommario}
 
 
-\section{Il corpo rigido e il campo di spostamento infinitesimo}\label{sez.CR}
+
+\section{Il corpo rigido e il campo di spostamento}\label{sez.CR}
 Non daremo nella nostra trattazione una definizione di corpo, ma piuttosto lo assumeremo come un ente primitivo.
 Assumiamo  che i corpi possano avere diverse configurazioni, occupando diverse regioni dello spazio Euclideo $\Ec$; identifichiamo dunque un corpo con una delle sue possibili configurazioni $\Cc$, ovvero una regione limitata e regolare di $\Ec$, i cui elementi sono punti.
 
@@ -32,181 +33,211 @@ Il corpo $\Cc$ può subire una certa trasformazione, andando ad occupare una dif
 \begin{figure}
 	\centering
 	\includegraphics[scale=1]{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ}
-	\caption{}
+	\caption{Due differenti configurazioni del corpo $\Cc$.}
 	\label{fig:displ}
 \end{figure}
 
 Lo \textit{spostamento} del punto $P$ è definito come
 \begin{equation}\label{displ}
-\ub(P):=P_*-P=\overrightarrow{OP_*}-\overrightarrow{OP},
+	\ub(P):=P_*-P=\overrightarrow{OP_*}-\overrightarrow{OP},
 \end{equation}
 ovvero il vettore che porta $P$ in $P_*$. 
 
 Un corpo è \textit{rigido} se, presi due qualunque punti $P, Q \in\Cc$, la loro mutua distanza resta immutata dopo una qualunque trasformazione:
 \begin{equation}\label{CR}
-|\overrightarrow{PQ}|=|\overrightarrow{P_*Q_*}| \qquad \forall P,Q\in\Cc.
+	|\overrightarrow{PQ}|=|\overrightarrow{P_*Q_*}| \qquad \forall P,Q\in\Cc.
 \end{equation}
 
 Questa condizione, in virtù della \eqref{displ}, pone delle restrizioni sulla possibile forma che il campo di spostamento può avere. In particolare, la  \eqref{CR} 
 è equivalente a 
 \begin{equation}\label{eq:rigidita_esatta}
-\bigl|\overrightarrow{PQ}\bigr|^2=|Q_*-P_*|^2=|Q+\ub(Q)-P-\ub(P)|^2=\bigl|\overrightarrow{PQ} + \ub(Q) - \ub(P)\bigr|^2,
+	\bigl|\overrightarrow{PQ}\bigr|^2=|Q_*-P_*|^2=|Q+\ub(Q)-P-\ub(P)|^2=\bigl|\overrightarrow{PQ} + \ub(Q) - \ub(P)\bigr|^2,
 \end{equation}
 ovvero, sviluppando il quadrato del secondo membro:
 \begin{equation}\label{eq:rigidita_sviluppo}
-\bigl|\overrightarrow{PQ}\bigr|^2=\bigl|\overrightarrow{PQ}\bigr|^2 
-+ 2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr],
-+ \bigl|\ub(Q) - \ub(P)\bigr|^2
+	\bigl|\overrightarrow{PQ}\bigr|^2=\bigl|\overrightarrow{PQ}\bigr|^2 
+	+ 2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr]
+	+ \bigl|\ub(Q) - \ub(P)\bigr|^2
 \end{equation}
 da cui:
 %Semplificando $|\overrightarrow{PQ}|^2$:
 \begin{equation}\label{eq:rigidita_semplificata}
-2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr]
-+ \bigl|\ub(Q) - \ub(P)\bigr|^2 = 0.
-\end{equation}
-Per valutare il peso relativo dei due termini, dividiamo per 
-$|\overrightarrow{PQ}|^2$, introducendo il versore 
-$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$ e lo 
-\textit{spostamento relativo adimensionalizzato} 
-$\bm{\updelta}_{PQ} = [\ub(Q)-\ub(P)]/|\overrightarrow{PQ}|$:
-\begin{equation}\label{eq:rigidita_adim}
-2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ} + |\bm{\updelta}_{PQ}|^2 = 0.
+	2\,\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr]
+	+ \bigl|\ub(Q) - \ub(P)\bigr|^2 = 0.
 \end{equation}
 
-\vspace{1cm}
-\todo[inline]{Riscivere la parte sotto}
-Il parametro $|\bm{\updelta}_{PQ}|$ confronta lo spostamento relativo con la 
-distanza fra i due punti: è il rapporto fra la variazione di posizione 
-relativa e la dimensione caratteristica del corpo. La condizione di 
-\textit{spostamenti infinitesimi}\index{spostamento!infinitesimo|textbf} consiste nel richiedere che
-\begin{equation}
-|\bm{\updelta}_{PQ}| = \frac{|\ub(Q)-\ub(P)|}{|\overrightarrow{PQ}|} \ll 1
-\qquad \forall\, P,\, Q,
+Dividendo per $|\overrightarrow{PQ}|^2$, otteniamo la condizione
+\begin{equation}\label{eq:rigidita_adim}
+	2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ} + |\bm{\updelta}_{PQ}|^2 = 0,
 \end{equation}
-ovvero che gli spostamenti relativi siano piccoli rispetto alle distanze 
-fra i punti del corpo. Sotto questa ipotesi il termine $|\bm{\updelta}_{PQ}|^2$ 
-nella~\eqref{eq:rigidita_adim} è trascurabile rispetto al termine 
-$2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ}$, che è del primo ordine in 
-$|\bm{\updelta}_{PQ}|$. La condizione di rigidità linearizzata è dunque
+dove $\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$ è il versore di $\overrightarrow{PQ}$ e
+\begin{equation}
+	\bm{\updelta}_{PQ} \coloneqq \frac{\ub(Q)-\ub(P)}{|\overrightarrow{PQ}|}.
+\end{equation}
+
+Osserviamo che $|\bm{\updelta}_{PQ} |$ confronta l'ampiezza dello spostamento relativo di due punti con la loro distanza iniziale, facilmente interpretabile, alla luce di \eqref{displ}, come 
+\begin{equation}
+	|\bm{\updelta}_{PQ} |=\frac{\left|\overrightarrow{P_*Q_*}-\overrightarrow{PQ}\right|}{|\overrightarrow{PQ}|},
+\end{equation}
+ovvero come una  misura della variazione relativa della configurazione.
+
+Ha senso dunque sviluppare una \textit{teoria infinitesima}, che richieda che questa quantità sia `piccola', ovvero che la configurazione cambi di poco rispetto a quella di riferimento. 
+Dato che $|\bm{\updelta}_{PQ} |$ dipende dai punti $P, Q$, individuiamo la massima variazione relativa di configurazione, ovvero
+\begin{equation}\label{sup}
+	\delta:=\sup_{P\neq Q} |\bm{\updelta}_{PQ} |
+\end{equation}
+e consideriamo un'espansione  in serie di Taylor al primo ordine, trascurando tutti i termini di ordine $\delta^2$. Vista la \eqref{sup}, senz'altro
+\begin{equation}
+	\left|\bm{\updelta}_{PQ}\right|\leq \delta \quad \forall P,Q\in \Cc
+\end{equation}
+e dunque siamo autorizzati a trascurare nella \eqref{eq:rigidita_adim} il termine dell'ordine di $|\bm{\updelta}_{PQ}|^2$.
+
+Concludiamo che, in teoria infinitesima, la conseguenza della condizione di rigidità è 
+%
+%\vspace{2cm}
+%Per valutare il peso relativo dei due termini, dividiamo per 
+%$|\overrightarrow{PQ}|^2$, introducendo il versore 
+%$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$ e lo 
+%\textit{spostamento relativo adimensionalizzato} 
+%$\bm{\updelta}_{PQ} = [\ub(Q)-\ub(P)]/|\overrightarrow{PQ}|$:
+%\begin{equation}\label{eq:rigidita_adim}
+%2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ} + |\bm{\updelta}_{PQ}|^2 = 0.
+%\end{equation}
+%
+%\vspace{1cm}
+%\todo[inline]{Riscivere la parte sotto}
+%Il parametro $|\bm{\updelta}_{PQ}|$ confronta lo spostamento relativo con la 
+%distanza fra i due punti: è il rapporto fra la variazione di posizione 
+%relativa e la dimensione caratteristica del corpo. La condizione di 
+%\textit{spostamenti infinitesimi}\index{spostamento!infinitesimo|textbf} consiste nel richiedere che
+%\begin{equation}
+%|\bm{\updelta}_{PQ}| = \frac{|\ub(Q)-\ub(P)|}{|\overrightarrow{PQ}|} \ll 1
+%\qquad \forall\, P,\, Q,
+%\end{equation}
+%ovvero che gli spostamenti relativi siano piccoli rispetto alle distanze 
+%fra i punti del corpo. Sotto questa ipotesi il termine $|\bm{\updelta}_{PQ}|^2$ 
+%nella~\eqref{eq:rigidita_adim} è trascurabile rispetto al termine 
+%$2\,\ab_{PQ} \cdot \bm{\updelta}_{PQ}$, che è del primo ordine in 
+%$|\bm{\updelta}_{PQ}|$. La condizione di rigidità linearizzata è dunque
 \begin{equation}\label{eq:ortogonalita_CR}
-\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr] = 0
-\qquad \forall\, P,\, Q.
+	\overrightarrow{PQ} \cdot \bigl[\ub(Q) - \ub(P)\bigr] = 0
+	\qquad \forall\, P,\, Q.
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!htbp]
-\centering
-\usetikzlibrary{arrows.meta,calc,decorations.markings}
-
-% --- helper per le figure ---
-\tikzset{midarrow/.style={postaction={decorate},
-		decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
-
-\newcommand{\rightangle}[3]{%
-	\coordinate (ra1) at ($(#2)!2mm!(#1)$);
-	\coordinate (ra3) at ($(#2)!2mm!(#3)$);
-	\draw[line width=0.4pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
-\resizebox{0.9\textwidth}{!}{%
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
-		pt/.style={circle,fill,inner sep=1.3pt},
-		open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
-		\coordinate (O)  at (1.8,-0.5);
-		\coordinate (P)  at (0,0.5);
-		\coordinate (Q)  at (3.4,1.2);
-		\coordinate (aA) at (3.645,1.250);
-		\coordinate (aB) at (4.477,1.422);
-		\coordinate (Ps) at (0.770,1.221);
-		\coordinate (Qs) at (3.938,3.047);
-		\coordinate (QuP) at (4.170,1.921);
-		
-		\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
-		\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
-		
-		\draw[thick, midarrow] (P) -- (Q) node[pos=0.6,below=2pt] {$\overrightarrow{PQ}$};
-		%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-		
-		% retta d'azione di PQ (grigia) da Q verso destra
-		\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
-		
-		% versore a_PQ (nero) disegnato su quella retta
-		\coordinate (aA) at ($(P)!1.28!(Q)$);
-		\coordinate (aB) at ($(P)!1.52!(Q)$);
-		\draw[->, thick] (aA) -- (aB) node[pos=0.97,below=1pt] {$\ab_{PQ}$};
-		
-		\draw[thin, midarrow] (Ps) -- (QuP);   % chiude il parallelogramma P Q (Q+u_P) P*
-		
-		\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
-		\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
-		\draw[thick, midarrow] (Q) -- (QuP) node[pos=0.55,below right=-6pt] {$\ub_P$};
-		\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
-		
-		\draw[thick, midarrow] (Ps) -- (Qs) node[pos=0.5,above left=-2pt] {$\overrightarrow{P_*Q_*}$};
-		
-		\node[open,label={below:$O$}] at (O) {};
-		\node[pt,label={left:$P$}]  at (P) {};
-		\node[pt,label={[xshift=2pt]below right:$Q$}] at (Q) {};
-		\node[pt,label={[yshift=1pt]above :$P_*$}]  at (Ps) {};
-		\node[pt,label={ above:$Q_*$}] at (Qs) {};
-		
-		\node at (3.6,-1.0) {(a)};
-	\end{tikzpicture}
-	\quad
-	% ---- pannello (b) ----
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
-		pt/.style={circle,fill,inner sep=1.3pt},
-		open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
-		\coordinate (O)  at (1.8,-0.5);
-		\coordinate (P)  at (0,0.5);
-		\coordinate (Q)  at (3.4,1.2);
-		\coordinate (aA) at (3.645,1.250);
-		\coordinate (aB) at (4.477,1.422);
-		\coordinate (Ps) at (0.770,1.221);
-		\coordinate (Qs) at (3.938,3.047);
-		\coordinate (QuP) at (4.170,1.921);
-		\coordinate (FP) at (0.881,0.682);
-		\coordinate (FQ) at (4.281,1.382);
-		
-		\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
-		\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
-		
-		\draw[thick, midarrow] (P) -- (Q) node[pos=0.42,above=1pt] {$\overrightarrow{PQ}$};
-		%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-		% retta d'azione di PQ (grigia) da Q verso destra
-		\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
-		
-		% versore a_PQ (nero) disegnato su quella retta
-		\coordinate (aA) at ($(P)!1.28!(Q)$);
-		\coordinate (aB) at ($(P)!1.52!(Q)$);
-		\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-		
-		% proiezioni grigie tratteggiate (PRIMA di u_Q-u_P) + angoli retti
-		\draw[dashed, gray!60] (Ps) -- (FP);
-		\draw[dashed, gray!60] (Qs) -- (FQ);
-		\rightangle{P}{FP}{Ps}
-		\rightangle{aB}{FQ}{Qs}
-		
-		% spostamenti (DOPO: sovrascrivono il grigio)
-		\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
-		\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
-		\draw[->, thick] (Q) -- (QuP);
-		\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
-		
-		% etichette delle proiezioni collegate con una freccia di richiamo
-		%\node (lpP) at (1.85,0.02) {$\ub_P\!\cdot\ab_{PQ}$};
-		%\draw[gray!60] (P) -- (FP);
-		\node (lpP) at (1.80,0.45) {$\ub_P\!\cdot\ab_{PQ}$};
-		\draw[->, thin] (lpP) -- ($(P)!0.45!(FP)$);
-		\node (lpQ) at (4.75,0.72) {$\ub_Q\!\cdot\ab_{PQ}$};
-		\draw[->, thin] (lpQ) -- ($(Q)!0.5!(FQ)$);
-		
-		\node[open,label={below:$O$}] at (O) {};
-		\node[pt,label={left:$P$}]  at (P) {};
-		\node[pt,label={[xshift=2pt]above left:$Q$}] at (Q) {};
-		\node at (3.6,-1.0) {(b)};
-	\end{tikzpicture}
-}
-\caption{(a)~Spostamenti rigidi e (b)~interpretazione geometrica della condizione di ortogonalità fra il vettore posizione relativo $\protect\overrightarrow{PQ}$ e il vettore relativo degli spostamenti infinitesimi $\ub_Q - \ub_P$.}
-\label{fig:orto_PQ_spost_relat}
+	\centering
+	\usetikzlibrary{arrows.meta,calc,decorations.markings}
+	
+	% --- helper per le figure ---
+	\tikzset{midarrow/.style={postaction={decorate},
+			decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
+	
+	\newcommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2mm!(#3)$);
+		\draw[line width=0.4pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\resizebox{0.9\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
+			pt/.style={circle,fill,inner sep=1.3pt},
+			open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
+			\coordinate (O)  at (1.8,-0.5);
+			\coordinate (P)  at (0,0.5);
+			\coordinate (Q)  at (3.4,1.2);
+			\coordinate (aA) at (3.645,1.250);
+			\coordinate (aB) at (4.477,1.422);
+			\coordinate (Ps) at (0.770,1.221);
+			\coordinate (Qs) at (3.938,3.047);
+			\coordinate (QuP) at (4.170,1.921);
+			
+			\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
+			\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
+			
+			\draw[thick, midarrow] (P) -- (Q) node[pos=0.6,below=2pt] {$\overrightarrow{PQ}$};
+			%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
+			
+			% retta d'azione di PQ (grigia) da Q verso destra
+			\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
+			
+			% versore a_PQ (nero) disegnato su quella retta
+			\coordinate (aA) at ($(P)!1.28!(Q)$);
+			\coordinate (aB) at ($(P)!1.52!(Q)$);
+			\draw[->, thick] (aA) -- (aB) node[pos=0.97,below=1pt] {$\ab_{PQ}$};
+			
+			\draw[thin, midarrow] (Ps) -- (QuP);   % chiude il parallelogramma P Q (Q+u_P) P*
+			
+			\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
+			\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
+			\draw[thick, midarrow] (Q) -- (QuP) node[pos=0.55,below right=-6pt] {$\ub_P$};
+			\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
+			
+			\draw[thick, midarrow] (Ps) -- (Qs) node[pos=0.5,above left=-2pt] {$\overrightarrow{P_*Q_*}$};
+			
+			\node[open,label={below:$O$}] at (O) {};
+			\node[pt,label={left:$P$}]  at (P) {};
+			\node[pt,label={[xshift=2pt]below right:$Q$}] at (Q) {};
+			\node[pt,label={[yshift=1pt]above :$P_*$}]  at (Ps) {};
+			\node[pt,label={ above:$Q_*$}] at (Qs) {};
+			
+			\node at (3.6,-1.0) {(a)};
+		\end{tikzpicture}
+		\quad
+		% ---- pannello (b) ----
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
+			pt/.style={circle,fill,inner sep=1.3pt},
+			open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
+			\coordinate (O)  at (1.8,-0.5);
+			\coordinate (P)  at (0,0.5);
+			\coordinate (Q)  at (3.4,1.2);
+			\coordinate (aA) at (3.645,1.250);
+			\coordinate (aB) at (4.477,1.422);
+			\coordinate (Ps) at (0.770,1.221);
+			\coordinate (Qs) at (3.938,3.047);
+			\coordinate (QuP) at (4.170,1.921);
+			\coordinate (FP) at (0.881,0.682);
+			\coordinate (FQ) at (4.281,1.382);
+			
+			\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
+			\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
+			
+			\draw[thick, midarrow] (P) -- (Q) node[pos=0.42,above=1pt] {$\overrightarrow{PQ}$};
+			%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
+			% retta d'azione di PQ (grigia) da Q verso destra
+			\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
+			
+			% versore a_PQ (nero) disegnato su quella retta
+			\coordinate (aA) at ($(P)!1.28!(Q)$);
+			\coordinate (aB) at ($(P)!1.52!(Q)$);
+			\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
+			
+			% proiezioni grigie tratteggiate (PRIMA di u_Q-u_P) + angoli retti
+			\draw[dashed, gray!60] (Ps) -- (FP);
+			\draw[dashed, gray!60] (Qs) -- (FQ);
+			\rightangle{P}{FP}{Ps}
+			\rightangle{aB}{FQ}{Qs}
+			
+			% spostamenti (DOPO: sovrascrivono il grigio)
+			\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
+			\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
+			\draw[->, thick] (Q) -- (QuP);
+			\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
+			
+			% etichette delle proiezioni collegate con una freccia di richiamo
+			%\node (lpP) at (1.85,0.02) {$\ub_P\!\cdot\ab_{PQ}$};
+			%\draw[gray!60] (P) -- (FP);
+			\node (lpP) at (1.80,0.45) {$\ub_P\!\cdot\ab_{PQ}$};
+			\draw[->, thin] (lpP) -- ($(P)!0.45!(FP)$);
+			\node (lpQ) at (4.75,0.72) {$\ub_Q\!\cdot\ab_{PQ}$};
+			\draw[->, thin] (lpQ) -- ($(Q)!0.5!(FQ)$);
+			
+			\node[open,label={below:$O$}] at (O) {};
+			\node[pt,label={left:$P$}]  at (P) {};
+			\node[pt,label={[xshift=2pt]above left:$Q$}] at (Q) {};
+			\node at (3.6,-1.0) {(b)};
+		\end{tikzpicture}
+	}
+	\caption{(a)~Spostamenti rigidi e (b)~interpretazione geometrica della condizione di ortogonalità fra il vettore posizione relativo $\protect\overrightarrow{PQ}$ e il vettore relativo degli spostamenti infinitesimi $\ub_Q - \ub_P$.}
+	\label{fig:orto_PQ_spost_relat}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Questa condizione di \textit{ortogonalità} fra il vettore congiungente e 
@@ -220,97 +251,145 @@ Questa proprietà prende il nome di \textit{equiproiettività}\index{equiproiett
 del campo degli spostamenti rigidi: in formule,
 $\ub(P) \cdot \ab_{PQ} = \ub(Q) \cdot \ab_{PQ}$ per ogni
 coppia di punti, dove
-$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$. Il
-termine sarà ritrovato nel \CAPref{cap:statica_CR} come equiproiettività
-del campo dei momenti.
+$\ab_{PQ} = \overrightarrow{PQ}/|\overrightarrow{PQ}|$. 
 
-\begin{oss}
-La linearizzazione non richiede che gli spostamenti siano	piccoli in assoluto, ma solo che gli spostamenti
-\textit{relativi} lo siano rispetto alle distanze fra i	punti. Una traslazione rigida di ampiezza arbitraria
-($\ub(P) = \ub(Q)$ per ogni coppia) soddisfa esattamente	la~\eqref{eq:rigidita_esatta} e non richiede alcuna
-approssimazione. È la rotazione a introdurre spostamenti	relativi non nulli: dalla formula~\eqref{eq:FFCI},
-$|\ub(Q)-\ub(P)| =	|\bm{\upvartheta}|\,|\overrightarrow{PQ}|\sin\alpha$,	dove $\alpha$ è l'angolo fra $\bm{\upvartheta}$ e
-$\overrightarrow{PQ}$. La condizione	$|\bm{\updelta}_{PQ}| \ll 1$ si traduce dunque in	$|\bm{\upvartheta}| \ll 1$: l'ipotesi di spostamenti	infinitesimi è in realtà un'ipotesi sulla sola	\textit{rotazione}.
-\end{oss}
 
-Si verifica che il campo~\eqref{eq:FFCI} soddisfa la~\eqref{eq:ortogonalita_CR}. 
-Infatti:
+
+
+
+
+\subsection{Rappresentazione del campo di spostamento}\label{sez:rappresentazione_campo}
+
+Dalla condizione \eqref{eq:ortogonalita_CR} segue un importante risultato, che caratterizza in maniera specifica il campo di spostamento di un corpo rigido in teoria infinitesima.
+Fissiamo un punto $P$ e indichiamo con $\wb_P(Q)\coloneqq \ub(Q)-\ub(P)$ lo  spostamento relativo  rispetto a $P$, per qualunque $Q\in\Cc$. La condizione \eqref{eq:ortogonalita_CR}  è $\overrightarrow{PQ}\cdot \wb_P(Q)=0$, per ogni $Q\in \Cc$. Prendiamo adesso due punti arbitrari $Q,R$, per cui vale
 \begin{equation}
-\ub(Q) - \ub(P) = \bm{\upvartheta} \times \overrightarrow{PQ},
+	\begin{aligned}
+		0=&\overrightarrow{QR}\cdot[\ub(R)-\ub(Q)]=(\overrightarrow{PR}-\overrightarrow{PQ})\cdot [\big(\ub(R)-\ub(P)\big)-\big( \ub(Q)-\ub(P) \big)]\\
+		=&\overrightarrow{PR}\cdot \wb_P(R)-\overrightarrow{PR}\cdot \wb_P(Q)-\overrightarrow{PQ}\cdot\wb_P(R)+\overrightarrow{PQ}\cdot \wb_P(Q).
+	\end{aligned}
 \end{equation}
-e dunque
+Il primo e l'ultimo termine della seconda riga sono nulli, per la condizione di equiproiettività. Ne segue che
+\begin{equation}\label{eq:bilineare_wP}
+	\overrightarrow{PR}\cdot \wb_P(Q)+\overrightarrow{PQ}\cdot\wb_P(R)=0 \qquad \forall\, Q,R\in\Cc.
+\end{equation}
+
+\paragraph{Linearità di $\wb_P$.}
+Scegliamo $P$ interno a $\Cc$ (è sempre possibile, essendo $\Cc$ una regione regolare) e una base ortonormale $\ab_x,\ab_y,\ab_z$. Poiché $P$ è interno, esiste $\varepsilon>0$ tale che i tre punti $R_i\in\Cc$ tali che $\overrightarrow{PR_i}=\varepsilon\,\ab_i$ ($i=x,y,z$) sono ben definiti. Ponendo $R=R_i$ nella \eqref{eq:bilineare_wP}:
 \begin{equation}
-\overrightarrow{PQ} \cdot (\bm{\upvartheta} \times \overrightarrow{PQ}) = 0,
+	\varepsilon\,\ab_i\cdot \wb_P(Q) + \overrightarrow{PQ}\cdot \wb_P(R_i) = 0
+	\;\Longrightarrow\;
+	\ab_i\cdot \wb_P(Q) = -\overrightarrow{PQ}\cdot \wb_i, \qquad i=x,y,z,
 \end{equation}
-essendo nullo il prodotto misto con due fattori uguali. Lo spostamento 
-relativo è perpendicolare alla congiungente, coerentemente con 
-l'interpretazione geometrica della condizione~\eqref{eq:ortogonalita_CR}: 
-nella cinematica rigida infinitesima, tutta la variazione di spostamento 
-fra due punti è tangenziale.
+dove $\wb_i:=\wb_P(R_i)/\varepsilon$ sono vettori \emph{fissati}, indipendenti da $Q$ (ma costruiti a partire dal polo $P$). 
+bbiamo così determinato, per ogni $Q\in\Cc$, le tre componenti del vettore $\wb_P(Q)$ lungo la base ortonormale $\ab_x,\ab_y,\ab_z$. Ricordando che un vettore $\vb$ qualunque si ricostruisce dalle sue componenti su una base ortonormale tramite l'identità $\vb=\sum_i(\ab_i\cdot\vb)\,\ab_i$, applichiamo questo fatto a $\vb=\wb_P(Q)$ e sostituiamo le tre componenti appena trovate:
+\begin{equation}\label{eq:linearita_wP}
+	\wb_P(Q) = \sum_{i=x,y,z}\bigl(\ab_i\cdot\wb_P(Q)\bigr)\,\ab_i
+	= -\sum_{i=x,y,z}\bigl(\overrightarrow{PQ}\cdot\wb_i\bigr)\,\ab_i
+	=: \bm{\Theta}_P\,\overrightarrow{PQ}, \qquad \forall\, Q\in\Cc,
+\end{equation}
+dove $\bm{\Theta}_P$ è il tensore di componenti $(\Theta_P)_{ij}=-(\wb_i)_j$ (la componente $j$-esima del vettore $\wb_i$).
+La \eqref{eq:linearita_wP} mostra che $\wb_P(Q)$ dipende \emph{linearmente} da $\overrightarrow{PQ}$, tramite un tensore $\bm{\Theta}_P$ che non dipende da $Q$ (per il fissato polo $P$). 
+
+
+\paragraph{Antisimmetria di $\bm{\Theta}_P$.}
+Sostituendo la \eqref{eq:linearita_wP} nella condizione di equiproiettività $\overrightarrow{PQ}\cdot\wb_P(Q)=0$, valida per ogni $Q\in\Cc$, si ottiene
+\begin{equation}\label{eq:quadratica_nulla}
+	\overrightarrow{PQ}\cdot \bm{\Theta}_P\,\overrightarrow{PQ} = 0 \qquad \forall\, Q\in\Cc.
+\end{equation}
+Applicando la \eqref{eq:quadratica_nulla} al punto $Q=R_i$ (per cui $\overrightarrow{PQ}=\varepsilon\ab_i$) e dividendo per $\varepsilon^2$:
+\begin{equation}
+	(\Theta_P)_{ii} = 0, \qquad i=x,y,z:
+\end{equation}
+le componenti diagonali di $\bm{\Theta}_P$ sono nulle. Essendo $P$ interno a $\Cc$, possiamo scegliere (eventualmente riducendo $\varepsilon$) anche tre punti $R_{ij}\in\Cc$, con $i\neq j$, tali che $\overrightarrow{PR_{ij}}=\varepsilon(\ab_i+\ab_j)$. Applicando la \eqref{eq:quadratica_nulla} a $Q=R_{ij}$ e dividendo per $\varepsilon^2$:
+\begin{equation}
+	0=(\ab_i+\ab_j)\cdot \bm{\Theta}_P(\ab_i+\ab_j)
+	= \underbrace{\ab_i\cdot \bm{\Theta}_P\ab_i}_{=0} + \ab_i\cdot \bm{\Theta}_P\ab_j+\ab_j\cdot \bm{\Theta}_P\ab_i+\underbrace{\ab_j\cdot \bm{\Theta}_P\ab_j}_{=0},
+\end{equation}
+cioè $(\Theta_P)_{ij}+(\Theta_P)_{ji}=0$ per ogni $i\neq j$. Insieme all'annullarsi della diagonale, questo significa esattamente che $\bm{\Theta}_P$ è antisimmetrico: $(\Theta_P)_{ji}=-(\Theta_P)_{ij}$ per ogni $i,j=x,y,z$.
+
+
+Ogni tensore antisimmetrico $\bm{\Theta}_P$, in dimensione 3, si scrive in modo unico come $\bm{\Theta}_P\mb=\bm{\upvartheta}_P\times\mb$ per ogni $\mb$, per un opportuno vettore $\bm{\upvartheta}_P$\footnote{Di componenti $(\vartheta_P)_k=-\tfrac12\epsilon_{kij}(\Theta_P)_{ij}$}. Dalla \eqref{eq:linearita_wP} segue allora
+\begin{equation}\label{eq:formula_polo_P}
+	\ub(Q)-\ub(P) = \wb_P(Q) = \bm{\upvartheta}_P\times\overrightarrow{PQ} \qquad \forall\, Q\in\Cc.
+\end{equation}
+
+\paragraph{Indipendenza di $\bm\upvartheta_P$ dal polo.}
+Il vettore $\bm\upvartheta_P$ trovato dipende, a priori, dal polo $P$. Sia $P'\in\Cc$ un altro polo, con vettore associato $\bm\upvartheta_{P'}$. Per ogni $Q\in\Cc$, usando $\overrightarrow{P'Q}-\overrightarrow{P'P}=\overrightarrow{PQ}$,
+\begin{equation}
+	\begin{aligned}
+		\bm\upvartheta_P\times\overrightarrow{PQ} &= \ub(Q)-\ub(P)
+		= \bigl[\ub(Q)-\ub(P')\bigr]-\bigl[\ub(P)-\ub(P')\bigr]\\
+		&= \bm\upvartheta_{P'}\times\overrightarrow{P'Q}-\bm\upvartheta_{P'}\times\overrightarrow{P'P}
+		= \bm\upvartheta_{P'}\times\overrightarrow{PQ}.
+	\end{aligned}
+\end{equation}
+Dunque $(\bm\upvartheta_P-\bm\upvartheta_{P'})\times\overrightarrow{PQ}=\mathbf 0$ per ogni $Q\in\Cc$; poiché, al variare di $Q$ in un intorno di $P$, $\overrightarrow{PQ}$ assume almeno due direzioni non parallele, l'unica possibilità è $\bm\upvartheta_P=\bm\upvartheta_{P'}$. Il vettore $\bm\upvartheta$ è dunque lo stesso per ogni scelta del polo. In particolare, se $P$ è un punto di bordo di $\Cc$ (per cui l'argomento precedente non si applica direttamente, mancando un intorno di $P$ interamente in $\Cc$), fissato un qualunque $P_0$ interno si ha comunque $\ub(Q)=\ub(P_0)+\bm\upvartheta\times\overrightarrow{P_0Q}$ per ogni $Q\in\Cc$, bordo compreso; applicando questa relazione sia a $Q$ sia a $P$ e sottraendo, come nel conto sopra, si ottiene $\ub(Q)-\ub(P)=\bm\upvartheta\times\overrightarrow{PQ}$ anche in questo caso.
+
+Concludiamo dunque che 
+\begin{equation}\label{eq:campo_rigido}
+	\ub(Q) = \ub(P) + \bm{\upvartheta}\times \overrightarrow{PQ} \qquad \forall\, P,Q \in \Cc.
+\end{equation}
+
+
+
+% ============================================================
+\subsection{La rotazione infinitesima}\label{sez:interpretazione}
+% ============================================================
+
+La formula \eqref{eq:campo_rigido} mostra che, fissato un polo $P$, l'intero spostamento relativo degli altri punti del corpo è determinato dal singolo vettore $\bm\upvartheta$ tramite il prodotto vettoriale $\bm\upvartheta\times\overrightarrow{PQ}$. Vogliamo ora mostrare che questa è esattamente la struttura di una rotazione infinitesima: la direzione di $\bm\upvartheta$ è l'asse, e il suo modulo è l'angolo (infinitesimo) di rotazione.
+
+\medskip
+
+
+Verifichiamo anzitutto che la \eqref{eq:campo_rigido} sia compatibile con la rigidità di partenza, cioè che spostare $Q$ rispetto a $P$ secondo questa formula non alteri (al primo ordine) la loro distanza. La nuova posizione relativa è
+\begin{equation}
+	\overrightarrow{P_*Q_*} = (Q+\ub(Q))-(P+\ub(P)) = \overrightarrow{PQ} + \bigl[\ub(Q)-\ub(P)\bigr] = \overrightarrow{PQ} + \bm\upvartheta\times\overrightarrow{PQ},
+\end{equation}
+usando la \eqref{eq:campo_rigido}. Poiché il prodotto misto $\overrightarrow{PQ}\cdot(\bm\upvartheta\times\overrightarrow{PQ})$ è nullo (è il prodotto misto di due vettori uguali), si ha esattamente
+\begin{equation}
+\begin{aligned}
+		|\overrightarrow{P_*Q_*}|^2 &= \bigl|\overrightarrow{PQ}+\bm\upvartheta\times\overrightarrow{PQ}\bigr|^2
+	= |\overrightarrow{PQ}|^2 + 2\,\overrightarrow{PQ}\cdot(\bm\upvartheta\times\overrightarrow{PQ}) + |\bm\upvartheta\times\overrightarrow{PQ}|^2\\
+	&= |\overrightarrow{PQ}|^2 + |\bm\upvartheta\times\overrightarrow{PQ}|^2.
+\end{aligned}
+\end{equation}
+ Resta da mostrare che il termine correttivo $|\bm\upvartheta\times\overrightarrow{PQ}|^2$ sia trascurabile. Ricordiamo che, per costruzione, i vettori $\wb_i=\wb_P(R_i)/\varepsilon$ da cui $\bm\upvartheta$ è stato ottenuto coincidono con $\bm\updelta_{PR_i}$  e dunque $|\wb_i|\leq\delta$ per definizione di $\delta$ come estremo superiore. Poiché le componenti di $\bm\Theta_P$ sono $(\Theta_P)_{ij}=-(\wb_i)_j$ e quelle di $\bm\upvartheta$ sono combinazioni lineari finite di queste, anche $|\bm\upvartheta|$ è controllato da $\delta$. Segue che
+\begin{equation}
+	|\bm\upvartheta\times\overrightarrow{PQ}|^2 \leq |\bm\upvartheta|^2|\overrightarrow{PQ}|^2 = O(\delta^2)\,|\overrightarrow{PQ}|^2,
+\end{equation}
+lo stesso ordine $\delta^2$ già trascurato in tutta la teoria infinitesima. La distanza $|\overrightarrow{PQ}|$ resta dunque invariata a meno di termini di questo ordine: siamo dunque di fronte ad una trasformazione che, al primo ordine, è un'isometria infinitesima. 
 
 
 
 
-\newpage
-
-%---------------------------------------------------------------------------------------------------------------------------- 
-\section{Spostamento rigido finito e gradi di libertà}\label{sez:SRF}
-%---------------------------------------------------------------------------------------------------------------------------- 
-
-Lo spostamento rigido\index{spostamento!rigido|textbf}\index{corpo rigido|textbf} di un corpo nello spazio è completamente	determinato dallo spostamento $\ub(O)$\nomenclature[L]{$\ub(P)$}{spostamento del punto $P$ (campo vettoriale)} di un punto $O$ solidale	al corpo --- non necessariamente appartenente ad esso --- e dalla	rotazione\index{rotazione|textbf} del corpo attorno a $O$. La traslazione\index{traslazione|textbf} $\ub(O)$ è	individuata da tre parametri scalari (le sue componenti); la rotazione da tre ulteriori parametri (l'asse e l'angolo di
-rotazione). Il corpo rigido nello spazio possiede dunque	\textit{sei gradi di libertà}\index{grado di liberta@grado di libertà|textbf}: le sue configurazioni distinte
-formano una varietà $\infty^6$. Nel caso piano, la traslazione	ha due componenti e la rotazione si riduce a un singolo angolo:
-i gradi di libertà sono \textit{tre}.
-
-Per confronto, un corpo deformabile ha infiniti gradi di libertà: ogni punto può spostarsi indipendentemente (nel	rispetto della continuità). Il vincolo di rigidità\index{vincolo!di rigidità} è dunque	estremamente restrittivo: riduce una famiglia	infinito-dimensionale di spostamenti possibili a una famiglia finito-dimensionale.
-
-Nella decomposizione appena descritta --- traslazione del polo	$O$ e rotazione attorno a $O$ --- l'ordine di applicazione delle
-due operazioni è irrilevante: il risultato finale è lo stesso sia	che si trasli prima e si ruoti poi, sia che si ruoti prima e si
-trasli poi. Non altrettanto si può dire per la composizione di	due rotazioni finite attorno ad assi diversi, che \textit{non}
-commutano: l'ordine di applicazione influenza il risultato	finale\footnote{Un esempio immediato: si prenda un libro
-	appoggiato su un tavolo, con il dorso a sinistra e il titolo	leggibile. Si eseguano due rotazioni di $90^\circ$ ciascuna:
-	(i)~rotazione attorno all'asse verticale (il libro ruota nel	piano del tavolo) e poi (ii)~rotazione attorno all'asse
-	orizzontale parallelo al dorso (il libro si alza in piedi).		Si ripeta invertendo l'ordine: prima~(ii), poi~(i). Le
-	configurazioni finali sono diverse. Lo studente è invitato a	verificarlo con le proprie mani: è la dimostrazione più
-	convincente che le rotazioni finite non sono oggetti	vettoriali.}. Di conseguenza, le rotazioni finite\index{rotazione!finita} non possono
-essere rappresentate come vettori --- non formano uno spazio vettoriale, ma un gruppo (il gruppo delle rotazioni
-$\mathrm{SO}(3)$).
-
-Nei paragrafi che seguono si introduce l'ipotesi di 	\textit{spostamenti infinitesimi}. Questa ipotesi semplifica la	descrizione analitica del moto --- il prodotto vettoriale al posto dell'applicazione lineare di rotazione  --- senza alterare il conteggio	dei gradi di libertà, che è una proprietà del vincolo di	rigidità. Soprattutto, sotto tale ipotesi le rotazioni	infinitesime commutano e si sommano come vettori, il che	giustifica l'introduzione del vettore~$\bm{\upvartheta}$.
-
-%---------------------------------------------------------------------------------------------------------------------------- 
-\section{La formula fondamentale della cinematica infinitesima}
-%---------------------------------------------------------------------------------------------------------------------------- 
-
-Lo spostamento infinitesimo di un corpo rigido è descritto da una formula che esprime lo spostamento di un punto generico $P$ in funzione dello spostamento di un punto di riferimento $O$ e di una rotazione infinitesima. La si può derivare per due vie 	indipendenti.
+Questo però dice solo che non c'è deformazione, non ancora che si tratti di una rotazione attorno a un asse: potrebbe in linea di principio trattarsi di un'altra isometria. Per stabilirlo, calcoliamo esplicitamente l'azione di una rotazione finita — nota dalla geometria elementare — e poi la linearizziamo, per confrontarla direttamente con la \eqref{eq:campo_rigido}. 
 
 
-\subsection{Derivazione per linearizzazione della rotazione}
 
 \paragraph{Il caso piano.}
-Consideriamo dapprima uno spostamento rigido piano: il campo di spostamento è parallelo a un piano fisso e indipendente dalla coordinata ortogonale ad esso. Scelto il piano $(x,y)$, il punto $O$, solidale al corpo, subisce una traslazione $\ub(O)$; il corpo ruota inoltre di un angolo $\vartheta$\nomenclature[G]{$\vartheta$}{rotazione infinitesima nel piano (angolo)} attorno a $O$. La posizione di un generico punto $P$ dopo lo spostamento\nomenclature[L]{$\xb(P)$}{vettore posizione del punto $P$} è:
+Consideriamo dapprima uno spostamento rigido piano: il campo di spostamento è parallelo a un piano fisso e indipendente dalla coordinata ortogonale ad esso. Scelto il piano $(x,y)$, il punto $O$, solidale al corpo, subisce una traslazione $\ub(O)$; il corpo ruota inoltre di un angolo $\vartheta$\nomenclature[G]{$\vartheta$}{angolo di una rotazione finita} attorno a $O$. La posizione di un generico punto $P$ dopo lo spostamento\nomenclature[L]{$\xb(P)$}{vettore posizione del punto $P$} è:
 \begin{equation}\label{eq:pos_finale_piano}
-	\xb(P) + \ub(P) = \xb(O) + \ub(O) 
+	\xb(P) + \ub(P) = \xb(O) + \ub(O)
 	+ \Rbb(\vartheta)\,\overrightarrow{OP},
 \end{equation}
-dove $\Rbb(\vartheta)$ è l'applicazione lineare di rotazione\nomenclature[L]{$\Rbb(\vartheta)$}{applicazione lineare di rotazione finita (di angolo $\vartheta$)} nel piano, la cui 
+dove $\Rbb(\vartheta)$ è l'applicazione lineare di rotazione\nomenclature[L]{$\Rbb(\vartheta)$}{applicazione lineare di rotazione finita (di angolo $\vartheta$)} nel piano, la cui
 matrice nella base $\{\ab_x,\ab_y\}$ è:
 \begin{equation}\label{eq:R_piano}
-	\bm{R}(\vartheta) = \begin{bmatrix} 
-		\cos\vartheta & -\sin\vartheta \\ 
-		\sin\vartheta & \cos\vartheta 
+	\bm{R}(\vartheta) = \begin{bmatrix}
+		\cos\vartheta & -\sin\vartheta \\
+		\sin\vartheta & \cos\vartheta
 	\end{bmatrix}.
 \end{equation}
 Lo spostamento di $P$ è dunque
 \begin{equation}\label{eq:spost_finito_piano}
 	\ub(P) = \ub(O) + \bigl(\Rbb(\vartheta) - \Ib\bigr)\,\overrightarrow{OP}.
 \end{equation}
-Il termine $\bigl(\Rbb - \Ib\bigr)\,\overrightarrow{OP}$ è lo 
-spostamento di $P$ dovuto alla sola rotazione attorno a $O$. Per 
-comprenderne il significato geometrico, decomponiamo questo vettore 
-nella direzione di $\overrightarrow{OP}$ (componente radiale) e nella 
-direzione perpendicolare $\ab_z \times \overrightarrow{OP}$ (componente 
-tangenziale). Sviluppando il prodotto matriciale con 
+Il termine $\bigl(\Rbb - \Ib\bigr)\,\overrightarrow{OP}$ è lo
+spostamento di $P$ dovuto alla sola rotazione attorno a $O$. Per
+comprenderne il significato geometrico, decomponiamo questo vettore
+nella direzione di $\overrightarrow{OP}$ (componente radiale) e nella
+direzione perpendicolare $\ab_z \times \overrightarrow{OP}$ (componente
+tangenziale). Sviluppando il prodotto matriciale con
 la~\eqref{eq:R_piano} si verifica che:
 \begin{equation}\label{eq:R-I_piano}
 	\bigl(\Rbb - \Ib\bigr)\,\overrightarrow{OP}
@@ -319,14 +398,13 @@ la~\eqref{eq:R_piano} si verifica che:
 \end{equation}
 I due termini hanno un'interpretazione immediata (cfr.~\FIGref{fig:spostamenti_finiti}):
 \begin{itemize}[nosep]
-	\item $\sin\vartheta\;(\ab_z \times \overrightarrow{OP})$ è la 
-	componente \textit{tangenziale}: perpendicolare a $\overrightarrow{OP}$, 
+	\item $\sin\vartheta\;(\ab_z \times \overrightarrow{OP})$ è la
+	componente \textit{tangenziale}: perpendicolare a $\overrightarrow{OP}$,
 	nel verso della rotazione, di modulo $|\overrightarrow{OP}|\sin\vartheta$;
-	\item $(\cos\vartheta - 1)\;\overrightarrow{OP}$ è la componente 
-	\textit{radiale}: diretta verso $O$ (poiché $\cos\vartheta - 1 \leq 0$), 
+	\item $(\cos\vartheta - 1)\;\overrightarrow{OP}$ è la componente
+	\textit{radiale}: diretta verso $O$ (poiché $\cos\vartheta - 1 \leq 0$),
 	di modulo $|\overrightarrow{OP}|\,(1-\cos\vartheta)$.
 \end{itemize}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!ht]
 	\centering
@@ -426,28 +504,22 @@ I due termini hanno un'interpretazione immediata (cfr.~\FIGref{fig:spostamenti_f
 	\label{fig:spostamenti_finiti}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Per rotazioni infinitesime ($|\vartheta| \ll 1$), $\sin\vartheta \approx \vartheta$ 
-e $\cos\vartheta - 1 \approx -\vartheta^2/2 \approx 0$: la componente tangenziale 
-è del primo ordine in $\vartheta$, la componente radiale è del secondo ordine e 
-scompare. Lo spostamento rigido infinitesimo nel piano è dunque
+Restringiamoci ora al caso di una rotazione piccola, con $\vartheta$ dello stesso ordine di $\delta$ — l'unico parametro di piccolezza in gioco in tutta la teoria infinitesima. In questo regime $\sin\vartheta \approx \vartheta$ e $\cos\vartheta - 1 \approx -\vartheta^2/2 \approx 0$, trascurando come sempre i termini $O(\delta^2)$: la componente tangenziale è del primo ordine in $\vartheta$ (cioè in $\delta$), la componente radiale è del secondo ordine e scompare. Lo spostamento rigido infinitesimo nel piano è dunque
 \begin{equation}\label{eq:FFCI_piano_deriv}
 	\ub(P) = \ub(O) + \vartheta\;(\ab_z \times \overrightarrow{OP})
 	= \ub(O) + \bm{\upvartheta} \times \overrightarrow{OP},
 \end{equation}
 avendo posto $\bm{\upvartheta} = \vartheta\,\ab_z$.
 
-
-
 \paragraph{Generalizzazione al caso tridimensionale.}
-In tre dimensioni, una rotazione finita di angolo $\vartheta$ avviene attorno 
-a un asse di versore $\ab$. Il vettore posizione $\overrightarrow{OP}$ si 
+In tre dimensioni, una rotazione finita di angolo $\vartheta$ avviene attorno
+a un asse di versore $\ab$. Il vettore posizione $\overrightarrow{OP}$ si
 decompone nella componente parallela all'asse,
-$\overrightarrow{OP}_{\!\parallel} = (\ab \cdot \overrightarrow{OP})\,\ab$, 
-e in quella perpendicolare, 
+$\overrightarrow{OP}_{\!\parallel} = (\ab \cdot \overrightarrow{OP})\,\ab$,
+e in quella perpendicolare,
 $\overrightarrow{OP}_{\!\perp} = \overrightarrow{OP} - \overrightarrow{OP}_{\!\parallel}$.
-
-La rotazione non altera la componente parallela; sulla componente perpendicolare 
-agisce esattamente come nel caso piano, poiché nel piano ortogonale all'asse la 
+La rotazione non altera la componente parallela; sulla componente perpendicolare
+agisce esattamente come nel caso piano, poiché nel piano ortogonale all'asse la
 geometria è identica. Lo spostamento dovuto alla sola rotazione è pertanto
 \begin{equation}\label{eq:spost_rot_3D}
 	\bigl(\Rbb - \Ib\bigr)\,\overrightarrow{OP}
@@ -456,30 +528,52 @@ geometria è identica. Lo spostamento dovuto alla sola rotazione è pertanto
 \end{equation}
 dove si è sfruttato il fatto che $\ab \times \overrightarrow{OP}= \ab \times \overrightarrow{OP}_{\!\perp}$ è ortogonale a $\overrightarrow{OP}_{\!\perp}$ e giace nel piano per $P$ perpendicolare all'asse di rotazione, con modulo
 $|\overrightarrow{OP}_{\!\perp}|$.
-
-
-Linearizzando come nel caso piano: $\sin\vartheta \approx \vartheta$ (primo 
-ordine), $\cos\vartheta - 1 \approx 0$ (secondo ordine). Lo spostamento rigido 
+Linearizzando come nel caso piano: $\sin\vartheta \approx \vartheta$ (primo
+ordine), $\cos\vartheta - 1 \approx 0$ (secondo ordine). Lo spostamento rigido
 infinitesimo tridimensionale è dunque
 \begin{equation}\label{eq:FFCI}
-	\boxed{\ub(P) = \ub(O) + \bm{\upvartheta} \times \overrightarrow{OP},}
+\ub(P) = \ub(O) + \bm{\upvartheta} \times \overrightarrow{OP},
 \end{equation}
-dove $\bm{\upvartheta} = \vartheta\,\ab$\index{rotazione!infinitesima|textbf}\nomenclature[G]{$\bm{\upvartheta}$}{vettore rotazione infinitesima} è il \textit{vettore rotazione 
-	infinitesima}. La formula ha la stessa struttura del caso piano: solo la 
-componente tangenziale sopravvive alla linearizzazione, e la rotazione finita 
+dove $\bm{\upvartheta} = \vartheta\,\ab$. La formula ha la stessa struttura del caso piano: solo la
+componente tangenziale sopravvive alla linearizzazione, e la rotazione finita
 attorno a un asse si riduce a un prodotto vettoriale.
 
+La \eqref{eq:FFCI} ha esattamente la forma della \eqref{eq:campo_rigido}: è così che riconosciamo, nel vettore $\bm\upvartheta$ trovato algebricamente nella sottosez.~\ref{sez:rappresentazione_campo}, il prodotto $\vartheta\ab$ dell'angolo $\vartheta$ per il versore $\ab$ dell'asse di una rotazione finita. I due fatti — l'assenza di stiramento, e la coincidenza con la rotazione finita linearizzata — motivano insieme il nome: $\bm\upvartheta$ è il \textit{vettore di rotazione infinitesima}, di \textit{asse} $\ab=\bm\upvartheta/|\bm\upvartheta|$ e \textit{angolo} (infinitesimo) $|\bm\upvartheta|$.
+
+
+%
+%\begin{oss}
+%	La formula \eqref{eq:campo_rigido} permette di estendere il campo di spostamento a punti che non appartengono al corpo $\Cc$, ma che si muovono \emph{rigidamente} con esso: fissato un qualsiasi $P_0\in\Cc$, per un punto $P$ qualunque dello spazio euclideo si pone, per definizione,
+%	\begin{equation}
+%		\ub(P) := \ub(P_0) + \bm{\upvartheta}\times\overrightarrow{P_0P}.
+%	\end{equation}
+%	Questa definizione non dipende dalla scelta di $P_0\in\Cc$  e, per $P\in\Cc$, restituisce il valore già noto. L'insieme di questi punti, con il campo di spostamento così esteso, costituisce lo \textit{spazio solidale} al corpo: punti geometrici, non necessariamente materiali, che ai fini cinematici si comportano come se appartenessero al corpo rigido. Si noti che il campo esteso soddisfa ancora la relazione di equiproiettività $\overrightarrow{PQ}\cdot[\ub(Q)-\ub(P)]=0$ per \emph{ogni} coppia $P,Q$, anche fuori da $\Cc$: non perché lo imponga l'ipotesi di rigidità del corpo materiale (che riguarda solo $\Cc$), ma perché è una conseguenza puramente algebrica della definizione stessa.
+%\end{oss}
+
 \begin{oss}
-	Il passaggio dalla~\eqref{eq:spost_rot_3D} alla~\eqref{eq:FFCI} mostra 
-	perché la rotazione infinitesima è descritta da un vettore: l'operazione 
-	$\overrightarrow{OP} \mapsto \bm{\upvartheta} \times \overrightarrow{OP}$ 
-	è lineare in $\overrightarrow{OP}$ e corrisponde all'applicazione lineare antisimmetrica  
-	$\bm{\Uptheta}$ tale che 
-	$\bm{\Uptheta}\,\overrightarrow{OP} = \bm{\upvartheta} \times \overrightarrow{OP}$ 
-	per ogni $\overrightarrow{OP}$. Per rotazioni finite, invece, la composizione 
-	di rotazioni non è commutativa e la descrizione tramite un singolo vettore 
-	non è possibile.
+	La linearizzazione non richiede che gli spostamenti siano	piccoli in assoluto, ma solo che gli spostamenti
+	\textit{relativi} lo siano rispetto alle distanze fra i	punti. Una traslazione rigida di ampiezza arbitraria
+	($\ub(P) = \ub(Q)$ per ogni coppia) soddisfa esattamente	la~\eqref{eq:rigidita_esatta} e non richiede alcuna
+	approssimazione. È la rotazione a introdurre spostamenti	relativi non nulli: dalla formula~\eqref{eq:FFCI},
+	$|\ub(Q)-\ub(P)| =	|\bm{\upvartheta}|\,|\overrightarrow{PQ}|\sin\alpha$,	dove $\alpha$ è l'angolo fra $\bm{\upvartheta}$ e
+	$\overrightarrow{PQ}$. La condizione	$|\bm{\updelta}_{PQ}| \ll 1$ si traduce dunque in	$|\bm{\upvartheta}| \ll 1$: l'ipotesi di spostamenti	infinitesimi è in realtà un'ipotesi sulla sola	\textit{rotazione}.
 \end{oss}
+
+Si verifica che il campo~\eqref{eq:FFCI} soddisfa la~\eqref{eq:ortogonalita_CR}. 
+Infatti:
+\begin{equation}
+	\ub(Q) - \ub(P) = \bm{\upvartheta} \times \overrightarrow{PQ},
+\end{equation}
+e dunque
+\begin{equation}
+	\overrightarrow{PQ} \cdot (\bm{\upvartheta} \times \overrightarrow{PQ}) = 0,
+\end{equation}
+essendo nullo il prodotto misto con due fattori uguali. Lo spostamento 
+relativo è perpendicolare alla congiungente, coerentemente con 
+l'interpretazione geometrica della condizione~\eqref{eq:ortogonalita_CR}: 
+nella cinematica rigida infinitesima, tutta la variazione di spostamento 
+fra due punti è tangenziale.
+
 
 \begin{oss}
 	Il termine rotazionale $\bm{\upvartheta} \times \overrightarrow{OP}$
@@ -558,53 +652,16 @@ attorno a un asse si riduce a un prodotto vettoriale.
 \end{oss}
 
 
-
-La formula~\eqref{eq:FFCI} è il punto di partenza di tutta la
-cinematica dei corpi rigidi che sarà sviluppata nel seguito. Se
-ne studieranno le proprietà --- invarianti, asse centrale --- e
-le si darà una forma matriciale esplicita.
-
-
 \begin{oss}
-	Se lo spostamento infinitesimo avviene nell'intervallo 
-	di tempo $\dd t$, dividendo la~\eqref{eq:FFCI} per 
-	$\dd t$ si ottiene il campo di velocità:
-	\begin{equation}
-		\vb(P) = \vb(O) 
-		+ \bm{\upomega} \times \overrightarrow{OP},
-	\end{equation}
-	dove $\vb(P) = \ub(P)/\dd t$\nomenclature[L]{$\vb(P)$}{velocità del punto $P$ (campo vettoriale)} è la velocità del punto 
-	$P$ e $\bm{\upomega} = \bm{\upvartheta}/\dd t$\index{velocita angolare@velocità angolare}\nomenclature[G]{$\bm{\upomega}$}{velocità angolare} è la 
-	velocità angolare. Questa formula, pur ottenuta qui per 
-	divisione della formula degli spostamenti infinitesimi, 
-	ha una validità più ampia: essa è esatta per qualsiasi 
-	velocità angolare $\bm{\upomega}$, anche non 
-	infinitesima.\footnote{La formula delle velocità discende 
-		dalla derivazione temporale della rotazione finita 
-		esatta: $\vb(P) = \vb(O) + \dot{\Rbb}\,\Rbb^\top 
-		\overrightarrow{OP}$, dove l'applicazione lineare
-		$\dot{\Rbb}\,\Rbb^\top$ è antisimmetrica per qualsiasi 
-		rotazione --- conseguenza dell'identità 
-		$\Rbb\,\Rbb^\top = \Ib$ --- e opera su un vettore 
-		come il prodotto vettoriale per $\bm{\upomega}$.} Tutte 
-	le proprietà derivate per il campo di spostamento 
-	(invarianti, asse centrale, centro di rotazione) hanno 
-	un corrispettivo esatto nel campo di velocità. In 
-	particolare, nel caso piano, il centro di rotazione 
-	diventa il \textit{centro istantaneo di rotazione} (CIR),\index{centro di rotazione!istantaneo}\index{CIR|see{centro di rotazione}} 
-	punto a velocità nulla rispetto al quale il corpo appare 
-	ruotare istantaneamente.
+	Lo spostamento rigido\index{spostamento!rigido|textbf}\index{corpo rigido|textbf} di un corpo nello spazio è completamente	determinato dallo spostamento $\ub(O)$\nomenclature[L]{$\ub(P)$}{spostamento del punto $P$ (campo vettoriale)} di un punto $O$ solidale	al corpo --- non necessariamente appartenente ad esso --- e dalla	rotazione\index{rotazione|textbf} del corpo attorno a $O$. La traslazione\index{traslazione|textbf} $\ub(O)$ è	individuata da tre parametri scalari (le sue componenti); la rotazione da tre ulteriori parametri (l'asse e l'angolo di
+	rotazione). Il corpo rigido nello spazio possiede dunque	\textit{sei gradi di libertà}\index{grado di liberta@grado di libertà|textbf}: le sue configurazioni distinte
+	formano una varietà $\infty^6$. Nel caso piano, la traslazione	ha due componenti e la rotazione si riduce a un singolo angolo:
+	i gradi di libertà sono \textit{tre}.	
 \end{oss}
 
 
+\newpage
 
-\subsection{Derivazione per invarianza delle distanze}
-
-Un approccio alternativo parte dal principio di rigidità: la distanza fra 
-due punti qualsiasi del corpo non cambia. Se $P$ e $Q$ sono due punti del 
-corpo, con spostamenti $\ub(P)$ e $\ub(Q)$, la condizione di rigidità si 
-scrive (cfr.~\FIGref{fig:orto_PQ_spost_relat}(a))
-\
 
 
 
@@ -803,19 +860,6 @@ nella~\eqref{eq:R_piano}:
 
 
 
-\begin{oss}
-	La riduzione da sei a tre parametri cinematici nel passaggio 
-	dallo spazio al piano è coerente con il conteggio dei gradi 
-	di libertà già discusso per gli spostamenti finiti. Nel piano, 
-	le due componenti della traslazione ($u(O)$, $v(O)$) sono 
-	grandezze polari con dimensioni di lunghezza, mentre la 
-	rotazione $\vartheta$ è una grandezza assiale adimensionale: 
-	i tre parametri hanno natura geometrica diversa, come già 
-	osservato nel \CAPref{app:vettori_geometrici}. Questa eterogeneità avrà un ruolo 
-	centrale nel \CAPref{cap:dualismo_CR}, quando i parametri cinematici 
-	saranno accoppiati con le corrispondenti grandezze statiche 
-	attraverso il lavoro virtuale.
-\end{oss}
 
 
 
