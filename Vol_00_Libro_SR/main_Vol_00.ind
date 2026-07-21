@@ -1,6 +1,6 @@
 \begin{theindex}
 
-  \item allineamento dei centri di rotazione, \textbf{46}
+  \item allineamento dei centri di rotazione, \textbf{45}
   \item asse centrale
     \subitem degli spostamenti, \textbf{34}
 
@@ -11,9 +11,9 @@
   \indexspace
 
   \item centro di rotazione, \textbf{37}
-    \subitem assoluto, 46
+    \subitem assoluto, 45
     \subitem relativo, \textbf{43}
-  \item cinematica grafica, \textbf{45}
+  \item cinematica grafica, \textbf{44}
   \item corpo rigido, \textbf{31}
 
   \indexspace
@@ -46,21 +46,21 @@
   \indexspace
 
   \item rotazione, \textbf{31}
-    \subitem composizione di rotazioni infinitesime, \textbf{38}
+    \subitem composizione di rotazioni infinitesime, \textbf{39}
     \subitem pura, 36
-    \subitem relativa, 43
+    \subitem relativa, 42
 
   \indexspace
 
   \item spostamento
     \subitem campo di, 33
-    \subitem relativo, 43
+    \subitem relativo, 42
     \subitem rigido, \textbf{31}
 
   \indexspace
 
   \item teorema
-    \subitem di allineamento dei centri, 46
+    \subitem di allineamento dei centri, 45
   \item traslazione, \textbf{31}
     \subitem pura, 36
 
