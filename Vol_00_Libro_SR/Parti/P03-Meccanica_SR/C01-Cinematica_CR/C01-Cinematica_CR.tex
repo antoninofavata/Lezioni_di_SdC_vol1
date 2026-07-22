@@ -874,22 +874,18 @@ avendo indicato con $\bm{I}_2$ la matrice identità nel piano.
 
 \todo[inline]{Sono arrivato qui}
 
-%---------------------------------------------------------------------------------------------------------------------------- 
 \section{Invarianti del campo di spostamento}\label{sec:invarianti}
-%---------------------------------------------------------------------------------------------------------------------------- 
-
+%----------------------------------------------------------------------------------------------------------------------------
+Il campo di spostamento rigido $\ub(P)=\ub(O)+\bm{\upvartheta}\times\overrightarrow{OP}$ dipende, nella sua scrittura, da una scelta arbitraria di polo $O$: cambiando polo, $\ub(O)$ cambia, ma la variazione di configurazione descritta è ovviamente lo stesso. È naturale chiedersi allora cosa, in questa descrizione, sia \emph{intrinseco}  e cosa sia invece un artefatto della scelta di $O$. Le grandezze con questa proprietà si dicono \textit{invarianti}\index{invarianti} del campo di spostamento; ne esistono esattamente due, e insieme caratterizzano completamente il tipo di moto: come vedremo, un generico spostamento rigido infinitesimo si può sempre descrivere, con la scelta opportuna del polo, come sovrapposizione di una rotazione pura e di una traslazione pura \emph{lungo il medesimo asse} — un moto \textit{elicoidale}.
 
 Il campo degli spostamenti rigidi\index{spostamento!campo di} possiede due
-\textit{invarianti}, grandezze indipendenti dalla scelta del
-punto di riferimento~$O$:
+\textit{invarianti}:
 \begin{enumerate}[label=(\roman*)]
-	\item il vettore rotazione $\bm{\upvartheta}$, che compare
-	nella formula fondamentale~\eqref{eq:FFCI} come dato del
-	corpo e non del punto di riferimento;
+	\item il vettore rotazione $\bm{\upvartheta}$, che — come mostrato in sottosez.~\ref{sez:rappresentazione_campo}  — non dipende dalla scelta del polo, ma è un dato intrinseco del corpo;
 	\item il prodotto scalare
 	$\bm{\upvartheta} \cdot \ub(O)$, che rappresenta la
 	componente dello spostamento nella direzione dell'asse di
-	rotazione. Infatti, proiettando la~\eqref{eq:FFCI} nella
+	rotazione. Infatti, proiettando la~\eqref{eq:campo_rigido} nella
 	direzione di $\bm{\upvartheta}$:
 	\begin{equation}
 		\bm{\upvartheta} \cdot \ub(P)
@@ -903,31 +899,27 @@ punto di riferimento~$O$:
 	dello spostamento nella direzione dell'asse di rotazione è
 	la stessa per tutti i punti.
 \end{enumerate}
-
-
 \begin{oss}
 	Se $P$ si trova sulla retta per $O$ parallela a
 	$\bm{\upvartheta}$
 	($\overrightarrow{OP} = \lambda\bm{\upvartheta}$), nella
 	formula fondamentale il termine di rotazione si annulla
 	identicamente:
-	$\bm{\upvartheta} \times \lambda\bm{\upvartheta} = \zerovb$.
+	$\bm{\upvartheta} \times \lambda\bm{\upvartheta} = \mathbf 0$.
 	In tal caso non solo il prodotto scalare, ma l'intero
 	vettore spostamento è invariante: $\ub(P) = \ub(O)$. Tutti
 	i punti allineati con la direzione di $\bm{\upvartheta}$
-	hanno dunque lo stesso spostamento. Questa proprietà, più
-	forte della semplice invarianza scalare, sarà ritrovata nel
-	campo statico come invarianza del momento risultante per
-	punti allineati con la direzione della risultante.
+	hanno dunque lo stesso spostamento. 
 \end{oss}
 
 
 
 %---------------------------------------------------------------------------------------------------------------------------- 
-\section{Asse centrale degli spostamenti rigidi infinitesimi}
+\section{Asse centrale degli spostamenti rigidi}
 %---------------------------------------------------------------------------------------------------------------------------- 
-
-Quando $\bm{\upvartheta} \neq \zerovb$, esiste una retta,
+Abbiamo visto che, cambiando polo, lo spostamento $\ub(O)$ cambia in generale: la sua componente lungo $\bm{\upvartheta}$ resta invariante (è il secondo invariante), ma la sua componente perpendicolare a $\bm{\upvartheta}$ dipende dalla scelta del polo. Viene allora naturale chiedersi se esista un polo — anzi, come vedremo, un'intera retta di poli — per cui questa componente perpendicolare si annulli del tutto, lasciando solo la componente invariante lungo $\bm{\upvartheta}$: il polo, cioè, per cui il campo di spostamento ammette la descrizione più semplice possibile. È la retta anticipata in sez.~\ref{sec:invarianti}: mostriamo ora che esiste sempre, quando $\bm{\upvartheta}\neq\mathbf 0$, che è unica, e la costruiamo esplicitamente.
+ 
+Quando $\bm{\upvartheta} \neq \mathbf 0$, esiste una retta,
 l'\textit{asse centrale degli spostamenti}\index{asse centrale!degli spostamenti|textbf}, lungo la quale lo
 spostamento è parallelo a $\bm{\upvartheta}$. La sua
 costruzione segue un ragionamento puramente geometrico.
@@ -1164,34 +1156,40 @@ proprietà:
 
 
 
-%---------------------------------------------------------------------------------------------------------------------------- 
 \section{Classificazione dei moti rigidi infinitesimi}
-%---------------------------------------------------------------------------------------------------------------------------- 
-
+%----------------------------------------------------------------------------------------------------------------------------
 \index{moto rigido infinitesimo|textbf}In base ai valori degli invarianti si distinguono i seguenti
 casi:
 \begin{enumerate}[label=(\roman*)]
-	\item \textit{Rototraslazione}\index{moto rigido infinitesimo!rototraslazione}:
-	$\bm{\upvartheta} \neq \zerovb$,
-	$\ub(O) \neq \zerovb$,
-	$\bm{\upvartheta} \cdot \ub(O) \neq 0$. Lo spostamento ha
-	sia componente nel piano ortogonale a $\bm{\upvartheta}$ sia
-	componente lungo $\bm{\upvartheta}$. Sull'asse centrale lo
-	spostamento è puramente parallelo a $\bm{\upvartheta}$: il
-	moto, visto da un punto dell'asse centrale, appare come una
-	\textit{traslazione elicoidale}\index{moto rigido infinitesimo!traslazione elicoidale}.
+	\item \textit{Moto elicoidale}\index{moto rigido infinitesimo!moto elicoidale} (o \textit{rototraslazione}\index{moto rigido infinitesimo!rototraslazione}):
+	$\bm{\upvartheta} \neq \mathbf 0$ e
+	$\bm{\upvartheta} \cdot \ub(O) \neq 0$. Sull'asse centrale
+	lo spostamento si riduce alla sola componente parallela a
+	$\bm{\upvartheta}$ — costante lungo tutto l'asse, per
+	l'invarianza scalare — mentre per un punto $P$ generico, non
+	sull'asse, la formula fondamentale vi aggiunge il termine
+	rotazionale $\bm{\upvartheta}\times\overrightarrow{OP}$, con
+	componente nel piano ortogonale a $\bm{\upvartheta}$. Il
+	moto è dunque la sovrapposizione di una \textit{rotazione
+		pura} attorno all'asse centrale e di una \textit{traslazione
+		pura} lungo il medesimo asse: un moto elicoidale.
 	\item \textit{Rotazione pura}\index{rotazione!pura}:
-	$\bm{\upvartheta} \neq \zerovb$ e
+	$\bm{\upvartheta} \neq \mathbf 0$ e
 	$\bm{\upvartheta} \cdot \ub(O) = 0$. L'asse centrale è il
 	luogo dei punti a spostamento nullo; il moto è una rotazione
-	attorno a tale asse.
+	attorno a tale asse — il caso particolare del moto elicoidale
+	in cui la traslazione lungo l'asse si annulla.
 	\item \textit{Traslazione pura}\index{traslazione!pura}:
-	$\bm{\upvartheta} = \zerovb$, $\ub(O) \neq \zerovb$. Tutti
-	i punti hanno lo stesso spostamento; l'asse centrale non
-	esiste (o, equivalentemente, è all'infinito).
-	\item \textit{Riposo}: $\bm{\upvartheta} = \zerovb$,
-	$\ub(O) = \zerovb$.
+	$\bm{\upvartheta} = \mathbf 0$, $\ub(O) \neq \mathbf 0$.
+	Tutti i punti hanno lo stesso spostamento, qualunque sia il
+	polo $O$ scelto (essendo $\bm{\upvartheta}\times\overrightarrow{OP}=\mathbf 0$
+	per ogni $P$); l'asse centrale non è definito in questo caso
+	(o, se si preferisce, è improprio o all'infinito).
+	\item \textit{Riposo}: $\bm{\upvartheta} = \mathbf 0$,
+	$\ub(O) = \mathbf 0$.
 \end{enumerate}
+
+
 
 
 

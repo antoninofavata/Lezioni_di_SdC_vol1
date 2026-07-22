@@ -1,6 +1,6 @@
 \begin{theindex}
 
-  \item allineamento dei centri di rotazione, \textbf{45}
+  \item allineamento dei centri di rotazione, \textbf{46}
   \item asse centrale
     \subitem degli spostamenti, \textbf{34}
 
@@ -11,9 +11,9 @@
   \indexspace
 
   \item centro di rotazione, \textbf{37}
-    \subitem assoluto, 45
-    \subitem relativo, \textbf{43}
-  \item cinematica grafica, \textbf{44}
+    \subitem assoluto, 46
+    \subitem relativo, \textbf{44}
+  \item cinematica grafica, \textbf{45}
   \item corpo rigido, \textbf{31}
 
   \indexspace
@@ -26,13 +26,17 @@
 
   \indexspace
 
+  \item invarianti, 33
+
+  \indexspace
+
   \item momento
     \subitem assiale, \textbf{12}
     \subitem polare, \textbf{10}
     \subitem variazione al variare del polo, 12
   \item moto rigido infinitesimo, \textbf{36}
+    \subitem moto elicoidale, 36
     \subitem rototraslazione, 36
-    \subitem traslazione elicoidale, 36
 
   \indexspace
 
@@ -48,19 +52,19 @@
   \item rotazione, \textbf{31}
     \subitem composizione di rotazioni infinitesime, \textbf{39}
     \subitem pura, 36
-    \subitem relativa, 42
+    \subitem relativa, 43
 
   \indexspace
 
   \item spostamento
     \subitem campo di, 33
-    \subitem relativo, 42
+    \subitem relativo, 43
     \subitem rigido, \textbf{31}
 
   \indexspace
 
   \item teorema
-    \subitem di allineamento dei centri, 45
+    \subitem di allineamento dei centri, 46
   \item traslazione, \textbf{31}
     \subitem pura, 36
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  22 JUL 2026 08:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  22 JUL 2026 08:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2062,21 +2062,26 @@ n/10 (\OML/lmm/m/it/10 Q\OT1/lmr/m/n/10 )[] \OT1/lmr/bx/n/10 a[] \OT1/lmr/m/n/1
 t/10 Q \OMS/lmsy/m/n/10 2 \U/BOONDOX-calo/m/n/10 C\OML/lmm/m/it/10 ;
  []
 
-[26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+[26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40]
 
-LaTeX Warning: Reference `sez:SRF' on page 40 undefined on input line 1695.
+LaTeX Warning: Reference `sez:SRF' on page 41 undefined on input line 1693.
 
 
-LaTeX Warning: Reference `cap:statica_CR' on page 40 undefined on input line 17
-10.
+LaTeX Warning: Reference `cap:statica_CR' on page 41 undefined on input line 17
+08.
 
-[40] [41] [42] [43] [44] [45] [46] [47])
+[41] [42] [43] [44]
+Underfull \vbox (badness 1009) has occurred while \output is active []
+
+ [45]
+[46] [47] [48])
 No file main_Vol_00.nls.
-[48]
+[49] [50
+
+]
 runsystem(makeindex main_Vol_00.idx)...executed safely (allowed).
 
- (./main_Vol_00.ind) [49
-
+ (./main_Vol_00.ind) [51
 
 ] (./main_Vol_00.aux)
  ***********
@@ -2094,12 +2099,12 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
-(rerunfilecheck)             Checksum: CED0A0CFEC66BDF7AE17AD60DFA9A8A4;8483.
+(rerunfilecheck)             Checksum: F629E86B2AD8982FB938CB391B30A27F;8415.
  ) 
 Here is how much of TeX's memory you used:
- 40332 strings out of 474116
- 775581 string characters out of 5743681
- 1971187 words of memory out of 5000000
+ 40334 strings out of 474116
+ 775595 string characters out of 5743681
+ 1972187 words of memory out of 5000000
  61532 multiletter control sequences out of 15000+600000
  697082 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2139,10 +2144,10 @@ lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb>
 st/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/font
 s/type1/public/boondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (49 pages, 1096241 bytes).
+Output written on main_Vol_00.pdf (51 pages, 1098808 bytes).
 PDF statistics:
- 1053 PDF objects out of 1200 (max. 8388607)
- 881 compressed objects within 9 object streams
- 280 named destinations out of 1000 (max. 500000)
+ 1062 PDF objects out of 1200 (max. 8388607)
+ 888 compressed objects within 9 object streams
+ 282 named destinations out of 1000 (max. 500000)
  330 words of extra memory for PDF output out of 10000 (max. 10000000)
 
