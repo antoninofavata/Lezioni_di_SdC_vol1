@@ -1,10 +1,5 @@
-\nomenclatureentry{O$\ub\cdot\vb$@[{$\ub\cdot\vb$}]\begingroup prodotto scalare\nomeqref {1.3}|nompageref}{7}
-\nomenclatureentry{O$\ub\times\vb$@[{$\ub\times\vb$}]\begingroup prodotto vettoriale\nomeqref {1.5}|nompageref}{7}
-\nomenclatureentry{O$\ub\otimes\vb$@[{$\ub\otimes\vb$}]\begingroup prodotto tensoriale\nomeqref {1.12}|nompageref}{9}
-\nomenclatureentry{G$\bm{\upmu}$@[{$\bm{\upmu}$}]\begingroup momento polare di un vettore applicato\nomeqref {1.14}|nompageref}{10}
-\nomenclatureentry{G$\mu_r$@[{$\mu_r$}]\begingroup momento assiale\nomeqref {1.20}|nompageref}{12}
-\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup angolo di una rotazione finita\nomeqref {2.25}|nompageref}{28}
-\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {2.25}|nompageref}{28}
-\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {2.26}|nompageref}{28}
-\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {2.35}|nompageref}{31}
-\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {2.38}|nompageref}{32}
+\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup angolo di una rotazione finita\nomeqref {1.25}|nompageref}{12}
+\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {1.25}|nompageref}{12}
+\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {1.26}|nompageref}{12}
+\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {1.35}|nompageref}{15}
+\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {1.38}|nompageref}{16}

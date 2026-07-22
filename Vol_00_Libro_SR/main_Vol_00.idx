@@ -1,37 +1,23 @@
-\indexentry{vettore!libero|textbf}{5}
-\indexentry{prodotto scalare|textbf}{7}
-\indexentry{prodotto vettoriale|textbf}{7}
-\indexentry{prodotto misto|textbf}{9}
-\indexentry{prodotto tensoriale|textbf}{9}
-\indexentry{vettore!applicato|textbf}{10}
-\indexentry{polo}{10}
-\indexentry{momento!polare|textbf}{10}
-\indexentry{braccio|textbf}{10}
-\indexentry{momento!variazione al variare del polo}{12}
-\indexentry{momento!assiale|textbf}{12}
-\indexentry{vettore!polare|textbf}{14}
-\indexentry{vettore!assiale|textbf}{14}
-\indexentry{pseudovettore|see{vettore (assiale)}}{14}
-\indexentry{equiproiettivita@equiproiettività|textbf}{25}
-\indexentry{spostamento!rigido|textbf}{31}
-\indexentry{corpo rigido|textbf}{31}
-\indexentry{rotazione|textbf}{31}
-\indexentry{traslazione|textbf}{31}
-\indexentry{grado di liberta@grado di libertà|textbf}{31}
-\indexentry{invarianti}{33}
-\indexentry{spostamento!campo di}{33}
-\indexentry{asse centrale!degli spostamenti|textbf}{34}
-\indexentry{moto rigido infinitesimo|textbf}{36}
-\indexentry{moto rigido infinitesimo!moto elicoidale}{36}
-\indexentry{moto rigido infinitesimo!rototraslazione}{36}
-\indexentry{rotazione!pura}{36}
-\indexentry{traslazione!pura}{36}
-\indexentry{centro di rotazione|textbf}{37}
-\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{39}
-\indexentry{spostamento!relativo}{43}
-\indexentry{rotazione!relativa}{43}
-\indexentry{centro di rotazione!relativo|textbf}{44}
-\indexentry{cinematica grafica|textbf}{45}
-\indexentry{centro di rotazione!assoluto}{46}
-\indexentry{allineamento dei centri di rotazione|textbf}{46}
-\indexentry{teorema!di allineamento dei centri}{46}
+\indexentry{equiproiettivita@equiproiettività|textbf}{9}
+\indexentry{spostamento!rigido|textbf}{15}
+\indexentry{corpo rigido|textbf}{15}
+\indexentry{rotazione|textbf}{15}
+\indexentry{traslazione|textbf}{15}
+\indexentry{grado di liberta@grado di libertà|textbf}{15}
+\indexentry{invarianti}{17}
+\indexentry{spostamento!campo di}{17}
+\indexentry{asse centrale!degli spostamenti|textbf}{18}
+\indexentry{moto rigido infinitesimo|textbf}{20}
+\indexentry{moto rigido infinitesimo!moto elicoidale}{20}
+\indexentry{moto rigido infinitesimo!rototraslazione}{20}
+\indexentry{rotazione!pura}{20}
+\indexentry{traslazione!pura}{20}
+\indexentry{centro di rotazione|textbf}{21}
+\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{23}
+\indexentry{spostamento!relativo}{27}
+\indexentry{rotazione!relativa}{27}
+\indexentry{centro di rotazione!relativo|textbf}{28}
+\indexentry{cinematica grafica|textbf}{29}
+\indexentry{centro di rotazione!assoluto}{30}
+\indexentry{allineamento dei centri di rotazione|textbf}{30}
+\indexentry{teorema!di allineamento dei centri}{30}

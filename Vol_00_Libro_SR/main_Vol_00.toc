@@ -1,60 +1,37 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{\numberline {1}Vettori geometrici: liberi, applicati, polari e assiali}{5}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Vettori liberi e algebra vettoriale}{5}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Somma e prodotto per uno scalare}{6}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Prodotto scalare}{7}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Prodotto vettoriale}{7}{subsection.1.1.3}%
-\contentsline {subsection}{\numberline {1.1.4}Doppio prodotto vettoriale}{9}{subsection.1.1.4}%
-\contentsline {subsection}{\numberline {1.1.5}Prodotto misto}{9}{subsection.1.1.5}%
-\contentsline {subsection}{\numberline {1.1.6}Prodotto tensoriale}{9}{subsection.1.1.6}%
-\contentsline {section}{\numberline {1.2}Vettori applicati}{10}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Momento polare}{10}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Legge di variazione del momento al variare del polo}{12}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Momento assiale}{12}{subsection.1.2.3}%
-\contentsline {section}{\numberline {1.3}Vettori polari e vettori assiali}{14}{section.1.3}%
-\contentsline {paragraph}{Vettori polari.}{14}{section.1.3}%
-\contentsline {paragraph}{Vettori assiali (o pseudovettori).}{14}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Comportamento sotto riflessione}{14}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Regole di composizione}{15}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Rappresentazione grafica}{16}{subsection.1.3.3}%
-\contentsline {section}{\numberline {1.4}Il caso piano}{16}{section.1.4}%
-\contentsline {paragraph}{Vettori polari nel piano.}{16}{section.1.4}%
-\contentsline {paragraph}{Vettori assiali nel piano.}{17}{equation.1.4.26}%
-\contentsline {paragraph}{Rappresentazione grafica nel piano.}{17}{equation.1.4.27}%
-\contentsline {section}{\numberline {1.5}Esercizi proposti}{17}{section.1.5}%
-\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{21}{part.1}%
-\contentsline {chapter}{\numberline {2}Cinematica infinitesima del corpo rigido}{23}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Il corpo rigido e il campo di spostamento}{23}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Rappresentazione del campo di spostamento}{25}{subsection.2.1.1}%
-\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{26}{equation.2.1.13}%
-\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{26}{equation.2.1.15}%
-\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{27}{equation.2.1.19}%
-\contentsline {subsection}{\numberline {2.1.2}La rotazione infinitesima}{27}{subsection.2.1.2}%
-\contentsline {paragraph}{Il caso piano.}{28}{equation.2.1.25}%
-\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{30}{equation.2.1.30}%
-\contentsline {subsection}{\numberline {2.1.3}Forma matriciale}{32}{subsection.2.1.3}%
-\contentsline {paragraph}{Il caso tridimensionale.}{32}{subsection.2.1.3}%
-\contentsline {paragraph}{Restrizione al caso piano.}{32}{figure.caption.19}%
-\contentsline {section}{\numberline {2.2}Invarianti del campo di spostamento}{33}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Asse centrale degli spostamenti rigidi}{34}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Decomposizione dello spostamento}{34}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Invarianza della componente parallela}{34}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Annullamento della componente ortogonale}{35}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Proprietà dell'asse centrale}{36}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Classificazione dei moti rigidi infinitesimi}{36}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Particolarizzazione al caso piano}{37}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Formula fondamentale nel piano}{37}{subsection.2.5.1}%
-\contentsline {subsection}{\numberline {2.5.2}Centro di rotazione}{37}{subsection.2.5.2}%
-\contentsline {paragraph}{Coordinate del centro di rotazione.}{38}{ossinner.2.7}%
-\contentsline {subsection}{\numberline {2.5.3}Composizione di rotazioni infinitesime nel piano}{39}{subsection.2.5.3}%
-\contentsline {paragraph}{Caso di due rotazioni.}{41}{ossinner.2.10}%
-\contentsline {subsection}{\numberline {2.5.4}Centro di rotazione relativo e allineamento dei centri}{43}{subsection.2.5.4}%
-\contentsline {paragraph}{Spostamento e rotazione relativi.}{43}{subsection.2.5.4}%
-\contentsline {paragraph}{Espressione dello spostamento relativo.}{43}{subsection.2.5.4}%
-\contentsline {paragraph}{Centro di rotazione relativo.}{44}{equation.2.5.72}%
-\contentsline {paragraph}{Allineamento dei centri.}{44}{equation.2.5.73}%
-\contentsline {subsection}{\numberline {2.5.5}Allineamento dei centri di rotazione relativi}{46}{subsection.2.5.5}%
-\contentsline {paragraph}{Teorema di allineamento.}{46}{subsection.2.5.5}%
-\contentsline {section}{\numberline {2.6}Esercizi proposti}{48}{section.2.6}%
-\contentsline {chapter}{Indice analitico}{51}{section*.28}%
+\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{5}{part.1}%
+\contentsline {chapter}{\numberline {1}Cinematica infinitesima del corpo rigido}{7}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Il corpo rigido e il campo di spostamento}{7}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Rappresentazione del campo di spostamento}{9}{subsection.1.1.1}%
+\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{10}{equation.1.1.13}%
+\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{10}{equation.1.1.15}%
+\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{11}{equation.1.1.19}%
+\contentsline {subsection}{\numberline {1.1.2}La rotazione infinitesima}{11}{subsection.1.1.2}%
+\contentsline {paragraph}{Il caso piano.}{12}{equation.1.1.25}%
+\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{14}{equation.1.1.30}%
+\contentsline {subsection}{\numberline {1.1.3}Forma matriciale}{16}{subsection.1.1.3}%
+\contentsline {paragraph}{Il caso tridimensionale.}{16}{subsection.1.1.3}%
+\contentsline {paragraph}{Restrizione al caso piano.}{16}{figure.caption.7}%
+\contentsline {section}{\numberline {1.2}Invarianti del campo di spostamento}{17}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Asse centrale degli spostamenti rigidi}{18}{section.1.3}%
+\contentsline {subsection}{\numberline {1.3.1}Decomposizione dello spostamento}{18}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Invarianza della componente parallela}{18}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.3}Annullamento della componente ortogonale}{19}{subsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.3.4}Proprietà dell'asse centrale}{20}{subsection.1.3.4}%
+\contentsline {section}{\numberline {1.4}Classificazione dei moti rigidi infinitesimi}{20}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Particolarizzazione al caso piano}{21}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}Formula fondamentale nel piano}{21}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Centro di rotazione}{21}{subsection.1.5.2}%
+\contentsline {paragraph}{Coordinate del centro di rotazione.}{22}{ossinner.1.7}%
+\contentsline {subsection}{\numberline {1.5.3}Composizione di rotazioni infinitesime nel piano}{23}{subsection.1.5.3}%
+\contentsline {paragraph}{Caso di due rotazioni.}{25}{ossinner.1.10}%
+\contentsline {subsection}{\numberline {1.5.4}Centro di rotazione relativo e allineamento dei centri}{27}{subsection.1.5.4}%
+\contentsline {paragraph}{Spostamento e rotazione relativi.}{27}{subsection.1.5.4}%
+\contentsline {paragraph}{Espressione dello spostamento relativo.}{27}{subsection.1.5.4}%
+\contentsline {paragraph}{Centro di rotazione relativo.}{28}{equation.1.5.72}%
+\contentsline {paragraph}{Allineamento dei centri.}{28}{equation.1.5.73}%
+\contentsline {subsection}{\numberline {1.5.5}Allineamento dei centri di rotazione relativi}{30}{subsection.1.5.5}%
+\contentsline {paragraph}{Teorema di allineamento.}{30}{subsection.1.5.5}%
+\contentsline {section}{\numberline {1.6}Esercizi proposti}{32}{section.1.6}%
+\contentsline {chapter}{Indice analitico}{35}{section*.16}%

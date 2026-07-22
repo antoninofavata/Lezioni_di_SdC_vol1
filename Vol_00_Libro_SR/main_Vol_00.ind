@@ -1,79 +1,54 @@
 \begin{theindex}
 
-  \item allineamento dei centri di rotazione, \textbf{46}
+  \item allineamento dei centri di rotazione, \textbf{30}
   \item asse centrale
-    \subitem degli spostamenti, \textbf{34}
+    \subitem degli spostamenti, \textbf{18}
 
   \indexspace
 
-  \item braccio, \textbf{10}
+  \item centro di rotazione, \textbf{21}
+    \subitem assoluto, 30
+    \subitem relativo, \textbf{28}
+  \item cinematica grafica, \textbf{29}
+  \item corpo rigido, \textbf{15}
 
   \indexspace
 
-  \item centro di rotazione, \textbf{37}
-    \subitem assoluto, 46
-    \subitem relativo, \textbf{44}
-  \item cinematica grafica, \textbf{45}
-  \item corpo rigido, \textbf{31}
+  \item equiproiettività, \textbf{9}
 
   \indexspace
 
-  \item equiproiettività, \textbf{25}
+  \item grado di libertà, \textbf{15}
 
   \indexspace
 
-  \item grado di libertà, \textbf{31}
+  \item invarianti, 17
 
   \indexspace
 
-  \item invarianti, 33
+  \item moto rigido infinitesimo, \textbf{20}
+    \subitem moto elicoidale, 20
+    \subitem rototraslazione, 20
 
   \indexspace
 
-  \item momento
-    \subitem assiale, \textbf{12}
-    \subitem polare, \textbf{10}
-    \subitem variazione al variare del polo, 12
-  \item moto rigido infinitesimo, \textbf{36}
-    \subitem moto elicoidale, 36
-    \subitem rototraslazione, 36
-
-  \indexspace
-
-  \item polo, 10
-  \item prodotto misto, \textbf{9}
-  \item prodotto scalare, \textbf{7}
-  \item prodotto tensoriale, \textbf{9}
-  \item prodotto vettoriale, \textbf{7}
-  \item pseudovettore, \see{vettore (assiale)}{14}
-
-  \indexspace
-
-  \item rotazione, \textbf{31}
-    \subitem composizione di rotazioni infinitesime, \textbf{39}
-    \subitem pura, 36
-    \subitem relativa, 43
+  \item rotazione, \textbf{15}
+    \subitem composizione di rotazioni infinitesime, \textbf{23}
+    \subitem pura, 20
+    \subitem relativa, 27
 
   \indexspace
 
   \item spostamento
-    \subitem campo di, 33
-    \subitem relativo, 43
-    \subitem rigido, \textbf{31}
+    \subitem campo di, 17
+    \subitem relativo, 27
+    \subitem rigido, \textbf{15}
 
   \indexspace
 
   \item teorema
-    \subitem di allineamento dei centri, 46
-  \item traslazione, \textbf{31}
-    \subitem pura, 36
-
-  \indexspace
-
-  \item vettore
-    \subitem applicato, \textbf{10}
-    \subitem assiale, \textbf{14}
-    \subitem libero, \textbf{5}
-    \subitem polare, \textbf{14}
+    \subitem di allineamento dei centri, 30
+  \item traslazione, \textbf{15}
+    \subitem pura, 20
 
 \end{theindex}
