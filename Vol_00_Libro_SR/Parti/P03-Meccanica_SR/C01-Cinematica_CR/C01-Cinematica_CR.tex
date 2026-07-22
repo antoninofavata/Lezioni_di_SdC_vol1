@@ -327,8 +327,13 @@ Dunque $(\bm\upvartheta_P-\bm\upvartheta_{P'})\times\overrightarrow{PQ}=\mathbf 
 
 Concludiamo dunque che 
 \begin{equation}\label{eq:campo_rigido}
-	\ub(Q) = \ub(P) + \bm{\upvartheta}\times \overrightarrow{PQ} \qquad \forall\, P,Q \in \Cc.
+	\ub(Q) = \ub(P) + \bm{\upvartheta}\times \overrightarrow{PQ} \qquad \forall\, P,Q \in \Cc,
 \end{equation}
+ovvero, in termini del tensore antisimmetrico $\bm{\Theta}$ associato a $\bm\upvartheta$:
+\begin{equation}\label{eq:campo_rigidoTH}
+	\ub(Q) = \ub(P) + \bm{\Theta}\, \overrightarrow{PQ} \qquad \forall\, P,Q \in \Cc.
+\end{equation}
+
 
 
 
@@ -670,7 +675,16 @@ fra due punti è tangenziale.
 
 \paragraph{Il caso tridimensionale.}
 In componenti rispetto alla base ortonormale
-$\{\ab_x,\ab_y,\ab_z\}$, la formula~\eqref{eq:FFCI} si scrive
+$\{\ab_x,\ab_y,\ab_z\}$,  il campo di spostamento verrà rappresentato come
+\begin{equation}
+	\ub(P)=u(P)\,\ab_x+v(P)\,\ab_y+w(P)\,\ab_z,
+\end{equation}
+e il vettore di rotazione infinitesima come
+\begin{equation}
+	\bm\upvartheta=\vartheta_x\,\ab_x+\vartheta_y\,\ab_y+\vartheta_z\,\ab_z.
+\end{equation}
+Indicheremo con $x(P)$, $y(P)$ e $z(P)$ le tre componenti del vettore posizione $\xb(P)$.
+Possiamo dunque scrivere la formula~\eqref{eq:campo_rigidoTH} come
 \begin{equation}\label{eq:FFCI_matrice}
 	\bm{u}(P) = \bm{u}(O)
 	+ \bm{\varTheta}\bigl(\bm{x}(P) - \bm{x}(O)\bigr),
@@ -686,10 +700,9 @@ cioè, per esteso\nomenclature[G]{$\bm{\varTheta}$}{operatore (matrice) di rotaz
 	\end{bmatrix}
 	\begin{Bmatrix}
 		x(P)-x(O) \\ y(P)-y(O) \\ z(P)-z(O)
-	\end{Bmatrix},
+	\end{Bmatrix}.
 \end{equation}
-dove $x(P)-x(O)$, $y(P)-y(O)$, $z(P)-z(O)$ sono le componenti
-del vettore $\overrightarrow{OP}$ nel riferimento scelto. Lo spostamento rigido nello spazio è caratterizzato da sei
+Lo spostamento rigido nello spazio è caratterizzato da sei
 parametri indipendenti: le tre componenti della traslazione
 $u(O)$, $v(O)$, $w(O)$ e le tre componenti della rotazione
 $\vartheta_x$, $\vartheta_y$, $\vartheta_z$ (\FIGref{fig:GDL_3D_piano}\,a). 
@@ -819,8 +832,7 @@ le coordinate di $O$ si annullano e la formula si semplifica in
 
 \paragraph{Restrizione al caso piano.}
 Per un corpo rigido nel piano $(x,y)$, la rotazione è diretta
-lungo $\ab_z$: $\bm{\upvartheta} = \vartheta\,\ab_z$, ovvero
-$\vartheta_x = \vartheta_y = 0$, $\vartheta_z = \vartheta$.
+lungo $\ab_z$: $\bm{\upvartheta} = \vartheta\,\ab_z$.
 La terza componente della~\eqref{eq:FFCI_estesa_O} dà
 $w(P) = w(O)$: lo spostamento fuori dal piano è uniforme e si
 disaccoppia completamente dalla cinematica nel piano. Le prime
@@ -852,8 +864,9 @@ nella~\eqref{eq:R_piano}:
 	\end{bmatrix}
 	\;\approx\;
 	\begin{bmatrix} 0 & -\vartheta \\ \vartheta & 0
-	\end{bmatrix}.
+	\end{bmatrix},
 \end{equation}
+avendo indicato con $\bm{I}_2$ la matrice identità nel piano.
 
 
 

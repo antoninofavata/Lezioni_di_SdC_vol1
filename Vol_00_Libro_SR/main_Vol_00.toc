@@ -31,8 +31,8 @@
 \contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{26}{equation.2.1.15}%
 \contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{27}{equation.2.1.19}%
 \contentsline {subsection}{\numberline {2.1.2}La rotazione infinitesima}{27}{subsection.2.1.2}%
-\contentsline {paragraph}{Il caso piano.}{28}{equation.2.1.24}%
-\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{30}{equation.2.1.29}%
+\contentsline {paragraph}{Il caso piano.}{28}{equation.2.1.25}%
+\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{30}{equation.2.1.30}%
 \contentsline {subsection}{\numberline {2.1.3}Forma matriciale}{32}{subsection.2.1.3}%
 \contentsline {paragraph}{Il caso tridimensionale.}{32}{subsection.2.1.3}%
 \contentsline {paragraph}{Restrizione al caso piano.}{32}{figure.caption.19}%
@@ -52,8 +52,8 @@
 \contentsline {subsection}{\numberline {2.5.4}Centro di rotazione relativo e allineamento dei centri}{42}{subsection.2.5.4}%
 \contentsline {paragraph}{Spostamento e rotazione relativi.}{42}{subsection.2.5.4}%
 \contentsline {paragraph}{Espressione dello spostamento relativo.}{42}{subsection.2.5.4}%
-\contentsline {paragraph}{Centro di rotazione relativo.}{43}{equation.2.5.69}%
-\contentsline {paragraph}{Allineamento dei centri.}{43}{equation.2.5.70}%
+\contentsline {paragraph}{Centro di rotazione relativo.}{43}{equation.2.5.72}%
+\contentsline {paragraph}{Allineamento dei centri.}{43}{equation.2.5.73}%
 \contentsline {subsection}{\numberline {2.5.5}Allineamento dei centri di rotazione relativi}{45}{subsection.2.5.5}%
 \contentsline {paragraph}{Teorema di allineamento.}{45}{subsection.2.5.5}%
 \contentsline {section}{\numberline {2.6}Esercizi proposti}{47}{section.2.6}%
