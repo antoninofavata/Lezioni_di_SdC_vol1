@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  22 JUL 2026 06:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  22 JUL 2026 07:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2094,13 +2094,13 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
-(rerunfilecheck)             Checksum: D22B3288D55A12D34F74F05BC0AF14FC;8483.
+(rerunfilecheck)             Checksum: CED0A0CFEC66BDF7AE17AD60DFA9A8A4;8483.
  ) 
 Here is how much of TeX's memory you used:
- 40337 strings out of 474116
- 775713 string characters out of 5743681
- 1965187 words of memory out of 5000000
- 61539 multiletter control sequences out of 15000+600000
+ 40328 strings out of 474116
+ 775517 string characters out of 5743681
+ 1964187 words of memory out of 5000000
+ 61531 multiletter control sequences out of 15000+600000
  697082 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  117i,21n,121p,1343b,1487s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -2139,10 +2139,10 @@ lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb>
 st/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/font
 s/type1/public/boondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (49 pages, 1096155 bytes).
+Output written on main_Vol_00.pdf (49 pages, 1095770 bytes).
 PDF statistics:
- 1051 PDF objects out of 1200 (max. 8388607)
- 879 compressed objects within 9 object streams
- 278 named destinations out of 1000 (max. 500000)
+ 1050 PDF objects out of 1200 (max. 8388607)
+ 878 compressed objects within 9 object streams
+ 277 named destinations out of 1000 (max. 500000)
  330 words of extra memory for PDF output out of 10000 (max. 10000000)
 
