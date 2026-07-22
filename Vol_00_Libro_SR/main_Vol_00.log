@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  22 JUL 2026 07:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  22 JUL 2026 07:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2064,11 +2064,11 @@ t/10 Q \OMS/lmsy/m/n/10 2 \U/BOONDOX-calo/m/n/10 C\OML/lmm/m/it/10 ;
 
 [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
 
-LaTeX Warning: Reference `sez:SRF' on page 40 undefined on input line 1684.
+LaTeX Warning: Reference `sez:SRF' on page 40 undefined on input line 1682.
 
 
 LaTeX Warning: Reference `cap:statica_CR' on page 40 undefined on input line 16
-99.
+97.
 
 [40] [41] [42] [43] [44] [45] [46] [47])
 No file main_Vol_00.nls.
@@ -2099,7 +2099,7 @@ Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
 Here is how much of TeX's memory you used:
  40328 strings out of 474116
  775517 string characters out of 5743681
- 1964187 words of memory out of 5000000
+ 1967187 words of memory out of 5000000
  61531 multiletter control sequences out of 15000+600000
  697082 words of font info for 155 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2139,7 +2139,7 @@ lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb>
 st/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/ty
 pe1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/font
 s/type1/public/boondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (49 pages, 1095770 bytes).
+Output written on main_Vol_00.pdf (49 pages, 1095647 bytes).
 PDF statistics:
  1050 PDF objects out of 1200 (max. 8388607)
  878 compressed objects within 9 object streams
