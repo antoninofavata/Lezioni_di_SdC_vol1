@@ -308,7 +308,7 @@ le componenti diagonali di $\bm{\Theta}_P$ sono nulle. Essendo $P$ interno a $\C
 cioè $(\Theta_P)_{ij}+(\Theta_P)_{ji}=0$ per ogni $i\neq j$. Insieme all'annullarsi della diagonale, questo significa esattamente che $\bm{\Theta}_P$ è antisimmetrico: $(\Theta_P)_{ji}=-(\Theta_P)_{ij}$ per ogni $i,j=x,y,z$.
 
 
-Ogni tensore antisimmetrico $\bm{\Theta}_P$, in dimensione 3, si scrive in modo unico come $\bm{\Theta}_P\mb=\bm{\upvartheta}_P\times\mb$ per ogni $\mb$, per un opportuno vettore $\bm{\upvartheta}_P$\footnote{Di componenti $(\vartheta_P)_k=-\tfrac12\epsilon_{kij}(\Theta_P)_{ij}$}. Dalla \eqref{eq:linearita_wP} segue allora
+Ogni tensore antisimmetrico $\bm{\Theta}_P$, in dimensione 3, si scrive in modo unico come $\bm{\Theta}_P\mb=\bm{\upvartheta}_P\times\mb$ per ogni $\mb$, per un opportuno vettore $\bm{\upvartheta}_P$\footnote{Di componenti $(\vartheta_P)_k=-\tfrac12\varepsilon_{kij}(\Theta_P)_{ij}$, dove $\varepsilon$ è il simbolo di Ricci (v.  Sez. \ref{prodvet}).}. Dalla \eqref{eq:linearita_wP} segue allora
 \begin{equation}\label{eq:formula_polo_P}
 	\ub(Q)-\ub(P) = \wb_P(Q) = \bm{\upvartheta}_P\times\overrightarrow{PQ} \qquad \forall\, Q\in\Cc.
 \end{equation}
@@ -876,9 +876,6 @@ avendo indicato con $\bm{I}_2$ la matrice identità nel piano.
 
 
 
-
-\todo[inline]{Sono arrivato qui}
-
 \section{Invarianti del campo di spostamento}\label{sec:invarianti}
 %----------------------------------------------------------------------------------------------------------------------------
 Il campo di spostamento rigido $\ub(P)=\ub(O)+\bm{\upvartheta}\times\overrightarrow{OP}$ dipende, nella sua scrittura, da una scelta arbitraria di polo $O$: cambiando polo, $\ub(O)$ cambia, ma la variazione di configurazione descritta è ovviamente la stessa. È naturale chiedersi allora cosa, in questa descrizione, sia \emph{intrinseco}  e cosa sia invece un artefatto della scelta di $O$. Le grandezze intrinseche si dicono \textit{invarianti}\index{invarianti} del campo di spostamento; ne esistono esattamente due, e insieme caratterizzano completamente il tipo di moto: come vedremo, un generico spostamento rigido infinitesimo si può sempre descrivere, con la scelta opportuna del polo, come sovrapposizione di una rotazione pura e di una traslazione pura \emph{lungo il medesimo asse} — un moto \textit{elicoidale}.
@@ -963,19 +960,20 @@ $\bm{\upvartheta} \cdot \ub$ già dimostrata nella
 Sezione~\ref{sec:invarianti}.
 
 
-\paragraph{Annullamento della componente ortogonale.}
-
-Cerchiamo un punto $C$ il cui spostamento sia puramente
+\paragraph{Costruzione dell'asse centrale.}
+Abbiamo appena visto che la componente parallela $\ub_\parallel$ è la stessa per ogni punto del corpo: cambiando polo non si può mai eliminarla, se non è già nulla in partenza. La componente perpendicolare $\ub_\perp$, invece, dipende dal polo — attraverso il termine rotazionale $\bm{\upvartheta}\times\overrightarrow{OP}$ — e dunque \emph{può} in linea di principio annullarsi per una scelta opportuna di $P$. Cerchiamo allora un punto $C$ il cui spostamento sia puramente
 parallelo a $\bm{\upvartheta}$, cioè tale che
-$\ub_{\perp}(C) = \zerovb$. Valutando la~\eqref{eq:FFCI} in
+$\ub_{\perp}(C) = \mathbf 0$: se un tale punto esiste, in esso il campo di spostamento assume la forma più semplice possibile, ridotto alla sola componente invariante. Valutando la~\eqref{eq:campo_rigido} in
 $C$ e separando la componente perpendicolare a
 $\bm{\upvartheta}$:
 \begin{equation}\label{eq:cond_annull_cin}
 	\ub_{\perp}(C)
 	= \ub_{\perp}(O)
 	+ \bm{\upvartheta} \times \overrightarrow{OC}
-	= \zerovb.
+	= \mathbf 0.
 \end{equation}
+
+
 Poiché $\bm{\upvartheta} \times \overrightarrow{OC}$ dipende
 solo dalla componente di $\overrightarrow{OC}$ perpendicolare a
 $\bm{\upvartheta}$ --- la componente parallela non contribuisce
@@ -987,25 +985,48 @@ e la condizione diventa
 	\bm{\upvartheta} \times \overrightarrow{OC}_{\!\perp}
 	= -\ub_{\perp}(O).
 \end{equation}
-Il primo membro è ortogonale sia a $\bm{\upvartheta}$ sia a
-$\overrightarrow{OC}_{\!\perp}$; deve esserlo anche il secondo.
-Poiché $\ub_{\perp}(O)$ è già ortogonale a $\bm{\upvartheta}$
-per costruzione, resta la condizione che
-$\overrightarrow{OC}_{\!\perp}$ sia ortogonale a
-$\ub_{\perp}(O)$: nel piano $\pi$ perpendicolare a
-$\bm{\upvartheta}$, la direzione di
-$\overrightarrow{OC}_{\!\perp}$ è univocamente determinata.
-Quanto al modulo, l'applicazione
-$\vb \mapsto \bm{\upvartheta} \times \vb$ ristretta a tale
-piano è una rotazione di $\pi/2$ composta con un riscalamento
-di fattore $|\bm{\upvartheta}|$, da cui
+Per risolvere questa equazione --- e dunque determinare la posizione di $C_\perp$ --- usiamo l'identità del doppio
+prodotto vettoriale,
+$\bm{\upvartheta}\times(\bm{\upvartheta}\times\wb)
+= (\bm{\upvartheta}\cdot\wb)\,\bm{\upvartheta} - |\bm{\upvartheta}|^2\,\wb$,
+applicata a $\wb=\ub_\perp(O)$: poiché $\ub_\perp(O)$ è
+ortogonale a $\bm{\upvartheta}$ per costruzione, il primo
+termine si annulla e resta
+$\bm{\upvartheta}\times(\bm{\upvartheta}\times\ub_\perp(O))
+= -|\bm{\upvartheta}|^2\ub_\perp(O)$, cioè, dividendo per
+$-|\bm{\upvartheta}|^2$,
 \begin{equation}
-	|\overrightarrow{OC}_{\!\perp}|
-	= \frac{|\ub_{\perp}(O)|}{|\bm{\upvartheta}|}.
+	\bm{\upvartheta}\times\left(\frac{\bm{\upvartheta}\times\ub_\perp(O)}{|\bm{\upvartheta}|^2}\right)
+	= -\ub_\perp(O).
 \end{equation}
-Poiché $\lambda$ resta libero, il luogo dei punti $C$ è una
-retta parallela a $\bm{\upvartheta}$: l'asse centrale degli
+Confrontando con la~\eqref{eq:cond_annull_cin2}, il vettore
+\begin{equation}\label{eq:OC_perp}
+	\overrightarrow{OC}_{\!\perp} = \frac{\bm{\upvartheta}\times\ub_\perp(O)}{|\bm{\upvartheta}|^2}
+	= \frac{\bm{\upvartheta}\times\ub(O)}{|\bm{\upvartheta}|^2}
+\end{equation}
+è dunque soluzione. È anche
+l'unica: se $\vb'$ fosse un'altra soluzione
+della~\eqref{eq:cond_annull_cin2}, sottraendo si avrebbe
+$\bm{\upvartheta}\times(\overrightarrow{OC}_{\!\perp}-\vb')=\mathbf 0$;
+ma l'applicazione $\vb\mapsto\bm{\upvartheta}\times\vb$,
+ristretta al piano $\pi$ perpendicolare a $\bm{\upvartheta}$, è
+una rotazione di $\pi/2$ composta con un riscalamento di
+fattore $|\bm{\upvartheta}|$ (dunque iniettiva su $\pi$, non
+annullando mai un vettore non nullo), sicché
+$\overrightarrow{OC}_{\!\perp}=\vb'$. In particolare
+\begin{equation}
+	|\overrightarrow{OC}_{\!\perp}| = \frac{|\ub_\perp(O)|}{|\bm{\upvartheta}|},
+\end{equation}
+coerentemente con la proprietà di riscalamento appena usata.
+
+Ne segue allora che l'insieme dei punti $C$, dato da
+\begin{equation}\label{OC}
+\overrightarrow{OC}=\frac{\bm{\upvartheta}\times\ub(O)}{|\bm{\upvartheta}|^2}+\lambda\,\frac{\bm\upvartheta}{|\bm\upvartheta|}, \quad \lambda\in \Ro,
+\end{equation}
+è una retta parallela a $\bm{\upvartheta}$: l'asse centrale degli
 spostamenti (\FIGref{fig:asse_centrale_spostamenti}).
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \begin{figure}[htbp]
 	\centering
@@ -1119,44 +1140,49 @@ spostamenti (\FIGref{fig:asse_centrale_spostamenti}).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 
 
-\subsection{Proprietà dell'asse centrale}
+Osserviamo che, nel caso di rotazione pura
+($\bm{\upvartheta} \cdot \ub(O) = 0$), la componente
+invariante $\ub_{\parallel}$ è nulla e l'asse centrale è il
+luogo dei punti a spostamento nullo.
 
-L'asse centrale degli spostamenti gode delle seguenti
-proprietà:
-\begin{enumerate}[label=(\roman*)]
-	\item per $\bm{\upvartheta} \neq \zerovb$ è univocamente
-	determinato e la sua posizione è indipendente dal punto $O$
-	usato per la costruzione;
-	\item lungo di esso lo spostamento è puramente parallelo a
-	$\bm{\upvartheta}$ e pari a
-	$\ub_{\parallel}
-	= (\bm{\upvartheta} \cdot \ub(O))/|\bm{\upvartheta}|^2
-	\;\bm{\upvartheta}$;
-	\item la distanza dell'asse centrale dal punto $O$ è
-	$|\ub_{\perp}(O)|/|\bm{\upvartheta}|$;
-	\item nel caso di rotazione pura
-	($\bm{\upvartheta} \cdot \ub(O) = 0$), la componente
-	invariante $\ub_{\parallel}$ è nulla e l'asse centrale è il
-	luogo dei punti a spostamento nullo.
-\end{enumerate}
+%\subsection{Proprietà dell'asse centrale}
+%
+%L'asse centrale degli spostamenti gode delle seguenti
+%proprietà:
+%\begin{enumerate}[label=(\roman*)]
+%	\item per $\bm{\upvartheta} \neq \zerovb$ è univocamente
+%	determinato e la sua posizione è indipendente dal punto $O$
+%	usato per la costruzione;
+%	\item lungo di esso lo spostamento è puramente parallelo a
+%	$\bm{\upvartheta}$ e pari a
+%	$\ub_{\parallel}
+%	= (\bm{\upvartheta} \cdot \ub(O))/|\bm{\upvartheta}|^2
+%	\;\bm{\upvartheta}$;
+%	\item la distanza dell'asse centrale dal punto $O$ è
+%	$|\ub_{\perp}(O)|/|\bm{\upvartheta}|$;
+%	\item nel caso di rotazione pura
+%	($\bm{\upvartheta} \cdot \ub(O) = 0$), la componente
+%	invariante $\ub_{\parallel}$ è nulla e l'asse centrale è il
+%	luogo dei punti a spostamento nullo.
+%\end{enumerate}
 
-\begin{oss}
-	La condizione che definisce l'asse centrale può essere
-	espressa anche in forma algebrica: un punto $P$ appartiene
-	all'asse centrale se e solo se
-	$\ub(P) \times \bm{\upvartheta} = \zerovb$, cioè se il suo
-	spostamento è parallelo al vettore rotazione. Sostituendo
-	la~\eqref{eq:FFCI} e sviluppando il doppio prodotto
-	vettoriale si ottiene l'equazione
-	\begin{equation}\label{eq:asse_centrale_algebrica}
-		\ub(O) \times \bm{\upvartheta}
-		+ |\bm{\upvartheta}|^2\,\overrightarrow{OP}
-		- (\bm{\upvartheta} \cdot \overrightarrow{OP})\,
-		\bm{\upvartheta} = \zerovb,
-	\end{equation}
-	che definisce la stessa retta costruita geometricamente
-	nei paragrafi precedenti. 
-\end{oss}
+%\begin{oss}
+%	La condizione che definisce l'asse centrale può essere
+%	espressa anche in forma algebrica: un punto $P$ appartiene
+%	all'asse centrale se e solo se
+%	$\ub(P) \times \bm{\upvartheta} = \zerovb$, cioè se il suo
+%	spostamento è parallelo al vettore rotazione. Sostituendo
+%	la~\eqref{eq:FFCI} e sviluppando il doppio prodotto
+%	vettoriale si ottiene l'equazione
+%	\begin{equation}\label{eq:asse_centrale_algebrica}
+%		\ub(O) \times \bm{\upvartheta}
+%		+ |\bm{\upvartheta}|^2\,\overrightarrow{OP}
+%		- (\bm{\upvartheta} \cdot \overrightarrow{OP})\,
+%		\bm{\upvartheta} = \zerovb,
+%	\end{equation}
+%	che definisce la stessa retta costruita geometricamente
+%	nei paragrafi precedenti. 
+%\end{oss}
 
 
 
@@ -1207,15 +1233,15 @@ osservato nel Paragrafo~\ref{sec:forma_matriciale}, il campo di spostamento si r
 
 
 
-\subsection{Formula fondamentale nel piano}
+%\subsection{Formula fondamentale nel piano}
 
-In forma vettoriale, la formula fondamentale~\eqref{eq:FFCI} 
+In forma vettoriale, la formula fondamentale~\eqref{eq:campo_rigido}
 specializzata al caso piano si scrive
 \begin{equation}\label{eq:FFCI_piano_vett}
-	\ub(P) = \ub(O) + \bm{\upvartheta} \times \overrightarrow{OP}.
+	\ub(P) = \ub(O) +\vartheta\, \bm{a}_z \times \overrightarrow{OP}.
 \end{equation}
 Il termine di rotazione
-$\bm{\upvartheta} \times \overrightarrow{OP}$ è un vettore che
+$\vartheta\, \bm{a}_z\times \overrightarrow{OP}$ è un vettore che
 giace nel piano, perpendicolare a $\overrightarrow{OP}$, di
 modulo $|\vartheta|\,|\overrightarrow{OP}|$: geometricamente,
 l'applicazione
@@ -1231,37 +1257,43 @@ fattore $|\vartheta|$.
 	giace nel piano. Dei casi elencati nella classificazione, nel piano si presentano dunque soltanto la rotazione pura	($\vartheta \neq 0$, con centro di rotazione nel piano	finito), la traslazione pura ($\vartheta = 0$) e il riposo.
 \end{oss}
 
+\bigskip
 
-\subsection{Centro di rotazione}\label{sec:CR}\index{centro di rotazione|textbf}
-
-Quando $\vartheta \neq 0$, cerchiamo un punto $C$ nel piano il
-cui spostamento sia nullo: $\ub(C) = \zerovb$. Il ragionamento
-ricalca, nel piano, la costruzione geometrica dell'asse
-centrale.
-
-Dalla~\eqref{eq:FFCI_piano_vett}, la condizione
-$\ub(C) = \zerovb$ richiede
+Essendo la parte parallela a $\bm{\upvartheta}$ nulla, la \eqref{eq:cond_annull_cin2}
+si riduce a:
+%
+%
+%\subsection{Centro di rotazione}\label{sec:CR}\index{centro di rotazione|textbf}
+%
+%Quando $\vartheta \neq 0$, cerchiamo un punto $C$ nel piano il
+%cui spostamento sia nullo: $\ub(C) = \zerovb$. Il ragionamento
+%ricalca, nel piano, la costruzione geometrica dell'asse
+%centrale.
+%
+%Dalla~\eqref{eq:FFCI_piano_vett}, la condizione
+%$\ub(C) = \zerovb$ richiede
 \begin{equation}\label{eq:cond_CR}
 	\bm{\upvartheta} \times \overrightarrow{OC} = -\ub(O).
 \end{equation}
-Il primo membro è perpendicolare a $\overrightarrow{OC}$; deve
-esserlo anche il secondo, dunque $\overrightarrow{OC}$ deve
-essere perpendicolare a $\ub(O)$. Quanto al modulo, poiché
-$|\bm{\upvartheta} \times \overrightarrow{OC}|
-= |\vartheta|\,|\overrightarrow{OC}|$, si ottiene
-\begin{equation}\label{eq:CR_distanza}
-	|\overrightarrow{OC}| = \frac{|\ub(O)|}{|\vartheta|}.
-\end{equation}
-Direzione e modulo sono dunque determinati; il verso è fissato
-dalla~\eqref{eq:cond_CR}. L'interpretazione geometrica è
-immediata: $C$ si ottiene ruotando il vettore $\ub(O)$ di
-$90^\circ$ nel verso di $\vartheta$ e riscalandolo di un fattore
-$1/|\vartheta|$. In forma vettoriale:
+%Il primo membro è perpendicolare a $\overrightarrow{OC}$; deve
+%esserlo anche il secondo, dunque $\overrightarrow{OC}$ deve
+%essere perpendicolare a $\ub(O)$. Quanto al modulo, poiché
+%$|\bm{\upvartheta} \times \overrightarrow{OC}|
+%= |\vartheta|\,|\overrightarrow{OC}|$, si ottiene
+%\begin{equation}\label{eq:CR_distanza}
+%	|\overrightarrow{OC}| = \frac{|\ub(O)|}{|\vartheta|}.
+%\end{equation}
+%Direzione e modulo sono dunque determinati; il verso è fissato
+%dalla~\eqref{eq:cond_CR}. L'interpretazione geometrica è
+%immediata: $C$ si ottiene ruotando il vettore $\ub(O)$ di
+%$90^\circ$ nel verso di $\vartheta$ e riscalandolo di un fattore
+%$1/|\vartheta|$. In forma vettoriale:
+e la \eqref{OC}  diventa
 \begin{equation}\label{eq:vettore_OC}
 	\overrightarrow{OC}
-	= \frac{\ab_z \times \ub(O)}{\vartheta}.
+	= \frac{\ab_z \times \ub(O)}{\vartheta};
 \end{equation}
-In $C$ il moto si riduce a pura rotazione. Sostituendo
+in altri termini, in $C$ il moto si riduce a pura rotazione e il punto $C$ rappresenta il \textit{centro di rotazione}. Sostituendo
 nella formula fondamentale~\eqref{eq:FFCI_piano_vett}
 l'espressione
 $\ub(O) = \bm{\upvartheta} \times \overrightarrow{CO}$,
@@ -1283,11 +1315,13 @@ perpendicolare al piano (essendo parallelo a
 $\bm{\upvartheta} = \vartheta\,\ab_z$), e l'intersezione è
 sempre garantita.
 
-Nel caso di traslazione pura ($\vartheta = 0$,
-$\ub(O) \neq \zerovb$), la~\eqref{eq:vettore_OC} dà
-$|\overrightarrow{OC}| \to \infty$: il centro di rotazione
-si allontana indefinitamente nella direzione perpendicolare a
-$\ub(O)$.
+%Nel caso di traslazione pura ($\vartheta = 0$,
+%$\ub(O) \neq \zerovb$), la~\eqref{eq:vettore_OC} dà
+%$|\overrightarrow{OC}| \to \infty$: il centro di rotazione
+%si allontana indefinitamente nella direzione perpendicolare a
+%$\ub(O)$.
+
+
 
 \begin{oss}
 	La traslazione pura può essere riguardata come il caso
@@ -1307,30 +1341,44 @@ $\ub(O)$.
 	centro di rotazione ordinario.
 \end{oss}
 
-\paragraph{Coordinate del centro di rotazione.}
-Le coordinate di $C$ si ottengono direttamente dalla forma
-matriciale~\eqref{eq:FFCI_piano} imponendo
-$u(C) = v(C) = 0$:
-\begin{equation}
-	\begin{bmatrix}
-		0 & -\vartheta \\
-		\vartheta & 0
-	\end{bmatrix}
-	\begin{Bmatrix}
-		x(C) \\ y(C)
-	\end{Bmatrix}
-	= -\begin{Bmatrix} u(O) \\ v(O) \end{Bmatrix},
-\end{equation}
-da cui
+
+
+\bigskip
+
+Proiettanto la \eqref{eq:vettore_OC} lungo le direzioni $\ab_x$ e $\ab_y$ si ottengono le coordinate del centro di rotazione:
 \begin{equation}\label{eq:CR_coord}
-	x(C) = -\frac{v(O)}{\vartheta}, \qquad
-	y(C) = \frac{u(O)}{\vartheta},
+\begin{aligned}
+		&x(C) =  \frac{\ab_z \times \ub(O)}{\vartheta}\cdot \ab_x=\ab_x\times\ab_z\cdot\frac{\ub(O)}{\vartheta}=-\ab_y\cdot\frac{\ub(O)}{\vartheta}=-\frac{v(O)}{\vartheta}, \\
+&	y(C) =  \frac{\ab_z \times \ub(O)}{\vartheta}\cdot \ab_y=\ab_y\times\ab_z\cdot\frac{\ub(O)}{\vartheta}=\ab_x\cdot\frac{\ub(O)}{\vartheta}=\frac{u(O)}{\vartheta},
+\end{aligned}
 \end{equation}
-che è la rappresentazione in componenti della relazione
-vettoriale~\eqref{eq:vettore_OC}. Il campo di spostamento si
+%
+%\paragraph{Coordinate del centro di rotazione.}
+%Le coordinate di $C$ si ottengono direttamente dalla forma
+%matriciale~\eqref{eq:FFCI_piano} imponendo
+%$u(C) = v(C) = 0$:
+%\begin{equation}
+%	\begin{bmatrix}
+%		0 & -\vartheta \\
+%		\vartheta & 0
+%	\end{bmatrix}
+%	\begin{Bmatrix}
+%		x(C) \\ y(C)
+%	\end{Bmatrix}
+%	= -\begin{Bmatrix} u(O) \\ v(O) \end{Bmatrix},
+%\end{equation}
+%da cui
+%\begin{equation}\label{eq:CR_coord}
+%	x(C) = -\frac{v(O)}{\vartheta}, \qquad
+%	y(C) = \frac{u(O)}{\vartheta},
+%\end{equation}
+%che è la rappresentazione in componenti della relazione
+%vettoriale~\eqref{eq:vettore_OC}. 
+
+Il campo di spostamento si
 esprime in forma particolarmente semplice se si sceglie $C$
 come punto di riferimento. Poiché $\ub(C) = \zerovb$, la
-formula fondamentale~\eqref{eq:FFCI_piano} con $C$ al posto
+formula fondamentale~\eqref{eq:FFCI_piano_deriv} con $C$ al posto
 di $O$ dà direttamente
 \begin{equation}\label{eq:spost_da_CR}
 	u(P) = -\vartheta\,(y(P) - y(C)) = -\vartheta\, y^*,
@@ -1375,8 +1423,10 @@ con origine in $C$ ed assi equiorientati a $(x, y)$.
 			\draw[gray!50, thin] (C2) -- (uO);
 			
 			% Arco vartheta1 in C1
-			\draw[->, thick] ({-0.5+0.45*cos(300)},{0.866+0.45*sin(300)})
+			\draw[-{Stealth[bend]}, thick]
+			({-0.5+0.45*cos(300)},{0.866+0.45*sin(300)})
 			arc[start angle=300, end angle=356, radius=0.45];
+			
 			\node at ({-0.4+0.62*cos(328)},{0.786+0.62*sin(328)})
 			{\small$\vartheta_1$};
 			
@@ -1477,7 +1527,7 @@ con origine in $C$ ed assi equiorientati a $(x, y)$.
 	spostamento.
 \end{oss}
 
-
+\todo[inline]{Sono arrivato qua}
 
 \subsection{Composizione di rotazioni infinitesime nel piano}\index{rotazione!composizione di rotazioni infinitesime|textbf}
 
@@ -1693,8 +1743,7 @@ di rotazione all'infinito.
 	che ciascuna rotazione sia applicata alla configurazione
 	iniziale del corpo, non alla configurazione variata
 	dalle rotazioni precedenti. Questa procedura è lecita
-	perché le rotazioni sono infinitesime: come osservato
-	nel \PARref{sez:SRF}, le rotazioni infinitesime commutano e
+	perché le rotazioni sono infinitesime: vista la linearità, le rotazioni infinitesime commutano e
 	si sommano come vettori, dunque l'ordine di applicazione
 	è irrilevante e la sovrapposizione degli effetti è
 	esatta al primo ordine. Per rotazioni finite, al
@@ -1702,15 +1751,15 @@ di rotazione all'infinito.
 	semplice somma degli spostamenti non sarebbe corretta.
 \end{oss}
 
-\begin{oss}
-	Il risultato è l'analogo cinematico della riduzione di un
-	sistema di forze parallele nel piano: la risultante ha
-	intensità pari alla somma delle intensità e il suo punto di
-	applicazione (centro di riduzione) è il baricentro dei punti
-	di applicazione pesati con le rispettive intensità. Questa
-	corrispondenza è un'ulteriore manifestazione del dualismo
-	cinematico-statico che sarà approfondito nel \CAPref{cap:statica_CR}.
-\end{oss}
+%\begin{oss}
+%	Il risultato è l'analogo cinematico della riduzione di un
+%	sistema di forze parallele nel piano: la risultante ha
+%	intensità pari alla somma delle intensità e il suo punto di
+%	applicazione (centro di riduzione) è il baricentro dei punti
+%	di applicazione pesati con le rispettive intensità. Questa
+%	corrispondenza è un'ulteriore manifestazione del dualismo
+%	cinematico-statico che sarà approfondito nel \CAPref{cap:statica_CR}.
+%\end{oss}
 
 
 
