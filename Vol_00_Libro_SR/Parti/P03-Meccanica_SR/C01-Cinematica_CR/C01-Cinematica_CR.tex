@@ -84,7 +84,7 @@ ovvero come una  misura della variazione relativa della configurazione.
 Ha senso dunque sviluppare una \textit{teoria infinitesima}, che richieda che questa quantità sia `piccola', ovvero che la configurazione cambi di poco rispetto a quella di riferimento. 
 Dato che $|\bm{\updelta}_{PQ} |$ dipende dai punti $P, Q$, individuiamo la massima variazione relativa di configurazione, ovvero
 \begin{equation}\label{sup}
-	\delta:=\sup_{P\neq Q} |\bm{\updelta}_{PQ} |
+	\delta:=\sup_{P, Q	\in\Cc} |\bm{\updelta}_{PQ} |
 \end{equation}
 e consideriamo un'espansione  in serie di Taylor al primo ordine, trascurando dunque  tutti i termini di ordine $\delta^2$. Vista la \eqref{sup}, senz'altro
 \begin{equation}
@@ -281,7 +281,7 @@ Scegliamo $P$ interno a $\Cc$ (è sempre possibile, essendo $\Cc$ una regione re
 	\ab_i\cdot \wb_P(Q) = -\overrightarrow{PQ}\cdot \wb_i, \qquad i=x,y,z,
 \end{equation}
 dove $\wb_i:=\wb_P(R_i)/\varepsilon$ sono vettori \emph{fissati}, indipendenti da $Q$ (ma costruiti a partire dal polo $P$). 
-bbiamo così determinato, per ogni $Q\in\Cc$, le tre componenti del vettore $\wb_P(Q)$ lungo la base ortonormale $\ab_x,\ab_y,\ab_z$. Ricordando che un vettore $\vb$ qualunque si ricostruisce dalle sue componenti su una base ortonormale tramite l'identità $\vb=\sum_i(\ab_i\cdot\vb)\,\ab_i$, applichiamo questo fatto a $\vb=\wb_P(Q)$ e sostituiamo le tre componenti appena trovate:
+Abbiamo così determinato, per ogni $Q\in\Cc$, le tre componenti del vettore $\wb_P(Q)$ lungo la base ortonormale $\ab_x,\ab_y,\ab_z$. Ricordando che un vettore $\vb$ qualunque si ricostruisce dalle sue componenti su una base ortonormale tramite l'identità $\vb=\sum_i(\ab_i\cdot\vb)\,\ab_i$, applichiamo questo fatto a $\vb=\wb_P(Q)$ e sostituiamo le tre componenti appena trovate:
 \begin{equation}\label{eq:linearita_wP}
 	\wb_P(Q) = \sum_{i=x,y,z}\bigl(\ab_i\cdot\wb_P(Q)\bigr)\,\ab_i
 	= -\sum_{i=x,y,z}\bigl(\overrightarrow{PQ}\cdot\wb_i\bigr)\,\ab_i
@@ -545,6 +545,15 @@ attorno a un asse si riduce a un prodotto vettoriale.
 
 La \eqref{eq:FFCI} ha esattamente la forma della \eqref{eq:campo_rigido}: è così che riconosciamo, nel vettore $\bm\upvartheta$ trovato algebricamente nella sottosez.~\ref{sez:rappresentazione_campo}, il prodotto $\vartheta\ab$ dell'angolo $\vartheta$ per il versore $\ab$ dell'asse di una rotazione finita. I due fatti — l'assenza di stiramento, e la coincidenza con la rotazione finita linearizzata — motivano insieme il nome: $\bm\upvartheta$ è il \textit{vettore di rotazione infinitesima}, di \textit{asse} $\ab=\bm\upvartheta/|\bm\upvartheta|$ e \textit{angolo} (infinitesimo) $|\bm\upvartheta|$.
 
+\medskip
+
+Notiamo infine che lo  spostamento rigido\index{spostamento!rigido|textbf}\index{corpo rigido|textbf} di un corpo nello spazio è completamente	determinato dallo spostamento $\ub(O)$\nomenclature[L]{$\ub(P)$}{spostamento del punto $P$ (campo vettoriale)} di un punto $O$ solidale	al corpo --- non necessariamente appartenente ad esso --- e dalla	rotazione\index{rotazione|textbf} del corpo attorno a $O$. La traslazione\index{traslazione|textbf} $\ub(O)$ è	individuata da tre parametri scalari (le sue componenti); la rotazione da tre ulteriori parametri (l'asse e l'angolo di
+rotazione). Il corpo rigido nello spazio possiede dunque	\textit{sei gradi di libertà}\index{grado di liberta@grado di libertà|textbf}: le sue configurazioni distinte
+formano una varietà $\infty^6$. Nel caso piano, la traslazione	ha due componenti e la rotazione si riduce a un singolo angolo:
+i gradi di libertà sono \textit{tre}.	
+
+
+
 
 %
 %\begin{oss}
@@ -578,6 +587,7 @@ relativo è perpendicolare alla congiungente, coerentemente con
 l'interpretazione geometrica della condizione~\eqref{eq:ortogonalita_CR}: 
 nella cinematica rigida infinitesima, tutta la variazione di spostamento 
 fra due punti è tangenziale.
+
 
 
 \begin{oss}
@@ -657,12 +667,7 @@ fra due punti è tangenziale.
 \end{oss}
 
 
-\begin{oss}
-	Lo spostamento rigido\index{spostamento!rigido|textbf}\index{corpo rigido|textbf} di un corpo nello spazio è completamente	determinato dallo spostamento $\ub(O)$\nomenclature[L]{$\ub(P)$}{spostamento del punto $P$ (campo vettoriale)} di un punto $O$ solidale	al corpo --- non necessariamente appartenente ad esso --- e dalla	rotazione\index{rotazione|textbf} del corpo attorno a $O$. La traslazione\index{traslazione|textbf} $\ub(O)$ è	individuata da tre parametri scalari (le sue componenti); la rotazione da tre ulteriori parametri (l'asse e l'angolo di
-	rotazione). Il corpo rigido nello spazio possiede dunque	\textit{sei gradi di libertà}\index{grado di liberta@grado di libertà|textbf}: le sue configurazioni distinte
-	formano una varietà $\infty^6$. Nel caso piano, la traslazione	ha due componenti e la rotazione si riduce a un singolo angolo:
-	i gradi di libertà sono \textit{tre}.	
-\end{oss}
+
 
 
 \newpage
@@ -876,12 +881,11 @@ avendo indicato con $\bm{I}_2$ la matrice identità nel piano.
 
 \section{Invarianti del campo di spostamento}\label{sec:invarianti}
 %----------------------------------------------------------------------------------------------------------------------------
-Il campo di spostamento rigido $\ub(P)=\ub(O)+\bm{\upvartheta}\times\overrightarrow{OP}$ dipende, nella sua scrittura, da una scelta arbitraria di polo $O$: cambiando polo, $\ub(O)$ cambia, ma la variazione di configurazione descritta è ovviamente lo stesso. È naturale chiedersi allora cosa, in questa descrizione, sia \emph{intrinseco}  e cosa sia invece un artefatto della scelta di $O$. Le grandezze con questa proprietà si dicono \textit{invarianti}\index{invarianti} del campo di spostamento; ne esistono esattamente due, e insieme caratterizzano completamente il tipo di moto: come vedremo, un generico spostamento rigido infinitesimo si può sempre descrivere, con la scelta opportuna del polo, come sovrapposizione di una rotazione pura e di una traslazione pura \emph{lungo il medesimo asse} — un moto \textit{elicoidale}.
+Il campo di spostamento rigido $\ub(P)=\ub(O)+\bm{\upvartheta}\times\overrightarrow{OP}$ dipende, nella sua scrittura, da una scelta arbitraria di polo $O$: cambiando polo, $\ub(O)$ cambia, ma la variazione di configurazione descritta è ovviamente la stessa. È naturale chiedersi allora cosa, in questa descrizione, sia \emph{intrinseco}  e cosa sia invece un artefatto della scelta di $O$. Le grandezze intrinseche si dicono \textit{invarianti}\index{invarianti} del campo di spostamento; ne esistono esattamente due, e insieme caratterizzano completamente il tipo di moto: come vedremo, un generico spostamento rigido infinitesimo si può sempre descrivere, con la scelta opportuna del polo, come sovrapposizione di una rotazione pura e di una traslazione pura \emph{lungo il medesimo asse} — un moto \textit{elicoidale}.
 
-Il campo degli spostamenti rigidi\index{spostamento!campo di} possiede due
-\textit{invarianti}:
+Gli invarianti del campo degli spostamenti rigidi\index{spostamento!campo di} sono:
 \begin{enumerate}[label=(\roman*)]
-	\item il vettore rotazione $\bm{\upvartheta}$, che — come mostrato in sottosez.~\ref{sez:rappresentazione_campo}  — non dipende dalla scelta del polo, ma è un dato intrinseco del corpo;
+	\item il vettore rotazione $\bm{\upvartheta}$, che — come mostrato in sottosez.~\ref{sez:rappresentazione_campo}  — non dipende dalla scelta del polo, ma è un dato intrinseco del moto;
 	\item il prodotto scalare
 	$\bm{\upvartheta} \cdot \ub(O)$, che rappresenta la
 	componente dello spostamento nella direzione dell'asse di
@@ -917,14 +921,14 @@ Il campo degli spostamenti rigidi\index{spostamento!campo di} possiede due
 %---------------------------------------------------------------------------------------------------------------------------- 
 \section{Asse centrale degli spostamenti rigidi}
 %---------------------------------------------------------------------------------------------------------------------------- 
-Abbiamo visto che, cambiando polo, lo spostamento $\ub(O)$ cambia in generale: la sua componente lungo $\bm{\upvartheta}$ resta invariante (è il secondo invariante), ma la sua componente perpendicolare a $\bm{\upvartheta}$ dipende dalla scelta del polo. Viene allora naturale chiedersi se esista un polo — anzi, come vedremo, un'intera retta di poli — per cui questa componente perpendicolare si annulli del tutto, lasciando solo la componente invariante lungo $\bm{\upvartheta}$: il polo, cioè, per cui il campo di spostamento ammette la descrizione più semplice possibile. È la retta anticipata in sez.~\ref{sec:invarianti}: mostriamo ora che esiste sempre, quando $\bm{\upvartheta}\neq\mathbf 0$, che è unica, e la costruiamo esplicitamente.
+Abbiamo visto che, cambiando polo, lo spostamento $\ub(O)$ cambia in generale: la sua componente lungo $\bm{\upvartheta}$ resta invariante, ma la sua componente perpendicolare a $\bm{\upvartheta}$ dipende dalla scelta del polo. Viene allora naturale chiedersi se esista un polo — anzi, come vedremo, un'intera retta di poli — per cui questa componente perpendicolare si annulli del tutto, lasciando solo la componente invariante lungo $\bm{\upvartheta}$: il polo, cioè, per cui il campo di spostamento ammette la descrizione più semplice possibile. 
  
-Quando $\bm{\upvartheta} \neq \mathbf 0$, esiste una retta,
+In particolare, vedremo che, quando $\bm{\upvartheta} \neq \mathbf 0$, esiste una retta,
 l'\textit{asse centrale degli spostamenti}\index{asse centrale!degli spostamenti|textbf}, lungo la quale lo
 spostamento è parallelo a $\bm{\upvartheta}$. La sua
 costruzione segue un ragionamento puramente geometrico.
 
-\subsection{Decomposizione dello spostamento}
+\paragraph{Decomposizione dello spostamento.}
 
 Fissiamo un punto $O$ e decomponiamo il suo spostamento nella
 componente parallela e in quella ortogonale al vettore
@@ -935,15 +939,15 @@ rotazione:
 con
 \begin{equation}
 	\ub_{\parallel}(O)
-	= \frac{\bm{\upvartheta} \cdot \ub(O)}%
+	\coloneqq \frac{\bm{\upvartheta} \cdot \ub(O)}%
 	{|\bm{\upvartheta}|^2}\,\bm{\upvartheta}, \qquad
 	\ub_{\perp}(O)
-	= \ub(O) - \ub_{\parallel}(O).
+	\coloneqq \ub(O) - \ub_{\parallel}(O).
 \end{equation}
 
-\subsection{Invarianza della componente parallela}
+\paragraph{Invarianza della componente parallela.}
 
-Nella formula fondamentale~\eqref{eq:FFCI}, il termine
+Nella formula fondamentale~\eqref{eq:campo_rigido}, il termine
 $\bm{\upvartheta} \times \overrightarrow{OP}$ è \textit{sempre}
 ortogonale a $\bm{\upvartheta}$, qualunque sia il punto $P$.
 Valutando la formula in un punto $P$ qualsiasi, la componente
@@ -959,7 +963,7 @@ $\bm{\upvartheta} \cdot \ub$ già dimostrata nella
 Sezione~\ref{sec:invarianti}.
 
 
-\subsection{Annullamento della componente ortogonale}
+\paragraph{Annullamento della componente ortogonale.}
 
 Cerchiamo un punto $C$ il cui spostamento sia puramente
 parallelo a $\bm{\upvartheta}$, cioè tale che
