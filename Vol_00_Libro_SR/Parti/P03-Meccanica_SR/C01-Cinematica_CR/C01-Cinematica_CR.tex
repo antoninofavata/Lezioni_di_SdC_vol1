@@ -545,6 +545,31 @@ attorno a un asse si riduce a un prodotto vettoriale.
 
 La \eqref{eq:FFCI} ha esattamente la forma della \eqref{eq:campo_rigido}: è così che riconosciamo, nel vettore $\bm\upvartheta$ trovato algebricamente nella sottosez.~\ref{sez:rappresentazione_campo}, il prodotto $\vartheta\ab$ dell'angolo $\vartheta$ per il versore $\ab$ dell'asse di una rotazione finita. I due fatti — l'assenza di stiramento, e la coincidenza con la rotazione finita linearizzata — motivano insieme il nome: $\bm\upvartheta$ è il \textit{vettore di rotazione infinitesima}, di \textit{asse} $\ab=\bm\upvartheta/|\bm\upvartheta|$ e \textit{angolo} (infinitesimo) $|\bm\upvartheta|$.
 
+
+%
+\begin{oss}[\textbf{Estensione solidale del campo di spostamento}]\label{spaziosolidale}
+	Per come è stata dimostrata, la formula \eqref{eq:campo_rigido} vale
+	solo per $P,Q\in\Cc$: per un punto che non appartiene al corpo, lo
+	spostamento non è ancora definito. Il suo membro destro, però, ha
+	senso per un punto $P$ qualunque di $\Ec$: fissato un qualsiasi
+	$P_0\in\Cc$, poniamo allora, per definizione,
+	\begin{equation}
+		\ub(P) := \ub(P_0) + \bm{\upvartheta}\times\overrightarrow{P_0P},
+		\qquad P\in\Ec.
+	\end{equation}
+	La definizione non dipende dalla scelta di $P_0\in\Cc$, e per $P\in\Cc$
+	restituisce il valore già noto: estende dunque $\ub$ ed è
+	 l'unica estensione che conserva, fra $P$ e ogni $Q\in\Cc$,
+	l'equiproiettività.
+	
+	D'ora in avanti considereremo dunque $\ub$ un campo $\Ec\to\Uc$,
+	anziché $\Cc\to\Uc$: si dice che $\ub$, così esteso, è
+	\textit{solidale} al corpo $\Cc$. Con più corpi
+	$\mathcal{C}_1,\dots,\mathcal{C}_n$, questa estensione applicata a
+	ciascuno produce campi $\ub_1,\dots,\ub_n$, ciascuno solidale al
+	proprio corpo, ma tutti definiti sullo stesso spazio euclideo $\Ec$.
+\end{oss}
+
 \medskip
 
 Notiamo infine che lo  spostamento rigido\index{spostamento!rigido|textbf}\index{corpo rigido|textbf} di un corpo nello spazio è completamente	determinato dallo spostamento $\ub(O)$\nomenclature[L]{$\ub(P)$}{spostamento del punto $P$ (campo vettoriale)} di un punto $O$ solidale	al corpo --- non necessariamente appartenente ad esso --- e dalla	rotazione\index{rotazione|textbf} del corpo attorno a $O$. La traslazione\index{traslazione|textbf} $\ub(O)$ è	individuata da tre parametri scalari (le sue componenti); la rotazione da tre ulteriori parametri (l'asse e l'angolo di
@@ -555,14 +580,6 @@ i gradi di libertà sono \textit{tre}.
 
 
 
-%
-%\begin{oss}
-%	La formula \eqref{eq:campo_rigido} permette di estendere il campo di spostamento a punti che non appartengono al corpo $\Cc$, ma che si muovono \emph{rigidamente} con esso: fissato un qualsiasi $P_0\in\Cc$, per un punto $P$ qualunque dello spazio euclideo si pone, per definizione,
-%	\begin{equation}
-%		\ub(P) := \ub(P_0) + \bm{\upvartheta}\times\overrightarrow{P_0P}.
-%	\end{equation}
-%	Questa definizione non dipende dalla scelta di $P_0\in\Cc$  e, per $P\in\Cc$, restituisce il valore già noto. L'insieme di questi punti, con il campo di spostamento così esteso, costituisce lo \textit{spazio solidale} al corpo: punti geometrici, non necessariamente materiali, che ai fini cinematici si comportano come se appartenessero al corpo rigido. Si noti che il campo esteso soddisfa ancora la relazione di equiproiettività $\overrightarrow{PQ}\cdot[\ub(Q)-\ub(P)]=0$ per \emph{ogni} coppia $P,Q$, anche fuori da $\Cc$: non perché lo imponga l'ipotesi di rigidità del corpo materiale (che riguarda solo $\Cc$), ma perché è una conseguenza puramente algebrica della definizione stessa.
-%\end{oss}
 
 \begin{oss}
 	La linearizzazione non richiede che gli spostamenti siano	piccoli in assoluto, ma solo che gli spostamenti
@@ -572,6 +589,8 @@ i gradi di libertà sono \textit{tre}.
 	$|\ub(Q)-\ub(P)| =	|\bm{\upvartheta}|\,|\overrightarrow{PQ}|\sin\alpha$,	dove $\alpha$ è l'angolo fra $\bm{\upvartheta}$ e
 	$\overrightarrow{PQ}$. La condizione	sulla piccolezza di $\delta$ si traduce  realtà in un'ipotesi sulla sola	\textit{rotazione}.
 \end{oss}
+
+\medskip
 
 Si verifica che il campo~\eqref{eq:FFCI} soddisfa la~\eqref{eq:ortogonalita_CR}. 
 Infatti:
@@ -667,10 +686,6 @@ fra due punti è tangenziale.
 \end{oss}
 
 
-
-
-
-\newpage
 
 
 
@@ -918,7 +933,7 @@ Gli invarianti del campo degli spostamenti rigidi\index{spostamento!campo di} so
 %---------------------------------------------------------------------------------------------------------------------------- 
 \section{Asse centrale degli spostamenti rigidi}
 %---------------------------------------------------------------------------------------------------------------------------- 
-Abbiamo visto che, cambiando polo, lo spostamento $\ub(O)$ cambia in generale: la sua componente lungo $\bm{\upvartheta}$ resta invariante, ma la sua componente perpendicolare a $\bm{\upvartheta}$ dipende dalla scelta del polo. Viene allora naturale chiedersi se esista un polo — anzi, come vedremo, un'intera retta di poli — per cui questa componente perpendicolare si annulli del tutto, lasciando solo la componente invariante lungo $\bm{\upvartheta}$: il polo, cioè, per cui il campo di spostamento ammette la descrizione più semplice possibile. 
+Abbiamo visto che, cambiando polo, lo spostamento $\ub(O)$ cambia in generale: la sua componente lungo $\bm{\upvartheta}$ resta invariante, ma la sua componente perpendicolare a $\bm{\upvartheta}$ dipende dalla scelta del polo. Viene allora naturale chiedersi se esista un polo — anzi, come vedremo, un'intera retta di poli — per cui questa componente perpendicolare si annulli del tutto, lasciando solo la componente invariante lungo $\bm{\upvartheta}$: il polo, cioè, per cui il campo di spostamento ammette la descrizione più semplice possibile.  Immaginiamo che il corpo sia immerso in uno spazio solidale (v.  oss. \ref{spaziosolidale}), sicché richiediamo che questo luogo di punti non necessamente appartenga al corpo.
  
 In particolare, vedremo che, quando $\bm{\upvartheta} \neq \mathbf 0$, esiste una retta,
 l'\textit{asse centrale degli spostamenti}\index{asse centrale!degli spostamenti|textbf}, lungo la quale lo
@@ -1186,12 +1201,12 @@ luogo dei punti a spostamento nullo.
 
 
 
-\section{Classificazione dei moti rigidi infinitesimi}
+\section{Classificazione dei moti rigidi}
 %----------------------------------------------------------------------------------------------------------------------------
-\index{moto rigido infinitesimo|textbf}In base ai valori degli invarianti si distinguono i seguenti
+\index{moto rigido|textbf}In base ai valori degli invarianti si distinguono i seguenti
 casi:
 \begin{enumerate}[label=(\roman*)]
-	\item \textit{Moto elicoidale}\index{moto rigido infinitesimo!moto elicoidale} (o \textit{rototraslazione}\index{moto rigido infinitesimo!rototraslazione}):
+	\item \textit{Moto elicoidale}\index{moto rigido!moto elicoidale} (o \textit{rototraslazione}\index{moto rigido!rototraslazione}):
 	$\bm{\upvartheta} \neq \mathbf 0$ e
 	$\bm{\upvartheta} \cdot \ub(O) \neq 0$. Sull'asse centrale
 	lo spostamento si riduce alla sola componente parallela a
@@ -1293,7 +1308,11 @@ e la \eqref{OC}  diventa
 	\overrightarrow{OC}
 	= \frac{\ab_z \times \ub(O)}{\vartheta};
 \end{equation}
-in altri termini, in $C$ il moto si riduce a pura rotazione e il punto $C$ rappresenta il \textit{centro di rotazione}. Sostituendo
+in altri termini, in $C$ il moto si riduce a pura rotazione e il punto $C$ rappresenta il \textit{centro di rotazione}. 
+
+
+
+Sostituendo
 nella formula fondamentale~\eqref{eq:FFCI_piano_vett}
 l'espressione
 $\ub(O) = \bm{\upvartheta} \times \overrightarrow{CO}$,
@@ -1527,22 +1546,67 @@ con origine in $C$ ed assi equiorientati a $(x, y)$.
 	spostamento.
 \end{oss}
 
-\todo[inline]{Sono arrivato qua}
+\subsection{Costruzione grafica del centro di rotazione}
+Dalla \eqref{eq:vettore_OC} segue una proprietà utile: poiché
+\begin{equation}
+\overrightarrow{OC}	\cdot\ub(O)=(\ab_z\times\ub(O))\cdot\ub(O) = 0,
+\end{equation}
+il vettore $\overrightarrow{OC}$ è
+perpendicolare a $\ub(O)$: il centro di rotazione giace sempre sulla retta
+per $O$ perpendicolare a $\ub(O)$. Poiché $O$ è un punto qualunque del
+piano --- non necessariamente materiale, per l'Oss.~\ref{spaziosolidale}
+--- questo vale per ogni punto $P$: $C$ giace sulla retta per $P$
+perpendicolare a $\ub(P)$.
+
+Se sono noti gli spostamenti $\ub(P_1)$ e $\ub(P_2)$ di due punti
+$P_1\neq P_2$, con $\ub(P_1)$ non parallelo a $\ub(P_2)$, il centro $C$ è
+allora l'unico punto comune alle rette per $P_1$ e per $P_2$
+perpendicolari, rispettivamente, a $\ub(P_1)$ e a $\ub(P_2)$: non essendo
+parallele le direzioni cui sono perpendicolari, le due rette si incontrano
+in un solo punto.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=1.1]{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles}
+	\caption{Costruzioni grafica del centro di rotazione. Noti gli spostamenti di due punti $P_1$ e $P_2$ (sinistra) non paralleli, il centro di rotazione è univocamente determinato.
+	Nel caso di traslazione pura (destra) il centro è improprio.}
+	\label{fig:chasles}
+\end{figure}
+
+
+Se invece $\ub(P_1)\parallel\ub(P_2)$, si distinguono due casi: se ciò
+accade per \emph{ogni} coppia di punti, allora $\vartheta=0$ e siamo nel caso di traslazione pura.
+Tutte le rette così costruite
+sono fra loro parallele, senza intersezione finita, coerentemente con un
+centro improprio. Se invece $\vartheta\neq0$ e la coincidenza riguarda
+solo $P_1,P_2$, vuol dire che $P_1$, $P_2$ e $C$ sono allineati (essendo
+$\ub(P)=\bm\upvartheta\times\overrightarrow{CP}$), e le due rette non
+bastano a determinare $C$: occorre un terzo punto non allineato con i
+primi due.
+
+%Questa costruzione è il caso a un solo corpo della \textit{cinematica
+%	grafica}\index{cinematica grafica} dei sistemi rigidi piani, che
+%ritroveremo, per sistemi di più corpi, in sez.~\ref{sec:CR_relativo}.
+
+
+
+
+
+
 
 \subsection{Composizione di rotazioni infinitesime nel piano}\index{rotazione!composizione di rotazioni infinitesime|textbf}
 
-Consideriamo $n$ rotazioni infinitesime nel piano, ciascuna di
-ampiezza $\vartheta_i$ e centro $C_i$, con $i = 1,\dots,n$.
-Poiché le rotazioni infinitesime commutano, lo spostamento
-complessivo di un punto generico $P$ è la somma degli
-spostamenti elementari:
+Il campo di spostamento generato da più rotazioni infinitesime simultanee ha una
+struttura sorprendentemente semplice.
+Consideriamo $n$ rotazioni infinitesime nel piano, ciascuna di ampiezza $\vartheta_i$
+e centro $C_i$, con $i = 1,\dots,n$. Poiché le rotazioni infinitesime commutano, lo
+spostamento complessivo di un punto generico $P$ è la somma degli spostamenti
+elementari:
 \begin{equation}\label{eq:comp_rot_somma}
 	\ub(P) = \sum_{i=1}^{n} \vartheta_i\,
 	(\ab_z \times \overrightarrow{C_i P}).
 \end{equation}
-Scriviamo
-$\overrightarrow{C_i P}
-= \overrightarrow{OP} - \overrightarrow{OC_i}$
+Scriviamo $\overrightarrow{C_i P} = \overrightarrow{OP} - \overrightarrow{OC_i}$
 per un punto $O$ qualsiasi:
 \begin{equation}
 	\ub(P) =
@@ -1561,13 +1625,6 @@ e, per $\vartheta \neq 0$,
 	= \frac{1}{\vartheta}\sum_{i=1}^{n}
 	\vartheta_i\,\overrightarrow{OC_i},
 \end{equation}
-cioè, in componenti:
-\begin{equation}\label{eq:comp_rot_baricentro_comp}
-	x(C) = \frac{1}{\vartheta}\displaystyle\sum_{i=1}^{n}
-	\vartheta_i\,x(C_i), \qquad
-	y(C) =\frac{1}{\vartheta} \displaystyle\sum_{i=1}^{n}
-	\vartheta_i\,y(C_i),
-\end{equation}
 lo spostamento complessivo diventa
 \begin{equation}
 	\ub(P) = \vartheta\,
@@ -1580,131 +1637,84 @@ lo spostamento complessivo diventa
 \end{equation}
 ovvero
 \begin{equation}\label{eq:comp_rot_risultato}
-	\boxed{\ub(P)
-		= \bm{\upvartheta} \times \overrightarrow{CP},}
+\ub(P)
+		= \bm{\upvartheta} \times \overrightarrow{CP},
 \end{equation}
-cioè in componenti 
+cioè in componenti
 \begin{equation}
-	\boxed{u(P) = -\vartheta (y(P)- y(C)), \qquad
-		v(P) = \vartheta (x(P)-x(C)).}
+u(P) = -\vartheta (y(P)- y(C)), \qquad
+		v(P) = \vartheta (x(P)-x(C)).
 \end{equation}
-La composizione di $n$ rotazioni infinitesime è dunque
-una rotazione infinitesima di ampiezza $\vartheta$ pari alla somma
-delle ampiezze (positive se	antiorarie, negative se orarie), il cui centro $C$ è il baricentro dei centri
-$C_i$ pesati con le rispettive ampiezze $\vartheta_i$
-(figura~\ref{fig:composizione_rot}).
-La formula~\eqref{eq:comp_rot_baricentro} è indipendente dalla
-scelta del punto $O$, come si verifica immediatamente
-sostituendo un diverso punto di riferimento.
+La composizione di $n$ rotazioni infinitesime è dunque una rotazione infinitesima di
+ampiezza $\vartheta$ pari alla somma delle ampiezze (positive se antiorarie, negative
+se orarie), il cui centro $C$ è il baricentro dei centri $C_i$ pesati con le
+rispettive ampiezze $\vartheta_i$ (\FIGref{fig:composizione_rot}). La
+\eqref{eq:comp_rot_baricentro} è indipendente dalla scelta del punto $O$, come si
+verifica immediatamente sostituendo un diverso punto di riferimento.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \begin{figure}[!htbp]
 	\centering
-	% --- helper proiezione obliqua (locali al gruppo figure) ---
 	\def\ax{0.5}\def\ay{0.30}
 	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
 	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
 	\resizebox{\textwidth}{!}{%
 		\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth, line width=0.8pt, scale=1.1]
-			%\begin{tikzpicture}[baseline=(current bounding box.center), >=Stealth, ...]
-			
-			% ====== DATI CONDIVISI: posizioni (x,y) dei centri nel piano ======
-			% (usate proiettate in A, dirette in B → un'unica fonte di verità)
-			% \def\Cx... \def\Cy...  +  ampiezze \def\tha... ecc.
-			
-			% ========= PANNELLO A : vista 3D obliqua (assiali ⟂ π, O in alto a sx) =========
-			% profondita' a_x verso il basso-destra  ->  O = spigolo posteriore alto-sinistra
 			\def\ax{0.5}\def\ay{-0.30}
-			%\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
 			\begin{scope}[local bounding box=panA]
 				\draw[gray!60] (\xyz{-1.5}{-0.9}{0}) -- (\xyz{-1.5}{4.7}{0})-- (\xyz{4.5}{4.7}{0}) -- (\xyz{4.5}{-0.9}{0}) -- cycle;
 				\node[gray!75] at (\xyz{4.35}{4.5}{0}) {$\pi$};
-				
-				
 				\coordinate (O) at (\xyz{0}{0}{0});
 				\draw[->, thin] (O) -- (\xyz{0.9}{0}{0})  node[below right=-2pt] {$\ab_x$};
 				\draw[->, thin] (O) -- (\xyz{0}{0.9}{0})  node[above=0pt]       {$\ab_y$};
 				\draw[->, thin] (O) -- (\xyz{0}{0}{1.05}) node[left=-1pt]       {$\ab_z$};
-				
 				\newcommand{\axvec}[8]{%
 					\coordinate (#1)  at (\xyz{#2}{#3}{0});
 					\coordinate (#1t) at (\xyz{#2}{#3}{#4});
 					\draw[->>, #8] (#1) -- (#1t) node[right=0pt, inner sep=1pt] {#6};
 					\fill (#1) circle (1.4pt) node[#7, inner sep=1pt] {#5};
 				}
-				
 				\axvec{C1}{2.6}{-0.02}{0.7}{$C_1$}{$\bm{\upvartheta}_1$}{below=2pt}{thick}
-				%\axvec{C1}{2.8}{1.0}{0.7}{$C_1$}{$\bm{\upvartheta}_1$}{below=2pt}{thick}
 				\axvec{Ci}{0.9}{3.6}{0.7}{$C_i$}{$\bm{\upvartheta}_i$}{below right=-2pt}{thick}
 				\axvec{Cn}{2.8}{3.9}{0.7}{$C_n$}{$\bm{\upvartheta}_n$}{below=2pt}{thick}
-				%\node at (\xyz{2.4}{3.1}{0}) {$\cdots$};
-				
 				\axvec{CC}{1.8}{2.3}{1.5}{}{$\bm{\upvartheta}=\textstyle\sum_i\bm{\upvartheta}_i$}{below=2pt}{line width=1.3pt}
 				\fill (CC) circle (1.9pt) node[below=2pt, inner sep=1pt] {$C$};
-				
 				\draw[gray!75, thin, midarrow] (O) -- (Ci);
 				\node[gray!75, font=\small, above] at ($(O)!0.86!(Ci)+(-0.75,0)$) {$\overrightarrow{OC_i}$};
 				\draw[->, gray!30!black, thin] (O) -- (CC);
-				%\node[font=\small, below=1.5pt] at ($(O)!0.58!(CC)$) {$\overrightarrow{OC}$};
 				\node[font=\small, below=1.5pt] at ($(O)!0.58!(CC)+(0.35,0)$) {$\overrightarrow{OC}$};
-				
 				\fill (O) circle (1.5pt) node[above left=-2pt] {$O$};
-				
-				
 			\end{scope}
-			
-			% =================================================================
-			% PANNELLO B — vista nel piano (x,y): rotazioni = archi orientati
-			% =================================================================
 			\begin{scope}[xshift=8.6cm, yshift=-1.05cm, local bounding box=panB]
-				% assi
 				\draw[->, thin] (-0.3,0) -- (5.4,0) node[right] {$x$};
 				\draw[->, thin] (0,-0.3) -- (0,3.4) node[above] {$y$};
-				
-				% centri (C = baricentro = media dei tre)
 				\coordinate (C1) at (2.10,0.4);
 				\coordinate (Ci) at (1.8,2.6);
 				\coordinate (Cn) at (4.6,1.7);
-				\coordinate (CC) at (2.4667,1.8667);   % (C1+Ci+Cn)/3
-				
-				% stanghette del baricentro (leggere)
+				\coordinate (CC) at (2.4667,1.8667);
 				\draw[->,gray!60, thin, midarrow] (CC)--(C1);
 				\draw[->,gray!60, thin] (CC)--(Ci);
 				\draw[->,gray!60, thin, midarrow] (CC)--(Cn);
-				
-				% freccia semicircolare antioraria: \rotc{coord}{raggio}{etichetta}{angolo-etichetta}
 				\newcommand{\rotc}[4]{%
 					\draw[->, thick] ([shift={(-30:#2)}]#1)
 					arc[start angle=-30, end angle=210, radius=#2];
 					\node[inner sep=1pt] at ([shift={(#4:#2+0.20)}]#1) {#3};
 				}
-				
 				\rotc{C1}{0.30}{$\vartheta_1$}{150}
 				\rotc{Ci}{0.30}{$\vartheta_i$}{95}
 				\rotc{Cn}{0.30}{$\vartheta_n$}{95}
-				\rotc{CC}{0.42}{}{0}                       % solo l'arco, senza etichetta
+				\rotc{CC}{0.42}{}{0}
 				\node[inner sep=1pt] at ([shift={(0.6,0.60)}]CC) {$\vartheta=\textstyle\sum_i\vartheta_i$};
-				
-				% punti + etichette centri
 				\fill (C1) circle (1.5pt) node[below] {$C_1$};
 				\fill (Ci) circle (1.5pt) node[left=10pt]       {$C_i$};
 				\fill (Cn) circle (1.5pt) node[below]      {$C_n$};
 				\fill (CC) circle (1.9pt) node[below=4pt]      {$C$};
-				
-				% vettore posizione del baricentro
 				\draw[->, gray!30!black, thin] (0,0) -- (CC);
 				\node[font=\small, above=1.5pt] at ($(0,0)!0.55!(CC)$) {$\overrightarrow{OC}$};
-				
-				
-				
 				\fill (0,0) circle (1.3pt) node[below left=-2pt] {$O$};
 			\end{scope}
-			
-			% dopo i due scope, etichette a quota comune:
 			\path let \p1=(panA.south), \p2=(panB.south) in	coordinate (ybase) at (0,{min(\y1,\y2)-12pt});
 			\node[anchor=north] at (panA.south |- ybase) {(a)};
 			\node[anchor=north] at (panB.south |- ybase) {(b)};
-			
 		\end{tikzpicture}
 	}
 	\caption{Composizione di $n$ rotazioni infinitesime nel piano.
@@ -1719,280 +1729,130 @@ sostituendo un diverso punto di riferimento.
 		\protect\overrightarrow{CC_i}=\zerovb$ (frecce grigie in~(b)).}
 	\label{fig:composizione_rot}
 \end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 
-Se la somma delle ampiezze è nulla ($\vartheta = 0$), il
-baricentro~\eqref{eq:comp_rot_baricentro} non è definito:
-lo spostamento risultante è una traslazione pura. Dalla
-\eqref{eq:comp_rot_somma} con $\sum\vartheta_i = 0$:
+Se la somma delle ampiezze è nulla ($\vartheta = 0$), il baricentro
+\eqref{eq:comp_rot_baricentro} non è definito: lo spostamento risultante è una
+traslazione pura. Dalla \eqref{eq:comp_rot_somma} con $\sum\vartheta_i = 0$:
 \begin{equation}
 	\ub(P) = -\sum_{i=1}^{n} \vartheta_i\,
 	(\ab_z \times \overrightarrow{OC_i}),
 \end{equation}
-cioè, in componenti:
-\begin{equation}
-	u(P) = \sum_{i=1}^{n}\vartheta_i\,y(C_i), \qquad
-	v(P) = -\sum_{i=1}^{n}\vartheta_i\,x(C_i),
-\end{equation}
-indipendente da $P$: tutti i punti hanno lo stesso
-spostamento, coerentemente con l'interpretazione del centro
-di rotazione all'infinito.
+indipendente da $P$: tutti i punti hanno lo stesso spostamento, coerentemente con
+l'interpretazione del centro di rotazione all'infinito.
 
 \begin{oss}
-	La sovrapposizione~\eqref{eq:comp_rot_somma} richiede
-	che ciascuna rotazione sia applicata alla configurazione
-	iniziale del corpo, non alla configurazione variata
-	dalle rotazioni precedenti. Questa procedura è lecita
-	perché le rotazioni sono infinitesime: vista la linearità, le rotazioni infinitesime commutano e
-	si sommano come vettori, dunque l'ordine di applicazione
-	è irrilevante e la sovrapposizione degli effetti è
-	esatta al primo ordine. Per rotazioni finite, al
-	contrario, la composizione dipenderebbe dall'ordine e la
-	semplice somma degli spostamenti non sarebbe corretta.
+	La sovrapposizione~\eqref{eq:comp_rot_somma} richiede che ciascuna rotazione sia
+	applicata alla configurazione iniziale del corpo, non alla configurazione variata
+	dalle rotazioni precedenti. Questa procedura è lecita perché le rotazioni sono
+	infinitesime: vista la linearità, le rotazioni infinitesime commutano e si sommano
+	come vettori, dunque l'ordine di applicazione è irrilevante e la sovrapposizione
+	degli effetti è esatta al primo ordine. Per rotazioni finite, al contrario, la
+	composizione dipenderebbe dall'ordine e la semplice somma degli spostamenti non
+	sarebbe corretta.
 \end{oss}
 
-%\begin{oss}
-%	Il risultato è l'analogo cinematico della riduzione di un
-%	sistema di forze parallele nel piano: la risultante ha
-%	intensità pari alla somma delle intensità e il suo punto di
-%	applicazione (centro di riduzione) è il baricentro dei punti
-%	di applicazione pesati con le rispettive intensità. Questa
-%	corrispondenza è un'ulteriore manifestazione del dualismo
-%	cinematico-statico che sarà approfondito nel \CAPref{cap:statica_CR}.
-%\end{oss}
 
+\section{Centro di rotazione relativo e allineamento dei centri}\label{sec:CR_relativo}
 
+Consideriamo un sistema di $n$ corpi rigidi $\mathcal{C}_1,\ldots,\mathcal{C}_n$ che
+si muovono nel piano. Indichiamo con $i,j,k,\ldots\in\{1,\ldots,n\}$, a due a
+due distinti, indici generici che identificano due o più corpi qualsiasi del
+sistema: la costruzione che segue non dipende da quali, in particolare, siano stati
+scelti.
 
-
-\paragraph{Caso di due rotazioni.}
-Per comprendere geometricamente \emph{dove} si colloca il centro
-risultante, conviene osservare direttamente gli spostamenti che
-le due rotazioni elementari impongono ai centri dell'altra
-(figura~\ref{fig:composizione_2_rot}). La condizione che individua
-$C$ è che la rotazione risultante $\vartheta$ attorno a $C$ produca
-gli stessi spostamenti trasversali alla congiungente $C_1C_2$:
-\begin{equation}
-	\vartheta\,\overline{CC_1} = |\vartheta_2|\,\overline{C_1C_2},
-	\qquad
-	\vartheta\,\overline{CC_2} = \vartheta_1\,\overline{C_1C_2}.
-\end{equation}
-Nel caso \emph{concordi} ($\vartheta_1, \vartheta_2 > 0$) queste
-relazioni collocano $C$ all'interno del segmento $\overline{C_1C_2}$,
-con $\vartheta = \vartheta_1 + \vartheta_2$: poiché i bracci
-$\overline{CC_j}$ sono entrambi minori di $\overline{C_1C_2}$, la
-rotazione risultante è \emph{maggiore} di ciascuna delle due elementari.
-Nel caso \emph{discordi} ($|\vartheta_2|>\vartheta_1>0$) il centro
-$C$ è esterno al segmento, oltre $C_2$, con
-$\vartheta = |\vartheta_2|-\vartheta_1$: il braccio
-$\overline{CC_1}>\overline{C_1C_2}$ e la rotazione risultante è
-\emph{minore} di $|\vartheta_2|$. Il caso limite
-$\vartheta_1 = |\vartheta_2|$ corrisponde a una \emph{traslazione
-	pura}: il centro si allontana all'infinito e $\vartheta \to 0$.
-
-\begin{figure}[!htbp]
-	\centering
-	\subfloat[][\emph{rotazioni concordi: $C$ interno al segmento $C_1C_2$}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.4]
-			\coordinate (C1) at (0,0);   \coordinate (C2) at (3,0);
-			\coordinate (CR) at (2,0);
-			\coordinate (T1) at (0,-1.6);  \coordinate (T2) at (3,0.8);
-			\draw[dashed, gray!60] (-0.9,0) -- (4.1,0);
-			% rette-componente (pendenze vartheta_1 e vartheta_2)
-			\draw[gray!55, thin] (C1) -- (T2);
-			\draw[gray!55, thin] (C2) -- (T1);
-			% diagramma degli spostamenti (pendenza vartheta)
-			\draw[line width=1.2pt] (T1) -- (T2);
-			% ampiezze degli spostamenti (altezze)
-			\draw[->, thin] (C1) -- (T1);
-			\draw[->, thin] (C2) -- (T2);
-			\node (lblA) at (-1.45,-1.10) {$\vartheta_2\,\overline{C_1C_2}$};
-			\draw[->, thin] (lblA) -- ($(C1)!0.55!(T1)$);
-			\node (lblB) at (4.45,0.95) {$\vartheta_1\,\overline{C_1C_2}$};
-			\draw[->, thin] (lblB) -- ($(C2)!0.5!(T2)$);
-			
-			% ampiezze come ANGOLI fra congiungente e rette dei campi v
-			\pic[draw, ->, thick, angle radius=12mm, angle eccentricity=1.3,"\small$\vartheta_1$"] {angle = C2--C1--T2};
-			\pic[draw, ->, thick, angle radius=10mm] {angle = C1--C2--T1};
-			\node[font=\small] at ($(C2)+(-0.42,-0.14)$) {$\vartheta_2$};
-			\pic[draw, ->, thick, angle radius=6mm] {angle = C2--CR--T2};   % solo l'arco
-			% richiamo dall'archetto verso destra all'equazione
-			\node (eqth) at (4.9,0.15) {$\vartheta=\vartheta_1+\vartheta_2$};
-			\draw[<-, thin] ($(CR)+(0.50,0.15)$) -- (eqth.west);
-			
-			% vartheta_2 = cuneo fra la grigia C1->T2 (campo v_1) e il diagramma risultante, in T2
-			\pic[draw, ->, thick, angle radius=9mm, angle eccentricity=1.3,	"\small$\vartheta_2$"] {angle = C1--T2--T1};
-			
-			% punti
-			\fill (C1) circle (2pt) node[above=2pt] {$C_1$};
-			\fill (C2) circle (2pt) node[below right=-1pt] {$C_2$};
-			\fill (CR) circle (2pt) node[below=2pt] at (CR) {$C$};
-			
-			\node[left=-2pt] at (T1) {$T_1$};
-			\node[right=1pt]       at (T2) {$T_2$};
-	\end{tikzpicture}}
-	\\[3ex]
-	\subfloat[][\emph{rotazioni discordi: $C$ esterno, oltre $C_2$}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.1]
-			\coordinate (C1) at (0,0);   \coordinate (C2) at (3,0);
-			\coordinate (CR) at (6,0);
-			\coordinate (T1) at (0,1.6);   \coordinate (T2) at (3,0.8);
-			\draw[dashed, gray!60] (-0.9,0) -- (7.0,0);
-			\draw[gray!55, thin] (C1) -- (T2);
-			\draw[gray!55, thin] (C2) -- (T1);
-			\draw[line width=1.2pt] (T1) -- (T2);
-			\draw[line width=1.2pt, gray!55, dashed] (T2) -- (CR);
-			
-			\draw[->, thin] (C1) -- (T1);
-			\draw[->, thin] (C2) -- (T2);
-			\node (lblA) at (-1.85,1.10) {$|\vartheta_2|\,\overline{C_1C_2}$};
-			\draw[->, thin] (lblA) -- ($(C1)!0.5!(T1)$);
-			\node (lblB) at (4.55,0.95) {$\vartheta_1\,\overline{C_1C_2}$};
-			\draw[->, thin] (lblB) -- ($(C2)!0.55!(T2)$);
-			
-			\pic[draw, ->, thick, angle radius=15mm, angle eccentricity=0.8,	"\small$\vartheta_1$"] {angle = C2--C1--T2};
-			\pic[draw, <-, thick, angle radius=10mm] {angle = T1--C2--C1};
-			\node[font=\small] at ($(C2)+(-0.55,0.15)$) {$\vartheta_2$};
-			
-			\pic[draw, <-, thick, angle radius=20mm] {angle = T2--CR--C2};
-			\node (eqth) at (6.9,0.40) {$\vartheta=\vartheta_2-\vartheta_1$};
-			\draw[<-, thin] ($(CR)+(-1.80,0.20)$) -- (eqth.west);
-			%				
-			% vartheta_2 = cuneo in T2 fra la grigia C1->T2 (campo v_1) e il diagramma risultante
-			\pic[draw, <-, thick, angle radius=9mm, angle eccentricity=1.3,	"\small$\vartheta_2$"] {angle = T1--T2--C1};
-			
-			\node[left=1pt] at (T1) {$T_1$};
-			\node[above=1pt]        at (T2) {$T_2$};
-			
-			\fill (C1) circle (2pt) node[below=4pt] {$C_1$};
-			\fill (C2) circle (2pt) node[below=4pt] {$C_2$};
-			\fill (CR) circle (2pt) node[below=2pt] at (CR) {$C$};
-	\end{tikzpicture}}
-	\caption{Composizione di due rotazioni infinitesime nel piano come
-		diagramma degli spostamenti trasversali alla congiungente $C_1C_2$:
-		la retta spessa è $v(x)=\vartheta_1\,(x-x_{C_1})+\vartheta_2\,(x-x_{C_2})$
-		e il centro risultante $C$ è il suo zero, con
-		$\vartheta\,\overline{CC_1}=|\vartheta_2|\,\overline{C_1C_2}$.
-		(a)~Concordi: $C$ interno a $C_1C_2$. (b)~Discordi ($|\vartheta_2|>\vartheta_1$):
-		$C$ esterno, oltre $C_2$.}
-	\label{fig:composizione_2_rot}
-\end{figure}
-
-
-Analiticamente, per $n=2$ il centro $C$ giace sulla retta
-congiungente $C_1$ e $C_2$ e divide il segmento
-$\overrightarrow{C_1C_2}$ nel rapporto $\vartheta_2/\vartheta_1$:
-\begin{equation}\label{eq:comp_due_rot}
-	\overrightarrow{C_1 C}
-	= \frac{\vartheta_2}{\vartheta_1 + \vartheta_2}\,
-	\overrightarrow{C_1 C_2}.
-\end{equation}
-La posizione di $C$ dipende dal segno relativo delle due ampiezze:
-\begin{enumerate}[label=(\alph*)]
-	\item se $\vartheta_1$ e $\vartheta_2$ sono concordi, il
-	rapporto $\vartheta_2/(\vartheta_1+\vartheta_2)$ è compreso
-	fra $0$ e $1$, e il centro $C$ cade \textit{all'interno}
-	del segmento $C_1 C_2$, più vicino al centro della rotazione
-	di ampiezza maggiore;
-	\item se $\vartheta_1$ e $\vartheta_2$ sono discordi
-	($\vartheta_1 + \vartheta_2 \neq 0$), il centro $C$ cade
-	\textit{all'esterno} del segmento $C_1 C_2$, dalla parte del
-	centro la cui rotazione ha valore assoluto maggiore.
-\end{enumerate}
-I due casi sono illustrati nella figura~\ref{fig:composizione_2_rot}
-proprio per $\vartheta_2 = 2\vartheta_1$ (concordi) e
-$\vartheta_2 = -2\vartheta_1$ (discordi). Nel primo la
-\eqref{eq:comp_due_rot} dà
-$\overrightarrow{C_1C} = \tfrac{2}{3}\,\overrightarrow{C_1C_2}$:
-$C$ è interno al segmento, a $\tfrac{1}{3}|C_1C_2|$ da $C_2$, con
-rotazione risultante $\vartheta = 3\vartheta_1$. Nel secondo
-$\overrightarrow{C_1C} = 2\,\overrightarrow{C_1C_2}$: $C$ cade oltre
-$C_2$, a distanza $|C_1C_2|$ da esso, con $\vartheta = -\vartheta_1$
-(oraria, di ampiezza minore di $|\vartheta_2|$).
-
-
-
-\subsection{Centro di rotazione relativo e allineamento dei
-	centri}\label{sec:CR_relativo}
-
-\paragraph{Spostamento e rotazione relativi.}
 Quando due corpi rigidi $\mathcal{C}_i$ e $\mathcal{C}_j$ si muovono nel piano,
-ciascun punto dello spazio riceve in generale due spostamenti
-diversi: quello che avrebbe come punto solidale al corpo $\mathcal{C}_i$
-e quello che avrebbe come punto solidale al corpo $\mathcal{C}_j$. La
-differenza fra i due è lo \textit{spostamento relativo}\index{spostamento!relativo} del
-corpo $\mathcal{C}_i$ rispetto al corpo $\mathcal{C}_j$ in quel punto: è lo
-spostamento che un osservatore solidale con il corpo $\mathcal{C}_j$
-attribuisce al corpo $\mathcal{C}_i$.
+ciascun punto dello spazio riceve in generale due spostamenti diversi: quello
+che avrebbe come punto solidale al corpo $\mathcal{C}_i$ e quello che avrebbe
+come punto solidale al corpo $\mathcal{C}_j$ (Oss.~\ref{spaziosolidale}). La
+differenza fra i due è lo \textit{spostamento
+	relativo}\index{spostamento!relativo} del corpo $\mathcal{C}_i$ rispetto al corpo
+$\mathcal{C}_j$ in quel punto: è lo spostamento che un osservatore solidale
+con il corpo $\mathcal{C}_j$ attribuisce al corpo $\mathcal{C}_i$.
 
-Se i due corpi hanno rotazioni $\vartheta_i$ e $\vartheta_j$,
-la \textit{rotazione relativa}\index{rotazione!relativa} del corpo $\mathcal{C}_i$ rispetto al
-corpo $\mathcal{C}_j$ è $\vartheta_i - \vartheta_j$. Questa semplice
-sottrazione è lecita perché le rotazioni sono infinitesime e
-dunque si sommano (e si sottraggono) come scalari. Per
-rotazioni finite, la composizione non sarebbe così immediata.
+Se i due corpi hanno rotazioni $\vartheta_i$ e $\vartheta_j$, la \textit{rotazione
+	relativa}\index{rotazione!relativa} del corpo $\mathcal{C}_i$ rispetto al corpo
+$\mathcal{C}_j$ è $\vartheta_i - \vartheta_j$. Questa semplice sottrazione è lecita
+perché le rotazioni sono infinitesime e dunque si sommano (e si sottraggono) come
+scalari. Per rotazioni finite, la composizione non sarebbe così immediata.
 
-Il campo degli spostamenti relativi è esso stesso un campo
-rigido piano: essendo differenza di due campi rigidi, è una
-funzione affine della posizione con la stessa struttura della
-formula fondamentale. Possiede dunque un centro di rotazione
-(se $\vartheta_i \neq \vartheta_j$) o è una traslazione pura
-(se $\vartheta_i = \vartheta_j$).
+Il campo degli spostamenti relativi è esso stesso un campo rigido piano: essendo
+differenza di due campi rigidi, è una funzione affine della posizione con la stessa
+struttura della formula fondamentale. Possiede dunque un centro di rotazione (se
+$\vartheta_i \neq \vartheta_j$) o è una traslazione pura (se
+$\vartheta_i = \vartheta_j$).
 
-\paragraph{Espressione dello spostamento relativo.}
-Siano $\vartheta_i$ e $\vartheta_j$ le ampiezze di rotazione
-dei due corpi, con centri di rotazione $C_i$ e $C_j$. Lo
-spostamento di un punto generico $P$, solidale al corpo
-$\mathcal{C}_i$ o al corpo $\mathcal{C}_j$, è dato dalla
-formula fondamentale valutata rispetto al centro del corpo
-corrispondente:
-\begin{equation}
-	\ub_i(P) = \vartheta_i\,(\ab_z \times
-	\overrightarrow{C_i P}), \qquad
-	\ub_j(P) = \vartheta_j\,(\ab_z \times
-	\overrightarrow{C_j P}).
+\medskip
+
+Siano $\vartheta_i$ e $\vartheta_j$ le ampiezze di rotazione dei due corpi, con
+centri di rotazione $C_i$ e $C_j$. Lo spostamento di un punto generico $P$, solidale
+al corpo $\mathcal{C}_i$ o al corpo $\mathcal{C}_j$, è dato dalla formula
+fondamentale valutata rispetto al centro del corpo corrispondente:
+\begin{equation}\label{eq:campi_assoluti_ij}
+	\ub_i(P) = \vartheta_i\,\ab_z \times
+	\overrightarrow{C_i P}, \qquad
+	\ub_j(P) = \vartheta_j\,\ab_z \times
+	\overrightarrow{C_j P}.
 \end{equation}
 Lo spostamento relativo del corpo $\mathcal{C}_i$ rispetto al corpo $\mathcal{C}_j$
 nel punto $P$ è la differenza:
 \begin{equation}\label{eq:spost_relativo}
-	\ub_{ij}(P) = \ub_i(P) - \ub_j(P)
-	= \vartheta_i\,(\ab_z \times \overrightarrow{C_i P})
-	- \vartheta_j\,(\ab_z \times \overrightarrow{C_j P}).
+	\ub_{ij}(P) = \ub_i(P) - \ub_j(P).
 \end{equation}
-Questo campo è la composizione di una rotazione $\vartheta_i$
-attorno a $C_i$ e di una rotazione $-\vartheta_j$ attorno a
-$C_j$: per la~\eqref{eq:comp_rot_theta}, la sua ampiezza è
-$\vartheta_i - \vartheta_j$.
 
-
-\paragraph{Centro di rotazione relativo.}
-Il \textit{centro di rotazione relativo}\index{centro di rotazione!relativo|textbf} $C_{ij}$ è il punto in
-cui i due corpi hanno lo stesso spostamento assoluto:
+Definiamo \textit{centro di rotazione relativo}\index{centro di rotazione!relativo|textbf}
+$C_{ij}$  il punto in cui i due corpi hanno lo stesso spostamento assoluto:
 \begin{equation}\label{eq:def_CR_relativo}
 	\ub_i(C_{ij}) = \ub_j(C_{ij}),
 \end{equation}
-ovvero il punto in cui lo spostamento relativo si annulla:
-$\ub_{ij}(C_{ij}) = \zerovb$. Due punti materiali, uno solidale
-al corpo $\mathcal{C}_i$ e l'altro al corpo $\mathcal{C}_j$, che nella configurazione
-iniziale coincidono in $C_{ij}$, restano sovrapposti dopo lo
-spostamento.
+ovvero il punto in cui lo spostamento relativo si annulla: $\ub_{ij}(C_{ij}) =
+\zerovb$. Due punti materiali, uno solidale al corpo $\mathcal{C}_i$ e l'altro al
+corpo $\mathcal{C}_j$, che nella configurazione iniziale coincidono in $C_{ij}$,
+restano sovrapposti dopo lo spostamento.
 
-\paragraph{Allineamento dei centri.}
-La posizione di $C_{ij}$ si determina applicando direttamente
-il risultato sulla composizione di rotazioni: lo spostamento
-relativo è la composizione di una rotazione $\vartheta_i$
-attorno a $C_i$ e di una rotazione $-\vartheta_j$ attorno a
-$C_j$. Per la~\eqref{eq:comp_rot_baricentro}, il centro della
-rotazione composta è il baricentro di $C_i$ e $C_j$ pesati con
-le ampiezze $\vartheta_i$ e $-\vartheta_j$:
+\subsection{Primo teorema di Aronhold-Kennedy: allineamento dei centri assoluti}
+Valutiamo le due espressioni~\eqref{eq:campi_assoluti_ij} nel punto $C_{ij}$:
+\begin{equation}
+	\ub_i(C_{ij}) = \vartheta_i\,\ab_z\times\overrightarrow{C_iC_{ij}}, \qquad
+	\ub_j(C_{ij}) = \vartheta_j\,\ab_z\times\overrightarrow{C_jC_{ij}}.
+\end{equation}
+Per la definizione di centro relativo~\eqref{eq:def_CR_relativo} i due membri di
+destra coincidono:
+\begin{equation}
+	\vartheta_i\,\ab_z\times\overrightarrow{C_iC_{ij}}
+	= \vartheta_j\,\ab_z\times\overrightarrow{C_jC_{ij}}.
+\end{equation}
+L'applicazione $\wb\mapsto\ab_z\times\wb$ è lineare e iniettiva sul piano (è una
+rotazione di $\pi/2$, che conserva il modulo e dunque annulla solo il vettore
+nullo); possiamo perciò eliminarla da entrambi i membri:
+\begin{equation}\label{eq:CR_relativo_scalare}
+	\vartheta_i\,\overrightarrow{C_iC_{ij}}
+	= \vartheta_j\,\overrightarrow{C_jC_{ij}}.
+\end{equation}
+Se $\vartheta_i=\vartheta_j$, questa condizione impone $C_i=C_j$: per centri
+distinti non esiste dunque, in questo caso, un punto a distanza finita in cui i due
+spostamenti coincidano --- coerentemente con il caso limite della traslazione
+relativa pura. Se invece $\vartheta_i\neq\vartheta_j$, scrivendo
+$\overrightarrow{C_jC_{ij}} = \overrightarrow{C_iC_{ij}} - \overrightarrow{C_iC_j}$
+nella~\eqref{eq:CR_relativo_scalare} e risolvendo per $\overrightarrow{C_iC_{ij}}$
+si ottiene
 \begin{equation}\label{eq:CR_relativo_pos}
 	\overrightarrow{C_i C_{ij}}
-	= \frac{-\vartheta_j}{\vartheta_i - \vartheta_j}\,
+	= -\frac{\vartheta_j}{\vartheta_i - \vartheta_j}\,
 	\overrightarrow{C_i C_j}.
 \end{equation}
-Poiché $\overrightarrow{C_i C_{ij}}$ è proporzionale a
-$\overrightarrow{C_i C_j}$, i tre punti $C_i$, $C_j$ e
-$C_{ij}$ sono \textit{allineati} (\FIGref{fig:allineamento_CR}): il centro di rotazione
-relativo giace sulla retta congiungente i due centri assoluti.
+Poiché $\overrightarrow{C_iC_{ij}}$ è proporzionale a $\overrightarrow{C_iC_j}$, i
+tre punti $C_i$, $C_j$ e $C_{ij}$ sono \textit{allineati}
+(\FIGref{fig:allineamento_CR}). Questo risultato va sotto il nome di \textit{primo teorema di Aronhold-Kennedy}. \index{teorema!di Aronhold-Kennedy (primo)|textbf}
+
+\begin{oss}
+	La posizione di $C_{ij}$ si ritrova anche specializzando a $n=2$ la formula
+	generale di composizione~\eqref{eq:comp_rot_baricentro}: lo spostamento
+	relativo~\eqref{eq:spost_relativo} è la composizione di una rotazione
+	$\vartheta_i$ attorno a $C_i$ e di una rotazione $-\vartheta_j$ attorno a
+	$C_j$ (il segno meno riflette quello nella~\eqref{eq:spost_relativo}).
+	Applicando la~\eqref{eq:comp_rot_baricentro} con pesi $\vartheta_i$ e
+	$-\vartheta_j$ si ritrova immediatamente la~\eqref{eq:CR_relativo_pos}.
+\end{oss}
 
 \begin{figure}[htbp]
 	\centering
@@ -2002,17 +1862,11 @@ relativo giace sulla retta congiungente i due centri assoluti.
 			\fill (0,0)  circle (2pt) node[below=5pt] {$C_i$};
 			\fill (3,0)  circle (2pt) node[below=5pt] {$C_j$};
 			\fill (2,0)  circle (2pt) node[below=5pt] {$C_{ij}$};
-			\draw[<->, thin] (0,-1.0) -- (2,-1.0)
-			node[midway, below] {\small$\tfrac{2}{3}|C_iC_j|$};
-			\draw[<->, thin] (2,-1.0) -- (3,-1.0)
-			node[midway, below] {\small$\tfrac{1}{3}|C_iC_j|$};
-			% freccia sinistra con etichetta sopra
-			\draw[->, thick] (-0.5,0.1)
-			arc[start angle=160, end angle=20, radius=0.55];
+			\draw[<->, thin] (0,-1.0) -- (2,-1.0) node[midway, below] {\small$\tfrac{2}{3}|C_iC_j|$};
+			\draw[<->, thin] (2,-1.0) -- (3,-1.0) node[midway, below] {\small$\tfrac{1}{3}|C_iC_j|$};
+			\draw[->, thick] (-0.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
 			\node[above] at (0,0.65) {\small$\vartheta_i$};
-			% freccia destra con etichetta sopra
-			\draw[->, thick] (3.5,0.1)
-			arc[start angle=20, end angle=160, radius=0.55];
+			\draw[->, thick] (3.5,0.1) arc[start angle=20, end angle=160, radius=0.55];
 			\node[above] at (3,0.65) {\small$\vartheta_j{=}{-}2\vartheta_i$};
 	\end{tikzpicture}}%
 	\hspace{0.06\textwidth}%
@@ -2023,98 +1877,58 @@ relativo giace sulla retta congiungente i due centri assoluti.
 			\fill (2,0)  circle (2pt) node[below=5pt] {$C_j$};
 			\fill (4,0)  circle (2pt) node[below=5pt] {$C_{ij}$};
 			\draw[thick] (0,0) -- (2,0);
-			\draw[<->, thin] (0,-1.0) -- (2,-1.0)
-			node[midway, below] {\small$|C_iC_j|$};
-			\draw[<->, thin] (0,-1.6) -- (4,-1.6)
-			node[midway, below] {\small$2|C_iC_j|$};
-			% freccia sinistra con etichetta sopra
-			\draw[->, thick] (-0.5,0.1)
-			arc[start angle=160, end angle=20, radius=0.55];
+			\draw[<->, thin] (0,-1.0) -- (2,-1.0) node[midway, below] {\small$|C_iC_j|$};
+			\draw[<->, thin] (0,-1.6) -- (4,-1.6) node[midway, below] {\small$2|C_iC_j|$};
+			\draw[->, thick] (-0.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
 			\node[above] at (0,0.65) {\small$\vartheta_i$};
-			% freccia destra con etichetta sopra
-			\draw[->, thick] (1.5,0.1)
-			arc[start angle=160, end angle=20, radius=0.55];
+			\draw[->, thick] (1.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
 			\node[above] at (2,0.65) {\small$\vartheta_j{=}2\vartheta_i$};
 	\end{tikzpicture}}
 	\caption{Allineamento dei centri di rotazione $C_i$, $C_j$ e $C_{ij}$
 		con $|\vartheta_j| = 2|\vartheta_i|$.
 		\textbf{\textit{(a)}}~Rotazioni discordi ($\vartheta_i > 0$,
-		$\vartheta_j = -2\vartheta_i$): $C_{ij}$ cade
-		all'interno del segmento $C_iC_j$, a distanza
-		$\tfrac{2}{3}|C_iC_j|$ da $C_i$.
+		$\vartheta_j = -2\vartheta_i$): $C_{ij}$ cade all'interno del segmento
+		$C_iC_j$, a distanza $\tfrac{2}{3}|C_iC_j|$ da $C_i$.
 		\textbf{\textit{(b)}}~Rotazioni concordi ($\vartheta_i > 0$,
-		$\vartheta_j = 2\vartheta_i$): $C_{ij}$ cade
-		all'esterno, oltre $C_j$, a distanza
-		$2|C_iC_j|$ da $C_i$.}
+		$\vartheta_j = 2\vartheta_i$): $C_{ij}$ cade all'esterno, oltre $C_j$,
+		a distanza $2|C_iC_j|$ da $C_i$.}
 	\label{fig:allineamento_CR}
 \end{figure}
 
-
-\begin{oss}[\textbf{Lettura cinematica
-		dell'allineamento}]
-	Lo stesso risultato si ottiene con un argomento diretto. Si
-	applichino le due rotazioni ai rispettivi corpi, e si
-	imponga poi all'intero sistema una rotazione $-\vartheta_j$
-	attorno a $C_j$. Il corpo $\mathcal{C}_j$, che aveva subito la
-	rotazione $\vartheta_j$ attorno a $C_j$, torna nella
-	configurazione iniziale: ciò che resta è lo spostamento del
-	corpo $\mathcal{C}_i$ \textit{visto dal corpo $\mathcal{C}_j$}. Ma tale spostamento
-	è la composizione di una rotazione $\vartheta_i$ attorno a
-	$C_i$ e di una rotazione $-\vartheta_j$ attorno a $C_j$: il
-	suo centro cade sulla congiungente $C_i C_j$ per
-	la~\eqref{eq:comp_due_rot}, ed è precisamente $C_{ij}$.
-	Questa lettura mostra che $C_{ij}$ è allo stesso tempo il
-	punto di uguale spostamento assoluto dei due corpi e il
-	punto attorno al quale un osservatore solidale con un corpo
-	``vede'' l'altro ruotare: le due definizioni conducono allo
-	stesso punto.
-\end{oss}
-
-
-
-
-
 \begin{oss}[\textbf{Posizione del centro relativo}]
-	La posizione di $C_{ij}$ sulla retta $C_i C_j$ dipende
-	dal rapporto fra le ampiezze:
+	Il segno del coefficiente $-\vartheta_j/(\vartheta_i-\vartheta_j)$ nella
+	\eqref{eq:CR_relativo_pos} determina la posizione di $C_{ij}$ sulla retta
+	$C_iC_j$:
 	\begin{enumerate}[label=(\alph*)]
-		\item se $\vartheta_i$ e $\vartheta_j$ sono concordi,
-		le ``ampiezze'' della composizione ($\vartheta_i$ e
-		$-\vartheta_j$) sono discordi e $C_{ij}$ cade
-		\textit{all'esterno} del segmento $C_i C_j$, dalla
-		parte del centro con rotazione di valore assoluto
+		\item se $\vartheta_i$ e $\vartheta_j$ sono concordi, il coefficiente è
+		esterno all'intervallo $(0,1)$ e $C_{ij}$ cade \textit{all'esterno} del
+		segmento $C_i C_j$, dalla parte del centro con rotazione di valore assoluto
 		maggiore;
-		\item se $\vartheta_i$ e $\vartheta_j$ sono discordi,
-		le ampiezze della composizione sono concordi e $C_{ij}$
-		cade \textit{all'interno} del segmento $C_i C_j$;
-		\item se $\vartheta_i = \vartheta_j$ (rotazioni uguali),
-		$C_{ij}$ è all'infinito nella direzione di
-		$\overrightarrow{C_i C_j}$: lo spostamento relativo è una
-		traslazione pura, perpendicolare alla congiungente dei
-		centri, di modulo
+		\item se $\vartheta_i$ e $\vartheta_j$ sono discordi, il coefficiente è
+		compreso fra $0$ e $1$ e $C_{ij}$ cade \textit{all'interno} del segmento
+		$C_i C_j$;
+		\item se $\vartheta_i = \vartheta_j$, $C_{ij}$ è all'infinito nella direzione
+		di $\overrightarrow{C_i C_j}$: lo spostamento relativo è una traslazione
+		pura, perpendicolare alla congiungente dei centri, di modulo
 		$|\vartheta_i|\,|\overrightarrow{C_i C_j}|$.
 	\end{enumerate}
 \end{oss}
 
 \begin{oss}
-	La proprietà di allineamento $C_i$--$C_{ij}$--$C_j$ è il
-	fondamento della \textit{cinematica grafica}\index{cinematica grafica|textbf} dei sistemi di
-	corpi rigidi piani: nota la posizione di due centri, il
-	terzo si trova come intersezione di rette. Inoltre, dalla
-	\eqref{eq:CR_relativo_pos}, noti i tre centri e la
-	rotazione $\vartheta_i$ di uno dei due corpi, la rotazione
+	La proprietà di allineamento $C_i$--$C_{ij}$--$C_j$ è il fondamento della
+	\textit{cinematica grafica}\index{cinematica grafica|textbf} dei sistemi di corpi
+	rigidi piani: nota la posizione di due centri, il terzo si trova come
+	intersezione di rette. Inoltre, dalla~\eqref{eq:CR_relativo_pos}, noti i tre
+	centri e la rotazione $\vartheta_i$ di uno dei due corpi, la rotazione
 	dell'altro è univocamente determinata:
 	\begin{equation}\label{eq:rot_da_centri}
 		\vartheta_j = \vartheta_i\,
 		\frac{|\overrightarrow{C_j C_{ij}}|}
 		{|\overrightarrow{C_i C_{ij}}|},
 	\end{equation}
-	con segno positivo se $C_{ij}$ è esterno al segmento
-	$C_i C_j$ (rotazioni concordi), negativo se interno
-	(rotazioni discordi). L'allineamento dei centri fornisce
-	dunque sia la geometria che l'ampiezza degli spostamenti
-	rigidi: è uno strumento completo. Queste tecniche saranno
-	sviluppate sistematicamente nel seguito del corso.
+	con segno positivo se $C_{ij}$ è esterno al segmento $C_i C_j$ (rotazioni
+	concordi), negativo se interno (rotazioni discordi). L'allineamento dei centri
+	fornisce dunque sia la geometria che l'ampiezza degli spostamenti rigidi. 
 	
 	\begin{figure}[htbp]
 		\centering
@@ -2126,26 +1940,18 @@ relativo giace sulla retta congiungente i due centri assoluti.
 				\coordinate (Cij)     at (2,0);
 				\coordinate (Cj)      at (3,0);
 				\coordinate (Cij_up)  at (2, {2*\tg});
-				
 				\draw[dashed, gray!60] (-0.5,0) -- (4.2,0);
 				\draw[gray!50] (Ci) -- ({3.8*cos(\ang)}, {3.8*sin(\ang)});
-				
 				\draw[->, thick] (0.9,0) arc[start angle=0, end angle=\ang, radius=0.9];
 				\node[right=1pt] at (0.85,0.20) {\small$\vartheta_i$};
-				
-				\draw[<-, thick] ({3+0.7*cos(141)},{0.7*sin(141)})
-				arc[start angle=141, end angle=180, radius=0.7];
+				\draw[<-, thick] ({3+0.7*cos(141)},{0.7*sin(141)}) arc[start angle=141, end angle=180, radius=0.7];
 				\node at ({4-1.42},{0.15}) {\small$\vartheta_j$};
-				
 				\draw[->, dashed, thick] (Cij) -- (Cij_up);
 				\draw[thick, gray!60] (Cj) -- (Cij_up);
-				
 				\fill (Ci)     circle (2pt) node[below=5pt] {$C_i$};
 				\fill (Cij)    circle (2pt) node[below=5pt] {$C_{ij}$};
 				\fill (Cj)     circle (2pt) node[below=5pt] {$C_j$};
 				\fill (Cij_up) circle (2pt);
-				
-				
 		\end{tikzpicture}}%
 		\hspace{0.03\textwidth}%
 		\subfloat[][\emph{$C_{ij}$ esterno: rotazioni concordi}]{%
@@ -2156,122 +1962,110 @@ relativo giace sulla retta congiungente i due centri assoluti.
 				\coordinate (Cj)      at (2,0);
 				\coordinate (Cij)     at (4,0);
 				\coordinate (Cij_up)  at (4, {4*\tg});
-				
 				\draw[dashed, gray!60] (-0.5,0) -- (5.2,0);
 				\draw[gray!50] (Ci) -- ({4.8*cos(\ang)}, {4.8*sin(\ang)});
-				
 				\draw[->, thick] (0.9,0) arc[start angle=0, end angle=\ang, radius=0.9];
 				\node[right=1pt] at (0.85,0.20) {\small$\vartheta_i$};
-				
-				\draw[->, thick] ({2+0.7},0)
-				arc[start angle=0, end angle=39, radius=0.7];
+				\draw[->, thick] ({2+0.7},0) arc[start angle=0, end angle=39, radius=0.7];
 				\node at ({2+0.95},0.20) {\small$\vartheta_j$};
-				
 				\draw[->, dashed, thick] (Cij) -- (Cij_up);
 				\draw[thick, gray!60] (Cj) -- (Cij_up);
-				
 				\fill (Ci)     circle (2pt) node[below=5pt] {$C_i$};
 				\fill (Cj)     circle (2pt) node[below=5pt] {$C_j$};
 				\fill (Cij)    circle (2pt) node[below=5pt] {$C_{ij}$};
 				\fill (Cij_up) circle (2pt);
-				
-				
 		\end{tikzpicture}}
 		\caption{Cinematica grafica: determinazione di $\vartheta_j$ dalla posizione
 			dei centri e da $\vartheta_i$. La retta $C_iC_{ij}C_j$ ruota di $\vartheta_i$
 			attorno a $C_i$; lo spostamento verticale di $C_{ij}$ è proporzionale
-			alla sua distanza da $C_i$. La retta grigia da $C_j$ alla
-			posizione ruotata di $C_{ij}$ evidenzia per similitudine il rapporto
+			alla sua distanza da $C_i$. La retta grigia da $C_j$ alla posizione ruotata
+			di $C_{ij}$ evidenzia per similitudine il rapporto
 			$|\vartheta_j|/|\vartheta_i| = |C_jC_{ij}|/|C_iC_{ij}|$.}
 		\label{fig:cinematica_grafica}
 	\end{figure}
 \end{oss}
 
-\subsection{Allineamento dei centri di rotazione relativi}
+
+\subsection{Secondo teorema di Aronhold-Kennedy: allineamento dei centri relativi}
 \label{sec:allineamento_relativi}
+\index{allineamento dei centri di rotazione|textbf}\index{teorema!di Aronhold-Kennedy (secondo)|textbf}
 
-Consideriamo tre corpi rigidi $\mathcal{C}_i$, $\mathcal{C}_j$, $\mathcal{C}_k$ nel piano, con
-rotazioni $\vartheta_i$, $\vartheta_j$, $\vartheta_k$ e centri
-di rotazione assoluti\index{centro di rotazione!assoluto} $C_i$, $C_j$, $C_k$. I centri di
-rotazione relativi $C_{ij}$, $C_{ik}$, $C_{jk}$ sono definiti
-come nella Sezione~\ref{sec:CR_relativo}: $C_{ij}$ è il punto
-di uguale spostamento per i corpi $\mathcal{C}_i$ e $\mathcal{C}_j$, e così via.
+Consideriamo tre corpi rigidi $\mathcal{C}_i$, $\mathcal{C}_j$, $\mathcal{C}_k$ nel
+piano, con rotazioni $\vartheta_i$, $\vartheta_j$, $\vartheta_k$ e centri di
+rotazione assoluti\index{centro di rotazione!assoluto} $C_i$, $C_j$, $C_k$. I centri
+di rotazione relativi $C_{ij}$, $C_{ik}$, $C_{jk}$ sono definiti come nella
+Sezione~\ref{sec:CR_relativo}: $C_{ij}$ è il punto di uguale spostamento per i corpi
+$\mathcal{C}_i$ e $\mathcal{C}_j$, e così via.
 
-\paragraph{Teorema di allineamento.}\index{allineamento dei centri di rotazione|textbf}\index{teorema!di allineamento dei centri}
-I tre centri di rotazione relativi $C_{ij}$, $C_{ik}$ e
-$C_{jk}$ sono allineati.
+Il \textit{secondo teorema di Aronhold-Kennedy} stabilisce che i tre centri di rotazione relativi $C_{ij}$, $C_{ik}$ e $C_{jk}$ sono allineati.
 
-La dimostrazione segue l'argomento cinematico già utilizzato
-per l'allineamento dei centri assoluti con il centro relativo.
-Si applichino le tre rotazioni ai rispettivi corpi, e si
-imponga poi all'intero sistema una rotazione $-\vartheta_k$
-attorno a $C_k$. Il corpo $\mathcal{C}_k$ torna nella configurazione
-iniziale: ciò che resta è il moto dei corpi $\mathcal{C}_i$ e $\mathcal{C}_j$
-\textit{visto dal corpo $\mathcal{C}_k$}.
+\medskip 
 
-Dopo questa operazione:
-\begin{enumerate}[label=(\alph*)]
-	\item il corpo $\mathcal{C}_i$ risulta soggetto alla composizione di
-	una rotazione $\vartheta_i$ attorno a $C_i$ e di una
-	rotazione $-\vartheta_k$ attorno a $C_k$: il suo centro di
-	rotazione è $C_{ik}$, che è il punto di uguale spostamento
-	assoluto dei corpi $\mathcal{C}_i$ e $\mathcal{C}_k$, ora divenuto centro assoluto
-	del corpo $\mathcal{C}_i$ nel moto relativo a $\mathcal{C}_k$;
-	\item analogamente, il corpo $\mathcal{C}_j$ ha come centro di
-	rotazione $C_{jk}$.
-\end{enumerate}
-Nel moto relativo al corpo $\mathcal{C}_k$, i centri assoluti dei corpi $\mathcal{C}_i$
-e $\mathcal{C}_j$ sono dunque $C_{ik}$ e $C_{jk}$. Il centro di rotazione
-relativo del corpo $\mathcal{C}_i$ rispetto al corpo $\mathcal{C}_j$ è lo stesso nel
-moto assoluto e nel moto relativo a $\mathcal{C}_k$ --- poiché la rotazione
-rigida $-\vartheta_k$ imposta a tutto il sistema non altera gli
-spostamenti relativi fra $\mathcal{C}_i$ e $\mathcal{C}_j$ --- ed è quindi $C_{ij}$.
-Per la proprietà di allineamento dimostrata nella
-Sezione~\ref{sec:CR_relativo}, $C_{ij}$ giace sulla retta
-congiungente i due centri assoluti $C_{ik}$ e $C_{jk}$ (\FIGref{fig:allineamento_relativi}):
+Supponiamo $\vartheta_i,\vartheta_j,\vartheta_k$ a due a due distinti (altrimenti
+una delle tre coppie di corpi è in traslazione relativa pura, e il centro relativo
+corrispondente è improprio). Scrivendo la~\eqref{eq:CR_relativo_pos} in termini di
+vettori posizione rispetto a un punto $O$ fissato ad arbitrio, per ciascuna coppia
+di corpi si ottiene
+\begin{equation}\label{eq:tre_centri_pos}
+\begin{aligned}
+	&	\overrightarrow{OC_{ij}} = \frac{\vartheta_i\overrightarrow{OC_i}-\vartheta_j\overrightarrow{OC_j}}{\vartheta_i-\vartheta_j}, \qquad
+	\overrightarrow{OC_{jk}} = \frac{\vartheta_j\overrightarrow{OC_j}-\vartheta_k\overrightarrow{OC_k}}{\vartheta_j-\vartheta_k},\\
+&	\overrightarrow{OC_{ik}} = \frac{\vartheta_i\overrightarrow{OC_i}-\vartheta_k\overrightarrow{OC_k}}{\vartheta_i-\vartheta_k}.
+\end{aligned}
+\end{equation}
+Poniamo
+\begin{equation}
+	a:=\vartheta_i-\vartheta_j, \qquad b:=\vartheta_j-\vartheta_k, \qquad c:=\vartheta_k-\vartheta_i,
+\end{equation}
+sicché $a+b+c=0$ identicamente. Moltiplicando ciascuna delle~\eqref{eq:tre_centri_pos}
+per il proprio denominatore,
+\begin{equation}
+\begin{aligned}
+	&	a\,\overrightarrow{OC_{ij}} = \vartheta_i\overrightarrow{OC_i}-\vartheta_j\overrightarrow{OC_j}, \qquad
+	b\,\overrightarrow{OC_{jk}} = \vartheta_j\overrightarrow{OC_j}-\vartheta_k\overrightarrow{OC_k}, \\
+&	c\,\overrightarrow{OC_{ik}} = \vartheta_k\overrightarrow{OC_k}-\vartheta_i\overrightarrow{OC_i},
+\end{aligned}
+\end{equation}
+e sommando membro a membro, i termini a destra si elidono a due a due:
+\begin{equation}\label{eq:allineamento_somma_nulla}
+	a\,\overrightarrow{OC_{ij}} + b\,\overrightarrow{OC_{jk}} + c\,\overrightarrow{OC_{ik}} = \zerovb,
+	\qquad a+b+c=0.
+\end{equation}
+Sostituendo $c=-a-b$ nella~\eqref{eq:allineamento_somma_nulla} e raccogliendo,
+\begin{equation}
+	a\,(\overrightarrow{OC_{ij}}-\overrightarrow{OC_{ik}})
+	+ b\,(\overrightarrow{OC_{jk}}-\overrightarrow{OC_{ik}}) = \zerovb,
+	\qquad\text{cioè}\qquad
+	a\,\overrightarrow{C_{ik}C_{ij}} = -b\,\overrightarrow{C_{ik}C_{jk}}.
+\end{equation}
+Poiché $a=\vartheta_i-\vartheta_j\neq 0$ e $b=\vartheta_j-\vartheta_k\neq\mathbf{0}$ per ipotesi, 
+$\overrightarrow{C_{ik}C_{ij}}$ è  multiplo di $\overrightarrow{C_{ik}C_{jk}}$,
+cioè
 \begin{equation}
 	C_{ij},\; C_{ik},\; C_{jk} \quad \text{sono allineati.}
 \end{equation}
 
-
-
 \begin{figure}[htbp]
 	\centering
 	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.1]
-		
-		% Centri assoluti
 		\coordinate (Ci)  at (1.000, 0.500);
 		\coordinate (Cj)  at (4.500, 0.000);
 		\coordinate (Ck)  at (1.500, 3.500);
-		% Centri relativi (verificati allineati)
 		\coordinate (Cij) at (5.550, -0.150);
 		\coordinate (Cik) at (1.350,  2.600);
 		\coordinate (Cjk) at (3.450,  1.225);
-		% Estensioni retta allineamento
 		\coordinate (ext1) at (0.090,  3.425);
 		\coordinate (ext2) at (4.710,  0.400);
-		
-		% Rette fra centri assoluti, prolungate oltre entrambi gli estremi
-		% Ci-Cj: prolungata oltre Ci e fino a Cij (esterno oltre Cj)
 		\draw[gray!40, dashed] (-0.050, 0.650) -- (Ci) -- (Cj) -- (Cij) -- (6.100, -0.300);
-		% Ci-Ck: prolungata oltre Ci e oltre Ck
 		\draw[gray!40, dashed] (0.850, -0.500) -- (Ci) -- (Ck) -- (1.650, 4.400);
-		% Cj-Ck: prolungata oltre Cj e oltre Ck
 		\draw[gray!40, dashed] (5.400, -1.050) -- (Cj) -- (Ck) -- (0.600, 4.550);
-		
-		
-		% Retta di allineamento estesa oltre Cik e oltre Cij
 		\draw[thick, gray!60] (ext1) -- (Cik) -- (Cjk) -- (Cij) -- (6.600, -0.838);
-		
-		% Centri assoluti (cerchi pieni)
 		\fill (Ci) circle (2.5pt);
 		\fill (Cj) circle (2.5pt);
 		\fill (Ck) circle (2.5pt);
 		\node[below left=3pt] at (Ci) {$C_i$};
 		\node[below=4pt]       at (Cj) {$C_j$};
 		\node[right=4pt]       at (Ck) {$C_k$};
-		
-		% Centri relativi (cerchi vuoti)
 		\fill[white] (Cij) circle (3pt);
 		\draw[thick]  (Cij) circle (3pt);
 		\fill[white] (Cik) circle (3pt);
@@ -2281,48 +2075,44 @@ congiungente i due centri assoluti $C_{ik}$ e $C_{jk}$ (\FIGref{fig:allineamento
 		\node[above=4pt] at (Cij) {$C_{ij}$};
 		\node[left=4pt]        at (Cik) {$C_{ik}$};
 		\node[above right=2pt] at (Cjk) {$C_{jk}$};
-		
 	\end{tikzpicture}
 	\caption{Teorema di allineamento dei centri di rotazione relativi.
 		I tre corpi $\mathcal{C}_i$, $\mathcal{C}_j$, $\mathcal{C}_k$ hanno centri
 		assoluti $C_i$, $C_j$, $C_k$ (cerchi pieni). I centri di rotazione relativi
-		$C_{ij}$, $C_{ik}$, $C_{jk}$ --- ciascuno punto di uguale
-		spostamento per la coppia di corpi corrispondente ---
-		sono allineati (cerchi vuoti, retta grigia). Il centro $C_{ij}$ cade
-		all'esterno del segmento $C_iC_j$, coerentemente con il teorema di Menelao.}
+		$C_{ij}$, $C_{ik}$, $C_{jk}$ --- ciascuno punto di uguale spostamento per la
+		coppia di corpi corrispondente --- sono allineati (cerchi vuoti, retta
+		grigia). Il centro $C_{ij}$ cade all'esterno del segmento $C_iC_j$,
+		coerentemente con il teorema di Menelao.}
 	\label{fig:allineamento_relativi}
 \end{figure}
 
-
-
 \begin{oss}
-	Il risultato è del tutto generale: vale per qualsiasi
-	terna di corpi rigidi nel piano, indipendentemente dal
-	fatto che siano connessi fra loro o meno. Quando uno dei
-	tre corpi è il suolo (corpo $0$, con $\vartheta_0 = 0$),
-	i centri relativi $C_{i0}$ e $C_{j0}$ coincidono con i
-	centri assoluti $C_i$ e $C_j$, e il teorema si riduce
-	all'allineamento $C_i$--$C_{ij}$--$C_j$ già dimostrato.
+	Il risultato è del tutto generale: vale per qualsiasi terna di corpi rigidi nel
+	piano, indipendentemente dal fatto che siano connessi fra loro o meno. Quando
+	uno dei tre corpi è il suolo (corpo $0$, con $\vartheta_0 = 0$), i centri
+	relativi $C_{i0}$ e $C_{j0}$ coincidono con i centri assoluti $C_i$ e $C_j$, e il
+	teorema si riduce all'allineamento $C_i$--$C_{ij}$--$C_j$ già dimostrato.
 \end{oss}
 
 \begin{oss}
-	L'argomento della dimostrazione --- congelare e ruotare
-	attorno al centro di uno dei corpi --- è un esempio di
-	\textit{cambio di osservatore}: si passa dal riferimento
-	fisso al riferimento solidale con il corpo $\mathcal{C}_k$, nel quale
-	i centri relativi a $\mathcal{C}_k$ diventano centri assoluti. La
-	proprietà di allineamento è dunque invariante per cambio
-	di osservatore, il che ne riflette la natura intrinseca.
+	Il teorema a tre corpi ammette anche una dimostrazione che riusa il teorema a
+	due corpi, applicandolo non ai corpi originali ma a una coppia di campi
+	costruiti apposta. I campi $\ub_{ik}:=\ub_i-\ub_k$ e $\ub_{jk}:=\ub_j-\ub_k$
+	sono rigidi (per lo stesso argomento visto per $\ub_{ij}$), di centri $C_{ik}$
+	e $C_{jk}$, e si interpretano come gli spostamenti di $\mathcal{C}_i$ e
+	$\mathcal{C}_j$ visti da un osservatore solidale con $\mathcal{C}_k$. La loro
+	differenza è $\ub_{ik}-\ub_{jk}=\ub_i-\ub_j=\ub_{ij}$: applicando il teorema a
+	due corpi alla coppia $(\ub_{ik},\ub_{jk})$ si ritrova che il suo zero, cioè
+	$C_{ij}$, è allineato con $C_{ik}$ e $C_{jk}$.
 \end{oss}
 
+
 \begin{oss}
-	Come nel caso di due corpi, l'allineamento dei centri
-	relativi fornisce non solo la geometria ma anche le
-	ampiezze. Noti i tre centri $C_{ij}$, $C_{ik}$, $C_{jk}$
-	e la rotazione $\vartheta_i$ di uno dei tre corpi, le
-	rotazioni degli altri due sono univocamente determinate.
-	Dalla~\eqref{eq:rot_da_centri} applicata alle coppie
-	$(i,k)$ e $(i,j)$:
+	Come nel caso di due corpi, l'allineamento dei centri relativi fornisce non
+	solo la geometria ma anche le ampiezze. Noti i tre centri $C_{ij}$, $C_{ik}$,
+	$C_{jk}$ e la rotazione $\vartheta_i$ di uno dei tre corpi, le rotazioni degli
+	altri due sono univocamente determinate. Dalla~\eqref{eq:rot_da_centri}
+	applicata alle coppie $(i,k)$ e $(i,j)$:
 	\begin{equation}
 		\vartheta_k = \vartheta_i\,
 		\frac{|\overrightarrow{C_k C_{ik}}|}
@@ -2331,14 +2121,16 @@ congiungente i due centri assoluti $C_{ik}$ e $C_{jk}$ (\FIGref{fig:allineamento
 		\frac{|\overrightarrow{C_j C_{ij}}|}
 		{|\overrightarrow{C_i C_{ij}}|},
 	\end{equation}
-	con segni determinati dalla posizione interna o esterna
-	dei centri relativi. L'allineamento dei centri è dunque
-	uno strumento completo per l'analisi cinematica: le
-	posizioni dei centri determinano la geometria degli
-	spostamenti, i rapporti delle distanze ne determinano le
-	ampiezze.
+	con segni determinati dalla posizione interna o esterna dei centri relativi.
+	L'allineamento dei centri è dunque uno strumento completo per l'analisi
+	cinematica: le posizioni dei centri determinano la geometria degli spostamenti,
+	i rapporti delle distanze ne determinano le ampiezze.
 \end{oss}
 
+
+	
+	
+\todo[inline]{Eliminerei gli esercizi}
 
 %-------------------------------------------------------------------------------
 \section{Esercizi proposti}

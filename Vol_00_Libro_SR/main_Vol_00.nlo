@@ -6,5 +6,5 @@
 \nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup angolo di una rotazione finita\nomeqref {2.25}|nompageref}{28}
 \nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {2.25}|nompageref}{28}
 \nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {2.26}|nompageref}{28}
-\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {2.32}|nompageref}{30}
-\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {2.38}|nompageref}{32}
+\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {2.33}|nompageref}{31}
+\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {2.39}|nompageref}{32}

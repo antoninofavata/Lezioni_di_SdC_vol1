@@ -13,24 +13,25 @@
 \indexentry{vettore!assiale|textbf}{14}
 \indexentry{pseudovettore|see{vettore (assiale)}}{14}
 \indexentry{equiproiettivita@equiproiettività|textbf}{25}
-\indexentry{spostamento!rigido|textbf}{30}
-\indexentry{corpo rigido|textbf}{30}
-\indexentry{rotazione|textbf}{30}
-\indexentry{traslazione|textbf}{30}
-\indexentry{grado di liberta@grado di libertà|textbf}{30}
+\indexentry{spostamento!rigido|textbf}{31}
+\indexentry{corpo rigido|textbf}{31}
+\indexentry{rotazione|textbf}{31}
+\indexentry{traslazione|textbf}{31}
+\indexentry{grado di liberta@grado di libertà|textbf}{31}
 \indexentry{invarianti}{33}
-\indexentry{spostamento!campo di}{33}
+\indexentry{spostamento!campo di}{34}
 \indexentry{asse centrale!degli spostamenti|textbf}{34}
-\indexentry{moto rigido infinitesimo|textbf}{36}
-\indexentry{moto rigido infinitesimo!moto elicoidale}{36}
-\indexentry{moto rigido infinitesimo!rototraslazione}{36}
-\indexentry{rotazione!pura}{36}
-\indexentry{traslazione!pura}{36}
-\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{38}
+\indexentry{moto rigido|textbf}{36}
+\indexentry{moto rigido!moto elicoidale}{36}
+\indexentry{moto rigido!rototraslazione}{36}
+\indexentry{rotazione!pura}{37}
+\indexentry{traslazione!pura}{37}
+\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{40}
 \indexentry{spostamento!relativo}{42}
 \indexentry{rotazione!relativa}{42}
-\indexentry{centro di rotazione!relativo|textbf}{43}
+\indexentry{centro di rotazione!relativo|textbf}{42}
+\indexentry{teorema!di Aronhold-Kennedy (primo)|textbf}{43}
 \indexentry{cinematica grafica|textbf}{44}
-\indexentry{centro di rotazione!assoluto}{45}
 \indexentry{allineamento dei centri di rotazione|textbf}{45}
-\indexentry{teorema!di allineamento dei centri}{45}
+\indexentry{teorema!di Aronhold-Kennedy (secondo)|textbf}{45}
+\indexentry{centro di rotazione!assoluto}{45}

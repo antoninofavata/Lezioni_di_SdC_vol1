@@ -12,9 +12,9 @@
 
   \item centro di rotazione
     \subitem assoluto, 45
-    \subitem relativo, \textbf{43}
+    \subitem relativo, \textbf{42}
   \item cinematica grafica, \textbf{44}
-  \item corpo rigido, \textbf{30}
+  \item corpo rigido, \textbf{31}
 
   \indexspace
 
@@ -22,7 +22,7 @@
 
   \indexspace
 
-  \item grado di libertà, \textbf{30}
+  \item grado di libertà, \textbf{31}
 
   \indexspace
 
@@ -34,7 +34,7 @@
     \subitem assiale, \textbf{12}
     \subitem polare, \textbf{10}
     \subitem variazione al variare del polo, 12
-  \item moto rigido infinitesimo, \textbf{36}
+  \item moto rigido, \textbf{36}
     \subitem moto elicoidale, 36
     \subitem rototraslazione, 36
 
@@ -49,24 +49,25 @@
 
   \indexspace
 
-  \item rotazione, \textbf{30}
-    \subitem composizione di rotazioni infinitesime, \textbf{38}
-    \subitem pura, 36
+  \item rotazione, \textbf{31}
+    \subitem composizione di rotazioni infinitesime, \textbf{40}
+    \subitem pura, 37
     \subitem relativa, 42
 
   \indexspace
 
   \item spostamento
-    \subitem campo di, 33
+    \subitem campo di, 34
     \subitem relativo, 42
-    \subitem rigido, \textbf{30}
+    \subitem rigido, \textbf{31}
 
   \indexspace
 
   \item teorema
-    \subitem di allineamento dei centri, 45
-  \item traslazione, \textbf{30}
-    \subitem pura, 36
+    \subitem di Aronhold-Kennedy (primo), \textbf{43}
+    \subitem di Aronhold-Kennedy (secondo), \textbf{45}
+  \item traslazione, \textbf{31}
+    \subitem pura, 37
 
   \indexspace
 
