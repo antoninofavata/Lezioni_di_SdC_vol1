@@ -308,7 +308,7 @@ le componenti diagonali di $\bm{\Theta}_P$ sono nulle. Essendo $P$ interno a $\C
 cioè $(\Theta_P)_{ij}+(\Theta_P)_{ji}=0$ per ogni $i\neq j$. Insieme all'annullarsi della diagonale, questo significa esattamente che $\bm{\Theta}_P$ è antisimmetrico: $(\Theta_P)_{ji}=-(\Theta_P)_{ij}$ per ogni $i,j=x,y,z$.
 
 
-Ogni tensore antisimmetrico $\bm{\Theta}_P$, in dimensione 3, si scrive in modo unico come $\bm{\Theta}_P\mb=\bm{\upvartheta}_P\times\mb$ per ogni $\mb$, per un opportuno vettore $\bm{\upvartheta}_P$\footnote{Di componenti $(\vartheta_P)_k=-\tfrac12\varepsilon_{kij}(\Theta_P)_{ij}$, dove $\varepsilon$ è il simbolo di Ricci (v.  Sez. \ref{prodvet}).}. Dalla \eqref{eq:linearita_wP} segue allora
+Ogni tensore antisimmetrico $\bm{\Theta}_P$, in dimensione 3, si scrive in modo unico come $\bm{\Theta}_P\mb=\bm{\upvartheta}_P\times\mb$ per ogni $\mb$, per un opportuno vettore $\bm{\upvartheta}_P$\footnote{Di componenti $(\vartheta_P)_k=-\tfrac12\varepsilon_{kij}(\Theta_P)_{ij}$, dove $\varepsilon$ è il simbolo di Ricci (v.  \SECref{prodvet}).}. Dalla \eqref{eq:linearita_wP} segue allora
 \begin{equation}\label{eq:formula_polo_P}
 	\ub(Q)-\ub(P) = \wb_P(Q) = \bm{\upvartheta}_P\times\overrightarrow{PQ} \qquad \forall\, Q\in\Cc.
 \end{equation}
@@ -333,6 +333,9 @@ ovvero, in termini del tensore antisimmetrico $\bm{\Theta}$ associato a $\bm\upv
 \begin{equation}\label{eq:campo_rigidoTH}
 	\ub(Q) = \ub(P) + \bm{\Theta}\, \overrightarrow{PQ} \qquad \forall\, P,Q \in \Cc.
 \end{equation}
+
+Lo spazio vettoriale definito su $P\in\Cc$, i cui elementi  soddisfano la \eqref{eq:campo_rigido}, è lo
+\textit{spazio degli spostamenti rigidi} e verrà denotato con $\Uc_{\rm rig}$.
 
 
 
@@ -931,7 +934,7 @@ Gli invarianti del campo degli spostamenti rigidi\index{spostamento!campo di} so
 
 
 %---------------------------------------------------------------------------------------------------------------------------- 
-\section{Asse centrale degli spostamenti rigidi}
+\section{Asse centrale degli spostamenti rigidi}\label{assecentraleSP}
 %---------------------------------------------------------------------------------------------------------------------------- 
 Abbiamo visto che, cambiando polo, lo spostamento $\ub(O)$ cambia in generale: la sua componente lungo $\bm{\upvartheta}$ resta invariante, ma la sua componente perpendicolare a $\bm{\upvartheta}$ dipende dalla scelta del polo. Viene allora naturale chiedersi se esista un polo — anzi, come vedremo, un'intera retta di poli — per cui questa componente perpendicolare si annulli del tutto, lasciando solo la componente invariante lungo $\bm{\upvartheta}$: il polo, cioè, per cui il campo di spostamento ammette la descrizione più semplice possibile.  Immaginiamo che il corpo sia immerso in uno spazio solidale (v.  oss. \ref{spaziosolidale}), sicché richiediamo che questo luogo di punti non necessamente appartenga al corpo.
  
@@ -972,7 +975,7 @@ lo spostamento nella direzione dell'asse di rotazione è lo
 stesso per tutti i punti del corpo. Questo fornisce una lettura
 geometrica dell'invarianza del prodotto scalare
 $\bm{\upvartheta} \cdot \ub$ già dimostrata nella
-Sezione~\ref{sec:invarianti}.
+\SECref{sec:invarianti}.
 
 
 \paragraph{Costruzione dell'asse centrale.}
@@ -1994,7 +1997,7 @@ Consideriamo tre corpi rigidi $\mathcal{C}_i$, $\mathcal{C}_j$, $\mathcal{C}_k$ 
 piano, con rotazioni $\vartheta_i$, $\vartheta_j$, $\vartheta_k$ e centri di
 rotazione assoluti\index{centro di rotazione!assoluto} $C_i$, $C_j$, $C_k$. I centri
 di rotazione relativi $C_{ij}$, $C_{ik}$, $C_{jk}$ sono definiti come nella
-Sezione~\ref{sec:CR_relativo}: $C_{ij}$ è il punto di uguale spostamento per i corpi
+\SECref{sec:CR_relativo}: $C_{ij}$ è il punto di uguale spostamento per i corpi
 $\mathcal{C}_i$ e $\mathcal{C}_j$, e così via.
 
 Il \textit{secondo teorema di Aronhold-Kennedy} stabilisce che i tre centri di rotazione relativi $C_{ij}$, $C_{ik}$ e $C_{jk}$ sono allineati.
@@ -2035,10 +2038,12 @@ Sostituendo $c=-a-b$ nella~\eqref{eq:allineamento_somma_nulla} e raccogliendo,
 \begin{equation}
 	a\,(\overrightarrow{OC_{ij}}-\overrightarrow{OC_{ik}})
 	+ b\,(\overrightarrow{OC_{jk}}-\overrightarrow{OC_{ik}}) = \zerovb,
-	\qquad\text{cioè}\qquad
-	a\,\overrightarrow{C_{ik}C_{ij}} = -b\,\overrightarrow{C_{ik}C_{jk}}.
+	\end{equation}
+ovvero
+\begin{equation}
+		a\,\overrightarrow{C_{ik}C_{ij}} = -b\,\overrightarrow{C_{ik}C_{jk}}.
 \end{equation}
-Poiché $a=\vartheta_i-\vartheta_j\neq 0$ e $b=\vartheta_j-\vartheta_k\neq\mathbf{0}$ per ipotesi, 
+Poiché $a=\vartheta_i-\vartheta_j\neq 0$ e $b=\vartheta_j-\vartheta_k\neq 0$ per ipotesi, 
 $\overrightarrow{C_{ik}C_{ij}}$ è  multiplo di $\overrightarrow{C_{ik}C_{jk}}$,
 cioè
 \begin{equation}
@@ -2128,81 +2133,5 @@ cioè
 \end{oss}
 
 
-	
-	
-\todo[inline]{Eliminerei gli esercizi}
-
-%-------------------------------------------------------------------------------
-\section{Esercizi proposti}
-%-------------------------------------------------------------------------------
-
-\begin{esercizio}[Spostamento rigido nello spazio]
-	\label{ex:C01_spostamento_3D}
-	
-	Un corpo rigido subisce uno spostamento infinitesimo con $\ub(O) = (1\;\,0\;\,2)^\top$ e $\bm{\upvartheta} = (0\;\,0\;\,0.1)^\top$ (rotazione attorno a $\ab_z$). Posto $O$ nell'origine, calcolare lo spostamento del punto $P$ di coordinate $\bm{x}(P) = (3\;\,4\;\,0)^\top$:
-	(a) con la formula vettoriale~\eqref{eq:FFCI};
-	(b) con la forma matriciale~\eqref{eq:FFCI_estesa}.
-	
-	\risultato (a) $\bm{\upvartheta} \times \overrightarrow{OP} = (-0.4\;\,0.3\;\,0)^\top$, da cui $\ub(P) = (0.6\;\,0.3\;\,2)^\top$. (b) $\bm{\varTheta}\,\bm{x}(P) = (-0.4\;\,0.3\;\,0)^\top$, da cui $\bm{u}(P) = (0.6\;\,0.3\;\,2)^\top$. I due risultati coincidono.
-	
-\end{esercizio}
-
-\begin{esercizio}[Verifica della condizione di ortogonalità]
-	\label{ex:C01_ortogonalita}
-	
-	Per i dati dell'\ESEref{ex:C01_spostamento_3D}, scegliere un secondo punto $Q$ di coordinate $\bm{x}(Q) = (1\;\,5\;\,0)^\top$. Calcolare $\ub(Q)$ e verificare la condizione di ortogonalità~\eqref{eq:ortogonalita_CR}: $\overrightarrow{PQ} \cdot [\ub(Q) - \ub(P)] = 0$.
-	
-	\risultato $\bm{\upvartheta} \times \overrightarrow{OQ} = (-0.5\;\,0.1\;\,0)^\top$, da cui $\ub(Q) = (0.5\;\,0.1\;\,2)^\top$. $\overrightarrow{PQ} = (-2\;\,1\;\,0)^\top$, $\ub(Q) - \ub(P) = (-0.1\;\,-0.2\;\,0)^\top$, infine $\overrightarrow{PQ} \cdot [\ub(Q) - \ub(P)] = 0.2 - 0.2 = 0$.
-	
-\end{esercizio}
-
-\begin{esercizio}[Invarianti del campo di spostamento]
-	\label{ex:C01_invarianti}
-	
-	Per i dati dell'\ESEref{ex:C01_spostamento_3D}:
-	(a) calcolare il primo invariante $\bm{\upvartheta}$ (già noto);
-	(b) calcolare il secondo invariante $\bm{\upvartheta} \cdot \ub(O)$;
-	(c) verificare che $\bm{\upvartheta} \cdot \ub(P) = \bm{\upvartheta} \cdot \ub(O)$;
-	(d) classificare il moto rigido.
-	
-	\risultato (a) $\bm{\upvartheta} = (0\;\,0\;\,0.1)^\top$. (b) $\bm{\upvartheta} \cdot \ub(O) = 0.1 \cdot 2 = 0.2$. (c) $\bm{\upvartheta} \cdot \ub(P) = 0.1 \cdot 2 = 0.2$, coincide con il secondo invariante (b). (d) $\bm{\upvartheta} \neq \zerovb$ e $\bm{\upvartheta} \cdot \ub(O) \neq 0$: il moto è una \textit{rototraslazione}, con asse di rotazione parallelo a $\ab_z$ e componente di traslazione lungo $\ab_z$.
-	
-\end{esercizio}
-
-\begin{esercizio}[Centro di rotazione nel piano]
-	\label{ex:C01_CR_piano}
-	
-	Nel piano $(x,y)$, un corpo rigido ha spostamento del polo $\ub(O) = (0.3\;\,-0.6)^\top$ e rotazione $\vartheta = 0.1$\,rad.
-	(a) Determinare le coordinate del centro di rotazione $C$ con la~\eqref{eq:CR_coord}.
-	(b) Calcolare lo spostamento del punto $P = (5,\,2)$ sia con la~\eqref{eq:FFCI_piano} sia come $\bm{\upvartheta} \times \overrightarrow{CP}$ e verificare che i risultati coincidono.
-	
-	\risultato (a) $x(C) = -v(O)/\vartheta = 6$, $y(C) = u(O)/\vartheta = 3$, dunque $C = (6,\,3)$. (b) Con la~\eqref{eq:FFCI_piano}: $u(P) = 0.3 - 0.1 \cdot 2 = 0.1$, $v(P) = -0.6 + 0.1 \cdot 5 = -0.1$, da cui $\ub(P) = (0.1\;\,-0.1)^\top$. Con $\bm{\upvartheta} \times \overrightarrow{CP}$: $\overrightarrow{CP} = (-1\;\,-1\;\,0)^\top$, da cui $\bm{\upvartheta} \times \overrightarrow{CP} = (0.1\;\,-0.1\;\,0)^\top$. I due risultati coincidono.
-	
-\end{esercizio}
-
-\begin{esercizio}[Traslazione pura]
-	\label{ex:C01_traslazione}
-	
-	Un corpo rigido nel piano ha $\ub(O) = (2\;\,-1)^\top$ e $\vartheta = 0$.
-	(a) Calcolare lo spostamento di tre punti a scelta.
-	(b) Verificare che tutti hanno lo stesso spostamento.
-	(c) Commentare la posizione del centro di rotazione.
-	
-	\risultato (a) Per qualsiasi $P$: $\ub(P) = \ub(O) + \bm{\upvartheta} \times \overrightarrow{OP} = \ub(O) + \zerovb = \ub(O)$. Per $P_1 = (0,\,0)$, $P_2 = (3,\,4)$, $P_3 = (-1,\,5)$ si ottiene $\ub(P_1) = \ub(P_2) = \ub(P_3) = (2\;\,-1)^\top$. (b) Tutti i punti hanno lo stesso spostamento. (c) La~\eqref{eq:CR_coord} è singolare per $\vartheta = 0$: il centro di rotazione è all'\textit{infinito}, in direzione perpendicolare allo spostamento. La traslazione pura è il limite della rotazione con centro di rotazione che si allontana indefinitamente.
-	
-\end{esercizio}
-
-\begin{esercizio}[Dal campo di spostamento ai parametri]
-	\label{ex:C01_inversione}
-	
-	Sono noti gli spostamenti di due punti di un corpo rigido piano: $\ub(A) = (0.1\;\,0.2)^\top$ con $A = (0,\,0)$ e $\ub(B) = (0.1\;\,0.3)^\top$ con $B = (1,\,0)$.
-	(a) Dalla differenza $\ub(B) - \ub(A) = \bm{\upvartheta} \times \overrightarrow{AB}$, determinare la rotazione $\vartheta$.
-	(b) Determinare le coordinate del centro di rotazione.
-	(c) Verificare che $\ub(A) = \bm{\upvartheta} \times \overrightarrow{CA}$ e $\ub(B) = \bm{\upvartheta} \times \overrightarrow{CB}$.
-	
-	\risultato (a) $\overrightarrow{AB} = (1\;\,0)^\top$, $\ub(B) - \ub(A) = (0\;\,0.1)^\top$. La componente $y$ del prodotto vettoriale dà $\vartheta \cdot 1 = 0.1$, da cui $\vartheta = 0.1$\,rad. (b) Applicando la procedura della~\eqref{eq:CR_coord} ai dati di $A$: $y_C = y_A + u_A/\vartheta = 0 + 0.1/0.1 = 1$, $x_C = x_A - v_A/\vartheta = 0 - 0.2/0.1 = -2$, dunque $C = (-2,\,1)$. (c) $\overrightarrow{CA} = (2\;\,-1\;\,0)^\top$, $\bm{\upvartheta} \times \overrightarrow{CA} = (0.1\;\,0.2\;\,0)^\top = \ub(A)$. $\overrightarrow{CB} = (3\;\,-1\;\,0)^\top$, $\bm{\upvartheta} \times \overrightarrow{CB} = (0.1\;\,0.3\;\,0)^\top = \ub(B)$.
-	
-\end{esercizio}
-	
 	
 	
