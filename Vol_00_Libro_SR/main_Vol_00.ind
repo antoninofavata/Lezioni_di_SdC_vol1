@@ -3,16 +3,19 @@
   \item allineamento dei centri di rotazione, \textbf{29}
   \item asse centrale
     \subitem degli spostamenti, \textbf{19}
-    \subitem del sistema di forze, \textbf{42}
+    \subitem del sistema di forze, \textbf{43}
+  \item asse di sollecitazione, \textbf{45}
 
   \indexspace
 
+  \item baricentro delle forze, \textbf{48}
   \item braccio, 36
 
   \indexspace
 
   \item carico
-    \subitem distribuito, 37
+    \subitem distribuito, 38
+  \item centro di riduzione, \seealso{asse di sollecitazione}{45}
   \item centro di rotazione
     \subitem assoluto, 29
     \subitem relativo, \textbf{27}
@@ -28,7 +31,6 @@
   \indexspace
 
   \item equiproiettività, \textbf{9}
-  \item equivalenza, \see{sistema di forze}{44}
 
   \indexspace
 
@@ -51,7 +53,7 @@
 
   \indexspace
 
-  \item risultante, \textbf{35}
+  \item risultante, \textbf{36}
   \item rotazione, \textbf{15}
     \subitem composizione di rotazioni infinitesime, \textbf{24}
     \subitem pura, 20
@@ -60,11 +62,11 @@
   \indexspace
 
   \item sistema di forze
-    \subitem dinamo (sistema avvitante), 43
-    \subitem equivalenza, \textbf{44}
+    \subitem dinamo (sistema avvitante), 44
+    \subitem equiorientate, 48
     \subitem forza unica, 44
-    \subitem sistema ridotto al polo, 46
-    \subitem trasporto di una forza, 46
+    \subitem sistema ridotto al polo, 48
+    \subitem trasporto di una forza, 47
   \item spostamento
     \subitem campo di, 18
     \subitem relativo, 26

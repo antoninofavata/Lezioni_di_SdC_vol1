@@ -33,22 +33,25 @@
 \contentsline {subsection}{\numberline {2.1.2}Sistemi di forze e coppie}{35}{subsection.2.1.2}%
 \contentsline {paragraph}{Sistemi di forze.}{35}{subsection.2.1.2}%
 \contentsline {paragraph}{Nozione di coppia.}{36}{equation.2.1.5}%
-\contentsline {paragraph}{Sistemi di forze e coppie.}{36}{figure.caption.16}%
+\contentsline {paragraph}{Sistemi di forze e coppie.}{37}{figure.caption.16}%
 \contentsline {paragraph}{Densità di forze.}{37}{equation.2.1.9}%
-\contentsline {subsection}{\numberline {2.1.3}Il lavoro di un sistema di forze e coppie}{37}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.3}Il lavoro di un sistema di forze e coppie}{38}{subsection.2.1.3}%
 \contentsline {paragraph}{Il lavoro delle densità di forza.}{38}{equation.2.1.14}%
 \contentsline {section}{\numberline {2.2}L'equilibrio}{39}{section.2.2}%
 \contentsline {paragraph}{Il principio di equilibrio.}{39}{section.2.2}%
-\contentsline {paragraph}{Il principio dei lavori virtuali.}{39}{equation.2.2.19}%
-\contentsline {paragraph}{Equivalenza delle due formulazioni.}{39}{equation.2.2.20}%
+\contentsline {paragraph}{Il principio dei lavori virtuali.}{40}{equation.2.2.19}%
+\contentsline {paragraph}{Equivalenza delle due formulazioni.}{40}{equation.2.2.20}%
 \contentsline {section}{\numberline {2.3}Invarianza rispetto al cambiamento di osservatore}{40}{section.2.3}%
-\contentsline {paragraph}{Lavoro di un sistema e cambiamento di osservatore.}{40}{section.2.3}%
+\contentsline {paragraph}{Lavoro di un sistema e cambiamento di osservatore.}{41}{section.2.3}%
 \contentsline {paragraph}{Il postulato di invarianza.}{41}{equation.2.3.21}%
-\contentsline {section}{\numberline {2.4}Struttura dei sistemi di forze}{41}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Struttura dei sistemi di forze}{42}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Invarianti del campo dei momenti}{42}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Asse centrale del sistema di forze}{42}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Equivalenza di sistemi di forze}{44}{subsection.2.4.3}%
-\contentsline {paragraph}{Definizione di equivalenza.}{44}{subsection.2.4.3}%
-\contentsline {paragraph}{Operazioni elementari di equivalenza.}{45}{ossinner.2.7}%
-\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{46}{figure.caption.19}%
-\contentsline {chapter}{Indice analitico}{49}{section*.21}%
+\contentsline {subsection}{\numberline {2.4.2}Asse centrale del sistema di forze}{43}{subsection.2.4.2}%
+\contentsline {paragraph}{Particolarizzazione al caso piano}{44}{ossinner.2.5}%
+\contentsline {subsection}{\numberline {2.4.3}Equivalenza di sistemi di forze}{46}{subsection.2.4.3}%
+\contentsline {paragraph}{Operazioni elementari di equivalenza.}{47}{ossinner.2.8}%
+\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{47}{figure.caption.19}%
+\contentsline {subsection}{\numberline {2.4.4}Sistemi di forze equiorientate nel piano}{48}{subsection.2.4.4}%
+\contentsline {paragraph}{Forze concentrate equiorientate.}{49}{subsection.2.4.4}%
+\contentsline {paragraph}{Densità di forze equiorientate.}{50}{ossinner.2.11}%
+\contentsline {chapter}{Indice analitico}{53}{section*.23}%

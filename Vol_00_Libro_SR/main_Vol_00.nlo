@@ -3,5 +3,6 @@
 \nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {1.26}|nompageref}{13}
 \nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {1.33}|nompageref}{15}
 \nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {1.39}|nompageref}{16}
-\nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {2.3}|nompageref}{35}
+\nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {2.3}|nompageref}{36}
 \nomenclatureentry{G$\bm{\upmu}(O)$@[{$\bm{\upmu}(O)$}]\begingroup momento risultante rispetto al polo $O$ (vettore assiale)\nomeqref {2.4}|nompageref}{36}
+\nomenclatureentry{G$\mu_z(O)$@[{$\mu_z(O)$}]\begingroup momento risultante nel piano (scalare con segno), rispetto a $O$\nomeqref {2.26}|nompageref}{44}

@@ -21,19 +21,21 @@
 \indexentry{allineamento dei centri di rotazione|textbf}{29}
 \indexentry{teorema!di Aronhold-Kennedy (secondo)|textbf}{29}
 \indexentry{centro di rotazione!assoluto}{29}
-\indexentry{risultante|textbf}{35}
+\indexentry{risultante|textbf}{36}
 \indexentry{momento!risultante|textbf}{36}
 \indexentry{momento!di una forza}{36}
 \indexentry{braccio}{36}
 \indexentry{coppia|textbf}{36}
 \indexentry{densita di forze@densità di forze|textbf}{37}
-\indexentry{carico!distribuito}{37}
+\indexentry{carico!distribuito}{38}
 \indexentry{invarianza rispetto all'osservatore!equivalenza con PLV|textbf}{41}
-\indexentry{asse centrale!del sistema di forze|textbf}{42}
-\indexentry{sistema di forze!dinamo (sistema avvitante)}{43}
+\indexentry{asse centrale!del sistema di forze|textbf}{43}
+\indexentry{sistema di forze!dinamo (sistema avvitante)}{44}
 \indexentry{sistema di forze!forza unica}{44}
 \indexentry{coppia!pura}{44}
-\indexentry{sistema di forze!equivalenza|textbf}{44}
-\indexentry{equivalenza|see{sistema di forze}}{44}
-\indexentry{sistema di forze!trasporto di una forza}{46}
-\indexentry{sistema di forze!sistema ridotto al polo}{46}
+\indexentry{asse di sollecitazione|textbf}{45}
+\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{45}
+\indexentry{sistema di forze!trasporto di una forza}{47}
+\indexentry{sistema di forze!sistema ridotto al polo}{48}
+\indexentry{sistema di forze!equiorientate}{48}
+\indexentry{baricentro delle forze|textbf}{48}
