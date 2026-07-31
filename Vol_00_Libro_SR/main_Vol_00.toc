@@ -3,16 +3,16 @@
 \contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{5}{part.1}%
 \contentsline {chapter}{\numberline {1}Cinematica infinitesima del corpo rigido}{7}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Il corpo rigido e il campo di spostamento}{7}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Rappresentazione del campo di spostamento}{9}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Rappresentazione del campo di spostamento}{10}{subsection.1.1.1}%
 \contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{10}{equation.1.1.13}%
-\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{10}{equation.1.1.15}%
+\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{11}{equation.1.1.15}%
 \contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{11}{equation.1.1.19}%
 \contentsline {subsection}{\numberline {1.1.2}La rotazione infinitesima}{12}{subsection.1.1.2}%
-\contentsline {paragraph}{Il caso piano.}{12}{equation.1.1.25}%
+\contentsline {paragraph}{Il caso piano.}{13}{equation.1.1.25}%
 \contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{13}{equation.1.1.30}%
 \contentsline {subsection}{\numberline {1.1.3}Forma matriciale}{16}{subsection.1.1.3}%
 \contentsline {paragraph}{Il caso tridimensionale.}{16}{subsection.1.1.3}%
-\contentsline {paragraph}{Restrizione al caso piano.}{17}{figure.caption.7}%
+\contentsline {paragraph}{Restrizione al caso piano.}{17}{figure.caption.6}%
 \contentsline {section}{\numberline {1.2}Invarianti del campo di spostamento}{18}{section.1.2}%
 \contentsline {section}{\numberline {1.3}Asse centrale degli spostamenti rigidi}{18}{section.1.3}%
 \contentsline {paragraph}{Decomposizione dello spostamento.}{19}{section.1.3}%
@@ -27,16 +27,16 @@
 \contentsline {subsection}{\numberline {1.6.2}Secondo teorema di Aronhold-Kennedy: allineamento dei centri relativi}{29}{subsection.1.6.2}%
 \contentsline {chapter}{\numberline {2}Statica del corpo rigido}{33}{chapter.2}%
 \contentsline {section}{\numberline {2.1}La nozione di forza e di lavoro}{33}{section.2.1}%
-\contentsline {subsection}{\numberline {2.1.1}Due modi di rappresentare l'azione meccanica}{34}{subsection.2.1.1}%
-\contentsline {paragraph}{La forza come vettore applicato.}{34}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.1}Due modi di rappresentare l'azione meccanica}{35}{subsection.2.1.1}%
+\contentsline {paragraph}{La forza come vettore applicato.}{35}{subsection.2.1.1}%
 \contentsline {paragraph}{Il lavoro di una forza.}{35}{equation.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Sistemi di forze e coppie}{35}{subsection.2.1.2}%
-\contentsline {paragraph}{Sistemi di forze.}{35}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.2}Sistemi di forze e coppie}{36}{subsection.2.1.2}%
+\contentsline {paragraph}{Sistemi di forze.}{36}{subsection.2.1.2}%
 \contentsline {paragraph}{Nozione di coppia.}{36}{equation.2.1.5}%
-\contentsline {paragraph}{Sistemi di forze e coppie.}{37}{figure.caption.16}%
+\contentsline {paragraph}{Sistemi di forze e coppie.}{37}{figure.caption.14}%
 \contentsline {paragraph}{Densità di forze.}{37}{equation.2.1.9}%
 \contentsline {subsection}{\numberline {2.1.3}Il lavoro di un sistema di forze e coppie}{38}{subsection.2.1.3}%
-\contentsline {paragraph}{Il lavoro delle densità di forza.}{38}{equation.2.1.14}%
+\contentsline {paragraph}{Il lavoro delle densità di forza.}{39}{equation.2.1.14}%
 \contentsline {section}{\numberline {2.2}L'equilibrio}{39}{section.2.2}%
 \contentsline {paragraph}{Il principio di equilibrio.}{39}{section.2.2}%
 \contentsline {paragraph}{Il principio dei lavori virtuali.}{40}{equation.2.2.19}%
@@ -50,8 +50,8 @@
 \contentsline {paragraph}{Particolarizzazione al caso piano}{44}{ossinner.2.5}%
 \contentsline {subsection}{\numberline {2.4.3}Equivalenza di sistemi di forze}{46}{subsection.2.4.3}%
 \contentsline {paragraph}{Operazioni elementari di equivalenza.}{47}{ossinner.2.8}%
-\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{47}{figure.caption.19}%
-\contentsline {subsection}{\numberline {2.4.4}Sistemi di forze equiorientate nel piano}{48}{subsection.2.4.4}%
+\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{48}{figure.caption.17}%
+\contentsline {subsection}{\numberline {2.4.4}Sistemi di forze equiorientate nel piano}{49}{subsection.2.4.4}%
 \contentsline {paragraph}{Forze concentrate equiorientate.}{49}{subsection.2.4.4}%
 \contentsline {paragraph}{Densità di forze equiorientate.}{50}{ossinner.2.11}%
-\contentsline {chapter}{Indice analitico}{53}{section*.23}%
+\contentsline {chapter}{Indice analitico}{53}{section*.21}%
