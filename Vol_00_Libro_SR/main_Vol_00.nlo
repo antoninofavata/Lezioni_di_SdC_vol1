@@ -1,8 +1,17 @@
-\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup angolo di una rotazione finita\nomeqref {1.25}|nompageref}{13}
-\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {1.25}|nompageref}{13}
-\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {1.26}|nompageref}{13}
-\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {1.33}|nompageref}{15}
-\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {1.39}|nompageref}{16}
-\nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {2.3}|nompageref}{36}
-\nomenclatureentry{G$\bm{\upmu}(O)$@[{$\bm{\upmu}(O)$}]\begingroup momento risultante rispetto al polo $O$ (vettore assiale)\nomeqref {2.4}|nompageref}{36}
-\nomenclatureentry{G$\mu_z(O)$@[{$\mu_z(O)$}]\begingroup momento risultante nel piano (scalare con segno), rispetto a $O$\nomeqref {2.26}|nompageref}{44}
+\nomenclatureentry{S$\Ec$@[{$\Ec$}]\begingroup spazio euclideo tridimensionale\nomeqref {1.0}|nompageref}{6}
+\nomenclatureentry{S$\Uc$@[{$\Uc$}]\begingroup spazio delle traslazioni\nomeqref {1.0}|nompageref}{6}
+\nomenclatureentry{O$\coloneqq$@[{$\coloneqq$}]\begingroup uguaglianza di definizione\nomeqref {1.3}|nompageref}{8}
+\nomenclatureentry{O$\llbracket\,\cdot\,\rrbracket$@[{$\llbracket\,\cdot\,\rrbracket$}]\begingroup salto di una funzione\nomeqref {1.20}|nompageref}{12}
+\nomenclatureentry{O$\ub\cdot\vb$@[{$\ub\cdot\vb$}]\begingroup prodotto scalare\nomeqref {2.3}|nompageref}{17}
+\nomenclatureentry{O$\ub\times\vb$@[{$\ub\times\vb$}]\begingroup prodotto vettoriale\nomeqref {2.5}|nompageref}{17}
+\nomenclatureentry{O$\ub\otimes\vb$@[{$\ub\otimes\vb$}]\begingroup prodotto tensoriale\nomeqref {2.12}|nompageref}{19}
+\nomenclatureentry{G$\bm{\upmu}$@[{$\bm{\upmu}$}]\begingroup momento polare di un vettore applicato\nomeqref {2.14}|nompageref}{20}
+\nomenclatureentry{G$\mu_r$@[{$\mu_r$}]\begingroup momento assiale\nomeqref {2.20}|nompageref}{22}
+\nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup angolo di una rotazione finita\nomeqref {3.25}|nompageref}{39}
+\nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {3.25}|nompageref}{39}
+\nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {3.26}|nompageref}{39}
+\nomenclatureentry{L$\ub(P)$@[{$\ub(P)$}]\begingroup spostamento del punto $P$ (campo vettoriale)\nomeqref {3.33}|nompageref}{41}
+\nomenclatureentry{G$\bm{\varTheta}$@[{$\bm{\varTheta}$}]\begingroup operatore (matrice) di rotazione infinitesima, antisimmetrico\nomeqref {3.39}|nompageref}{42}
+\nomenclatureentry{L$\fb$@[{$\fb$}]\begingroup risultante di un sistema di forze (vettore libero); forza\nomeqref {4.3}|nompageref}{62}
+\nomenclatureentry{G$\bm{\upmu}(O)$@[{$\bm{\upmu}(O)$}]\begingroup momento risultante rispetto al polo $O$ (vettore assiale)\nomeqref {4.4}|nompageref}{62}
+\nomenclatureentry{G$\mu_z(O)$@[{$\mu_z(O)$}]\begingroup momento risultante nel piano (scalare con segno), rispetto a $O$\nomeqref {4.26}|nompageref}{70}

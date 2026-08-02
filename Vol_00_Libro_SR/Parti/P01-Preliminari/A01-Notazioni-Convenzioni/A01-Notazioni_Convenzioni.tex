@@ -56,8 +56,7 @@ Si denota con $\Ec$ lo \emph{spazio euclideo tridimensionale}%
 ambiente geometrico dell'intera trattazione.\footnote{Avendo a che 
 	fare esclusivamente con spazi tridimensionali, nel testo non si 
 	distinguono esplicitamente gli spazi euclidei di dimensione $1$, 
-	$2$ e $3$: la notazione $\Ec$ designa indistintamente la retta, 
-	il piano o lo spazio tridimensionale, secondo il contesto.} Gli 
+	$2$ e $3$. Se la dimensione dello spazio sarà differente da 3, verrà esplicitamente indicato.} Gli 
 elementi di $\Ec$ --- i \emph{punti} --- si indicano con lettere 
 maiuscole in corsivo: $A$, $B$, $P$, $\ldots$.
 
@@ -84,7 +83,7 @@ ammette la rappresentazione
 	\vb = v_x\,\ab_x + v_y\,\ab_y + v_z\,\ab_z,
 \end{equation}
 dove gli scalari $v_x, v_y, v_z \in \mathbb{R}$ sono le 
-\textit{componenti} di $\vb$. La tripletta ordinata delle componenti 
+\textit{componenti} di $\vb$ nella base scelta. La tripletta ordinata delle componenti 
 è essa stessa un vettore --- nel senso dell'algebra lineare --- 
 elemento dello spazio $\mathbb{R}^3$, scritto come \textit{vettore 
 	colonna}:
@@ -120,16 +119,13 @@ $\ldots$. I \textit{vettori numerici}\index{vettore!numerico|textbf} si denotano
 minuscole in \textit{grassetto italico}: $\bm{a}$, $\bm{u}$, 
 $\bm{v}$, $\bm{f}$, $\ldots$; analogamente per i vettori 
 numerici greci: $\bm{\alpha}$, $\bm{\omega}$, $\bm{\mu}$, 
-$\ldots$. La marca distintiva è dunque la distinzione fra 
-tondo e italico a stampa, fra freccia e sottolineatura nei 
-manoscritti: $\ub$ (geometrico) e $\bm{u}$ (numerico) sono 
-oggetti diversi, non due notazioni per lo stesso 
-oggetto.\footnote{Nei manoscritti, dove la distinzione fra 
-	grassetto tondo e grassetto italico non è praticabile, è uso 
-	comune denotare il vettore geometrico con una freccia 
-	soprascritta ($\overrightarrow{u}$) e il vettore numerico con 
-	la sottolineatura ($\underline{u}$), conservando così anche 
-	nella scrittura a mano la distinzione fra i due oggetti.}
+$\ldots$. 
+
+Sempre in grassetto italico verrano indicati vettori numerici di $\Ro^n$, con $n$ qualsiasi, dati da opportuno 
+assemblaggio di componenti di vettori, cui evidentemente non corrisponde un vettore geometrico reale; in questo caso, le dimensioni
+fisiche degli elementi di queste liste possono anche non essere omogenee. 
+ La differenza sarà 
+evidente dal contesto.
 
 %-------------------------------------------------------------------------------
 \subsection{Applicazioni lineari e matrici rappresentative}
@@ -434,17 +430,23 @@ Il \textit{salto}\index{salto (di una funzione)|textbf}\nomenclature[O]{$\llbrac
 differenza fra i due limiti laterali della funzione 
 \emph{nello stesso punto}, in corrispondenza di una 
 discontinuità: $\llbracket f \rrbracket \coloneqq f^+ - f^-$ con 
-$f^\pm \coloneqq \lim_{x\to x_0^\pm} f(x)$. Non c'è cammino, non c'è 
-percorrenza: la grandezza assume due valori distinti 
-contemporaneamente nel medesimo punto $x_0$, frontiera di 
-discontinuità. 	Usare $\Delta$ al posto di $\llbracket\cdot\rrbracket$, 
-benché letteralmente corretto, oscura la natura puntuale e 
-istantanea della discontinuità: i due simboli non sono 
-sinonimi.
+$f^\pm \coloneqq \lim_{x\to x_0^\pm} f(x)$. 
+
+%Non c'è cammino, non c'è 
+%percorrenza: la grandezza assume due valori distinti 
+%contemporaneamente nel medesimo punto $x_0$, frontiera di 
+%discontinuità. 	Usare $\Delta$ al posto di $\llbracket\cdot\rrbracket$, 
+%benché letteralmente corretto, oscura la natura puntuale e 
+%istantanea della discontinuità: i due simboli non sono 
+%sinonimi.
+
+
 
 %-------------------------------------------------------------------------------
 \subsection{Costante e uniforme}\label{sec:costante_uniforme}
 %-------------------------------------------------------------------------------
+
+\todo[inline]{Non sono d'accordo con quanto scritto sotto. La distinzione può essere utile se una funzione dipende contemporanemente da tempo e spazio, altrimenti non ha molto senso. Una funzione con $f'(x)=0$ è COSTANTE, qualunque cosa sia $x$. Poi non siamo neanche coerenti, "costante" compare in molti diagrammi delle CdS.}
 
 Anche due aggettivi che denotano l'\emph{invarianza} di una
 grandezza possono avere significato distinto. Si dice 
