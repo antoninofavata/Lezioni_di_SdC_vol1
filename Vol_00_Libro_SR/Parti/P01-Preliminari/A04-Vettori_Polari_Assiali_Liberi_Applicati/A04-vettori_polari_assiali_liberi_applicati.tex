@@ -125,30 +125,111 @@ $\alpha < 0$ (\FIGref{f:prodotto_per_uno_scalare}):
 \end{figure}
 
 
+\subsection{Forme bilineari}\index{forma bilineare|textbf}
+Un'applicazione 
+\begin{equation}
+b: \; \Uc\times\Uc \to \Ro
+\end{equation}
+è una \textit{forma bilineare} su $\Uc$ se è lineare in ognuno dei due argomenti, ovvero se soddisfa
+\begin{enumerate}
+	\item $(\ub+\vb, \wb)=b(\ub,\wb)+b(\vb, \wb)$
+	\item $(\ub, \wb+\vb)=b(\ub,\wb)+b(\ub, \wb)$
+	\item $b(\alpha\ub+\vb)=b(\ub,\alpha\vb)=\alpha\,b(\ub, \vb)$
+\end{enumerate} 
+per ogni $\ub, \vb, \wb\in \Uc$, $\alpha\in \Ro$.
+
+La forma bilineare $b$ è \textit{simmetrica} se 
+\begin{equation}
+	b(\ub, \vb)=b(\vb,\ub) \qquad \forall \ub, \vb\in \Uc
+\end{equation}
+e \textit{antisimmetrica} se 
+\begin{equation}
+	b(\ub, \vb)=-b(\vb,\ub) \qquad \forall \ub, \vb\in \Uc.
+\end{equation}
 
 
 \subsection{Prodotto scalare}\index{prodotto scalare|textbf}\nomenclature[O]{$\ub\cdot\vb$}{prodotto scalare}
-\todo[inline]{Dare definizione astratta, poi rappresentazione per componenti. La nozione di angolo è derivata, non definisce il p.s.}
-
-Il prodotto scalare di $\ub, \vb \in \Uc$ è lo scalare
-\begin{equation}\label{eq:prod_scal}
-	\ub \cdot \vb \coloneqq |\ub|\,|\vb|\cos\alpha,
+Un prodotto scalare è un'applicazione $\Uc\times\Uc \to \Ro$ che associa ad ogni coppia di vettori $(\ub, \vb)$ un numero reale $\ub\cdot\vb$, che soddisfa i seguenti assiomi:
+\begin{enumerate}
+	\item Linearità nel primo argomento:
+	\begin{equation}
+	(\alpha \ub+\beta \vb)\cdot \wb=\alpha\,(\ub\cdot\wb)+\beta\, (\vb\cdot \wb)
+	\end{equation}
+per ogni $\ub, \vb, \wb \in\Uc$ e $\alpha, \beta\in \Ro$.
+\item Simmetria:
+\begin{equation}
+	\ub\cdot \vb=\vb\cdot \ub.
 \end{equation}
-dove $\alpha \in [0,\pi]$ è l'angolo convesso fra i due vettori
-(\FIGref{f:prodotto_scalare}). In componenti, rispetto alla base
-ortonormale:
+\item Definita positività:
+\begin{equation}
+	\ub\cdot\vb\geq0,
+\end{equation}
+e inoltre
+\begin{equation}
+	\ub\cdot\ub\geq0 \quad \Longleftrightarrow \ub=\mathbf{0}.
+\end{equation}
+\end{enumerate}
+
+
+Dati due vettori $\ub, \vb \in \Uc$, cui associamo le liste $\bm{u},\bm{v}$, definiamo il prodotto scalare standard (o canonico) la forma bilineare
 \begin{equation}
 	\ub \cdot \vb = u_x v_x + u_y v_y + u_z v_z = \bm{u}^\top\bm{v}.
 \end{equation}
-Proprietà fondamentali:
-\begin{enumerate}[label=(\roman*)]
-	\item $\ub \cdot \vb = 0$ se e solo se $\ub \perp \vb$;
-	\item $\vb \cdot \vb = |\vb|^2$, da cui $|\vb| = \sqrt{\bm{v}^\top\bm{v}}$;
-	\item la proiezione orientata di $\vb$ su $\ub$ è lo scalare
-	$|\vb|\cos\alpha = (\ub \cdot \vb)/|\ub|$, sicché
-	$\ub \cdot \vb = |\ub|\,\mathrm{proj}_{\ub}\vb
-	= |\vb|\,\mathrm{proj}_{\vb}\ub$.
+
+Se $\ub, \vb \in \Uc$, allora vale \textit{disuguaglianza di Schwartz}
+\begin{equation}\label{schwartz}
+(\ub\cdot\vb)^2\leq |\ub\cdot\ub|\,|\vb\cdot\vb|.
+\end{equation}
+
+Se $\ub\in \Uc$, la \textit{norma}, o \textit{lunghezza}, di $\ub$ si definisce come
+\begin{equation}
+	|\ub|=\sqrt{\ub\cdot\ub},
+\end{equation}
+che consente di scrivere la disuguaglianza di Schwartz come
+\begin{equation}\label{schw2}
+	|\ub\cdot\vb|\leq |\ub|\,|\vb|.
+\end{equation}
+
+La lunghezza di un vettore gode delle seguenti proprietà, per ogni $\ub,\vb\in\Uc$, $\alpha\in\Ro$:
+\begin{enumerate}
+	\item $|\ub|\geq 0$, e vale l'uguaglianza se e e solo se $\vb=\mathbf{0}$
+	\item $|\alpha\ub|=|\alpha|\,|\vb|$
+	\item $|\ub+\vb|\leq |\ub|+|\vb|$ e vale l'uguaglianza se e solo se $\ub$ e $\vb$ sono paralleli.
 \end{enumerate}
+
+
+\medskip
+
+La disugliaglianza di Schwartz \eqref{schwartz} consente di introdurre nello spazio vettoriale $\Uc$ la nozione di angolo convesso tra due vettori non nulli, secondo
+il seguente ragionamento. Supponiamo
+che $\ub,\vb\in \Uc$  siano entrambi non nulli, la \eqref{schw2} è equivalente a 
+\begin{equation}
+-|\ub|\,|\vb|\leq \ub\cdot \vb\leq |\ub|\,|\vb|,
+\end{equation}
+da cui, dividendo per $|\ub|\,|\vb|$, si ha:
+\begin{equation}
+-1\leq \frac{\ub\cdot \vb}{|\ub|\,|\vb|}\leq 1
+\end{equation}
+Dalle proprietà della funzione coseno segue che esiste un unico numerto reale $\theta$, tale che $0\leq\theta\leq \pi$, e tale che si abbia
+\begin{equation}
+	\cos\theta=\frac{\ub\cdot \vb}{|\ub|\,|\vb|}.
+\end{equation}
+L'angolo 
+\begin{equation}
+	\theta=\arccos\left(    \frac{\ub\cdot \vb}{|\ub|\,|\vb|}\right)
+\end{equation}
+rappresenta l'angolo convesso tra (o formato dai) vettori $\ub$ e $\vb$. 
+
+Notiamo che due vettori $\ub, \vb$ sono \textit{ortogonali} se e solo se $\ub\cdot\vb=0$.
+
+Il prodotto scalare consente infine di introdurre la nozione di \textit{ proiezione orientata} di $\vb$ su $\ub$, ovvero lo scalare
+\begin{equation}
+\mathrm{proj}_{\ub}\vb\coloneqq|\vb|\cos\alpha = (\ub \cdot \vb)/|\ub|,
+\end{equation}
+sicché 	$\ub \cdot \vb = |\ub|\,\mathrm{proj}_{\ub}\vb
+= |\vb|\,\mathrm{proj}_{\vb}\ub$.
+
+
 \begin{figure}[htbp]
 	\centering
 	% marcatore d'angolo retto in #2 fra i raggi verso #1 e #3 (orientamento qualsiasi)
@@ -168,13 +249,13 @@ Proprietà fondamentali:
 			\draw[->, thick] (O) -- (U) node[right=2pt] {$\ub$};
 			\draw[->, thick] (O) -- (V) node[above=2pt, midway] {$\vb$};
 			\pic[draw, thin, angle radius=9mm, angle eccentricity=1.28,
-			"$\alpha$"{font=\small}] {angle = U--O--V};
+			"$\theta$"{font=\small}] {angle = U--O--V};
 			% quote orizzontali sotto l'asse di u
 			\draw[gray!55, thin] (O) -- (0,-1.5);
 			\draw[gray!55, thin] (F) -- ($(F)+(0,-0.75)$);
 			\draw[gray!55, thin] (U) -- ($(U)+(0,-1.5)$);
 			\draw[<->, thin] (0,-0.6) -- ($(F)+(0,-0.6)$)
-			node[midway, above, font=\small] {$|\vb|\cos\alpha$};
+			node[midway, above, font=\small] {$|\vb|\cos\theta$};
 			\draw[<->, thin] (0,-1.35) -- ($(U)+(0,-1.35)$)
 			node[midway, above, font=\small] {$|\ub|$};
 			\fill (O) circle (1.2pt);
@@ -194,13 +275,13 @@ Proprietà fondamentali:
 			\draw[->, thick] (O) -- (U) node[right=2pt] {$\ub$};
 			\draw[->, thick] (O) -- (V) node[above=2pt, pos=0.5] {$\vb$};
 			\pic[draw, thin, angle radius=9mm, angle eccentricity=1.28,
-			"$\alpha$"{font=\small}] {angle = U--O--V};
+			"$\theta$"{font=\small}] {angle = U--O--V};
 			% quote inclinate, parallele a v (lato superiore-sinistro)
 			\draw[gray!55, thin] (O) -- ($(O)+0.47*(Vrot)$);
 			\draw[gray!55, thin] (H) -- ($(H)+0.23*(Vrot)$);
 			\draw[gray!55, thin] (V) -- ($(V)+0.47*(Vrot)$);
 			\draw[<->, thin] ($(O)+0.18*(Vrot)$) -- ($(H)+0.18*(Vrot)$)
-			node[midway, sloped, above, font=\small] {$|\ub|\cos\alpha$};
+			node[midway, sloped, above, font=\small] {$|\ub|\cos\theta$};
 			\draw[<->, thin] ($(O)+0.43*(Vrot)$) -- ($(V)+0.43*(Vrot)$)
 			node[midway, sloped, above=1pt, font=\small] {$|\vb|$};
 			\fill (O) circle (1.2pt);
@@ -211,16 +292,46 @@ Proprietà fondamentali:
 	\label{f:prodotto_scalare}
 \end{figure}
 
-
 \subsection{Prodotto vettoriale}\index{prodotto vettoriale|textbf}\nomenclature[O]{$\ub\times\vb$}{prodotto vettoriale}\label{prodvet}
-
-Il prodotto vettoriale $\ub \times \vb$ è il vettore ortogonale al piano
-di $\ub$ e $\vb$, con verso dato dalla regola della mano destra e modulo
-\begin{equation}\label{eq:prod_vett_modulo}
-	|\ub \times \vb| \coloneqq |\ub|\,|\vb|\sin\alpha,
+Un prodotto vettoriale è un'applicazione $\Uc\times\Uc\to\Uc$ che associa a due vettori $\ub, \vb$ un nuovo vettore $\ub\times\vb$ e soddisfa le seguenti proprietà, 
+per ogni $\ub,\vb,\wb\in\Uc$, $\alpha,\beta\in\Ro$
+\begin{enumerate}
+	\item Bilinearità:
+	\begin{equation}
+		(\alpha\ub+\beta\vb)\times \wb=\alpha(\ub\times\wb)+\beta(\vb\times\wb),
+	\end{equation}
+e analogamente nel secondo argomento.
+\item Antisimmetria:
+\begin{equation}
+	\ub\times\vb=-\vb\times\ub,
 \end{equation}
-pari all'area del parallelogramma costruito sui due vettori
-(\FIGref{f:prodotto_vettoriale}). In componenti:
+da cui segue immediatamente
+\begin{equation}
+	\ub\times\ub=\mathbf{0}.
+\end{equation}
+\item Ortogonalità:
+\begin{equation}
+	(\ub\times\vb)\cdot \ub=0, \qquad 	(\ub\times\vb)\cdot\vb=0.
+\end{equation}
+\item Norma:
+\begin{equation}
+	|\ub\times\vb|=|\ub|\,|\vb|\,\sin\theta,
+\end{equation}
+dove $\theta$ è l'angolo tra $\ub$ e $\vb$.
+\item Orientazione: il verso di $\ub\times\vb$ è scelto in modo che la terna
+\begin{equation}
+(\ub, \vb, \ub\times\vb)
+\end{equation}
+sia orientata positivamente.
+\end{enumerate}
+
+Il prodotto vettoriale può essere definito usando il prodotto scalare, il determinante e un'orientazione dello spazio. In particolare,
+si richiede che il vettore $\ub\times\vb$ sia l'unico vettore tale che
+\begin{equation}
+\ub\times\vb\cdot \wb=\det (\ub, \vb, \wb), \qquad \forall\wb\in\Uc.
+\end{equation}
+
+Rappresentando $\ub$ e $\vb$ nella base $\{\ab_x, \ab_y,\ab_z\}$, possiamo allora scrivere che 
 \begin{equation}\label{eq:prod_vett_comp}
 	\ub \times \vb =
 	\begin{vmatrix}
@@ -241,13 +352,17 @@ Einstein) e $\varepsilon_{ijk}$ è il \textit{simbolo di Ricci}
 (o di Levi-Civita): vale $+1$ se $(i,j,k)$ è una permutazione pari
 di $(x,y,z)$, $-1$ se dispari, $0$ se due indici coincidono.
 
+Dal punto di vista geometrico, il prodotto vettoriale $\ub \times \vb$ è il vettore ortogonale al piano
+di $\ub$ e $\vb$, con verso dato dalla regola della mano destra e modulo
+\begin{equation}\label{eq:prod_vett_modulo}
+	|\ub \times \vb| \coloneqq |\ub|\,|\vb|\sin\alpha,
+\end{equation}
+pari all'area del parallelogramma costruito sui due vettori
+(\FIGref{f:prodotto_vettoriale}).
 
-Proprietà fondamentali:
-\begin{enumerate}[label=(\roman*)]
-	\item antisimmetria: $\ub \times \vb = -(\vb \times \ub)$;
-	\item $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
+Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 	sono paralleli.
-\end{enumerate}
+
 
 
 \begin{figure}[htbp]
@@ -533,6 +648,7 @@ mentre cambia segno per scambio di due fattori qualsiasi.
 
 
 \subsection{Prodotto tensoriale}\index{prodotto tensoriale|textbf}\nomenclature[O]{$\ub\otimes\vb$}{prodotto tensoriale}
+\todo[inline]{Verificare se usato da qualche parte, altrimenti eliminare}
 
 Il prodotto tensoriale di due vettori $\ub, \vb \in \Uc$, indicato con
 $\ub \otimes \vb$, è il tensore del secondo ordine definito dalla
@@ -553,6 +669,7 @@ estrae cioè la componente di $\vb$ lungo $\ab$. Il tensore complementare
 $\Ib - \ab \otimes \ab$ proietta invece sul piano ortogonale ad $\ab$.
 
 
+
 %-------------------------------------------------------------------------------------------------------------------
 \section{Vettori applicati}\label{sec:vettori_applicati}
 %-------------------------------------------------------------------------------------------------------------------
@@ -566,6 +683,13 @@ a $\vb$ si chiama \textit{linea d'azione}. La distinzione fra vettori
 liberi e applicati non è formale: forze, spostamenti e velocità sono
 vettori applicati, perché il loro effetto fisico dipende dal punto in
 cui agiscono.
+
+%\begin{oss}
+%Due vettori applicati sono \textit{equipollenti} se hanno la stessa direzione, la stessa lunghezza e lo stesso verso.  Nell'insieme
+%dei vettori applicati l'equipollenza è una relazione di equivalenza, visto che evidentemente soddisfa le note proprietà
+%di simmetria, riflessività e transitività. Un vettore geometrico può allora essere visto come una classe di equipollenza
+%di vettori applicati, ovvero l'insieme di tutti i segmenti orientati equipollenti ad un segmento orientato fissato.
+%\end{oss}
 
 \subsection{Momento polare}\label{sec:momento_polare}
 

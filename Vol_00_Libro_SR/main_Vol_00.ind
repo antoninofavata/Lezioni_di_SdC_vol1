@@ -1,104 +1,108 @@
 \begin{theindex}
 
-  \item allineamento dei centri di rotazione, \textbf{55}
+  \item allineamento dei centri di rotazione, \textbf{59}
   \item applicazione lineare, 7
   \item asse centrale
-    \subitem degli spostamenti, \textbf{45}
-    \subitem del sistema di forze, \textbf{69}
-  \item asse di sollecitazione, \textbf{71}
+    \subitem degli spostamenti, \textbf{49}
+    \subitem del sistema di forze, \textbf{73}
+  \item asse di sollecitazione, \textbf{75}
 
   \indexspace
 
-  \item baricentro delle forze, \textbf{75}
+  \item baricentro delle forze, \textbf{79}
   \item base ortonormale, \textbf{6}
-  \item braccio, \textbf{20}, 62
+  \item braccio, \textbf{23}, 66
 
   \indexspace
 
   \item carico
-    \subitem distribuito, 64
-  \item centro di riduzione, \seealso{asse di sollecitazione}{71}
+    \subitem distribuito, 68
+  \item centro di riduzione, \seealso{asse di sollecitazione}{75}
   \item centro di rotazione
-    \subitem assoluto, 55
-    \subitem relativo, \textbf{53}
-  \item cinematica grafica, \textbf{54}
-  \item coppia, \textbf{63}
-    \subitem pura, 70
-  \item corpo rigido, \textbf{41}
+    \subitem assoluto, 59
+    \subitem relativo, \textbf{57}
+  \item cinematica grafica, \textbf{58}
+  \item coppia, \textbf{67}
+    \subitem pura, 74
+  \item corpo rigido, \textbf{45}
   \item costante (nel tempo), \textbf{12}
 
   \indexspace
 
-  \item densità di forze, \textbf{63}
+  \item densità di forze, \textbf{67}
 
   \indexspace
 
-  \item equiproiettività, \textbf{36}
+  \item equiproiettività, \textbf{40}
 
   \indexspace
 
-  \item grado di libertà, \textbf{41}
+  \item forma bilineare, \textbf{17}
+
+  \indexspace
+
+  \item grado di libertà, \textbf{45}
 
   \indexspace
 
   \item incremento, \textbf{12}
-  \item invarianti, 44
+  \item invarianti, 48
   \item invarianza rispetto all'osservatore
-    \subitem equivalenza con PLV, \textbf{67}
+    \subitem equivalenza con PLV, \textbf{71}
 
   \indexspace
 
   \item matrice rappresentativa, \textbf{7}
   \item momento
-    \subitem assiale, \textbf{22}
-    \subitem di una forza, 62
-    \subitem polare, \textbf{20}
-    \subitem risultante, \textbf{62}
-    \subitem variazione al variare del polo, 22
-  \item moto rigido, \textbf{46}
-    \subitem moto elicoidale, 46
-    \subitem rototraslazione, 46
+    \subitem assiale, \textbf{25}
+    \subitem di una forza, 66
+    \subitem polare, \textbf{23}
+    \subitem risultante, \textbf{66}
+    \subitem variazione al variare del polo, 24
+  \item moto rigido, \textbf{50}
+    \subitem moto elicoidale, 50
+    \subitem rototraslazione, 50
 
   \indexspace
 
-  \item polo, 20
-  \item prodotto misto, \textbf{19}
+  \item polo, 23
+  \item prodotto misto, \textbf{22}
   \item prodotto scalare, \textbf{17}
-  \item prodotto tensoriale, \textbf{19}
-  \item prodotto vettoriale, \textbf{17}
-  \item pseudovettore, \see{vettore (assiale)}{24}
+  \item prodotto tensoriale, \textbf{22}
+  \item prodotto vettoriale, \textbf{19}
+  \item pseudovettore, \see{vettore (assiale)}{27}
 
   \indexspace
 
-  \item risultante, \textbf{62}
-  \item rotazione, \textbf{41}
-    \subitem composizione di rotazioni infinitesime, \textbf{50}
-    \subitem pura, 46
-    \subitem relativa, 52
+  \item risultante, \textbf{66}
+  \item rotazione, \textbf{45}
+    \subitem composizione di rotazioni infinitesime, \textbf{54}
+    \subitem pura, 50
+    \subitem relativa, 56
 
   \indexspace
 
   \item salto (di una funzione), \textbf{12}
   \item sistema di forze
-    \subitem dinamo (sistema avvitante), 70
-    \subitem equiorientate, 75
-    \subitem forza unica, 70
-    \subitem sistema ridotto al polo, 74
-    \subitem trasporto di una forza, 74
+    \subitem dinamo (sistema avvitante), 74
+    \subitem equiorientate, 79
+    \subitem forza unica, 74
+    \subitem sistema ridotto al polo, 78
+    \subitem trasporto di una forza, 78
   \item spazio delle traslazioni, \textbf{6}
   \item spazio euclideo, \textbf{6}
   \item spostamento
-    \subitem campo di, 44
-    \subitem relativo, 52
-    \subitem rigido, \textbf{41}
+    \subitem campo di, 48
+    \subitem relativo, 56
+    \subitem rigido, \textbf{45}
 
   \indexspace
 
   \item teorema
-    \subitem di Aronhold-Kennedy (primo), \textbf{53}
-    \subitem di Aronhold-Kennedy (secondo), \textbf{55}
-  \item traslazione, \textbf{41}
-    \subitem pura, 47
+    \subitem di Aronhold-Kennedy (primo), \textbf{57}
+    \subitem di Aronhold-Kennedy (secondo), \textbf{59}
+  \item traslazione, \textbf{45}
+    \subitem pura, 51
 
   \indexspace
 
@@ -107,11 +111,11 @@
   \indexspace
 
   \item vettore
-    \subitem applicato, \textbf{20}
-    \subitem assiale, \textbf{24}
+    \subitem applicato, \textbf{23}
+    \subitem assiale, \textbf{27}
     \subitem geometrico, \textbf{6}
     \subitem libero, \textbf{15}
     \subitem numerico, \textbf{6}
-    \subitem polare, \textbf{24}
+    \subitem polare, \textbf{27}
 
 \end{theindex}

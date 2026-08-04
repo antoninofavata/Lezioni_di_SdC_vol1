@@ -21,78 +21,79 @@
 \contentsline {chapter}{\numberline {2}Vettori geometrici: liberi, applicati, polari e assiali}{15}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Vettori liberi e algebra vettoriale}{15}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Somma e prodotto per uno scalare}{16}{subsection.2.1.1}%
-\contentsline {subsection}{\numberline {2.1.2}Prodotto scalare}{17}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Prodotto vettoriale}{17}{subsection.2.1.3}%
-\contentsline {subsection}{\numberline {2.1.4}Doppio prodotto vettoriale}{19}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}Prodotto misto}{19}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6}Prodotto tensoriale}{19}{subsection.2.1.6}%
-\contentsline {section}{\numberline {2.2}Vettori applicati}{20}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Momento polare}{20}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Legge di variazione del momento al variare del polo}{22}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Momento assiale}{22}{subsection.2.2.3}%
-\contentsline {section}{\numberline {2.3}Vettori polari e vettori assiali}{24}{section.2.3}%
-\contentsline {paragraph}{Vettori polari.}{24}{section.2.3}%
-\contentsline {paragraph}{Vettori assiali (o pseudovettori).}{24}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Comportamento sotto riflessione}{24}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Regole di composizione}{25}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Rappresentazione grafica}{26}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Il caso piano}{26}{section.2.4}%
-\contentsline {paragraph}{Vettori polari nel piano.}{26}{section.2.4}%
-\contentsline {paragraph}{Vettori assiali nel piano.}{27}{equation.2.4.26}%
-\contentsline {paragraph}{Rappresentazione grafica nel piano.}{27}{equation.2.4.27}%
-\contentsline {section}{\numberline {2.5}Esercizi proposti}{27}{section.2.5}%
-\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{31}{part.1}%
-\contentsline {chapter}{\numberline {3}Cinematica infinitesima del corpo rigido}{33}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Il corpo rigido e il campo di spostamento}{33}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Rappresentazione del campo di spostamento}{36}{subsection.3.1.1}%
-\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{36}{equation.3.1.13}%
-\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{37}{equation.3.1.15}%
-\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{37}{equation.3.1.19}%
-\contentsline {subsection}{\numberline {3.1.2}La rotazione infinitesima}{38}{subsection.3.1.2}%
-\contentsline {paragraph}{Il caso piano.}{39}{equation.3.1.25}%
-\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{39}{equation.3.1.30}%
-\contentsline {subsection}{\numberline {3.1.3}Forma matriciale}{42}{subsection.3.1.3}%
-\contentsline {paragraph}{Il caso tridimensionale.}{42}{subsection.3.1.3}%
-\contentsline {paragraph}{Restrizione al caso piano.}{43}{figure.caption.21}%
-\contentsline {section}{\numberline {3.2}Invarianti del campo di spostamento}{44}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Asse centrale degli spostamenti rigidi}{44}{section.3.3}%
-\contentsline {paragraph}{Decomposizione dello spostamento.}{45}{section.3.3}%
-\contentsline {paragraph}{Invarianza della componente parallela.}{45}{equation.3.3.46}%
-\contentsline {paragraph}{Costruzione dell'asse centrale.}{45}{equation.3.3.47}%
-\contentsline {section}{\numberline {3.4}Classificazione dei moti rigidi}{46}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Particolarizzazione al caso piano}{47}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Costruzione grafica del centro di rotazione}{49}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Composizione di rotazioni infinitesime nel piano}{50}{subsection.3.5.2}%
-\contentsline {section}{\numberline {3.6}Centro di rotazione relativo e allineamento dei centri}{52}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Primo teorema di Aronhold-Kennedy: allineamento dei centri assoluti}{53}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Secondo teorema di Aronhold-Kennedy: allineamento dei centri relativi}{55}{subsection.3.6.2}%
-\contentsline {chapter}{\numberline {4}Statica del corpo rigido}{59}{chapter.4}%
-\contentsline {section}{\numberline {4.1}La nozione di forza e di lavoro}{59}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Due modi di rappresentare l'azione meccanica}{61}{subsection.4.1.1}%
-\contentsline {paragraph}{La forza come vettore applicato.}{61}{subsection.4.1.1}%
-\contentsline {paragraph}{Il lavoro di una forza.}{61}{equation.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Sistemi di forze e coppie}{62}{subsection.4.1.2}%
-\contentsline {paragraph}{Sistemi di forze.}{62}{subsection.4.1.2}%
-\contentsline {paragraph}{Nozione di coppia.}{62}{equation.4.1.5}%
-\contentsline {paragraph}{Sistemi di forze e coppie.}{63}{figure.caption.29}%
-\contentsline {paragraph}{Densità di forze.}{63}{equation.4.1.9}%
-\contentsline {subsection}{\numberline {4.1.3}Il lavoro di un sistema di forze e coppie}{64}{subsection.4.1.3}%
-\contentsline {paragraph}{Il lavoro delle densità di forza.}{65}{equation.4.1.14}%
-\contentsline {section}{\numberline {4.2}L'equilibrio}{65}{section.4.2}%
-\contentsline {paragraph}{Il principio di equilibrio.}{65}{section.4.2}%
-\contentsline {paragraph}{Il principio dei lavori virtuali.}{66}{equation.4.2.19}%
-\contentsline {paragraph}{Equivalenza delle due formulazioni.}{66}{equation.4.2.20}%
-\contentsline {section}{\numberline {4.3}Invarianza rispetto al cambiamento di osservatore}{66}{section.4.3}%
-\contentsline {paragraph}{Lavoro di un sistema e cambiamento di osservatore.}{67}{section.4.3}%
-\contentsline {paragraph}{Il postulato di invarianza.}{67}{equation.4.3.21}%
-\contentsline {section}{\numberline {4.4}Struttura dei sistemi di forze}{68}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Invarianti del campo dei momenti}{68}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Asse centrale del sistema di forze}{69}{subsection.4.4.2}%
-\contentsline {paragraph}{Particolarizzazione al caso piano}{70}{ossinner.4.5}%
-\contentsline {subsection}{\numberline {4.4.3}Equivalenza di sistemi di forze}{72}{subsection.4.4.3}%
-\contentsline {paragraph}{Operazioni elementari di equivalenza.}{73}{ossinner.4.8}%
-\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{74}{figure.caption.32}%
-\contentsline {subsection}{\numberline {4.4.4}Sistemi di forze equiorientate nel piano}{75}{subsection.4.4.4}%
-\contentsline {paragraph}{Forze concentrate equiorientate.}{75}{subsection.4.4.4}%
-\contentsline {paragraph}{Densità di forze equiorientate.}{76}{ossinner.4.11}%
-\contentsline {chapter}{Indice analitico}{79}{section*.36}%
+\contentsline {subsection}{\numberline {2.1.2}Forme bilineari}{17}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Prodotto scalare}{17}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Prodotto vettoriale}{19}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Doppio prodotto vettoriale}{20}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Prodotto misto}{22}{subsection.2.1.6}%
+\contentsline {subsection}{\numberline {2.1.7}Prodotto tensoriale}{22}{subsection.2.1.7}%
+\contentsline {section}{\numberline {2.2}Vettori applicati}{23}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Momento polare}{23}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Legge di variazione del momento al variare del polo}{24}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Momento assiale}{25}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Vettori polari e vettori assiali}{26}{section.2.3}%
+\contentsline {paragraph}{Vettori polari.}{27}{section.2.3}%
+\contentsline {paragraph}{Vettori assiali (o pseudovettori).}{27}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Comportamento sotto riflessione}{27}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Regole di composizione}{28}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Rappresentazione grafica}{28}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Il caso piano}{29}{section.2.4}%
+\contentsline {paragraph}{Vettori polari nel piano.}{29}{section.2.4}%
+\contentsline {paragraph}{Vettori assiali nel piano.}{29}{equation.2.4.47}%
+\contentsline {paragraph}{Rappresentazione grafica nel piano.}{29}{equation.2.4.48}%
+\contentsline {section}{\numberline {2.5}Esercizi proposti}{30}{section.2.5}%
+\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{35}{part.1}%
+\contentsline {chapter}{\numberline {3}Cinematica infinitesima del corpo rigido}{37}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Il corpo rigido e il campo di spostamento}{37}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Rappresentazione del campo di spostamento}{40}{subsection.3.1.1}%
+\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{40}{equation.3.1.13}%
+\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{41}{equation.3.1.15}%
+\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{41}{equation.3.1.19}%
+\contentsline {subsection}{\numberline {3.1.2}La rotazione infinitesima}{42}{subsection.3.1.2}%
+\contentsline {paragraph}{Il caso piano.}{43}{equation.3.1.25}%
+\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{43}{equation.3.1.30}%
+\contentsline {subsection}{\numberline {3.1.3}Forma matriciale}{46}{subsection.3.1.3}%
+\contentsline {paragraph}{Il caso tridimensionale.}{46}{subsection.3.1.3}%
+\contentsline {paragraph}{Restrizione al caso piano.}{47}{figure.caption.21}%
+\contentsline {section}{\numberline {3.2}Invarianti del campo di spostamento}{48}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Asse centrale degli spostamenti rigidi}{48}{section.3.3}%
+\contentsline {paragraph}{Decomposizione dello spostamento.}{49}{section.3.3}%
+\contentsline {paragraph}{Invarianza della componente parallela.}{49}{equation.3.3.46}%
+\contentsline {paragraph}{Costruzione dell'asse centrale.}{49}{equation.3.3.47}%
+\contentsline {section}{\numberline {3.4}Classificazione dei moti rigidi}{50}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Particolarizzazione al caso piano}{51}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Costruzione grafica del centro di rotazione}{53}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Composizione di rotazioni infinitesime nel piano}{54}{subsection.3.5.2}%
+\contentsline {section}{\numberline {3.6}Centro di rotazione relativo e allineamento dei centri}{56}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Primo teorema di Aronhold-Kennedy: allineamento dei centri assoluti}{57}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Secondo teorema di Aronhold-Kennedy: allineamento dei centri relativi}{59}{subsection.3.6.2}%
+\contentsline {chapter}{\numberline {4}Statica del corpo rigido}{63}{chapter.4}%
+\contentsline {section}{\numberline {4.1}La nozione di forza e di lavoro}{63}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Due modi di rappresentare l'azione meccanica}{65}{subsection.4.1.1}%
+\contentsline {paragraph}{La forza come vettore applicato.}{65}{subsection.4.1.1}%
+\contentsline {paragraph}{Il lavoro di una forza.}{65}{equation.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Sistemi di forze e coppie}{66}{subsection.4.1.2}%
+\contentsline {paragraph}{Sistemi di forze.}{66}{subsection.4.1.2}%
+\contentsline {paragraph}{Nozione di coppia.}{66}{equation.4.1.5}%
+\contentsline {paragraph}{Sistemi di forze e coppie.}{67}{figure.caption.29}%
+\contentsline {paragraph}{Densità di forze.}{67}{equation.4.1.9}%
+\contentsline {subsection}{\numberline {4.1.3}Il lavoro di un sistema di forze e coppie}{68}{subsection.4.1.3}%
+\contentsline {paragraph}{Il lavoro delle densità di forza.}{69}{equation.4.1.14}%
+\contentsline {section}{\numberline {4.2}L'equilibrio}{69}{section.4.2}%
+\contentsline {paragraph}{Il principio di equilibrio.}{69}{section.4.2}%
+\contentsline {paragraph}{Il principio dei lavori virtuali.}{70}{equation.4.2.19}%
+\contentsline {paragraph}{Equivalenza delle due formulazioni.}{70}{equation.4.2.20}%
+\contentsline {section}{\numberline {4.3}Invarianza rispetto al cambiamento di osservatore}{70}{section.4.3}%
+\contentsline {paragraph}{Lavoro di un sistema e cambiamento di osservatore.}{71}{section.4.3}%
+\contentsline {paragraph}{Il postulato di invarianza.}{71}{equation.4.3.21}%
+\contentsline {section}{\numberline {4.4}Struttura dei sistemi di forze}{72}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Invarianti del campo dei momenti}{72}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Asse centrale del sistema di forze}{73}{subsection.4.4.2}%
+\contentsline {paragraph}{Particolarizzazione al caso piano}{74}{ossinner.4.5}%
+\contentsline {subsection}{\numberline {4.4.3}Equivalenza di sistemi di forze}{76}{subsection.4.4.3}%
+\contentsline {paragraph}{Operazioni elementari di equivalenza.}{77}{ossinner.4.8}%
+\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{78}{figure.caption.32}%
+\contentsline {subsection}{\numberline {4.4.4}Sistemi di forze equiorientate nel piano}{79}{subsection.4.4.4}%
+\contentsline {paragraph}{Forze concentrate equiorientate.}{79}{subsection.4.4.4}%
+\contentsline {paragraph}{Densità di forze equiorientate.}{80}{ossinner.4.11}%
+\contentsline {chapter}{Indice analitico}{83}{section*.36}%
