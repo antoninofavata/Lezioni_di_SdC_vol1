@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  7 AUG 2026 10:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  7 AUG 2026 13:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2040,43 +2040,51 @@ i_Polari_Assiali_Liberi_Applicati.tex [15] [16
 ]
 Capitolo 2.
 [17] [18] [19]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 265.
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 9.0pt on input line 265.
- [20] [21]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
-90.
+Overfull \hbox (6.01953pt too wide) in paragraph at lines 240--242
+[]\T1/lmr/m/n/10 Questa de-fi-ni-zio-ne con-sen-te di scri-ve-re la di-su-gua-g
+lian-za di Cauchy-Schwarz
+ []
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 306.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 9.0pt on input line 306.
+[20] [21]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
+31.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [22{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
-Overfull \hbox (25.55357pt too wide) in paragraph at lines 478--478
+Overfull \hbox (25.55357pt too wide) in paragraph at lines 519--519
  [][] 
  []
 
-[23] [24] [25]
-Overfull \hbox (48.25653pt too wide) in paragraph at lines 866--866
- [][] 
- []
-
-
-Overfull \hbox (34.94287pt too wide) in paragraph at lines 927--927
+[23] [24] [25] [26]
+Overfull \hbox (48.25653pt too wide) in paragraph at lines 907--907
  [][] 
  []
 
 
-Overfull \hbox (16.15312pt too wide) in paragraph at lines 1021--1022
+Overfull \hbox (34.94287pt too wide) in paragraph at lines 968--968
  [][] 
  []
 
-[26] [27]
-Overfull \hbox (15.64441pt too wide) in paragraph at lines 1207--1207
+
+Overfull \hbox (16.15312pt too wide) in paragraph at lines 1062--1063
  [][] 
  []
 
-[28] [29] [30] [31]
-Overfull \hbox (1.5072pt too wide) detected at line 1537
+[27] [28]
+Overfull \hbox (15.64441pt too wide) in paragraph at lines 1248--1248
+ [][] 
+ []
+
+[29]
+Underfull \vbox (badness 7116) has occurred while \output is active []
+
+ [30]
+[31]
+Overfull \hbox (1.5072pt too wide) detected at line 1578
 [][][]\OT1/lmr/m/n/10 (\OT1/lmr/bx/n/10 Qv \OMS/lmsy/m/n/10 ^^B \OT1/lmr/bx/n/1
 0 Qw\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 Qz \OT1/lmr/m/n/10 
 = [](\OT1/lmr/bx/n/10 Qv\OML/lmm/m/it/10 ; \OT1/lmr/bx/n/10 Qw\OML/lmm/m/it/10 
@@ -2087,18 +2095,18 @@ T1/lmr/bx/n/10 v \OMS/lmsy/m/n/10 ^^B \OT1/lmr/bx/n/10 w\OT1/lmr/m/n/10 ) \OMS/
 lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 z\OML/lmm/m/it/10 :
  []
 
-[32] [33] [34] [35] [36] [37])
+[32] [33] [34] [35] [36] [37] [38])
 (./Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/A03-Applicazioni_Line
-ari_Dualita.tex [38]
-Capitolo 3.
-[39
+ari_Dualita.tex [39] [40
 
-] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49]
+]
+Capitolo 3.
+[41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51]
 Overfull \hbox (28.98752pt too wide) in paragraph at lines 650--660
  [][] 
  []
 
-[50]
+[52]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 680.
@@ -2135,7 +2143,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 720.
 
-[51]
+[53]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 748.
@@ -2160,7 +2168,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 781.
 
-[52]
+[54]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 831.
@@ -2198,24 +2206,24 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 874.
 
-[53] [54] [55])
+[55] [56] [57])
 (./Parti/P01-Preliminari/A02-Algebra_Matrici_Sistemi_Lineari/A02-Algebra_Matric
-i_Sistemi_Lineari.tex [56]
+i_Sistemi_Lineari.tex [58]
 Capitolo 4.
-[57
+[59
 
-] [58] [59] [60] [61] [62]
+] [60] [61] [62] [63] [64]
 Overfull \hbox (3.53137pt too wide) in paragraph at lines 364--365
 []\T1/lmr/bx/n/10 Osservazione 4.3 (Principio di so-vrap-po-si-zio-ne). []\T1/l
 mr/m/n/10 Il le-ga-me li-nea-re []
  []
 
-[63] [64] [65] [66]
+[65] [66] [67] [68]
 
-LaTeX Warning: Reference `tab:classificazione_eqlineari' on page 67 undefined o
+LaTeX Warning: Reference `tab:classificazione_eqlineari' on page 69 undefined o
 n input line 602.
 
-[67] [68]
+[69] [70]
 Overfull \hbox (10.95654pt too wide) detected at line 721
 [][][]\OML/lmm/b/it/10 x[] \OT1/lmr/m/n/10 = \OML/lmm/b/it/10 A[]b \OMS/lmsy/m/
 n/10 ^^@ \OML/lmm/b/it/10 A[]A[] \OML/lmm/m/it/10  \OT1/lmr/m/n/10 = [] \OMS/l
@@ -2223,7 +2231,7 @@ msy/m/n/10 ^^@ []  \OML/lmm/m/it/10  \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^@
  [] \OML/lmm/m/it/10 :
  []
 
-[69]
+[71]
 Overfull \hbox (10.58002pt too wide) detected at line 828
 []  \OML/lmm/b/it/10 A \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OML/lmm/m/it/10 ;
   \OML/lmm/b/it/10 x \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OT1/lmr/m/n/10 ;  [
@@ -2233,12 +2241,12 @@ Overfull \hbox (10.58002pt too wide) detected at line 828
 \OML/lmm/b/it/10 x \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OML/lmm/m/it/10 :
  []
 
-[70] [71]) [72] [73
+[72] [73]) [74] [75
 
-] [74]
+] [76]
 (./Parti/P03-Meccanica_SR/C01-Cinematica_CR/C01-Cinematica_CR.tex
 Capitolo 5.
-<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf, id=1304, 195.06677p
+<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf, id=1317, 195.06677p
 t x 164.67322pt>
 File: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf Graphic file (t
 ype pdf)
@@ -2246,10 +2254,10 @@ ype pdf)
 Package pdftex.def Info: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.
 pdf  used on input line 42.
 (pdftex.def)             Requested size: 195.06628pt x 164.6728pt.
-[75
+[77
 
-] [76 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf>]
-[77]
+] [78 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf>]
+[79]
 Overfull \hbox (11.23944pt too wide) detected at line 296
 [][][]\OT1/lmr/bx/n/10 w[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Q\OT1/lmr/m/n/10 ) 
 = [][]\OT1/lmr/bx/n/10 a[] \OMS/lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 w[]\OT1/lmr/m/
@@ -2259,14 +2267,14 @@ n/10 (\OML/lmm/m/it/10 Q\OT1/lmr/m/n/10 )[] \OT1/lmr/bx/n/10 a[] \OT1/lmr/m/n/1
 t/10 Q \OMS/lmsy/m/n/10 2 \U/BOONDOX-calo/m/n/10 C\OML/lmm/m/it/10 ;
  []
 
-[78] [79] [80] [81] [82] [83] [84] [85] [86]
+[80] [81] [82] [83] [84] [85] [86] [87] [88]
 Overfull \hbox (15.98035pt too wide) in paragraph at lines 972--977
 [] [] \T1/lmr/bx/n/10 In-va-rian-za del-la com-po-nen-te pa-ral-le-la.[] \T1/lm
 r/m/n/10 Nel-la for-mu-la fon-da-men-ta-le [],
  []
 
-[87] [88] [89] [90] [91]
-<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf, id=1576, 262.2658
+[89] [90] [91] [92] [93]
+<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf, id=1589, 262.2658
 4pt x 150.04556pt>
 File: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf Graphic file 
 (type pdf)
@@ -2277,29 +2285,29 @@ s.pdf  used on input line 1580.
 
 Underfull \vbox (badness 5667) has occurred while \output is active []
 
- [92 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf>] [93] [94]
+ [94 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf>] [95] [96]
 
 Overfull \hbox (0.39056pt too wide) in paragraph at lines 1822--1822
 |[]\T1/lmr/bx/it/10 Primo teo-re-ma di Aronhold-Kennedy: al-li-nea-men-to dei c
 en-
  []
 
-[95] [96] [97] [98])
-(./Parti/P03-Meccanica_SR/C02-Statica_CR/C02-Statica_CR.tex [99] [100
+[97] [98] [99] [100])
+(./Parti/P03-Meccanica_SR/C02-Statica_CR/C02-Statica_CR.tex [101] [102
 
 ]
 Capitolo 6.
-[101]
+[103]
 Underfull \vbox (badness 5954) has occurred while \output is active []
 
- [102]
+ [104]
 LaTeX Font Info:    Trying to load font information for LGR+lmr on input line 1
 38.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/cbfonts-fd/lgrlmr.fd
 File: lgrlmr.fd 2017/07/29 v1.2 Scalable Greek Latin Modern Regular
-) [103]
-[104] [105] [106] [107] [108]
+) [105]
+[106] [107] [108] [109] [110]
 Overfull \hbox (14.12685pt too wide) in paragraph at lines 696--702
 \T1/lmr/m/n/10 ri-gi-do au-si-lia-rio ar-bi-tra-rio $\OT1/lmr/bx/n/10 u[] \OMS/
 lmsy/m/n/10 2 \U/BOONDOX-calo/m/n/10 U[]$\T1/lmr/m/n/10 , pa-ra-me-triz-za-to d
@@ -2308,30 +2316,30 @@ al-la cop-pia $\OT1/lmr/m/n/10 (\OT1/lmr/bx/n/10 u[]\OT1/lmr/m/n/10 (\OML/lmm/m
 /10 2
  []
 
-[109] [110] [111] [112]
+[111] [112] [113] [114]
 
-LaTeX Warning: Reference `eq:variazione_piano' on page 113 undefined on input l
+LaTeX Warning: Reference `eq:variazione_piano' on page 115 undefined on input l
 ine 1074.
 
-[113]
+[115]
 
-LaTeX Warning: Reference `eq:variazione_piano' on page 114 undefined on input l
+LaTeX Warning: Reference `eq:variazione_piano' on page 116 undefined on input l
 ine 1185.
 
 
-LaTeX Warning: Reference `eq:variazione_piano' on page 114 undefined on input l
+LaTeX Warning: Reference `eq:variazione_piano' on page 116 undefined on input l
 ine 1197.
 
-[114] [115] [116] [117])
+[116] [117] [118] [119])
 No file main_Vol_00.nls.
-[118] [119] [120
+[120] [121] [122
 
 ]
 runsystem(makeindex main_Vol_00.idx)...executed safely (allowed).
 
- (./main_Vol_00.ind [121
+ (./main_Vol_00.ind [123
 
-]) [122] (./main_Vol_00.aux)
+]) [124] (./main_Vol_00.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -2350,8 +2358,8 @@ Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
 (rerunfilecheck)             Checksum: 57CE1EDD0FF2F5A64EFA8AA36FF5E72F;24354.
  ) 
 Here is how much of TeX's memory you used:
- 41499 strings out of 474116
- 799841 string characters out of 5743681
+ 41503 strings out of 474116
+ 799884 string characters out of 5743681
  1964187 words of memory out of 5000000
  62221 multiletter control sequences out of 15000+600000
  727034 words of font info for 167 fonts, out of 8000000 for 9000
@@ -2396,10 +2404,10 @@ fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
 fonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
 /stmaryrd/stmary10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/b
 oondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (122 pages, 1777757 bytes).
+Output written on main_Vol_00.pdf (124 pages, 1782586 bytes).
 PDF statistics:
- 2325 PDF objects out of 2487 (max. 8388607)
- 2016 compressed objects within 21 object streams
- 720 named destinations out of 1000 (max. 500000)
+ 2340 PDF objects out of 2487 (max. 8388607)
+ 2029 compressed objects within 21 object streams
+ 724 named destinations out of 1000 (max. 500000)
  903 words of extra memory for PDF output out of 10000 (max. 10000000)
 

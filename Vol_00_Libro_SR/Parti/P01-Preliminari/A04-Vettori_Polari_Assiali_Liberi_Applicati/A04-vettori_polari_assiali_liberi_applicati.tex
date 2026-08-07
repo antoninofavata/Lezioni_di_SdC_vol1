@@ -184,36 +184,77 @@ e inoltre
 \end{enumerate}
 
 
-Dati due vettori $\ub, \vb \in \Uc$, cui associamo le liste $\bm{u},\bm{v}$, definiamo il \textit{prodotto scalare standard} (o \textit{canonico}) la forma bilineare
+Dati due vettori $\ub, \vb \in \Uc$, cui associamo i vettori numerici $\bm{u},\bm{v}\in \Ro^3$, definiamo il \textit{prodotto scalare standard} (o \textit{canonico}) la forma bilineare
 \begin{equation}
 	\ub \cdot \vb = u_x v_x + u_y v_y + u_z v_z = \bm{u}^\top\bm{v}.
 \end{equation}
 
-Se $\ub, \vb \in \Uc$, allora vale \textit{disuguaglianza di Schwartz}
-\begin{equation}\label{schwartz}
-(\ub\cdot\vb)^2\leq |\ub\cdot\ub|\,|\vb\cdot\vb|.
+Se $\ub, \vb \in \Uc$, allora vale la \textit{disuguaglianza di
+	Cauchy-Schwarz}\footnote{
+	Se $\vb=\zerovb$ la disuguaglianza è banale. Supponiamo
+	$\vb\neq\zerovb$, dunque $\vb\cdot\vb>0$ per la positività del prodotto
+	scalare. Per ogni $t\in\Ro$, ancora per positività,
+	\begin{equation*}
+		0\le(\ub+t\vb)\cdot(\ub+t\vb)
+		=\ub\cdot\ub+2t\,(\ub\cdot\vb)+t^2\,(\vb\cdot\vb).
+	\end{equation*}
+	Il membro destro è un polinomio di secondo grado in $t$, mai negativo, con coefficiente del termine di grado più alto positivo ($\vb\cdot\vb>0$): il suo discriminante
+	deve dunque essere $\le0$,
+	\begin{equation*}
+		4(\ub\cdot\vb)^2-4(\vb\cdot\vb)(\ub\cdot\ub)\le0
+		\quad\Longrightarrow\quad
+		(\ub\cdot\vb)^2\le(\ub\cdot\ub)(\vb\cdot\vb),
+	\end{equation*}
+	che è la \eqref{schwartz}. 
+	
+	Vale l'uguaglianza se e solo se $\ub$ e $\vb$ sono paralleli: se
+	$\vb=\lambda\ub$, si verifica subito che entrambi i membri della
+	\eqref{schwartz} valgono $\lambda^2(\ub\cdot\ub)^2$; viceversa, se vale
+	l'uguaglianza il discriminante è nullo, quindi il polinomio ha una
+	radice doppia $t_0$ per cui $(\ub+t_0\vb)\cdot(\ub+t_0\vb)=0$, cioè
+	$\ub+t_0\vb=\zerovb$ per la positività (definita) del prodotto scalare.
+	}
+
+
+\begin{equation}
+	(\ub\cdot\vb)^2\leq (\ub\cdot\ub)\,(\vb\cdot\vb).
+\label{schwartz}
 \end{equation}
 
-Se $\ub\in \Uc$, la \textit{norma}, o \textit{lunghezza}, di $\ub$ si definisce come
+Se $\ub\in \Uc$, la \textit{norma}, o \textit{lunghezza}, di $\ub$ si
+definisce come
 \begin{equation}
-	|\ub|\coloneqq\sqrt{\ub\cdot\ub},
+	|\ub|\coloneqq\sqrt{\ub\cdot\ub}.
 \end{equation}
-che consente di scrivere la disuguaglianza di Schwartz come
+Il nome è giustificato dal fatto che, rispetto alla base ortonormale
+$\{\ab_x,\ab_y,\ab_z\}$, se $\ub=u_x\ab_x+u_y\ab_y+u_z\ab_z$ allora
+$\ub\cdot\ub=u_x^2+u_y^2+u_z^2$ (i prodotti incrociati si annullano per
+ortogonalità), e dunque
+\begin{equation}
+	|\ub|=\sqrt{u_x^2+u_y^2+u_z^2}:
+\end{equation}
+è precisamente la lunghezza del segmento individuato dal vettore $\ub$,
+data dal teorema di Pitagora applicato due volte (prima nel piano $xy$,
+poi combinando col terzo lato $u_z$).
+
+Questa definizione consente di scrivere la disuguaglianza di
+Cauchy-Schwarz come
 \begin{equation}\label{schw2}
 	|\ub\cdot\vb|\leq |\ub|\,|\vb|.
 \end{equation}
-
-La lunghezza di un vettore gode delle seguenti proprietà, per ogni $\ub,\vb\in\Uc$, $\alpha\in\Ro$:
+La lunghezza di un vettore gode delle seguenti proprietà, per ogni
+$\ub,\vb\in\Uc$, $\alpha\in\Ro$:
 \begin{enumerate}
-	\item $|\ub|\geq 0$, e vale l'uguaglianza se e e solo se $\ub=\mathbf{0}$
-	\item $|\alpha\ub|=|\alpha|\,|\vb|$
-	\item $|\ub+\vb|\leq |\ub|+|\vb|$ e vale l'uguaglianza se e solo se $\ub$ e $\vb$ sono paralleli.
+	\item $|\ub|\geq 0$, e vale l'uguaglianza se e solo se $\ub=\mathbf{0}$;
+	\item $|\alpha\ub|=|\alpha|\,|\ub|$;
+	\item $|\ub+\vb|\leq |\ub|+|\vb|$, e vale l'uguaglianza se e solo se
+	$\ub$ e $\vb$ sono \emph{concordi} (cioè $\vb=\lambda\ub$ con
+	$\lambda\ge0$, o uno dei due è nullo).
 \end{enumerate}
-
 
 \medskip
 
-La disugliaglianza di Schwartz \eqref{schwartz} consente di introdurre nello spazio vettoriale $\Uc$ la nozione di \textit{angolo convesso tra due vettori} (non nulli), secondo
+La disugliaglianza di Cauchy-Schwarz \eqref{schwartz} consente di introdurre nello spazio vettoriale $\Uc$ la nozione di \textit{angolo convesso tra due vettori} (non nulli), secondo
 il seguente ragionamento. Supponiamo
 che $\ub,\vb\in \Uc$  siano entrambi non nulli, la \eqref{schw2} è equivalente a 
 \begin{equation}

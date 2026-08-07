@@ -22,137 +22,137 @@
 \contentsline {section}{\numberline {2.1}Vettori liberi e algebra vettoriale}{17}{section.2.1}%
 \contentsline {subsection}{\numberline {2.1.1}Somma e prodotto per uno scalare}{18}{subsection.2.1.1}%
 \contentsline {subsection}{\numberline {2.1.2}Prodotto scalare}{18}{subsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.1.3}Prodotto vettoriale}{20}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.3}Prodotto vettoriale}{21}{subsection.2.1.3}%
 \contentsline {paragraph}{Corrispondenza con applicazioni lineari antisimmetriche.}{23}{figure.caption.6}%
-\contentsline {subsection}{\numberline {2.1.4}Doppio prodotto vettoriale}{24}{subsection.2.1.4}%
-\contentsline {subsection}{\numberline {2.1.5}Prodotto misto}{24}{subsection.2.1.5}%
-\contentsline {subsection}{\numberline {2.1.6}Prodotto tensoriale}{25}{subsection.2.1.6}%
-\contentsline {section}{\numberline {2.2}Vettori applicati}{26}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Momento polare}{26}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.1.4}Doppio prodotto vettoriale}{25}{subsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.1.5}Prodotto misto}{26}{subsection.2.1.5}%
+\contentsline {subsection}{\numberline {2.1.6}Prodotto tensoriale}{26}{subsection.2.1.6}%
+\contentsline {section}{\numberline {2.2}Vettori applicati}{27}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Momento polare}{27}{subsection.2.2.1}%
 \contentsline {subsection}{\numberline {2.2.2}Legge di variazione del momento al variare del polo}{28}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Momento assiale}{28}{subsection.2.2.3}%
-\contentsline {section}{\numberline {2.3}Vettori polari e vettori assiali}{29}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Comportamento sotto riflessione}{30}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Regole di composizione}{32}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Rappresentazione grafica}{33}{subsection.2.3.3}%
-\contentsline {section}{\numberline {2.4}Il caso piano}{34}{section.2.4}%
-\contentsline {paragraph}{Vettori polari nel piano.}{34}{section.2.4}%
-\contentsline {paragraph}{Vettori assiali nel piano.}{34}{equation.2.4.58}%
-\contentsline {paragraph}{Rappresentazione grafica nel piano.}{34}{equation.2.4.59}%
+\contentsline {subsection}{\numberline {2.2.3}Momento assiale}{29}{subsection.2.2.3}%
+\contentsline {section}{\numberline {2.3}Vettori polari e vettori assiali}{31}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Comportamento sotto riflessione}{31}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Regole di composizione}{34}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Rappresentazione grafica}{34}{subsection.2.3.3}%
+\contentsline {section}{\numberline {2.4}Il caso piano}{35}{section.2.4}%
+\contentsline {paragraph}{Vettori polari nel piano.}{35}{section.2.4}%
+\contentsline {paragraph}{Vettori assiali nel piano.}{35}{equation.2.4.59}%
+\contentsline {paragraph}{Rappresentazione grafica nel piano.}{35}{equation.2.4.60}%
 \contentsline {section}{\numberline {2.5}Esercizi proposti}{35}{section.2.5}%
-\contentsline {chapter}{\numberline {3}Applicazioni lineari e dualità}{39}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Applicazioni fra insiemi}{39}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Definizioni fondamentali}{39}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Iniettivit\`a, suriettivit\`a, biettivit\`a}{40}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Il problema inverso}{40}{subsection.3.1.3}%
-\contentsline {section}{\numberline {3.2}Applicazioni lineari}{41}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Definizione}{41}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Nucleo, immagine, rango e nullit\`a}{41}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Teorema di nullit\`a pi\`u rango}{42}{subsection.3.2.3}%
-\contentsline {section}{\numberline {3.3}Operatore aggiunto e sottospazi fondamentali}{42}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Operatore aggiunto}{42}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Relazioni di ortogonalit\`a}{43}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}Rilettura della classificazione dei sistemi lineari}{44}{section.3.4}%
-\contentsline {paragraph}{Condizione di esistenza.}{44}{section.3.4}%
-\contentsline {paragraph}{Struttura della soluzione.}{44}{equation.3.4.12}%
-\contentsline {section}{\numberline {3.5}Il problema duale}{45}{section.3.5}%
-\contentsline {subsection}{\numberline {3.5.1}Formulazione}{45}{subsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.5.2}Interpretazione mediante combinazioni lineari}{45}{subsection.3.5.2}%
-\contentsline {subsection}{\numberline {3.5.3}Rappresentazione schematica della dualit\`a}{46}{subsection.3.5.3}%
-\contentsline {section}{\numberline {3.6}Identit\`a bilineare}{46}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Derivazione}{46}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Significato fisico}{47}{subsection.3.6.2}%
-\contentsline {section}{\numberline {3.7}Risolvibilit\`a e sottospazi fondamentali}{48}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Significato fisico dei quattro sottospazi}{49}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}Classificazione dei problemi primale e duale}{50}{subsection.3.7.2}%
-\contentsline {section}{\numberline {3.8}Struttura della soluzione dei problemi primale e duale}{51}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}Sistema isodeterminato ($r = m = n$)}{51}{subsection.3.8.1}%
-\contentsline {subsection}{\numberline {3.8.2}Sistema sottodeterminato ($r = m < n$)}{51}{subsection.3.8.2}%
-\contentsline {subsection}{\numberline {3.8.3}Sistema sovradeterminato ($r = n < m$)}{51}{subsection.3.8.3}%
-\contentsline {subsection}{\numberline {3.8.4}Sistema degenere ($r < \min (m,n)$)}{52}{subsection.3.8.4}%
-\contentsline {section}{\numberline {3.9}Esempi numerici: primale e duale a confronto}{52}{section.3.9}%
-\contentsline {subsection}{\numberline {3.9.1}Sistema isodeterminato ($m=n=r=2$)}{52}{subsection.3.9.1}%
-\contentsline {subsection}{\numberline {3.9.2}Sistema sottodeterminato ($m=r=1$, $n=2$)}{52}{subsection.3.9.2}%
-\contentsline {subsection}{\numberline {3.9.3}Sistema sovradeterminato ($m=3$, $n=r=2$)}{53}{subsection.3.9.3}%
-\contentsline {subsection}{\numberline {3.9.4}Sistema degenere ($m=n=3$, $r=2$)}{54}{subsection.3.9.4}%
-\contentsline {section}{\numberline {3.10}Esercizi proposti}{54}{section.3.10}%
-\contentsline {chapter}{\numberline {4}Algebra delle matrici e sistemi di equazioni lineari}{57}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Richiami su vettori numerici e matrici}{57}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Vettori numerici}{57}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Matrici}{58}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Operazioni fra matrici}{58}{subsection.4.1.3}%
-\contentsline {paragraph}{Somma e differenza.}{58}{subsection.4.1.3}%
-\contentsline {paragraph}{Prodotto per uno scalare.}{58}{equation.4.1.3}%
-\contentsline {paragraph}{Prodotto matrice-matrice.}{58}{equation.4.1.4}%
-\contentsline {paragraph}{Prodotto matrice-vettore.}{59}{Item.43}%
-\contentsline {paragraph}{Partizione a blocchi.}{59}{equation.4.1.8}%
-\contentsline {subsection}{\numberline {4.1.4}Matrici quadrate}{61}{subsection.4.1.4}%
-\contentsline {section}{\numberline {4.2}Sistemi di equazioni lineari algebriche}{62}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Formulazione del problema}{62}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Teorema di Rouch\'e-Capelli e struttura della soluzione}{63}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Sistemi isodeterminati}{63}{subsection.4.2.3}%
-\contentsline {subsection}{\numberline {4.2.4}Sistemi sottodeterminati}{64}{subsection.4.2.4}%
-\contentsline {subsection}{\numberline {4.2.5}Sistemi sovradeterminati}{65}{subsection.4.2.5}%
-\contentsline {subsection}{\numberline {4.2.6}Sistemi degeneri}{66}{subsection.4.2.6}%
-\contentsline {subsection}{\numberline {4.2.7}Riepilogo della classificazione}{67}{subsection.4.2.7}%
-\contentsline {section}{\numberline {4.3}Esempi numerici}{68}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Sistema isodeterminato ($m=n=r=2$)}{68}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Sistema sottodeterminato ($m=r=1$, $n=2$)}{68}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Sistema sovradeterminato ($m=3$, $n=r=2$)}{69}{subsection.4.3.3}%
-\contentsline {subsection}{\numberline {4.3.4}Sistema degenere ($m=n=3$, $r=2$)}{70}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Esercizi proposti}{70}{section.4.4}%
-\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{73}{part.1}%
-\contentsline {chapter}{\numberline {5}Cinematica infinitesima del corpo rigido}{75}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Il corpo rigido e il campo di spostamento}{75}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Rappresentazione del campo di spostamento}{78}{subsection.5.1.1}%
-\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{78}{equation.5.1.13}%
-\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{79}{equation.5.1.15}%
-\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{79}{equation.5.1.19}%
-\contentsline {subsection}{\numberline {5.1.2}La rotazione infinitesima}{80}{subsection.5.1.2}%
-\contentsline {paragraph}{Il caso piano.}{81}{equation.5.1.25}%
-\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{81}{equation.5.1.30}%
-\contentsline {subsection}{\numberline {5.1.3}Forma matriciale}{84}{subsection.5.1.3}%
-\contentsline {paragraph}{Il caso tridimensionale.}{84}{subsection.5.1.3}%
-\contentsline {paragraph}{Restrizione al caso piano.}{85}{figure.caption.26}%
-\contentsline {section}{\numberline {5.2}Invarianti del campo di spostamento}{86}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Asse centrale degli spostamenti rigidi}{86}{section.5.3}%
-\contentsline {paragraph}{Decomposizione dello spostamento.}{87}{section.5.3}%
-\contentsline {paragraph}{Invarianza della componente parallela.}{87}{equation.5.3.46}%
-\contentsline {paragraph}{Costruzione dell'asse centrale.}{87}{equation.5.3.47}%
-\contentsline {section}{\numberline {5.4}Classificazione dei moti rigidi}{88}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Particolarizzazione al caso piano}{89}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Costruzione grafica del centro di rotazione}{91}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Composizione di rotazioni infinitesime nel piano}{92}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}Centro di rotazione relativo e allineamento dei centri}{94}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Primo teorema di Aronhold-Kennedy: allineamento dei centri assoluti}{95}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Secondo teorema di Aronhold-Kennedy: allineamento dei centri relativi}{97}{subsection.5.6.2}%
-\contentsline {chapter}{\numberline {6}Statica del corpo rigido}{101}{chapter.6}%
-\contentsline {section}{\numberline {6.1}La nozione di forza e di lavoro}{101}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Due modi di rappresentare l'azione meccanica}{103}{subsection.6.1.1}%
-\contentsline {paragraph}{La forza come vettore applicato.}{103}{subsection.6.1.1}%
-\contentsline {paragraph}{Il lavoro di una forza.}{103}{equation.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Sistemi di forze e coppie}{104}{subsection.6.1.2}%
-\contentsline {paragraph}{Sistemi di forze.}{104}{subsection.6.1.2}%
-\contentsline {paragraph}{Nozione di coppia.}{104}{equation.6.1.5}%
-\contentsline {paragraph}{Sistemi di forze e coppie.}{105}{figure.caption.34}%
-\contentsline {paragraph}{Densità di forze.}{105}{equation.6.1.9}%
-\contentsline {subsection}{\numberline {6.1.3}Il lavoro di un sistema di forze e coppie}{106}{subsection.6.1.3}%
-\contentsline {paragraph}{Il lavoro delle densità di forza.}{107}{equation.6.1.14}%
-\contentsline {section}{\numberline {6.2}L'equilibrio}{107}{section.6.2}%
-\contentsline {paragraph}{Il principio di equilibrio.}{107}{section.6.2}%
-\contentsline {paragraph}{Il principio dei lavori virtuali.}{108}{equation.6.2.19}%
-\contentsline {paragraph}{Equivalenza delle due formulazioni.}{108}{equation.6.2.20}%
-\contentsline {section}{\numberline {6.3}Invarianza rispetto al cambiamento di osservatore}{108}{section.6.3}%
-\contentsline {paragraph}{Lavoro di un sistema e cambiamento di osservatore.}{109}{section.6.3}%
-\contentsline {paragraph}{Il postulato di invarianza.}{109}{equation.6.3.21}%
-\contentsline {section}{\numberline {6.4}Struttura dei sistemi di forze}{110}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Invarianti del campo dei momenti}{110}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Asse centrale del sistema di forze}{111}{subsection.6.4.2}%
-\contentsline {paragraph}{Particolarizzazione al caso piano}{112}{ossinner.6.5}%
-\contentsline {subsection}{\numberline {6.4.3}Equivalenza di sistemi di forze}{114}{subsection.6.4.3}%
-\contentsline {paragraph}{Operazioni elementari di equivalenza.}{115}{ossinner.6.8}%
-\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{116}{figure.caption.37}%
-\contentsline {subsection}{\numberline {6.4.4}Sistemi di forze equiorientate nel piano}{117}{subsection.6.4.4}%
-\contentsline {paragraph}{Forze concentrate equiorientate.}{117}{subsection.6.4.4}%
-\contentsline {paragraph}{Densità di forze equiorientate.}{118}{ossinner.6.11}%
-\contentsline {chapter}{Indice analitico}{121}{section*.41}%
+\contentsline {chapter}{\numberline {3}Applicazioni lineari e dualità}{41}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Applicazioni fra insiemi}{41}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Definizioni fondamentali}{41}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Iniettivit\`a, suriettivit\`a, biettivit\`a}{42}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Il problema inverso}{42}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Applicazioni lineari}{43}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Definizione}{43}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Nucleo, immagine, rango e nullit\`a}{43}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Teorema di nullit\`a pi\`u rango}{44}{subsection.3.2.3}%
+\contentsline {section}{\numberline {3.3}Operatore aggiunto e sottospazi fondamentali}{44}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Operatore aggiunto}{44}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Relazioni di ortogonalit\`a}{45}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}Rilettura della classificazione dei sistemi lineari}{46}{section.3.4}%
+\contentsline {paragraph}{Condizione di esistenza.}{46}{section.3.4}%
+\contentsline {paragraph}{Struttura della soluzione.}{46}{equation.3.4.12}%
+\contentsline {section}{\numberline {3.5}Il problema duale}{47}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Formulazione}{47}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Interpretazione mediante combinazioni lineari}{47}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.3}Rappresentazione schematica della dualit\`a}{48}{subsection.3.5.3}%
+\contentsline {section}{\numberline {3.6}Identit\`a bilineare}{48}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Derivazione}{48}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Significato fisico}{49}{subsection.3.6.2}%
+\contentsline {section}{\numberline {3.7}Risolvibilit\`a e sottospazi fondamentali}{50}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Significato fisico dei quattro sottospazi}{51}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Classificazione dei problemi primale e duale}{52}{subsection.3.7.2}%
+\contentsline {section}{\numberline {3.8}Struttura della soluzione dei problemi primale e duale}{53}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}Sistema isodeterminato ($r = m = n$)}{53}{subsection.3.8.1}%
+\contentsline {subsection}{\numberline {3.8.2}Sistema sottodeterminato ($r = m < n$)}{53}{subsection.3.8.2}%
+\contentsline {subsection}{\numberline {3.8.3}Sistema sovradeterminato ($r = n < m$)}{53}{subsection.3.8.3}%
+\contentsline {subsection}{\numberline {3.8.4}Sistema degenere ($r < \min (m,n)$)}{54}{subsection.3.8.4}%
+\contentsline {section}{\numberline {3.9}Esempi numerici: primale e duale a confronto}{54}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}Sistema isodeterminato ($m=n=r=2$)}{54}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}Sistema sottodeterminato ($m=r=1$, $n=2$)}{54}{subsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.9.3}Sistema sovradeterminato ($m=3$, $n=r=2$)}{55}{subsection.3.9.3}%
+\contentsline {subsection}{\numberline {3.9.4}Sistema degenere ($m=n=3$, $r=2$)}{56}{subsection.3.9.4}%
+\contentsline {section}{\numberline {3.10}Esercizi proposti}{56}{section.3.10}%
+\contentsline {chapter}{\numberline {4}Algebra delle matrici e sistemi di equazioni lineari}{59}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Richiami su vettori numerici e matrici}{59}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Vettori numerici}{59}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Matrici}{60}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Operazioni fra matrici}{60}{subsection.4.1.3}%
+\contentsline {paragraph}{Somma e differenza.}{60}{subsection.4.1.3}%
+\contentsline {paragraph}{Prodotto per uno scalare.}{60}{equation.4.1.3}%
+\contentsline {paragraph}{Prodotto matrice-matrice.}{60}{equation.4.1.4}%
+\contentsline {paragraph}{Prodotto matrice-vettore.}{61}{Item.43}%
+\contentsline {paragraph}{Partizione a blocchi.}{61}{equation.4.1.8}%
+\contentsline {subsection}{\numberline {4.1.4}Matrici quadrate}{63}{subsection.4.1.4}%
+\contentsline {section}{\numberline {4.2}Sistemi di equazioni lineari algebriche}{64}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Formulazione del problema}{64}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Teorema di Rouch\'e-Capelli e struttura della soluzione}{65}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Sistemi isodeterminati}{65}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Sistemi sottodeterminati}{66}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Sistemi sovradeterminati}{67}{subsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.2.6}Sistemi degeneri}{68}{subsection.4.2.6}%
+\contentsline {subsection}{\numberline {4.2.7}Riepilogo della classificazione}{69}{subsection.4.2.7}%
+\contentsline {section}{\numberline {4.3}Esempi numerici}{70}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Sistema isodeterminato ($m=n=r=2$)}{70}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Sistema sottodeterminato ($m=r=1$, $n=2$)}{70}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Sistema sovradeterminato ($m=3$, $n=r=2$)}{71}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}Sistema degenere ($m=n=3$, $r=2$)}{72}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}Esercizi proposti}{72}{section.4.4}%
+\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{75}{part.1}%
+\contentsline {chapter}{\numberline {5}Cinematica infinitesima del corpo rigido}{77}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Il corpo rigido e il campo di spostamento}{77}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Rappresentazione del campo di spostamento}{80}{subsection.5.1.1}%
+\contentsline {paragraph}{Linearità di $\mathbf {w}_P$.}{80}{equation.5.1.13}%
+\contentsline {paragraph}{Antisimmetria di $\bm {\Theta }_P$.}{81}{equation.5.1.15}%
+\contentsline {paragraph}{Indipendenza di $\bm {\upvartheta }_P$ dal polo.}{81}{equation.5.1.19}%
+\contentsline {subsection}{\numberline {5.1.2}La rotazione infinitesima}{82}{subsection.5.1.2}%
+\contentsline {paragraph}{Il caso piano.}{83}{equation.5.1.25}%
+\contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{83}{equation.5.1.30}%
+\contentsline {subsection}{\numberline {5.1.3}Forma matriciale}{86}{subsection.5.1.3}%
+\contentsline {paragraph}{Il caso tridimensionale.}{86}{subsection.5.1.3}%
+\contentsline {paragraph}{Restrizione al caso piano.}{87}{figure.caption.26}%
+\contentsline {section}{\numberline {5.2}Invarianti del campo di spostamento}{88}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Asse centrale degli spostamenti rigidi}{88}{section.5.3}%
+\contentsline {paragraph}{Decomposizione dello spostamento.}{89}{section.5.3}%
+\contentsline {paragraph}{Invarianza della componente parallela.}{89}{equation.5.3.46}%
+\contentsline {paragraph}{Costruzione dell'asse centrale.}{89}{equation.5.3.47}%
+\contentsline {section}{\numberline {5.4}Classificazione dei moti rigidi}{90}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Particolarizzazione al caso piano}{91}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Costruzione grafica del centro di rotazione}{93}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Composizione di rotazioni infinitesime nel piano}{94}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Centro di rotazione relativo e allineamento dei centri}{96}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Primo teorema di Aronhold-Kennedy: allineamento dei centri assoluti}{97}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Secondo teorema di Aronhold-Kennedy: allineamento dei centri relativi}{99}{subsection.5.6.2}%
+\contentsline {chapter}{\numberline {6}Statica del corpo rigido}{103}{chapter.6}%
+\contentsline {section}{\numberline {6.1}La nozione di forza e di lavoro}{103}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Due modi di rappresentare l'azione meccanica}{105}{subsection.6.1.1}%
+\contentsline {paragraph}{La forza come vettore applicato.}{105}{subsection.6.1.1}%
+\contentsline {paragraph}{Il lavoro di una forza.}{105}{equation.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Sistemi di forze e coppie}{106}{subsection.6.1.2}%
+\contentsline {paragraph}{Sistemi di forze.}{106}{subsection.6.1.2}%
+\contentsline {paragraph}{Nozione di coppia.}{106}{equation.6.1.5}%
+\contentsline {paragraph}{Sistemi di forze e coppie.}{107}{figure.caption.34}%
+\contentsline {paragraph}{Densità di forze.}{107}{equation.6.1.9}%
+\contentsline {subsection}{\numberline {6.1.3}Il lavoro di un sistema di forze e coppie}{108}{subsection.6.1.3}%
+\contentsline {paragraph}{Il lavoro delle densità di forza.}{109}{equation.6.1.14}%
+\contentsline {section}{\numberline {6.2}L'equilibrio}{109}{section.6.2}%
+\contentsline {paragraph}{Il principio di equilibrio.}{109}{section.6.2}%
+\contentsline {paragraph}{Il principio dei lavori virtuali.}{110}{equation.6.2.19}%
+\contentsline {paragraph}{Equivalenza delle due formulazioni.}{110}{equation.6.2.20}%
+\contentsline {section}{\numberline {6.3}Invarianza rispetto al cambiamento di osservatore}{110}{section.6.3}%
+\contentsline {paragraph}{Lavoro di un sistema e cambiamento di osservatore.}{111}{section.6.3}%
+\contentsline {paragraph}{Il postulato di invarianza.}{111}{equation.6.3.21}%
+\contentsline {section}{\numberline {6.4}Struttura dei sistemi di forze}{112}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Invarianti del campo dei momenti}{112}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Asse centrale del sistema di forze}{113}{subsection.6.4.2}%
+\contentsline {paragraph}{Particolarizzazione al caso piano}{114}{ossinner.6.5}%
+\contentsline {subsection}{\numberline {6.4.3}Equivalenza di sistemi di forze}{116}{subsection.6.4.3}%
+\contentsline {paragraph}{Operazioni elementari di equivalenza.}{117}{ossinner.6.8}%
+\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{118}{figure.caption.37}%
+\contentsline {subsection}{\numberline {6.4.4}Sistemi di forze equiorientate nel piano}{119}{subsection.6.4.4}%
+\contentsline {paragraph}{Forze concentrate equiorientate.}{119}{subsection.6.4.4}%
+\contentsline {paragraph}{Densità di forze equiorientate.}{120}{ossinner.6.11}%
+\contentsline {chapter}{Indice analitico}{123}{section*.41}%

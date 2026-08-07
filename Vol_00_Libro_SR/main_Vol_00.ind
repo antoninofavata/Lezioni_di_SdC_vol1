@@ -1,156 +1,156 @@
 \begin{theindex}
 
-  \item allineamento dei centri di rotazione, \textbf{97}
-  \item applicazione, 39
-    \subitem biiettiva, 40
-    \subitem iniettiva, 40
-    \subitem suriettiva, 40
-  \item applicazione lineare, 9, \textbf{41}
+  \item allineamento dei centri di rotazione, \textbf{99}
+  \item applicazione, 41
+    \subitem biiettiva, 42
+    \subitem iniettiva, 42
+    \subitem suriettiva, 42
+  \item applicazione lineare, 9, \textbf{43}
   \item asse centrale
-    \subitem degli spostamenti, \textbf{87}
-    \subitem del sistema di forze, \textbf{111}
-  \item asse di sollecitazione, \textbf{113}
+    \subitem degli spostamenti, \textbf{89}
+    \subitem del sistema di forze, \textbf{113}
+  \item asse di sollecitazione, \textbf{115}
 
   \indexspace
 
-  \item baricentro delle forze, \textbf{117}
+  \item baricentro delle forze, \textbf{119}
   \item base ortonormale, \textbf{8}
-  \item braccio, \textbf{26}, 104
+  \item braccio, \textbf{27}, 106
 
   \indexspace
 
   \item carico
-    \subitem distribuito, 106
-  \item centro di riduzione, \seealso{asse di sollecitazione}{113}
+    \subitem distribuito, 108
+  \item centro di riduzione, \seealso{asse di sollecitazione}{115}
   \item centro di rotazione
-    \subitem assoluto, 97
-    \subitem relativo, \textbf{95}
-  \item cinematica grafica, \textbf{96}
-  \item combinazione lineare, \textbf{60}
-  \item complemento ortogonale, \textbf{43}
-  \item controimmagine, 40
-  \item coppia, \textbf{105}
-    \subitem pura, 112
-  \item corpo rigido, \textbf{83}
+    \subitem assoluto, 99
+    \subitem relativo, \textbf{97}
+  \item cinematica grafica, \textbf{98}
+  \item combinazione lineare, \textbf{62}
+  \item complemento ortogonale, \textbf{45}
+  \item controimmagine, 42
+  \item coppia, \textbf{107}
+    \subitem pura, 114
+  \item corpo rigido, \textbf{85}
   \item costante (nel tempo), \textbf{14}
 
   \indexspace
 
-  \item densità di forze, \textbf{105}
-  \item determinante, \textbf{61}
+  \item densità di forze, \textbf{107}
+  \item determinante, \textbf{63}
   \item dualità
-    \subitem algebra lineare, \textbf{46}
+    \subitem algebra lineare, \textbf{48}
 
   \indexspace
 
-  \item equiproiettività, \textbf{78}
+  \item equiproiettività, \textbf{80}
 
   \indexspace
 
-  \item grado di libertà, \textbf{83}
+  \item grado di libertà, \textbf{85}
 
   \indexspace
 
-  \item identità bilineare, \textbf{47}
-  \item immagine, \textbf{41}
+  \item identità bilineare, \textbf{49}
+  \item immagine, \textbf{43}
   \item incremento, \textbf{14}
-  \item invarianti, 86
+  \item invarianti, 88
   \item invarianza rispetto all'osservatore
-    \subitem equivalenza con PLV, \textbf{109}
+    \subitem equivalenza con PLV, \textbf{111}
 
   \indexspace
 
-  \item matrice, \textbf{58}
-    \subitem a blocchi, 59
-    \subitem completa, 63
-    \subitem dei coefficienti, 62
-    \subitem identità, 61
-    \subitem inversa, 62
-    \subitem quadrata, 61
-    \subitem trasposta, 58
+  \item matrice, \textbf{60}
+    \subitem a blocchi, 61
+    \subitem completa, 65
+    \subitem dei coefficienti, 64
+    \subitem identità, 63
+    \subitem inversa, 64
+    \subitem quadrata, 63
+    \subitem trasposta, 60
   \item matrice rappresentativa, \textbf{9}
   \item momento
-    \subitem assiale, \textbf{28}
-    \subitem di una forza, 104
-    \subitem polare, \textbf{26}
-    \subitem risultante, \textbf{104}
+    \subitem assiale, \textbf{29}
+    \subitem di una forza, 106
+    \subitem polare, \textbf{27}
+    \subitem risultante, \textbf{106}
     \subitem variazione al variare del polo, 28
-  \item moto rigido, \textbf{88}
-    \subitem moto elicoidale, 88
-    \subitem rototraslazione, 88
+  \item moto rigido, \textbf{90}
+    \subitem moto elicoidale, 90
+    \subitem rototraslazione, 90
 
   \indexspace
 
-  \item nucleo, \textbf{41}
-  \item nullità, \textbf{41}
+  \item nucleo, \textbf{43}
+  \item nullità, \textbf{43}
 
   \indexspace
 
-  \item operatore aggiunto, \textbf{42}
+  \item operatore aggiunto, \textbf{44}
 
   \indexspace
 
-  \item parametro libero, 51, \textbf{63}
-  \item partizione a blocchi, \textbf{59}
-  \item polo, 26
-  \item principio di sovrapposizione, \textbf{63}
-  \item problema duale, \textbf{45}
-  \item problema inverso, \textbf{40}
-  \item problema primale, \textbf{45}
-  \item prodotto misto, \textbf{24}
+  \item parametro libero, 53, \textbf{65}
+  \item partizione a blocchi, \textbf{61}
+  \item polo, 27
+  \item principio di sovrapposizione, \textbf{65}
+  \item problema duale, \textbf{47}
+  \item problema inverso, \textbf{42}
+  \item problema primale, \textbf{47}
+  \item prodotto misto, \textbf{26}
   \item prodotto scalare, \textbf{18}
-  \item prodotto tensoriale, \textbf{25}
-  \item prodotto vettoriale, \textbf{20}
-  \item pseudovettore, \see{vettore, assiale}{31}
+  \item prodotto tensoriale, \textbf{26}
+  \item prodotto vettoriale, \textbf{21}
+  \item pseudovettore, \see{vettore, assiale}{32}
 
   \indexspace
 
-  \item rango, 41, \textbf{58}
-  \item regola di Laplace, 61
-  \item risultante, \textbf{104}
-  \item rotazione, \textbf{83}
-    \subitem composizione di rotazioni infinitesime, \textbf{92}
-    \subitem pura, 88
-    \subitem relativa, 94
+  \item rango, 43, \textbf{60}
+  \item regola di Laplace, 63
+  \item risultante, \textbf{106}
+  \item rotazione, \textbf{85}
+    \subitem composizione di rotazioni infinitesime, \textbf{94}
+    \subitem pura, 90
+    \subitem relativa, 96
 
   \indexspace
 
   \item salto (di una funzione), \textbf{14}
-  \item sistema di equazioni lineari, \textbf{62}
-    \subitem degenere, \textbf{66}
-    \subitem isodeterminato, \textbf{63}
-    \subitem omogeneo, 62
-    \subitem sottodeterminato, \textbf{64}
-    \subitem sovradeterminato, \textbf{65}
+  \item sistema di equazioni lineari, \textbf{64}
+    \subitem degenere, \textbf{68}
+    \subitem isodeterminato, \textbf{65}
+    \subitem omogeneo, 64
+    \subitem sottodeterminato, \textbf{66}
+    \subitem sovradeterminato, \textbf{67}
   \item sistema di forze
-    \subitem dinamo (sistema avvitante), 112
-    \subitem equiorientate, 117
-    \subitem forza unica, 112
-    \subitem sistema ridotto al polo, 116
-    \subitem trasporto di una forza, 116
-  \item sistema principale, \textbf{65}
+    \subitem dinamo (sistema avvitante), 114
+    \subitem equiorientate, 119
+    \subitem forza unica, 114
+    \subitem sistema ridotto al polo, 118
+    \subitem trasporto di una forza, 118
+  \item sistema principale, \textbf{67}
   \item soluzione (di un sistema lineare)
-    \subitem generale, 63
-    \subitem particolare, 63
-  \item sottospazi fondamentali, \textbf{43}
+    \subitem generale, 65
+    \subitem particolare, 65
+  \item sottospazi fondamentali, \textbf{45}
   \item spazio delle traslazioni, \textbf{8}
   \item spazio euclideo, \textbf{8}
   \item spostamento
-    \subitem campo di, 86
-    \subitem relativo, 94
-    \subitem rigido, \textbf{83}
+    \subitem campo di, 88
+    \subitem relativo, 96
+    \subitem rigido, \textbf{85}
 
   \indexspace
 
   \item teorema
-    \subitem di Aronhold-Kennedy (primo), \textbf{95}
-    \subitem di Aronhold-Kennedy (secondo), \textbf{97}
-    \subitem di Binet, 62
-    \subitem di nullità più rango, \textbf{42}
-    \subitem di Rouché-Capelli, \textbf{63}
-  \item termine noto, 62
-  \item traslazione, \textbf{83}
-    \subitem pura, 89
+    \subitem di Aronhold-Kennedy (primo), \textbf{97}
+    \subitem di Aronhold-Kennedy (secondo), \textbf{99}
+    \subitem di Binet, 64
+    \subitem di nullità più rango, \textbf{44}
+    \subitem di Rouché-Capelli, \textbf{65}
+  \item termine noto, 64
+  \item traslazione, \textbf{85}
+    \subitem pura, 91
 
   \indexspace
 
@@ -159,11 +159,11 @@
   \indexspace
 
   \item vettore
-    \subitem applicato, \textbf{26}
-    \subitem assiale, 24, \textbf{31}
+    \subitem applicato, \textbf{27}
+    \subitem assiale, 25, \textbf{32}
     \subitem geometrico, \textbf{8}
     \subitem libero, \textbf{17}
     \subitem numerico, \textbf{8}
-    \subitem polare, \textbf{31}
+    \subitem polare, \textbf{32}
 
 \end{theindex}
