@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  7 AUG 2026 13:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  7 AUG 2026 13:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2040,42 +2040,42 @@ i_Polari_Assiali_Liberi_Applicati.tex [15] [16
 ]
 Capitolo 2.
 [17] [18] [19]
-Overfull \hbox (6.01953pt too wide) in paragraph at lines 240--242
+Overfull \hbox (6.01953pt too wide) in paragraph at lines 238--240
 []\T1/lmr/m/n/10 Questa de-fi-ni-zio-ne con-sen-te di scri-ve-re la di-su-gua-g
 lian-za di Cauchy-Schwarz
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 306.
+(Font)              <9> on input line 304.
 LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 9.0pt on input line 306.
+(Font)              scaled to size 9.0pt on input line 304.
 [20] [21]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-31.
+29.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [22{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
-Overfull \hbox (25.55357pt too wide) in paragraph at lines 519--519
+Overfull \hbox (25.55357pt too wide) in paragraph at lines 517--517
  [][] 
  []
 
 [23] [24] [25] [26]
-Overfull \hbox (48.25653pt too wide) in paragraph at lines 907--907
+Overfull \hbox (48.25653pt too wide) in paragraph at lines 905--905
  [][] 
  []
 
 
-Overfull \hbox (34.94287pt too wide) in paragraph at lines 968--968
+Overfull \hbox (34.94287pt too wide) in paragraph at lines 966--966
  [][] 
  []
 
 
-Overfull \hbox (16.15312pt too wide) in paragraph at lines 1062--1063
+Overfull \hbox (16.15312pt too wide) in paragraph at lines 1060--1061
  [][] 
  []
 
 [27] [28]
-Overfull \hbox (15.64441pt too wide) in paragraph at lines 1248--1248
+Overfull \hbox (15.64441pt too wide) in paragraph at lines 1246--1246
  [][] 
  []
 
@@ -2084,7 +2084,7 @@ Underfull \vbox (badness 7116) has occurred while \output is active []
 
  [30]
 [31]
-Overfull \hbox (1.5072pt too wide) detected at line 1578
+Overfull \hbox (1.5072pt too wide) detected at line 1576
 [][][]\OT1/lmr/m/n/10 (\OT1/lmr/bx/n/10 Qv \OMS/lmsy/m/n/10 ^^B \OT1/lmr/bx/n/1
 0 Qw\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 Qz \OT1/lmr/m/n/10 
 = [](\OT1/lmr/bx/n/10 Qv\OML/lmm/m/it/10 ; \OT1/lmr/bx/n/10 Qw\OML/lmm/m/it/10 
@@ -2404,7 +2404,7 @@ fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
 fonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
 /stmaryrd/stmary10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/b
 oondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (124 pages, 1782658 bytes).
+Output written on main_Vol_00.pdf (124 pages, 1782486 bytes).
 PDF statistics:
  2340 PDF objects out of 2487 (max. 8388607)
  2029 compressed objects within 21 object streams
