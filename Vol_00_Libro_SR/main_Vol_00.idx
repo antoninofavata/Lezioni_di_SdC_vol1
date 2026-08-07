@@ -1,67 +1,114 @@
-\indexentry{spazio euclideo|textbf}{6}
-\indexentry{spazio delle traslazioni|textbf}{6}
-\indexentry{base ortonormale|textbf}{6}
-\indexentry{vettore!geometrico|textbf}{6}
-\indexentry{vettore!numerico|textbf}{6}
-\indexentry{applicazione lineare}{7}
-\indexentry{matrice rappresentativa|textbf}{7}
-\indexentry{incremento|textbf}{12}
-\indexentry{salto (di una funzione)|textbf}{12}
-\indexentry{costante (nel tempo)|textbf}{12}
-\indexentry{uniforme (nello spazio)|textbf}{12}
-\indexentry{vettore!libero|textbf}{15}
-\indexentry{forma bilineare|textbf}{17}
-\indexentry{prodotto scalare|textbf}{17}
-\indexentry{prodotto vettoriale|textbf}{19}
-\indexentry{prodotto misto|textbf}{22}
-\indexentry{prodotto tensoriale|textbf}{22}
-\indexentry{vettore!applicato|textbf}{23}
-\indexentry{polo}{23}
-\indexentry{momento!polare|textbf}{23}
-\indexentry{braccio|textbf}{23}
-\indexentry{momento!variazione al variare del polo}{24}
-\indexentry{momento!assiale|textbf}{25}
-\indexentry{vettore!polare|textbf}{27}
-\indexentry{vettore!assiale|textbf}{27}
-\indexentry{pseudovettore|see{vettore (assiale)}}{27}
-\indexentry{equiproiettivita@equiproiettività|textbf}{40}
-\indexentry{spostamento!rigido|textbf}{45}
-\indexentry{corpo rigido|textbf}{45}
-\indexentry{rotazione|textbf}{45}
-\indexentry{traslazione|textbf}{45}
-\indexentry{grado di liberta@grado di libertà|textbf}{45}
-\indexentry{invarianti}{48}
-\indexentry{spostamento!campo di}{48}
-\indexentry{asse centrale!degli spostamenti|textbf}{49}
-\indexentry{moto rigido|textbf}{50}
-\indexentry{moto rigido!moto elicoidale}{50}
-\indexentry{moto rigido!rototraslazione}{50}
-\indexentry{rotazione!pura}{50}
-\indexentry{traslazione!pura}{51}
-\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{54}
-\indexentry{spostamento!relativo}{56}
-\indexentry{rotazione!relativa}{56}
-\indexentry{centro di rotazione!relativo|textbf}{57}
-\indexentry{teorema!di Aronhold-Kennedy (primo)|textbf}{57}
-\indexentry{cinematica grafica|textbf}{58}
-\indexentry{allineamento dei centri di rotazione|textbf}{59}
-\indexentry{teorema!di Aronhold-Kennedy (secondo)|textbf}{59}
-\indexentry{centro di rotazione!assoluto}{59}
-\indexentry{risultante|textbf}{66}
-\indexentry{momento!risultante|textbf}{66}
-\indexentry{momento!di una forza}{66}
-\indexentry{braccio}{66}
-\indexentry{coppia|textbf}{67}
-\indexentry{densita di forze@densità di forze|textbf}{67}
-\indexentry{carico!distribuito}{68}
-\indexentry{invarianza rispetto all'osservatore!equivalenza con PLV|textbf}{71}
-\indexentry{asse centrale!del sistema di forze|textbf}{73}
-\indexentry{sistema di forze!dinamo (sistema avvitante)}{74}
-\indexentry{sistema di forze!forza unica}{74}
-\indexentry{coppia!pura}{74}
-\indexentry{asse di sollecitazione|textbf}{75}
-\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{75}
-\indexentry{sistema di forze!trasporto di una forza}{78}
-\indexentry{sistema di forze!sistema ridotto al polo}{78}
-\indexentry{sistema di forze!equiorientate}{79}
-\indexentry{baricentro delle forze|textbf}{79}
+\indexentry{spazio euclideo|textbf}{8}
+\indexentry{spazio delle traslazioni|textbf}{8}
+\indexentry{base ortonormale|textbf}{8}
+\indexentry{vettore!geometrico|textbf}{8}
+\indexentry{vettore!numerico|textbf}{8}
+\indexentry{applicazione lineare}{9}
+\indexentry{matrice rappresentativa|textbf}{9}
+\indexentry{incremento|textbf}{14}
+\indexentry{salto (di una funzione)|textbf}{14}
+\indexentry{costante (nel tempo)|textbf}{14}
+\indexentry{uniforme (nello spazio)|textbf}{14}
+\indexentry{vettore!libero|textbf}{17}
+\indexentry{prodotto scalare|textbf}{18}
+\indexentry{prodotto vettoriale|textbf}{20}
+\indexentry{vettore!assiale}{24}
+\indexentry{prodotto misto|textbf}{24}
+\indexentry{prodotto tensoriale|textbf}{25}
+\indexentry{vettore!applicato|textbf}{26}
+\indexentry{polo}{26}
+\indexentry{momento!polare|textbf}{26}
+\indexentry{braccio|textbf}{26}
+\indexentry{momento!variazione al variare del polo}{28}
+\indexentry{momento!assiale|textbf}{28}
+\indexentry{vettore!polare|textbf}{31}
+\indexentry{vettore!assiale|textbf}{31}
+\indexentry{pseudovettore|see{vettore, assiale}}{31}
+\indexentry{applicazione}{39}
+\indexentry{applicazione!iniettiva}{40}
+\indexentry{applicazione!suriettiva}{40}
+\indexentry{applicazione!biiettiva}{40}
+\indexentry{problema inverso|textbf}{40}
+\indexentry{controimmagine}{40}
+\indexentry{applicazione lineare|textbf}{41}
+\indexentry{nucleo|textbf}{41}
+\indexentry{immagine|textbf}{41}
+\indexentry{rango}{41}
+\indexentry{nullità|textbf}{41}
+\indexentry{teorema!di nullità più rango|textbf}{42}
+\indexentry{operatore aggiunto|textbf}{42}
+\indexentry{sottospazi fondamentali|textbf}{43}
+\indexentry{complemento ortogonale|textbf}{43}
+\indexentry{problema primale|textbf}{45}
+\indexentry{problema duale|textbf}{45}
+\indexentry{dualità!algebra lineare|textbf}{46}
+\indexentry{identità bilineare|textbf}{47}
+\indexentry{parametro libero}{51}
+\indexentry{matrice|textbf}{58}
+\indexentry{rango|textbf}{58}
+\indexentry{matrice!trasposta}{58}
+\indexentry{partizione a blocchi|textbf}{59}
+\indexentry{matrice!a blocchi}{59}
+\indexentry{combinazione lineare|textbf}{60}
+\indexentry{matrice!quadrata}{61}
+\indexentry{matrice!identità}{61}
+\indexentry{determinante|textbf}{61}
+\indexentry{regola di Laplace}{61}
+\indexentry{teorema!di Binet}{62}
+\indexentry{matrice!inversa}{62}
+\indexentry{sistema di equazioni lineari|textbf}{62}
+\indexentry{matrice!dei coefficienti}{62}
+\indexentry{termine noto}{62}
+\indexentry{sistema di equazioni lineari!omogeneo}{62}
+\indexentry{teorema!di Rouché-Capelli|textbf}{63}
+\indexentry{matrice!completa}{63}
+\indexentry{soluzione (di un sistema lineare)!generale}{63}
+\indexentry{soluzione (di un sistema lineare)!particolare}{63}
+\indexentry{parametro libero|textbf}{63}
+\indexentry{principio di sovrapposizione|textbf}{63}
+\indexentry{sistema di equazioni lineari!isodeterminato|textbf}{63}
+\indexentry{sistema di equazioni lineari!sottodeterminato|textbf}{64}
+\indexentry{sistema principale|textbf}{65}
+\indexentry{sistema di equazioni lineari!sovradeterminato|textbf}{65}
+\indexentry{sistema di equazioni lineari!degenere|textbf}{66}
+\indexentry{equiproiettivita@equiproiettività|textbf}{78}
+\indexentry{spostamento!rigido|textbf}{83}
+\indexentry{corpo rigido|textbf}{83}
+\indexentry{rotazione|textbf}{83}
+\indexentry{traslazione|textbf}{83}
+\indexentry{grado di liberta@grado di libertà|textbf}{83}
+\indexentry{invarianti}{86}
+\indexentry{spostamento!campo di}{86}
+\indexentry{asse centrale!degli spostamenti|textbf}{87}
+\indexentry{moto rigido|textbf}{88}
+\indexentry{moto rigido!moto elicoidale}{88}
+\indexentry{moto rigido!rototraslazione}{88}
+\indexentry{rotazione!pura}{88}
+\indexentry{traslazione!pura}{89}
+\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{92}
+\indexentry{spostamento!relativo}{94}
+\indexentry{rotazione!relativa}{94}
+\indexentry{centro di rotazione!relativo|textbf}{95}
+\indexentry{teorema!di Aronhold-Kennedy (primo)|textbf}{95}
+\indexentry{cinematica grafica|textbf}{96}
+\indexentry{allineamento dei centri di rotazione|textbf}{97}
+\indexentry{teorema!di Aronhold-Kennedy (secondo)|textbf}{97}
+\indexentry{centro di rotazione!assoluto}{97}
+\indexentry{risultante|textbf}{104}
+\indexentry{momento!risultante|textbf}{104}
+\indexentry{momento!di una forza}{104}
+\indexentry{braccio}{104}
+\indexentry{coppia|textbf}{105}
+\indexentry{densita di forze@densità di forze|textbf}{105}
+\indexentry{carico!distribuito}{106}
+\indexentry{invarianza rispetto all'osservatore!equivalenza con PLV|textbf}{109}
+\indexentry{asse centrale!del sistema di forze|textbf}{111}
+\indexentry{sistema di forze!dinamo (sistema avvitante)}{112}
+\indexentry{sistema di forze!forza unica}{112}
+\indexentry{coppia!pura}{112}
+\indexentry{asse di sollecitazione|textbf}{113}
+\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{113}
+\indexentry{sistema di forze!trasporto di una forza}{116}
+\indexentry{sistema di forze!sistema ridotto al polo}{116}
+\indexentry{sistema di forze!equiorientate}{117}
+\indexentry{baricentro delle forze|textbf}{117}

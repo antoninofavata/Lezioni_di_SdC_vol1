@@ -1,3 +1,4 @@
+% !TeX root = ../../../main.tex
 \graphicspath{{Parti/P01-Preliminari/A04-Vettori_Polari_Assiali_Liberi_Applicati/Figure/}}
 %	
 \chapter{Vettori geometrici: liberi, applicati, polari e assiali}\label{app:vettori_geometrici}
@@ -28,8 +29,18 @@ colonna delle sue componenti:
 \end{equation}
 La corrispondenza $\vb \leftrightarrow \bm{v}$ è un isomorfismo che
 permette di tradurre operazioni geometriche in operazioni algebriche sulle
-componenti. Nei paragrafi seguenti si richiamano le operazioni fondamentali
-dell'algebra vettoriale, che saranno impiegate sistematicamente nel testo.
+componenti. 
+
+
+Distinguiamo il vettore geometrico $\xb\in\Uc$ dal \textit{vettore numerico} (o \textit{vettore colonna}) di $n$ componenti reali, un elemento di $\mathbb{R}^n$:
+\begin{equation}
+	\bm{x} = \begin{Bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{Bmatrix} \in \mathbb{R}^{n}.
+\end{equation}
+Il \textit{trasposto} di $\bm{x}$ \`e il vettore riga $\bm{x}^\top = \{x_1 \;\; x_2 \;\; \cdots \;\; x_n\} \in \mathbb{R}^{1\times n}$. Il vettore nullo si indica con $\bm{0}$ come elemento di $\Uc$ e con
+$\bmzero$ se elemento di $\Ro^n$.
+
+%Nei  seguito si richiamano le operazioni fondamentali
+%dell'algebra vettoriale, che saranno impiegate sistematicamente nel testo.
 
 
 \subsection{Somma e prodotto per uno scalare}
@@ -124,28 +135,30 @@ $\alpha < 0$ (\FIGref{f:prodotto_per_uno_scalare}):
 	\label{f:prodotto_per_uno_scalare}
 \end{figure}
 
-
-\subsection{Forme bilineari}\index{forma bilineare|textbf}
-Un'applicazione 
-\begin{equation}
-b: \; \Uc\times\Uc \to \Ro
-\end{equation}
-è una \textit{forma bilineare} su $\Uc$ se è lineare in ognuno dei due argomenti, ovvero se soddisfa
-\begin{enumerate}
-	\item $(\ub+\vb, \wb)=b(\ub,\wb)+b(\vb, \wb)$
-	\item $(\ub, \wb+\vb)=b(\ub,\wb)+b(\ub, \wb)$
-	\item $b(\alpha\ub+\vb)=b(\ub,\alpha\vb)=\alpha\,b(\ub, \vb)$
-\end{enumerate} 
-per ogni $\ub, \vb, \wb\in \Uc$, $\alpha\in \Ro$.
-
-La forma bilineare $b$ è \textit{simmetrica} se 
-\begin{equation}
-	b(\ub, \vb)=b(\vb,\ub) \qquad \forall \ub, \vb\in \Uc
-\end{equation}
-e \textit{antisimmetrica} se 
-\begin{equation}
-	b(\ub, \vb)=-b(\vb,\ub) \qquad \forall \ub, \vb\in \Uc.
-\end{equation}
+%
+%\subsection{Forme bilineari}\index{forma bilineare|textbf}
+%Dedicheremo la sezione \SECref{sec:applicazioni_lineari} del prossimo capitolo ad un'analisi dettagliata delle applicazioni lineari tra insiemi astratti e spazi vettoriali.
+%Dato che fin da subito ci occuperemo di operazioni su vettori, richiamiamo qui semplicemente che 
+%un'applicazione 
+%\begin{equation}
+%\Abb: \; \Uc\times\Uc \to \Ro
+%\end{equation}
+%è una \textit{forma bilineare} su $\Uc$ se è lineare in ognuno dei due argomenti, ovvero se soddisfa
+%\begin{enumerate}
+%	\item $(\ub+\vb, \wb)=\Abb(\ub,\wb)+\Abb(\vb, \wb)$
+%	\item $(\ub, \wb+\vb)=\Abb(\ub,\wb)+\Abb(\ub, \wb)$
+%	\item $\Abb(\alpha\ub+\vb)=\Abb(\ub,\alpha\vb)=\alpha\,\Abb(\ub, \vb)$
+%\end{enumerate} 
+%per ogni $\ub, \vb, \wb\in \Uc$, $\alpha\in \Ro$.
+%
+%La forma bilineare $\Abb$ è \textit{simmetrica} se 
+%\begin{equation}
+%	\Abb(\ub, \vb)=\Abb(\vb,\ub) \qquad \forall \ub, \vb\in \Uc
+%\end{equation}
+%e \textit{antisimmetrica} se 
+%\begin{equation}
+%	\Abb(\ub, \vb)=-\Abb(\vb,\ub) \qquad \forall \ub, \vb\in \Uc.
+%\end{equation}
 
 
 \subsection{Prodotto scalare}\index{prodotto scalare|textbf}\nomenclature[O]{$\ub\cdot\vb$}{prodotto scalare}
@@ -166,12 +179,12 @@ per ogni $\ub, \vb, \wb \in\Uc$ e $\alpha, \beta\in \Ro$.
 \end{equation}
 e inoltre
 \begin{equation}
-	\ub\cdot\ub\geq0 \quad \Longleftrightarrow \ub=\mathbf{0}.
+	\ub\cdot\ub\geq0 \quad \Longleftrightarrow \quad \ub=\mathbf{0}.
 \end{equation}
 \end{enumerate}
 
 
-Dati due vettori $\ub, \vb \in \Uc$, cui associamo le liste $\bm{u},\bm{v}$, definiamo il prodotto scalare standard (o canonico) la forma bilineare
+Dati due vettori $\ub, \vb \in \Uc$, cui associamo le liste $\bm{u},\bm{v}$, definiamo il \textit{prodotto scalare standard} (o \textit{canonico}) la forma bilineare
 \begin{equation}
 	\ub \cdot \vb = u_x v_x + u_y v_y + u_z v_z = \bm{u}^\top\bm{v}.
 \end{equation}
@@ -183,7 +196,7 @@ Se $\ub, \vb \in \Uc$, allora vale \textit{disuguaglianza di Schwartz}
 
 Se $\ub\in \Uc$, la \textit{norma}, o \textit{lunghezza}, di $\ub$ si definisce come
 \begin{equation}
-	|\ub|=\sqrt{\ub\cdot\ub},
+	|\ub|\coloneqq\sqrt{\ub\cdot\ub},
 \end{equation}
 che consente di scrivere la disuguaglianza di Schwartz come
 \begin{equation}\label{schw2}
@@ -192,7 +205,7 @@ che consente di scrivere la disuguaglianza di Schwartz come
 
 La lunghezza di un vettore gode delle seguenti proprietà, per ogni $\ub,\vb\in\Uc$, $\alpha\in\Ro$:
 \begin{enumerate}
-	\item $|\ub|\geq 0$, e vale l'uguaglianza se e e solo se $\vb=\mathbf{0}$
+	\item $|\ub|\geq 0$, e vale l'uguaglianza se e e solo se $\ub=\mathbf{0}$
 	\item $|\alpha\ub|=|\alpha|\,|\vb|$
 	\item $|\ub+\vb|\leq |\ub|+|\vb|$ e vale l'uguaglianza se e solo se $\ub$ e $\vb$ sono paralleli.
 \end{enumerate}
@@ -200,7 +213,7 @@ La lunghezza di un vettore gode delle seguenti proprietà, per ogni $\ub,\vb\in\
 
 \medskip
 
-La disugliaglianza di Schwartz \eqref{schwartz} consente di introdurre nello spazio vettoriale $\Uc$ la nozione di angolo convesso tra due vettori non nulli, secondo
+La disugliaglianza di Schwartz \eqref{schwartz} consente di introdurre nello spazio vettoriale $\Uc$ la nozione di \textit{angolo convesso tra due vettori} (non nulli), secondo
 il seguente ragionamento. Supponiamo
 che $\ub,\vb\in \Uc$  siano entrambi non nulli, la \eqref{schw2} è equivalente a 
 \begin{equation}
@@ -294,7 +307,7 @@ sicché 	$\ub \cdot \vb = |\ub|\,\mathrm{proj}_{\ub}\vb
 
 \subsection{Prodotto vettoriale}\index{prodotto vettoriale|textbf}\nomenclature[O]{$\ub\times\vb$}{prodotto vettoriale}\label{prodvet}
 Un prodotto vettoriale è un'applicazione $\Uc\times\Uc\to\Uc$ che associa a due vettori $\ub, \vb$ un nuovo vettore $\ub\times\vb$ e soddisfa le seguenti proprietà, 
-per ogni $\ub,\vb,\wb\in\Uc$, $\alpha,\beta\in\Ro$
+per ogni $\ub,\vb,\wb\in\Uc$, $\alpha,\beta\in\Ro$:
 \begin{enumerate}
 	\item Bilinearità:
 	\begin{equation}
@@ -314,7 +327,7 @@ da cui segue immediatamente
 	(\ub\times\vb)\cdot \ub=0, \qquad 	(\ub\times\vb)\cdot\vb=0.
 \end{equation}
 \item Norma:
-\begin{equation}
+\begin{equation}\label{eq:prod_vett_modulo}
 	|\ub\times\vb|=|\ub|\,|\vb|\,\sin\theta,
 \end{equation}
 dove $\theta$ è l'angolo tra $\ub$ e $\vb$.
@@ -325,11 +338,76 @@ dove $\theta$ è l'angolo tra $\ub$ e $\vb$.
 sia orientata positivamente.
 \end{enumerate}
 
-Il prodotto vettoriale può essere definito usando il prodotto scalare, il determinante e un'orientazione dello spazio. In particolare,
-si richiede che il vettore $\ub\times\vb$ sia l'unico vettore tale che
-\begin{equation}
-\ub\times\vb\cdot \wb=\det (\ub, \vb, \wb), \qquad \forall\wb\in\Uc.
-\end{equation}
+
+
+Il prodotto vettoriale può essere definito usando il prodotto scalare, il
+	determinante e un'orientazione dello spazio. Precisiamo innanzitutto cosa
+	intendiamo per \emph{determinante} di tre vettori, indipendentemente dal
+	prodotto vettoriale che vogliamo definire.
+	
+	Fissiamo un'orientazione di $\Uc$, cioè una convenzione su quali basi
+	ortonormali chiamare \emph{positive} --- prendiamo come tale la terna
+	$\{\ab_x,\ab_y,\ab_z\}$ che useremo nel seguito. Per $\ub,\vb,\wb\in\Uc$,
+	definiamo $\det(\ub,\vb,\wb)$ come il determinante della matrice delle
+	componenti di $\ub,\vb,\wb$ rispetto a una base ortonormale positiva
+	qualunque. Il valore non dipende da quale base positiva si scelga: il
+	cambiamento fra due basi ortonormali positive è una rotazione, la cui
+	matrice ha determinante $1$, e il determinante di una matrice non cambia
+	se le sue colonne vengono riespresse tramite un cambio di base con
+	matrice di cambiamento a determinante unitario. $\det(\ub,\vb,\wb)$ è dunque ben definito, dipende solo
+	dall'orientazione fissata, ed è trilineare e alternante.\footnote{Ovvero cambia segno
+	scambiando due argomenti qualsiasi.}
+	
+	Fissati $\ub,\vb\in\Uc$, l'applicazione $\wb\mapsto\det(\ub,\vb,\wb)$ è
+	lineare in $\wb$ (per la trilinearità appena vista). 
+	
+	Osserviamo che un'applicazione
+	lineare $\varphi:\Uc\to\Ro$ si può sempre scrivere come prodotto scalare
+	con un vettore fissato:\footnote{Questo risultato generale va sotto il nome di Teorema di Rappresentazione di Riesz.} presa una base ortonormale
+	$\{\ab_x,\ab_y,\ab_z\}$, basta porre
+	$\xb\coloneqq\varphi(\ab_x)\,\ab_x+\varphi(\ab_y)\,\ab_y+\varphi(\ab_z)\,\ab_z$;
+	sviluppando $\wb$ sulle sue componenti e usando la linearità di
+	$\varphi$ si verifica subito che $\xb\cdot\wb=\varphi(\wb)$ per ogni
+	$\wb\in\Uc$.\footnote{Notiamo che un tale $\xb$ è anche unico: se $\xb\cdot\wb=\xb'\cdot\wb$
+	per ogni $\wb$, prendendo in particolare $\wb=\xb-\xb'$ si ottiene
+	$|\xb-\xb'|^2=0$, cioè $\xb=\xb'$.}
+	
+	Applicando questo fatto a $\varphi(\wb)\coloneqq\det(\ub,\vb,\wb)$, esiste
+	dunque un unico vettore, che indichiamo $\ub\times\vb$, tale che
+	\begin{equation}
+		(\ub\times\vb)\cdot \wb\coloneqq\det (\ub, \vb, \wb), \qquad \forall\wb\in\Uc.
+	\end{equation}
+	Questa uguaglianza \emph{definisce} $\ub\times\vb$: il membro destro è
+	noto prima e indipendentemente da $\times$; il membro sinistro è ciò che
+	stiamo introducendo. 
+
+
+	Verifichiamo che questa costruzione è coerente con le proprietà 1--5 elencate sopra,
+	il che ne giustifica l'esistenza (l'unicità segue invece dalla non degenerazione del
+	prodotto scalare: se due vettori hanno lo stesso prodotto scalare con ogni $\wb$,
+	allora coincidono).
+	\begin{itemize}
+		\item \emph{Bilinearità e antisimmetria}: seguono dalla multilinearità del determinante
+		e dal fatto che esso cambia segno scambiando due colonne. In particolare
+		\begin{equation}
+			(\vb\times\ub)\cdot\wb=\det(\vb,\ub,\wb)=-\det(\ub,\vb,\wb)=-(\ub\times\vb)\cdot\wb
+			\qquad\forall\,\wb,
+		\end{equation}
+		da cui $\vb\times\ub=-\ub\times\vb$.
+		\item \emph{Ortogonalità}: $(\ub\times\vb)\cdot\ub=\det(\ub,\vb,\ub)=0$, essendo nullo
+		il determinante di una matrice con due colonne uguali; analogamente per $\vb$.
+		\item \emph{Orientazione}: ponendo $\wb=\ub\times\vb$ si ottiene
+		\begin{equation}
+			\det(\ub,\vb,\ub\times\vb)=(\ub\times\vb)\cdot(\ub\times\vb)=|\ub\times\vb|^2\ge0,
+		\end{equation}
+		quindi la terna $(\ub,\vb,\ub\times\vb)$ è positivamente orientata ogni volta che
+		$\ub\times\vb\neq\zerovb$.
+		\item \emph{Norma}: segue dall'identità di Lagrange
+		$|\ub\times\vb|^2=|\ub|^2|\vb|^2-(\ub\cdot\vb)^2$ --- verificabile per calcolo diretto
+		sulle componenti, cfr. \eqref{eq:prod_vett_comp} --- e da $\ub\cdot\vb=|\ub|\,|\vb|\cos\theta$,
+		da cui $|\ub\times\vb|^2=|\ub|^2|\vb|^2\sin^2\theta$.
+	\end{itemize}
+
 
 Rappresentando $\ub$ e $\vb$ nella base $\{\ab_x, \ab_y,\ab_z\}$, possiamo allora scrivere che 
 \begin{equation}\label{eq:prod_vett_comp}
@@ -352,16 +430,14 @@ Einstein) e $\varepsilon_{ijk}$ è il \textit{simbolo di Ricci}
 (o di Levi-Civita): vale $+1$ se $(i,j,k)$ è una permutazione pari
 di $(x,y,z)$, $-1$ se dispari, $0$ se due indici coincidono.
 
-Dal punto di vista geometrico, il prodotto vettoriale $\ub \times \vb$ è il vettore ortogonale al piano
-di $\ub$ e $\vb$, con verso dato dalla regola della mano destra e modulo
-\begin{equation}\label{eq:prod_vett_modulo}
-	|\ub \times \vb| \coloneqq |\ub|\,|\vb|\sin\alpha,
-\end{equation}
+Dal punto di vista geometrico, il prodotto vettoriale $\ub \times \vb$ (con $\ub$ non parallelo a $\vb$) è il vettore ortogonale al piano
+di $\ub$ e $\vb$, con verso dato dalla regola della mano destra e modulo dato dalla
+\eqref{eq:prod_vett_modulo}, 
 pari all'area del parallelogramma costruito sui due vettori
 (\FIGref{f:prodotto_vettoriale}).
 
 Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
-	sono paralleli.
+	sono paralleli o uno dei due è nullo.
 
 
 
@@ -397,7 +473,7 @@ Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 			\rightangle{X}{O}{V}
 			\draw[->, thick] (O) -- (U) node[midway, below right=-2pt] {$\ub$};
 			\draw[->, thick] (O) -- (V) node[midway, above=1pt] {$\vb$};
-			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.4,	"$\alpha$"{font=\footnotesize}] {angle = U--O--V};
+			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.4,	"$\theta$"{font=\footnotesize}] {angle = U--O--V};
 			\fill (O) circle (1.2pt);
 		\end{tikzpicture}\\[4pt]
 		{\small (a)}
@@ -416,10 +492,10 @@ Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 			\draw[gray!55, thin, dashed] (Vd) -- (Fd);
 			\rightangle{Od}{Fd}{Vd}
 			
-			\node[font=\footnotesize, right=1pt] at ($(Vd)!0.22!(Fd)$) {$|\vb|\sin\alpha$};
+			\node[font=\footnotesize, right=1pt] at ($(Vd)!0.22!(Fd)$) {$|\vb|\sin\theta$};
 			\draw[->, thick] (Od) -- (Ud) node[midway, below=2pt]{$\ub$};
 			\draw[->, thick] (Od) -- (Vd) node[pos=0.62, above left=-3pt]{$\vb$};
-			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.4, "$\alpha$"{font=\footnotesize}] {angle = Ud--Od--Vd};
+			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.4, "$\theta$"{font=\footnotesize}] {angle = Ud--Od--Vd};
 			\node[font=\footnotesize] at (3.0,0.62) {$|\ub\times\vb|$};
 			\draw[gray!55, thin] (Od) -- ($(Od)+(0,-0.95)$);
 			\draw[gray!55, thin] (Ud) -- ($(Ud)+(0,-0.95)$);
@@ -442,7 +518,7 @@ Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 			\draw (Ob) circle (0.17); \fill (Ob) circle (1.3pt);
 			\draw[->, thick] ($(Ob)+(0.17,0)$) -- (Ub) node[right=1pt]{$\ub$};
 			\draw[->, thick] ($(Ob)+(42:0.17)$) -- (Vb) node[above right=-2pt]{$\vb$};
-			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.35,	"$\alpha$"{font=\footnotesize}] {angle = Ub--Ob--Vb};
+			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.35,	"$\theta$"{font=\footnotesize}] {angle = Ub--Ob--Vb};
 			\node[left=4pt, font=\footnotesize] at (Ob) {$\ub\times\vb$};
 		\end{tikzpicture}\\[4pt]
 		{\small (c)\quad $\ub\times\vb$ uscente ($\odot$)}
@@ -460,7 +536,7 @@ Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 			\draw[->, thick] ($(Oc)+(0.17,0)$) -- (Uc) node[right=1pt]{$\ub$};
 			\draw[->, thick] ($(Oc)+(42:0.17)$) -- (Vc) node[above right=-2pt]{$\vb$};
 			\pic[draw, <-, thin, angle radius=6mm, angle eccentricity=1.35,
-			"$\alpha$"{font=\footnotesize}] {angle = Uc--Oc--Vc};
+			"$\theta$"{font=\footnotesize}] {angle = Uc--Oc--Vc};
 			\node[left=4pt, font=\footnotesize] at (Oc) {$\vb\times\ub$};
 		\end{tikzpicture}\\[4pt]
 		{\small (d)\quad $\vb\times\ub$ entrante ($\otimes$)}
@@ -471,10 +547,10 @@ Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 		$\mathrm{Span}\{\ub,\vb\}$ e orientato secondo la regola della mano
 		destra; il suo modulo eguaglia l'area del parallelogramma costruito
 		su $\ub$ e $\vb$. In (b) tale area è letta come prodotto della base
-		$|\ub|$ per l'altezza $|\vb|\sin\alpha$, da cui
-		$|\ub\times\vb| = |\ub|\,|\vb|\sin\alpha$. In (c) e (d) è illustrata
+		$|\ub|$ per l'altezza $|\vb|\sin\theta$, da cui
+		$|\ub\times\vb| = |\ub|\,|\vb|\sin\theta$. In (c) e (d) è illustrata
 		l'antisimmetria $\ub\times\vb = -(\vb\times\ub)$: a parità di $\ub$,
-		$\vb$ e di angolo $\alpha$, il prodotto cambia verso --- uscente dal
+		$\vb$ e di angolo $\theta$, il prodotto cambia verso --- uscente dal
 		piano ($\odot$) per $\ub\times\vb$, entrante ($\otimes$) per
 		$\vb\times\ub$ --- coerentemente col senso di rotazione che porta il
 		primo fattore sul secondo.}
@@ -482,21 +558,60 @@ Osserviamo infine che  $\ub \times \vb = \zerovb$ se e solo se $\ub$ e $\vb$
 \end{figure}
 
 
-\begin{oss}[\textbf{Forma matriciale}]
-	Il prodotto vettoriale può essere scritto come prodotto
-	matrice-vettore tramite la matrice antisimmetrica associata a $\ub$:
-	\begin{equation}\label{eq:prod_vett_matrice}
-		\bm{u} \times \bm{v}
-		= \begin{bmatrix}
-			0   & -u_z &  u_y \\
-			u_z &  0   & -u_x \\
-			-u_y &  u_x &  0
-		\end{bmatrix}
-		\begin{Bmatrix} v_x \\ v_y \\ v_z \end{Bmatrix}.
-	\end{equation}
-	Questa rappresentazione sarà impiegata nel calcolo del momento e nella
-	formulazione matriciale della cinematica infinitesima.
-\end{oss}
+\paragraph{Corrispondenza con applicazioni lineari antisimmetriche.}
+Il prodotto vettoriale realizza, in dimensione 3, un'identificazione naturale
+tra vettori e applicazioni lineari antisimmetriche.
+
+Fissato $\wb\in\Uc$, l'applicazione
+\begin{equation}
+	\Wb:\Uc\to\Uc, \qquad \Wb\vb:=\wb\times\vb,
+\end{equation}
+è lineare per la bilinearità del prodotto vettoriale. Per la proprietà di
+ortogonalità, $\Wb\vb\cdot\vb=(\wb\times\vb)\cdot\vb=0$ per ogni $\vb\in\Uc$;
+un'applicazione lineare $\Tb$ con questa proprietà è necessariamente
+\emph{antisimmetrica}, cioè soddisfa $\Tb\vb\cdot\wb=-\Tb\wb\cdot\vb$ per ogni
+$\vb,\wb\in\Uc$.\footnote{Basta sviluppare
+	$0=\Tb(\vb+\wb)\cdot(\vb+\wb)=\underbrace{\Tb\vb\cdot\vb}_{=0}+\Tb\vb\cdot\wb
+	+\Tb\wb\cdot\vb+\underbrace{\Tb\wb\cdot\wb}_{=0}$, da cui
+	$\Tb\vb\cdot\wb=-\Tb\wb\cdot\vb$.} Dunque $\Wb$ è un'applicazione lineare antisimmetrica
+su $\Uc$.
+
+Vale anche il viceversa. L'applicazione $\wb\mapsto\Wb$, oltre ad essere lineare  è anche 
+	iniettiva. Supponiamo $\Wb=\mathbf 0$, cioè $\wb\times\vb=\zerovb$ per ogni
+	$\vb\in\Uc$, e supponiamo per assurdo $\wb\neq\zerovb$. Scegliamo un
+	$\vb\neq\zerovb$ non parallelo a $\wb$ (esiste, perché $\Uc$ ha dimensione
+	$3$): allora l'angolo $\theta$ fra $\wb$ e $\vb$ soddisfa $0<\theta<\pi$, dunque
+	$\sin\theta>0$, e per la proprietà di norma
+	$|\wb\times\vb|=|\wb|\,|\vb|\sin\theta>0$. Questo contraddice
+	$\wb\times\vb=\zerovb$ --- che vale per ipotesi anche per questo stesso $\vb$, e
+	richiederebbe $|\wb\times\vb|=0$. Deve dunque essere $\wb=\zerovb$.
+	
+	 Poiché lo spazio delle applicazioni lineari antisimmetriche su $\Uc$ ha anch'esso
+dimensione $3$ (è determinato dalle sue $3$ componenti indipendenti fuori
+diagonale), un'applicazione lineare iniettiva fra spazi della stessa dimensione
+è un isomorfismo: ogni applicazione lineare antisimmetrica $\Tb$ su $\Uc$ è dunque della
+forma $\Wb$ per un \emph{unico} $\wb\in\Uc$, che chiamiamo il
+\emph{vettore assiale}\index{vettore!assiale} di $\Tb$.
+
+In componenti, rispetto alla base $\{\ab_x,\ab_y,\ab_z\}$, questa corrispondenza
+si scrive
+\begin{equation}\label{eq:prod_vett_matrice}
+	\bm{w} \times \bm{v}
+	= \underbrace{\begin{bmatrix}
+			0   & -w_z &  w_y \\
+			w_z &  0   & -w_x \\
+			-w_y &  w_x &  0
+	\end{bmatrix}}_{\bm{W}}
+	\begin{Bmatrix} v_x \\ v_y \\ v_z \end{Bmatrix},
+	\qquad\text{ovvero}\qquad
+	(\Wb)_{ij}=-\varepsilon_{ijk}\,w_k,
+\end{equation}
+mentre il vettore assiale si recupera dalla matrice antisimmetrica $\bm{W}$ associata a  $\Wb$
+tramite
+\begin{equation}\label{eq:vettore_assiale_da_tensore}
+	w_k=-\frac12\,\varepsilon_{kij}\,W_{ij}.
+\end{equation}
+
 
 
 \subsection{Doppio prodotto vettoriale}
@@ -567,16 +682,9 @@ che giace nel piano di $\vb$ e $\wb$.
 
 \subsection{Prodotto misto}\index{prodotto misto|textbf}
 
-Il prodotto misto di tre vettori $\ub, \vb, \wb \in \Uc$ è lo scalare
-\begin{equation}\label{eq:prod_misto}
-	(\ub \times \vb) \cdot \wb
-	= \begin{vmatrix}
-		u_x & u_y & u_z \\
-		v_x & v_y & v_z \\
-		w_x & w_y & w_z
-	\end{vmatrix}.
-\end{equation}
-Il suo valore assoluto è il volume del parallelepipedo costruito sui tre
+Il prodotto misto di tre vettori $\ub, \vb, \wb \in \Uc$ non necessità di introdurre nuove definizioni, essendo un'applicazione che associa a tra vettori $\ub, \vb, \wb\in \Uc$ lo scalare $	(\ub \times \vb) \cdot \wb$. Le parentesi non sono strettamente necessarie, dato che l'operazione $\ub \times (\vb\cdot \wb)$ non avrebbe senso.
+
+Il suo modulo è il volume del parallelepipedo costruito sui tre
 vettori (\FIGref{f:prodotto_misto}); il segno è positivo se $\ub, \vb,
 \wb$ formano una terna destrorsa, negativo altrimenti. Il prodotto misto
 è nullo se e solo se i tre vettori sono complanari, ed è invariante per
@@ -587,6 +695,17 @@ permutazioni cicliche:
 	= (\wb \times \ub) \cdot \vb,
 \end{equation}
 mentre cambia segno per scambio di due fattori qualsiasi.
+
+
+In componenti, possiamo facilmente trovare che 
+\begin{equation}\label{eq:prod_misto}
+	(\bm{u} \times \bm{v}) \cdot \bm{w}
+	= \begin{vmatrix}
+		u_x & u_y & u_z \\
+		v_x & v_y & v_z \\
+		w_x & w_y & w_z
+	\end{vmatrix}.
+\end{equation}
 
 
 \begin{figure}[!htbp]
@@ -703,7 +822,7 @@ Il vettore $\bm{\upmu}(O)$ è perpendicolare al piano di
 $\overrightarrow{OP}$ e $\vb$, con verso dato dalla regola della mano
 destra. Il suo modulo è
 \begin{equation}
-	|\bm{\upmu}(O)| = |\overrightarrow{OP}|\,|\vb|\sin\alpha = |\vb|\,b,
+	|\bm{\upmu}(O)| = |\overrightarrow{OP}|\,|\vb|\sin\theta = |\vb|\,b,
 \end{equation}
 dove $\alpha$ è l'angolo fra $\overrightarrow{OP}$ e $\vb$, e $b$ è la
 distanza della linea d'azione dal polo, detto \textit{braccio}\index{braccio|textbf}
@@ -1279,44 +1398,172 @@ $\vb$ sono complanari: incidenti ($d = 0$) o parallele
 %%%===================================================================================================
 
 
-
 %-------------------------------------------------------------------------------------------------------------------
 \section{Vettori polari e vettori assiali}\label{sec:polari_assiali}
 %-------------------------------------------------------------------------------------------------------------------
+Immaginiamo di osservare un sistema meccanico --- una struttura, un
+meccanismo --- riflesso in uno specchio. Le forze applicate, gli
+spostamenti, le velocità dei punti: tutto ciò che vediamo nello specchio è
+semplicemente l'immagine speculare delle grandezze originali, ottenuta
+riflettendo ciascun vettore con la stessa regola geometrica usata per
+riflettere un punto. Se però proviamo a rappresentare allo stesso modo il
+\emph{verso di rotazione} di una ruota che gira, o il momento di una
+forza, qualcosa non torna: la freccia costruita con la regola della mano
+destra sull'immagine speculare punta dalla parte sbagliata rispetto al
+verso di rotazione che vediamo effettivamente nello specchio.
 
-L'algebra vettoriale produce due tipi di oggetti che si comportano in
-modo diverso sotto riflessioni del sistema di riferimento. La
-distinzione non è formale: essa ha conseguenze fisiche precise e sarà
-sfruttata sistematicamente nell'analisi delle strutture.
+La ragione è che la regola della mano destra --- e quindi il prodotto
+vettoriale --- non è una proprietà geometrica dello spazio, ma una
+\emph{convenzione}: nulla, nella meccanica di un sistema, distingue in
+modo assoluto una rotazione ``destrorsa'' da una ``sinistrorsa'' (la teoria
+funzionerebbe identica se avessimo adottato fin dall'inizio la regola
+della mano sinistra). Una forza, uno spostamento, una velocità non hanno
+bisogno di questa convenzione per essere definiti: sono frecce nello
+spazio, e basta. Un momento o una velocità angolare, invece, sono
+\emph{costruiti} tramite un prodotto vettoriale, e quindi ereditano una
+dipendenza nascosta dalla convenzione di orientazione scelta, dipendenza
+che si manifesta proprio quando l'orientazione dello spazio viene
+invertita, come accade allo specchio.
 
-\paragraph{Vettori polari.}\index{vettore!polare|textbf}
-Sono vettori che agiscono nella direzione e nel verso da essi definiti.
-Sotto una riflessione rispetto a un piano, la componente perpendicolare
-al piano cambia segno, le componenti parallele restano invariate.
-Sono vettori polari le forze, gli spostamenti, le velocità, i vettori
-posizione.
-
-\paragraph{Vettori assiali (o pseudovettori).}\index{vettore!assiale|textbf}\index{pseudovettore|see{vettore (assiale)}}
-Sono vettori che si ottengono come prodotto vettoriale di due vettori
-polari e che agiscono sul piano ortogonale alla loro direzione. Sotto
-una riflessione, acquisiscono un segno aggiuntivo rispetto a un vettore
-polare soggetto alla stessa trasformazione: la componente perpendicolare
-al piano di riflessione resta invariata, le componenti parallele cambiano
-segno. Sono vettori assiali il momento di una forza, la velocità
-angolare, la coppia.
+Questa distinzione, che porta alla definizione di vettore \textit{polare} e \textit{assiale},  non è un fatto puramente formale: strutture e carichi simmetrici rispetto a un
+piano vengono spesso analizzati calcolando solo una metà e ricostruendo
+l'altra per simmetria. Farlo correttamente richiede però di sapere che
+spostamenti e forze si riflettono ``come ci si aspetta'', mentre momenti e
+rotazioni no. 
+Precisiamo dunque la distinzione, e ricaviamone le conseguenze algebriche.
 
 
-\subsection{Comportamento sotto riflessione}
 
+%-------------------------------------------------------------------------------------------------------------------
+\subsection{Comportamento sotto riflessione}\label{sez:comportamento_riflessione}
+%-------------------------------------------------------------------------------------------------------------------
 Una riflessione rispetto a un piano $\pi$ di normale unitaria $\nb$ è
-rappresentata dall'operatore
+rappresentata dall'applicazione $\Rbb_{\nb}\,:\, \Uc\to\Uc$ così definita:
 \begin{equation}
 	\Rbb_{\nb}(\vb) \coloneqq \vb - 2(\vb \cdot \nb)\,\nb,
 \end{equation}
 che inverte la componente di $\vb$ parallela a $\nb$ e lascia invariata
-quella perpendicolare (\FIGref{fig:riflessione}). La riflessione è una
-trasformazione ortogonale impropria: $\Rbb_{\nb}^\top \Rbb_{\nb} = \Ib$
-e $\det\Rbb_{\nb} = -1$.
+quella perpendicolare. La riflessione è una trasformazione ortogonale
+impropria.
+%$\Rbb_{\nb}^\top \Rbb_{\nb} = \Ib$ e $\det\Rbb_{\nb} = -1$.
+In generale, chiamiamo \emph{trasformazione ortogonale}
+un'applicazione lineare $\Qb:\Uc\to\Uc$ che preserva il prodotto scalare,
+\begin{equation}
+	\Qb\ub\cdot\Qb\vb=\ub\cdot\vb \qquad \forall\,\ub,\vb\in\Uc
+	\qquad\text{(equivalentemente, }\Qb^\top\Qb=\Ib\text{)}:
+\end{equation}
+sono le trasformazioni che non alterano lunghezze e angoli, dunque mandano
+basi ortonormali in basi ortonormali. Prendendo il determinante di
+$\Qb^\top\Qb=\Ib$ si ottiene $(\det\Qb)^2=1$, dunque $\det\Qb=\pm1$: le
+trasformazioni con $\det\Qb=+1$ si dicono \emph{proprie} (le rotazioni),
+quelle con $\det\Qb=-1$ \emph{improprie}. È il caso della riflessione $\Rbb_\nb$
+appena vista,\footnote{Per convincersi che $\Rbb_{\nb}$ sia ortogonale, basta 
+	sviluppare con la bilinearità del
+	prodotto scalare e usare $\nb\cdot\nb=1$,
+	\begin{equation}
+		\Rbb_{\nb}(\ub)\cdot\Rbb_{\nb}(\vb)
+		=\ub\cdot\vb-4(\ub\cdot\nb)(\vb\cdot\nb)+4(\ub\cdot\nb)(\vb\cdot\nb)=\ub\cdot\vb.
+	\end{equation}
+	Per verificare che sia impropria, basta determinare i suoi autovalori: $\Rbb_\nb(\nb)=-\nb$ (autovalore $-1$) mentre
+	$\Rbb_\nb(\tb)=\tb$ per ogni $\tb\perp\nb$ (autovalore $+1$, molteplicità
+	$2$), dunque $\det\Rbb_\nb=(-1)(1)(1)=-1$.} o l'inversione totale $-\Ib$. 
+
+
+
+Vale la
+pena anticipare che la distinzione fra vettori polari e assiali si
+manifesta \emph{solo} sotto le trasformazioni improprie: sotto una
+rotazione, i due tipi di vettore si
+comportano in modo identico. È per questo che nell'introduzione serviva
+uno specchio, e non sarebbe bastato semplicemente ruotare il punto di
+vista.
+
+
+\medskip
+
+
+	Una grandezza vettoriale $\vb(P)$ applicata in un punto $P$, si dice \emph{polare}\index{vettore!polare|textbf}
+	se sotto riflessione si trasforma nel simmetrico applicato nel punto
+	simmetrico $P_\star$,
+	\begin{equation}
+		\vb_\star(P_\star) = \Rbb_{\nb}\bigl(\vb(P)\bigr);
+	\end{equation}
+	si dice invece \emph{assiale} (o \emph{pseudovettore})\index{vettore!assiale|textbf}\index{pseudovettore|see{vettore, assiale}}
+	se si trasforma come
+	\begin{equation}\label{eq:rif_assiale}
+		\bm{\upomega}_\star(P_\star) = -\Rbb_{\nb}\bigl(\bm{\upomega}(P)\bigr).
+	\end{equation}
+
+
+Sono vettori polari le forze, gli spostamenti, le velocità e i vettori
+posizione: per loro stessa natura geometrica, si riflettono insieme al
+sistema.
+
+\medskip
+
+Il legame con il prodotto vettoriale  è ciò che rende
+utile la nozione di vettore assiale: dimostriamo qui sotto
+che il prodotto vettoriale di due
+vettori polari è sempre un vettore assiale, nel senso appena definito. È
+così, ad esempio, che nasce il momento di un vettore rispetto a un polo
+$
+	\bm{\upmu}(O)\coloneqq\overrightarrow{OP}\times\vb:
+$
+prodotto vettoriale del vettore posizione $\overrightarrow{OP}$ (polare)
+per $\vb$ (polare), dunque assiale.
+
+Per dimostrarlo conviene stabilire un fatto più generale, valido per
+qualunque trasformazione ortogonale  $\Qb$  e ogni
+	$\vb,\wb\in\Uc$:
+	\begin{equation}\label{eq:trasf_prod_vett}
+		\Qb\vb\times\Qb\wb=\det(\Qb)\,\Qb(\vb\times\wb).
+	\end{equation}
+
+
+	Poiché $\Qb$ è invertibile, basta verificare l'uguaglianza dopo prodotto
+	scalare con $\Qb\zb$, al variare di $\zb\in\Uc$\footnote{I vettori $\Qb\zb$
+	esauriscono $\Uc$ quando $\zb$ varia in $\Uc$}. Ricordiamo che il
+	determinante di un'applicazione lineare $\Qb$ è, per definizione, lo
+	scalare per cui $\Qb$ moltiplica il prodotto misto:
+	\begin{equation}
+		\det(\Qb\ab,\Qb\bb,\Qb\cb)=\det(\Qb)\,\det(\ab,\bb,\cb)
+		\qquad\forall\,\ab,\bb,\cb\in\Uc.
+	\end{equation}
+	Usando questo fatto e la definizione del prodotto vettoriale tramite il
+	prodotto misto (\SECref{prodvet}),
+	\begin{equation}
+		(\Qb\vb\times\Qb\wb)\cdot\Qb\zb=\det(\Qb\vb,\Qb\wb,\Qb\zb)
+		=\det(\Qb)\det(\vb,\wb,\zb)=\det(\Qb)\,(\vb\times\wb)\cdot\zb.
+	\end{equation}
+	D'altra parte, essendo $\Qb$ ortogonale (dunque
+	$\Qb\ab\cdot\Qb\bb=\ab\cdot\bb$ per ogni $\ab,\bb\in\Uc$),
+	\begin{equation}
+	\det(\Qb)\,(\vb\times\wb)\cdot\zb= 	\det(\Qb)\,\bigl(\Qb(\vb\times\wb)\bigr)\cdot\Qb\zb,
+	\end{equation}
+e dunque
+\begin{equation}
+		(\Qb\vb\times\Qb\wb)\cdot\Qb\zb=	\det(\Qb)\,\bigl(\Qb(\vb\times\wb)\bigr)\cdot\Qb\zb.
+\end{equation}
+	I due membri coincidono per ogni $\zb$, da cui segue la \eqref{eq:trasf_prod_vett}.
+	
+
+
+\medskip
+
+Applichiamo la \eqref{eq:trasf_prod_vett} a $\Qb=\Rbb_\nb$, per cui
+$\det\Rbb_\nb=-1$. Il riflesso di un vettore $	\bm{\upomega}(P)\coloneqq \ub(P)\times\vb $ definito come prodotto vettoriale  tra  $\ub(P)$ e $\vb$,
+cioè quello calcolato i vettori $\ub(P)$ e $\vb$ già riflessi, soddisfa
+\begin{equation}
+\begin{aligned}
+	\bm{\upomega_\star}(P_\star)&\coloneqq \Rbb_\nb\ub(P)\times\Rbb_\nb\vb =(\det \Rbb_\nb)\Rbb_\nb \big( \ub(P)\times \vb \big)\\
+	&=-\Rbb_\nb\big( \upomega(P) \big), 
+\end{aligned}
+\end{equation}
+ovvero  la \eqref{eq:rif_assiale}: un tale $\bm\upomega$ è dunque assiale
+secondo la definizione. La \FIGref{fig:riflessione}, in basso, ne dà
+l'illustrazione geometrica: il verso di rotazione di $\bm{\upomega}$ --- quello indicato dall'arco in figura, dato dalla regola della
+mano destra --- si inverte sotto riflessione, perché la riflessione
+inverte l'orientazione dello spazio.
 
 
 %%===================================================================================================
@@ -1427,20 +1674,39 @@ e $\det\Rbb_{\nb} = -1$.
 %%%===================================================================================================
 
 
-Un vettore polare $\vb(P)$ si trasforma sotto riflessione nel vettore	simmetrico $\Rbb_{\nb}(\vb(P))$, applicato nel punto simmetrico	$P_\star$ (\FIGref{fig:riflessione}). Un vettore assiale $\bm{\upomega} = \ub \times \vb$ si trasforma
-invece nel vettore antisimmetrico. Applicando la riflessione separatamente a $\ub$ e $\vb$, i vettori riflessi $\Rbb_{\nb}\ub$
-e $\Rbb_{\nb}\vb$ giacciono nel piano riflesso; la regola della mano destra applicata alla rotazione da $\Rbb_{\nb}\ub$ verso
-$\Rbb_{\nb}\vb$ attraverso l'angolo convesso fornisce però un verso	opposto a quello di $\Rbb_{\nb}\bm{\upomega}$, perché la riflessione	ha invertito l'orientazione dello spazio. Il vettore assiale si	trasforma quindi nel vettore antisimmetrico:
-\begin{equation}\label{eq:rif_assiale}
-	\bm{\upomega}_\star(P_\star) = -\Rbb_{\nb}(\bm{\upomega}(P)).
-\end{equation}
+Applicando invece la \eqref{eq:trasf_prod_vett} a $\Qb=-\Ib$ (che
+inverte tutti e tre i versori, $\ab_i\to-\ab_i$, e ha anch'essa
+$\det(-\Ib)=-1$), un vettore polare cambia tutte le componenti di segno,
+$u_i\to -u_i$, mentre un vettore assiale resta invariato,
+$\omega_i\to\omega_i$: è il criterio pratico più rapido per riconoscere se
+una grandezza è polare o assiale.
 
-
-
+%-------------------------------------------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------------------------------------------
 \subsection{Regole di composizione}
+%-------------------------------------------------------------------------------------------------------------------
+Le regole di composizione seguono già applicando la
+\eqref{eq:trasf_prod_vett} alla riflessione $\Rbb_\nb$, che è quanto
+richiesto dalla definizione. Il conto, però, non usa nulla di specifico
+di $\Rbb_\nb$ se non l'ortogonalità: vale identico per \emph{qualunque}
+trasformazione ortogonale $\Qb$, quindi conviene farlo una volta per
+tutte in generale.
 
-Il comportamento sotto riflessione determina le seguenti regole,
-verificabili direttamente dalla~\eqref{eq:rif_assiale}:
+Se $\ub,\vb$ sono polari (si trasformano come $\Qb\ub,\Qb\vb$) allora, per
+la \eqref{eq:trasf_prod_vett}, $\ub\times\vb$ si trasforma come
+$\det(\Qb)\,\Qb(\ub\times\vb)$: è la legge di un vettore assiale. Se $\ub$
+è polare e $\bm{\upomega}$ assiale (si trasforma come
+$\det(\Qb)\Qb\bm\upomega$), allora
+\begin{equation}
+	(\Qb\ub)\times\bigl(\det(\Qb)\Qb\bm{\upomega}\bigr)
+	=\det(\Qb)\,\Qb\ub\times\Qb\bm{\upomega}
+	=\det(\Qb)^2\,\Qb(\ub\times\bm{\upomega})=\Qb(\ub\times\bm{\upomega}),
+\end{equation}
+avendo usato $\det(\Qb)^2=1$: $\ub\times\bm{\upomega}$ si trasforma come un
+vettore polare. Se infine $\bm{\upomega},\bm\uptau$ sono entrambi assiali,
+un conto analogo (con $\det(\Qb)^3=\det(\Qb)$) dà che
+$\bm{\upomega}\times\bm\uptau$ si trasforma come un vettore assiale. In
+sintesi:
 \begin{enumerate}[label=(\roman*)]
 	\item il prodotto vettoriale di due vettori \textit{polari} è un
 	vettore \textit{assiale};
@@ -1449,23 +1715,13 @@ verificabili direttamente dalla~\eqref{eq:rif_assiale}:
 	\item il prodotto vettoriale di due vettori \textit{assiali} è un
 	vettore \textit{assiale}.
 \end{enumerate}
-Il momento di una forza, ad esempio, è il prodotto vettoriale di un
-vettore posizione (polare) per una forza (polare): è dunque un vettore
-assiale, coerentemente con il suo significato fisico di rotazione
-attorno a un asse.
 
-\begin{oss}
-	Nel passaggio da una base destra a una base sinistra, ottenuta	invertendo tutti e tre i versori ($\ab_i \to -\ab_i$), le
-	componenti dei vettori polari cambiano tutte segno	($u_i \to -u_i$), mentre quelle dei vettori assiali restano
-	invariate ($\omega_i \to \omega_i$). Le regole di composizione	seguono direttamente da questa oss: nel prodotto
-	vettoriale $(\ub \times \vb)_i = \varepsilon_{ijk}\,u_j\,v_k$,	il segno del risultato è determinato dal prodotto dei segni delle
-	componenti dei fattori. Pertanto polare$\times$polare produce un	assiale (i segni si elidono a coppie), polare$\times$assiale
-	produce un polare (un solo cambio di segno), assiale$\times$assiale	produce un assiale (nessun cambio di segno).
-\end{oss}
+
+
 
 \subsection{Rappresentazione grafica}
 
-Nei disegni strutturali i due tipi di vettori si distinguono mediante
+Graficamente i due tipi di vettori si distinguono mediante
 simboli diversi. I vettori polari sono rappresentati con una
 \textit{freccia semplice}: il segmento indica la linea d'azione, la
 punta indica il verso. I vettori assiali sono rappresentati con una
@@ -1511,8 +1767,8 @@ ortogonale alla doppia freccia.
 \section{Il caso piano}\label{sec:caso_piano}
 %-------------------------------------------------------------------------------------------------------------------
 
-Nell'analisi delle strutture piane i punti appartengono al piano
-$(x,y)$ e le grandezze vettoriali si semplificano notevolmente.
+Nel caso in cui i punti appartengano ad un piano, che per fissiamo in
+$(x,y)$, le grandezze vettoriali si semplificano notevolmente.
 È utile richiamare esplicitamente queste semplificazioni, poiché
 costituiscono il riferimento costante nel seguito del testo.
 
