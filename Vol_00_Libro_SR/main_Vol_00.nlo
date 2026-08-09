@@ -12,12 +12,12 @@
 \nomenclatureentry{O$\nl\Abb$@[{$\nl\Abb$}]\begingroup nullità di un'applicazione lineare\nomeqref {3.5}|nompageref}{40}
 \nomenclatureentry{O$\Abb^{\ast}$@[{$\Abb^{\ast}$}]\begingroup operatore aggiunto\nomeqref {3.8}|nompageref}{42}
 \nomenclatureentry{O$W^{\perp}$@[{$W^{\perp}$}]\begingroup complemento ortogonale di un sottospazio\nomeqref {3.11}|nompageref}{43}
-\nomenclatureentry{O$\rg\bm{A}$@[{$\rg\bm{A}$}]\begingroup rango della matrice\nomeqref {4.2}|nompageref}{50}
-\nomenclatureentry{O$\bm{A}^{\top}$@[{$\bm{A}^{\top}$}]\begingroup matrice trasposta\nomeqref {4.2}|nompageref}{50}
-\nomenclatureentry{L$\bm{I}_n$@[{$\bm{I}_n$}]\begingroup matrice identità\nomeqref {4.12}|nompageref}{53}
-\nomenclatureentry{O$\det\bm{A}$@[{$\det\bm{A}$}]\begingroup determinante della matrice\nomeqref {4.15}|nompageref}{53}
-\nomenclatureentry{O$\bm{A}^{-1}$@[{$\bm{A}^{-1}$}]\begingroup matrice inversa\nomeqref {4.17}|nompageref}{54}
-\nomenclatureentry{G$\bm{\alpha}$@[{$\bm{\alpha}$}]\begingroup vettore di parametri liberi\nomeqref {4.22}|nompageref}{55}
+\nomenclatureentry{O$\rg\bm{A}$@[{$\rg\bm{A}$}]\begingroup rango della matrice\nomeqref {4.1}|nompageref}{50}
+\nomenclatureentry{O$\bm{A}^{\top}$@[{$\bm{A}^{\top}$}]\begingroup matrice trasposta\nomeqref {4.1}|nompageref}{50}
+\nomenclatureentry{L$\bm{I}_n$@[{$\bm{I}_n$}]\begingroup matrice identità\nomeqref {4.11}|nompageref}{52}
+\nomenclatureentry{O$\det\bm{A}$@[{$\det\bm{A}$}]\begingroup determinante della matrice\nomeqref {4.14}|nompageref}{53}
+\nomenclatureentry{O$\bm{A}^{-1}$@[{$\bm{A}^{-1}$}]\begingroup matrice inversa\nomeqref {4.16}|nompageref}{53}
+\nomenclatureentry{G$\bm{\alpha}$@[{$\bm{\alpha}$}]\begingroup vettore di parametri liberi\nomeqref {4.21}|nompageref}{55}
 \nomenclatureentry{G$\vartheta$@[{$\vartheta$}]\begingroup angolo di una rotazione finita\nomeqref {5.25}|nompageref}{73}
 \nomenclatureentry{L$\xb(P)$@[{$\xb(P)$}]\begingroup vettore posizione del punto $P$\nomeqref {5.25}|nompageref}{73}
 \nomenclatureentry{L$\Rbb(\vartheta)$@[{$\Rbb(\vartheta)$}]\begingroup applicazione lineare di rotazione finita (di angolo $\vartheta$)\nomeqref {5.26}|nompageref}{73}

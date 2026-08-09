@@ -60,19 +60,17 @@
 \contentsline {section}{\numberline {3.5}Risolvibilità e sottospazi fondamentali}{46}{section.3.5}%
 \contentsline {subsection}{\numberline {3.5.1}Classificazione dei problemi primale e duale}{47}{subsection.3.5.1}%
 \contentsline {chapter}{\numberline {4}Algebra delle matrici e sistemi di equazioni lineari}{49}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Richiami su vettori numerici e matrici}{49}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Vettori numerici}{49}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Matrici}{50}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Operazioni fra matrici}{50}{subsection.4.1.3}%
-\contentsline {paragraph}{Somma e differenza.}{50}{subsection.4.1.3}%
-\contentsline {paragraph}{Prodotto per uno scalare.}{50}{equation.4.1.3}%
-\contentsline {paragraph}{Prodotto matrice-matrice.}{50}{equation.4.1.4}%
+\contentsline {section}{\numberline {4.1}Matrici}{49}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Operazioni fra matrici}{50}{subsection.4.1.1}%
+\contentsline {paragraph}{Somma e differenza.}{50}{subsection.4.1.1}%
+\contentsline {paragraph}{Prodotto per uno scalare.}{50}{equation.4.1.2}%
+\contentsline {paragraph}{Prodotto matrice-matrice.}{50}{equation.4.1.3}%
 \contentsline {paragraph}{Prodotto matrice-vettore.}{51}{Item.36}%
-\contentsline {paragraph}{Partizione a blocchi.}{51}{equation.4.1.8}%
-\contentsline {subsection}{\numberline {4.1.4}Matrici quadrate}{53}{subsection.4.1.4}%
+\contentsline {paragraph}{Partizione a blocchi.}{51}{equation.4.1.7}%
+\contentsline {subsection}{\numberline {4.1.2}Matrici quadrate}{52}{subsection.4.1.2}%
 \contentsline {section}{\numberline {4.2}Sistemi di equazioni lineari algebriche}{54}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Formulazione del problema}{54}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Teorema di Rouch\'e-Capelli e struttura della soluzione}{55}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.2}Teorema di Rouch\'e-Capelli e struttura della soluzione}{54}{subsection.4.2.2}%
 \contentsline {subsection}{\numberline {4.2.3}Sistemi isodeterminati}{55}{subsection.4.2.3}%
 \contentsline {subsection}{\numberline {4.2.4}Sistemi sottodeterminati}{56}{subsection.4.2.4}%
 \contentsline {subsection}{\numberline {4.2.5}Sistemi sovradeterminati}{57}{subsection.4.2.5}%
@@ -81,9 +79,9 @@
 \contentsline {section}{\numberline {4.3}Esempi numerici}{60}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}Sistema isodeterminato ($m=n=r=2$)}{60}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Sistema sottodeterminato ($m=r=1$, $n=2$)}{60}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Sistema sovradeterminato ($m=3$, $n=r=2$)}{61}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.3}Sistema sovradeterminato ($m=3$, $n=r=2$)}{62}{subsection.4.3.3}%
 \contentsline {subsection}{\numberline {4.3.4}Sistema degenere ($m=n=3$, $r=2$)}{62}{subsection.4.3.4}%
-\contentsline {section}{\numberline {4.4}Esercizi proposti}{62}{section.4.4}%
+\contentsline {section}{\numberline {4.4}Esercizi proposti}{63}{section.4.4}%
 \contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{65}{part.1}%
 \contentsline {chapter}{\numberline {5}Cinematica infinitesima del corpo rigido}{67}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Il corpo rigido e il campo di spostamento}{67}{section.5.1}%
@@ -96,7 +94,7 @@
 \contentsline {paragraph}{Generalizzazione al caso tridimensionale.}{73}{equation.5.1.30}%
 \contentsline {subsection}{\numberline {5.1.3}Forma matriciale}{76}{subsection.5.1.3}%
 \contentsline {paragraph}{Il caso tridimensionale.}{76}{subsection.5.1.3}%
-\contentsline {paragraph}{Restrizione al caso piano.}{77}{figure.caption.25}%
+\contentsline {paragraph}{Restrizione al caso piano.}{77}{figure.caption.26}%
 \contentsline {section}{\numberline {5.2}Invarianti del campo di spostamento}{78}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Asse centrale degli spostamenti rigidi}{78}{section.5.3}%
 \contentsline {paragraph}{Decomposizione dello spostamento.}{79}{section.5.3}%
@@ -117,7 +115,7 @@
 \contentsline {subsection}{\numberline {6.1.2}Sistemi di forze e coppie}{96}{subsection.6.1.2}%
 \contentsline {paragraph}{Sistemi di forze.}{96}{subsection.6.1.2}%
 \contentsline {paragraph}{Nozione di coppia.}{96}{equation.6.1.5}%
-\contentsline {paragraph}{Sistemi di forze e coppie.}{97}{figure.caption.33}%
+\contentsline {paragraph}{Sistemi di forze e coppie.}{97}{figure.caption.34}%
 \contentsline {paragraph}{Densità di forze.}{97}{equation.6.1.9}%
 \contentsline {subsection}{\numberline {6.1.3}Il lavoro di un sistema di forze e coppie}{98}{subsection.6.1.3}%
 \contentsline {paragraph}{Il lavoro delle densità di forza.}{99}{equation.6.1.14}%
@@ -134,8 +132,8 @@
 \contentsline {paragraph}{Particolarizzazione al caso piano}{104}{ossinner.6.5}%
 \contentsline {subsection}{\numberline {6.4.3}Equivalenza di sistemi di forze}{106}{subsection.6.4.3}%
 \contentsline {paragraph}{Operazioni elementari di equivalenza.}{107}{ossinner.6.8}%
-\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{108}{figure.caption.36}%
+\contentsline {paragraph}{Aggiunta o rimozione di un sistema equilibrato.}{108}{figure.caption.37}%
 \contentsline {subsection}{\numberline {6.4.4}Sistemi di forze equiorientate nel piano}{109}{subsection.6.4.4}%
 \contentsline {paragraph}{Forze concentrate equiorientate.}{109}{subsection.6.4.4}%
 \contentsline {paragraph}{Densità di forze equiorientate.}{110}{ossinner.6.11}%
-\contentsline {chapter}{Indice analitico}{113}{section*.40}%
+\contentsline {chapter}{Indice analitico}{113}{section*.41}%

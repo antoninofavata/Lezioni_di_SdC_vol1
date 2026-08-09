@@ -61,11 +61,11 @@
 
   \item matrice, \textbf{50}
     \subitem a blocchi, 51
-    \subitem completa, 55
+    \subitem completa, 54
     \subitem dei coefficienti, 54
-    \subitem identità, 53
-    \subitem inversa, 54
-    \subitem quadrata, 53
+    \subitem identità, 52
+    \subitem inversa, 53
+    \subitem quadrata, 52
     \subitem trasposta, 50
   \item matrice rappresentativa, \textbf{9}
   \item momento
@@ -144,8 +144,7 @@
   \item teorema
     \subitem di Aronhold-Kennedy (primo), \textbf{87}
     \subitem di Aronhold-Kennedy (secondo), \textbf{89}
-    \subitem di Binet, 54
-    \subitem di Rouché-Capelli, \textbf{55}
+    \subitem di Binet, 53
   \item termine noto, 54
   \item traslazione, \textbf{75}
     \subitem pura, 81
