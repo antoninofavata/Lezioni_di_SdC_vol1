@@ -24,91 +24,88 @@
 \indexentry{vettore!polare|textbf}{32}
 \indexentry{vettore!assiale|textbf}{32}
 \indexentry{pseudovettore|see{vettore, assiale}}{32}
-\indexentry{applicazione}{41}
-\indexentry{applicazione!iniettiva}{42}
-\indexentry{applicazione!suriettiva}{42}
-\indexentry{applicazione!biiettiva}{42}
-\indexentry{problema inverso|textbf}{42}
-\indexentry{controimmagine}{42}
-\indexentry{applicazione lineare|textbf}{43}
-\indexentry{nucleo|textbf}{43}
-\indexentry{immagine|textbf}{43}
-\indexentry{rango}{43}
-\indexentry{nullità|textbf}{43}
-\indexentry{teorema!di nullità più rango|textbf}{44}
-\indexentry{operatore aggiunto|textbf}{44}
-\indexentry{sottospazi fondamentali|textbf}{45}
-\indexentry{complemento ortogonale|textbf}{45}
-\indexentry{problema primale|textbf}{47}
-\indexentry{problema duale|textbf}{47}
-\indexentry{dualità!algebra lineare|textbf}{48}
-\indexentry{identità bilineare|textbf}{49}
-\indexentry{parametro libero}{53}
-\indexentry{matrice|textbf}{60}
-\indexentry{rango|textbf}{60}
-\indexentry{matrice!trasposta}{60}
-\indexentry{partizione a blocchi|textbf}{61}
-\indexentry{matrice!a blocchi}{61}
-\indexentry{combinazione lineare|textbf}{62}
-\indexentry{matrice!quadrata}{63}
-\indexentry{matrice!identità}{63}
-\indexentry{determinante|textbf}{63}
-\indexentry{regola di Laplace}{63}
-\indexentry{teorema!di Binet}{64}
-\indexentry{matrice!inversa}{64}
-\indexentry{sistema di equazioni lineari|textbf}{64}
-\indexentry{matrice!dei coefficienti}{64}
-\indexentry{termine noto}{64}
-\indexentry{sistema di equazioni lineari!omogeneo}{64}
-\indexentry{teorema!di Rouché-Capelli|textbf}{65}
-\indexentry{matrice!completa}{65}
-\indexentry{soluzione (di un sistema lineare)!generale}{65}
-\indexentry{soluzione (di un sistema lineare)!particolare}{65}
-\indexentry{parametro libero|textbf}{65}
-\indexentry{principio di sovrapposizione|textbf}{65}
-\indexentry{sistema di equazioni lineari!isodeterminato|textbf}{65}
-\indexentry{sistema di equazioni lineari!sottodeterminato|textbf}{66}
-\indexentry{sistema principale|textbf}{67}
-\indexentry{sistema di equazioni lineari!sovradeterminato|textbf}{67}
-\indexentry{sistema di equazioni lineari!degenere|textbf}{68}
-\indexentry{equiproiettivita@equiproiettività|textbf}{80}
-\indexentry{spostamento!rigido|textbf}{85}
-\indexentry{corpo rigido|textbf}{85}
-\indexentry{rotazione|textbf}{85}
-\indexentry{traslazione|textbf}{85}
-\indexentry{grado di liberta@grado di libertà|textbf}{85}
-\indexentry{invarianti}{88}
-\indexentry{spostamento!campo di}{88}
-\indexentry{asse centrale!degli spostamenti|textbf}{89}
-\indexentry{moto rigido|textbf}{90}
-\indexentry{moto rigido!moto elicoidale}{90}
-\indexentry{moto rigido!rototraslazione}{90}
-\indexentry{rotazione!pura}{90}
-\indexentry{traslazione!pura}{91}
-\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{94}
-\indexentry{spostamento!relativo}{96}
-\indexentry{rotazione!relativa}{96}
-\indexentry{centro di rotazione!relativo|textbf}{97}
-\indexentry{teorema!di Aronhold-Kennedy (primo)|textbf}{97}
-\indexentry{cinematica grafica|textbf}{98}
-\indexentry{allineamento dei centri di rotazione|textbf}{99}
-\indexentry{teorema!di Aronhold-Kennedy (secondo)|textbf}{99}
-\indexentry{centro di rotazione!assoluto}{99}
-\indexentry{risultante|textbf}{106}
-\indexentry{momento!risultante|textbf}{106}
-\indexentry{momento!di una forza}{106}
-\indexentry{braccio}{106}
-\indexentry{coppia|textbf}{107}
-\indexentry{densita di forze@densità di forze|textbf}{107}
-\indexentry{carico!distribuito}{108}
-\indexentry{invarianza rispetto all'osservatore!equivalenza con PLV|textbf}{111}
-\indexentry{asse centrale!del sistema di forze|textbf}{113}
-\indexentry{sistema di forze!dinamo (sistema avvitante)}{114}
-\indexentry{sistema di forze!forza unica}{114}
-\indexentry{coppia!pura}{114}
-\indexentry{asse di sollecitazione|textbf}{115}
-\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{115}
-\indexentry{sistema di forze!trasporto di una forza}{118}
-\indexentry{sistema di forze!sistema ridotto al polo}{118}
-\indexentry{sistema di forze!equiorientate}{119}
-\indexentry{baricentro delle forze|textbf}{119}
+\indexentry{applicazione}{38}
+\indexentry{applicazione!iniettiva}{38}
+\indexentry{applicazione!suriettiva}{38}
+\indexentry{applicazione!biiettiva}{38}
+\indexentry{problema inverso|textbf}{39}
+\indexentry{controimmagine}{39}
+\indexentry{applicazione lineare|textbf}{39}
+\indexentry{nucleo|textbf}{40}
+\indexentry{immagine|textbf}{40}
+\indexentry{rango}{40}
+\indexentry{nullità|textbf}{40}
+\indexentry{operatore aggiunto|textbf}{42}
+\indexentry{sottospazi fondamentali|textbf}{43}
+\indexentry{complemento ortogonale|textbf}{43}
+\indexentry{problema primale|textbf}{45}
+\indexentry{problema duale|textbf}{45}
+\indexentry{dualità!algebra lineare|textbf}{45}
+\indexentry{matrice|textbf}{50}
+\indexentry{rango|textbf}{50}
+\indexentry{matrice!trasposta}{50}
+\indexentry{partizione a blocchi|textbf}{51}
+\indexentry{matrice!a blocchi}{51}
+\indexentry{combinazione lineare|textbf}{52}
+\indexentry{matrice!quadrata}{53}
+\indexentry{matrice!identità}{53}
+\indexentry{determinante|textbf}{53}
+\indexentry{regola di Laplace}{53}
+\indexentry{teorema!di Binet}{54}
+\indexentry{matrice!inversa}{54}
+\indexentry{sistema di equazioni lineari|textbf}{54}
+\indexentry{matrice!dei coefficienti}{54}
+\indexentry{termine noto}{54}
+\indexentry{sistema di equazioni lineari!omogeneo}{54}
+\indexentry{teorema!di Rouché-Capelli|textbf}{55}
+\indexentry{matrice!completa}{55}
+\indexentry{soluzione (di un sistema lineare)!generale}{55}
+\indexentry{soluzione (di un sistema lineare)!particolare}{55}
+\indexentry{parametro libero|textbf}{55}
+\indexentry{principio di sovrapposizione|textbf}{55}
+\indexentry{sistema di equazioni lineari!isodeterminato|textbf}{55}
+\indexentry{sistema di equazioni lineari!sottodeterminato|textbf}{56}
+\indexentry{sistema principale|textbf}{57}
+\indexentry{sistema di equazioni lineari!sovradeterminato|textbf}{57}
+\indexentry{sistema di equazioni lineari!degenere|textbf}{58}
+\indexentry{equiproiettivita@equiproiettività|textbf}{70}
+\indexentry{spostamento!rigido|textbf}{75}
+\indexentry{corpo rigido|textbf}{75}
+\indexentry{rotazione|textbf}{75}
+\indexentry{traslazione|textbf}{75}
+\indexentry{grado di liberta@grado di libertà|textbf}{75}
+\indexentry{invarianti}{78}
+\indexentry{spostamento!campo di}{78}
+\indexentry{asse centrale!degli spostamenti|textbf}{79}
+\indexentry{moto rigido|textbf}{80}
+\indexentry{moto rigido!moto elicoidale}{80}
+\indexentry{moto rigido!rototraslazione}{80}
+\indexentry{rotazione!pura}{80}
+\indexentry{traslazione!pura}{81}
+\indexentry{rotazione!composizione di rotazioni infinitesime|textbf}{84}
+\indexentry{spostamento!relativo}{86}
+\indexentry{rotazione!relativa}{86}
+\indexentry{centro di rotazione!relativo|textbf}{87}
+\indexentry{teorema!di Aronhold-Kennedy (primo)|textbf}{87}
+\indexentry{cinematica grafica|textbf}{88}
+\indexentry{allineamento dei centri di rotazione|textbf}{89}
+\indexentry{teorema!di Aronhold-Kennedy (secondo)|textbf}{89}
+\indexentry{centro di rotazione!assoluto}{89}
+\indexentry{risultante|textbf}{96}
+\indexentry{momento!risultante|textbf}{96}
+\indexentry{momento!di una forza}{96}
+\indexentry{braccio}{96}
+\indexentry{coppia|textbf}{97}
+\indexentry{densita di forze@densità di forze|textbf}{97}
+\indexentry{carico!distribuito}{98}
+\indexentry{invarianza rispetto all'osservatore!equivalenza con PLV|textbf}{101}
+\indexentry{asse centrale!del sistema di forze|textbf}{103}
+\indexentry{sistema di forze!dinamo (sistema avvitante)}{104}
+\indexentry{sistema di forze!forza unica}{104}
+\indexentry{coppia!pura}{104}
+\indexentry{asse di sollecitazione|textbf}{105}
+\indexentry{centro di riduzione|seealso{asse di sollecitazione}}{105}
+\indexentry{sistema di forze!trasporto di una forza}{108}
+\indexentry{sistema di forze!sistema ridotto al polo}{108}
+\indexentry{sistema di forze!equiorientate}{109}
+\indexentry{baricentro delle forze|textbf}{109}

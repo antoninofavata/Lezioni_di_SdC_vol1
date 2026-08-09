@@ -402,7 +402,7 @@ Il prodotto vettoriale può essere definito usando il prodotto scalare, il
 	
 	Osserviamo che un'applicazione
 	lineare $\varphi:\Uc\to\Ro$ si può sempre scrivere come prodotto scalare
-	con un vettore fissato:\footnote{Questo risultato generale va sotto il nome di Teorema di Rappresentazione di Riesz.} presa una base ortonormale
+	con un vettore fissato:\footnote{Questo risultato generale va sotto il nome di Teorema di Rappresentazione di Riesz.\label{riesz}} presa una base ortonormale
 	$\{\ab_x,\ab_y,\ab_z\}$, basta porre
 	$\xb\coloneqq\varphi(\ab_x)\,\ab_x+\varphi(\ab_y)\,\ab_y+\varphi(\ab_z)\,\ab_z$;
 	sviluppando $\wb$ sulle sue componenti e usando la linearità di
@@ -1500,7 +1500,7 @@ appena vista,\footnote{Per convincersi che $\Rbb_{\nb}$ sia ortogonale, basta
 	sviluppare con la bilinearità del
 	prodotto scalare e usare $\nb\cdot\nb=1$,
 	\begin{equation}
-		\Rbb_{\nb}(\ub)\cdot\Rbb_{\nb}(\vb)
+		\Rbb_{\nb}\ub\cdot\Rbb_{\nb}\vb
 		=\ub\cdot\vb-4(\ub\cdot\nb)(\vb\cdot\nb)+4(\ub\cdot\nb)(\vb\cdot\nb)=\ub\cdot\vb.
 	\end{equation}
 	Per verificare che sia impropria, basta determinare i suoi autovalori: $\Rbb_\nb(\nb)=-\nb$ (autovalore $-1$) mentre
@@ -1561,7 +1561,7 @@ qualunque trasformazione ortogonale  $\Qb$  e ogni
 
 	Poiché $\Qb$ è invertibile, basta verificare l'uguaglianza dopo prodotto
 	scalare con $\Qb\zb$, al variare di $\zb\in\Uc$\footnote{I vettori $\Qb\zb$
-	esauriscono $\Uc$ quando $\zb$ varia in $\Uc$}. Ricordiamo che il
+	esauriscono $\Uc$ quando $\zb$ varia in $\Uc$.}. Ricordiamo che il
 	determinante di un'applicazione lineare $\Qb$ è, per definizione, lo
 	scalare per cui $\Qb$ moltiplica il prodotto misto:
 	\begin{equation}
@@ -1875,149 +1875,149 @@ freccia semicircolare.
 		\end{scope}
 	\end{tikzpicture}
 \end{center}
-
-
-\todo[inline]{Questi esercizi li eliminerei tutti}
-
-\section{Esercizi proposti}
-
-\begin{esercizio}[Prodotto scalare e prodotto vettoriale di due vettori]
-	\label{ex:A03_prodotti}
-	
-	Si considerino i due vettori
-	\begin{equation*}
-		\bm{a} = (2\;\,1\;\,-1)^\top, \qquad
-		\bm{b} = (1\;\,3\;\,2)^\top.
-	\end{equation*}
-	(a) Calcolare il prodotto scalare $\ab \cdot \bb$ e i moduli $|\ab|$, $|\bb|$.
-	(b) Determinare l'angolo $\alpha$ formato dai due vettori.
-	(c) Calcolare il prodotto vettoriale $\ab \times \bb$ e verificare le proprietà $\ab \times \bb = -\bb \times \ab$ e $\ab \cdot (\ab \times \bb) = 0$.
-	(d) Verificare l'identità $|\ab \times \bb|^2 = |\ab|^2 |\bb|^2 - (\ab \cdot \bb)^2$.
-	
-	\risultato (a) $\ab \cdot \bb = 3$, $|\ab| = \sqrt{6}$, $|\bb| = \sqrt{14}$. (b) $\cos\alpha = 3/\sqrt{84}$, da cui $\alpha \simeq 70{,}9^\circ$. (c) $\ab \times \bb = (5\;\,-5\;\,5)^\top$, $|\ab \times \bb| = 5\sqrt{3}$. (d) Verifica numerica: $|\ab \times \bb|^2 = 75$, $|\ab|^2 |\bb|^2 - (\ab \cdot \bb)^2 = 84 - 9 = 75$.
-	
-\end{esercizio}
-
-\begin{esercizio}[Verifica del doppio prodotto vettoriale]
-	\label{ex:A03_doppio_prodotto}
-	
-	Si considerino i tre vettori
-	\begin{equation*}
-		\bm{a} = (1\;\,0\;\,2)^\top, \qquad
-		\bm{b} = (0\;\,1\;\,1)^\top, \qquad
-		\bm{c}= (2\;\,1\;\,0)^\top.
-	\end{equation*}
-	(a) Calcolare $\ab \times (\bb \times \cb)$ procedendo per sostituzione diretta.
-	(b) Verificare l'identità del doppio prodotto vettoriale $\ab \times (\bb \times \cb) = (\ab \cdot \cb) \, \bb - (\ab \cdot \bb) \, \cb$ calcolando separatamente $(\ab \cdot \cb) \, \bb$ e $(\ab \cdot \bb) \, \cb$ e mostrando che la differenza coincide col risultato del punto (a).
-	(c) Calcolare il prodotto misto $\ab \cdot (\bb \times \cb)$ e verificarne l'invarianza rispetto a permutazione ciclica.
-	
-	\risultato (a) $\bb \times \cb = (-1\;\,2\;\,-2)^\top$, $\ab \times (\bb \times \cb) = (-4\;\,0\;\,2)^\top$. (b) $\ab \cdot \cb = 2$, $\ab \cdot \bb = 2$, da cui $(\ab \cdot \cb) \bb - (\ab \cdot \bb) \cb = 2(0\;\,1\;\,1)^\top - 2(2\;\,1\;\,0)^\top = (-4\;\,0\;\,2)^\top$. (c) $\ab \cdot (\bb \times \cb) = -1 + 0 - 4 = -5$; per permutazione ciclica $\bb \cdot (\cb \times \ab)$ e $\cb \cdot (\ab \times \bb)$ producono lo stesso valore $-5$.
-	
-\end{esercizio}
-
-\begin{esercizio}[Momento polare di una forza e legge di variazione]
-	\label{ex:A03_momento_polare}
-	
-	Una forza $\bm{f} = (3\;\,-2\;\,1)^\top$ è applicata nel punto $P = (1,\,2,\,0)$. Si considerino due poli, $O = (0,\,0,\,0)$ e $O' = (2,\,1,\,1)$.
-	
-	(a) Calcolare il momento polare $\bm{\upmu}(O) = \overrightarrow{OP} \times \fb$ e il momento polare $\bm{\upmu}(O') = \overrightarrow{O'P} \times \fb$.
-	
-	(b) Verificare la legge di variazione del momento al variare del polo:
-	\begin{equation*}
-		\bm{\upmu}(O') = \bm{\upmu}(O) + \overrightarrow{O'O} \times \fb.
-	\end{equation*}
-	
-	(c) Verificare che il prodotto scalare $\fb \cdot \bm{\upmu}(O)$ è invariante rispetto al polo (cioè vale anche $\fb \cdot \bm{\upmu}(O')$).
-	
-	\risultato (a) $\overrightarrow{OP} = (1\;\,2\;\,0)^\top$, $\bm{\upmu}(O) = (2\;\,-1\;\,-8)^\top$; $\overrightarrow{O'P} = (-1\;\,1\;\,-1)^\top$, $\bm{\upmu}(O') = (-1\;\,-2\;\,-1)^\top$. (b) $\overrightarrow{O'O} = (-2\;\,-1\;\,-1)^\top$, $\overrightarrow{O'O} \times \fb = (-3\;\,-1\;\,7)^\top$; $\bm{\upmu}(O) + \overrightarrow{O'O} \times \fb = (-1\;\,-2\;\,-1)^\top$. (c) $\fb \cdot \bm{\upmu}(O) = 6 + 2 - 8 = 0$, $\fb \cdot \bm{\upmu}(O') = -3 + 4 - 1 = 0$. Entrambi nulli (forza e raggio vettore sono complanari nel piano $z=0$, dunque $\bm{\upmu}$ è perpendicolare a tale piano --- caso particolare).
-	
-\end{esercizio}
-
-\begin{esercizio}[Momento assiale rispetto a una retta]
-	\label{ex:A03_momento_assiale}
-	
-	Una forza $\fb = (0\;\,4\;\,2)^\top$ è applicata nel punto $P = (3,\,0,\,0)$. Si consideri la retta $r$ passante per l'origine $O$ e parallela al versore $\bm{a}_r = \frac{1}{\sqrt{3}}(1\;\,1\;\,1)^\top$.
-	
-	(a) Calcolare il momento polare $\bm{\upmu}(O)$ rispetto a $O$.
-	
-	(b) Calcolare il momento assiale $\mu_r$ rispetto alla retta $r$ come componente di $\bm{\upmu}(O)$ lungo $\ab_r$:
-	\begin{equation*}
-		\mu_r = \ab_r \cdot \bm{\upmu}(O).
-	\end{equation*}
-	
-	(c) Verificare che il momento assiale è invariante rispetto alla scelta del polo lungo $r$. Si calcoli a tal fine $\bm{\upmu}(O')$ con $O' = (1,\,1,\,1)$ (punto su $r$) e si mostri che $\ab_r \cdot \bm{\upmu}(O') = \mu_r$.
-	
-	\textit{Suggerimento.} Per il punto (c), usare la legge di variazione del momento e osservare che $\overrightarrow{O'O} = -\sqrt{3}\,\ab_r$ è parallelo ad $\ab_r$; il prodotto vettoriale $\overrightarrow{O'O} \times \fb$ è dunque perpendicolare ad $\ab_r$ e si annulla nel prodotto scalare con $\ab_r$.
-	
-	\risultato (a) $\overrightarrow{OP} = (3\;\,0\;\,0)^\top$, $\bm{\mu}(O) = (0\;\,-6\;\,12)^\top$. (b) $\mu_r = \frac{1}{\sqrt{3}}(0 - 6 + 12) = \frac{6}{\sqrt{3}} = 2\sqrt{3}$. (c) $\overrightarrow{O'P} = (2\;\,-1\;\,-1)^\top$, $\bm{\mu}(O') = (2\;\,-4\;\,8)^\top$; $\ab_r \cdot \bm{\upmu}(O') = \frac{1}{\sqrt{3}}(2-4+8) = 2\sqrt{3}$. Coincide con $\mu_r$.
-	
-\end{esercizio}
-
-\begin{esercizio}[Natura polare o assiale di alcune grandezze fisiche]
-	\label{ex:A03_polari_assiali}
-	
-	Per ciascuna delle seguenti grandezze, stabilire se si tratta di un vettore polare o di un vettore assiale, motivando la risposta sulla base del comportamento sotto riflessione.
-	
-	(a) La velocità $\vb$ di un punto materiale.
-	
-	(b) La velocità angolare $\bm{\upomega}$ di un corpo rigido in rotazione.
-	
-	(c) Il momento angolare $\mathbf{L} = \rb \times m\vb$ di un punto materiale, con $\rb$ vettore posizione e $\vb$ velocità.
-	
-	(d) La forza $\fb$ agente su un punto materiale.
-	
-	(e) Il momento di una forza $\bm{\upmu} = \rb \times \fb$.
-	
-	(f) Il prodotto vettoriale di due vettori assiali, $\bm{\upomega}_1 \times \bm{\upomega}_2$.
-	
-	\textit{Suggerimento.} Si ricordi la regola di composizione: il prodotto vettoriale di due polari è assiale, di due assiali è assiale, di un polare e un assiale è polare.
-	
-	\risultato (a) Polare: la velocità è la derivata temporale di un vettore posizione, anch'esso polare. (b) Assiale: la velocità angolare è definita dalla rotazione attraverso la regola della mano destra, e il suo segno dipende dall'orientazione della terna di riferimento. (c) Assiale: prodotto vettoriale di due polari ($\rb$ e $\vb$). (d) Polare. (e) Assiale: prodotto vettoriale di due polari. (f) Assiale: prodotto vettoriale di due assiali.
-	
-\end{esercizio}
-
-\begin{esercizio}[Sistema di forze nel piano: momenti polari]
-	\label{ex:A03_piano_momenti}
-	
-	Nel piano $(O; x, y)$, si considerino tre forze applicate:
-	\begin{itemize}[noitemsep,topsep=2pt]
-		\item $\bm{f}_1 = (3\;\,0)^\top$ applicata in $P_1 = (0,\,2)$;
-		\item $\bm{f}_2 = (0\;\,-2)^\top$ applicata in $P_2 = (3,\,0)$;
-		\item $\bm{f}_3 = (-1\;\,1)^\top$ applicata in $P_3 = (2,\,2)$.
-	\end{itemize}
-	
-	(a) Calcolare il momento polare di ciascuna forza rispetto all'origine $O$, espresso come scalare con segno (positivo antiorario).
-	
-	(b) Calcolare il momento polare risultante del sistema rispetto a $O$.
-	
-	(c) Verificare la legge di variazione del momento, calcolando il momento risultante rispetto al polo $O' = (1,\,1)$ e confrontandolo col risultato ottenuto applicando la legge $\mu(O') = \mu(O) + \overrightarrow{O'O} \times \fb$, dove $\fb$ è il risultante delle forze.
-	
-	\textit{Suggerimento.} Nel piano, il momento di una forza $\bm{f} = (X\;\,Y)^\top$ applicata in $P = (x, y)$ rispetto all'origine è lo scalare $\mu = x \, Y - y \, X$.
-	
-	\risultato (a) $\mu_1 = -6$, $\mu_2 = -6$, $\mu_3 = 4$. (b) $\mu(O) = -8$. (c) Risultante $\bm{f} = (2\;\,-1)^\top$; $\overrightarrow{O'O} = (-1\;\,-1)^\top$; il prodotto vettoriale planare $\overrightarrow{O'O} \times \fb = (-1)(-1) - (-1)(2) = 1 + 2 = 3$; quindi $\mu(O') = -8 + 3 = -5$. Verifica diretta: $\mu(O') = (x_1 - 1)Y_1 - (y_1 - 1)X_1 + \ldots = -3 - 4 + 2 = -5$.
-	
-\end{esercizio}
-
-\begin{esercizio}[Verifica del comportamento sotto riflessione]
-	\label{ex:A03_riflessione}
-	
-	Si consideri la riflessione rispetto al piano $xy$, che inverte l'asse $z$. Sotto questa trasformazione, le componenti di un vettore polare $\bm{p} = (p_x\;\,p_y\;\,p_z)^\top$ si trasformano in $\\bm{p}' = (p_x\;\,p_y\;\,-p_z)^\top$, mentre le componenti di un vettore assiale $\bm{a} = (a_x\;\,a_y\;\,a_z)^\top$ si trasformano in $\bm{a}' = (-a_x\;\,-a_y\;\,a_z)^\top$.
-	
-	Si considerino i vettori:
-	\begin{equation*}
-		\bm{u} = (1\;\,2\;\,3)^\top, \qquad
-		\bm{v} = (2\;\,-1\;\,1)^\top, \qquad
-		\wb = \ub \times \vb.
-	\end{equation*}
-	
-	(a) Calcolare $\wb$.
-	
-	(b) Trasformare $\ub$ e $\vb$ sotto la riflessione, ottenendo $\ub'$ e $\vb'$, e calcolare $\wb' = \ub' \times \vb'$.
-	
-	(c) Verificare che $\wb'$ si trasforma secondo la regola dei vettori \emph{assiali}, cioè $\wb' = (-w_x\;\,-w_y\;\,w_z)^\top$, confermando che il prodotto vettoriale di due polari è assiale.
-	
-	\risultato (a) $\bm{w} = (5\;\,5\;\,-5)^\top$. (b) $\bm{u}' = (1\;\,2\;\,-3)^\top$, $\bm{v}' = (2\;\,-1\;\,-1)^\top$, $\wb' = \ub' \times \vb' = (-5\;\,-5\;\,-5)^\top$. (c) La regola di trasformazione assiale prevede $(-w_x\;\,-w_y\;\,w_z)^\top = (-5\;\,-5\;\,-5)^\top$. Coincide con $\wb'$ calcolato direttamente: il prodotto vettoriale è effettivamente assiale.
-	
-\end{esercizio}
+%
+%
+%\todo[inline]{Questi esercizi li eliminerei tutti}
+%
+%\section{Esercizi proposti}
+%
+%\begin{esercizio}[Prodotto scalare e prodotto vettoriale di due vettori]
+%	\label{ex:A03_prodotti}
+%	
+%	Si considerino i due vettori
+%	\begin{equation*}
+%		\bm{a} = (2\;\,1\;\,-1)^\top, \qquad
+%		\bm{b} = (1\;\,3\;\,2)^\top.
+%	\end{equation*}
+%	(a) Calcolare il prodotto scalare $\ab \cdot \bb$ e i moduli $|\ab|$, $|\bb|$.
+%	(b) Determinare l'angolo $\alpha$ formato dai due vettori.
+%	(c) Calcolare il prodotto vettoriale $\ab \times \bb$ e verificare le proprietà $\ab \times \bb = -\bb \times \ab$ e $\ab \cdot (\ab \times \bb) = 0$.
+%	(d) Verificare l'identità $|\ab \times \bb|^2 = |\ab|^2 |\bb|^2 - (\ab \cdot \bb)^2$.
+%	
+%	\risultato (a) $\ab \cdot \bb = 3$, $|\ab| = \sqrt{6}$, $|\bb| = \sqrt{14}$. (b) $\cos\alpha = 3/\sqrt{84}$, da cui $\alpha \simeq 70{,}9^\circ$. (c) $\ab \times \bb = (5\;\,-5\;\,5)^\top$, $|\ab \times \bb| = 5\sqrt{3}$. (d) Verifica numerica: $|\ab \times \bb|^2 = 75$, $|\ab|^2 |\bb|^2 - (\ab \cdot \bb)^2 = 84 - 9 = 75$.
+%	
+%\end{esercizio}
+%
+%\begin{esercizio}[Verifica del doppio prodotto vettoriale]
+%	\label{ex:A03_doppio_prodotto}
+%	
+%	Si considerino i tre vettori
+%	\begin{equation*}
+%		\bm{a} = (1\;\,0\;\,2)^\top, \qquad
+%		\bm{b} = (0\;\,1\;\,1)^\top, \qquad
+%		\bm{c}= (2\;\,1\;\,0)^\top.
+%	\end{equation*}
+%	(a) Calcolare $\ab \times (\bb \times \cb)$ procedendo per sostituzione diretta.
+%	(b) Verificare l'identità del doppio prodotto vettoriale $\ab \times (\bb \times \cb) = (\ab \cdot \cb) \, \bb - (\ab \cdot \bb) \, \cb$ calcolando separatamente $(\ab \cdot \cb) \, \bb$ e $(\ab \cdot \bb) \, \cb$ e mostrando che la differenza coincide col risultato del punto (a).
+%	(c) Calcolare il prodotto misto $\ab \cdot (\bb \times \cb)$ e verificarne l'invarianza rispetto a permutazione ciclica.
+%	
+%	\risultato (a) $\bb \times \cb = (-1\;\,2\;\,-2)^\top$, $\ab \times (\bb \times \cb) = (-4\;\,0\;\,2)^\top$. (b) $\ab \cdot \cb = 2$, $\ab \cdot \bb = 2$, da cui $(\ab \cdot \cb) \bb - (\ab \cdot \bb) \cb = 2(0\;\,1\;\,1)^\top - 2(2\;\,1\;\,0)^\top = (-4\;\,0\;\,2)^\top$. (c) $\ab \cdot (\bb \times \cb) = -1 + 0 - 4 = -5$; per permutazione ciclica $\bb \cdot (\cb \times \ab)$ e $\cb \cdot (\ab \times \bb)$ producono lo stesso valore $-5$.
+%	
+%\end{esercizio}
+%
+%\begin{esercizio}[Momento polare di una forza e legge di variazione]
+%	\label{ex:A03_momento_polare}
+%	
+%	Una forza $\bm{f} = (3\;\,-2\;\,1)^\top$ è applicata nel punto $P = (1,\,2,\,0)$. Si considerino due poli, $O = (0,\,0,\,0)$ e $O' = (2,\,1,\,1)$.
+%	
+%	(a) Calcolare il momento polare $\bm{\upmu}(O) = \overrightarrow{OP} \times \fb$ e il momento polare $\bm{\upmu}(O') = \overrightarrow{O'P} \times \fb$.
+%	
+%	(b) Verificare la legge di variazione del momento al variare del polo:
+%	\begin{equation*}
+%		\bm{\upmu}(O') = \bm{\upmu}(O) + \overrightarrow{O'O} \times \fb.
+%	\end{equation*}
+%	
+%	(c) Verificare che il prodotto scalare $\fb \cdot \bm{\upmu}(O)$ è invariante rispetto al polo (cioè vale anche $\fb \cdot \bm{\upmu}(O')$).
+%	
+%	\risultato (a) $\overrightarrow{OP} = (1\;\,2\;\,0)^\top$, $\bm{\upmu}(O) = (2\;\,-1\;\,-8)^\top$; $\overrightarrow{O'P} = (-1\;\,1\;\,-1)^\top$, $\bm{\upmu}(O') = (-1\;\,-2\;\,-1)^\top$. (b) $\overrightarrow{O'O} = (-2\;\,-1\;\,-1)^\top$, $\overrightarrow{O'O} \times \fb = (-3\;\,-1\;\,7)^\top$; $\bm{\upmu}(O) + \overrightarrow{O'O} \times \fb = (-1\;\,-2\;\,-1)^\top$. (c) $\fb \cdot \bm{\upmu}(O) = 6 + 2 - 8 = 0$, $\fb \cdot \bm{\upmu}(O') = -3 + 4 - 1 = 0$. Entrambi nulli (forza e raggio vettore sono complanari nel piano $z=0$, dunque $\bm{\upmu}$ è perpendicolare a tale piano --- caso particolare).
+%	
+%\end{esercizio}
+%
+%\begin{esercizio}[Momento assiale rispetto a una retta]
+%	\label{ex:A03_momento_assiale}
+%	
+%	Una forza $\fb = (0\;\,4\;\,2)^\top$ è applicata nel punto $P = (3,\,0,\,0)$. Si consideri la retta $r$ passante per l'origine $O$ e parallela al versore $\bm{a}_r = \frac{1}{\sqrt{3}}(1\;\,1\;\,1)^\top$.
+%	
+%	(a) Calcolare il momento polare $\bm{\upmu}(O)$ rispetto a $O$.
+%	
+%	(b) Calcolare il momento assiale $\mu_r$ rispetto alla retta $r$ come componente di $\bm{\upmu}(O)$ lungo $\ab_r$:
+%	\begin{equation*}
+%		\mu_r = \ab_r \cdot \bm{\upmu}(O).
+%	\end{equation*}
+%	
+%	(c) Verificare che il momento assiale è invariante rispetto alla scelta del polo lungo $r$. Si calcoli a tal fine $\bm{\upmu}(O')$ con $O' = (1,\,1,\,1)$ (punto su $r$) e si mostri che $\ab_r \cdot \bm{\upmu}(O') = \mu_r$.
+%	
+%	\textit{Suggerimento.} Per il punto (c), usare la legge di variazione del momento e osservare che $\overrightarrow{O'O} = -\sqrt{3}\,\ab_r$ è parallelo ad $\ab_r$; il prodotto vettoriale $\overrightarrow{O'O} \times \fb$ è dunque perpendicolare ad $\ab_r$ e si annulla nel prodotto scalare con $\ab_r$.
+%	
+%	\risultato (a) $\overrightarrow{OP} = (3\;\,0\;\,0)^\top$, $\bm{\mu}(O) = (0\;\,-6\;\,12)^\top$. (b) $\mu_r = \frac{1}{\sqrt{3}}(0 - 6 + 12) = \frac{6}{\sqrt{3}} = 2\sqrt{3}$. (c) $\overrightarrow{O'P} = (2\;\,-1\;\,-1)^\top$, $\bm{\mu}(O') = (2\;\,-4\;\,8)^\top$; $\ab_r \cdot \bm{\upmu}(O') = \frac{1}{\sqrt{3}}(2-4+8) = 2\sqrt{3}$. Coincide con $\mu_r$.
+%	
+%\end{esercizio}
+%
+%\begin{esercizio}[Natura polare o assiale di alcune grandezze fisiche]
+%	\label{ex:A03_polari_assiali}
+%	
+%	Per ciascuna delle seguenti grandezze, stabilire se si tratta di un vettore polare o di un vettore assiale, motivando la risposta sulla base del comportamento sotto riflessione.
+%	
+%	(a) La velocità $\vb$ di un punto materiale.
+%	
+%	(b) La velocità angolare $\bm{\upomega}$ di un corpo rigido in rotazione.
+%	
+%	(c) Il momento angolare $\mathbf{L} = \rb \times m\vb$ di un punto materiale, con $\rb$ vettore posizione e $\vb$ velocità.
+%	
+%	(d) La forza $\fb$ agente su un punto materiale.
+%	
+%	(e) Il momento di una forza $\bm{\upmu} = \rb \times \fb$.
+%	
+%	(f) Il prodotto vettoriale di due vettori assiali, $\bm{\upomega}_1 \times \bm{\upomega}_2$.
+%	
+%	\textit{Suggerimento.} Si ricordi la regola di composizione: il prodotto vettoriale di due polari è assiale, di due assiali è assiale, di un polare e un assiale è polare.
+%	
+%	\risultato (a) Polare: la velocità è la derivata temporale di un vettore posizione, anch'esso polare. (b) Assiale: la velocità angolare è definita dalla rotazione attraverso la regola della mano destra, e il suo segno dipende dall'orientazione della terna di riferimento. (c) Assiale: prodotto vettoriale di due polari ($\rb$ e $\vb$). (d) Polare. (e) Assiale: prodotto vettoriale di due polari. (f) Assiale: prodotto vettoriale di due assiali.
+%	
+%\end{esercizio}
+%
+%\begin{esercizio}[Sistema di forze nel piano: momenti polari]
+%	\label{ex:A03_piano_momenti}
+%	
+%	Nel piano $(O; x, y)$, si considerino tre forze applicate:
+%	\begin{itemize}[noitemsep,topsep=2pt]
+%		\item $\bm{f}_1 = (3\;\,0)^\top$ applicata in $P_1 = (0,\,2)$;
+%		\item $\bm{f}_2 = (0\;\,-2)^\top$ applicata in $P_2 = (3,\,0)$;
+%		\item $\bm{f}_3 = (-1\;\,1)^\top$ applicata in $P_3 = (2,\,2)$.
+%	\end{itemize}
+%	
+%	(a) Calcolare il momento polare di ciascuna forza rispetto all'origine $O$, espresso come scalare con segno (positivo antiorario).
+%	
+%	(b) Calcolare il momento polare risultante del sistema rispetto a $O$.
+%	
+%	(c) Verificare la legge di variazione del momento, calcolando il momento risultante rispetto al polo $O' = (1,\,1)$ e confrontandolo col risultato ottenuto applicando la legge $\mu(O') = \mu(O) + \overrightarrow{O'O} \times \fb$, dove $\fb$ è il risultante delle forze.
+%	
+%	\textit{Suggerimento.} Nel piano, il momento di una forza $\bm{f} = (X\;\,Y)^\top$ applicata in $P = (x, y)$ rispetto all'origine è lo scalare $\mu = x \, Y - y \, X$.
+%	
+%	\risultato (a) $\mu_1 = -6$, $\mu_2 = -6$, $\mu_3 = 4$. (b) $\mu(O) = -8$. (c) Risultante $\bm{f} = (2\;\,-1)^\top$; $\overrightarrow{O'O} = (-1\;\,-1)^\top$; il prodotto vettoriale planare $\overrightarrow{O'O} \times \fb = (-1)(-1) - (-1)(2) = 1 + 2 = 3$; quindi $\mu(O') = -8 + 3 = -5$. Verifica diretta: $\mu(O') = (x_1 - 1)Y_1 - (y_1 - 1)X_1 + \ldots = -3 - 4 + 2 = -5$.
+%	
+%\end{esercizio}
+%
+%\begin{esercizio}[Verifica del comportamento sotto riflessione]
+%	\label{ex:A03_riflessione}
+%	
+%	Si consideri la riflessione rispetto al piano $xy$, che inverte l'asse $z$. Sotto questa trasformazione, le componenti di un vettore polare $\bm{p} = (p_x\;\,p_y\;\,p_z)^\top$ si trasformano in $\\bm{p}' = (p_x\;\,p_y\;\,-p_z)^\top$, mentre le componenti di un vettore assiale $\bm{a} = (a_x\;\,a_y\;\,a_z)^\top$ si trasformano in $\bm{a}' = (-a_x\;\,-a_y\;\,a_z)^\top$.
+%	
+%	Si considerino i vettori:
+%	\begin{equation*}
+%		\bm{u} = (1\;\,2\;\,3)^\top, \qquad
+%		\bm{v} = (2\;\,-1\;\,1)^\top, \qquad
+%		\wb = \ub \times \vb.
+%	\end{equation*}
+%	
+%	(a) Calcolare $\wb$.
+%	
+%	(b) Trasformare $\ub$ e $\vb$ sotto la riflessione, ottenendo $\ub'$ e $\vb'$, e calcolare $\wb' = \ub' \times \vb'$.
+%	
+%	(c) Verificare che $\wb'$ si trasforma secondo la regola dei vettori \emph{assiali}, cioè $\wb' = (-w_x\;\,-w_y\;\,w_z)^\top$, confermando che il prodotto vettoriale di due polari è assiale.
+%	
+%	\risultato (a) $\bm{w} = (5\;\,5\;\,-5)^\top$. (b) $\bm{u}' = (1\;\,2\;\,-3)^\top$, $\bm{v}' = (2\;\,-1\;\,-1)^\top$, $\wb' = \ub' \times \vb' = (-5\;\,-5\;\,-5)^\top$. (c) La regola di trasformazione assiale prevede $(-w_x\;\,-w_y\;\,w_z)^\top = (-5\;\,-5\;\,-5)^\top$. Coincide con $\wb'$ calcolato direttamente: il prodotto vettoriale è effettivamente assiale.
+%	
+%\end{esercizio}
 
 
