@@ -15,20 +15,44 @@
 
   \item baricentro delle forze, \textbf{109}
   \item base ortonormale, \textbf{8}
+  \item biella, \seealso{carrello}{119}, \textbf{119}
+  \item bipendolo, \seealso{vincolo}{122}, \textbf{122}
+    \subitem interno, 123
   \item braccio, \textbf{27}, 96
 
   \indexspace
 
   \item carico
     \subitem distribuito, 98
+  \item carrello, \seealso{vincolo}{118}, \textbf{118}
+    \subitem interno, 120
+  \item cedimento, \seealso{distorsione}{135}, \textbf{160}
+    \subitem vincolare, \textbf{135}
   \item centro di riduzione, \seealso{asse di sollecitazione}{105}
   \item centro di rotazione
     \subitem assoluto, 89
+    \subitem luogo geometrico, 117
     \subitem relativo, \textbf{87}
+  \item cerniera, \seealso{vincolo}{124}, \textbf{124}
+    \subitem cilindrica, 147
+    \subitem impropria, 128
+    \subitem interna, 125
+    \subitem multipla, \textbf{139}
+    \subitem sferica, 146
   \item cinematica grafica, \textbf{88}
+  \item classificazione dei sistemi di corpi rigidi
+    \subitem formula fondamentale, 179
+  \item collegamento, vincolo di, \see{vincolo (interno)}{116}
   \item combinazione lineare, \textbf{52}
+  \item compatibilità
+    \subitem cinematica, \textbf{174}
   \item complemento ortogonale, \textbf{43}
+  \item configurazione cinematicamente ammissibile, 160, 161
+  \item congruenza
+    \subitem esterna, 158
+    \subitem interna, 158
   \item controimmagine, 39
+  \item coordinate lagrangiane, 181
   \item coppia, \textbf{97}
     \subitem pura, 104
   \item corpo rigido, \textbf{75}
@@ -36,8 +60,11 @@
 
   \indexspace
 
+  \item degenerazione geometrica, \textbf{179}
   \item densità di forze, \textbf{97}
   \item determinante, \textbf{53}
+  \item distorsione, \seealso{cedimento}{114}, \textbf{114}
+    \subitem di Volterra, 114
   \item dualità
     \subitem algebra lineare, \textbf{45}
 
@@ -47,15 +74,30 @@
 
   \indexspace
 
+  \item giunto prismatico, \see{glifo}{126}
+  \item giustapposizione di vincoli, \see{vincolo (composto)}{131}
+  \item glifo, \seealso{vincolo}{126}, \textbf{126}
+    \subitem interno, 129
   \item grado di libertà, \textbf{75}
+  \item grado di vincolo, \see{vincolo}{115}
+  \item guida prismatica, \see{glifo}{147}
 
   \indexspace
 
   \item immagine, \textbf{40}
+  \item incastro, \seealso{vincolo}{129}, \textbf{129}
+    \subitem interno, 130
+    \subitem multiplo, \textbf{142}
   \item incremento, \textbf{14}
   \item invarianti, 78
   \item invarianza rispetto all'osservatore
     \subitem equivalenza con PLV, \textbf{101}
+  \item iperstaticità, 181
+  \item isostaticità, 181
+
+  \indexspace
+
+  \item labilità, 181
 
   \indexspace
 
@@ -67,13 +109,17 @@
     \subitem inversa, 53
     \subitem quadrata, 52
     \subitem trasposta, 50
+  \item matrice dei vincoli, \textbf{160}
+  \item matrice di equilibrio, \seealso{matrice dei vincoli}{168}, 
+		\textbf{168}
   \item matrice rappresentativa, \textbf{9}
+  \item molteplicità, \see{vincolo}{115}
   \item momento
     \subitem assiale, \textbf{29}
     \subitem di una forza, 96
     \subitem polare, \textbf{27}
     \subitem risultante, \textbf{96}
-    \subitem variazione al variare del polo, 28
+    \subitem variazione al variare del polo, 29
   \item moto rigido, \textbf{80}
     \subitem moto elicoidale, 80
     \subitem rototraslazione, 80
@@ -89,15 +135,26 @@
 
   \indexspace
 
+  \item pantografo, \seealso{bipendolo}{122}
   \item parametro libero, \textbf{55}
   \item partizione a blocchi, \textbf{51}
+  \item pendolo
+    \subitem doppio, \see{bipendolo}{122}
+  \item perno scorrevole, 146, \seealso{vincolo}{146}
+  \item piano di scorrimento, 146, \seealso{vincolo}{146}
   \item polo, 27
+  \item principio dei lavori virtuali
+    \subitem per un sistema di corpi rigidi, \textbf{169}
+  \item principio di Müller-Breslau, 
+		\see{teorema degli spostamenti virtuali}{173}
   \item principio di sovrapposizione, \textbf{55}
+  \item problema cinematico, \seealso{dualità}{160}, \textbf{160}
   \item problema duale, \textbf{45}
   \item problema inverso, \textbf{39}
   \item problema primale, \textbf{45}
-  \item prodotto misto, \textbf{26}
-  \item prodotto scalare, \textbf{18}
+  \item problema statico, \textbf{166}
+  \item prodotto misto, \textbf{25}
+  \item prodotto scalare, \textbf{19}
   \item prodotto tensoriale, \textbf{26}
   \item prodotto vettoriale, \textbf{21}
   \item pseudovettore, \see{vettore, assiale}{32}
@@ -105,6 +162,9 @@
   \indexspace
 
   \item rango, 40, \textbf{50}
+  \item reazione vincolare, \textbf{117}
+    \subitem coppia reattiva, 118
+    \subitem forza reattiva, 118
   \item regola di Laplace, 53
   \item risultante, \textbf{96}
   \item rotazione, \textbf{75}
@@ -131,23 +191,31 @@
   \item soluzione (di un sistema lineare)
     \subitem generale, 55
     \subitem particolare, 55
-  \item sottospazi fondamentali, \textbf{43}
+  \item sottospazi fondamentali, \textbf{43}, 177
   \item spazio delle traslazioni, \textbf{8}
   \item spazio euclideo, \textbf{8}
   \item spostamento
     \subitem campo di, 78
     \subitem relativo, 86
     \subitem rigido, \textbf{75}
+  \item stato di autoequilibrio, \textbf{177}
+  \item svincolo, \seealso{vincolo}{114}, \textbf{114}
 
   \indexspace
 
   \item teorema
+    \subitem degli spostamenti virtuali, \textbf{173}
+    \subitem delle forze virtuali, \textbf{174}
     \subitem di Aronhold-Kennedy (primo), \textbf{87}
     \subitem di Aronhold-Kennedy (secondo), \textbf{89}
     \subitem di Binet, 53
+    \subitem di intersezione, 132
   \item termine noto, 54
+  \item TFV, \see{teorema delle forze virtuali}{174}
   \item traslazione, \textbf{75}
     \subitem pura, 81
+  \item triade meccanica, \textbf{170}
+  \item TSV, \see{teorema degli spostamenti virtuali}{173}
 
   \indexspace
 
@@ -162,5 +230,21 @@
     \subitem libero, \textbf{17}
     \subitem numerico, \textbf{8}
     \subitem polare, \textbf{32}
+  \item vettore delle incognite iperstatiche, 182
+  \item vettore di configurazione, \textbf{157}
+  \item vettore di vincolo, 158
+  \item vincolo, \textbf{115}
+    \subitem anolonomo, 115
+    \subitem cinematico, 115
+    \subitem composto, \textbf{131}
+    \subitem di rigidità, \textbf{113}
+    \subitem doppio, 124
+    \subitem esterno, \textbf{116}
+    \subitem grado di, \textbf{115}
+    \subitem interno, \textbf{116}
+    \subitem molteplicità, \textbf{115}
+    \subitem semplice, 118
+    \subitem spaziale, 146
+    \subitem triplo, 129
 
 \end{theindex}

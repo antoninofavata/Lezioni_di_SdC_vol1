@@ -1,97 +1,504 @@
 %---------------------------------------------------------------------------------------------------------------------------- 
 \graphicspath{{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/}}
-\chapter{I problemi cinematico e statico dei SCR}\label{cap:problemi_cin_stat_SCR}
-\chaptermark{Classificazione e soluzione dei sistemi di corpi rigidi }
-%---------------------------------------------------------------------------------------------------------------------------- 
+\chapter{Congruenza, equilibrio e lavoro virtuale nei sistemi di corpi rigidi}\label{cap:SCR}
+%----------------------------------------------------------------------------
 
 \begin{sommario}
-	Si sviluppa la formulazione matriciale dei problemi cinematico	e statico per un sistema di corpi rigidi piani. Introdotto il
-	\emph{vettore di configurazione} $\bm{u} \in \mathbb{R}^{n}$	del sistema, si costruisce la \emph{matrice dei vincoli}
-	$\bm{A} \in \mathbb{R}^{m \times n}$, le cui righe codificano	le equazioni cinematiche di ogni vincolo posizionale. Il
-	problema cinematico assume la forma $\bm{A}\bm{u} = \bm{s}$: la soluzione esiste e appartiene a un sottospazio di dimensione
-	$g_\ell = \dim\Nc(\bm{A})$ (gradi di labilità). Per ispezione diretta si mostra che le equazioni di	equilibrio del sistema si scrivono	$\bm{A}^{\top}\bm{r} = -\bm{f}$: la matrice del	problema statico è la \emph{trasposta} di quella cinematica.
-	Il dualismo	$\bm{B} = \bm{A}^{\top}$ non è una coincidenza, ma la	conseguenza diretta della struttura bilineare del lavoro virtuale. I quattro sottospazi fondamentali di $\bm{A}$ (\CAPref{app:applicazionilin_dualita}) individuano meccanismi, stati di	autoequilibrio, cedimenti ammissibili e forze non	equilibrabili; la relazione $g_\ell - g_i = n - m$	generalizza il conteggio dei gradi di libertà. 
+	Si estende ai sistemi di corpi rigidi piani la duplice lettura,
+	vettoriale ed energetica, già introdotta per il singolo corpo
+	(\CAPref{cap:cinematica_infinitesima}, \CAPref{cap:statica_CR}).
+	Si definisce la \emph{congruenza} di una configurazione del sistema
+	come compatibilità simultanea con la rigidità di ciascun corpo e con
+	i vincoli, esterni e interni, che li collegano; si mostra che
+	l'\emph{equilibrio} del sistema — l'equilibrio di ciascun corpo sotto
+	le forze attive e le reazioni trasmesse dai corpi vicini — condivide
+	con la congruenza la medesima geometria di vincolo, letta in due
+	direzioni opposte. Si deriva su questa base il dualismo fra la matrice dei vincoli cinematici e quella
+	di equilibrio; se ne ricava poi, come conseguenza e non come ipotesi,
+	l'identità bilineare del lavoro virtuale fra stati indipendenti. Da
+	questa identità discendono due famiglie speculari di risultati: le
+	condizioni di Compatibilità statica e Compatibilità cinematica, che
+	stabiliscono quando i due problemi ammettono soluzione, e il teorema
+	degli spostamenti virtuali (principio di Müller-Breslau) e il teorema
+	delle forze virtuali, che ne calcolano
+	esplicitamente singole componenti senza risolvere il sistema completo.
+	Si introducono quindi i quattro sottospazi fondamentali di $\bm A$ —
+	meccanismi, forze equilibrabili, stati di autoequilibrio, cedimenti
+	ammissibili — e se ne ricava, come conseguenza diretta del teorema
+	rango-nullità, la classificazione labile/isostatico/iperstatico. Il
+	capitolo si chiude con una serie di esempi applicativi, che
+	ripercorrono dall'inizio alla fine, su un'unica struttura, tutti gli
+	strumenti introdotti.
 \end{sommario}
 
 
-%---------------------------------------------------------------------------------------------------------------------------- 
-\section{Il vettore di configurazione del sistema}\label{sec:conf}
-%---------------------------------------------------------------------------------------------------------------------------- 
+%----------------------------------------------------------------------------
+\section{Perché una teoria dei sistemi}\label{sec:motivazione_SCR}
+%----------------------------------------------------------------------------
 
-Un sistema di $n_c$ corpi rigidi piani è descritto, nella
-cinematica infinitesima (\CAPref{cap:cinematica_infinitesima}), dallo spostamento di
-ciascun corpo. Per il corpo $\mathcal{C}_i$, scelto un polo $O_i$
-solidale ad esso, la cinematica è completamente determinata da
-tre parametri scalari:
-\begin{equation}
-	(u_i,\, v_i,\, \vartheta_i)
-	\coloneqq
-	\bigl(u(O_i),\; v(O_i),\; \vartheta_i\bigr),
-\end{equation}
-dove $u_i$ e $v_i$ sono le componenti cartesiane dello
-spostamento del polo e $\vartheta_i$ è la rotazione del corpo.
-Lo spostamento di un punto generico $P$ di $\mathcal{C}_i$ si
-esprime tramite la formula fondamentale della cinematica
-infinitesima:
-\begin{equation}\label{eq:FFCI_i}
-	\begin{Bmatrix} u_i(P) \\ v_i(P) \end{Bmatrix}
-	=
-	\begin{Bmatrix} u_i \\ v_i \end{Bmatrix}
-	+ \vartheta_i
-	\begin{bmatrix} 0 & -1 \\ 1 & \phantom{-}0 \end{bmatrix}
-	\begin{Bmatrix} x_i(P) \\ y_i(P) \end{Bmatrix},
-\end{equation}
-dove $(x_i(P),\, y_i(P))$ sono le coordinate di $P$ rispetto a
-$O_i$ nella configurazione di riferimento.
+La teoria costruita nei due capitoli precedenti è completa per un corpo
+rigido isolato: la sua configurazione è descritta da tre soli parametri,
+$\bigl(u(O),\,v(O),\,\vartheta\bigr)$, e il suo equilibrio da due sole
+condizioni vettoriali, $\rb=\bm{0}$ e $\bm{\upmu}(O)=\bm{0}$, equivalenti
+--- lo si è dimostrato --- all'annullarsi del lavoro virtuale per ogni
+moto rigido. Nulla di tutto questo cambia se, invece di un corpo isolato,
+se ne considerano molti, purché restino indipendenti l'uno dall'altro: si
+applica la teoria del corpo singolo a ciascuno, separatamente, e non c'è
+altro da dire.
 
-\begin{definizione}[Vettore di configurazione]\label{def:vettore_conf}
-	Si chiama \emph{vettore di configurazione}\index{vettore di configurazione|textbf} del sistema il
-	vettore colonna $\bm{u} \in \mathbb{R}^{n}$\nomenclature[L]{$\bm{u}$}{vettore di configurazione del sistema ($\in\mathbb{R}^n$, $n=3n_c$)} definito come il
-	trasposto del vettore riga:
-	\begin{equation}\label{eq:vettore_u}
+Le cose cambiano quando i corpi vengono \emph{collegati fra loro}. Si
+consideri il sistema di \FIGref{fig:gerber_motiv}: due travi rigide
+$\mathcal{C}_1$ e $\mathcal{C}_2$, la prima incernierata al suolo in $A$
+e appoggiata su un carrello verticale in $B$, la seconda appoggiata su un
+carrello verticale in $D$; le due travi sono collegate fra loro da una
+cerniera in $C$. Si tratta della cosiddetta \emph{trave Gerber}, che
+riprenderemo per l'intero capitolo. In questo contesto la parola ``trave'' denota semplicemente un corpo rigido di forma allungata: la scelta è solo per comodità di rappresentazione grafica 
+e per anticipare  esempi strutturali rilevanti; nulla nella trattazione presente dipende dalla forma del corpo;  le proprietà specifiche della trave come elemento strutturale saranno introdotte nel \CAPref{cap:Trave_Rigida}.
+
+%----------------------------------------------------------------------------------------------------------------------
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt, line width=0.8pt},
+		cint/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt, line width=0.8pt},
+		richiam/.style={thin, gray, dashed},
+		tacca/.style={thin, gray!70}]
+		
+		\def\a{1.0}
+		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+		
+		\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+		\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
+		
+		\node[above=2pt] at (0,0)       {$A$};
+		\node[above=2pt] at ({2*\a},0)  {$B$};
+		\node[above=2pt] at ({3*\a},0)  {$C$};
+		\node[above=2pt] at ({5*\a},0)  {$D$};
+		
+		\node at ({\a},  -0.32) {$\mathcal{C}_1$};
+		\node at ({4*\a},-0.32) {$\mathcal{C}_2$};
+		
+		%% cerniera in A
+		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+		\draw (-\gw,-\thA) -- (\gw,-\thA);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+		\node[nodo] at (0,0) {};
+		
+		%% carrello intermedio in B
+		\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+		\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+		\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+		\draw ({2*\a-\sr},0) arc(180:360:\sr);
+		
+		%% cerniera interna in C
+		\node[cint] at ({3*\a},0) {};
+		
+		%% carrello terminale in D
+		\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
+		\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+		\node[nodo] at ({5*\a},0) {};
+		
+		%% quotatura
+		\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
+		\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
+		\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
+		\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
+		
+		\draw[tacca] (0,     -1.55) -- (0,     -1.75);
+		\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
+		\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
+		\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
+		
+		\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
+		\node[above=0.04] at ({\a},   -1.65) {$2a$};
+		\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
+		\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
+		\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
+		\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
+		
+	\end{tikzpicture}
+	\caption{La trave Gerber: due corpi rigidi $\mathcal{C}_1$, $\mathcal{C}_2$
+		connessi da una cerniera in $C$; cerniera al suolo in $A$, carrelli
+		verticali in $B$ e $D$.}
+	\label{fig:gerber_motiv}
+\end{figure}
+%----------------------------------------------------------------------------------------------------------------------
+
+Si dunque provi a ragionare sulla  cinematica della trave Gerber senza scrivere ancora
+equazioni. Se il carrello in $B$ venisse rimosso, il sistema potrebbe
+muoversi: $\mathcal{C}_1$ ruoterebbe rigidamente attorno ad $A$,
+trascinando con sé il punto $C$ che, come punto di $\mathcal{C}_1$, è
+vincolato dalla rigidità di $\mathcal{C}_1$ a seguirlo secondo quanto prescritto
+dalla cinematica del corpo rigido; ma la
+cerniera in $C$ non impone nulla sulla \emph{rotazione} di $\mathcal{C}_2$,
+che è quindi libero di ruotare per conto proprio,
+purché il vincolo prescritto dal carrello in $D$ resti soddisfatto. 
+
+Il sistema, insomma, si
+muoverebbe pur restando rigido pezzo per pezzo. Che un sistema vincolato
+possa muoversi non è di per sé una novità: anche un singolo corpo rigido
+è labile se i vincoli esterni non bastano a immobilizzarlo. Ma in quel caso si tratta sempre di un moto
+rigido dell'intero corpo. Qui è diverso: il moto appena descritto non è un moto rigido del sistema
+preso come un blocco unico --- $\mathcal{C}_1$ e $\mathcal{C}_2$ ruotano
+di angoli diversi, $\vartheta_1\neq\vartheta_2$ in generale --- è un moto
+che i due corpi compiono l'uno rispetto all'altro, pur restando ciascuno,
+separatamente, perfettamente rigido. È questa origine \emph{interna}
+della labilità, resa possibile dallo svincolo in $C$ e non riconducibile
+a un difetto di vincoli esterni, il fenomeno che la teoria del corpo
+singolo non conosce e non può conoscere.
+
+C'è un secondo fenomeno, duale del primo, che vale la pena solo annunciare
+qui, rimandando a un esempio concreto quando classificheremo i sistemi: riguarda non la possibilità
+di muoversi, ma quella delle reazioni vincolari di autoequilibrarsi. Se i
+vincoli che tengono insieme un sistema sono più numerosi di quanto
+l'equilibrio richieda, le equazioni di equilibrio da sole non bastano più
+a escludere che le reazioni assumano valori non nulli anche in assenza di
+ogni carico esterno. È il fenomeno duale della labilità: là mancavano
+equazioni di vincolo e restava un moto libero; qui ne avanzano, e resta
+un insieme di reazioni libere di autoequilibrarsi.
+
+Si osservi che nulla di ciò  che abbiamo detto per la trave Gerber dipende dal fatto che i corpi siano
+\emph{molti}: dipende dal fatto che sono \emph{parzialmente} collegati.
+Se in $C$ ci fosse un incastro anziché una cerniera --- se cioè anche la
+rotazione relativa fosse impedita --- $\mathcal{C}_1$ e $\mathcal{C}_2$
+si comporterebbero, cinematicamente, come un unico corpo rigido, e la
+teoria sviluppata finora basterebbe, senza bisogno di nulla di
+nuovo: un vincolo interno che blocca tutti i gradi di libertà relativi
+non introduce alcuna ricchezza cinematica. È precisamente la possibilità
+di uno \emph{svincolo} --- una cerniera che libera la rotazione relativa,
+un carrello interno che libera anche una componente di traslazione ---
+a rendere necessaria una teoria dei sistemi propriamente detta: una
+teoria che sappia trattare, in un unico quadro, corpi che sono a tratti
+un blocco unico e a tratti liberi di muoversi l'uno rispetto all'altro.
+
+Il compito di questo capitolo è costruire questo quadro, mantenendo per
+quanto possibile lo stesso impianto concettuale già utilizzato per il
+corpo singolo.
+
+
+%----------------------------------------------------------------------------
+\section{La congruenza del sistema}\label{sec:congruenza_SCR}
+%----------------------------------------------------------------------------
+
+Cominciamo dalla cinematica. Che cosa significa, per il sistema della
+\FIGref{fig:gerber_motiv}, che una sua configurazione è ammissibile ---
+cioè compatibile sia con la natura rigida di ciascuna trave sia con i
+vincoli che le legano fra loro e al suolo, considerando eventuali cedimenti? La risposta si articola in due
+richieste indipendenti, di natura diversa, che vale la pena tenere
+distinte prima di fonderle in un unico oggetto.
+
+La prima richiesta riguarda ciascun corpo preso singolarmente, ed è
+interamente nota dal \CAPref{cap:cinematica_infinitesima}: lo spostamento
+di $\mathcal{C}_1$ dev'essere quello di un corpo rigido, dunque
+completamente determinato, una volta scelto un polo $O_1$ solidale a
+$\mathcal{C}_1$, dai tre parametri $\bigl(u(O_1),\,v(O_1),\,\vartheta_1\bigr)$
+tramite la formula fondamentale della cinematica infinitesima; lo stesso,
+con un proprio polo $O_2$ e propri parametri $\bigl(u(O_2),\,v(O_2),\,
+\vartheta_2\bigr)$, vale per $\mathcal{C}_2$. Nessuna relazione lega, a
+questo stadio, i parametri di un corpo a quelli dell'altro.
+
+La seconda richiesta riguarda invece i vincoli, ed è qui che conviene
+ragionare direttamente sulla Gerber prima di enunciare qualunque regola
+generale. Scegliamo, per fissare le idee, il polo $O_1\equiv A$ per
+$\mathcal{C}_1$ e il polo $O_2\equiv C$ per $\mathcal{C}_2$ --- una scelta
+comoda ma non obbligata, come già osservato per il corpo singolo: il
+polo di un corpo è arbitrario, e conviene sceglierlo dove semplifica i
+conti, per esempio in corrispondenza di un vincolo. Supponiamo inoltre,
+per fissare le distanze, che $B$ disti $2a$ da $A$, $C$ disti $3a$ da
+$A$ e $D$ disti $2a$ da $C$, tutti lungo l'asse delle travi.
+
+\paragraph{Cerniera in $A$.} Impone che il punto $A$, che coincide
+con il polo di $\mathcal{C}_1$, resti fisso: impone dunque direttamente le
+componenti di traslazione del polo, senza coinvolgere la rotazione:
+\begin{equation}\label{eq:vinc_A_gerber}
+	u(O_1) = 0, \qquad v(O_1) = 0.
+\end{equation}
+
+\paragraph{Carrello in $B$.} Impone che la componente verticale dello
+spostamento del punto $B$ --- un punto di $\mathcal{C}_1$ diverso dal
+polo --- sia assegnata. Poiché $B$ non è il polo, il suo spostamento
+verticale non è semplicemente $v(O_1)$: applicando a $\mathcal{C}_1$ la
+formula fondamentale della cinematica infinitesima
+(\EQUref{eq:FFCI_piano_deriv}) si ottiene $v(O_1)+2a\,\vartheta_1$, e
+dunque
+\begin{equation}\label{eq:vinc_B_gerber}
+	v(O_1) + 2a\,\vartheta_1 =- 2\bar{v},
+\end{equation}
+dove $2\bar{v}$ è l'entità dello spostamento verticale imposto al punto $B$.
+È così che, per un vincolo non applicato nel polo, la rotazione
+$\vartheta_1$ entra nell'equazione insieme alle componenti di
+traslazione.
+
+\paragraph{Cerniera in $C$.} È il vincolo davvero nuovo, quello che lega
+fra loro i due corpi: impone che lo spostamento del punto $C$, considerato
+come punto di $\mathcal{C}_1$, coincida con lo spostamento dello stesso
+punto $C$, considerato come punto di $\mathcal{C}_2$. Avendo scelto
+$O_2\equiv C$, lo spostamento di $C$ come punto di $\mathcal{C}_2$ è
+semplicemente $\bigl(u(O_2),\,v(O_2)\bigr)$; come punto di
+$\mathcal{C}_1$, applicando ancora la formula fondamentale, è
+$\bigl(u(O_1),\,v(O_1)+3a\,\vartheta_1\bigr)$. Uguagliando le due
+espressioni si ottengono due equazioni che legano \emph{per la prima
+	volta} i parametri di $\mathcal{C}_1$ a quelli di $\mathcal{C}_2$:
+\begin{equation}\label{eq:vinc_C_gerber}
+	u(O_1) = u(O_2), \qquad
+	v(O_1) + 3a\,\vartheta_1 = v(O_2).
+\end{equation}
+Si noti bene cosa \emph{non} compare in \eqref{eq:vinc_C_gerber}:
+nessuna equazione lega $\vartheta_1$ a $\vartheta_2$. È esattamente lo
+svincolo rotazionale della cerniera, già discusso in astratto nel
+\PARref{sec:motivazione_SCR}, a mancare qui: $\mathcal{C}_2$ resta libero
+di ruotare indipendentemente da $\mathcal{C}_1$, e questa libertà è,
+letteralmente, l'assenza di un'equazione.
+
+\paragraph{Carrello in $D$.} Impone, in tutto analogamente al carrello
+in $B$ ma questa volta nei parametri di $\mathcal{C}_2$,
+\begin{equation}\label{eq:vinc_D_gerber}
+	v(O_2) + 2a\,\vartheta_2 =- \bar{v}.
+\end{equation}
+
+Qui abbiamo supposto che il punto $D$ si sposti della quantità nota $-\bar{v}$.
+
+Le equazioni \eqref{eq:vinc_A_gerber}--\eqref{eq:vinc_D_gerber} sono in
+tutto sei relazioni scalari (due dalla cerniera in $A$, una dal carrello
+in $B$, due dalla cerniera in $C$, una dal carrello in $D$) fra i sei
+parametri $\bigl(u(O_1),v(O_1),\vartheta_1,u(O_2),v(O_2),\vartheta_2
+\bigr)$: esattamente tanti quanti servono, in questo caso, a determinare
+univocamente la configurazione. Che questo bilancio --- vincoli contro
+parametri --- sia sempre risolvente, o possa fallire in un modo o
+nell'altro, è precisamente il tipo di domanda a cui la teoria che stiamo
+costruendo dovrà saper rispondere in generale, non caso per caso: da qui
+la necessità di un formalismo.
+
+\paragraph{Il vettore di configurazione.}
+Il primo passo del formalismo è solo un atto di notazione: raccogliere in un unico vettore
+colonna i parametri cinematici di tutti i corpi del sistema.
+
+
+	Dato un sistema di $n_c$ corpi rigidi piani $\mathcal{C}_1,\dots,
+	\mathcal{C}_{n_c}$, scelto per ciascuno un polo $O_i$ solidale, si
+	chiama \emph{vettore di configurazione}\index{vettore di configurazione|textbf}
+	del sistema il vettore
+	\begin{equation}\label{eq:vettore_u_SCR}
 		\bm{u} \coloneqq
-		\bigl(
-		u_1 \; v_1 \; \vartheta_1 \;\;
-		u_2 \; v_2 \; \vartheta_2 \;\;
+		\bigl\{
+		u_1\; v_1\; \vartheta_1 \;\;
+		u_2\; v_2\; \vartheta_2 \;\;
 		\cdots \;\;
-		u_{n_c} \; v_{n_c} \; \vartheta_{n_c}
-		\bigr)^{\!\top}
-		\in \mathbb{R}^{n},
+		u_{n_c}\; v_{n_c}\; \vartheta_{n_c}
+		\bigr\}^{\!\top}
+		\in \mathbb{R}^{n}, \qquad n\coloneqq 3n_c,
 	\end{equation}
-	dove $n \coloneqq 3 n_c$. Le sue $n$ componenti costituiscono
-	i \emph{gradi di libertà cinematici}\index{grado di liberta@grado di libertà!del sistema} del sistema libero da vincoli.
-\end{definizione}
-
-\begin{oss}
-	La scelta del polo $O_i$ per ciascun corpo $\mathcal{C}_i$ è
-	arbitraria: una scelta diversa modifica le componenti di
-	$\bm{u}$ ma non la struttura delle equazioni che seguono. In
-	pratica si sceglie $O_i$ in modo da rendere le equazioni di
-	vincolo il più semplici possibile --- ad esempio, coincidente
-	con il punto di applicazione di un vincolo.
-\end{oss}
+	dove $\bigl(u_i,\,v_i,\,\vartheta_i\bigr)\coloneqq\bigl(u(O_i),\,
+	v(O_i),\,\vartheta_i\bigr)$ sono i parametri cinematici di
+	$\mathcal{C}_i$ rispetto al polo scelto.
 
 
+Non c'è, in questa definizione, alcuna informazione che non fosse già
+nella cinematica del corpo singolo applicata $n_c$ volte: $\bm{u}$ è
+soltanto l'elenco ordinato di ciò che già sapevamo descrivere. Vediamo
+subito come si costruisce, e a cosa serve, su un caso concreto.
+%
+%
+%\subsection{Un caso esplicito: la trave di Gerber}\label{sec:gerber_congruenza}
+%
+%Riprendiamo il sistema di \FIGref{fig:gerber_motiv}, scegliendo --- per
+%fissare le idee, non per obbligo --- il polo $O_1\equiv A$ per
+%$\mathcal{C}_1$ e il polo $O_2\equiv C$ per $\mathcal{C}_2$, con $B$ a
+%distanza $2a$ da $A$, $C$ a distanza $3a$ da $A$ e $D$ a distanza $2a$
+%da $C$, tutti lungo l'asse delle travi. Assegniamo un cedimento
+%verticale $2\bar v$ verso il basso al carrello in $B$ e un cedimento
+%verticale $\bar v$ verso il basso al carrello in $D$; la cerniera in
+%$A$ e la cerniera interna in $C$ restano perfette. Il vettore di
+%configurazione, per $n_c=2$, $n=6$, è
+%\begin{equation}\label{eq:u_gerber_cong}
+%	\bm{u} = \bigl\{u_1,\,v_1,\,\vartheta_1,\,u_2,\,v_2,\,
+%	\vartheta_2\bigr\}^{\!\top}\in\mathbb{R}^6,
+%\end{equation}
+%avendo scritto $u_1\coloneqq u(O_1)$ e così via.
+%
+%\paragraph{Cerniera in $A$.} Impone che il punto $A$, che coincide con
+%il polo di $\mathcal{C}_1$, resti fisso:
+%\begin{equation}\label{eq:vinc_A_gerber}
+%	u_1 = 0, \qquad v_1 = 0.
+%\end{equation}
+%
+%\paragraph{Carrello in $B$.} Impone che lo spostamento verticale del
+%punto $B$ valga $-2\bar v$. Poiché $B$ non è il polo, il suo spostamento
+%verticale non è semplicemente $v_1$: applicando a $\mathcal{C}_1$ la
+%formula fondamentale della cinematica infinitesima
+%(\EQUref{eq:FFCI_piano_deriv}) si ottiene $v_1+2a\,\vartheta_1$, e
+%dunque
+%\begin{equation}\label{eq:vinc_B_gerber}
+%	v_1 + 2a\,\vartheta_1 = -2\bar v.
+%\end{equation}
+%Il coefficiente $2a$ --- il braccio del vincolo rispetto al polo --- è
+%ciò che fa entrare $\vartheta_1$ nell'equazione.
+%
+%\paragraph{Cerniera in $C$.} È il vincolo che lega fra loro i due
+%corpi: impone che lo spostamento del punto $C$, calcolato come punto di
+%$\mathcal{C}_1$, coincida con lo spostamento dello stesso punto $C$,
+%calcolato come punto di $\mathcal{C}_2$. Come punto di $\mathcal{C}_2$,
+%essendo $O_2\equiv C$, lo spostamento è semplicemente
+%$(u_2,\,v_2)$; come punto di $\mathcal{C}_1$, per la formula
+%fondamentale, è $(u_1,\,v_1+3a\,\vartheta_1)$. Uguagliando:
+%\begin{equation}\label{eq:vinc_C_gerber}
+%	u_1 = u_2, \qquad v_1 + 3a\,\vartheta_1 = v_2.
+%\end{equation}
+%Si noti bene cosa \emph{non} compare: nessuna equazione lega
+%$\vartheta_1$ a $\vartheta_2$. È lo svincolo rotazionale della cerniera
+%a mancare qui: $\mathcal{C}_2$ resta libero di ruotare indipendentemente
+%da $\mathcal{C}_1$, e questa libertà è, letteralmente, l'assenza di
+%un'equazione (torneremo su questo in generale nel
+%\PARref{sec:congruenza_generale}).
+%
+%\paragraph{Carrello in $D$.} Impone, in tutto analogamente al carrello
+%in $B$ ma nei parametri di $\mathcal{C}_2$,
+%\begin{equation}\label{eq:vinc_D_gerber}
+%	v_2 + 2a\,\vartheta_2 = -\bar v.
+%\end{equation}
+%
+%\paragraph{Matrice, vettore dei cedimenti e soluzione.}
+Il sistema di sei equazioni \eqref{eq:vinc_A_gerber}--\eqref{eq:vinc_D_gerber}
+può essere facilmente scritto in forma matriciale come $\bm{Au}=\bm{s}$, dove
+\begin{equation}\label{eq:A_gerber_SCR}
+	\bm{A} =
+	\begin{bmatrix}
+		1 &  0 &   0 & 0 & 0 &  0 \\
+		0 &  1 &   0 & 0 & 0 &  0 \\
+		0 &  1 &  2a & 0 & 0 &  0 \\
+		-1 &  0 &   0 & 1 & 0 &  0 \\
+		0 & -1 & -3a & 0 & 1 &  0 \\
+		0 &  0 &   0 & 0 & 1 & 2a
+	\end{bmatrix},
+	\qquad
+	\bm{s} = \bigl\{0\;\;  0 \;\; -2\bar v \;\; 0 \;\; 0 \;\; -\bar v
+	\bigr\}^{\!\top}.
+\end{equation}
+In questo semplice caso, il sistema si risolve
+per sostituzione in avanti, una riga alla volta:
+\begin{align*}
+	\text{riga (i):}&\quad u_1 = 0,\\
+	\text{riga (ii):}&\quad v_1 = 0,\\
+	\text{riga (iii):}&\quad v_1+2a\,\vartheta_1=-2\bar v
+	\;\Longrightarrow\; \vartheta_1=-\frac{\bar v}{a},\\
+	\text{riga (iv):}&\quad u_2=u_1=0,\\
+	\text{riga (v):}&\quad v_2=v_1+3a\,\vartheta_1=-3\bar v,\\
+	\text{riga (vi):}&\quad v_2+2a\,\vartheta_2=-\bar v
+	\;\Longrightarrow\;
+	\vartheta_2=\frac{-\bar v+3\bar v}{2a}=\frac{\bar v}{a}.
+\end{align*}
+La configurazione del sistema, descritta da $\bm{u}$, è dunque completamente determinata:
+$\mathcal{C}_1$ ruota in senso orario attorno ad $A$ di ampiezza
+$\bar v/a$; $\mathcal{C}_2$ trasla verticalmente di $-3\bar v$ e ruota
+in senso antiorario di $\bar v/a$. Una verifica diretta conferma la
+coerenza della soluzione con i dati: il cedimento in $D$ vale
+$v_2+2a\vartheta_2=-3\bar v+2\bar v=-\bar v$, e quello in $B$
+vale $v_1+2a\vartheta_1=-2\bar v$.
+
+La \FIGref{fig:gerber_deformata} illustra la configurazione così
+trovata.
+%
+Abbiamo così costruito e risolto, su un caso concreto, l'intero
+problema cinematico del sistema: il vettore di configurazione, la
+matrice dei vincoli, il vettore dei cedimenti, e la loro soluzione.
+Vediamo ora come la stessa costruzione si generalizzi a un sistema
+qualunque.
 
 
-%-------------------------------------------------------------------------------------------------------------------
-\section{La matrice dei vincoli e il problema cinematico}
-\label{sec:matrice_vincoli}
-%-------------------------------------------------------------------------------------------------------------------
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4pt, line width=0.7pt},
+		nodoR/.style={circle, fill=black, draw=black,
+			inner sep=0pt, minimum size=3pt}]
+		
+		\def\a{1.0}
+		
+		% --- configurazione di riferimento (tratteggiata) ---
+		\draw[dashed, gray!60, line width=0.9pt] (0,0) -- ({5*\a},0);
+		\node[gray!70, above=2pt] at (0,0)      {$A$};
+		\node[gray!70, above=2pt] at ({2*\a},0) {$B$};
+		\node[gray!70, above=2pt] at ({3*\a},0) {$C$};
+		\node[gray!70, above=2pt] at ({5*\a},0) {$D$};
+		\node[nodo] at (0,0) {};
+		\node[nodo] at ({2*\a},0) {};
+		\node[nodo] at ({3*\a},0) {};
+		\node[nodo] at ({5*\a},0) {};
+		
+		% --- configurazione deformata ---
+		\coordinate (Ad) at (0,0);
+		\coordinate (Bd) at ({2*\a},-0.6);
+		\coordinate (Cd) at ({3*\a},-0.9);
+		\coordinate (Dd) at ({5*\a},-0.3);
+		
+		\draw[line width=1.6pt] (Ad) -- (Cd);
+		\draw[line width=1.6pt] (Cd) -- (Dd);
+		
+		\node[nodoR] at (Ad) {};
+		\node[nodoR, label={[yshift=-11pt]below:$B$}] at (Bd) {};
+		\node[nodoR, label={[xshift=6pt,yshift=-9pt]below:$C$}] at (Cd) {};
+		\node[nodoR, label={[yshift=-11pt]below:$D$}] at (Dd) {};
+		
+		% --- riferimenti orizzontali locali per gli angoli ---
+		\draw[dashed, gray!60, thin] (Ad) -- ++(0.9,0);
+		\draw[dashed, gray!60, thin] (Cd) -- ++(0.9,0);
+		
+		% --- angolo theta_1 in A (orario, sotto l'orizzontale) ---
+		\draw[->, thin] ({0.6*\a},0) arc[start angle=0, end angle=-16.7, radius={0.6*\a}];
+		\node[font=\scriptsize] at (1,-0.16) {$\vartheta_1$};
+		
+		% --- angolo theta_2 in C (antiorario, sopra l'orizzontale locale) ---
+		\draw[->, thin] ({3*\a+0.6},-0.9) arc[start angle=0, end angle=16.7, radius=0.6];
+		\node[font=\scriptsize] at ({3*\a+1},-0.76) {$\vartheta_2$};
+		
+		% --- cedimenti ---
+		\draw[->, thick] ({2*\a},-0.05) -- ({2*\a},-0.55)
+		node[right=1pt, pos=0.6, font=\scriptsize] {$2\bar v$};
+		\draw[->, thick] ({5*\a},-0.05) -- ({5*\a},-0.25)
+		node[right=1pt, pos=0.6, font=\scriptsize] {$\bar v$};
+		
+	\end{tikzpicture}
+	\caption{Configurazione deformata della trave di Gerber (in grigio
+		tratteggiato la configurazione di riferimento, non deformata),
+		soluzione del problema cinematico del
+		\PARref{sec:gerber_congruenza}; spostamenti esagerati per
+		chiarezza. $\mathcal{C}_1$ ruota rigidamente attorno ad $A$
+		dell'angolo $\vartheta_1=-\bar v/a$ (orario); $\mathcal{C}_2$
+		ruota, indipendentemente da $\mathcal{C}_1$, dell'angolo
+		$\vartheta_2=+\bar v/a$ (antiorario) attorno al punto $C$, che
+		segue $\mathcal{C}_1$ senza distaccarsene. Il punto $C$ non
+		presenta alcuna discontinuità di \emph{spostamento} --- le due
+		travi restano a contatto --- ma la pendenza della configurazione
+		deformata cambia bruscamente in $C$: è la manifestazione
+		visibile dello svincolo rotazionale della cerniera interna.}
+	\label{fig:gerber_deformata}
+\end{figure}
 
-Assegnato il vettore di configurazione $\bm{u}$, ogni
-vincolo posizionale si traduce in una o più equazioni
-lineari nelle componenti di $\bm{u}$. Raccogliendo
-tutte queste equazioni in forma matriciale si ottiene
-la \emph{matrice dei vincoli}\index{matrice dei vincoli|textbf} $\bm{A}$, che codifica
-simultaneamente la geometria del sistema e la struttura
-dei due problemi --- cinematico e statico --- che su
-di essa si fondano.
 
-\subsection{Struttura delle equazioni di vincolo}
-\label{sec:struttura_vincoli}
+\subsection{La formulazione generale}\label{sec:congruenza_generale}
 
-I vincoli posizionali studiati nel \CAPref{cap:vincoli_CR} impongono
+Le quattro equazioni di vincolo appena scritte per la Gerber
+condividono una struttura comune, che conviene ora isolare. 
+
+
+
+
+I vincoli  studiati nel \CAPref{cap:vincoli_CR} impongono
 relazioni \emph{lineari} tra le componenti di $\bm{u}$. Ogni
 equazione scalare di vincolo può essere scritta nella forma
 \begin{equation}\label{eq:vincolo_scalare}
@@ -168,23 +575,24 @@ scelto. La riga corrispondente di $\bm{A}$ è pertanto:
 
 \paragraph{Vincoli interni.}
 Un vincolo interno collega $\mathcal{C}_i$ a $\mathcal{C}_j$
-imponendo una condizione sul \emph{salto} dello spostamento
-$\llbracket\ub\rrbracket(A) \coloneqq \ub_j(A) - \ub_i(A)$:
+imponendo una condizione sullo spostamento relativo tra il punto $A$ visto come appartenente a $\Cc_i$ e come appartenente
+a $\Cc_j$:
 \begin{equation}\label{eq:vincolo_int_vett}
-	\llbracket\ub\rrbracket(A) \cdot \ab = s.
+\big(\ub_j(A) - \ub_i(A)\big) \cdot \ab = s.
 \end{equation}
 Applicando la condizione di rigidità~\eqref{eq:rigidita_i}
 separatamente ai due corpi e sottraendo:
-\begin{equation}\label{eq:vincolo_int_scal}
-	\llbracket\ub\rrbracket(A)\cdot\ab
-	= \bigl[\ub(O_j)\cdot\ab
+\begin{multline}\label{eq:vincolo_int_scal}
+\big(\ub_j(A) - \ub_i(A)\big)\cdot\ab
+	= \\
+	\bigl[\ub(O_j)\cdot\ab
 	+ \vartheta_j\,(\overrightarrow{O_j A}\times\ab)
 	\cdot\ab_z\bigr]
 	- \bigl[\ub(O_i)\cdot\ab
 	+ \vartheta_i\,(\overrightarrow{O_i A}\times\ab)
 	\cdot\ab_z\bigr]
 	= s.
-\end{equation}
+\end{multline}
 Il vettore di vincolo $\bm{a}_k$ ha ora supporto su due
 blocchi con segni opposti:
 \begin{multline}\label{eq:ak_interno}
@@ -260,54 +668,65 @@ $\bm{A}$ raccolte nella \TABref{tab:righe_A}.
 	$\vartheta_i$ e $\vartheta_j$ nella~\eqref{eq:ak_interno}
 	sono uguali e opposti.
 \end{oss}
-
-\begin{oss}[Vincoli interni come continuità con svincolo]
-	I vincoli interni possono essere reinterpretati in modo
-	unitario come vincoli di \emph{continuità} tra
-	$\mathcal{C}_i$ e $\mathcal{C}_j$, eventualmente
-	parzialmente rilasciati tramite uno \emph{svincolo}.
-	La continuità piena impone l'uguaglianza di tutti e tre
-	i parametri cinematici nel punto di connessione $A$:
-	\begin{equation}\label{eq:continuita_piena}
-		\llbracket\ub\rrbracket(A) = \bm{0}, \qquad
-		\llbracket\vartheta\rrbracket(A) = 0,
-	\end{equation}
-	corrispondenti a 3 equazioni scalari in $\mathbb{R}^2$
-	(2 traslazioni + 1 rotazione). Uno \emph{svincolo}
-	rilascia una o più di queste condizioni:
-	\begin{itemize}[noitemsep]
-		\item \textbf{cerniera interna}: svincolo rotazionale
-		($\llbracket\vartheta\rrbracket$ libero) --- restano 2 equazioni
-		scalari, la~\eqref{eq:vincolo_int_scal} con
-		$\ab = \ab_x$ e $\ab = \ab_y$;
-		\item \textbf{carrello interno} (asse $\ab$): svincolo
-		traslazionale nella direzione ortogonale ad $\ab$ e
-		svincolo rotazionale --- resta 1 equazione scalare,
-		la~\eqref{eq:vincolo_int_scal} con il versore $\ab$
-		dato;
-		\item \textbf{giunzione rigida} (incastro interno): nessuno svincolo ---
-		tutte e 3 le equazioni sono attive.
-	\end{itemize}
-	Nella matrice $\bm{A}$, ogni rilascio corrisponde
-	semplicemente all'assenza di una riga: la struttura
-	algebrica~\eqref{eq:ak_interno} rimane invariata,
-	cambia solo il numero di righe contribuite dal vincolo.
-	Questa prospettiva si generalizza in modo naturale ai
-	corpi deformabili, dove gli svincoli modellano
-	discontinuità fisiche --- come si vedrà nei volumi
-	successivi --- senza richiedere modifiche alla struttura
-	formale della trattazione.
-\end{oss}
-
-
-
+%
+%\begin{oss}[Vincoli interni come continuità con svincolo]
+%	I vincoli interni possono essere reinterpretati in modo
+%	unitario come vincoli di \emph{continuità} tra
+%	$\mathcal{C}_i$ e $\mathcal{C}_j$, eventualmente
+%	parzialmente rilasciati tramite uno \emph{svincolo}.
+%	La continuità piena impone l'uguaglianza di tutti e tre
+%	i parametri cinematici nel punto di connessione $A$:
+%	\begin{equation}\label{eq:continuita_piena}
+%		\llbracket\ub\rrbracket(A) = \bm{0}, \qquad
+%		\llbracket\vartheta\rrbracket(A) = 0,
+%	\end{equation}
+%	corrispondenti a 3 equazioni scalari in $\mathbb{R}^2$
+%	(2 traslazioni + 1 rotazione). Uno \emph{svincolo}
+%	rilascia una o più di queste condizioni:
+%	\begin{itemize}[noitemsep]
+%		\item \textbf{cerniera interna}: svincolo rotazionale
+%		($\llbracket\vartheta\rrbracket$ libero) --- restano 2 equazioni
+%		scalari, la~\eqref{eq:vincolo_int_scal} con
+%		$\ab = \ab_x$ e $\ab = \ab_y$;
+%		\item \textbf{carrello interno} (asse $\ab$): svincolo
+%		traslazionale nella direzione ortogonale ad $\ab$ e
+%		svincolo rotazionale --- resta 1 equazione scalare,
+%		la~\eqref{eq:vincolo_int_scal} con il versore $\ab$
+%		dato;
+%		\item \textbf{giunzione rigida} (incastro interno): nessuno svincolo ---
+%		tutte e 3 le equazioni sono attive.
+%	\end{itemize}
+%	Nella matrice $\bm{A}$, ogni rilascio corrisponde
+%	semplicemente all'assenza di una riga: la struttura
+%	algebrica~\eqref{eq:ak_interno} rimane invariata,
+%	cambia solo il numero di righe contribuite dal vincolo.
+%	Questa prospettiva si generalizza in modo naturale ai
+%	corpi deformabili, dove gli svincoli modellano
+%	discontinuità fisiche --- come si vedrà nei volumi
+%	successivi --- senza richiedere modifiche alla struttura
+%	formale della trattazione.
+%\end{oss}
+%
 
 
 
-\subsection{Congruenza del sistema: il problema cinematico}
-\label{sec:prob_cin}
 
-\textbf{Problema cinematico.}\index{problema cinematico|textbf}\index{problema cinematico|seealso{dualità}}
+
+
+\medskip
+
+%\paragraph{La matrice dei vincoli e il problema cinematico.}
+Impilando le $m$ equazioni di vincolo di un sistema qualunque ---
+ciascuna della forma $\bm{a}_k^\top\bm{u}=s_k$, con $\bm{a}_k^\top$
+costruita come nella \eqref{eq:vincolo_est_scal_SCR} o nella
+\eqref{eq:vincolo_int_scal_SCR} --- si ottiene la \emph{matrice dei
+	vincoli}\index{matrice dei vincoli|textbf} $\bm{A}\in\mathbb{R}^{m\times n}$
+e il \emph{vettore dei cedimenti}\index{cedimento|textbf}
+$\bm{s}=(s_1,\dots,s_m)^\top$, con $s_k=0$ per ogni vincolo perfetto.
+
+Formuliamo dunque il seguente problema.
+
+\subsection{Problema cinematico, in generale}\index{problema cinematico|textbf}\index{problema cinematico|seealso{dualità}}
 Dato un sistema di $n_c$ corpi rigidi $\mathcal{C}_i$
 ($i = 1, 2, \dots, n_c$) collegati fra loro e al suolo
 da $m$ vincoli, e assegnati i cedimenti $s_k$ di ciascun
@@ -317,9 +736,9 @@ dal vettore $\bm{u} \in \mathbb{R}^n$ --- che soddisfano
 simultaneamente:
 \begin{itemize}[noitemsep]
 	\item le \emph{equazioni di rigidità} di ciascun corpo,	che impongono che ogni corpo si muova come un solido
-	rigido (congruenza interna, \PARref{sec:struttura_vincoli});
+	rigido (congruenza interna);
 	\item le \emph{equazioni di vincolo}, che impongono che	gli spostamenti siano compatibili con i cedimenti
-	assegnati (congruenza esterna, \PARref{sec:struttura_vincoli}).
+	assegnati (congruenza esterna).
 \end{itemize}
 Una configurazione che è simultaneamente internamente
 congruente --- ovvero compatibile con il vincolo di
@@ -327,113 +746,615 @@ rigidità di ciascun corpo --- ed esternamente congruente
 --- ovvero compatibile con i cedimenti assegnati ai
 vincoli --- si dice \emph{cinematicamente ammissibile}\index{configurazione cinematicamente ammissibile}.
 
-Raccogliendo le $m$ equazioni
-scalari~\eqref{eq:vincolo_scalare} in forma matriciale,
-il \emph{problema cinematico del sistema vincolato} è:
-\begin{equation}\label{eq:prob_cin}
-	\boxed{\bm{A}\,\bm{u} = \bm{s},}
+Il problema cinematico si riduce dunque a determinare se esiste e se è unica la soluzione del seguente sistema lineare
+ \begin{equation}\label{eq:prob_cin_SCR}
+ 	\bm{A}\,\bm{u} = \bm{s}.
+ \end{equation}
+ Una configurazione che è simultaneamente internamente
+ congruente --- ovvero compatibile con il vincolo di
+ rigidità di ciascun corpo --- ed esternamente congruente
+ --- ovvero compatibile con i cedimenti assegnati ai
+ vincoli --- si dice \emph{cinematicamente ammissibile}\index{configurazione cinematicamente ammissibile}.
+
+
+
+
+%----------------------------------------------------------------------------
+\section{L'equilibrio del sistema}\label{sec:equilibrio_SCR}
+%----------------------------------------------------------------------------
+
+Passiamo alla statica. Anche qui la domanda relativa alle condizioni di equilibrio di un sistema
+di corpi si lascia scomporre in due
+richieste indipendenti, dello stesso tipo di quelle incontrate parlando
+di congruenza --- non a caso: è precisamente questa somiglianza che
+costruiremo, passo dopo passo, fino a renderla un teorema.
+
+La prima richiesta riguarda ancora ciascun corpo preso singolarmente, ed
+è interamente nota dal \CAPref{cap:statica_CR}: $\mathcal{C}_1$ dev'essere
+in equilibrio sotto l'insieme di tutte le azioni che riceve --- i carichi
+attivi \emph{e} le reazioni che gli vengono trasmesse dai vincoli, esterni
+e interni; lo stesso, sotto le proprie azioni, per $\mathcal{C}_2$. La
+seconda richiesta riguarda invece il modo in cui l'azione si trasmette
+attraverso un vincolo interno: per il principio di azione e reazione,
+ciò che $\mathcal{C}_1$ scambia con $\mathcal{C}_2$ nel punto di contatto
+è, per $\mathcal{C}_2$, esattamente l'opposto di ciò che $\mathcal{C}_2$
+scambia con $\mathcal{C}_1$ --- stessa retta di applicazione, stesso
+punto, intensità uguale e verso opposto. 
+
+%Più precisamente, possiamo formulare il problema statico come segue.
+%
+%\paragraph{Problema statico.}\index{problema statico|textbf}\index{problema statico|seealso{dualità}}
+%Dato un sistema di $n_c$ corpi vincolati, e assegnate le forze
+%attive applicate ai corpi  si
+%chiede di determinare, se esistono, le reazioni vincolari
+% che, insieme alle forze attive,
+%soddisfano simultaneamente:
+%\begin{itemize}[noitemsep]
+%	\item le condizioni di  \emph{equilibrio} di ciascun
+%	corpo $\mathcal{C}_i$, inteso come solido rigido
+%	soggetto alle forze attive e alle reazioni dei vincoli
+%	ad esso connessi;
+%	\item le \emph{condizioni di reazione}, che impongono
+%	che le reazioni siano orientate secondo i versori
+%	di vincolo.
+%\end{itemize}
+%Un sistema di reazioni che è simultaneamente equilibrato internamente
+%--- compatibile con l'equilibrio di ciascun corpo --- ed esternamente
+%--- diretto secondo i versori di vincolo --- si dice
+%\emph{staticamente ammissibile}\index{configurazione staticamente ammissibile}.
+
+%\tR{
+%
+%\paragraph{Problema statico.}\index{problema statico|textbf}\index{problema statico|seealso{dualità}}
+%Dato lo stesso sistema di $n_c$ corpi rigidi collegati da $m$ vincoli,
+%e assegnate le forze attive --- descritte dal vettore delle forze
+%generalizzate $\bm f\in\mathbb{R}^n$ --- si chiede di determinare, se
+%esistono, le reazioni vincolari --- descritte dal vettore
+%$\bm r\in\mathbb{R}^m$ --- che soddisfano simultaneamente:
+%\begin{itemize}[noitemsep]
+%	\item le \emph{equazioni di equilibrio} di ciascun corpo
+%	$\mathcal{C}_i$, inteso come solido rigido soggetto ai carichi
+%	attivi e alle reazioni dei vincoli ad esso connessi (equilibrio
+%	interno);
+%	\item le \emph{equazioni di reazione}, che impongono che ciascuna
+%	reazione sia diretta secondo il versore $\ab_k$ del vincolo cui è
+%	associata (equilibrio esterno).
+%\end{itemize}
+%Un sistema di reazioni che è simultaneamente equilibrato internamente
+%--- compatibile con l'equilibrio di ciascun corpo --- ed esternamente
+%--- diretto secondo i versori di vincolo --- si dice
+%\emph{staticamente ammissibile}\index{configurazione staticamente ammissibile}.
+%Il problema statico si riduce dunque a determinare se esiste ed è unica
+%la soluzione del sistema lineare
+%\begin{equation}\label{eq:prob_stat_SCR}
+%	\bm{B}\,\bm{r} = -\bm{f}, \qquad \bm{B}=\bm{A}^{\!\top}.
+%	\end{equation}}
+
+
+Come per la congruenza, conviene
+vedere subito queste due richieste all'opera su un caso esplicito, prima
+di scriverle in generale, ricordando che esistoni due modi per caratterizzare l'equilibrio e dunque per risolvere il problema statico.
+
+%----------------------------------------------------------------------------
+\subsection{Un caso esplicito: la trave di Gerber, letta due volte}\label{sec:gerber_equilibrio}
+%----------------------------------------------------------------------------
+
+Riprendiamo la Gerber di \FIGref{fig:gerber_motiv}, ora sotto un carico
+attivo: una forza $2F$, verticale e diretta verso il basso, applicata nel
+punto medio del tratto $AB$ di $\mathcal{C}_1$; una forza $F$, anch'essa
+verticale e verso il basso, applicata nel punto medio del tratto
+$CD$ di $\mathcal{C}_2$ (\FIGref{fig:gerber_carichi}). È lo stesso
+sistema, con la stessa geometria e la stessa cerniera interna in $C$, che
+abbiamo già letto in chiave cinematica: qui lo leggiamo in chiave
+statica, e fra poco energetica.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt, line width=0.8pt},
+		cint/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt, line width=0.8pt},
+		richiam/.style={thin, gray, dashed},
+		tacca/.style={thin, gray!70}]
+		
+		\def\a{1.0}
+		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+		
+		\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+		\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
+		
+		\node[above=2pt] at (0,0)       {$A$};
+		\node[above=2pt] at ({2*\a},0)  {$B$};
+		\node[above=2pt] at ({3*\a},0)  {$C$};
+		\node[above=2pt] at ({5*\a},0)  {$D$};
+		
+		\node at ({\a},  -0.32) {$\mathcal{C}_1$};
+		\node at ({4*\a},-0.32) {$\mathcal{C}_2$};
+		
+		%% cerniera in A
+		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+		\draw (-\gw,-\thA) -- (\gw,-\thA);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+		\node[nodo] at (0,0) {};
+		
+		%% carrello intermedio in B
+		\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+		\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+		\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+		\draw ({2*\a-\sr},0) arc(180:360:\sr);
+		
+		%% cerniera interna in C
+		\node[cint] at ({3*\a},0) {};
+		
+		%% carrello terminale in D
+		\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
+		\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+		\node[nodo] at ({5*\a},0) {};
+		
+		%% carico 2F nel punto medio di AB (x=a)
+		\draw[thin] (\a,0.05) -- (\a,-0.05);
+		\draw[->, thick] (\a,0.85) -- (\a,0.10)
+		node[right=3pt, pos=0] {$2F$};
+		
+		%% carico F nel punto medio di C_2 (x=4a)
+		\draw[thin] ({4*\a},0.05) -- ({4*\a},-0.05);
+		\draw[->, thick] ({4*\a},0.85) -- ({4*\a},0.10)
+		node[right=3pt, pos=0] {$F$};
+		
+		%% quotatura
+		\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
+		\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
+		\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
+		\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
+		
+		\draw[tacca] (0,     -1.55) -- (0,     -1.75);
+		\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
+		\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
+		\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
+		
+		\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
+		\node[above=0.04] at ({\a},   -1.65) {$2a$};
+		\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
+		\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
+		\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
+		\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
+		
+	\end{tikzpicture}
+	\caption{La trave di Gerber sotto carico attivo: una forza $2F$
+		verso il basso nel punto medio di $AB$, su $\mathcal{C}_1$, e
+		una forza $F$ verso il basso nel punto medio di $\mathcal{C}_2$.
+		Stesso sistema di \FIGref{fig:gerber_motiv}, qui nella lettura
+		statica.}
+	\label{fig:gerber_carichi}
+\end{figure}
+
+\paragraph{La lettura vettoriale.}
+Isoliamo i due corpi, esattamente come si farebbe per un corpo singolo,
+avendo cura di rendere esplicita anche l'azione mutua in $C$. Sulle
+reazioni esterne adottiamo la convenzione consueta, positive se dirette
+come gli assi: $(X_A,Y_A)$ in $A$ (cerniera, due componenti incognite),
+$Y_B$ in $B$ (carrello, reazione verticale), $Y_D$ in $D$ (carrello,
+reazione verticale). Sull'azione interna in $C$ introduciamo la coppia
+incognita $(X_C,Y_C)$, definita come l'azione che $\mathcal{C}_1$
+esercita su $\mathcal{C}_2$: per il principio di azione e reazione,
+l'azione che $\mathcal{C}_2$ esercita su $\mathcal{C}_1$ è allora,
+automaticamente, $(-X_C,-Y_C)$ --- non una nuova incognita, ma la stessa
+coppia già introdotta, con il segno cambiato.
+
+Cominciamo da $\mathcal{C}_1$, che vede il carico $2F$ in $x=a$, le reazioni
+esterne $(X_A,Y_A)$ e $Y_B$, e la reazione mutua in $C$ vista da
+$\mathcal{C}_1$ --- cioè, per quanto appena detto, $(-X_C,-Y_C)$: 
+\begin{align}
+& X_A - X_C = 0
+	\;\;\Longrightarrow\;\; X_A=0, \label{eq:eqC1_Fx}\\
+& Y_A + Y_B - Y_C - 2F = 0
+\;\;\Longrightarrow\;\; Y_A = \tfrac{3}{4}F, \label{eq:eqC1_Fy}\\
+	& Y_B\cdot 2a - 2F\cdot a - Y_C\cdot 3a = 0
+	\;\;\Longrightarrow\;\; Y_B = \tfrac{7}{4}F. \label{eq:eqC1_MA}\\
+	\end{align}
+
+Passiamo a $\mathcal{C}_2$, che vede solo il carico $F$ in $x=4a$, la
+reazione mutua $(X_C,Y_C)$ in $C$ e la reazione $Y_D$ in $D$:
+\begin{align}
+& X_C = 0, \label{eq:eqC2_Fx}\\
+& Y_C + Y_D - F = 0
+\;\;\Longrightarrow\;\; Y_C = \tfrac{1}{2}F, \label{eq:eqC2_Fy}\\
+	& Y_D\cdot 2a - F\cdot a = 0
+	\;\;\Longrightarrow\;\; Y_D = \tfrac{1}{2}F. \label{eq:eqC2_MC}\\
+	\end{align}
+
+Sei equazioni scalari, sei incognite --- tante quante i vincoli avevano
+imposto in chiave cinematica nella \SECref{sec:congruenza_SCR} --- e la
+soluzione è univoca:
+\begin{equation}\label{eq:reazioni_gerber}
+	X_A=0,\quad Y_A=\tfrac34 F,\quad Y_B=\tfrac74 F,\quad
+	X_C=0,\quad Y_C=\tfrac12 F,\quad Y_D=\tfrac12 F.
 \end{equation}
-dove $\bm{A} \in \mathbb{R}^{m\times n}$ è la
-\emph{matrice dei vincoli cinematici}\nomenclature[L]{$\bm{A}$}{matrice dei vincoli (cinematica) del sistema, $\bm{A}\in\mathbb{R}^{m\times n}$}, le cui righe sono
-i vettori di vincolo $\bm{a}_k^{\top}$, e
-$\bm{s} = (s_1, \dots, s_m)^{\top}$ è il
-\emph{vettore dei cedimenti}\nomenclature[L]{$\bm{s}$}{vettore dei cedimenti del sistema}, con $s_k = 0$ per ogni
-vincolo perfetto.
-
-La~\eqref{eq:prob_cin} è un sistema lineare di $m$ equazioni in $n = 3 n_c$ incognite. I risultati del \CAPref{app:applicazionilin_dualita} si
-applicano direttamente: la soluzione esiste se e solo se $\bm{s} \in \Ic(\bm{A})$; se esiste, l'insieme delle
-soluzioni è un sottospazio affine di dimensione	$g_\ell \coloneqq \nl(\bm{A}) = n - \rg(\bm{A})$, detto
-\emph{grado di labilità} del sistema; la parte omogenea	(con $\bm{s} = \bm{0}$) costituisce il $\Nc(\bm{A})$:
-lo spazio dei \emph{meccanismi}, cioè degli spostamenti	rigidi compatibili con tutti i vincoli perfetti.
-
-
-
-\begin{definizione}[Meccanismo e grado di labilità]
-	\label{def:meccanismo}
-	Si chiama \emph{meccanismo}\index{meccanismo|textbf}\index{meccanismo|seealso{labilità}} ogni vettore non nullo	$\bm{u} \in \Nc(\bm{A})$, ovvero ogni configurazione		cinematicamente ammissibile del sistema vincolato in assenza di cedimenti ($\bm{s} = \bm{0}$). Il numero
-	\begin{equation}
-		g_\ell \coloneqq \dim\Nc(\bm{A}) = n - \rg(\bm{A})
-	\end{equation}
-	è il \emph{grado di labilità}\index{labilita@labilità!grado di|textbf}\nomenclature[L]{$g_\ell$}{grado di labilità del sistema ($\dim\Nc(\bm{A})$)} del sistema.
-\end{definizione}
-
-
-%---------------------------------------------------------------------------------------------------------------------------- 
-\section{Il problema statico e il dualismo	\texorpdfstring{$\bm{B} = \bm{A}^{\top}$}{B = A\textasciicircum T}}\label{sec:dualismo}
-%---------------------------------------------------------------------------------------------------------------------------- 
-
-
-Il problema cinematico\index{dualita@dualità!cinematica--statica} $\bm{A}\bm{u} = \bm{s}$ descrive
-come il sistema cambia configurazione sotto i vincoli
-assegnati. 	Il problema duale --- determinare le reazioni che
-equilibrano le forze attive --- ha la stessa struttura
-matriciale, con la matrice $\bm{A}$ letta per colonne
-anziché per righe. Per costruire il problema statico
-occorre prima esprimere in forma vettoriale sia le
-forze attive sia le reazioni vincolari, raccogliendole
-nei rispettivi vettori di forze generalizzate.
-
-
-\subsection{Forze generalizzate delle forze attive}
-\label{sec:forze_gen}
-
-Nel \CAPref{cap:dualismo_CR} si è mostrato che il lavoro virtuale di un
-sistema di forze applicate a un corpo rigido piano dipende
-unicamente dalle grandezze globali: la risultante e il momento
-risultante. Per il corpo $\mathcal{C}_i$, con polo $O_i$,
-queste grandezze si raccolgono nel vettore delle
-\emph{forze generalizzate}:
-\begin{equation}\label{eq:f_i}
-	\bm{f}_i \coloneqq
-	\bigl(X_i\ Y_i\ \mu(O_i)\bigr)^{\!\top} \in \mathbb{R}^3,
-\end{equation}
-dove $X_i$ e $Y_i$ sono le componenti della risultante delle
-forze esterne applicate a $\mathcal{C}_i$ e $\mu(O_i)$ è il
-momento risultante rispetto al polo $O_i$. Il lavoro virtuale
-di queste forze per uno spostamento virtuale
-$\delta\bm{u}_i = (\delta u_i\,\ \delta v_i\,\ \delta\vartheta_i)^\top$
-del corpo $\mathcal{C}_i$ è (\CAPref{cap:dualismo_CR},
-\EQUref{eq:lavoro_piano}):
-\begin{equation}\label{eq:dW_i}
-	\delta\mathcal{W}_i = \bm{f}_i^{\top}\,\delta\bm{u}_i
-	= X_i\,\delta u_i + Y_i\,\delta v_i
-	+ \mu(O_i)\,\delta\vartheta_i.
-\end{equation}
-Raccogliendo i vettori di tutti gli $n_c$ corpi si ottiene
-il \emph{vettore globale delle forze generalizzate}\index{forze generalizzate|textbf}\nomenclature[L]{$\bm{f}$}{vettore (globale) delle forze generalizzate}:
-\begin{equation}\label{eq:f_glob}
-	\bm{f} \coloneqq
-	\bigl(
-	X_1\ Y_1\ \mu(O_1)\ \;\;
-	X_2\ Y_2\ \mu(O_2)\ \;\;
-	\cdots\ \;\;
-	X_{n_c}\ Y_{n_c}\ \mu(O_{n_c})
-	\bigr)^{\!\top}
-	\in \mathbb{R}^{n},
-\end{equation}
-e il lavoro virtuale totale del sistema di forze esterne si
-scrive in forma compatta come:
-\begin{equation}\label{eq:dW_tot}
-	\delta\mathcal{W} = \bm{f}^{\top}\,\delta\bm{u}.
-\end{equation}
-I vettori $\bm{f}$ e $\bm{u}$ hanno la stessa struttura a
-blocchi e sono \emph{duali} nel senso del \CAPref{cap:dualismo_CR}: il
-loro prodotto scalare ha il significato fisico di lavoro.
+Come verifica, si osservi che le sole tre equazioni cardinali
+dell'intero sistema, trattato come un unico blocco, sono anch'esse
+soddisfatte:
+\[
+\underbrace{Y_A+Y_B+Y_D-2F-F}_{\;=\;0}\;=\;0,
+\qquad
+\underbrace{Y_B\cdot 2a + Y_D\cdot 5a - 2F\cdot a - F\cdot 4a}_{\;=\;0}
+\;=\;0.
+\]
 
 \begin{oss}
-	Il momento risultante $\mu(O_i)$ dipende dalla scelta del
-	polo $O_i$. Un cambio di polo modifica $\mu(O_i)$ ma,
-	coerentemente, modifica anche i coefficienti di
-	$\vartheta_i$ nelle equazioni di vincolo
-	(Tabella~\ref{tab:righe_A}), in modo che il prodotto
-	$\bm{f}^\top\delta\bm{u}$ resti invariante. La struttura
-	duale non dipende dalla scelta del polo.
+	Le due equazioni globali appena verificate sono una conseguenza
+	necessaria dell'equilibrio, non una condizione sufficiente a
+	stabilirlo: bastano tre equazioni per l'intero sistema, contro le sei
+	che abbiamo dovuto scrivere corpo per corpo. È possibile costruire
+	configurazioni di forze che soddisfano le equazioni cardinali
+	dell'assieme --- risultante e momento risultante nulli, come se il
+	sistema fosse un unico corpo rigido --- pur non essendo affatto di
+	equilibrio per le singole parti.
 \end{oss}
 
 
-\subsection{Forze generalizzate delle reazioni vincolari}
-\label{sec:rea_eq}
+Mettiamo ora in forma matriciale le sei equazioni di equilibrio già
+risolte in \SECref{sec:gerber_equilibrio}, e confrontiamole con \eqref{eq:A_gerber_SCR}.
 
+
+Raccogliamo, corpo per corpo, risultante e momento (rispetto al polo)
+dei soli carichi attivi:
+\begin{equation}\label{eq:f_gerber}
+	\bm f = \{0\;\; -2F \;\;   -2Fa \;\; 0 \;\; -F \;\; -Fa\}^{\!\top},
+\end{equation}
+e le reazioni:
+\begin{equation}\label{eq:r_gerber}
+	\bm r = \{X_A  \;\;  Y_A \;\; Y_B \;\; X_C \;\; Y_C \;\; Y_D\}^{\!\top}.
+\end{equation}
+
+
+Le equazioni \eqref{eq:eqC2_Fx}--\eqref{eq:eqC1_Fy} sono le componenti
+di $\bm B\bm r=-\bm f$, con
+\begin{equation}\label{eq:B_gerber}
+	\bm B = \begin{bmatrix}
+		1 & 0 & 0 & -1 & 0  & 0 \\
+		0 & 1 & 1 & 0  & -1 & 0 \\
+		0 & 0 & 2a& 0  & -3a& 0 \\
+		0 & 0 & 0 & 1  & 0  & 0 \\
+		0 & 0 & 0 & 0  & 1  & 1 \\
+		0 & 0 & 0 & 0  & 0  & 2a
+	\end{bmatrix}.
+\end{equation}
+
+
+
+Osserviamo che, trasponendo \eqref{eq:A_gerber_SCR}, si ottiene esattamente
+$\bm B$:
+\begin{equation}\label{eq:dualismo_gerber}
+	\bm B = \bm A^{\!\top}.
+\end{equation}
+Non è un caso: mostreremo più avanti che questo vale sempre, per qualunque
+sistema e qualunque vincolo, e non solo per la Gerber.
+
+
+\paragraph{Soppesare le reazioni: la via del lavoro virtuale.}
+C'è un secondo modo di trovare le stesse sei reazioni, che non passa per
+la soluzione simultanea di un sistema di equazioni corpo per corpo. Nel capitolo sul corpo singolo, il lavoro virtuale
+serviva a \emph{caratterizzare} l'equilibrio, non a \emph{calcolare} una
+reazione. L'idea però è stessa già incontrata all'apertura della statica del
+corpo singolo, quando si osservava che un peso, prima ancora di posarlo
+su una bilancia, lo si \emph{soppesa}: gli si imprime uno spostamento e
+se ne valuta la fatica che costa. Qui facciamo lo stesso, non con un
+oggetto ma con un intero sistema.
+
+Il punto di partenza è ciò che già sappiamo dal
+\CAPref{cap:statica_CR}: un corpo rigido è in equilibrio se e solo se il
+lavoro virtuale delle forze su di esso applicate è nullo per \emph{ogni}
+moto rigido del corpo, non solo per un moto particolare. Sappiamo, dalla
+lettura vettoriale appena conclusa, che il sistema è in equilibrio: in
+particolare lo sono, separatamente, $\mathcal{C}_1$ e $\mathcal{C}_2$.
+Per il principio appena richiamato, applicato una volta a ciascuno, il
+lavoro delle forze su $\mathcal{C}_1$ è allora nullo per ogni moto rigido
+di $\mathcal{C}_1$, e lo stesso vale per $\mathcal{C}_2$ --- due
+affermazioni vere \emph{indipendentemente} l'una dall'altra, per due moti
+scelti anche a piacere e senza alcuna relazione fra loro.
+
+Scegliamo ora, fra tutti i moti possibili, quelli \emph{congruenti}: che
+rispettino cioè la cerniera in $C$, assegnando alle due travi lo stesso
+spostamento di quel punto (pur lasciandole libere di ruotare in modo
+diverso attorno ad esso). Sommando i due lavori --- entrambi nulli
+separatamente, dunque nulla anche la loro somma --- succede qualcosa di
+utile.
+
+\begin{oss}
+	Nella somma, il contributo della coppia di reazione mutua in $C$
+	scompare, qualunque sia il suo valore. Per il principio di azione e
+	reazione le due travi si scambiano in $C$ una forza uguale e
+	contraria; per la congruenza appena imposta, quel punto materiale
+	subisce, visto dall'una o dall'altra trave, \emph{lo stesso}
+	spostamento. Il lavoro che $\mathcal{C}_1$ compie su $\mathcal{C}_2$
+	attraverso quella reazione e il lavoro che $\mathcal{C}_2$ compie su
+$\mathcal{C}_1$ sono dunque uguali in modulo e opposti in segno: si
+elidono sempre, senza bisogno di conoscere la reazione stessa. 
+\end{oss}
+
+Nella somma restano dunque solo i carichi attivi e le reazioni
+\emph{esterne} --- quelle in $A$, $B$, $D$. Se scegliamo il moto
+congruente in modo che tutte le reazioni esterne tranne una restino
+ferme nel loro punto di applicazione, la richiesta che il \textit{lavoro totale} --- somma 
+di quello compiuto dalle forze attive e da quelle reattive --- sia nullo coinvolge una sola incognita, e la determina. Un moto congruente
+di questo tipo si costruisce sopprimendo, solo concettualmente, il
+vincolo che a quella reazione corrisponde: il sistema, con un vincolo in
+meno, guadagna un grado di libertà, e i moti congruenti compatibili con
+i vincoli rimasti sono esattamente la famiglia a un parametro che serve.
+Vediamola funzionare due volte sulla Gerber.
+
+\medskip
+
+\emph{Reazione $Y_D$} (\FIGref{fig:gerber_mecc_D}). Sopprimiamo il
+carrello in $D$. Su $\mathcal{C}_1$ restano cerniera in $A$ e carrello in
+$B$: due vincoli che, da soli, bloccano completamente un corpo rigido
+piano (tre condizioni per tre parametri), sicché $\mathcal{C}_1$ non ha
+alcun moto congruente disponibile all'infuori di quello nullo, e in
+particolare il punto $C$ resta fermo. La cerniera interna impone allora
+che anche $\mathcal{C}_2$ passi per $C$ restando fermo in quel punto:
+l'unico moto congruente residuo è una rotazione rigida di
+$\mathcal{C}_2$ attorno a $C$, di ampiezza $\vartheta_2$ (presa positiva
+se antioraria, come sempre). Essendo $C$ e $D$ sull'asse della trave, lo
+spostamento verticale di un punto di $\mathcal{C}_2$ a distanza $d$ da
+$C$ vale, per la formula fondamentale della cinematica rigida, $d\,
+\vartheta_2$; in particolare
+\[
+v(D) = 2a\,\vartheta_2, \qquad v(4a) = a\,\vartheta_2,
+\]
+dove $v(4a)$ è lo spostamento del punto di applicazione del carico $F$.
+Le reazioni in $A$ e $B$ non compiono lavoro, essendo $\mathcal{C}_1$
+fermo; la reazione mutua in $C$ nemmeno, per l'\hyperref[]{osservazione}
+appena fatta. Restano il carico $F$, verso il basso, e la reazione
+incognita $Y_D$, verso l'alto per come l'abbiamo definita: il lavoro
+totale nullo dà
+\begin{equation}\label{eq:sopp_YD}
+Y_D\cdot\bigl(2a\,\vartheta_2\bigr) \;-\; F\cdot\bigl(a\,
+\vartheta_2\bigr) \;=\; 0
+\quad\Longrightarrow\quad Y_D = \tfrac12 F,
+\end{equation}
+essendo $\vartheta_2$ arbitrario e non nullo. È lo stesso valore già
+trovato in \eqref{eq:eqC2_MC}, per una strada del tutto diversa.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+nodo/.style={circle, fill=white, draw=black,
+	inner sep=0pt, minimum size=5pt, line width=0.8pt},
+cint/.style={circle, fill=white, draw=black,
+	inner sep=0pt, minimum size=6pt, line width=0.8pt},
+fantasma/.style={thin, gray, dashed},
+tacca/.style={thin, gray!70}]
+
+\def\a{1.0}
+\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+
+%% riferimento indeformato, tratteggiato
+\draw[fantasma] (0,0) -- ({5*\a},0);
+
+%% configurazione del meccanismo: C1 fermo, C2 ruotato attorno a C
+\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},-0.6);
+
+\node[above=2pt] at (0,0)      {$A$};
+\node[above=2pt] at ({2*\a},0) {$B$};
+\node[above=2pt] at ({3*\a},0) {$C$};
+\node[below right=1pt] at ({5*\a},-0.6) {$D$};
+
+\node at ({1.4*\a},0.28)  {$\mathcal{C}_1$};
+\node at ({4.3*\a},-0.2)   {$\mathcal{C}_2$};
+
+%% angolo virtuale theta_2 in C
+\draw[tacca] ({3.2*\a-0.35},0) -- ({3.2*\a+0.35},0);
+\draw[thin] ({3.2*\a+0.3},0) arc (0:-16.7:0.3);
+\node[right=1pt] at ({3*\a+0.32},-0.4) {$\vartheta_2$};
+
+%% cerniera in A e carrello in B, invariati
+\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+\draw (-\gw,-\thA) -- (\gw,-\thA);
+\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+\node[nodo] at (0,0) {};
+
+\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+\draw ({2*\a-\sr},0) arc(180:360:\sr);
+
+\node[cint] at ({3*\a},0) {};
+
+%% carrello in D soppresso: fantasma nella posizione originaria
+\draw[fantasma] ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+\node[gray, above=2pt] at ({5*\a},0) {\footnotesize(soppresso)};
+\node[nodo] at ({5*\a},-0.6) {};
+
+%% reazione incognita Y_D, verso l'alto, applicata nel punto attuale
+\draw[-{Latex[length=2.8mm]}, thick] ({5*\a},-1.2) -- ({5*\a},-0.65);
+\node[below=2pt] at ({5*\a},-0.95) {$Y_D$};
+
+%% carico F, verso il basso, applicato nel punto attuale
+\draw[-{Latex[length=2.8mm]}, thick] ({4*\a},0.7) -- ({4*\a},0.1);
+\node[right=2pt] at ({3.4*\a},0.5) {$F$};
+
+\end{tikzpicture}
+\caption{Il meccanismo usato per determinare $Y_D$: si sopprime
+(concettualmente) il carrello in $D$, in grigio nella sua posizione
+originaria. Cerniera in $A$ e carrello in $B$ bloccano
+$\mathcal{C}_1$, che resta fermo; $\mathcal{C}_2$ è allora libero di
+ruotare, di un angolo virtuale $\vartheta_2$, attorno al punto fisso
+$C$. Solo $F$ e la reazione incognita $Y_D$ compiono lavoro in
+questo moto.}
+\label{fig:gerber_mecc_D}
+\end{figure}
+
+\medskip
+
+\emph{Reazione $Y_B$} (\FIGref{fig:gerber_mecc_B}). Sopprimiamo invece il
+carrello in $B$, lasciando intatti gli altri tre vincoli. Su
+$\mathcal{C}_1$ resta la sola cerniera in $A$: $\mathcal{C}_1$ è libero
+di ruotare, di un angolo virtuale $\vartheta_1$, attorno ad $A$; il punto
+$C$, a distanza $3a$ da $A$, si sposta allora di $v(C) = 3a\,
+\vartheta_1$. Per congruenza questo è anche lo spostamento verticale di
+$C$ come punto di $\mathcal{C}_2$. Ma il carrello in $D$ non è stato
+toccato, $v(D)=0$: $\mathcal{C}_2$ deve dunque accompagnare il moto con
+una propria rotazione $\vartheta_2$ attorno a $C$, tale che
+\[
+v(D) = 3a\,\vartheta_1 + 2a\,\vartheta_2 = 0
+\quad\Longrightarrow\quad
+\vartheta_2 = -\tfrac32\,\vartheta_1 .
+\]
+Con questa relazione fra le due rotazioni, il meccanismo ha un solo
+parametro libero, $\vartheta_1$ --- esattamente quanti gradi di libertà
+si guadagnano sopprimendo un solo vincolo. Gli spostamenti verticali dei
+punti che interessano sono allora
+\[
+v(B) = 2a\,\vartheta_1, \qquad
+v(a) = a\,\vartheta_1, \qquad
+v(4a) = 3a\,\vartheta_1 + a\,\vartheta_2 = \tfrac32 a\,\vartheta_1,
+\]
+dove $v(a)$ e $v(4a)$ sono gli spostamenti dei punti di applicazione,
+rispettivamente, di $2F$ e di $F$. Il lavoro totale nullo dà, con la
+sola incognita $Y_B$,
+\begin{equation}\label{eq:sopp_YB}
+Y_B\cdot\bigl(2a\,\vartheta_1\bigr)
+\;-\; 2F\cdot\bigl(a\,\vartheta_1\bigr)
+\;-\; F\cdot\bigl(\tfrac32 a\,\vartheta_1\bigr) = 0
+\quad\Longrightarrow\quad Y_B = \tfrac74 F,
+\end{equation}
+di nuovo lo stesso valore già trovato in \eqref{eq:eqC1_MA}.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+nodo/.style={circle, fill=white, draw=black,
+	inner sep=0pt, minimum size=5pt, line width=0.8pt},
+cint/.style={circle, fill=white, draw=black,
+	inner sep=0pt, minimum size=6pt, line width=0.8pt},
+fantasma/.style={thin, gray, dashed},
+tacca/.style={thin, gray!70}]
+
+\def\a{1.0}
+\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+
+%% riferimento indeformato, tratteggiato
+\draw[fantasma] (0,0) -- ({5*\a},0);
+
+%% configurazione del meccanismo
+\draw[line width=2.2pt] (0,0) -- ({3*\a},-0.9);
+\draw[line width=2.2pt] ({3*\a},-0.9) -- ({5*\a},0);
+
+\node[above=2pt] at (0,0)             {$A$};
+%\node[below=3pt] at ({2*\a},-0.6)     {$B$};
+\node[below=3pt] at ({3*\a},-0.9)     {$C$};
+\node[above=2pt] at ({5*\a},0)        {$D$};
+
+%\node at ({1*\a},-0.15)  {$\mathcal{C}_1$};
+%\node at ({4*\a},-0.6)   {$\mathcal{C}_2$};
+
+%% angolo virtuale theta_1 in A
+\draw[tacca] (0,0) -- (0.9,0);
+\draw[thin] (0.75,0) arc (0:-16.7:0.75);
+\node[below right=1pt] at (0.9,.09) {$\vartheta_1$};
+
+%% angolo virtuale theta_2 in C, contro una tacca locale orizzontale
+\draw[tacca] ({3*\a-0.4},-0.9) -- ({3*\a+0.4},-0.9);
+\draw[thin] ({3*\a+0.35},-0.9) arc (0:24.2:0.35);
+\node[above right=1pt] at ({3*\a+0.4},-1.1) {$\vartheta_2$};
+
+%% cerniera in A, invariata
+\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+\draw (-\gw,-\thA) -- (\gw,-\thA);
+\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+\node[nodo] at (0,0) {};
+
+%% carrello in B soppresso: fantasma nella posizione originaria
+\draw[fantasma] ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+\node[gray, above=2pt] at ({2*\a},0) {\footnotesize(soppresso)};
+%\node[nodo] at ({2*\a},-0.6) {};
+
+%% cerniera interna, nella posizione attuale
+\node[cint] at ({3*\a},-0.9) {};
+
+%% carrello in D, invariato (coincide con la posizione di riferimento)
+\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
+\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
+\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
+\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
+\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+\node[nodo] at ({5*\a},0) {};
+
+%% reazione incognita Y_B, applicata nel punto attuale
+\draw[-{Latex[length=2.8mm]}, thick] ({2*\a},-1.2) -- ({2*\a},-0.6);
+\node[below=2pt] at ({1.7*\a},-0.85) {$Y_B$};
+
+%% carichi attivi, applicati nei punti attuali
+\draw[-{Latex[length=2.8mm]}, thick] ({1*\a},0.65) -- ({1*\a},0.1);
+\node[right=2pt] at ({0.2*\a},0.5) {$2F$};
+
+\draw[-{Latex[length=2.8mm]}, thick] ({4*\a},0.6) -- ({4*\a},0.1);
+\node[right=2pt] at ({4*\a},0.5) {$F$};
+
+\end{tikzpicture}
+\caption{Il meccanismo usato per determinare $Y_B$: si sopprime il
+carrello in $B$. $\mathcal{C}_1$ ruota di $\vartheta_1$ attorno alla
+cerniera in $A$; $\mathcal{C}_2$ accompagna il moto ruotando di
+$\vartheta_2=-\tfrac32\vartheta_1$ attorno a $C$, in modo da lasciare
+fermo il punto $D$, dove il carrello non è stato toccato.}
+\label{fig:gerber_mecc_B}
+\end{figure}
+
+Le rimanenti reazioni --- $X_A$, $X_C$ (nulle, in assenza di carichi
+orizzontali) e $Y_A$, $Y_C$ --- si trovano allo stesso modo, con un
+proprio meccanismo ciascuna. In alternativa, è anche possibile sopprimere \textit{tutti}
+i vincoli e studiare il più generico meccanismo che ne consegue, determinando il 
+lavoro totale. 
+
+Due strade dunque, concettualmente lontane --- l'una che bilancia forze
+e momenti corpo per corpo, l'altra che soppesa un vincolo alla volta con
+un meccanismo e un'equazione di lavoro --- portano, sulla stessa
+struttura, esattamente alle stesse sei reazioni. 
+
+
+
+
+
+\subsection{Il problema statico, in generale.}\index{problema statico|textbf}
+Generalizziamo ora a un sistema qualunque di $n_c$ corpi e $m$ vincoli
+quanto visto nel caso della trave di Gerber. Le forze attive su
+ciascun corpo $\mathcal C_i$ si raccolgono, come già fatto per il
+corpo singolo (\CAPref{cap:statica_CR}), nel blocco
+\begin{equation}
+	\bm f_i \coloneqq \bigl(F_{ix} \;\; F_{iy}  \;\; C_i\bigr)^{\!\top}\in\mathbb R^3,
+\end{equation}
+risultante e momento risultante dei soli carichi attivi su
+$\mathcal C_i$; l'insieme delle forze attive su tutto il sistema forma
+il vettore
+\begin{equation}
+	\bm f \coloneqq (\bm f_1\;\dots\;\bm f_{n_c})^{\!\top}\in\mathbb R^n,
+	\qquad n=3n_c.
+\end{equation}
 Le reazioni vincolari\nomenclature[L]{$\bm{r}$}{vettore delle reazioni vincolari (intensità scalari $R_k$)} costituiscono il vettore
 $\bm{r} \in \mathbb{R}^{m}$:
 \begin{equation}
@@ -441,18 +1362,29 @@ $\bm{r} \in \mathbb{R}^{m}$:
 	\bigl(R_1\ R_2 \ \dots\ R_m\bigr)^{\!\top},
 \end{equation}
 dove ogni $R_k$ è l'intensità scalare della reazione associata
-alla $k$-esima equazione di vincolo. Per ricavare il contributo
-di $R_k$ all'equilibrio del sistema, si segue lo stesso
-percorso del problema cinematico: prima la condizione
-vettoriale, poi la condizione di rigidità.
+alla $k$-esima equazione di vincolo.
+\medskip
 
+Per ricavare il contributo di $R_k$ all'equilibrio del sistema
+seguiamo, come nel problema cinematico, due passi: prima la
+condizione vettoriale --- la forza applicata in un punto --- poi la
+condizione di rigidità --- il trasporto di quella forza al polo
+scelto per il corpo.
 
-\paragraph{Vincolo esterno.}
 La reazione del $k$-esimo vincolo esterno (carrello di asse
-$\ab$) agisce sul corpo $\mathcal{C}_i$ come una forza
-$R_k\,\ab$ applicata nel punto $A$. Essa contribuisce alle
-forze generalizzate di $\mathcal{C}_i$ con risultante
-$R_k\,\ab$ e con momento rispetto al polo $O_i$
+$\ab$) agisce sul corpo $\mathcal{C}_i$ come una forza concentrata
+$R_k\,\ab$ applicata nel punto $A$: questa è la condizione
+vettoriale, che a questo stadio non dice nulla sull'equilibrio del
+corpo nel suo insieme, ma solo sulla forza e sul punto in cui è
+applicata. Per la rigidità di $\mathcal{C}_i$, l'effetto di questa
+forza sull'equilibrio del corpo è interamente descritto dal suo
+risultante $R_k\,\ab$ e dal suo momento rispetto a un polo
+qualsiasi --- in particolare rispetto al polo $O_i$ già scelto per
+la descrizione cinematica di $\mathcal{C}_i$. Questo trasporto è
+lecito proprio perché $\mathcal{C}_i$ è rigido, ed è l'analogo
+statico del trasporto dello spostamento dal polo $O_i$ al punto $A$
+usato nella formula fondamentale del moto rigido. Il momento di
+$R_k\,\ab$ rispetto a $O_i$ vale
 \begin{equation*}
 	\bigl(\overrightarrow{O_i A} \times R_k\,\ab\bigr)
 	\cdot\ab_z
@@ -461,7 +1393,7 @@ $R_k\,\ab$ e con momento rispetto al polo $O_i$
 Raccogliendo le tre componenti relative a $\mathcal{C}_i$
 nel vettore
 \begin{equation}\label{eq:aki_def}
-	\bm{a}_k^{(i)} \coloneqq
+	\bm{b}_k^{(i)} \coloneqq
 	\begin{Bmatrix}
 		a_x \\[3pt] a_y \\[3pt]
 		x_i(A)\,a_y - y_i(A)\,a_x
@@ -477,31 +1409,35 @@ generalizzate di $\mathcal{C}_i$ assume la forma compatta
 		R_k\,a_y \\[3pt]
 		R_k\,\bigl(x_i(A)\,a_y - y_i(A)\,a_x\bigr)
 	\end{Bmatrix}
-	= R_k\,\bm{a}_k^{(i)}.
+	= R_k\,\bm{b}_k^{(i)}.
 \end{equation}
-Si riconosce che $\bm{a}_k^{(i)}$ coincide con il blocco
-$i$-esimo non nullo della~\eqref{eq:ak_esterno}, costruita
-per il problema cinematico: il contributo della reazione
-$R_k$ all'equilibrio di $\mathcal{C}_i$ è dunque governato
-dallo \emph{stesso} vettore che, nella cinematica, codifica
-la direzione dello spostamento vincolato. Questo è il
-contenuto geometrico del dualismo.
+Il vettore $\bm{b}_k^{(i)}$ è stato costruito qui in modo del
+tutto indipendente, a partire dalla sola definizione di momento
+di una forza. Ma, per calcolo diretto, $\bm{b}_k^{(i)}$ coincide
+componente per componente con il blocco $i$-esimo non nullo del
+vettore $\bm{a}_k^{(i)}$ definito nella~\eqref{eq:ak_esterno} per
+il problema cinematico: la stessa combinazione
+$x_i(A)\,a_y - y_i(A)\,a_x$ vi compariva infatti come coefficiente
+della rotazione $\vartheta_i$ nella proiezione su $\ab$ dello spostamento di $A$. Da qui in avanti scriviamo dunque semplicemente
+$\bm{a}_k^{(i)}$ anche per il blocco statico, intendendo che si
+tratta, per calcolo, dello stesso vettore già introdotto in
+cinematica.
+\medskip
 
+Per un vincolo interno tra $\mathcal{C}_i$ e $\mathcal{C}_j$ lo
+stesso ragionamento si applica a entrambi i corpi: la reazione agisce come una forza
+$R_k\,\ab$ applicata in $A$ su $\mathcal{C}_j$ e come una forza
+$-R_k\,\ab$ applicata nello stesso punto su $\mathcal{C}_i$.
+Trasportando ciascuna delle due al proprio polo --- $O_j$ e $O_i$
+rispettivamente --- con lo stesso argomento di rigidità appena
+usato, si ottengono i contributi $+R_k\,\bm{a}_k^{(j)}$ e
+$-R_k\,\bm{a}_k^{(i)}$, che riproducono esattamente la struttura
+a due blocchi di segno opposto già incontrata
+nella~\eqref{eq:ak_interno}.
+\bigskip
 
-\paragraph{Vincolo interno.}
-Per un vincolo interno tra $\mathcal{C}_i$ e $\mathcal{C}_j$,
-la reazione $R_k$ agisce su $\mathcal{C}_j$ con segno positivo
-e su $\mathcal{C}_i$ con segno negativo (terzo principio della
-dinamica). Il contributo alle forze generalizzate dei due corpi
-riproduce esattamente la struttura~\eqref{eq:ak_interno}:
-blocco $j$ con segno $+$ e blocco $i$ con segno $-$.
-
-
-\subsection{Equilibrio del sistema: il problema statico}
-\label{sec:prob_stat}
-
-\textbf{Problema statico.}\index{problema statico|textbf}\index{problema statico|seealso{dualità}}
-Dato lo stesso sistema vincolato, e assegnate le forze
+Possiamo quindi ora formulare il problema statico in termini
+algebrici. Dato un sistema vincolato, e assegnate le forze
 attive applicate ai corpi --- descritte dal vettore delle
 forze generalizzate $\bm{f} \in \mathbb{R}^n$ --- si
 chiede di determinare, se esistono, le reazioni vincolari
@@ -513,8 +1449,8 @@ soddisfano simultaneamente:
 	soggetto alle forze attive e alle reazioni dei vincoli
 	ad esso connessi;
 	\item le \emph{condizioni di reazione}, che impongono
-	che le reazioni siano orientate secondo i versori
-	di vincolo $\bm{a}_k$.
+	che le reazioni siano orientate secondo i rispettivi
+	versori di vincolo $\ab$.
 \end{itemize}
 Un sistema di reazioni che soddisfa entrambe le condizioni
 si dice \emph{equilibrato}.
@@ -527,35 +1463,34 @@ reazioni vincolari con quello delle forze attive:
 	\bm{B}\,\bm{r} + \bm{f} = \bm{0},
 \end{equation}
 dove $\bm{B} \in \mathbb{R}^{n \times m}$ è la
-\emph{matrice di equilibrio}\index{matrice di equilibrio|textbf}\index{matrice di equilibrio|seealso{matrice dei vincoli}}\nomenclature[L]{$\bm{B}$}{matrice di equilibrio del sistema ($\bm{B}=\bm{A}^\top$)} del sistema vincolato.
-Il \emph{problema statico del sistema vincolato} è quindi:
-\begin{equation}\label{eq:prob_stat}
-	\boxed{\bm{B}\,\bm{r} = -\bm{f},}
-\end{equation}
+\emph{matrice di equilibrio}\index{matrice di equilibrio|textbf}\index{matrice di equilibrio|seealso{matrice dei vincoli}}\nomenclature[L]{$\bm{B}$}{matrice di equilibrio del sistema} del sistema vincolato.
+Il \emph{problema statico del sistema vincolato} è rappresentato da
 un sistema lineare di $n = 3 n_c$ equazioni in $m$
-incognite. I risultati del \CAPref{app:applicazionilin_dualita}  si applicano
-direttamente: la soluzione esiste se e solo se
-$\bm{f} \in \Ic(\bm{B})$; se esiste, l'insieme delle
-soluzioni è un sottospazio affine di dimensione
-$g_i \coloneqq \nl(\bm{B}) = m - \rg(\bm{B})$,
-detto \emph{grado di iperstaticità}\index{iperstaticita@iperstaticità!grado di|textbf}\nomenclature[L]{$g_i$}{grado di iperstaticità del sistema ($\dim\Nc(\bm{A}^\top)$)} del sistema; la parte
-omogenea (con $\bm{f} = \bm{0}$) costituisce il
-$\Nc(\bm{B})$: lo spazio degli \emph{stati di
-	autoequilibrio}, cioè delle reazioni che equilibrano il
-sistema in assenza di forze attive.  Per ispezione diretta,
-confrontando i coefficienti della $k$-esima colonna di
-$\bm{B}$ --- calcolati nella~\eqref{eq:contrib_rea_vett}
---- con i coefficienti della $k$-esima riga di $\bm{A}$
---- dati dalla~\eqref{eq:ak_esterno} ---  si riconosce
-che le due coincidono: questo \emph{anticipa per ispezione}
-il dualismo $\bm{B} = \bm{A}^{\top}$, che nel \CAPref{cap:TLV}
-sarà ricondotto alla struttura bilineare del lavoro virtuale.
+incognite.
 
-
+Riassumendo quanto appena osservato caso per caso --- per i
+vincoli esterni nella~\eqref{eq:contrib_rea_vett}, per quelli
+interni con lo stesso argomento applicato ai due corpi --- ogni
+colonna $k$-esima di $\bm{B}$ coincide con la riga $k$-esima di
+$\bm{A}$. In altre parole,
+\begin{equation}
+	\bm{B} = \bm{A}^{\top}.
+\end{equation}
+La matrice di equilibrio $\bm{B}$ è dunque l'aggiunta di
+$\bm{A}$, e il problema statico è duale di quello cinematico.
+Non è una coincidenza: è la conseguenza diretta del fatto che
+la stessa geometria di vincolo --- la posizione del punto $A$
+rispetto al polo $O_i$ e la direzione $\ab$ --- entra, tramite
+lo stesso prodotto vettoriale $(A-O_i)\times\ab$, sia nella
+componente di spostamento che il vincolo consente o proibisce
+(lettura cinematica), sia nella componente di forza che la
+reazione trasmette (lettura statica): la medesima geometria,
+letta in un verso, descrive uno spostamento consentito; letta
+nel verso opposto, descrive una forza trasmessa.
 
 Lo schema del \CAPref{app:applicazionilin_dualita} (Figura~\ref{fig:duale}),
 che rappresentava la dualità in chiave puramente
-algebrica, si arricchisce ora di un contenuto meccanico
+algebrica, si arricchisce ora di questo contenuto meccanico
 preciso. Nella Figura~\ref{fig:duale_mec} le righe
 corrispondono alle $m$ equazioni di vincolo e le colonne
 alle $n$ componenti del vettore di configurazione
@@ -569,11 +1504,7 @@ noto è il cedimento $s_k$. Letto \emph{per colonne},
 lo stesso $a_{ku_j}$ è il contributo della reazione $R_k$
 all'equazione di equilibrio associata a $u_j$: la colonna
 intera è la riga $j$-esima di $\bm{A}^\top$ e il termine
-noto è $-X_j$. La tabella rende quindi visibile che
-cinematica e statica sono governate dalla \emph{stessa}
-matrice, letta in direzioni opposte.
-
-
+noto è $-X_j$.
 \begin{figure}[htbp]
 	\centering
 	\renewcommand{\arraystretch}{1.3}
@@ -602,19 +1533,11 @@ matrice, letta in direzioni opposte.
 		statico $\bm{B}\,\bm{r}=-\bm{f}$.}
 	\label{fig:duale_mec}
 \end{figure}
-
-
-Questo non è una coincidenza: è la conseguenza diretta del
-fatto che la stessa geometria di vincolo --- codificata nelle
-righe $\bm{a}_k^\top$ di $\bm{A}$ --- determina simultaneamente
-la direzione dello spostamento vincolato (cinematica) e la
-direzione della forza reattiva (statica). La
-Figura~\ref{fig:duale_mec} rende questa simmetria visibile
-in forma schematica: è la rilettura meccanica dello schema
-di dualità del \CAPref{app:applicazionilin_dualita}, con le grandezze astratte
-$x_j$, $y_i$, $b_i$, $c_j$ sostituite dalle loro
+La Figura~\ref{fig:duale_mec} rende dunque visibile, in forma
+schematica, la rilettura meccanica dello schema di dualità del
+\CAPref{app:applicazionilin_dualita}: le grandezze astratte
+$x_j$, $y_i$, $b_i$, $c_j$ sono qui sostituite dalle loro
 controparti fisiche $u_j$, $R_k$, $s_k$, $-X_j$.
-
 \begin{oss}
 	Il significato del caso $a_{ku_j} = 0$ --- e
 	analogamente per $a_{kv_j} = 0$ e
@@ -630,11 +1553,616 @@ controparti fisiche $u_j$, $R_k$, $s_k$, $-X_j$.
 	trasmette forza in quella direzione. Le due letture
 	sono inseparabili: un vincolo che non sente uno
 	spostamento non può trasmettergli una forza, e
-	viceversa. Questo è il contenuto fisico
-	dell'ortogonalità tra $\Nc(\Abb)$ e $\Ic(\bm{B})$,
-	conseguenza diretta del dualismo $\bm{B} = \bm{A}^{\top}$
-	appena dimostrato.
+	viceversa.
 \end{oss}
+
+
+% I risultati del \CAPref{app:applicazionilin_dualita}  si applicano
+%direttamente: la soluzione esiste se e solo se
+%$\bm{f} \in \Ic(\bm{B})$; se esiste, l'insieme delle
+%soluzioni è un sottospazio affine di dimensione
+%$g_i \coloneqq \nl(\bm{B}) = m - \rg(\bm{B})$,
+%detto \emph{grado di iperstaticità}\index{iperstaticita@iperstaticità!grado di|textbf}\nomenclature[L]{$g_i$}{grado di iperstaticità del sistema ($\dim\Nc(\bm{A}^\top)$)} del sistema; la parte
+%omogenea (con $\bm{f} = \bm{0}$) costituisce il
+%$\Nc(\bm{B})$: lo spazio degli \emph{stati di
+%	autoequilibrio}, cioè delle reazioni che equilibrano il
+%sistema in assenza di forze attive.  Per ispezione diretta,
+%confrontando i coefficienti della $k$-esima colonna di
+%$\bm{B}$ --- calcolati nella~\eqref{eq:contrib_rea_vett}
+%--- con i coefficienti della $k$-esima riga di $\bm{A}$
+%--- dati dalla~\eqref{eq:ak_esterno} ---  si riconosce
+%che le due coincidono: questo \emph{anticipa per ispezione}
+%il dualismo $\bm{B} = \bm{A}^{\top}$, che nel \CAPref{cap:TLV}
+%sarà ricondotto alla struttura bilineare del lavoro virtuale.
+
+
+
+\paragraph{Il principio dei lavori virtuali.}\index{principio dei lavori virtuali!per un sistema di corpi rigidi|textbf}
+Il problema statico appena introdotto ammette una riformulazione
+equivalente in termini di lavoro virtuale, che generalizza al
+sistema il principio dei lavori virtuali già stabilito per il
+singolo corpo rigido (\CAPref{cap:statica_CR}): un corpo rigido
+soggetto a un sistema di forze --- attive e reattive insieme ---
+è equilibrato se e solo se il lavoro virtuale di tali forze è
+nullo per ogni atto di moto rigido virtuale del corpo, comunque
+scelto, senza alcun vincolo di congruenza.
+\medskip
+
+Applichiamo questo principio a ciascun corpo $\mathcal C_i$ del
+sistema. Il risultante generalizzato delle forze --- attive e
+reattive --- su $\mathcal C_i$ è, per costruzione, il blocco
+$i$-esimo $(\bm B\bm r+\bm f)_i\in\mathbb R^3$ del vettore
+assemblato nella~\eqref{eq:eq_globale}; il lavoro virtuale delle
+forze su $\mathcal C_i$, per un atto di moto rigido virtuale
+$\bm u_i\in\mathbb R^3$ del corpo, è dunque
+\begin{equation}
+	\Wc_i[\bm u_i]\coloneqq(\bm B\bm r+\bm f)_i\cdot \bm u_i.
+\end{equation}
+Per il principio dei lavori virtuali del corpo singolo,
+\begin{equation}
+	\mathcal C_i \text{ è equilibrato} \iff
+	\Wc_i[\bm u_i] = 0
+	\quad \forall\,\bm u_i\in\mathbb R^3.
+\end{equation}
+Per definizione (si veda il paragrafo precedente), il sistema è
+equilibrato se e solo se ciascun corpo $\mathcal C_i$,
+$i=1,\dots,n_c$, è individualmente equilibrato; dunque
+\begin{equation}\label{eq:plv_percorpo}
+	\text{sistema equilibrato} \iff
+	\Wc_i[\bm u_i]=0 \quad \forall\, i=1,\dots,n_c,\
+	\forall\,\bm u_i\in\mathbb R^3.
+\end{equation}
+
+
+\medskip
+
+Resta da tradurre questa condizione, formulata corpo per corpo,
+in un'unica condizione sull'intero sistema. Poniamo
+$\bm u=(\bm u_1,\dots,\bm u_{n_c})\in\mathbb R^n$ --- un atto di
+moto virtuale del sistema, cioè un atto di moto rigido virtuale
+indipendente per ciascun corpo, non soggetto ad alcuna
+condizione di congruenza --- e definiamo il lavoro virtuale
+totale
+\begin{equation}
+	\Wc_{\rm tot}[\bm u] \coloneqq \sum_{i=1}^{n_c} \Wc_i[\bm u_i].
+\end{equation}
+
+($\Rightarrow$) Se $\Wc_i[\bm u_i]=0$ per ogni $i$ e ogni
+$\bm u_i$, allora in particolare $\Wc_{\rm tot}[\bm u]=
+\sum_i \Wc_i[\bm u_i]=0$ per ogni $\bm u\in\mathbb R^n$.
+
+($\Leftarrow$) Viceversa, supponiamo $\Wc_{\rm tot}[\bm u]=0$
+per ogni $\bm u\in\mathbb R^n$. Fissati un indice $i$ e un
+$\bm u_i\in\mathbb R^3$ arbitrari, scegliamo $\bm u\in\mathbb
+R^n$ nullo su tutti i blocchi tranne l'$i$-esimo, posto uguale
+a $\bm u_i$: è una scelta lecita, perché $\bm u$ varia
+liberamente su tutto $\mathbb R^n$. Poiché ciascun
+$\Wc_j[\cdot]$ è lineare e $\Wc_j[\bm 0]=0$,
+\[
+0 = \Wc_{\rm tot}[\bm u] = \Wc_i[\bm u_i] + \sum_{j\neq i}\Wc_j[\bm 0]
+= \Wc_i[\bm u_i].
+\]
+Essendo $i$ e $\bm u_i$ arbitrari, ciò mostra $\Wc_i[\bm u_i]=0$
+per ogni $i$ e ogni $\bm u_i$.
+
+Le due implicazioni mostrano che la~\eqref{eq:plv_percorpo}
+equivale alla condizione unica $\Wc_{\rm tot}[\bm u]=0$ per ogni
+$\bm u\in\mathbb R^n$. Possiamo dunque affermare che 
+
+\bigskip
+
+\emph{Un sistema di corpi rigidi è equilibrato se e solo se il lavoro
+virtuale totale delle forze attive e reattive è nullo per ogni
+spostamento rigido virtuale del sistema:
+\begin{equation}\label{eq:plv_SCR}
+	\bm B\bm r+\bm f=\bm 0 \iff \Wc_{\rm tot}[\bm u]=0
+	\quad \forall\,\bm u\in\mathbb R^n.
+\end{equation}
+}
+%\medskip
+%
+%\begin{oss}
+%	Vale, come conseguenza immediata delle definizioni date,
+%	l'identità
+%	\begin{equation}
+%		\Wc_{\rm tot}[\bm u] = (\bm B\bm r+\bm f)^{\!\top} \bm u
+%		\qquad \forall\,\bm r,\bm f,\bm u,
+%	\end{equation}
+%	valida qualunque sia $\bm r$ --- non solo per le reazioni
+%	equilibrate --- poiché $\Wc_i[\bm u_i]\coloneqq(\bm B\bm
+%	r+\bm f)_i\cdot\bm u_i$ per definizione. Da questa forma il
+%	principio dei lavori virtuali segue anche per via puramente
+%	algebrica: un vettore $\bm g\in\mathbb R^n$ è nullo se e solo
+%	se $\bm g^{\top}\bm u=0$ per ogni $\bm u\in\mathbb R^n$ (basta
+%	scegliere $\bm u$ uguale, in successione, ai vettori della
+%	base canonica); applicato a $\bm g=\bm B\bm r+\bm f$, questo
+%	fatto elementare riproduce esattamente
+%	la~\eqref{eq:plv_SCR}.
+%\end{oss}
+
+Notiamo infine che, a differenza del problema cinematico ---
+dove ci si limita agli atti di moto congruenti, cioè tali che
+$\bm A\bm u=\bm 0$ --- qui $\bm u$ varia su \emph{tutto}
+$\mathbb R^n$, senza alcuna restrizione di congruenza: è
+proprio questa libertà completa a rendere il principio un test
+necessario e sufficiente per l'equilibrio. Sarà proprio questa
+libertà, ristretta ora agli atti di moto congruenti, il punto di
+partenza per confrontare equilibrio, congruenza e lavoro
+virtuale nella \emph{triade meccanica} della prossima sezione.
+
+\subsection{Equilibrio, congruenza e lavoro virtuale.}\label{sec:triade_SCR}\index{triade meccanica|textbf}
+Il dualismo $\bm B=\bm A^\top$ permette di collegare tre
+nozioni: l'\emph{equilibrio} di una coppia $(\bm r,\bm f)$, la \emph{congruenza} di una coppia
+$(\bm u,\bm s)$ e il \emph{lavoro
+	virtuale} reciproco fra un sistema di forze e uno di
+spostamenti. Vedremo che equilibrio e congruenza, applicati a
+due sistemi indipendenti, forzano sempre un'identità di lavoro
+virtuale; il viceversa vale anch'esso, ma va enunciato con più
+cura, perché nasconde un'insidia sui quantificatori che è bene
+rendere esplicita.
+\begin{oss}
+	Dato $\bm u\in\mathbb R^n$, è sempre possibile trovare
+	$\bm s$ tale che $(\bm u,\bm s)$ sia congruente: basta
+	prendere $\bm s\coloneqq\bm A\bm u$. Non è vero il
+	viceversa: dato $\bm s$, non sempre esiste $\bm u$ tale che
+	$\bm A\bm u=\bm s$: occorre infatti che $\bm s\in\operatorname{Im}\bm
+	A$. Analogamente, dato $\bm r\in\mathbb R^m$, è sempre
+	possibile trovare $\bm f$ tale che $(\bm r,\bm f)$ sia
+	equilibrata: basta prendere $\bm f\coloneqq-\bm B\bm r$.
+	Non è vero il viceversa: dato $\bm f$, non sempre esiste
+	$\bm r$ tale che $\bm B\bm r+\bm f=\bm 0$.
+\end{oss}
+
+
+\paragraph{L'Identità del lavoro virtuale tra stati indipendenti.}
+Siano $(\bm r,\bm f)$ un sistema equilibrato e $(\bm u,\bm s)$
+un sistema congruente, \textit{indipendenti tra loro}:
+\[
+\bm A\bm u=\bm s
+\ \ (\text{congruenza}),
+\qquad
+\bm B\bm r+\bm f=\bm 0
+\ \ (\text{equilibrio}).
+\]
+Allora
+\begin{equation}\label{eq:reciprocita_SCR}
+	\bm r^{\top}\bm s + \bm f^{\top}\bm u = 0.
+\end{equation}
+\begin{proof}
+	Per \eqref{eq:plv_SCR}, essendo $(\bm r,\bm f)$ equilibrato,
+	$\Wc_{\rm tot}[\bm u]=0$ per ogni $\bm u\in\mathbb R^n$, in
+	particolare per il nostro $\bm u$. D'altra parte, per
+	definizione,
+	\[
+	\Wc_{\rm tot}[\bm u]=(\bm B\bm r+\bm f)^\top\bm u
+	=\bm r^\top\bm A\bm u+\bm f^\top\bm u
+	=\bm r^\top\bm s+\bm f^\top\bm u,
+	\]
+	avendo usato $\bm B=\bm A^\top$ e $\bm s=\bm A\bm u$. Dunque
+	$\bm r^\top\bm s+\bm f^\top\bm u=0$.
+\end{proof}
+\medskip
+Schematicamente,
+\[
+\left.
+\begin{aligned}
+	(\bm u,\bm s) &\text{ congruente}\\
+	(\bm r,\bm f) &\text{ equilibrato}
+\end{aligned}
+\right\}
+\quad\Longrightarrow\quad
+\bm r^\top\bm s+\bm f^\top\bm u=0.
+\]
+Nessun legame è richiesto fra i due sistemi: possono riferirsi
+a due situazioni fisiche del tutto scorrelate e non è da pensare che gli spostamenti $\bm{u}$ siano in qualche modo conseguenti
+alle forze esterne $\bm{f}$.
+
+\paragraph{Congruenza e lavoro virtuale implicano l'equilibrio.}
+L'identità appena dimostrata è una condizione \emph{necessaria}:
+se $(\bm r,\bm f)$ è equilibrato, $\bm r^\top\bm s+\bm f^\top\bm
+u=0$ vale per ogni sistema congruente $(\bm u,\bm s)$, scelto
+indipendentemente da $(\bm r,\bm f)$. È naturale chiedersi se
+questa condizione sia anche \emph{sufficiente}: se il lavoro
+virtuale è nullo per ogni sistema congruente, possiamo concludere
+che $(\bm r,\bm f)$ è equilibrato? La risposta è sì, ma vale la
+pena capire con precisione perché, dato che il ``per ogni sistema
+congruente'' nasconde un'insidia sui quantificatori. Per
+l'osservazione iniziale, per ogni $\bm u\in\mathbb R^n$ esiste
+sempre $\bm s\coloneqq\bm A\bm u$ che rende $(\bm u,\bm s)$
+congruente: non c'è alcun $\bm u$ escluso. L'ipotesi equivale
+dunque, semplicemente, a richiedere
+\[
+\bm r^\top\bm s+\bm f^\top\bm u=0
+\qquad\forall\,\bm u\in\mathbb R^n\ \big(\text{posto }\bm s\coloneqq\bm A\bm u\big),
+\]
+cioè, per lo stesso calcolo appena fatto,
+$\Wc_{\rm tot}[\bm u]=0$ per ogni $\bm u\in\mathbb R^n$. Ma
+questa è precisamente l'ipotesi del principio dei lavori
+virtuali \eqref{eq:plv_SCR}, che dà allora direttamente
+$\bm B\bm r+\bm f=\bm 0$: il risultato è già acquisito, non
+serve una nuova dimostrazione.
+
+
+\paragraph{Equilibrio e lavoro virtuale implicano la congruenza.}
+Chiediamoci ora se valga il viceversa, scambiando i ruoli di
+$\bm u$ e $\bm r$: se $\bm r^\top\bm s+\bm f^\top\bm u=0$ vale
+per ogni sistema equilibrato $(\bm r,\bm f)$, indipendentemente
+scelto, possiamo concludere che $(\bm u,\bm s)$ è congruente?
+Per l'osservazione iniziale, per ogni $\bm r\in\mathbb R^m$
+esiste sempre $\bm f\coloneqq-\bm B\bm r$ che rende
+$(\bm r,\bm f)$ equilibrato: l'ipotesi equivale dunque a
+richiederla per ogni $\bm r\in\mathbb R^m$. Questa volta il
+principio dei lavori virtuali non basta --- riguarda solo il
+lato $\bm u$, non il lato $\bm r$ --- e la dimostrazione va
+condotta autonomamente, in modo speculare, in $\mathbb R^m$:
+\bigskip
+\emph{
+	Siano $\bm u\in\mathbb R^n$ e $\bm s\in\mathbb R^m$. Se
+	\begin{equation}
+		\bm r^\top\bm s+\bm f^\top\bm u=0
+		\qquad\forall\,\bm r\in\mathbb R^m\ \big(\text{posto }\bm f\coloneqq-\bm A^\top\bm r\big),
+	\end{equation}
+	allora $\bm A\bm u=\bm s$.
+}
+\begin{proof}
+	L'ipotesi si scrive $\bm r^\top(\bm s-\bm A\bm u)=0$ per
+	ogni $\bm r\in\mathbb R^m$; vista la quantificazione, segue immediatamente che $\bm s-\bm A\bm u=\bm 0$.
+\end{proof}
+
+\bigskip
+
+Le proposizioni appena dimostrate stabiliscono equivalenze fra
+nozioni, ma non garantiscono da sole l'esistenza di una
+soluzione per un dato assegnato, né dicono come calcolarla:
+riguardano sistemi che già esistono entrambi. Le applicazioni
+che seguono rispondono a queste due domande, e condividono
+tutte la stessa origine: si applica l'identità
+\eqref{eq:reciprocita_SCR} a una scelta particolare, non più
+arbitraria, di uno dei due sistemi indipendenti. Si dividono
+naturalmente in due famiglie speculari: restringendo il sistema
+congruente $(\bm u,\bm s)$ si ottengono un criterio di esistenza
+per l'equilibrio e una formula per il calcolo esplicito di una
+reazione; restringendo, specularmente, il sistema equilibrato
+$(\bm r,\bm f)$, si ottengono un criterio di esistenza per la
+congruenza e una formula per il calcolo esplicito di uno
+spostamento.
+
+\paragraph{Compatibilità statica: l'esistenza dell'equilibrio.}
+	\label{cor:compat_stat}
+\emph{	Assegnato $\bm f\in\mathbb R^n$, il problema statico
+	$\bm B\bm r+\bm f=\bm 0$ ammette soluzione se e solo se
+	\begin{equation}\label{eq:compat_stat}
+		\bm f^\top\bm u = 0\qquad\forall\,\bm u\in\Nc(\bm A),
+	\end{equation}
+	cioè le forze attive compiono lavoro virtuale nullo su
+	ogni meccanismo del sistema.}
+	
+	\medskip
+
+\begin{proof}
+	($\Rightarrow$) Se esiste $\bm r$ con $\bm B\bm r+\bm f=\bm
+	0$, l'identità~\eqref{eq:reciprocita_SCR}, applicata con
+	$\bm s=\bm 0$ (cioè con $\bm u\in\Nc(\bm A)$), dà
+	$\bm f^\top\bm u=0$ per ogni $\bm u\in\Nc(\bm A)$.
+	
+	($\Leftarrow$) Supponiamo $\bm f^\top\bm u=0$ per ogni
+	$\bm u\in\Nc(\bm A)$, cioè $\bm f\in(\Nc(\bm A))^\perp$. Per
+	il fatto di algebra lineare
+	$(\Nc(\bm A))^\perp=\Ic(\bm A^\top)$ (si veda
+	\CAPref{app:applicazionilin_dualita}), segue $\bm
+	f\in\Ic(\bm A^\top)=\Ic\bm B$:
+	esiste $\bm w\in\mathbb R^m$ con $\bm f=\bm B\bm w$; basta
+	porre $\bm r\coloneqq-\bm w$.
+\end{proof}
+\begin{oss}
+	Le due implicazioni del corollario hanno origine diversa.
+	La necessità segue direttamente dall'identità
+	\eqref{eq:reciprocita_SCR}, e vale sempre, senza altre
+	ipotesi. La sufficienza richiede invece un fatto ulteriore,
+	che non discende dal lavoro virtuale in sé, ma dalla
+	struttura dello spazio vettoriale, che impone
+$(\Nc(\bm A))^\perp=\Ic(\bm A^\top)$. Notiamo
+	infine che la conclusione è un'esistenza: non dice quale
+	sia $\bm r$, né se sia l'unico.
+\end{oss}
+\paragraph{Il teorema degli spostamenti virtuali (Müller-Breslau).}
+\index{teorema!degli spostamenti virtuali|textbf}\index{TSV|see{teorema degli spostamenti virtuali}}\index{principio di Müller-Breslau|see{teorema degli spostamenti virtuali}}
+È lo stesso procedimento già seguito, un vincolo alla volta, nella
+\SECref{sec:gerber_equilibrio}: lì abbiamo sospeso concettualmente
+un vincolo, imposto il lavoro totale nullo sul meccanismo
+residuo, e ricavato così $Y_D$ (\eqref{eq:sopp_YD}) e $Y_B$
+(\eqref{eq:sopp_YB}), senza risolvere il sistema di equazioni di
+equilibrio corpo per corpo. Un'altra applicazione dell'identità
+\eqref{eq:reciprocita_SCR} permette di formalizzare questo
+procedimento per un sistema qualunque, trasformando il problema
+statico in uno cinematico. Supponiamo che $\bm A$ sia suriettiva,
+$\operatorname{rango}\bm A=m$ (nel linguaggio della
+classificazione che vedremo, un sistema isostatico o labile:
+assenza di autotensioni), cosicché per ogni $k$ esiste un atto
+di moto che realizza un cedimento unitario al solo vincolo $k$;
+e che $\bm f$ soddisfi la~\eqref{eq:compat_stat}, cosicché il
+problema statico ammette soluzione $\bm r$. Vale dunque il seguente teorema.
+
+
+\medskip
+
+\emph{Sia $\bm e_k\in\mathbb R^m$ il $k$-esimo versore della base
+	canonica, e sia $\bm u^*_k$ una soluzione del
+	\emph{problema virtuale} $\bm A\bm u^*_k=\bm e_k$. La
+	$k$-esima reazione si ottiene da
+	\begin{equation}\label{eq:mueller_breslau}
+		R_k = -\bm f^{\top}\bm u^*_k.
+	\end{equation}
+}
+
+\medskip 
+
+\begin{proof}
+	Applichiamo l'identità \eqref{eq:reciprocita_SCR} alla
+	coppia reale equilibrata $(\bm r,\bm f)$ e alla coppia
+	virtuale congruente $(\bm u^*_k,\bm e_k)$:
+	\[
+	\bm r^\top\bm e_k+\bm f^\top\bm u^*_k=0.
+	\]
+	Il primo termine è $R_k$; riordinando si ottiene la tesi.
+\end{proof}
+\begin{oss}
+	Se il sistema ammette autotensioni --- reazioni
+	$\bm d\in\ker\bm B$ non nulle, capaci di autoequilibrarsi
+	anche in assenza di carichi esterni: il fenomeno già
+	annunciato nella \SECref{sec:motivazione_SCR}, e che chiameremo
+	\emph{iperstaticità} quando classificheremo i sistemi ---
+	la soluzione $\bm r$ del problema statico non è unica:
+	eppure la~\eqref{eq:mueller_breslau} determina $R_k$ senza
+	ambiguità, perché il secondo membro non dipende da $\bm r$.
+	La ragione è che ogni autotensione $\bm d\in\ker\bm B$ ha
+	automaticamente componente $k$-esima nulla: da $\bm
+	A^\top\bm d=\bm 0$,
+	\[
+	d_k=\bm d^\top\bm e_k=\bm d^\top(\bm A\bm u_k^*)
+	=(\bm A^\top\bm d)^\top\bm u_k^*=0.
+	\]
+	Il corollario trasforma così il calcolo di una singola
+	reazione in un problema cinematico: si impone un cedimento
+	unitario al vincolo $k$ e si calcola il lavoro delle forze
+	attive nella configurazione che ne risulta. È il contenuto
+	del \emph{teorema degli spostamenti virtuali} (TSV), noto
+	nella tradizione come \emph{principio di Müller-Breslau}.
+\end{oss}
+\begin{oss}[Forma operativa del TSV]
+	La scelta del cedimento virtuale $\bm s^*=\bm e_k$ usata
+	nella dimostrazione è la più diretta dal punto di vista
+	matriciale, ma non la più comoda nei conti. Assegnando il
+	cedimento in verso \emph{opposto} al verso positivo della
+	reazione --- cioè prendendo $\bm u^{**}_k$ soluzione di
+	$\bm A\bm u^{**}_k=-\bm e_k$ --- l'identità
+	\eqref{eq:reciprocita_SCR} dà direttamente
+	\begin{equation}\label{eq:mueller_breslau_op}
+		R_k=+\bm f^\top\bm u^{**}_k,
+	\end{equation}
+	senza cambio di segno. In questa forma $R_k$ coincide con
+	il lavoro virtuale delle forze attive nello spostamento del
+	meccanismo, ed è la scrittura che corrisponde al
+	procedimento classico: \emph{cedere} il vincolo $k$-esimo
+	di una quantità unitaria nel verso opposto alla reazione
+	assunta positiva, e calcolare il lavoro delle forze attive
+	nel moto rigido che ne risulta. Le due forme sono
+	equivalenti; useremo sistematicamente
+	la~\eqref{eq:mueller_breslau_op} negli esempi.
+\end{oss}
+
+Passiamo ora alla famiglia speculare, ottenuta restringendo il
+sistema equilibrato $(\bm r,\bm f)$ anziché quello congruente.
+
+\paragraph{Compatibilità cinematica: l'esistenza della congruenza.}
+\index{compatibilita@compatibilità!cinematica|textbf}
+	\label{cor:compat_cin}
+	
+	
+\emph{	Assegnato $\bm s\in\mathbb R^m$, il problema cinematico
+	$\bm A\bm u=\bm s$ ammette soluzione se e solo se
+	\begin{equation}\label{eq:compat_cin}
+		\bm s^\top\bm r = 0\qquad\forall\,\bm r\in\Nc(\bm A^\top),
+	\end{equation}
+	cioè i cedimenti compiono lavoro virtuale nullo su ogni
+	stato di autoequilibrio del sistema.}
+	
+	\medskip
+
+\begin{proof}
+	($\Rightarrow$) Se esiste $\bm u$ con $\bm A\bm u=\bm s$,
+	l'identità~\eqref{eq:reciprocita_SCR}, applicata con
+	$\bm f=\bm 0$ (cioè con $\bm r\in\Nc(\bm A^\top)$, essendo
+	l'equilibrio $\bm A^\top\bm r+\bm f=\bm 0$), dà
+	$\bm r^\top\bm s=0$ per ogni $\bm r\in\Nc(\bm A^\top)$.
+	
+	($\Leftarrow$) Supponiamo $\bm s^\top\bm r=0$ per ogni
+	$\bm r\in\Nc(\bm A^\top)$, cioè
+	$\bm s\in(\Nc(\bm A^\top))^\perp$. Per il fatto di algebra
+	lineare $(\Nc(\bm A^\top))^\perp=\Ic(\bm A)$
+	(si veda \CAPref{app:applicazionilin_dualita}), segue
+	$\bm s\in\Ic(\bm A)$: esiste $\bm u\in\mathbb
+	R^n$ con $\bm A\bm u=\bm s$.
+\end{proof}
+\begin{oss}
+	Come per la compatibilità statica, le due implicazioni
+	hanno origine diversa: la necessità segue direttamente
+	dall'identità \eqref{eq:reciprocita_SCR}, la sufficienza da
+	un fatto di struttura dello spazio vettoriale
+	($(\Nc(\bm A^\top))^\perp=\Ic(\bm A)$) --- il
+	duale esatto di quello usato per la compatibilità statica.
+	Anche qui la conclusione è un'esistenza: non dice quale sia
+	$\bm u$, né se sia l'unico.
+\end{oss}
+\paragraph{Il teorema delle forze virtuali.}	\label{cor:TFV}
+Specularmente al TSV, un'altra applicazione dell'identità
+\eqref{eq:reciprocita_SCR} permette di calcolare esplicitamente
+una componente dello spostamento, trasformando il problema
+cinematico in uno statico. Supponiamo che $\bm A$ sia
+iniettiva, $\operatorname{rango}\bm A=n$ (nel linguaggio della
+classificazione che vedremo, assenza di meccanismi), cosicché
+per ogni $j$ esiste un sistema di forze virtuali equilibrato
+con risultante generalizzato pari al solo versore $\bm e_j$; e
+che $\bm s$ soddisfi la~\eqref{eq:compat_cin}, cosicché il
+problema cinematico ammette soluzione $\bm u$.
+
+\index{teorema!delle forze virtuali|textbf}\index{TFV|see{teorema delle forze virtuali}}
+
+\medskip
+\emph{	Sia $\bm e_j\in\mathbb R^n$ il $j$-esimo versore della base
+	canonica, e sia $\bm r^*_j$ una soluzione del
+	\emph{problema virtuale} $\bm B\bm r^*_j+\bm e_j=\bm 0$. La
+	$j$-esima componente di $\bm u$ si ottiene da
+	\begin{equation}\label{eq:carico_unitario}
+		u_j = -\bm s^{\top}\bm r^*_j.
+	\end{equation}
+}
+
+\medskip
+
+\begin{proof}
+	Applichiamo l'identità \eqref{eq:reciprocita_SCR} alla
+	coppia reale congruente $(\bm u,\bm s)$ e alla coppia
+	virtuale equilibrata $(\bm r_j^*,\bm e_j)$:
+	\[
+	\bm r_j^{*\top}\bm s+\bm e_j^\top\bm u=0.
+	\]
+	Il secondo termine è $u_j$; riordinando si ottiene la tesi.
+\end{proof}
+\begin{oss}
+	Il corollario è il duale esatto del TSV: il calcolo di una
+	componente di spostamento si riconduce a un problema
+	statico virtuale, applicando una forza generalizzata
+	unitaria nella direzione corrispondente e calcolando il
+	lavoro delle reazioni virtuali nei cedimenti reali
+	assegnati. È il contenuto del \emph{teorema delle forze
+		virtuali} (TFV).
+\end{oss}
+\begin{oss}[Spostamento generico, relativo e rotazione]
+	Il corollario fornisce direttamente le componenti $u_j$
+	del vettore di configurazione, associate ai poli $O_i$. La
+	sua portata è però più generale, perché la scelta del
+	sistema di forze virtuali $\bm f^*$ è arbitraria: quanto
+	visto vale, senza alcuna modifica nella dimostrazione, per
+	il calcolo di \emph{qualunque} grandezza cinematica che sia
+	un funzionale lineare di $\bm u$, cioè della forma
+	$\bm c^\top\bm u$ per un qualche $\bm c\in\mathbb R^n$ ---
+	basta ripetere la dimostrazione con $\bm f^*=\bm c$ al
+	posto di $\bm e_j$, ottenendo
+	$\bm c^\top\bm u=-\bm s^\top\bm r^*$, dove $\bm r^*$ risolve
+	$\bm B\bm r^*+\bm c=\bm 0$.
+	
+	\emph{Spostamento assoluto.} Per calcolare lo spostamento
+	$\eta$ di un punto $P$ di $\mathcal C_i$ secondo una
+	direzione $\ab$, si costruisce il problema virtuale con una
+	forza fittizia unitaria applicata in $P$ nella direzione
+	$\ab$: il vettore delle forze generalizzate corrispondente
+	è esattamente il blocco già introdotto per quel punto e
+	quella direzione (\eqref{eq:aki_def}), preso come $\bm c$.
+	
+	\emph{Spostamento relativo.} Per lo spostamento relativo fra
+	due punti $P,Q$ di corpi distinti, secondo la congiungente,
+	si applica una coppia di forze fittizie unitarie e opposte,
+	una in $P$ e una in $Q$: $\bm c$ è la sovrapposizione dei
+	due contributi.
+	
+	\emph{Rotazione relativa.} Per la rotazione relativa fra due
+	corpi $\mathcal C_i$, $\mathcal C_j$, si applica una coppia
+	di momenti fittizi unitari e opposti, uno su ciascun corpo.
+	
+	In tutti i casi la quantità cercata è il funzionale lineare
+	duale del sistema di forze fittizie scelto: costruire il
+	problema virtuale giusto è tutto ciò che serve.
+\end{oss}
+
+
+
+\paragraph{Uno sguardo d'insieme.}
+Abbiamo usato l'espressione ``lavoro virtuale'' per otto
+risultati diversi, tutti imparentati ma logicamente distinti:
+vale la pena, prima di proseguire, mettere ordine.
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{p{3.4cm}p{4.6cm}p{5.4cm}}
+			\toprule
+			Risultato & Sistemi coinvolti & Cosa afferma \\
+			\midrule
+			Principio dei lavori virtuali (PLV), \eqref{eq:plv_SCR}
+			& un solo sistema $(\bm r,\bm f)$, testato contro
+			\emph{ogni} $\bm u\in\mathbb R^n$, senza vincoli di
+			congruenza
+			& $\bm B\bm r+\bm f=\bm 0 \iff \Wc_{\rm tot}[\bm u]=0\
+			\forall\bm u$ \\
+			Identità del lavoro virtuale tra stati indipendenti,
+			\eqref{eq:reciprocita_SCR}
+			& due sistemi indipendenti: $(\bm r,\bm f)$ equilibrato,
+			$(\bm u,\bm s)$ congruente
+			& $\bm r^\top\bm s+\bm f^\top\bm u=0$ (conseguenza
+			immediata del PLV) \\
+			``Congruenza e lavoro virtuale implicano l'equilibrio''
+			& come sopra, testato per \emph{ogni} $\bm u\in\mathbb
+			R^n$
+			& è di nuovo il PLV: nessun fatto nuovo \\
+			``Equilibrio e lavoro virtuale implicano la congruenza''
+			& come sopra, testato per \emph{ogni} $\bm r\in\mathbb
+			R^m$
+			& $\bm A\bm u=\bm s$  \\
+			Compatibilità statica
+			& l'identità ristretta a $\bm u\in\Nc(\bm A)$
+			& esistenza di un $\bm r$ equilibrato, se $\bm
+			f\perp\Nc(\bm A)$ \\
+			Teorema degli spostamenti virtuali (TSV/Müller-Breslau)
+			& l'identità con la scelta $\bm s=\bm e_k$
+			& formula esplicita per la reazione $R_k$ \\
+			Compatibilità cinematica
+			& l'identità ristretta a $\bm r\in\Nc(\bm A^\top)$
+			& esistenza di un $\bm u$ congruente, se $\bm
+			s\perp\Nc(\bm A^\top)$ \\
+			Teorema delle forze virtuali (TFV)
+			& l'identità con la scelta $\bm f=\bm e_j$
+			& formula esplicita per lo spostamento $u_j$ \\
+			\bottomrule
+		\end{tabular}%
+	}
+\end{center}
+
+Un solo fatto algebrico genera l'intera famiglia: il dualismo
+$\bm B=\bm A^\top$, di cui il PLV, dimostrato una volta per
+tutte in \eqref{eq:plv_SCR}, è la traduzione nel linguaggio del
+lavoro virtuale. È questo dualismo a rendere possibile il
+passaggio fra il mondo statico e quello cinematico: l'identità
+\eqref{eq:reciprocita_SCR} ne è la forma bilineare, valida per
+una coppia qualunque di sistemi --- uno equilibrato, l'altro
+congruente --- anche privi di ogni relazione fisica reciproca.
+È proprio questa indifferenza alla relazione fra i due sistemi
+a renderla utilizzabile come sonda: scegliendo di volta in
+volta il sistema virtuale più conveniente, la stessa identità
+restituisce ogni volta un'informazione diversa sull'altro
+sistema, quello ``reale''.
+
+
+Compatibilità statica e compatibilità cinematica sono risultati
+di \emph{esistenza}: la prima stabilisce quando un carico $\bm
+f$ ammette reazioni equilibrate --- se e solo se non compie
+lavoro sui meccanismi del sistema, cioè su $\Nc(\bm A)$ --- e la
+seconda, specularmente, quando un cedimento imposto $\bm s$
+ammette un moto congruente --- se e solo se non compie lavoro
+sulle autotensioni, cioè su $\Nc(\bm A^\top)$. TSV e TFV sono
+invece risultati di \emph{calcolo}: scegliendo come sistema
+virtuale non un intero sottospazio ma un singolo versore,
+l'identità isola una singola incognita --- una reazione $R_k$,
+uno spostamento $u_j$ --- e la restituisce come un unico
+prodotto scalare, al prezzo di dover costruire una singola
+configurazione virtuale ad hoc (un cedimento unitario,
+un'autotensione unitaria) invece di risolvere per intero il
+sistema di equazioni di equilibrio o di congruenza.
+
+Meccanismi e autotensioni, e la loro dimensione, sono
+precisamente l'oggetto della classificazione a cui ci dedichiamo
+nel prossimo paragrafo.
+
 
 %----------------------------------------------------------------------------------------------------------------------------
 \section{I quattro sottospazi e la classificazione}\label{sec:quattro}
@@ -655,105 +2183,73 @@ una parte ``meccanismo'' $\bm{u}_n \in \Nc(\bm{A})$ e una parte
 cedimento $\bm{s}$ si decompone in una parte ammissibile
 $\bm{s}_c \in \Ic(\bm{A})$ e una parte incompatibile
 $\bm{s}_n \in \Nc(\bm{A}^\top)$.
-Il \PARref{sec:dualita_cin_stat} illustra questa struttura attraverso
-la figura degli ovali, precisando il significato meccanico dei quattro
-sottospazi e le condizioni di compatibilità dei due problemi; il
-\PARref{sec:sottospazi} ne offre una sintesi tabellare. Il
-\PARref{sec:classificazione} ricava la formula fondamentale di
-classificazione --- labile, isostatico, iperstatico --- come
-conseguenza diretta del teorema rango-nullità. Il
-\PARref{sec:struttura_soluzione} descrive la forma generale della
-soluzione nei vari casi, mostrando come meccanismi e stati di
-autoequilibrio intervengano rispettivamente nella non unicità del
-problema cinematico e in quella del problema statico.
 
 
+Le domande a cui questi quattro sottospazi rispondono sono già
+emerse, in casi particolari, più volte nel corso del capitolo:
+quando il problema cinematico ammette soluzione, e quante ne
+ammette; quando il problema statico ammette soluzione, e quante.
+Nei paragrafi che seguono li introduciamo uno a uno, ne raccogliamo il significato
+meccanico in una sintesi tabellare,
+ricaviamo da essi una classificazione completa dei sistemi di
+corpi rigidi, e infine descriviamo
+esplicitamente, caso per caso, la struttura delle soluzioni dei
+due problemi.
 
 
 \subsection{Struttura duale dei due problemi}\label{sec:dualita_cin_stat}
 
-I problemi cinematico~\eqref{eq:prob_cin} e statico~\eqref{eq:prob_stat} sono
-l'uno il duale algebrico dell'altro nel senso del
-\CAPref{app:applicazionilin_dualita}: la stessa matrice $\bm{A}$ e la sua
-trasposta $\bm{A}^\top$ agiscono su due spazi distinti, collegati da
-un'identità bilineare che, come si dimostrerà nel \CAPref{cap:TLV}, è la
-forma algebrica del principio dei lavori virtuali.
+I problemi cinematico~\eqref{eq:prob_cin} e statico~\eqref{eq:prob_stat}
+sono governati dalla stessa matrice $\bm{A}$, e collegati
+dall'identità del lavoro virtuale tra stati indipendenti
+\eqref{eq:reciprocita_SCR}, già dimostrata nella \SECref{sec:triade_SCR}.
+%(i due addendi $\bm r^\top\bm s$ e $\bm f^\top\bm u$ hanno entrambi le
+%dimensioni di un lavoro $[\text{N\,m}]$, pur appartenendo a spazi
+%diversi: $\bm u,\bm f\in\mathbb R^n$, mentre $\bm s,\bm r\in\mathbb
+%R^m$).
 
-
-
-È però essenziale osservare che i quattro spazi coinvolti hanno
-\emph{dimensioni fisiche diverse}:
-\begin{itemize}[nosep]
-	\item $\mathbb{R}^n$ contiene vettori di configurazione $\bm{u}$ ---
-	spostamenti generalizzati (traslazioni in $[\text{m}]$, rotazioni
-	in $[\text{rad}]$) --- e vettori di forze generalizzate $\bm{f}$
-	(forze in $[\text{N}]$, momenti in $[\text{N\,m}]$);
-	\item $\mathbb{R}^m$ contiene vettori di cedimento $\bm{s}$
-	(in $[\text{m}]$ o $[\text{rad}]$ a seconda del tipo di vincolo)
-	e vettori di reazione $\bm{r}$ (in $[\text{N}]$ o $[\text{N\,m}]$).
-\end{itemize}
-L'ortogonalità fra i sottospazi di $\mathbb{R}^n$ e quella fra i
-sottospazi di $\mathbb{R}^m$ non è quindi euclidea ma si intende
-nel senso del \emph{lavoro}: i prodotti $\bm{u}^\top\bm{f}$ in
-$\mathbb{R}^n$ e $\bm{s}^\top\bm{r}$ in $\mathbb{R}^m$ hanno
-entrambi le dimensioni di un lavoro $[\text{N\,m}]$, e
-l'identità bilineare\index{identità bilineare}
-\begin{equation}\label{eq:bilancio_lavori}
-	\bm{u}^\top\bm{f} + \bm{s}^\top\bm{r} = 0
-\end{equation}
-esprime appunto il \emph{bilancio dei lavori virtuali} nei due
-sistemi: il lavoro delle forze attive per uno spostamento
-congruente con i cedimenti è uguale e contrario al lavoro delle
-reazioni sui cedimenti stessi. Per vincoli perfetti
-($\bm{s} = \bm{0}$) la~\eqref{eq:bilancio_lavori} si riduce alla
-forma classica del principio dei lavori virtuali,
-$\bm{u}^\top\bm{f} = 0$.
-
-
-I quattro sottospazi assumono significati meccanici precisi:
+I quattro sottospazi coinvolti assumono significati meccanici precisi:
 \begin{itemize}[nosep]
 	\item $\Nc(\bm{A})$: \textbf{meccanismi} --- spostamenti $\bm{u}_n$ che
 	non producono cedimenti ($\bm{A}\bm{u}_n = \bm{0}$);
 	\item $\Ic(\bm{A}^\top)$: \textbf{forze equilibrabili} --- forze
-	generalizzate $\bm{f}_c$ che i vincoli possono bilanciare;
-	\item $\Nc(\bm{A}^\top)$: \textbf{stati di autoequilibrio}\index{stato di autoequilibrio|textbf} --- reazioni
-	$\bm{r}_n$ la cui forza generalizzata equivalente è nulla
-	($\bm{A}^\top\bm{r}_n = \bm{0}$);
-	\item $\Ic(\bm{A})$: \textbf{cedimenti ammissibili}\index{cedimento!ammissibile} --- cedimenti $\bm{s}_c$
-	compatibili con la geometria dei vincoli.
+	generalizzate $\bm{f}_c$ per cui esiste una reazione equilibrante,
+	cioè un $\bm{r}$ tale che $\bm{A}^\top\bm{r}=-\bm{f}_c$;
+	\item $\Nc(\bm{A}^\top)$: \textbf{stati di autoequilibrio}\index{stato di autoequilibrio|textbf}
+	(dette anche \emph{autotensioni}) --- reazioni $\bm{r}_n$ la cui
+	forza generalizzata equivalente è nulla ($\bm{A}^\top\bm{r}_n = \bm{0}$);
+	\item $\Ic(\bm{A})$: \textbf{cedimenti ammissibili} --- cedimenti
+	$\bm{s}_c$ effettivamente realizzabili da una configurazione del
+	sistema, cioè tali che $\bm{s}_c=\bm{A}\bm{u}$ per qualche
+	$\bm{u}\in\mathbb R^n$.
 \end{itemize}
 
-Le condizioni di compatibilità dei due problemi si leggono direttamente:
-\begin{itemize}[nosep]
-	\item il \textbf{problema cinematico} $\bm{A}\bm{u} = \bm{s}$ ammette soluzione
-	se e solo se $\bm{s} \in \Ic(\bm{A})$, ovvero la componente
-	$\bm{s}_n \in \Nc(\bm{A}^\top)$ del cedimento è nulla: il cedimento
-	imposto deve essere \emph{cinematicamente ammissibile};
-	\item il \textbf{problema statico} $\bm{A}^\top\bm{r} = -\bm{f}$ ammette
-	soluzione se e solo se $\bm{f} \in \Ic(\bm{A}^\top)$, ovvero la
-	componente $\bm{f}_n \in \Nc(\bm{A})$ della forza è nulla: la forza
-	attiva deve essere \emph{equilibrabile dai vincoli}.
-\end{itemize}
+Per il teorema dei complementi ortogonali (\CAPref{app:applicazionilin_dualita}),
+$\Ic(\bm A^\top)=\big(\Nc(\bm A)\big)^\perp$ e
+$\Ic(\bm A)=\big(\Nc(\bm A^\top)\big)^\perp$: le condizioni di
+Compatibilità statica~\eqref{eq:compat_stat} e Compatibilità
+cinematica~\eqref{eq:compat_cin} --- $\bm f\perp\Nc(\bm A)$ e
+$\bm s\perp\Nc(\bm A^\top)$, già dimostrate --- si riscrivono dunque
+come
+\begin{equation}\label{eq:compat_via_im}
+	\bm f\in\Ic(\bm A^\top)
+	\qquad\text{e}\qquad
+	\bm s\in\Ic(\bm A)
+\end{equation}
+rispettivamente: il problema statico $\bm A^\top\bm r=-\bm f$ ammette
+soluzione se e solo se $\bm f\in\Ic(\bm A^\top)$; il problema
+cinematico $\bm A\bm u=\bm s$ ammette soluzione se e solo se
+$\bm s\in\Ic(\bm A)$. È questa riformulazione, in termini di
+appartenenza a un sottospazio anziché di ortogonalità a un altro, a
+rendere immediato il passo successivo: contare le dimensioni.
+
+
 
 La \FIGref{fig:problemi_duali_SCR} illustra questa struttura: i cedimenti
 ammissibili $\bm{s}_c$ e le forze equilibrabili $\bm{f}_c$ vivono nelle immagini
 dei rispettivi operatori, mentre le componenti incompatibili $\bm{s}_n$ e
 $\bm{f}_n$ --- che devono annullarsi per garantire l'esistenza della soluzione
 --- appartengono ai nuclei degli operatori duali.
-
-\begin{oss}
-	La condizione $\bm{f}_n = \bm{0}$ --- la forza attiva deve essere
-	equilibrabile --- è la condizione di equilibrio globale del sistema:
-	essa richiede che la forza risultante e il momento risultante di tutte
-	le forze attive siano bilanciabili dalle reazioni dei vincoli. Nei
-	sistemi labili ($\Nc(\bm{A}) \neq \{\bm{0}\}$) questa condizione non è
-	automaticamente soddisfatta e costituisce il criterio di compatibilità
-	del problema statico. Dualmente, la condizione $\bm{s}_n = \bm{0}$ ---
-	il cedimento deve essere cinematicamente ammissibile --- è automaticamente
-	soddisfatta nei sistemi isostatici e labili (dove ogni configurazione è
-	raggiungibile), ma impone restrizioni nei sistemi iperstatici
-	($\Nc(\bm{A}^\top) \neq \{\bm{0}\}$).
-\end{oss}
 
 %---------------------------------------------------------------------------------------------------------------------
 \begin{figure}[htbp]
@@ -825,15 +2321,26 @@ $\bm{f}_n$ --- che devono annullarsi per garantire l'esistenza della soluzione
 		(stato di autoequilibrio) arbitrario.}
 	\label{fig:problemi_duali_SCR}
 \end{figure}
-%---------------------------------------------------------------------------------------------------------------------
 
 
-\subsection{I quattro sottospazi fondamentali di \texorpdfstring{$\bm{A}$}{A}}
-\label{sec:sottospazi}
+\begin{oss}
+	La condizione $\bm{f}_n = \bm{0}$ --- la forza attiva deve essere
+	equilibrabile --- è la condizione di equilibrio globale del sistema:
+	essa richiede che la forza risultante e il momento risultante di tutte
+	le forze attive siano bilanciabili dalle reazioni dei vincoli. Nei
+	sistemi labili ($\Nc(\bm{A}) \neq \{\bm{0}\}$) questa condizione non è
+	automaticamente soddisfatta e costituisce il criterio di compatibilità
+	del problema statico. Dualmente, la condizione $\bm{s}_n = \bm{0}$ ---
+	il cedimento deve essere cinematicamente ammissibile --- è automaticamente
+	soddisfatta nei sistemi isostatici e labili (dove ogni configurazione è
+	raggiungibile), ma impone restrizioni nei sistemi iperstatici
+	($\Nc(\bm{A}^\top) \neq \{\bm{0}\}$).
+\end{oss}
 
-La \TABref{tab:quattro_sottospazi} riassume in forma sintetica il
-contenuto della \FIGref{fig:problemi_duali_SCR}: i quattro sottospazi
-fondamentali di $\bm{A}$ con la loro definizione algebrica e il
+\medskip
+
+La \TABref{tab:quattro_sottospazi} raccoglie i quattro sottospazi
+fondamentali di $\bm{A}$  con la loro definizione e il
 corrispondente significato meccanico.
 
 \begin{table}[htbp]
@@ -855,25 +2362,24 @@ corrispondente significato meccanico.
 			$\Nc(\bm{A})$
 			& $\mathbb{R}^{n}$
 			& $\bm{A}\,\bm{u} = \bm{0}$
-			& \emph{Meccanismi}: configurazioni ammissibili
-			con $\bm{s}=\bm{0}$\\
+			& \emph{Meccanismi}: spostamenti che non producono
+			cedimenti\\
 			$\Ic(\bm{A}^{\top})$
 			& $\mathbb{R}^{n}$
 			& $\Span\{\text{colonne di }\bm{A}^{\top}\}$
-			& \emph{Forze equilibrabili}:
-			forze generalizzate bilanciabili dalle reazioni vincolari\\
+			& \emph{Forze equilibrabili}: $\bm{f}_c$ per cui esiste
+			$\bm{r}$ con $\bm{A}^\top\bm{r}=-\bm{f}_c$\\
 			\midrule
 			$\Nc(\bm{A}^{\top})$
 			& $\mathbb{R}^{m}$
 			& $\bm{A}^{\top}\bm{r} = \bm{0}$
-			& \emph{Stati di autoequilibrio}: reazioni la
-			cui forza generalizzata equivalente è nulla\\
+			& \emph{Stati di autoequilibrio} (autotensioni): reazioni
+			la cui forza generalizzata equivalente è nulla\\
 			$\Ic(\bm{A})$
 			& $\mathbb{R}^{m}$
 			& $\Span\{\text{colonne di }\bm{A}\}$
-			& \emph{Cedimenti ammissibili}:
-			cedimenti $\bm{s}$ compatibili con la geometria
-			dei vincoli\\
+			& \emph{Cedimenti ammissibili}: $\bm{s}_c$ per cui esiste
+			$\bm{u}$ con $\bm{s}_c=\bm{A}\bm{u}$\\
 			\bottomrule
 		\end{tabular}
 	\end{adjustbox}
@@ -885,8 +2391,6 @@ corrispondente significato meccanico.
 		($\Nc(\bm{A}^\top) \perp \Ic(\bm{A})$).}
 	\label{tab:quattro_sottospazi}
 \end{table}
-
-
 
 \subsection{La formula fondamentale di classificazione}
 \label{sec:classificazione}
@@ -903,8 +2407,8 @@ Il teorema rango-nullità applicato a $\bm{A}$ e a
 $\bm{A}^{\top}$ (che hanno lo stesso rango) dà direttamente
 la \emph{formula fondamentale di classificazione}\index{classificazione dei sistemi di corpi rigidi!formula fondamentale}:
 \begin{equation}\label{eq:formula_class}
-	\boxed{g_\ell - g_i 
-		= n - m \eqqcolon \nu,}
+g_\ell - g_i 
+		= n - m \eqqcolon \nu,
 \end{equation}
 dove $\nu = n - m$\nomenclature[G]{$\nu$}{numero nominale di gradi di libertà ($n-m$)} è il \emph{numero nominale di gradi
 	di libertà}, calcolabile a priori dal solo conteggio dei
@@ -918,6 +2422,8 @@ far sì che entrambi siano maggiori del minimo imposto da
 $\nu$: si parla allora di \emph{degenerazione geometrica}\index{degenerazione geometrica|textbf}. La
 classificazione che ne consegue è raccolta nella
 \TABref{tab:classificazione_SCR}.
+
+
 
 
 \begin{table}[htbp]
@@ -938,11 +2444,10 @@ classificazione che ne consegue è raccolta nella
 		soluzioni; il problema statico ammette
 		soluzione solo se $\bm{f} \in \Ic(\bm{A}^{\top})$\\
 		$< 0$ & $= n$ & $0$ & $|\nu|$
-		& \textbf{Iperstatico} di grado
-		$g_i = |\nu|$: la cinematica è
-		determinata; il problema statico ha
-		$\infty^{g_i}$ soluzioni
-		se $\bm{f} \in \Ic(\bm{A}^{\top})$\\
+		& \textbf{Iperstatico} di grado $g_i = |\nu|$: il problema
+		cinematico ammette soluzione solo se $\bm{s} \in \Ic(\bm{A})$
+		(in tal caso unica); il problema statico ammette sempre
+		soluzione, con $\infty^{g_i}$ possibilità\\
 		\multirow{2}{*}{qualsiasi}
 		& \multirow{2}{*}{$< \min(m, n)$}
 		& \multirow{2}{*}{$> 0$}
@@ -963,7 +2468,9 @@ classificazione che ne consegue è raccolta nella
 	l'isostaticità. Un sistema con $\nu = 0$ ma con vincoli
 	geometricamente degeneri ha $g_\ell = g_i > 0$:
 	è simultaneamente labile e iperstatico. Per stabilire
-	il tipo effettivo occorre calcolare $\rg(\bm{A})$.
+	il tipo effettivo occorre calcolare $\rg(\bm{A})$ o valutare in qualche modo
+	$g_\ell$ o $g_i $.
+	
 \end{oss}
 
 
@@ -1070,6 +2577,32 @@ in tal caso la soluzione generale è:
 	\bm{r} = \bm{r}_0 + \bm{R}_\chi\,\bm{\chi},
 	\qquad \bm{\chi} \in \mathbb{R}^{g_i}.
 \end{equation}
+
+
+\begin{oss}
+	Le condizioni~\eqref{eq:compat_stat_lab} e~\eqref{eq:compat_cin_iper}
+	non sono altro che Compatibilità statica~\eqref{eq:compat_stat} e
+	Compatibilità cinematica~\eqref{eq:compat_cin}, già dimostrate nella
+	\SECref{sec:triade_SCR}, riscritte in forma matriciale tramite una
+	base del nucleo: $\bm f^\top\bm u=0$ per ogni $\bm u\in\Nc(\bm A)$
+	equivale a $\bm U_q^\top\bm f=\bm 0$ perché le colonne di $\bm U_q$
+	generano $\Nc(\bm A)$; analogamente $\bm s^\top\bm r=0$ per ogni
+	$\bm r\in\Nc(\bm A^\top)$ equivale a $\bm R_\chi^\top\bm s=\bm 0$.
+	Per la stessa ragione, esse coincidono anche con la riformulazione
+	in termini di immagine vista in~\eqref{eq:compat_via_im}:
+	$\bm U_q^\top\bm f=\bm 0 \iff \bm f\in\Ic(\bm A^\top)$ e
+	$\bm R_\chi^\top\bm s=\bm 0 \iff \bm s\in\Ic(\bm A)$. Sono tre
+	scritture della stessa condizione, utili in contesti diversi: la
+	prima per il calcolo esplicito (nota una base del nucleo), la
+	seconda per il significato fisico (lavoro virtuale nullo su
+	meccanismi o autotensioni), la terza per il conteggio dimensionale
+	usato nella classificazione.
+\end{oss}
+
+
+
+
+
 
 
 
@@ -1313,399 +2846,398 @@ in tal caso la soluzione generale è:
 	\end{svolgimento}
 \end{esempio}
 
-\begin{esempio}[Trave di Gerber]
-	\label{ex:gerber}
-	Si consideri un sistema di due travi rigide
-	$\mathcal{C}_1$ e $\mathcal{C}_2$ collegate da una
-	cerniera interna in $C = (3a, 0)$. I dati geometrici
-	sono:
-	\begin{itemize}[noitemsep]
-		\item $\mathcal{C}_1$: polo $O_1 \equiv A$,
-		cerniera al suolo in $A$, carrello verticale in
-		$B$, cerniera interna in $C$;
-		\item $\mathcal{C}_2$: polo $O_2 \equiv C$,
-		carrello verticale in $D $.
-	\end{itemize}
-	
-	\noindent\textit{Problema cinematico.} Sono assegnati
-	un cedimento verticale $2\bar{v}$ verso il basso al
-	carrello in $B$ e un cedimento verticale $\bar{v}$
-	verso il basso al carrello in $D$. Determinare la
-	configurazione del sistema.
-	
-	\noindent\textit{Problema statico.} Sono applicate
-	una forza $2F$ verso il basso nel punto medio del
-	tratto $AB$ (a distanza $a$ da $A$) su $\mathcal{C}_1$
-	e una forza $F$ verso il basso nel punto medio di
-	$\mathcal{C}_2$ (a distanza $a$ da $C$) su
-	$\mathcal{C}_2$. Determinare le reazioni vincolari.
-	
-	I dati dei due problemi sono illustrati nella
-	Figura~\ref{fig:gerber}.
-	
-	\begin{figure}[ht]
-		\centering
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-			nodo/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=5pt, line width=0.8pt},
-			cint/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=6pt, line width=0.8pt},
-			richiam/.style={thin, gray, dashed},
-			tacca/.style={thin, gray!70}]
-			
-			
-			\def\a{1.0}     % unità di lunghezza (= a)
-			\def\tw{0.22}   % semi-larghezza triangolo
-			\def\thA{0.38}  % altezza triangolo cerniera
-			\def\thR{0.32}  % altezza triangolo carrello
-			\def\sr{0.08}   % raggio mezzaluna (carrello intermedio)
-			\def\bw{0.16}   % semi-distanza rotelle
-			\def\gw{0.30}   % semi-larghezza barra di terra
-			
-			% ============================================================
-			% PANNELLO (a) — dato cinematico
-			% ============================================================
-			\begin{scope}[xshift=0cm]
-				
-				%% trave (suddivisa in C1 e C2 dalla cerniera in C)
-				\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-				\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
-				
-				%% etichette nodi
-				\node[above=2pt] at (0,0)       {$A$};
-				\node[above=2pt] at ({2*\a},0)  {$B$};
-				\node[above=2pt] at ({3*\a},0)  {$C$};
-				\node[above=2pt] at ({5*\a},0)  {$D$};
-				
-				%% etichette corpi
-				\node at ({\a},  -0.30) {$\mathcal{C}_1$};
-				\node at ({4*\a},-0.30) {$\mathcal{C}_2$};
-				
-				%% cerniera in A
-				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-				\draw (-\gw,-\thA) -- (\gw,-\thA);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-				\node[nodo] at (0,0) {};
-				
-				%% carrello intermedio in B
-				\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-				\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-				\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-				\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-				\draw ({2*\a-\sr},0) arc(180:360:\sr);
-				
-				%% cerniera interna in C
-				\node[cint] at ({3*\a},0) {};
-				
-				%% carrello terminale in D
-				\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-				\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-				\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-				\node[nodo] at ({5*\a},0) {};
-				
-				%% cedimenti
-				\draw[->, thick] ({2*\a},-0.75) -- ({2*\a},-1.30)
-				node[right=3pt, pos=0.5] {$2\bar{v}$};
-				\draw[->, thick] ({5*\a},-0.75) -- ({5*\a},-1.30)
-				node[right=3pt, pos=0.5] {$\bar{v}$};
-				
-				%% quotatura
-				\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
-				\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
-				\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
-				\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
-				
-				\draw[tacca] (0,     -1.55) -- (0,     -1.75);
-				\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
-				\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
-				\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
-				
-				\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
-				\node[above=0.04] at ({\a},   -1.65) {$2a$};
-				\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
-				\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
-				\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
-				\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
-				
-				\node at ({2.5*\a}, -2.05) {(a)};
-				
-			\end{scope}
-			
-			% ============================================================
-			% PANNELLO (b) — dato statico
-			% ============================================================
-			\begin{scope}[xshift=7cm]
-				
-				\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-				\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
-				
-				\node[above=2pt] at (0,0)       {$A$};
-				\node[above=2pt] at ({2*\a},0)  {$B$};
-				\node[above=2pt] at ({3*\a},0)  {$C$};
-				\node[above=2pt] at ({5*\a},0)  {$D$};
-				
-				\node at ({\a},  -0.30) {$\mathcal{C}_1$};
-				\node at ({4*\a},-0.30) {$\mathcal{C}_2$};
-				
-				%% cerniera in A
-				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-				\draw (-\gw,-\thA) -- (\gw,-\thA);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-				\node[nodo] at (0,0) {};
-				
-				%% carrello intermedio in B
-				\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-				\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-				\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-				\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-				\draw ({2*\a-\sr},0) arc(180:360:\sr);
-				
-				\node[cint] at ({3*\a},0) {};
-				
-				%% carrello terminale in D
-				\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-				\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-				\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-				\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-				\node[nodo] at ({5*\a},0) {};
-				
-				%% forze
-				\draw[thin] ({\a},0.05) -- ({\a},-0.05);
-				\draw[->, thick] ({\a},0.70) -- ({\a},0.10)
-				node[right=3pt, pos=0] {$2F$};
-				\draw[thin] ({4*\a},0.05) -- ({4*\a},-0.05);
-				\draw[->, thick] ({4*\a},0.70) -- ({4*\a},0.10)
-				node[right=3pt, pos=0] {$F$};
-				
-				%% quotatura
-				\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.10);
-				\draw[richiam] ({2*\a}, -\thR-0.40) -- ({2*\a}, -1.10);
-				\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.10);
-				\draw[richiam] ({5*\a}, -\thR-0.40) -- ({5*\a}, -1.10);
-				
-				\draw[tacca] (0,     -1.10) -- (0,     -1.30);
-				\draw[tacca] ({2*\a},-1.10) -- ({2*\a},-1.30);
-				\draw[tacca] ({3*\a},-1.10) -- ({3*\a},-1.30);
-				\draw[tacca] ({5*\a},-1.10) -- ({5*\a},-1.30);
-				
-				\draw[<->, thin, gray] (0,     -1.20) -- ({2*\a},-1.20);
-				\node[above=0.04] at ({\a},   -1.20) {$2a$};
-				\draw[<->, thin, gray] ({2*\a},-1.20) -- ({3*\a},-1.20);
-				\node[above=0.04] at ({2.5*\a},-1.20) {$a$};
-				\draw[<->, thin, gray] ({3*\a},-1.20) -- ({5*\a},-1.20);
-				\node[above=0.04] at ({4*\a}, -1.20) {$2a$};
-				
-				\node at ({2.5*\a}, -2.05) {(b)};
-				
-			\end{scope}
-			
-		\end{tikzpicture}
-		\caption{Trave di Gerber (\ESEref{ex:gerber}): dato cinematico
-			(a) e dato statico (b). Cerniera in $A$, carrello (intermedio)
-			in $B$, cerniera interna in $C$, carrello (terminale) in $D$;
-			poli $O_1\equiv A$ e $O_2\equiv C$.}
-		\label{fig:gerber}
-	\end{figure}
-	
-	\begin{svolgimento}
-		
-		\noindent\textbf{Vettore di configurazione e matrice
-			dei vincoli.}
-		Con $n_c = 2$, $n = 6$:
-		\begin{equation*}
-			\bm{u} =
-			\bigl\{u(O_1),\; v(O_1),\; \vartheta_1,\;
-			u(O_2),\; v(O_2),\; \vartheta_2
-			\bigr\}^\top \in \mathbb{R}^6.
-		\end{equation*}
-		I vincoli scalari sono $m = 6$. La matrice dei
-		vincoli e il vettore delle reazioni sono:
-		\begin{equation*}\label{eq:A_gerber}
-			\bm{A} =
-			\begin{bmatrix}
-				1 &  0 &   0 & 0 & 0 &  0 \\
-				0 &  1 &   0 & 0 & 0 &  0 \\
-				0 &  1 &  2a & 0 & 0 &  0 \\
-				-1 &  0 &   0 & 1 & 0 &  0 \\
-				0 & -1 & -3a & 0 & 1 &  0 \\
-				0 &  0 &   0 & 0 & 1 & 2a
-			\end{bmatrix},
-			\qquad
-			\bm{r} =
-			\begin{Bmatrix}
-				X_A \\ Y_A \\ Y_B \\ X_C \\ Y_C \\ Y_D
-			\end{Bmatrix}.
-		\end{equation*}
-		
-		\noindent\textbf{Classificazione.}
-		$\nu = n - m = 0$ e $\rg(\bm{A}) = 6$ per ogni
-		$a \neq 0$: il sistema è \textbf{isostatico}.
-		
-		\smallskip
-		\noindent\textbf{Problema cinematico:
-			$\bm{A}\,\bm{u} = \bm{s}$.}
-		Il vettore dei cedimenti è:
-		\begin{equation*}
-			\bm{s} =
-			\bigl\{0,\; 0,\; -2\bar{v},\;
-			0,\; 0,\; -\bar{v}
-			\bigr\}^\top.
-		\end{equation*}
-		La soluzione si ottiene per sostituzione in avanti:
-		\begin{align*}
-			\text{riga (i):}&\quad u(O_1) = 0,\\
-			\text{riga (ii):}&\quad v(O_1) = 0,\\
-			\text{riga (iii):}&\quad
-			v(O_1) + 2a\,\vartheta_1 = -2\bar{v}
-			\;\Longrightarrow\;
-			\vartheta_1 = -\frac{\bar{v}}{a},\\
-			\text{riga (iv):}&\quad
-			u(O_2) = u(O_1) = 0,\\
-			\text{riga (v):}&\quad
-			v(O_2) = v(O_1) + 3a\,\vartheta_1
-			= -3\bar{v},\\
-			\text{riga (vi):}&\quad
-			v(O_2) + 2a\,\vartheta_2 = -\bar{v}
-			\;\Longrightarrow\;
-			\vartheta_2 = \frac{-\bar{v} + 3\bar{v}}{2a}
-			= \frac{\bar{v}}{a}.
-		\end{align*}
-		La configurazione del sistema è:
-		\begin{equation*}
-			u(O_1) = 0, \quad
-			v(O_1) = 0, \quad
-			\vartheta_1 = -\frac{\bar{v}}{a},
-			\quad
-			u(O_2) = 0, \quad
-			v(O_2) = -3\bar{v}, \quad
-			\vartheta_2 = \frac{\bar{v}}{a}.
-		\end{equation*}
-		$\mathcal{C}_1$ ruota in senso orario attorno ad $A$;
-		$\mathcal{C}_2$ subisce una traslazione verticale di
-		$-3\bar{v}$ e una rotazione antioraria di $\bar{v}/a$.
-		Si noti che il cedimento in $D$ è:
-		\begin{equation*}
-			v(O_2) + 2a\,\vartheta_2 =
-			-3\bar{v} + 2\bar{v} = -\bar{v} \;\checkmark
-		\end{equation*}
-		e quello in $B$:
-		\begin{equation*}
-			v(O_1) + 2a\,\vartheta_1 =
-			0 - 2\bar{v} = -2\bar{v}. \;\checkmark
-		\end{equation*}
-		
-		\smallskip
-		\noindent\textbf{Problema statico:
-			$\bm{A}^{\top}\bm{r} = -\bm{f}$.}
-		Il vettore delle forze generalizzate è:
-		\begin{equation*}
-			\bm{f} =
-			\bigl\{0,\; -2F,\; -2Fa,\;
-			0,\; -F,\; -Fa
-			\bigr\}^\top,
-		\end{equation*}
-		dove $-2F$ e $-2Fa$ sono rispettivamente la
-		risultante verticale e il momento rispetto ad $A$
-		delle forze su $\mathcal{C}_1$; analogamente $-F$ e
-		$-Fa$ per le forze su $\mathcal{C}_2$ rispetto al
-		polo $C$. La matrice del problema statico è:
-		\begin{equation*}\label{eq:B_gerber}
-			\bm{A}^{\top} =
-			\begin{bmatrix}
-				1 &  0 &  0  & -1 &  0  & 0  \\
-				0 &  1 &  1  &  0 & -1  & 0  \\
-				0 &  0 & 2a  &  0 & -3a & 0  \\
-				0 &  0 &  0  &  1 &  0  & 0  \\
-				0 &  0 &  0  &  0 &  1  & 1  \\
-				0 &  0 &  0  &  0 &  0  & 2a
-			\end{bmatrix}.
-		\end{equation*}
-		Il sistema $\bm{A}^{\top}\bm{r} = -\bm{f}$ si
-		risolve per sostituzione all'indietro:
-		\begin{align*}
-			\text{riga (vi):}&\quad
-			2a\,Y_D = Fa
-			\;\Longrightarrow\; Y_D = \frac{F}{2},\\
-			\text{riga (v):}&\quad
-			Y_C + Y_D = F
-			\;\Longrightarrow\; Y_C = \frac{F}{2},\\
-			\text{riga (iv):}&\quad X_C = 0,\\
-			\text{riga (iii):}&\quad
-			2a\,Y_B - 3a\,Y_C = 2Fa
-			\;\Longrightarrow\;
-			Y_B = \frac{2Fa + 3Fa/2}{2a} = \frac{7F}{4},\\
-			\text{riga (ii):}&\quad
-			Y_A + Y_B - Y_C = 2F
-			\;\Longrightarrow\;
-			Y_A = 2F + Y_C - Y_B =
-			2F + \frac{F}{2} - \frac{7F}{4} = \frac{3F}{4},\\
-			\text{riga (i):}&\quad X_A = 0.
-		\end{align*}
-		
-		\noindent\textbf{Dualismo.}
-		La struttura triangolare a blocchi di $\bm{A}^\top$
-		riflette la topologia del sistema: le righe (iv)--(vi)
-		coinvolgono le sole reazioni di $\mathcal{C}_2$ e si
-		risolvono per prime; le righe (i)--(iii) coinvolgono
-		le reazioni di $\mathcal{C}_1$ e la reazione interna
-		$Y_C$ già nota. L'ordine di risoluzione del problema
-		statico --- da $\mathcal{C}_2$ a $\mathcal{C}_1$ ---
-		è l'inverso di quello del problema cinematico, dove
-		$\mathcal{C}_1$ determina $\mathcal{C}_2$.
-		
-		\noindent\textbf{Verifica.}
-		\textit{Corpo $\mathcal{C}_2$}:
-		\begin{equation*}
-			\sum_{(2)} Y = Y_C + Y_D - F =
-			\frac{F}{2} + \frac{F}{2} - F = 0,\;\checkmark
-			\qquad
-			\sum\mu_C = Y_D \cdot 2a - F \cdot a =
-			0.\;\checkmark
-		\end{equation*}
-		\textit{Corpo $\mathcal{C}_1$}:
-		\begin{equation*}
-			\sum_{(1)}  Y= Y_A + Y_B - Y_C - 2F =
-			\frac{3F}{4} + \frac{7F}{4} -
-			\frac{F}{2} - 2F = 0,\;\checkmark
-		\end{equation*}
-		\begin{equation*}
-			\sum_{(1)}\mu_A = Y_B \cdot 2a - Y_C \cdot 3a
-			- 2F \cdot a =
-			\frac{7F}{4} \cdot 2a -
-			\frac{F}{2} \cdot 3a - 2Fa =
-			\frac{7Fa}{2} - \frac{3Fa}{2} - 2Fa =
-			0.\;\checkmark
-		\end{equation*}
-	\end{svolgimento}
-\end{esempio}
-
-
+%\begin{esempio}[Trave di Gerber]
+%	\label{ex:gerber}
+%	Si consideri un sistema di due travi rigide
+%	$\mathcal{C}_1$ e $\mathcal{C}_2$ collegate da una
+%	cerniera interna in $C = (3a, 0)$. I dati geometrici
+%	sono:
+%	\begin{itemize}[noitemsep]
+%		\item $\mathcal{C}_1$: polo $O_1 \equiv A$,
+%		cerniera al suolo in $A$, carrello verticale in
+%		$B$, cerniera interna in $C$;
+%		\item $\mathcal{C}_2$: polo $O_2 \equiv C$,
+%		carrello verticale in $D $.
+%	\end{itemize}
+%	
+%	\noindent\textit{Problema cinematico.} Sono assegnati
+%	un cedimento verticale $2\bar{v}$ verso il basso al
+%	carrello in $B$ e un cedimento verticale $\bar{v}$
+%	verso il basso al carrello in $D$. Determinare la
+%	configurazione del sistema.
+%	
+%	\noindent\textit{Problema statico.} Sono applicate
+%	una forza $2F$ verso il basso nel punto medio del
+%	tratto $AB$ (a distanza $a$ da $A$) su $\mathcal{C}_1$
+%	e una forza $F$ verso il basso nel punto medio di
+%	$\mathcal{C}_2$ (a distanza $a$ da $C$) su
+%	$\mathcal{C}_2$. Determinare le reazioni vincolari.
+%	
+%	I dati dei due problemi sono illustrati nella
+%	Figura~\ref{fig:gerber}.
+%	
+%	\begin{figure}[ht]
+%		\centering
+%		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+%			nodo/.style={circle, fill=white, draw=black,
+%				inner sep=0pt, minimum size=5pt, line width=0.8pt},
+%			cint/.style={circle, fill=white, draw=black,
+%				inner sep=0pt, minimum size=6pt, line width=0.8pt},
+%			richiam/.style={thin, gray, dashed},
+%			tacca/.style={thin, gray!70}]
+%			
+%			
+%			\def\a{1.0}     % unità di lunghezza (= a)
+%			\def\tw{0.22}   % semi-larghezza triangolo
+%			\def\thA{0.38}  % altezza triangolo cerniera
+%			\def\thR{0.32}  % altezza triangolo carrello
+%			\def\sr{0.08}   % raggio mezzaluna (carrello intermedio)
+%			\def\bw{0.16}   % semi-distanza rotelle
+%			\def\gw{0.30}   % semi-larghezza barra di terra
+%			
+%			% ============================================================
+%			% PANNELLO (a) — dato cinematico
+%			% ============================================================
+%			\begin{scope}[xshift=0cm]
+%				
+%				%% trave (suddivisa in C1 e C2 dalla cerniera in C)
+%				\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+%				\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
+%				
+%				%% etichette nodi
+%				\node[above=2pt] at (0,0)       {$A$};
+%				\node[above=2pt] at ({2*\a},0)  {$B$};
+%				\node[above=2pt] at ({3*\a},0)  {$C$};
+%				\node[above=2pt] at ({5*\a},0)  {$D$};
+%				
+%				%% etichette corpi
+%				\node at ({\a},  -0.30) {$\mathcal{C}_1$};
+%				\node at ({4*\a},-0.30) {$\mathcal{C}_2$};
+%				
+%				%% cerniera in A
+%				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+%				\draw (-\gw,-\thA) -- (\gw,-\thA);
+%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+%				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+%				\node[nodo] at (0,0) {};
+%				
+%				%% carrello intermedio in B
+%				\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+%				\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+%				\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+%				\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+%				\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+%				\draw ({2*\a-\sr},0) arc(180:360:\sr);
+%				
+%				%% cerniera interna in C
+%				\node[cint] at ({3*\a},0) {};
+%				
+%				%% carrello terminale in D
+%				\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+%				\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
+%				\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
+%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+%				\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+%				\node[nodo] at ({5*\a},0) {};
+%				
+%				%% cedimenti
+%				\draw[->, thick] ({2*\a},-0.75) -- ({2*\a},-1.30)
+%				node[right=3pt, pos=0.5] {$2\bar{v}$};
+%				\draw[->, thick] ({5*\a},-0.75) -- ({5*\a},-1.30)
+%				node[right=3pt, pos=0.5] {$\bar{v}$};
+%				
+%				%% quotatura
+%				\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
+%				\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
+%				\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
+%				\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
+%				
+%				\draw[tacca] (0,     -1.55) -- (0,     -1.75);
+%				\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
+%				\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
+%				\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
+%				
+%				\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
+%				\node[above=0.04] at ({\a},   -1.65) {$2a$};
+%				\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
+%				\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
+%				\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
+%				\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
+%				
+%				\node at ({2.5*\a}, -2.05) {(a)};
+%				
+%			\end{scope}
+%			
+%			% ============================================================
+%			% PANNELLO (b) — dato statico
+%			% ============================================================
+%			\begin{scope}[xshift=7cm]
+%				
+%				\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+%				\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
+%				
+%				\node[above=2pt] at (0,0)       {$A$};
+%				\node[above=2pt] at ({2*\a},0)  {$B$};
+%				\node[above=2pt] at ({3*\a},0)  {$C$};
+%				\node[above=2pt] at ({5*\a},0)  {$D$};
+%				
+%				\node at ({\a},  -0.30) {$\mathcal{C}_1$};
+%				\node at ({4*\a},-0.30) {$\mathcal{C}_2$};
+%				
+%				%% cerniera in A
+%				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+%				\draw (-\gw,-\thA) -- (\gw,-\thA);
+%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+%				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+%				\node[nodo] at (0,0) {};
+%				
+%				%% carrello intermedio in B
+%				\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+%				\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+%				\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+%				\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+%				\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+%				\draw ({2*\a-\sr},0) arc(180:360:\sr);
+%				
+%				\node[cint] at ({3*\a},0) {};
+%				
+%				%% carrello terminale in D
+%				\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+%				\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
+%				\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
+%				\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
+%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+%				\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+%				\node[nodo] at ({5*\a},0) {};
+%				
+%				%% forze
+%				\draw[thin] ({\a},0.05) -- ({\a},-0.05);
+%				\draw[->, thick] ({\a},0.70) -- ({\a},0.10)
+%				node[right=3pt, pos=0] {$2F$};
+%				\draw[thin] ({4*\a},0.05) -- ({4*\a},-0.05);
+%				\draw[->, thick] ({4*\a},0.70) -- ({4*\a},0.10)
+%				node[right=3pt, pos=0] {$F$};
+%				
+%				%% quotatura
+%				\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.10);
+%				\draw[richiam] ({2*\a}, -\thR-0.40) -- ({2*\a}, -1.10);
+%				\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.10);
+%				\draw[richiam] ({5*\a}, -\thR-0.40) -- ({5*\a}, -1.10);
+%				
+%				\draw[tacca] (0,     -1.10) -- (0,     -1.30);
+%				\draw[tacca] ({2*\a},-1.10) -- ({2*\a},-1.30);
+%				\draw[tacca] ({3*\a},-1.10) -- ({3*\a},-1.30);
+%				\draw[tacca] ({5*\a},-1.10) -- ({5*\a},-1.30);
+%				
+%				\draw[<->, thin, gray] (0,     -1.20) -- ({2*\a},-1.20);
+%				\node[above=0.04] at ({\a},   -1.20) {$2a$};
+%				\draw[<->, thin, gray] ({2*\a},-1.20) -- ({3*\a},-1.20);
+%				\node[above=0.04] at ({2.5*\a},-1.20) {$a$};
+%				\draw[<->, thin, gray] ({3*\a},-1.20) -- ({5*\a},-1.20);
+%				\node[above=0.04] at ({4*\a}, -1.20) {$2a$};
+%				
+%				\node at ({2.5*\a}, -2.05) {(b)};
+%				
+%			\end{scope}
+%			
+%		\end{tikzpicture}
+%		\caption{Trave di Gerber (\ESEref{ex:gerber}): dato cinematico
+%			(a) e dato statico (b). Cerniera in $A$, carrello (intermedio)
+%			in $B$, cerniera interna in $C$, carrello (terminale) in $D$;
+%			poli $O_1\equiv A$ e $O_2\equiv C$.}
+%		\label{fig:gerber}
+%	\end{figure}
+%	
+%	\begin{svolgimento}
+%		
+%		\noindent\textbf{Vettore di configurazione e matrice
+%			dei vincoli.}
+%		Con $n_c = 2$, $n = 6$:
+%		\begin{equation*}
+%			\bm{u} =
+%			\bigl\{u(O_1),\; v(O_1),\; \vartheta_1,\;
+%			u(O_2),\; v(O_2),\; \vartheta_2
+%			\bigr\}^\top \in \mathbb{R}^6.
+%		\end{equation*}
+%		I vincoli scalari sono $m = 6$. La matrice dei
+%		vincoli e il vettore delle reazioni sono:
+%		\begin{equation*}\label{eq:A_gerber}
+%			\bm{A} =
+%			\begin{bmatrix}
+%				1 &  0 &   0 & 0 & 0 &  0 \\
+%				0 &  1 &   0 & 0 & 0 &  0 \\
+%				0 &  1 &  2a & 0 & 0 &  0 \\
+%				-1 &  0 &   0 & 1 & 0 &  0 \\
+%				0 & -1 & -3a & 0 & 1 &  0 \\
+%				0 &  0 &   0 & 0 & 1 & 2a
+%			\end{bmatrix},
+%			\qquad
+%			\bm{r} =
+%			\begin{Bmatrix}
+%				X_A \\ Y_A \\ Y_B \\ X_C \\ Y_C \\ Y_D
+%			\end{Bmatrix}.
+%		\end{equation*}
+%		
+%		\noindent\textbf{Classificazione.}
+%		$\nu = n - m = 0$ e $\rg(\bm{A}) = 6$ per ogni
+%		$a \neq 0$: il sistema è \textbf{isostatico}.
+%		
+%		\smallskip
+%		\noindent\textbf{Problema cinematico:
+%			$\bm{A}\,\bm{u} = \bm{s}$.}
+%		Il vettore dei cedimenti è:
+%		\begin{equation*}
+%			\bm{s} =
+%			\bigl\{0,\; 0,\; -2\bar{v},\;
+%			0,\; 0,\; -\bar{v}
+%			\bigr\}^\top.
+%		\end{equation*}
+%		La soluzione si ottiene per sostituzione in avanti:
+%		\begin{align*}
+%			\text{riga (i):}&\quad u(O_1) = 0,\\
+%			\text{riga (ii):}&\quad v(O_1) = 0,\\
+%			\text{riga (iii):}&\quad
+%			v(O_1) + 2a\,\vartheta_1 = -2\bar{v}
+%			\;\Longrightarrow\;
+%			\vartheta_1 = -\frac{\bar{v}}{a},\\
+%			\text{riga (iv):}&\quad
+%			u(O_2) = u(O_1) = 0,\\
+%			\text{riga (v):}&\quad
+%			v(O_2) = v(O_1) + 3a\,\vartheta_1
+%			= -3\bar{v},\\
+%			\text{riga (vi):}&\quad
+%			v(O_2) + 2a\,\vartheta_2 = -\bar{v}
+%			\;\Longrightarrow\;
+%			\vartheta_2 = \frac{-\bar{v} + 3\bar{v}}{2a}
+%			= \frac{\bar{v}}{a}.
+%		\end{align*}
+%		La configurazione del sistema è:
+%		\begin{equation*}
+%			u(O_1) = 0, \quad
+%			v(O_1) = 0, \quad
+%			\vartheta_1 = -\frac{\bar{v}}{a},
+%			\quad
+%			u(O_2) = 0, \quad
+%			v(O_2) = -3\bar{v}, \quad
+%			\vartheta_2 = \frac{\bar{v}}{a}.
+%		\end{equation*}
+%		$\mathcal{C}_1$ ruota in senso orario attorno ad $A$;
+%		$\mathcal{C}_2$ subisce una traslazione verticale di
+%		$-3\bar{v}$ e una rotazione antioraria di $\bar{v}/a$.
+%		Si noti che il cedimento in $D$ è:
+%		\begin{equation*}
+%			v(O_2) + 2a\,\vartheta_2 =
+%			-3\bar{v} + 2\bar{v} = -\bar{v} \;\checkmark
+%		\end{equation*}
+%		e quello in $B$:
+%		\begin{equation*}
+%			v(O_1) + 2a\,\vartheta_1 =
+%			0 - 2\bar{v} = -2\bar{v}. \;\checkmark
+%		\end{equation*}
+%		
+%		\smallskip
+%		\noindent\textbf{Problema statico:
+%			$\bm{A}^{\top}\bm{r} = -\bm{f}$.}
+%		Il vettore delle forze generalizzate è:
+%		\begin{equation*}
+%			\bm{f} =
+%			\bigl\{0,\; -2F,\; -2Fa,\;
+%			0,\; -F,\; -Fa
+%			\bigr\}^\top,
+%		\end{equation*}
+%		dove $-2F$ e $-2Fa$ sono rispettivamente la
+%		risultante verticale e il momento rispetto ad $A$
+%		delle forze su $\mathcal{C}_1$; analogamente $-F$ e
+%		$-Fa$ per le forze su $\mathcal{C}_2$ rispetto al
+%		polo $C$. La matrice del problema statico è:
+%		\begin{equation*}\label{eq:B_gerber}
+%			\bm{A}^{\top} =
+%			\begin{bmatrix}
+%				1 &  0 &  0  & -1 &  0  & 0  \\
+%				0 &  1 &  1  &  0 & -1  & 0  \\
+%				0 &  0 & 2a  &  0 & -3a & 0  \\
+%				0 &  0 &  0  &  1 &  0  & 0  \\
+%				0 &  0 &  0  &  0 &  1  & 1  \\
+%				0 &  0 &  0  &  0 &  0  & 2a
+%			\end{bmatrix}.
+%		\end{equation*}
+%		Il sistema $\bm{A}^{\top}\bm{r} = -\bm{f}$ si
+%		risolve per sostituzione all'indietro:
+%		\begin{align*}
+%			\text{riga (vi):}&\quad
+%			2a\,Y_D = Fa
+%			\;\Longrightarrow\; Y_D = \frac{F}{2},\\
+%			\text{riga (v):}&\quad
+%			Y_C + Y_D = F
+%			\;\Longrightarrow\; Y_C = \frac{F}{2},\\
+%			\text{riga (iv):}&\quad X_C = 0,\\
+%			\text{riga (iii):}&\quad
+%			2a\,Y_B - 3a\,Y_C = 2Fa
+%			\;\Longrightarrow\;
+%			Y_B = \frac{2Fa + 3Fa/2}{2a} = \frac{7F}{4},\\
+%			\text{riga (ii):}&\quad
+%			Y_A + Y_B - Y_C = 2F
+%			\;\Longrightarrow\;
+%			Y_A = 2F + Y_C - Y_B =
+%			2F + \frac{F}{2} - \frac{7F}{4} = \frac{3F}{4},\\
+%			\text{riga (i):}&\quad X_A = 0.
+%		\end{align*}
+%		
+%		\noindent\textbf{Dualismo.}
+%		La struttura triangolare a blocchi di $\bm{A}^\top$
+%		riflette la topologia del sistema: le righe (iv)--(vi)
+%		coinvolgono le sole reazioni di $\mathcal{C}_2$ e si
+%		risolvono per prime; le righe (i)--(iii) coinvolgono
+%		le reazioni di $\mathcal{C}_1$ e la reazione interna
+%		$Y_C$ già nota. L'ordine di risoluzione del problema
+%		statico --- da $\mathcal{C}_2$ a $\mathcal{C}_1$ ---
+%		è l'inverso di quello del problema cinematico, dove
+%		$\mathcal{C}_1$ determina $\mathcal{C}_2$.
+%		
+%		\noindent\textbf{Verifica.}
+%		\textit{Corpo $\mathcal{C}_2$}:
+%		\begin{equation*}
+%			\sum_{(2)} Y = Y_C + Y_D - F =
+%			\frac{F}{2} + \frac{F}{2} - F = 0,\;\checkmark
+%			\qquad
+%			\sum\mu_C = Y_D \cdot 2a - F \cdot a =
+%			0.\;\checkmark
+%		\end{equation*}
+%		\textit{Corpo $\mathcal{C}_1$}:
+%		\begin{equation*}
+%			\sum_{(1)}  Y= Y_A + Y_B - Y_C - 2F =
+%			\frac{3F}{4} + \frac{7F}{4} -
+%			\frac{F}{2} - 2F = 0,\;\checkmark
+%		\end{equation*}
+%		\begin{equation*}
+%			\sum_{(1)}\mu_A = Y_B \cdot 2a - Y_C \cdot 3a
+%			- 2F \cdot a =
+%			\frac{7F}{4} \cdot 2a -
+%			\frac{F}{2} \cdot 3a - 2Fa =
+%			\frac{7Fa}{2} - \frac{3Fa}{2} - 2Fa =
+%			0.\;\checkmark
+%		\end{equation*}
+%	\end{svolgimento}
+%\end{esempio}
 \begin{esempio}[Sistema labile: compatibilità statica
 	--- trave di Gerber senza carrello in $B$]
 	\label{ex:gerber_labile}
-	Si consideri il sistema della trave di Gerber
-	dell'\ESEref{ex:gerber}, dal quale si rimuove il
-	carrello in $B$, mantenendo tutti gli altri vincoli.
-	Allora $m = 5$ e $\nu = 6 - 5 = 1$: il sistema è
-	labile. Sono applicati gli stessi carichi
-	dell'\ESEref{ex:gerber}: una forza $2F$ verso il
+	Si consideri il sistema della trave di Gerber di
+	\FIGref{fig:gerber_motiv} (già risolto nelle Sezioni
+	\ref{sec:congruenza_SCR}-\ref{sec:gerber_equilibrio}),
+	dal quale si rimuove il carrello in $B$, mantenendo tutti gli
+	altri vincoli. Allora $m = 5$ e $\nu = 6 - 5 = 1$: il sistema è
+	labile. Sono applicati gli stessi carichi già visti
+	in~\eqref{eq:f_gerber}: una forza $2F$ verso il
 	basso nel punto medio di $AB$ e una forza $F$ verso
 	il basso nel punto medio di $\mathcal{C}_2$.
 	Determinare il meccanismo e verificare la
@@ -1715,7 +3247,7 @@ in tal caso la soluzione generale è:
 		
 		\noindent\textbf{Meccanismo.}
 		La matrice $\bm{A}$ è la sottomatrice delle righe
-		(i), (ii), (iv), (v), (vi) dell'\EQUref{eq:A_gerber},
+		(i), (ii), (iv), (v), (vi) di~\eqref{eq:A_gerber_SCR},
 		ottenuta sopprimendo la riga (iii) corrispondente al
 		carrello in $B$. Risolvendo $\bm{A}\,\bm{u} = \bm{0}$:
 		\begin{align*}
@@ -1763,7 +3295,7 @@ in tal caso la soluzione generale è:
 		Il problema statico $\bm{A}^\top\bm{r} = -\bm{f}$
 		ammette soluzione se e solo se
 		$\bm{U}_q^\top\bm{f} = 0$. Il vettore delle forze
-		generalizzate è:
+		generalizzate è ancora quello di~\eqref{eq:f_gerber}:
 		\begin{equation*}
 			\bm{f} =
 			\bigl\{0,\; -2F,\; -2Fa,\;
@@ -1806,7 +3338,294 @@ in tal caso la soluzione generale è:
 \end{esempio}
 
 
+\tR{Da verificare}
+\begin{esempio}[Trave su tre appoggi: autotensione e
+	compatibilità cinematica]
+	\label{ex:trave_tre_appoggi}
+	Si consideri una trave rigida vincolata da una cerniera in
+	$A=(0,0)$ e da due carrelli verticali, in $B=(a,0)$ e in
+	$C=(2a,0)$. Si scelga il polo $O\equiv A$.
+	
+	\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=0.8pt},
+			tacca/.style={thin, gray!70}]
+			
+			\def\a{2.0}     % unità di lunghezza (= a)
+			\def\tw{0.22}
+			\def\thA{0.38}
+			\def\thR{0.32}
+			\def\bw{0.16}
+			\def\gw{0.30}
+			\def\sr{0.08}
+			
+			%% trave
+			\draw[line width=2.2pt] (0,0) -- ({2*\a},0);
+			
+			%% etichette nodi
+			\node[above=2pt] at (0,0)      {$A$};
+			\node[above=2pt] at (\a,0)     {$B$};
+			\node[above=2pt] at ({2*\a},0) {$C$};
+			
+			%% cerniera in A
+			\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+			\draw (-\gw,-\thA) -- (\gw,-\thA);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+			\node[nodo] at (0,0) {};
+			
+			%% carrello intermedio in B
+			\draw (\a,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+			\draw (\a-\gw,-\thR) -- (\a+\gw,-\thR);
+			\draw (\a-\bw,-\thR-0.12) circle (2.4pt);
+			\draw (\a+\bw,-\thR-0.12) circle (2.4pt);
+			\draw (\a-\gw,-\thR-0.24) -- (\a+\gw,-\thR-0.24);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] (\a+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+			\fill[white] (\a-\sr,0) arc(180:360:\sr) -- cycle;
+			\draw (\a-\sr,0) arc(180:360:\sr);
+			
+			%% carrello terminale in C
+			\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+			\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+			\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+			\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+			\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+			\node[nodo] at ({2*\a},0) {};
+			
+			%% quotatura
+			\draw[tacca] (0,-0.90) -- (0,-1.10);
+			\draw[tacca] (\a,-0.90) -- (\a,-1.10);
+			\draw[tacca] ({2*\a},-0.90) -- ({2*\a},-1.10);
+			
+			\draw[<->, thin, gray] (0,-1.00) -- (\a,-1.00);
+			\node[above=0.04] at ({0.5*\a},-1.00) {$a$};
+			\draw[<->, thin, gray] (\a,-1.00) -- ({2*\a},-1.00);
+			\node[above=0.04] at ({1.5*\a},-1.00) {$a$};
+			
+		\end{tikzpicture}
+		\caption{Trave su tre appoggi (\ESEref{ex:trave_tre_appoggi}):
+			cerniera in $A=(0,0)$, carrello verticale intermedio in
+			$B=(a,0)$, carrello verticale terminale in $C=(2a,0)$;
+			polo $O\equiv A$. Il vincolo ridondante --- uno dei tre
+			è in eccesso rispetto al minimo necessario per un unico
+			corpo rigido --- rende il sistema iperstatico di grado 1.}
+		\label{fig:trave_tre_appoggi}
+	\end{figure}
+	
+	\begin{svolgimento}
+		
+		\noindent\textbf{Vettore di configurazione e matrice
+			dei vincoli.} Con $n_c=1$, $n=3$:
+		$\bm u=\{u(O),\,v(O),\,\vartheta\}^\top$. I vincoli
+		scalari sono $m=4$: le due componenti della cerniera in
+		$A$ e le componenti verticali dei due carrelli. La
+		matrice dei vincoli e il vettore delle reazioni sono:
+		\begin{equation*}
+			\bm A =
+			\begin{bmatrix}
+				1 & 0 & 0\\
+				0 & 1 & 0\\
+				0 & 1 & a\\
+				0 & 1 & 2a
+			\end{bmatrix},
+			\qquad
+			\bm r =
+			\begin{Bmatrix}
+				X_A\\ Y_A\\ Y_B\\ Y_C
+			\end{Bmatrix}.
+		\end{equation*}
+		
+		\noindent\textbf{Classificazione.}
+		$\nu=n-m=3-4=-1$. Le prime tre righe di $\bm A$ hanno
+		determinante $a\neq0$, quindi $\rg(\bm A)=3=n$: il
+		sistema è \textbf{iperstatico di grado} $g_i=|\nu|=1$
+		(e $g_\ell=0$: nessun meccanismo).
+		
+		\noindent\textbf{Autotensione.}
+		Sia $\bm R_\chi\in\mathbb R^{4\times 1}$ una base di
+		$\ker\bm A^\top$. Risolvendo $\bm A^\top\bm r_n=\bm 0$:
+		\begin{align*}
+			\text{(colonna $u(O)$):}&\quad X_A=0,\\
+			\text{(colonna $\vartheta$):}&\quad
+			a\,Y_B+2a\,Y_C=0
+			\;\Longrightarrow\; Y_B=-2Y_C,\\
+			\text{(colonna $v(O)$):}&\quad
+			Y_A+Y_B+Y_C=0
+			\;\Longrightarrow\; Y_A=Y_C.
+		\end{align*}
+		Ponendo $Y_C=\chi$ e normalizzando a $\chi=1$:
+		\begin{equation*}
+			\bm R_\chi = \{0,\;1,\;-2,\;1\}^\top.
+		\end{equation*}
+		
+		\noindent\textbf{Verifica dell'autotensione.}
+		Risultante verticale: $Y_A+Y_B+Y_C=1-2+1=0$.
+		\;$\checkmark$\quad Momento rispetto ad $A$:
+		$Y_B\cdot a+Y_C\cdot 2a=-2a+2a=0$. \;$\checkmark$
+		È dunque un sistema di reazioni in equilibrio pur in
+		assenza di ogni carico esterno --- un'autotensione:
+		possibile proprio perché il vincolo in $C$ è ridondante
+		rispetto ai primi tre.
+		
+		\noindent\textbf{Compatibilità cinematica.}
+		Il problema cinematico $\bm A\bm u=\bm s$ ammette
+		soluzione se e solo se $\bm R_\chi^\top\bm s=0$.
+		Imponiamo cedimenti $\bar s_B$ in $B$ e $\bar s_C$ in
+		$C$ (cerniera in $A$ perfetta):
+		$\bm s=\{0,\,0,\,\bar s_B,\,\bar s_C\}^\top$. La
+		condizione di compatibilità dà:
+		\begin{equation*}
+			\bm R_\chi^\top\bm s =
+			-2\,\bar s_B+\bar s_C = 0
+			\quad\Longrightarrow\quad
+			\bar s_C = 2\,\bar s_B.
+		\end{equation*}
+		Il risultato si verifica per ispezione diretta: con la
+		cerniera perfetta, $v(O)=0$, e ogni configurazione
+		rigida ha $v(x)=x\vartheta$; dunque
+		$v(a)=a\vartheta=\bar s_B$ e $v(2a)=2a\vartheta=2\bar
+		s_B$, che deve coincidere con $\bar s_C$ --- esattamente
+		la condizione trovata.
+		
+		\vspace{6pt}
+		\noindent\textbf{Cedimento incompatibile.}
+		Se i due appoggi cedono \emph{indipendentemente} ---
+		per esempio $\bar s_B=\delta$ e $\bar s_C=\delta$
+		(stesso cedimento in entrambi) --- la condizione non è
+		soddisfatta ($\delta\neq 2\delta$ per $\delta\neq0$):
+		nessuna configurazione rigida della trave è compatibile
+		con questi due dati simultaneamente. Fisicamente, è
+		proprio l'iperstaticità --- il vincolo ridondante in
+		$C$ --- a rendere il sistema sensibile a cedimenti
+		differenziali: una trave isostatica (con un solo
+		carrello) si adatterebbe a qualunque cedimento
+		imposto, ruotando semplicemente attorno agli altri due
+		vincoli; qui, il terzo vincolo lo impedisce, a meno che
+		i due cedimenti non siano già nel rapporto giusto.
+		
+	\end{svolgimento}
+\end{esempio}
 
+\begin{esempio}[Trave semplicemente appoggiata: TSV e TFV]
+	\label{ex:trave_semplice_virt}
+	Si riprende la trave semplicemente appoggiata
+	dell'\ESEref{ex:trave_semplice}: cerniera in $A$,
+	carrello in $B=(\ell,0)$, sistema isostatico con
+	cedimento $\bar v_B$ al carrello $B$ e carico $F$
+	applicato in $x=a$. Calcolare la reazione $Y_B$ tramite
+	il teorema degli spostamenti virtuali (Müller-Breslau) e
+	lo spostamento $v(a)$ tramite il teorema delle forze
+	virtuali.
+	
+	\begin{svolgimento}
+		
+		\noindent\textbf{Teorema degli spostamenti virtuali.}
+		Si assegna un cedimento unitario al vincolo 3 (il
+		carrello in $B$): $\bm s^*=\bm e_3=\{0\;\,0\;\,1\}^\top$.
+		Il problema virtuale cinematico $\bm A\bm u^*=\bm s^*$ dà:
+		\begin{equation*}
+			u^*=0,\qquad v^*=0,\qquad \vartheta^*=\frac{1}{\ell}.
+		\end{equation*}
+		Con il carico reale $\bm f=\{0\;\,{-F}\;\,{-Fa}\}^\top$:
+		\begin{equation*}
+			\bm f^\top\bm u^* =
+			0\cdot 0+(-F)\cdot 0+(-Fa)\cdot\frac{1}{\ell}
+			= -\frac{Fa}{\ell}.
+		\end{equation*}
+		Per~\eqref{eq:mueller_breslau}:
+		\begin{equation*}
+			Y_B=-\bm f^\top\bm u^*=\frac{Fa}{\ell},
+		\end{equation*}
+		in accordo con il valore già trovato
+		nell'\ESEref{ex:trave_semplice}.
+		
+		\noindent\textbf{Teorema delle forze virtuali.}
+		Si vuole calcolare lo spostamento verticale $v(a)$ del
+		punto di applicazione del carico $F$. Per la formula del
+		moto rigido, $v(a)=v+a\vartheta$: è un funzionale lineare
+		di $\bm u$ con coefficienti $\bm c=\{0\;\,1\;\,a\}^\top$.
+		Per la generalizzazione a funzionali lineari vista sopra,
+		si risolve il problema virtuale statico
+		$\bm A^\top\bm r^*=-\bm c$:
+		\begin{equation*}
+			X_A^*=0,\qquad
+			\ell\,Y_B^*=-a \;\Longrightarrow\; Y_B^*=-\frac{a}{\ell},
+			\qquad
+			Y_A^*+Y_B^*=-1 \;\Longrightarrow\;
+			Y_A^*=\frac{a}{\ell}-1.
+		\end{equation*}
+		Con il cedimento reale $\bm s=\{0\;\,0\;\,{-\bar v_B}\}^\top$:
+		\begin{equation*}
+			v(a) = -\bm s^\top\bm r^* =
+			-\Bigl[(-\bar v_B)\cdot\Bigl(-\frac{a}{\ell}\Bigr)\Bigr]
+			= -\frac{a}{\ell}\,\bar v_B.
+		\end{equation*}
+		Il segno è coerente con il calcolo diretto già svolto
+		nell'\ESEref{ex:trave_semplice}: se $B$ scende
+		($\bar v_B>0$), l'intera trave ruota in senso orario
+		attorno ad $A$, e ogni punto fra $A$ e $B$ --- in
+		particolare quello in $x=a$ --- scende con essa.
+		
+		\begin{oss}
+			I due calcoli mostrano l'uso speculare di TSV e TFV:
+			per $Y_B$ si risolve un problema cinematico virtuale
+			con cedimento unitario al vincolo cercato; per $v(a)$
+			si risolve un problema statico virtuale con un carico
+			generalizzato pari ai coefficienti del funzionale
+			cercato.
+		\end{oss}
+		
+	\end{svolgimento}
+\end{esempio}
+
+
+\begin{esempio}[Trave di Gerber: teorema degli spostamenti virtuali]
+	\label{ex:gerber_TSV}
+	Si riprende la trave di Gerber di \FIGref{fig:gerber_motiv},
+	con il carico già visto in~\eqref{eq:f_gerber} (una forza
+	$2F$ sul punto medio di $AB$, una forza $F$ sul punto medio
+	di $\mathcal{C}_2$). Calcolare la reazione $Y_B$ tramite il
+	teorema degli spostamenti virtuali, senza risolvere
+	l'intero sistema $\bm A^\top\bm r=-\bm f$.
+	
+	\begin{svolgimento}
+		
+		Si assegna un cedimento unitario al vincolo 3 (il
+		carrello in $B$): $\bm s^*=\bm e_3$. Il problema
+		virtuale $\bm A\bm u^*=\bm e_3$, con la stessa matrice
+		$\bm A$ di~\eqref{eq:A_gerber_SCR}, si risolve
+		sequenzialmente:
+		\begin{align*}
+			&\text{righe (i)--(ii):}& u_1^*&=v_1^*=0;\\
+			&\text{riga (iii):}& \vartheta_1^*&=\frac{1}{2a};\\
+			&\text{riga (iv):}& u_2^*&=0;\\
+			&\text{riga (v):}& v_2^*&=3a\,\vartheta_1^*=\frac{3}{2};\\
+			&\text{riga (vi):}& \vartheta_2^*&=
+			-\frac{v_2^*}{2a}=-\frac{3}{4a}.
+		\end{align*}
+		Con il carico reale~\eqref{eq:f_gerber}:
+		\begin{equation*}
+			\bm f^\top\bm u^* =
+			(-2Fa)\cdot\frac{1}{2a} + (-F)\cdot\frac{3}{2}
+			+ (-Fa)\cdot\left(-\frac{3}{4a}\right)
+			= -F - \frac{3F}{2} + \frac{3F}{4}
+			= -\frac{7F}{4}.
+		\end{equation*}
+		Per~\eqref{eq:mueller_breslau}:
+		\begin{equation*}
+			Y_B = -\bm f^\top\bm u^* = \frac{7F}{4},
+		\end{equation*}
+		esattamente il valore già trovato risolvendo il sistema
+		completo in~\eqref{eq:reazioni_gerber} --- qui ottenuto
+		senza calcolare le altre cinque reazioni.
+		
+	\end{svolgimento}
+\end{esempio}
 
 %-------------------------------------------------------------------------------
 \section{Esercizi proposti}
@@ -2054,7 +3873,7 @@ significato di proiezione dello spostamento sul proprio asse.
 	\[
 	\bm{s}^\top\bm{r} = \bar{s}_B\cdot R_B = \frac{\bar{s}_B\,F}{2}.
 	\]
-	La somma è zero, come previsto da~\eqref{eq:bilancio_lavori}.
+	La somma è zero, come previsto da~\eqref{eq:reciprocita_SCR}.
 \end{esercizio}
 
 \begin{figure}[ht]
@@ -2161,7 +3980,7 @@ significato di proiezione dello spostamento sul proprio asse.
 	verticali — non sentendo lo spostamento orizzontale — non si
 	oppongono al moto.
 	(d) $\Nc(\bm{A}^\top)$ è generato da
-	$\bm{r}_n=(1\;-2\;1)^\top$: gli stati di autoequilibrio sono
+	$\bm{r}_n=\{1\;-2\;1\}^\top$: gli stati di autoequilibrio sono
 	tutti e soli quelli della forma
 	\[
 	V_A=\lambda,\qquad V_C=-2\lambda,\qquad V_B=\lambda,
@@ -2284,7 +4103,7 @@ significato di proiezione dello spostamento sul proprio asse.
 	\qquad \lambda\in\mathbb{R},
 	\]
 	e $\Nc(\bm{A}^\top)$ è generato da
-	$\bm{R}_\chi=(0\;1\;-2\;1)^\top$. Lo stesso rapporto $1:-2:1$
+	$\bm{R}_\chi=\{0\;1\;-2\;1\}^\top$. Lo stesso rapporto $1:-2:1$
 	appare come meccanismo nel sistema
 	dell'\ESEref{ex:C05_tre_carrelli} e qui come stato di
 	autoequilibrio: è la stessa relazione algebrica fra le tre quote
