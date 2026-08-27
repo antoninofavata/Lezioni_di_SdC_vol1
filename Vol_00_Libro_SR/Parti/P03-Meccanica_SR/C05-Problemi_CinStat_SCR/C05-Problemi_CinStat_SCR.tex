@@ -1346,20 +1346,20 @@ quanto visto nel caso della trave di Gerber. Le forze attive su
 ciascun corpo $\mathcal C_i$ si raccolgono, come già fatto per il
 corpo singolo (\CAPref{cap:statica_CR}), nel blocco
 \begin{equation}
-	\bm f_i \coloneqq \bigl(F_{ix} \;\; F_{iy}  \;\; C_i\bigr)^{\!\top}\in\mathbb R^3,
+	\bm f_i \coloneqq \bigl\{F_{ix} \;\; F_{iy}  \;\; C_i\bigr\}^{\!\top}\in\mathbb R^3,
 \end{equation}
 risultante e momento risultante dei soli carichi attivi su
 $\mathcal C_i$; l'insieme delle forze attive su tutto il sistema forma
 il vettore
 \begin{equation}
-	\bm f \coloneqq (\bm f_1\;\dots\;\bm f_{n_c})^{\!\top}\in\mathbb R^n,
+	\bm f \coloneqq \{\bm f_1\;\dots\;\bm f_{n_c}\}^{\!\top}\in\mathbb R^n,
 	\qquad n=3n_c.
 \end{equation}
 Le reazioni vincolari\nomenclature[L]{$\bm{r}$}{vettore delle reazioni vincolari (intensità scalari $R_k$)} costituiscono il vettore
 $\bm{r} \in \mathbb{R}^{m}$:
 \begin{equation}
 	\bm{r} \coloneqq
-	\bigl(R_1\ R_2 \ \dots\ R_m\bigr)^{\!\top},
+	\bigl\{R_1\ R_2 \ \dots\ R_m\bigr\}^{\!\top},
 \end{equation}
 dove ogni $R_k$ è l'intensità scalare della reazione associata
 alla $k$-esima equazione di vincolo.
@@ -1618,7 +1618,7 @@ $i=1,\dots,n_c$, è individualmente equilibrato; dunque
 
 Resta da tradurre questa condizione, formulata corpo per corpo,
 in un'unica condizione sull'intero sistema. Poniamo
-$\bm u=(\bm u_1,\dots,\bm u_{n_c})\in\mathbb R^n$ --- un atto di
+$\bm u=\{\bm u_1 \;\;\dots \;\;\bm u_{n_c}\}\in\mathbb R^n$ --- un atto di
 moto virtuale del sistema, cioè un atto di moto rigido virtuale
 indipendente per ciascun corpo, non soggetto ad alcuna
 condizione di congruenza --- e definiamo il lavoro virtuale
@@ -1850,7 +1850,7 @@ spostamento.
 	il fatto di algebra lineare
 	$(\Nc(\bm A))^\perp=\Ic(\bm A^\top)$ (si veda
 	\CAPref{app:applicazionilin_dualita}), segue $\bm
-	f\in\Ic(\bm A^\top)=\Ic\bm B$:
+	f\in\Ic(\bm A^\top)=\Ic(\bm B)$:
 	esiste $\bm w\in\mathbb R^m$ con $\bm f=\bm B\bm w$; basta
 	porre $\bm r\coloneqq-\bm w$.
 \end{proof}
@@ -1876,9 +1876,7 @@ equilibrio corpo per corpo. Un'altra applicazione dell'identità
 \eqref{eq:reciprocita_SCR} permette di formalizzare questo
 procedimento per un sistema qualunque, trasformando il problema
 statico in uno cinematico. Supponiamo che $\bm A$ sia suriettiva,
-$\operatorname{rango}\bm A=m$ (nel linguaggio della
-classificazione che vedremo, un sistema isostatico o labile:
-assenza di autotensioni), cosicché per ogni $k$ esiste un atto
+$\operatorname{rango}\bm A=m$, cosicché per ogni $k$ esiste un atto
 di moto che realizza un cedimento unitario al solo vincolo $k$;
 e che $\bm f$ soddisfi la~\eqref{eq:compat_stat}, cosicché il
 problema statico ammette soluzione $\bm r$. Vale dunque il seguente teorema.
