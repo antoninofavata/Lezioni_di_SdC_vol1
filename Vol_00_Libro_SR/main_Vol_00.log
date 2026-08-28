@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  27 AUG 2026 12:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.11.20)  28 AUG 2026 11:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1809,7 +1809,20 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 90
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (./main_Vol_00.aux)
+) (./main_Vol_00.aux
+
+LaTeX Warning: Label `sec:caso_piano' multiply defined.
+
+
+LaTeX Warning: Label `eq:variazione_momento' multiply defined.
+
+
+LaTeX Warning: Label `eq:FFCI_piano_vett' multiply defined.
+
+
+LaTeX Warning: Label `eq:FFCI_piano' multiply defined.
+
+)
 \openout1 = `main_Vol_00.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
@@ -1829,8 +1842,7 @@ LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 90.
 LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 9
 0.
-
-(/usr/local/texlive/2024/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/cbfonts-fd/lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
 LaTeX Font Info:    ... okay on input line 90.
@@ -1933,78 +1945,375 @@ Package: ragged2e 2023/06/22 v3.6 ragged2e Package
 al/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] [2
 
 ] (./main_Vol_00.toc
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 4
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 4
 .
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-5.
+4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-5.
+4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 5.
+(Font)              <10> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 5.
+(Font)              <7> on input line 4.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 5.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 5.
+(Font)              <5> on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 5.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 5.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 4.
 
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 5
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 4
 .
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/stmaryrd/Ustmry.fd))
+(/usr/local/texlive/2024/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [3] [4{/usr/l
+ocal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texli
+ve/2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}] [5])
 \tf@toc=\write7
 \openout7 = `main_Vol_00.toc'.
 
- [3] [4
+ [6]
+(./Parti/P01-Preliminari/A01-Notazioni-Convenzioni/A01-Notazioni_Convenzioni.te
+x
+Capitolo 1.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 10.0pt on input line 54.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 7.0pt on input line 54.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 5.0pt on input line 54.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 59.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 59.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 8.0pt on input line 59.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 6.0pt on input line 59.
+
+Underfull \vbox (badness 1383) has occurred while \output is active []
+
+ [7
+
 
 ]
-[5
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 8
+5.
 
-] [6]
-(./Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/C05-Problemi_CinStat_SCR.tex
-Capitolo 1.
-
-LaTeX Warning: Reference `cap:cinematica_infinitesima' on page 7 undefined on i
-nput line 9.
-
-
-LaTeX Warning: Reference `cap:statica_CR' on page 7 undefined on input line 9.
-
+(/usr/local/texlive/2024/texmf-dist/tex/latex/bbold/Ubbold.fd)
 
 LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 42.
+(Font)              using `U/stmry/m/n' instead on input line 117.
 
+[8{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/lo
+cal/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}] [9] [10]
+[11] [12] [13]
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
+ine 450.
+ [14])
+(./Parti/P01-Preliminari/A04-Vettori_Polari_Assiali_Liberi_Applicati/A04-Vettor
+i_Polari_Assiali_Liberi_Applicati.tex [15] [16
+
+]
+Capitolo 2.
+[17] [18] [19]
+Overfull \hbox (6.01953pt too wide) in paragraph at lines 240--242
+[]\T1/lmr/m/n/10 Questa de-fi-ni-zio-ne con-sen-te di scri-ve-re la di-su-gua-g
+lian-za di Cauchy-Schwarz
+ []
+
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <9> on input line 306.
+LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
+(Font)              scaled to size 9.0pt on input line 306.
+[20] [21]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
+31.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+) [22{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+Overfull \hbox (25.55357pt too wide) in paragraph at lines 519--519
+ [][] 
+ []
+
+[23] [24] [25] [26]
+Overfull \hbox (48.25653pt too wide) in paragraph at lines 907--907
+ [][] 
+ []
+
+
+Overfull \hbox (34.94287pt too wide) in paragraph at lines 968--968
+ [][] 
+ []
+
+
+Overfull \hbox (16.15312pt too wide) in paragraph at lines 1062--1063
+ [][] 
+ []
+
+[27] [28]
+Overfull \hbox (15.64441pt too wide) in paragraph at lines 1248--1248
+ [][] 
+ []
+
+[29] [30] [31] [32]
+Overfull \hbox (1.5072pt too wide) detected at line 1578
+[][][]\OT1/lmr/m/n/10 (\OT1/lmr/bx/n/10 Qv \OMS/lmsy/m/n/10 ^^B \OT1/lmr/bx/n/1
+0 Qw\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 Qz \OT1/lmr/m/n/10 
+= [](\OT1/lmr/bx/n/10 Qv\OML/lmm/m/it/10 ; \OT1/lmr/bx/n/10 Qw\OML/lmm/m/it/10 
+; \OT1/lmr/bx/n/10 Qz\OT1/lmr/m/n/10 ) = [](\OT1/lmr/bx/n/10 Q\OT1/lmr/m/n/10 )
+ [](\OT1/lmr/bx/n/10 v\OML/lmm/m/it/10 ; \OT1/lmr/bx/n/10 w\OML/lmm/m/it/10 ; \
+OT1/lmr/bx/n/10 z\OT1/lmr/m/n/10 ) = [](\OT1/lmr/bx/n/10 Q\OT1/lmr/m/n/10 ) (\O
+T1/lmr/bx/n/10 v \OMS/lmsy/m/n/10 ^^B \OT1/lmr/bx/n/10 w\OT1/lmr/m/n/10 ) \OMS/
+lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 z\OML/lmm/m/it/10 :
+ []
+
+[33] [34])
+(./Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/A03-Applicazioni_Line
+ari_Dualita.tex [35] [36
+
+]
+Capitolo 3.
+[37] [38] [39] [40] [41] [42] [43] [44] [45] [46]
+Overfull \hbox (28.98752pt too wide) in paragraph at lines 465--475
+ [][] 
+ []
+
+[47])
+(./Parti/P01-Preliminari/A02-Algebra_Matrici_Sistemi_Lineari/A02-Algebra_Matric
+i_Sistemi_Lineari.tex [48]
+Capitolo 4.
+[49
+
+] [50] [51] [52] [53] [54]
+Overfull \hbox (3.53137pt too wide) in paragraph at lines 357--358
+[]\T1/lmr/bx/n/10 Osservazione 4.2 (Principio di so-vrap-po-si-zio-ne). []\T1/l
+mr/m/n/10 Il le-ga-me li-nea-re []
+ []
+
+[55] [56] [57] [58] [59] [60]
+Overfull \hbox (10.95654pt too wide) detected at line 735
+[][][]\OML/lmm/b/it/10 x[] \OT1/lmr/m/n/10 = \OML/lmm/b/it/10 A[]b \OMS/lmsy/m/
+n/10 ^^@ \OML/lmm/b/it/10 A[]A[] \OML/lmm/m/it/10  \OT1/lmr/m/n/10 = [] \OMS/l
+msy/m/n/10 ^^@ []  \OML/lmm/m/it/10  \OT1/lmr/m/n/10 = [] \OMS/lmsy/m/n/10 ^^@
+ [] \OML/lmm/m/it/10 :
+ []
+
+[61] [62]
+Overfull \hbox (10.58002pt too wide) detected at line 842
+[]  \OML/lmm/b/it/10 A \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OML/lmm/m/it/10 ;
+  \OML/lmm/b/it/10 x \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OT1/lmr/m/n/10 ;  [
+]  \OML/lmm/b/it/10 A \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OML/lmm/m/it/10 ; 
+ \OML/lmm/b/it/10 x \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OT1/lmr/m/n/10 ;  []
+  \OML/lmm/b/it/10 A \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OML/lmm/m/it/10 ;  
+\OML/lmm/b/it/10 x \OMS/lmsy/m/n/10 2 \U/bbold/m/n/10 R[]\OML/lmm/m/it/10 :
+ []
+
+[63]) [64] [65
+
+] [66]
+(./Parti/P03-Meccanica_SR/C01-Cinematica_CR/C01-Cinematica_CR.tex
+Capitolo 5.
+<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf, id=1327, 195.06677p
+t x 164.67322pt>
+File: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf Graphic file (t
+ype pdf)
+<use Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf>
+Package pdftex.def Info: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.
+pdf  used on input line 42.
+(pdftex.def)             Requested size: 195.06628pt x 164.6728pt.
+[67
+
+] [68 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ.pdf>]
+[69]
+Overfull \hbox (11.23944pt too wide) detected at line 296
+[][][]\OT1/lmr/bx/n/10 w[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 Q\OT1/lmr/m/n/10 ) 
+= [][]\OT1/lmr/bx/n/10 a[] \OMS/lmsy/m/n/10 ^^A \OT1/lmr/bx/n/10 w[]\OT1/lmr/m/
+n/10 (\OML/lmm/m/it/10 Q\OT1/lmr/m/n/10 )[] \OT1/lmr/bx/n/10 a[] \OT1/lmr/m/n/1
+0 = \OMS/lmsy/m/n/10 ^^@ [][][] ^^A \OT1/lmr/bx/n/10 w[][] a[] \OT1/lmr/m/n/10 
+=: \OT1/lmr/bx/n/10 ^^B[] []\OML/lmm/m/it/10 ;  \OMS/lmsy/m/n/10 8 \OML/lmm/m/i
+t/10 Q \OMS/lmsy/m/n/10 2 \U/BOONDOX-calo/m/n/10 C\OML/lmm/m/it/10 ;
+ []
+
+[70] [71] [72] [73] [74] [75] [76] [77] [78]
+Overfull \hbox (15.98035pt too wide) in paragraph at lines 972--977
+[] [] \T1/lmr/bx/n/10 In-va-rian-za del-la com-po-nen-te pa-ral-le-la.[] \T1/lm
+r/m/n/10 Nel-la for-mu-la fon-da-men-ta-le [],
+ []
+
+[79] [80] [81] [82] [83]
+<Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf, id=1602, 262.2658
+4pt x 150.04556pt>
+File: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf Graphic file 
+(type pdf)
+<use Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf>
+Package pdftex.def Info: Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasle
+s.pdf  used on input line 1580.
+(pdftex.def)             Requested size: 288.4933pt x 165.05061pt.
+
+Underfull \vbox (badness 5667) has occurred while \output is active []
+
+ [84 <./Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles.pdf>] [85] [86]
+
+Overfull \hbox (0.39056pt too wide) in paragraph at lines 1822--1822
+|[]\T1/lmr/bx/it/10 Primo teo-re-ma di Aronhold-Kennedy: al-li-nea-men-to dei c
+en-
+ []
+
+[87] [88] [89] [90])
+(./Parti/P03-Meccanica_SR/C02-Statica_CR/C02-Statica_CR.tex [91] [92
+
+]
+Capitolo 6.
+[93]
+Underfull \vbox (badness 5954) has occurred while \output is active []
+
+ [94]
+LaTeX Font Info:    Trying to load font information for LGR+lmr on input line 1
+38.
+
+(/usr/local/texlive/2024/texmf-dist/tex/latex/cbfonts-fd/lgrlmr.fd
+File: lgrlmr.fd 2017/07/29 v1.2 Scalable Greek Latin Modern Regular
+) [95]
+[96] [97] [98] [99] [100]
+Overfull \hbox (14.12685pt too wide) in paragraph at lines 696--702
+\T1/lmr/m/n/10 ri-gi-do au-si-lia-rio ar-bi-tra-rio $\OT1/lmr/bx/n/10 u[] \OMS/
+lmsy/m/n/10 2 \U/BOONDOX-calo/m/n/10 U[]$\T1/lmr/m/n/10 , pa-ra-me-triz-za-to d
+al-la cop-pia $\OT1/lmr/m/n/10 (\OT1/lmr/bx/n/10 u[]\OT1/lmr/m/n/10 (\OML/lmm/m
+/it/10 O\OT1/lmr/m/n/10 )\OML/lmm/m/it/10 ; [][]\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n
+/10 2
+ []
+
+[101] [102] [103] [104]
+
+LaTeX Warning: Reference `eq:variazione_piano' on page 105 undefined on input l
+ine 1074.
+
+[105]
+
+LaTeX Warning: Reference `eq:variazione_piano' on page 106 undefined on input l
+ine 1185.
+
+
+LaTeX Warning: Reference `eq:variazione_piano' on page 106 undefined on input l
+ine 1197.
+
+[106] [107] [108] [109]) (./Parti/P03-Meccanica_SR/C04-Vincoli/C04-Vincoli.tex
+[110] [111] [112
+
+]
+Capitolo 7.
+
+Underfull \vbox (badness 1960) has occurred while \output is active []
+
+ [113]
+[114] [115] [116] [117]
+
+LaTeX Warning: Reference `cap:dualismo_CR' on page 118 undefined on input line 
+373.
+
+[118] [119] [120] [121] [122] [123] [124]
+Overfull \hbox (2.42241pt too wide) in paragraph at lines 1824--1835
+ [][] 
+ []
+
+[125] [126] [127] [128]
+Overfull \hbox (37.78299pt too wide) in paragraph at lines 2532--2547
+ [][] 
+ []
+
+[129] [130] [131]
+Overfull \hbox (43.52667pt too wide) in paragraph at lines 3121--3125
+ [][] 
+ []
+
+[132]
+
+LaTeX Warning: Reference `sec:svincoli_interni' on page 133 undefined on input 
+line 3177.
+
+[133] [134] [135]
+Overfull \hbox (7.00026pt too wide) in paragraph at lines 3445--3477
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [136]
+Overfull \hbox (0.67973pt too wide) in paragraph at lines 3492--3503
+[]\T1/lmr/bx/n/10 Osservazione 7.15. []\T1/lmr/m/n/10 Un ce-di-men-to re-la-ti-
+vo in una cer-nie-ra in-ter-na ($\U/stmry/b/n/10 J\OT1/lmr/bx/n/10 u\U/stmry/b/
+n/10 K\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 ) \OMS/lmsy/m/n/10 6\O
+T1/lmr/m/n/10 =
+ []
+
+
+LaTeX Warning: Reference `cap:Trave_Rigida' on page 137 undefined on input line
+ 3520.
+
+[137]
+Overfull \hbox (4.921pt too wide) in paragraph at lines 3602--3607
+[] [] \T1/lmr/bx/n/10 In-ca-stro.[] \T1/lmr/m/n/10 La cer-nie-ra com-po-nen-te 
+con-tri-bui-sce con la for-za vet-to-ria-le $\OT1/lmr/bx/n/10 r\OT1/lmr/m/n/10 
+(\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 ) =
+ []
+
+[138]
+Overfull \hbox (20.11546pt too wide) in paragraph at lines 3610--3615
+\T1/lmr/m/n/10 che chiu-de la se-quen-za dei vin-co-li del pia-no: tre in-co-gn
+i-te sca-la-ri $\OML/lmm/m/it/10 X\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr/m
+/n/10 )\OML/lmm/m/it/10 ; Y\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 )
+\OML/lmm/m/it/10 ; ^^V\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr/m/n/10 )$
+ []
+
+[139] [140] [141] [142] [143] [144]
+
+LaTeX Warning: Reference `cap:problemi_cin_stat_SCR' on page 145 undefined on i
+nput line 4402.
+
+
+Underfull \vbox (badness 2726) has occurred while \output is active []
+
+ [145]
+[146] [147]
+Underfull \vbox (badness 2903) has occurred while \output is active []
+
+ [148]
+[149] [150])
+(./Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/C05-Problemi_CinStat_SCR.tex
+[151] [152
+
+]
+Capitolo 8.
 
 Overfull \hbox (4.50937pt too wide) in paragraph at lines 39--48
 \T1/lmr/m/n/10 iso-la-to: la sua con-fi-gu-ra-zio-ne è de-scrit-ta da tre so-li
@@ -2013,73 +2322,28 @@ Overfull \hbox (4.50937pt too wide) in paragraph at lines 39--48
 0 )\OML/lmm/m/it/10 ;  #[]$\T1/lmr/m/n/10 ,
  []
 
-[7
+[153]
 
-{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/loca
-l/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/
-2024/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 10.0pt on input line 51.
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 7.0pt on input line 51.
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 5.0pt on input line 51.
+LaTeX Warning: Reference `cap:Trave_Rigida' on page 154 undefined on input line
+ 56.
+
+[154] [155] [156]
+
+LaTeX Warning: Reference `sec:gerber_congruenza' on page 157 undefined on input
+ line 488.
 
 
-LaTeX Warning: Reference `cap:Trave_Rigida' on page 8 undefined on input line 5
-6.
+LaTeX Warning: Reference `sec:gerber_congruenza' on page 157 undefined on input
+ line 488.
 
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 76.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 76.
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 9.0pt on input line 76.
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 6.0pt on input line 76.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 136.
-LaTeX Font Info:    Font shape `U/BOONDOX-calo/m/n' will be
-(Font)              scaled to size 8.0pt on input line 136.
-[8{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
+[157]
 
-LaTeX Warning: Reference `cap:cinematica_infinitesima' on page 9 undefined on i
-nput line 205.
+LaTeX Warning: Reference `sec:prob_cin' on page 158 undefined on input line 511
+.
 
-[9]
-
-LaTeX Warning: Reference `eq:FFCI_piano_deriv' on page 10 undefined on input li
-ne 236.
-
-[10]
-LaTeX Font Info:    Trying to load font information for U+bbold on input line 3
-03.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/bbold/Ubbold.fd)
-
-LaTeX Warning: Reference `sec:gerber_congruenza' on page 11 undefined on input 
-line 488.
-
-
-LaTeX Warning: Reference `sec:gerber_congruenza' on page 11 undefined on input 
-line 488.
-
-[11]
-
-LaTeX Warning: Reference `cap:vincoli_CR' on page 12 undefined on input line 50
-1.
-
-
-LaTeX Warning: Reference `sec:prob_cin' on page 12 undefined on input line 511.
-
-
-[12]
-
-LaTeX Warning: Reference `cap:vincoli_CR' on page 13 undefined on input line 61
-7.
-
-[13]
+[158] [159]
 Overfull \hbox (2.57161pt too wide) in paragraph at lines 663--670
-[]\T1/lmr/bx/n/10 Osservazione 1.1. []\T1/lmr/m/n/10 Nel-la [], le coor-di-na-t
+[]\T1/lmr/bx/n/10 Osservazione 8.1. []\T1/lmr/m/n/10 Nel-la [], le coor-di-na-t
 e $\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1
 /lmr/m/n/10 )\OML/lmm/m/it/10 ;  y[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1/lmr
 /m/n/10 ))$ \T1/lmr/m/n/10 e $\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x[]\OT1/lmr/m/n
@@ -2088,72 +2352,18 @@ e $\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 x[]\OT1/lmr/m/n/10 (\OML/lmm/m/it/10 A\OT1
  []
 
 
-LaTeX Warning: Reference `eq:vincolo_est_scal_SCR' on page 14 undefined on inpu
-t line 721.
+LaTeX Warning: Reference `eq:vincolo_est_scal_SCR' on page 160 undefined on inp
+ut line 721.
 
 
-LaTeX Warning: Reference `eq:vincolo_int_scal_SCR' on page 14 undefined on inpu
-t line 722.
+LaTeX Warning: Reference `eq:vincolo_int_scal_SCR' on page 160 undefined on inp
+ut line 722.
 
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 7
-38.
-(/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) [14{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+[160] [161] [162] [163]
 
-LaTeX Warning: Reference `cap:statica_CR' on page 15 undefined on input line 77
-3.
+LaTeX Warning: Hyper reference `' on page 164 undefined on input line 1119.
 
-[15] [16]
-
-LaTeX Warning: Reference `cap:statica_CR' on page 17 undefined on input line 10
-58.
-
-[17]
-
-LaTeX Warning: Hyper reference `' on page 18 undefined on input line 1119.
-
-[18] [19]
-
-LaTeX Warning: Reference `cap:statica_CR' on page 20 undefined on input line 13
-47.
-
-[20] [21]
-
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 22 undefined on 
-input line 1491.
-
-
-LaTeX Warning: Reference `fig:duale' on page 22 undefined on input line 1491.
-
-
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 22 undefined on 
-input line 1533.
-
-
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 22 undefined on 
-input line 1533.
-
-
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 22 undefined on 
-input line 1538.
-
-[22]
-
-LaTeX Warning: Reference `cap:statica_CR' on page 23 undefined on input line 15
-84.
-
-[23] [24] [25]
-
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 26 undefined on 
-input line 1852.
-
-[26] [27]
-
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 28 undefined on 
-input line 1981.
-
-[28]
+[164] [165] [166] [167] [168] [169] [170] [171] [172] [173] [174]
 Underfull \hbox (badness 6608) in paragraph at lines 2126--2126
 []|\T1/lmr/m/n/10 Principio dei la-vo-ri
  []
@@ -2194,31 +2404,27 @@ Underfull \hbox (badness 4303) in paragraph at lines 2126--2126
 []|\T1/lmr/m/n/10 Teorema del-le for-ze
  []
 
-[29]
+[175]
 Underfull \vbox (badness 1668) has occurred while \output is active []
 
- [30]
+ [176]
 
-LaTeX Warning: Reference `eq:prob_cin' on page 31 undefined on input line 2200.
-
-
-
-LaTeX Warning: Reference `eq:prob_stat' on page 31 undefined on input line 2200
+LaTeX Warning: Reference `eq:prob_cin' on page 177 undefined on input line 2200
 .
 
 
-LaTeX Warning: Reference `app:applicazionilin_dualita' on page 31 undefined on 
-input line 2225.
+LaTeX Warning: Reference `eq:prob_stat' on page 177 undefined on input line 220
+0.
 
 
-Overfull \hbox (11.90018pt too wide) in paragraph at lines 2225--2232
+Overfull \hbox (6.03918pt too wide) in paragraph at lines 2225--2232
 []\T1/lmr/m/n/10 Per il teo-re-ma dei com-ple-men-ti or-to-go-na-li (Ca-pi-to-l
-o []), $\U/BOONDOX-calo/m/n/10 I\OT1/lmr/m/n/10 (\OML/lmm/b/it/10 A[]\OT1/lmr/m
-/n/10 ) = []\U/BOONDOX-calo/m/n/10 N\OT1/lmr/m/n/10 (\OML/lmm/b/it/10 A\OT1/lmr
-/m/n/10 )[][]$
+o []3[]), $\U/BOONDOX-calo/m/n/10 I\OT1/lmr/m/n/10 (\OML/lmm/b/it/10 A[]\OT1/lm
+r/m/n/10 ) = []\U/BOONDOX-calo/m/n/10 N\OT1/lmr/m/n/10 (\OML/lmm/b/it/10 A\OT1/
+lmr/m/n/10 )[][]$
  []
 
-[31] [32]
+[177] [178]
 Underfull \hbox (badness 10000) in paragraph at lines 2453--2457
 []|\T1/lmr/bx/n/9 Labile-iperstatico \T1/lmr/m/n/9 (de-ge-ne-ra-zio-ne
  []
@@ -2228,12 +2434,12 @@ Overfull \hbox (5.12927pt too wide) in paragraph at lines 2431--2459
  [][] 
  []
 
-[33] [34] [35] [36]
+[179] [180] [181] [182]
 Overfull \hbox (41.28749pt too wide) in paragraph at lines 2746--2751
  [][] 
  []
 
-[37] [38]
+[183] [184]
 Overfull \hbox (13.9997pt too wide) detected at line 3310
 \OML/lmm/b/it/10 U[]f \OT1/lmr/m/n/10 = 1 \OMS/lmsy/m/n/10 ^^A \OT1/lmr/m/n/10 
 (\OMS/lmsy/m/n/10 ^^@\OT1/lmr/m/n/10 2\OML/lmm/m/it/10 Fa\OT1/lmr/m/n/10 ) + 3\
@@ -2245,7 +2451,7 @@ m/m/it/10 Fa \OT1/lmr/m/n/10 + [] = \OMS/lmsy/m/n/10 ^^@[] 6\OT1/lmr/m/n/10 = 0
 \OML/lmm/m/it/10 :
  []
 
-[39] [40] [41] [42]
+[185] [186] [187] [188]
 LaTeX Font Info:    Freeze math alphabet allocation in version normal.
 (Font)              Allocated math groups: 14 (local: 2) on input line 3676.
 LaTeX Font Info:    Font shape `U/BOONDOX-scro/m/n' will be
@@ -2334,7 +2540,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3751.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3751.
- [43]
+ [189]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3759.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -2461,8 +2667,8 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3773.
 
 
-LaTeX Warning: Reference `eq:vincolo_est_scal' on page 44 undefined on input li
-ne 3774.
+LaTeX Warning: Reference `eq:vincolo_est_scal' on page 190 undefined on input l
+ine 3774.
 
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3774.
@@ -2638,7 +2844,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3839.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3840.
-[44]
+[190]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3844.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -2935,7 +3141,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3962.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3963.
- [45]
+ [191]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 3964.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -3054,7 +3260,7 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 4079.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 4080.
- [46]
+ [192]
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 4082.
 LaTeX Font Info:    No math alphabet change to frozen version normal on input l
@@ -3117,14 +3323,14 @@ LaTeX Font Info:    No math alphabet change to frozen version normal on input l
 ine 4117.
 )
 No file main_Vol_00.nls.
-[47] [48
+[193] [194
 
 ]
 runsystem(makeindex main_Vol_00.idx)...executed safely (allowed).
 
- (./main_Vol_00.ind) [49
+ (./main_Vol_00.ind [195
 
-] (./main_Vol_00.aux)
+] [196]) [197] (./main_Vol_00.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -3136,52 +3342,66 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `main_Vol_00.out' has not changed.
-(rerunfilecheck)             Checksum: 489889EADCB2452E49363A90E87599EA;3895.
+(rerunfilecheck)             Checksum: 3327374C6C56F79A2232BB1E25EAD3D3;28636.
  ) 
 Here is how much of TeX's memory you used:
- 38331 strings out of 474116
- 743286 string characters out of 5743681
- 1953187 words of memory out of 5000000
- 59621 multiletter control sequences out of 15000+600000
- 700612 words of font info for 159 fonts, out of 8000000 for 9000
+ 42423 strings out of 474116
+ 814951 string characters out of 5743681
+ 1964187 words of memory out of 5000000
+ 62843 multiletter control sequences out of 15000+600000
+ 731759 words of font info for 170 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 117i,27n,121p,1343b,1218s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 117i,27n,121p,1556b,1494s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pf
 b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb
 ></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurb10.p
-fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/l
-ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2024/texmf-dist/fon
-ts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
-public/lm/lmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm
-/lmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pf
-b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/
-2024/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/
-type1/public/lm/lmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publi
-c/lm/lmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr1
-0.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr
-/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2024/texm
-f-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts
-/type1/public/lm/lmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publi
-c/lm/lmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri10.
-pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/
-local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmri8.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/lm/lmri9.pfb></usr/local/texlive/2024/tex
-mf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/p
-ublic/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
-sy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></u
-sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
-></usr/local/texlive/2024/texmf-dist/fonts/type1/public/boondox/zxxrw8a.pfb>
-Output written on main_Vol_00.pdf (49 pages, 698087 bytes).
+fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eurm10
+.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/cbfonts/grmn0800.pf
+b></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
+cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/lm/lmbx6.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2024/texmf-dist/font
+s/type1/public/lm/lmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pub
+lic/lm/lmbx9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx
+i10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb><
+/usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2024/texmf-d
+ist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/t
+ype1/public/lm/lmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
+/lm/lmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmi9.p
+fb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/
+local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texl
+ive/2024/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/public/lm/lmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/lm/lmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr7
+.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2024/texm
+f-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2024/texmf-dist/fon
+ts/type1/public/lm/lmri7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/lm/lmri8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmr
+i9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></u
+sr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/te
+xlive/2024/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2024/texmf-dist/
+fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1
+/public/lm/lmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/ams
+fonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public
+/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/pu
+blic/stmaryrd/stmary10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/publ
+ic/stmaryrd/stmary8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/
+stmaryrd/stmary9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/boo
+ndox/zxxrw8a.pfb>
+Output written on main_Vol_00.pdf (197 pages, 2120518 bytes).
 PDF statistics:
- 786 PDF objects out of 1000 (max. 8388607)
- 640 compressed objects within 7 object streams
- 175 named destinations out of 1000 (max. 500000)
- 149 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 3211 PDF objects out of 3580 (max. 8388607)
+ 2801 compressed objects within 29 object streams
+ 1012 named destinations out of 1200 (max. 500000)
+ 1063 words of extra memory for PDF output out of 10000 (max. 10000000)
 
