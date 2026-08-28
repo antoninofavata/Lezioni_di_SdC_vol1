@@ -6,6 +6,9 @@
     \subitem iniettiva, 38
     \subitem suriettiva, 38
   \item applicazione lineare, 9, \textbf{39}
+  \item arco
+    \subitem a tre cerniere, 199
+    \subitem a tutto sesto, 226
   \item asse centrale
     \subitem degli spostamenti, \textbf{79}
     \subitem del sistema di forze, \textbf{103}
@@ -45,7 +48,8 @@
   \item collegamento, vincolo di, \see{vincolo (interno)}{116}
   \item combinazione lineare, \textbf{52}
   \item compatibilità
-    \subitem cinematica, \textbf{174}
+    \subitem cinematica, \textbf{174}, 218
+    \subitem statica, 212
   \item complemento ortogonale, \textbf{43}
   \item configurazione cinematicamente ammissibile, 160, 161
   \item congruenza
@@ -70,10 +74,17 @@
 
   \indexspace
 
+  \item equilibrio
+    \subitem equazioni di momento, 203
   \item equiproiettività, \textbf{70}
 
   \indexspace
 
+  \item gerarchia strutturale, \textbf{222}
+    \subitem portante, 223
+    \subitem portato, 223
+    \subitem trascinante, 222
+    \subitem trascinato, 222
   \item giunto prismatico, \see{glifo}{126}
   \item giustapposizione di vincoli, \see{vincolo (composto)}{131}
   \item glifo, \seealso{vincolo}{126}, \textbf{126}
@@ -92,12 +103,13 @@
   \item invarianti, 78
   \item invarianza rispetto all'osservatore
     \subitem equivalenza con PLV, \textbf{101}
-  \item iperstaticità, 181
-  \item isostaticità, 181
+  \item iperstaticità, 181, 213
+    \subitem incognita iperstatica, \textbf{214}
+  \item isostaticità, 181, 196
 
   \indexspace
 
-  \item labilità, 181
+  \item labilità, 181, 206
 
   \indexspace
 
@@ -110,9 +122,14 @@
     \subitem quadrata, 52
     \subitem trasposta, 50
   \item matrice dei vincoli, \textbf{160}
+    \subitem struttura a blocchi triangolare, 222
   \item matrice di equilibrio, \seealso{matrice dei vincoli}{168}, 
 		\textbf{168}
   \item matrice rappresentativa, \textbf{9}
+  \item metodo
+    \subitem dei corpi liberi, \textbf{202}
+    \subitem delle rette di proiezione, \textbf{197}
+    \subitem grafo-analitico, \textbf{196}
   \item molteplicità, \see{vincolo}{115}
   \item momento
     \subitem assiale, \textbf{29}
@@ -143,6 +160,8 @@
   \item perno scorrevole, 146, \seealso{vincolo}{146}
   \item piano di scorrimento, 146, \seealso{vincolo}{146}
   \item polo, 27
+  \item portante, \see{gerarchia strutturale}{223}
+  \item portato, \see{gerarchia strutturale}{223}
   \item principio dei lavori virtuali
     \subitem per un sistema di corpi rigidi, \textbf{169}
   \item principio di Müller-Breslau, 
@@ -175,6 +194,7 @@
   \indexspace
 
   \item salto (di una funzione), \textbf{14}
+  \item schema del corpo libero, 203
   \item sistema di equazioni lineari, \textbf{54}
     \subitem degenere, \textbf{58}
     \subitem isodeterminato, \textbf{55}
@@ -187,7 +207,7 @@
     \subitem forza unica, 104
     \subitem sistema ridotto al polo, 108
     \subitem trasporto di una forza, 108
-  \item sistema principale, \textbf{57}
+  \item sistema principale, \textbf{57}, 206
   \item soluzione (di un sistema lineare)
     \subitem generale, 55
     \subitem particolare, 55
@@ -212,8 +232,12 @@
     \subitem di intersezione, 132
   \item termine noto, 54
   \item TFV, \see{teorema delle forze virtuali}{174}
+  \item trascinante, \see{gerarchia strutturale}{222}
+  \item trascinato, \see{gerarchia strutturale}{222}
   \item traslazione, \textbf{75}
     \subitem pura, 81
+  \item trave
+    \subitem di Gerber, 224
   \item triade meccanica, \textbf{170}
   \item TSV, \see{teorema degli spostamenti virtuali}{173}
 
@@ -240,9 +264,11 @@
     \subitem di rigidità, \textbf{113}
     \subitem doppio, 124
     \subitem esterno, \textbf{116}
+    \subitem fittizio, \textbf{206}
     \subitem grado di, \textbf{115}
     \subitem interno, \textbf{116}
     \subitem molteplicità, \textbf{115}
+    \subitem ridondante, \textbf{214}
     \subitem semplice, 118
     \subitem spaziale, 146
     \subitem triplo, 129
