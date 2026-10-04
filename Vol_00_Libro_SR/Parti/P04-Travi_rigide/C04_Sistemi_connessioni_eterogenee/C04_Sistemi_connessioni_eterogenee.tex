@@ -5,20 +5,27 @@
 %----------------------------------------------------------------------------------------------------------------------------
 
 
-%% ── SOMMARIO (sostituisce righe 7–23) ───────────────────────────────────────
 \begin{sommario}
-	Si applica la sequenza operativa del \CAPref{cap:assemblaggi_travi}
-	a una serie di sistemi a connessioni eterogenee --- la trave
-	ramificata con nodi rigidi, l'arco, gli anelli e i sistemi
-	compositi a tre cerniere, e le travi su più appoggi (di Gerber
-	e continue) --- riconoscendo in ciascuno la gerarchia tra
-	sottostrutture portanti e portate. Per ogni esempio si classifica
-	il sistema, se ne anticipa qualitativamente la risposta e si
-	tracciano i diagrammi completi di $N$, $T$ e $M$; la sola trave
-	continua, iperstatica, è discussa nel comportamento e nella
-	struttura della soluzione, rinviando al Vol.~II l'analisi
-	quantitativa.
+	Si sviluppano cinque esempi paradigmatici che illustrano
+	le principali tipologie strutturali introdotte nel
+	\CAPref{cap:assemblaggi_travi}: la trave ramificata con
+	nodi rigidi, il portale a tre cerniere, la trave continua,
+	la trave di Gerber e il ponte strallato. Per ciascuno si
+	conduce un'analisi qualitativa preliminare che anticipa la
+	forma dei diagrammi delle caratteristiche della
+	sollecitazione, si calcolano le reazioni vincolari e si
+	tracciano i diagrammi completi di $N$, $T$, $M$.
+	
+	Gli esempi sono isostatici e ammettono soluzione completa,
+	con l'eccezione della trave continua, iperstatica, per la
+	quale si discute la struttura della soluzione rinviando al
+	Vol.~II la determinazione delle incognite iperstatiche
+	$\chi_j$. L'ultimo esempio, il ponte strallato, è privo di
+	gerarchia strutturale e si risolve con una partizione mista
+	in corpi e nodi, secondo le regole della
+	\SECref{sec:partizioni}.
 \end{sommario}
+
 
 %----------------------------------------------------------------------------------------------------------------------------
 \section*{Considerazioni introduttive}
@@ -47,31 +54,40 @@ nei quali coesistono connessioni di tipo diverso.
 L'analisi viene condotta sull'intera struttura,
 così da rendere visibili simultaneamente lo stato
 di sollecitazione e i meccanismi di trasferimento
-delle forze ai vincoli esterni. Nella risoluzione si fa costante ricorso alle strategie
-fondate sulla \emph{gerarchia strutturale} illustrata nel
-\PARref{sec:gerarchia}: si riconoscono le sottostrutture
-portanti e portate e si risolve a cascata muovendo dalle
-porzioni \emph{portate} --- risolubili in modo autonomo non
-appena se ne assumano come vincoli gli appoggi sulle portanti
---- verso le porzioni \emph{portanti} che le sorreggono,
-per ricomporre infine le azioni interne sull'intero
-assemblaggio.
+delle forze ai vincoli esterni. Nella risoluzione si fa di
+norma ricorso alle strategie fondate sulla \emph{gerarchia
+strutturale} illustrata nel \PARref{sec:gerarchia}: si
+riconoscono le sottostrutture portanti e portate e si
+risolve a cascata muovendo dalle porzioni \emph{portate}
+--- risolubili in modo autonomo non appena se ne assumano
+come vincoli gli appoggi sulle portanti --- verso le
+porzioni \emph{portanti} che le sorreggono, per ricomporre
+infine le azioni interne sull'intero assemblaggio. Non ogni
+sistema isostatico possiede però una gerarchia, e dove essa
+manca l'ordine di risoluzione va costruito scegliendo la
+partizione della struttura in corpi liberi
+(\SECref{sec:partizioni}).
 
 I sistemi trattati si dividono in due gruppi. Il primo
 comprende sistemi \emph{isostatici} --- la trave ramificata
-con nodi rigidi, l'arco a tre cerniere, gli anelli a tre
-cerniere, i sistemi compositi a tre cerniere e le travi di
-Gerber --- per i quali la procedura si articola nei quattro
-passi sviluppati nella \SECref{sec:sequenza_operativa} e
-applicati sistematicamente negli esempi che seguono.
+con nodi rigidi, il portale a tre cerniere, gli anelli a tre
+cerniere, i sistemi compositi a tre cerniere, il ponte
+strallato e le travi di Gerber --- per i quali la procedura
+si articola nei quattro passi sviluppati nella
+\SECref{sec:sequenza_operativa} e applicati sistematicamente
+negli esempi che seguono. Fra questi il ponte strallato è
+l'unico privo di gerarchia: vi si mostra come l'ordine di
+risoluzione discenda allora dalla partizione mista in corpi
+e nodi.
 Il secondo è costituito dalla \emph{trave continua}, sistema
 iperstatico di grado $n_a - 2$: per essa si discutono la
 classificazione, il comportamento statico e la struttura
 della soluzione, senza svilupparne l'analisi quantitativa,
 rinviata al Vol.~II.
 
-La trattazione delle travi su più appoggi segue un ordine
-preciso: prima le travi di Gerber, poi le travi continue.
+La trattazione delle travi su più appoggi, che chiude il
+capitolo, segue un ordine preciso: prima le travi di Gerber,
+poi le travi continue.
 La ragione è metodologica: in assenza del legame costitutivo
 --- non ancora disponibile in questa Parte --- la trave
 continua resta staticamente indeterminata, mentre la trave
@@ -98,35 +114,48 @@ generalizza al caso degli assemblaggi la procedura
 già sviluppata per la trave singola
 (\CAPref{cap:Diagrammi_CS}) e per i sistemi di
 corpi rigidi (\CAPref{cap:classificazione_sol_SCR}).
-La sequenza è valida per qualsiasi sistema isostatico
-a connessioni eterogenee, indipendentemente dalla
-sua complessità geometrica.
+La sequenza è valida per qualsiasi sistema isostatico a
+connessioni eterogenee, indipendentemente dalla sua
+complessità geometrica e dalla presenza o meno di una
+gerarchia strutturale: ciò che cambia da un sistema
+all'altro non sono i passi, ma la partizione scelta al
+primo di essi e l'ordine che ne discende.
 
 %............................................................................................................................
-\paragraph{Passo 1 --- Equilibrio globale e
+\paragraph{Passo 1 --- Scelta della partizione e
 	reazioni vincolari esterne.}
 %............................................................................................................................
 
-Si applica l'equilibrio alla struttura trattata
-come un unico corpo rigido, considerando i soli
-vincoli esterni e i carichi applicati. Le tre
-equazioni cardinali della statica --- due di
-traslazione e una di momento --- forniscono le
-reazioni vincolari esterne quando il sistema è
-isostatico esternamente.
+Si decide anzitutto in quali corpi liberi tagliare la
+struttura: le singole travi, gli assemblaggi di più travi,
+e i nodi che convenga isolare, secondo i criteri della
+\SECref{sec:partizioni}. In questa fase si riconoscono le
+\emph{bielle} --- aste scariche e vincolate ai soli
+estremi --- perché ciascuna riduce a un solo scalare
+l'interfaccia con i nodi cui si attesta.
 
-In alcuni sistemi --- come l'arco a tre cerniere
-o i sistemi con gerarchia strutturale esplicita
---- le sole equazioni globali non sono sufficienti
-a determinare tutte le reazioni esterne. In questi
-casi occorre integrare l'equilibrio globale con
-l'equilibrio di sottosistemi opportunamente isolati,
-sfruttando le condizioni imposte dalle connessioni
-interne (ad esempio la condizione $M = 0$ alla
-cerniera interna). L'ordine di risoluzione è
-imposto dalla gerarchia strutturale: i sottosistemi
-portati si risolvono per primi e le loro reazioni
-diventano carichi noti per i sottosistemi portanti.
+Il caso più semplice è quello in cui la struttura, trattata
+come un unico corpo rigido, è isostatica esternamente: le
+tre equazioni cardinali della statica --- due di traslazione
+e una di momento --- forniscono allora direttamente le
+reazioni vincolari esterne.
+
+In altri sistemi --- il portale a tre cerniere, o i sistemi
+con gerarchia strutturale esplicita --- le sole equazioni
+globali non bastano. Occorre integrare l'equilibrio globale
+con quello di sottosistemi opportunamente isolati,
+sfruttando le condizioni imposte dalle connessioni interne
+(ad esempio la condizione $M = 0$ alla cerniera interna).
+L'ordine di risoluzione è imposto dalla gerarchia
+strutturale: i sottosistemi portati si risolvono per primi e
+le loro reazioni diventano carichi noti per i sottosistemi
+portanti.
+
+Vi sono infine sistemi privi di gerarchia, nei quali nessun
+sottoinsieme proprio di corpi possiede vincoli sufficienti a
+sostenersi. Lì l'equilibrio globale non apre la soluzione ma
+la chiude: le reazioni esterne si ottengono per ultime, e
+l'ordine di risoluzione discende dalla partizione scelta.
 
 \begin{oss}
 	Le condizioni di raccordo alle connessioni
@@ -154,13 +183,18 @@ diventano carichi noti per i sottosistemi portanti.
 	alle connessioni.}
 %............................................................................................................................
 
-Note le reazioni vincolari esterne, si scompone
-la struttura nelle travi componenti e si individua
-la \emph{gerarchia interna}\index{gerarchia strutturale}: l'ordine in cui le
+Note le azioni già determinate al Passo~1, si scompone
+la struttura nei corpi liberi della partizione e si
+individua, quando esiste, la \emph{gerarchia
+interna}\index{gerarchia strutturale}: l'ordine in cui le
 travi possono essere risolte progressivamente,
 partendo da quelle con azioni già completamente
 note alle estremità e risalendo la catena
-strutturale.
+strutturale. Dove la gerarchia manca, l'ordine è
+dettato dalla partizione: si procede dai corpi liberi
+il cui equilibrio determina subito qualche grandezza,
+e le grandezze via via ottenute rendono risolubili i
+successivi.
 
 Il punto di partenza è sempre una trave con
 almeno un'estremità libera o vincolata al suolo
@@ -561,7 +595,7 @@ La struttura è isostatica. $\quad\checkmark$
 
 
 %..........................................................................
-\paragraph{Passo 1 --- Equilibrio globale e
+\paragraph{Passo 1 --- Scelta della partizione e
 	reazioni vincolari esterne.}
 %..........................................................................
 
@@ -1237,13 +1271,17 @@ sopra $DE$.
 
 
 %----------------------------------------------------------------------------------------------------------------------------
-\section{Arco a tre cerniere}
+\section{Portale a tre cerniere}
 \label{sec:arco_tre_cerniere}
 %----------------------------------------------------------------------------------------------------------------------------
 
-Come secondo esempio si considera l'\emph{arco a tre cerniere
-	a geometria spezzata}\index{arco!a tre cerniere} illustrato nella
-\FIGref{fig:arco3c_schema}.
+Come secondo esempio si considera il \emph{portale a tre
+	cerniere}\index{portale a tre cerniere} illustrato nella
+\FIGref{fig:arco3c_schema}, detto anche \emph{arco a tre
+	cerniere a geometria spezzata}\index{arco!a tre cerniere}
+perché la sua statica è quella dell'arco: due corpi rigidi
+collegati da una cerniera in chiave e vincolati al suolo da
+due cerniere, con le tre cerniere non allineate.
 La struttura è formata da due \emph{semiarchi}\index{semiarco} piani a profilo
 rettilineo: il semiarco sinistro~$ACD$, composto dal tratto
 verticale~$AC$ e dall'ala orizzontale~$CD$ raccordati
@@ -1272,8 +1310,8 @@ una coppia antioraria~$p\ell^2$ in~$F$.
 		terra/.style={line width=0.8pt, black},
 		nodoV/.style={circle, fill=white, draw=black,
 			inner sep=0pt, minimum size=6pt, line width=0.9pt},
-		nodoP/.style={circle, fill=black, draw=black,
-			inner sep=0pt, minimum size=4pt},
+		nodoP/.style={rectangle, fill=black, draw=black,
+			inner sep=0pt, minimum size=3.5pt},
 		quota/.style={|<->|, >=stealth, thin, gray!60},
 		]
 		
@@ -1368,7 +1406,7 @@ una coppia antioraria~$p\ell^2$ in~$F$.
 		node[midway, right, font=\small] {$\ell$};
 		
 	\end{tikzpicture}
-	\caption{Arco a tre cerniere a geometria spezzata: schema geometrico e di carico.}
+	\caption{Portale a tre cerniere: schema geometrico e di carico.}
 	\label{fig:arco3c_schema}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1425,7 +1463,7 @@ isostatico.~$\checkmark$
 
 
 %..........................................................................
-\paragraph{Passo 1 --- Equilibrio globale e	reazioni vincolari esterne.}
+\paragraph{Passo 1 --- Scelta della partizione e	reazioni vincolari esterne.}
 %..........................................................................
 
 Si applica l'equilibrio globale trattando la struttura
@@ -1863,7 +1901,7 @@ interne ed esterne così determinate.
 			
 		\end{tikzpicture}%
 	}%
-	\caption{Arco a tre cerniere: isolamento dei due semiarchi
+	\caption{Portale a tre cerniere: isolamento dei due semiarchi
 		come corpi liberi.
 		Frecce grigie: reazioni vincolari esterne.
 		Frecce nere alle cerniere~$D$: azioni interne,
@@ -2012,7 +2050,7 @@ tutte le azioni alle estremità.
 			trave/.style={line width=2.2pt, line cap=round,
 				line join=round, black},
 			terra/.style={line width=0.7pt, black},
-			nodoP/.style={circle, fill=black, draw=black, inner sep=0pt, minimum size=5pt},
+			nodoP/.style={rectangle, fill=black, draw=black, inner sep=0pt, minimum size=4.5pt},
 			nodoV/.style={circle, fill=white, draw=black,
 				inner sep=0pt, minimum size=5pt, line width=0.8pt},
 			carico/.style={->, >=stealth, line width=0.9pt, black},
@@ -2251,7 +2289,7 @@ tutte le azioni alle estremità.
 			
 		\end{tikzpicture}%
 	}%
-	\caption{Arco a tre cerniere: isolamento dei quattro tratti
+	\caption{Portale a tre cerniere: isolamento dei quattro tratti
 		rettilinei come corpi liberi.
 		Frecce grigie: reazioni vincolari esterne.
 		Frecce nere: azioni trasmesse alle connessioni interne.
@@ -2408,7 +2446,7 @@ e conferma quantitativamente il quadro qualitativo.
 			terra/.style={line width=0.7pt,black},
 			nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,
 				minimum size=5pt,line width=0.8pt},
-			nodoP/.style={circle,fill=black,draw=black,inner sep=0pt,minimum size=4pt},
+			nodoP/.style={rectangle,fill=black,draw=black,inner sep=0pt,minimum size=3.5pt},
 			carico/.style={->,>=stealth,line width=0.8pt,black},
 			diag/.style={line width=0.6pt,black},
 			hatch/.style={line width=0.3pt,gray!50},
@@ -2719,7 +2757,7 @@ e conferma quantitativamente il quadro qualitativo.
 		
 	\end{tikzpicture}%
 }%
-\caption{Arco a tre cerniere:
+\caption{Portale a tre cerniere:
 	\emph{(a)}~schema strutturale con fibre inferiori (tratteggio);
 	\emph{(b)}~sforzo normale $N$ (compressione in tutti i tratti);
 	\emph{(c)}~taglio $T$: positivo verso la fibra inferiore;
@@ -2991,7 +3029,7 @@ carrello in~$G$ non passa per la cerniera~$B$, sicché le
 tre reazioni a terra non sono né concorrenti né parallele.
 
 %..........................................................................
-\paragraph{Passo 1 --- Equilibrio globale e
+\paragraph{Passo 1 --- Scelta della partizione e
 	reazioni vincolari esterne.}
 %..........................................................................
 
@@ -3662,7 +3700,7 @@ dell'arco inferiore né le cerniere~$C$, $E$, $D$ dell'arco
 superiore sono allineate.
 
 %..........................................................................
-\paragraph{Passo 1 --- Equilibrio globale e
+\paragraph{Passo 1 --- Scelta della partizione e
 	reazioni vincolari esterne.}
 %..........................................................................
 
@@ -4280,6 +4318,1296 @@ sono riportati nella \FIGref{fig:composito3c_NTM}.
 	in~$CD$ in corrispondenza della coppia.
 \end{oss}
 
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Ponte strallato}
+\label{sec:ponte_strallato}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Negli esempi fin qui svolti l'ordine di risoluzione
+discende dalla gerarchia strutturale, oppure dalle
+equazioni globali integrate dalle condizioni imposte dagli
+svincoli interni. Si consideri ora un sistema isostatico
+privo di gerarchia: il \emph{ponte
+strallato}\index{ponte!strallato} illustrato nella
+\FIGref{fig:strallato_schema}, simmetrico rispetto alla
+verticale per la mezzeria~$E$. La struttura è composta da
+otto travi: le due \emph{antenne} $BC$ e $HG$, verticali e
+continue attraverso i punti $D$ ed $F$ in cui l'impalcato vi
+si attesta; le due \emph{ritenute} $AC$ ed $LG$, inclinate a
+$45^{\circ}$ e ancorate al suolo; i due \emph{stralli} $CE$
+e $GE$, che sospendono la mezzeria alle sommità delle
+antenne; e i due \emph{semi-impalcati} $DE$ ed $FE$.
+
+Le connessioni sono cerniere interne: \emph{triple} in $C$ e
+in $G$, dove convergono antenna, ritenuta e strallo;
+\emph{semplici} in $D$ e in $F$, dove è l'impalcato a
+incernierarsi all'antenna, che invece prosegue continua; e
+\emph{quadrupla} in $E$, dove si incontrano i due stralli e
+i due semi-impalcati. I vincoli esterni sono le cerniere di
+ancoraggio in $A$ e in $L$ e due carrelli ad asse verticale
+ai piedi delle antenne, in $B$ e in $H$.
+
+I carichi sono un carico uniforme $p$ verso il basso
+sull'impalcato, un carico $p/4$ verso il basso su ciascuna
+antenna e un carico orizzontale $p/2$ sulla sola antenna
+$BC$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.5cm, y=1.5cm,
+		trave/.style  ={line width=2.0pt, line cap=round,
+			line join=round, black},
+		carico/.style ={-{Stealth[length=2.0mm,width=1.2mm]},
+			line width=0.7pt},
+		caricoS/.style={-{Stealth[length=1.5mm]}, line width=0.7pt},
+		bordo/.style  ={line width=0.5pt},
+		terra/.style  ={line width=0.7pt},
+		quota/.style  ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+		simm/.style   ={gray!55, line width=0.4pt,
+			dash pattern=on 6pt off 2pt on 1pt off 2pt},
+		nodoV/.style  ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style     ={font=\footnotesize}]
+
+		%% ── coordinate (unità = ell, origine in A) ──────────────
+		\coordinate (A) at (0,0);  \coordinate (B) at (1,-1);
+		\coordinate (C) at (1,1);  \coordinate (D) at (1,0);
+		\coordinate (E) at (3,0);  \coordinate (F) at (5,0);
+		\coordinate (G) at (5,1);  \coordinate (H) at (5,-1);
+		\coordinate (L) at (6,0);
+
+		%% ── asse di simmetria ───────────────────────────────────
+		\draw[simm] (3,-1.15)--(3,1.15);
+
+		%% ── carichi ─────────────────────────────────────────────
+		% carico p sull'impalcato, ordinate al di sotto della linea d'asse
+		\draw[bordo] (1,-0.34)--(5,-0.34);
+		\foreach \x in {1.10,1.30,...,4.90} \draw[carico] (\x,0)--(\x,-0.34);
+		\node[et, below] at (2.0,-0.36) {$p$};
+		\node[et, below] at (4.0,-0.36) {$p$};
+		% peso proprio delle antenne, p/4
+		\foreach \y in {0.58,0.28,-0.02,-0.32,-0.62}{%
+			\draw[caricoS] (0.85,\y)--(0.85,{\y-0.18});
+			\draw[caricoS] (5.15,\y)--(5.15,{\y-0.18});}
+		\node[et, left]  at (0.80,-0.70) {$p/4$};
+		\node[et, right] at (5.20,-0.70) {$p/4$};
+		% carico orizzontale p/2 sulla sola antenna BC
+		\draw[bordo] (1.17,-1)--(1.17,1);
+		\foreach \y in {1,0.70,0.40,-0.48,-0.74,-1}
+			\draw[carico] (1,\y)--(1.17,\y);
+		\node[et, right] at (1.22,-0.95) {$p/2$};
+
+		%% ── le otto travi ───────────────────────────────────────
+		\draw[trave] (B)--(C);          \draw[trave] (H)--(G);
+		\draw[trave] (A)--(C);          \draw[trave] (L)--(G);
+		\draw[trave] (C)--(E);          \draw[trave] (G)--(E);
+		\draw[trave] (1.07,0)--(E);     \draw[trave] (4.93,0)--(E);
+
+		%% ── vincoli esterni ─────────────────────────────────────
+		% cerniere di ancoraggio in A e in L
+		\foreach \P in {A,L}{%
+			\draw[terra] (\P)--($(\P)+(-0.11,-0.19)$)--($(\P)+(0.11,-0.19)$)--cycle;
+			\draw[terra] ($(\P)+(-0.17,-0.19)$)--($(\P)+(0.17,-0.19)$);
+			\foreach \t in {-0.15,-0.075,0,0.075,0.15}
+				\draw[terra, line width=0.4pt]
+					($(\P)+(\t,-0.19)$)--++(-0.05,-0.07);}
+		% carrelli ad asse verticale ai piedi delle antenne, in B e in H
+		\foreach \P in {B,H}{%
+			\draw[terra] (\P)--($(\P)+(-0.10,-0.18)$)--($(\P)+(0.10,-0.18)$)--cycle;
+			\draw[terra, fill=white, line width=0.5pt]
+				($(\P)+(-0.055,-0.215)$) circle(0.035);
+			\draw[terra, fill=white, line width=0.5pt]
+				($(\P)+( 0.055,-0.215)$) circle(0.035);
+			\draw[terra] ($(\P)+(-0.16,-0.25)$)--($(\P)+(0.16,-0.25)$);
+			\foreach \t in {-0.14,-0.07,0,0.07,0.14}
+				\draw[terra, line width=0.4pt]
+					($(\P)+(\t,-0.25)$)--++(-0.05,-0.07);}
+
+		%% ── cerniere interne in D e in F: l'impalcato si incerniera
+		%%    all'antenna, che prosegue continua ───────────────────
+		\draw[black, fill=white, line width=0.9pt]
+			($(D)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+		\draw[black, fill=white, line width=0.9pt]
+			($(F)+(0,-0.07)$) arc[start angle=-90,end angle=-270,radius=0.07]--cycle;
+
+		%% ── nodi ────────────────────────────────────────────────
+		\foreach \P in {A,B,C,E,G,H,L} \node[nodoV] at (\P) {};
+
+		%% ── etichette ───────────────────────────────────────────
+		\node[et, left=4pt]        at (A) {$A$};
+		\node[et, left=5pt]        at (B) {$B$};
+		\node[et, above left=0pt]  at (C) {$C$};
+		\node[et, left]            at (0.84,0.) {$D$};
+		\node[et, above=4pt]       at (E) {$E$};
+		\node[et, right]           at (5.16,0.) {$F$};
+		\node[et, above right=0pt] at (G) {$G$};
+		\node[et, right=5pt]       at (H) {$H$};
+		\node[et, right=4pt]       at (L) {$L$};
+
+		%% ── quote ───────────────────────────────────────────────
+		\draw[quota] (0,-1.45)--(1,-1.45)
+			node[midway,below,black,et]{$\ell$};
+		\draw[quota] (1,-1.45)--(3,-1.45)
+			node[midway,below,black,et]{$2\ell$};
+		\draw[quota] (3,-1.45)--(5,-1.45)
+			node[midway,below,black,et]{$2\ell$};
+		\draw[quota] (5,-1.45)--(6,-1.45)
+			node[midway,below,black,et]{$\ell$};
+		\draw[quota] (-0.55,0)--(-0.55,1)
+			node[midway,left,black,et]{$\ell$};
+		\draw[quota] (-0.55,-1)--(-0.55,0)
+			node[midway,left,black,et]{$\ell$};
+
+	\end{tikzpicture}
+	\caption{Ponte strallato: schema strutturale, simmetrico
+		rispetto alla verticale per~$E$. Le antenne $BC$ e $HG$
+		sono continue attraverso $D$ ed $F$: la mezzaluna indica
+		che a incernierarsi all'antenna è l'impalcato, mentre il
+		montante prosegue senza interruzione. Le ritenute $AC$ ed
+		$LG$ e gli stralli $CE$ e $GE$ convergono con l'antenna
+		nelle cerniere triple $C$ e $G$; in $E$ si incontrano i
+		due stralli e i due semi-impalcati in una cerniera
+		quadrupla. I vincoli esterni sono le cerniere di
+		ancoraggio in $A$ e in $L$ e due carrelli ad asse
+		verticale in $B$ e in $H$.}
+	\label{fig:strallato_schema}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%............................................................................................................................
+\paragraph{Classificazione e riconoscimenti preliminari.}
+%............................................................................................................................
+
+I corpi sono otto e i gradi di libertà nel piano sono
+dunque $n = 3 \times 8 = 24$. Le molteplicità dei vincoli,
+calcolate secondo la \EQUref{eq:molt_nodo}, sono: $2+2$ per
+le cerniere esterne in $A$ e in $L$; $1+1$ per i carrelli in
+$B$ e in $H$; $4+4$ per le cerniere triple in $C$ e in $G$,
+dove convergono tre corpi e vale quindi $m_i = 2(3-1)$;
+$2+2$ per le cerniere semplici in $D$ e in $F$; e $6$ per la
+cerniera quadrupla in $E$, con $m_i = 2(4-1)$. In totale
+$m = 24$, dunque $\nu = 0$: il sistema \emph{può} essere
+isostatico, ma il conteggio da solo non lo garantisce.
+
+La verifica dell'efficacia dei vincoli conviene condurla per
+equivalenze cinematiche successive. Sull'antenna $BC$
+agiscono due vincoli semplici, riguardabili come due
+pendoli: il carrello in $B$, il cui asse è la verticale per
+$B$, cioè l'asse stesso dell'antenna; e la ritenuta $AC$, il
+cui asse è la propria corda. I due assi si incontrano in
+$C$, che è dunque il centro di rotazione assoluto
+dell'antenna: i due vincoli \emph{equivalgono a una cerniera
+esterna in $C$}. Specularmente, il carrello in $H$ e la
+ritenuta $LG$ equivalgono a una cerniera esterna in $G$.
+
+Si consideri ora la metà di sinistra. I tre corpi $BC$, $DE$
+e $CE$ formano un \emph{anello chiuso}, con cerniere interne
+in $C$ fra antenna e strallo, in $D$ fra antenna e
+impalcato e in $E$ fra impalcato e strallo: nove gradi di
+libertà contro sei vincoli semplici e, non essendo i tre
+punti allineati, l'anello si comporta come un unico corpo
+rigido. Esso è però collegato a terra nel solo punto $C$, e
+conserva quindi un grado di libertà, la rotazione attorno a
+$C$: la metà di sinistra, presa da sola, è labile.
+Altrettanto vale per la metà di destra attorno a $G$.
+
+I due anelli sono però incernierati fra loro in $E$. La
+struttura si legge dunque come un \emph{arco a tre cerniere}
+$C$--$E$--$G$, i cui semiarchi sono i due anelli: sei gradi
+di libertà contro sei vincoli, e le tre cerniere non sono
+allineate, giacendo $C$ e $G$ alla quota $\ell$ ed $E$ alla
+quota zero. L'arco a tre cerniere è isostatico e ben
+vincolato, e tale è dunque la struttura.
+
+\begin{oss}[Assenza di gerarchia]
+	È proprio la mutua dipendenza dei due semiarchi a
+	escludere qualunque gerarchia portante-portato: nessuno
+	dei due si sostiene senza l'altro. Ogni percorso che da
+	terra torna a terra si richiude in un circuito ---
+	$A \to AC \to C \to BC \to B$, oppure
+	$A \to AC \to C \to CE \to E \to DE \to D \to BC \to B$
+	--- e nessun sottoinsieme proprio di corpi possiede
+	vincoli sufficienti a sostenersi. Le equazioni di
+	equilibrio restano perciò accoppiate, e l'ordine di
+	risoluzione andrà costruito scegliendo la partizione,
+	secondo la \SECref{sec:partizioni}.
+\end{oss}
+
+
+%............................................................................................................................
+\paragraph{Passo 1 --- Scelta della partizione e reazioni
+	vincolari esterne.}
+%............................................................................................................................
+
+Un riconoscimento di natura diversa dalla gerarchia
+semplifica il calcolo altrettanto. Le quattro aste $AC$,
+$CE$, $GE$ ed $LG$ sono \emph{scariche e vincolate ai soli
+estremi}: sono cioè \emph{bielle}, e trasmettono una forza
+puramente assiale, diretta secondo la propria corda.
+Ciascuna interfaccia con i nodi si riduce così a un solo
+scalare. Conviene assumere come incognita la
+\emph{componente orizzontale} della forza trasmessa,
+$X_{AC}$, $X_{CE}$, $X_{GE}$, $X_{LG}$: la componente
+verticale segue dalla sola geometria, perché la forza
+condivide la pendenza dell'asta,
+\[
+	Y_{AC} = X_{AC}, \qquad Y_{LG} = X_{LG}
+	\qquad\text{(ritenute a $45^{\circ}$, pendenza $1:1$),}
+\]
+\[
+	Y_{CE} = \frac{X_{CE}}{2}, \qquad Y_{GE} = \frac{X_{GE}}{2}
+	\qquad\text{(stralli di pendenza $1:2$).}
+\]
+Gli sforzi assiali si ricaveranno alla fine come risultanti
+delle due componenti; nessun versore è necessario, e nei
+passaggi non comparirà alcun radicale.
+
+La partizione adottata comprende quattro corpi liberi ---
+le due antenne e i due semi-impalcati --- e i tre nodi $C$,
+$E$ e $G$, isolati come corpi liberi autonomi perché in
+ciascuno di essi convergono bielle. Le connessioni in $D$ e
+in $F$ restano invece vincoli interni: vi si incontrano
+un'antenna e un impalcato, entrambi inflessi e caricati, e
+isolare il nodo non porterebbe alcun vantaggio. Ogni tratto
+di trave e ogni nodo appartiene così a uno e un solo corpo
+libero: la partizione è ammissibile.
+
+Restano incognite, oltre alle quattro componenti delle
+bielle, le due reazioni verticali $Y_B$ e $Y_H$ dei
+carrelli: sei incognite primarie in tutto. Tutto il resto
+--- le forze scambiate in $D$ e in $F$, quelle scambiate ai
+nodi con le antenne, le reazioni in $A$ e in $L$ --- ne
+discende. La \FIGref{fig:strallato_esploso} mostra la
+partizione adottata e le sei incognite primarie.
+
+Poiché la struttura è priva di gerarchia, l'equilibrio
+globale non apre la soluzione: nessun sottosistema si
+sostiene da solo, e le reazioni esterne si otterranno per
+ultime, al termine del Passo~2. L'equilibrio globale
+servirà come controllo finale.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.55cm, y=1.55cm,
+		trave/.style  ={line width=2.0pt, line cap=round, black},
+		incog/.style  ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt, black},
+		der/.style    ={-{Stealth[length=1.8mm,width=1.0mm]},
+			line width=0.45pt, gray!70},
+		terra/.style  ={line width=0.7pt},
+		nodoV/.style  ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.2pt, line width=0.6pt},
+		nodoI/.style  ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6.5pt, line width=0.9pt},
+		et/.style     ={font=\footnotesize},
+		etd/.style    ={font=\scriptsize, gray!70}]
+
+		\coordinate (A) at (0,0);  \coordinate (B) at (1,-1);
+		\coordinate (C) at (1,1);  \coordinate (D) at (1,0);
+		\coordinate (E) at (3,0);  \coordinate (F) at (5,0);
+		\coordinate (G) at (5,1);  \coordinate (H) at (5,-1);
+		\coordinate (L) at (6,0);
+
+		%% ── i corpi, staccati lungo il proprio asse ─────────────
+		\draw[trave] (0.297,0.297)--(0.703,0.703);   % ritenuta AC
+		\draw[trave] (5.703,0.297)--(5.297,0.703);   % ritenuta LG
+		\draw[trave] (1,-0.58)--(1,0.58);            % antenna BC
+		\draw[trave] (5,-0.58)--(5,0.58);            % antenna HG
+		\draw[trave] (1.376,0.812)--(2.624,0.188);   % strallo CE
+		\draw[trave] (4.624,0.812)--(3.376,0.188);   % strallo GE
+		\draw[trave] (1.50,0)--(2.58,0);             % impalcato DE
+		\draw[trave] (4.50,0)--(3.42,0);             % impalcato FE
+
+		%% ── cerniere interne in D e in F (non isolate) ──────────
+		\draw[black, fill=white, line width=0.9pt]
+			($(D)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+		\draw[black, fill=white, line width=0.9pt]
+			($(F)+(0,-0.07)$) arc[start angle=-90,end angle=-270,radius=0.07]--cycle;
+
+		%% ── vincoli esterni ─────────────────────────────────────
+		\foreach \P in {A,L}{%
+			\draw[terra] (\P)--($(\P)+(-0.11,-0.19)$)--($(\P)+(0.11,-0.19)$)--cycle;
+			\draw[terra] ($(\P)+(-0.17,-0.19)$)--($(\P)+(0.17,-0.19)$);
+			\foreach \t in {-0.15,-0.075,0,0.075,0.15}
+				\draw[terra, line width=0.4pt] ($(\P)+(\t,-0.19)$)--++(-0.05,-0.07);}
+		\foreach \P in {B,H}{%
+			\draw[terra] (\P)--($(\P)+(-0.10,-0.18)$)--($(\P)+(0.10,-0.18)$)--cycle;
+			\draw[terra, fill=white, line width=0.5pt]
+				($(\P)+(-0.055,-0.215)$) circle(0.035);
+			\draw[terra, fill=white, line width=0.5pt]
+				($(\P)+( 0.055,-0.215)$) circle(0.035);
+			\draw[terra] ($(\P)+(-0.16,-0.25)$)--($(\P)+(0.16,-0.25)$);
+			\foreach \t in {-0.14,-0.07,0,0.07,0.14}
+				\draw[terra, line width=0.4pt] ($(\P)+(\t,-0.25)$)--++(-0.05,-0.07);}
+
+		%% ── estremi dei corpi e vincoli esterni ─────────────────
+		\foreach \n in {(0.297,0.297),(0.703,0.703),(5.703,0.297),(5.297,0.703),
+			(1,-0.58),(1,0.58),(5,-0.58),(5,0.58),
+			(1.376,0.812),(2.624,0.188),(4.624,0.812),(3.376,0.188),
+			(1.50,0),(2.58,0),(4.50,0),(3.42,0),(0,0),(6,0),(1,-1),(5,-1)}
+			\node[nodoV] at \n {};
+
+		%% ── i tre nodi isolati come corpi liberi ────────────────
+		\node[nodoI] at (C) {};
+		\node[nodoI] at (E) {};
+		\node[nodoI] at (G) {};
+
+		%% ── le sei incognite primarie ───────────────────────────
+		\draw[incog] (0.297,0.297)--(0.085,0.085);
+		\draw[incog] (0.703,0.703)--(0.915,0.915);
+		\node[et] at (0.30,0.64) {$X_{AC}$};
+		\draw[incog] (5.703,0.297)--(5.915,0.085);
+		\draw[incog] (5.297,0.703)--(5.085,0.915);
+		\node[et] at (5.70,0.64) {$X_{LG}$};
+		\draw[incog] (2.624,0.188)--(2.892,0.054);
+		\draw[incog] (1.376,0.812)--(1.108,0.946);
+		\node[et] at (2.02,0.66) {$X_{CE}$};
+		\draw[incog] (3.376,0.188)--(3.108,0.054);
+		\draw[incog] (4.624,0.812)--(4.892,0.946);
+		\node[et] at (3.98,0.66) {$X_{GE}$};
+		\draw[incog] (1,-0.90)--(1,-0.64);
+		\node[et, left]  at (0.96,-0.80) {$Y_B$};
+		\draw[incog] (5,-0.90)--(5,-0.64);
+		\node[et, right] at (5.04,-0.80) {$Y_H$};
+
+		%% ── forze che ne discendono, alle interfacce ────────────
+		\draw[der] (1,0)--(0.72,0);         \node[etd, above] at (0.80,0.02){$X_D$};
+		\draw[der] (1,0)--(1,-0.28);        \node[etd, left]  at (0.97,-0.20){$Y_D$};
+		\draw[der] (1.50,0)--(1.78,0);      \node[etd, below] at (1.72,-0.03){$X_D$};
+		\draw[der] (1.50,0)--(1.50,0.28);   \node[etd, right] at (1.56,0.22){$Y_D$};
+		\draw[der] (5,0)--(5.28,0);         \node[etd, above] at (5.20,0.02){$X_F$};
+		\draw[der] (5,0)--(5,-0.28);        \node[etd, right] at (5.03,-0.20){$Y_F$};
+		\draw[der] (4.50,0)--(4.22,0);      \node[etd, below] at (4.28,-0.03){$X_F$};
+		\draw[der] (4.50,0)--(4.50,0.28);   \node[etd, left]  at (4.44,0.22){$Y_F$};
+		\draw[der] (1,0.58)--(1.28,0.58);   \node[etd, below] at (1.26,0.55){$X_C$};
+		\draw[der] (1,0.58)--(1,0.86);      \node[etd, left]  at (0.94,0.70){$Y_C$};
+		\draw[der] (5,0.58)--(4.72,0.58);   \node[etd, below] at (4.74,0.55){$X_G$};
+		\draw[der] (5,0.58)--(5,0.86);      \node[etd, right] at (5.06,0.70){$Y_G$};
+		\draw[der] (2.58,0)--(2.86,0);      \node[etd, below] at (2.80,-0.03){$X_{ED}$};
+		\draw[der] (2.58,0)--(2.58,-0.28);  \node[etd, left]  at (2.55,-0.18){$Y_{ED}$};
+		\draw[der] (3.42,0)--(3.14,0);      \node[etd, below] at (3.20,-0.03){$X_{EF}$};
+		\draw[der] (3.42,0)--(3.42,-0.28);  \node[etd, right] at (3.45,-0.18){$Y_{EF}$};
+
+		%% ── lettere ─────────────────────────────────────────────
+		\node[et, above left=1pt]  at (A) {$A$};
+		\node[et, above right=2pt] at (B) {$B$};
+		\node[et, above left=1pt]  at (C) {$C$};
+		\node[et] at (1.16,0.16) {$D$};
+		\node[et, above=8pt]       at (E) {$E$};
+		\node[et] at (4.84,0.16) {$F$};
+		\node[et, above right=1pt] at (G) {$G$};
+		\node[et, above left=2pt]  at (H) {$H$};
+		\node[et, above right=1pt] at (L) {$L$};
+
+	\end{tikzpicture}
+	\caption{La partizione adottata. Ogni corpo è staccato
+		lungo il proprio asse, così che i vuoti si aprano dove
+		sono i collegamenti e la maglia resti riconoscibile; i
+		cerchietti maggiorati in $C$, in $E$ e in $G$ sono i tre
+		nodi isolati come corpi liberi autonomi, mentre in $D$ e
+		in $F$ la connessione resta un vincolo interno. Le frecce
+		rappresentano forze scambiate ai nodi, non
+		caratteristiche della sollecitazione. A tratto pieno le
+		sei incognite primarie: una per ciascuna biella, che ne
+		trasmette il valore inalterato da un estremo all'altro, e
+		le due reazioni dei carrelli. A tratto sottile le forze
+		alle interfacce fra antenne e impalcati, che pure
+		esistono ma discendono dalle prime. I carichi applicati
+		sono quelli della \FIGref{fig:strallato_schema}.}
+	\label{fig:strallato_esploso}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%............................................................................................................................
+\paragraph{Passo 2 --- Ordine di risoluzione e azioni alle
+	connessioni.}
+%............................................................................................................................
+
+Mancando la gerarchia, l'ordine è dettato dalla partizione:
+si comincia dai corpi liberi il cui equilibrio determina
+subito qualche grandezza, e si procede finché le grandezze
+ottenute non rendano risolubili i successivi.
+
+\medskip
+\noindent\emph{I semi-impalcati sono travi appoggiate.}
+Il tratto $DE$ è collegato solo in $D$ e in $E$, entrambe
+cerniere, e porta il carico uniforme $p$ su una luce
+$2\ell$: è a tutti gli effetti una trave appoggiata
+(\FIGref{fig:strallato_cdl_DE}). L'equilibrio alla rotazione
+attorno a $D$ dà subito la componente verticale della forza
+che il nodo $E$ trasmette al tratto,
+\[
+	Y_{ED}\cdot 2\ell - p\,(2\ell)\,\ell = 0
+	\quad\Longrightarrow\quad
+	Y_{ED} = p\ell ,
+\]
+e l'equilibrio alla traslazione verticale dà l'uguale valore
+in $D$: $Y_D = p\ell$. Identico risultato, per la stessa
+ragione, sul tratto $FE$. Le componenti orizzontali restano
+per ora incognite e opposte agli estremi di ciascun tratto,
+$X_D = -X_{ED}$ e $X_F = -X_{EF}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.15cm, y=1.15cm,
+		trave/.style ={line width=2.0pt, line cap=round, black},
+		carico/.style={-{Stealth[length=1.8mm,width=1.1mm]},
+			line width=0.5pt},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		bordo/.style ={line width=0.5pt},
+		quota/.style ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize}]
+
+		\draw[trave] (0,0)--(2.6,0);
+		\foreach \x in {0,0.2,...,2.6} \draw[carico] (\x,0.50)--(\x,0.06);
+		\draw[bordo] (0,0.50)--(2.6,0.50);
+		\draw[bordo] (0,0.06)--(2.6,0.06);
+		\node[et, above] at (1.3,0.52) {$p$};
+
+		\node[nodoV] at (0,0) {};  \node[nodoV] at (2.6,0) {};
+		\node[et] at (0.22,-0.20) {$D$};
+		\node[et] at (2.38,-0.20) {$E$};
+
+		\draw[incog] (-0.70,0)--(0,0);
+		\node[et, above] at (-0.35,0.03) {$X_D$};
+		\draw[incog] (0,0)--(0,-0.64);
+		\node[et, left]  at (-0.04,-0.44) {$Y_D$};
+		\draw[incog] (2.6,0)--(3.30,0);
+		\node[et, above] at (2.95,0.03) {$X_{ED}$};
+		\draw[incog] (2.6,0)--(2.6,-0.64);
+		\node[et, right] at (2.64,-0.44) {$Y_{ED}$};
+
+		\draw[quota] (0,-1.00)--(2.6,-1.00)
+			node[midway,below,black,et]{$2\ell$};
+	\end{tikzpicture}
+	\caption{Corpo libero del semi-impalcato $DE$: una trave
+		appoggiata a due cerniere, di luce $2\ell$, sotto il
+		carico uniforme $p$. L'equilibrio alla rotazione attorno
+		a $D$ determina $Y_{ED}$, e quello alla traslazione
+		verticale $Y_D$; le componenti orizzontali restano
+		incognite e opposte.}
+	\label{fig:strallato_cdl_DE}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+\noindent\emph{Le antenne: rotazione e traslazione
+orizzontale.}
+Sull'antenna $BC$ agiscono la reazione $Y_B$ del carrello,
+il peso proprio $p/4$, il carico orizzontale $p/2$ ---
+di risultante $p\ell$, applicata a metà altezza, cioè in
+$D$ --- la forza $(-X_D,\,-p\ell)$ trasmessa dall'impalcato
+in $D$ e la forza $(X_C,\,Y_C)$ trasmessa dal nodo $C$
+(\FIGref{fig:strallato_cdl_BC}). Poiché tutte le componenti
+verticali sono allineate con l'asse, l'equilibrio alla
+rotazione attorno a $B$ coinvolge le sole componenti
+orizzontali, ciascuna moltiplicata per la propria quota
+sopra $B$:
+\[
+	-2\ell\,X_C + \ell\,X_D - \ell\cdot p\ell = 0 ,
+\]
+mentre l'equilibrio alla traslazione orizzontale dà
+$X_C - X_D + p\ell = 0$. Il sistema delle due si risolve
+immediatamente e fornisce
+\[
+	X_D = p\ell , \qquad X_C = 0 .
+\]
+Ripetendo il ragionamento sull'antenna $HG$, priva di carico
+orizzontale, i medesimi due passaggi danno $X_F = 0$ e
+$X_G = 0$: l'impalcato di destra è privo di forza normale, e
+il nodo $G$ non scambia con l'antenna alcuna forza
+orizzontale. Sono due risultati notevoli, che conviene
+fissare: \emph{tutta} la spinta orizzontale generata dal
+carico $p/2$ si scarica sull'impalcato di sinistra, che ne
+risulta compresso.
+
+Resta la terza equazione cardinale, l'equilibrio alla
+traslazione verticale,
+\[
+	Y_B + Y_C - p\ell - \tfrac{1}{2}\,p\ell = 0 ,
+\]
+che contiene due incognite e non può essere chiusa qui: la
+si riprenderà quando il nodo $C$ avrà fornito $Y_C$. È
+questa la ragione per cui l'equilibrio delle antenne si
+spezza in due momenti, e non un'omissione.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.0cm, y=1.0cm,
+		trave/.style ={line width=2.0pt, line cap=round, black},
+		carico/.style={-{Stealth[length=1.8mm,width=1.1mm]},
+			line width=0.5pt},
+		caricoS/.style={-{Stealth[length=1.5mm]}, line width=0.6pt},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		nota/.style  ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt, gray!70},
+		bordo/.style ={line width=0.5pt},
+		quota/.style ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize},
+		etn/.style   ={font=\footnotesize, gray!70}]
+		
+		% ═══════════ (a) prima dell'equilibrio ═══════════
+		\begin{scope}[xshift=0cm]
+			\draw[trave] (0,0)--(0,2.6);
+			% peso proprio p/4, accostato all'asta
+			\foreach \y in {2.45,2.05,1.65,1.25,0.85,0.45}
+			\draw[caricoS] (-0.28,\y)--(-0.28,{\y-0.24});
+			\node[et, above] at (-0.28,2.50) {$p/4$};
+			% carico trasversale p/2, delimitato dai due tratti
+			\foreach \y in {0,0.2,...,2.6} \draw[carico] (-1.45,\y)--(-1.03,\y);
+			\draw[bordo] (-1.45,0)--(-1.45,2.6);
+			\draw[bordo] (-1.03,0)--(-1.03,2.6);
+			\node[et, below] at (-1.24,-0.24) {$p/2$};
+			
+			\node[nodoV] at (0,0) {};  \node[nodoV] at (0,2.6) {};
+			\coordinate (Dc) at (0,1.3);
+			\draw[black, fill=white, line width=0.9pt]
+			($(Dc)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+			\node[et] at (-0.70,0)   {$B$};
+			\node[et] at (-0.70,1.3) {$D$};
+			\node[et] at (-0.70,2.6) {$C$};
+			
+			\draw[incog] (0,-0.74)--(0,-0.06);
+			\node[et, right] at (0.05,-0.46) {$Y_B$};
+			\draw[incog] (0.80,1.3)--(0,1.3);
+			\node[et, above] at (0.47,1.33) {$X_D$};
+			\draw[incog] (0,1.3)--(0,0.60);
+			\node[et, right] at (0.06,0.84) {$Y_D$};
+			\draw[incog] (0,2.6)--(0.70,2.6);
+			\node[et, above] at (0.35,2.63) {$X_C$};
+			\draw[incog] (0,2.6)--(0,3.30);
+			\node[et, right] at (-0.70,3.20) {$Y_C$};
+			
+			\draw[quota] (1.45,0)--(1.45,1.3)
+			node[midway,right,black,et]{$\ell$};
+			\draw[quota] (1.45,1.3)--(1.45,2.6)
+			node[midway,right,black,et]{$\ell$};
+			\node[et] at (0,-1.35) {(a)};
+		\end{scope}
+		
+		% ═══════════ (b) dopo l'equilibrio ═══════════
+		\begin{scope}[xshift=5.6cm]
+			\draw[trave] (0,0)--(0,2.6);
+			% peso proprio p/4, accostato all'asta
+			\foreach \y in {2.45,2.05,1.65,1.25,0.85,0.45}
+			\draw[caricoS] (-0.28,\y)--(-0.28,{\y-0.24});
+			\node[et, above] at (-0.28,2.50) {$p/4$};
+			% carico trasversale p/2, delimitato dai due tratti
+			\foreach \y in {0,0.2,...,2.6} \draw[carico] (-1.45,\y)--(-1.03,\y);
+			\draw[bordo] (-1.45,0)--(-1.45,2.6);
+			\draw[bordo] (-1.03,0)--(-1.03,2.6);
+			\node[et, below] at (-1.24,-0.24) {$p/2$};
+			
+			\node[nodoV] at (0,0) {};  \node[nodoV] at (0,2.6) {};
+			\coordinate (Dd) at (0,1.3);
+			\draw[black, fill=white, line width=0.9pt]
+			($(Dd)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+			\node[et] at (-0.70,0)   {$B$};
+			\node[et] at (-0.70,1.3) {$D$};
+			\node[et] at (-0.70,2.6) {$C$};
+			
+			\draw[nota] (0.80,1.3)--(0,1.3);
+			\node[etn, above] at (0.47,1.33) {$p\ell$};
+			\draw[nota] (0,1.3)--(0,0.60);
+			\node[etn, right] at (0.06,0.84) {$p\ell$};
+			
+			\draw[incog] (0,-0.74)--(0,-0.06);
+			\node[et, right] at (0.05,-0.46) {$Y_B$};
+			\draw[incog] (0,2.6)--(0,3.30);
+			\node[et, right] at (-0.70,3.20) {$Y_C$};
+			
+			\draw[quota] (1.45,0)--(1.45,1.3)
+			node[midway,right,black,et]{$\ell$};
+			\draw[quota] (1.45,1.3)--(1.45,2.6)
+			node[midway,right,black,et]{$\ell$};
+			\node[et] at (0,-1.35) {(b)};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Corpo libero dell'antenna $BC$. \emph{(a)}~Le
+		forze agenti prima dell'equilibrio: tutte giacciono sulla
+		verticale dell'asse, sicché l'equilibrio alla rotazione
+		attorno a $B$ coinvolge le sole componenti orizzontali.
+		\emph{(b)}~Dopo l'equilibrio restano due sole incognite,
+		$Y_B$ e $Y_C$, entrambe verticali e allineate: l'ultima
+		equazione cardinale non basta a determinarle, e occorre
+		attendere il nodo $C$.}
+	\label{fig:strallato_cdl_BC}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+\noindent\emph{I nodi $C$ e $G$.}
+In $C$ concorrono la ritenuta $AC$, lo strallo $CE$ e
+l'antenna. Su $C$ non agiscono carichi concentrati, quindi
+le tre forze che le aste vi trasmettono si equilibrano;
+poiché l'antenna non riceve dal nodo alcuna forza
+orizzontale ($X_C = 0$), le componenti orizzontali delle due
+bielle si fanno equilibrio fra loro
+(\FIGref{fig:strallato_nodo_C}):
+\[
+	X_{AC} = X_{CE} .
+\]
+La ritenuta tira il vertice verso sinistra e in basso, lo
+strallo verso destra e in basso: le due spinte orizzontali
+si annullano e le due componenti verticali si sommano,
+scaricandosi sull'antenna. Analogamente in $G$, dove pure
+$X_G = 0$, si ha $X_{LG} = X_{GE}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.25cm, y=1.25cm,
+		stub/.style  ={line width=1.0pt, gray!55},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		assiale/.style={-{Stealth[length=2.4mm]}, line width=1.3pt},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize},
+		etn/.style   ={font=\footnotesize, gray!70}]
+
+		\draw[stub] (0,0)--(-1.15,-1.15); \node[et] at (-1.36,-1.15) {$AC$};
+		\draw[stub] (0,0)--(1.60,-0.80);  \node[et] at (1.84,-0.80)  {$CE$};
+		\draw[stub] (0,0)--(0,-1.30);     \node[et, below] at (0,-1.36) {$BC$};
+
+		\draw[gray!60, dashed, line width=0.35pt]
+			(-0.80,0)--(-0.80,-0.80)--(0,-0.80)
+			(0.80,0)--(0.80,-0.40)--(0,-0.40);
+
+		\draw[assiale] (0,0)--(-0.80,-0.80);
+		\node[et] at (-1.06,-0.64) {$N_{AC}$};
+		\draw[assiale] (0,0)--(0.80,-0.40);
+		\node[et] at (1.08,-0.26) {$N_{CE}$};
+
+		\draw[incog] (0,0)--(-0.80,0);
+		\node[et, above] at (-0.70,0.03) {$X_{AC}$};
+		\draw[incog] (0,0)--(0.80,0);
+		\node[et, above] at (0.54,0.03) {$X_{CE}$};
+		\draw[incog] (0,0)--(0,-0.80);
+		\node[et, right] at (0.06,-0.72) {$Y_{AC}$};
+		\draw[incog] (0,0)--(0,-0.40);
+		\node[et, right] at (0.0,-0.40) {$Y_{CE}$};
+		\draw[incog] (0,0)--(0,0.62);
+		\node[et, right] at (0.08,0.50) {$-Y_C$};
+
+		\node[nodoV] at (0,0) {};
+		\node[et] at (-0.22,0.28) {$C$};
+		%\node[etn] at (-1.05,0.46) {$X_C = 0$};
+	\end{tikzpicture}
+	\caption{Il nodo $C$ come corpo libero. Tutte le forze sono
+		applicate nel nodo e giacciono sulla propria retta
+		d'azione; i rettangoli tratteggiati scompongono nelle
+		componenti gli sforzi assiali delle due bielle. Poiché
+		l'antenna non riceve dal nodo alcuna forza orizzontale,
+		le due componenti orizzontali si fanno equilibrio fra
+		loro e le verticali si sommano scaricandosi
+		sull'antenna.}
+	\label{fig:strallato_nodo_C}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+\noindent\emph{Il nodo $E$.}
+Nel nodo di mezzeria concorrono i due stralli e i due
+semi-impalcati (\FIGref{fig:strallato_nodo_E}). La
+proiezione verticale riceve $p\ell$ da ciascun impalcato
+verso il basso e le componenti verticali dei due stralli,
+entrambe verso l'alto:
+\[
+	Y_{CE} + Y_{GE} = 2p\ell
+	\quad\Longrightarrow\quad
+	X_{CE} + X_{GE} = 4p\ell ,
+\]
+avendo usato le relazioni di pendenza del Passo~1. La
+proiezione orizzontale, con $X_{ED} = -X_D = -p\ell$ e
+$X_{EF} = 0$, dà
+\[
+	X_{CE} - X_{GE} = p\ell ,
+\]
+e il sistema delle due si risolve a vista:
+\[
+	X_{CE} = \frac{5}{2}\,p\ell , \qquad
+	X_{GE} = \frac{3}{2}\,p\ell ,
+\]
+da cui, per la geometria e per i nodi $C$ e $G$,
+\[
+	Y_{CE} = \frac{5}{4}\,p\ell , \quad
+	Y_{GE} = \frac{3}{4}\,p\ell , \quad
+	X_{AC} = Y_{AC} = \frac{5}{2}\,p\ell , \quad
+	X_{LG} = Y_{LG} = \frac{3}{2}\,p\ell .
+\]
+Gli sforzi assiali sono le risultanti di queste componenti:
+\[
+	N_{AC} = \sqrt2\,X_{AC} = \frac{5\sqrt2}{2}\,p\ell ,
+	\qquad
+	N_{CE} = \frac{\sqrt5}{2}\,X_{CE} = \frac{5\sqrt5}{4}\,p\ell ,
+\]
+\[
+	N_{GE} = \frac{\sqrt5}{2}\,X_{GE} = \frac{3\sqrt5}{4}\,p\ell ,
+	\qquad
+	N_{LG} = \sqrt2\,X_{LG} = \frac{3\sqrt2}{2}\,p\ell ,
+\]
+\emph{tutti di trazione}. È il primo controllo di
+plausibilità, ed è quello decisivo, perché ritenute e
+stralli sono nella realtà dei cavi e non potrebbero lavorare
+altrimenti. Si osservi anche che il carico orizzontale,
+spingendo verso destra, carica la metà di sinistra e
+alleggerisce quella di destra, nel rapporto $5:3$, come
+l'intuito richiede.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.25cm, y=1.25cm,
+		stub/.style  ={line width=1.0pt, gray!55},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		nota/.style  ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt, gray!70},
+		assiale/.style={-{Stealth[length=2.4mm]}, line width=1.3pt},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize},
+		etn/.style   ={font=\footnotesize, gray!70}]
+
+		% ═══════════ (a) prima dell'equilibrio ═══════════
+		\begin{scope}[xshift=0cm]
+			\draw[stub] (0,0)--(-1.90,0.95); \node[et] at (-2.14,0.95) {$CE$};
+			\draw[stub] (0,0)--(1.90,0.95);  \node[et] at (2.14,0.95)  {$GE$};
+			\draw[stub] (0,0)--(-1.70,0);    \node[et, below] at (-1.50,-0.05) {$ED$};
+			\draw[stub] (0,0)--(1.70,0);     \node[et, below] at (1.50,-0.05)  {$EF$};
+
+			\draw[gray!60, dashed, line width=0.35pt]
+				(-1.20,0)--(-1.20,0.60)--(0,0.60)
+				(0.72,0)--(0.72,0.36)--(0,0.36);
+
+			\draw[assiale] (0,0)--(-1.20,0.60);
+			\node[et] at (-1.22,0.80) {$N_{CE}$};
+			\draw[assiale] (0,0)--(0.72,0.36);
+			\node[et] at (0.70,0.58) {$N_{GE}$};
+
+			\draw[incog] (0,0)--(-1.20,0);
+			\node[et, below] at (-0.80,-0.05) {$X_{CE}$};
+			\draw[incog] (0,0)--(0.72,0);
+			\node[et, below] at (0.72,-0.06) {$X_{GE}$};
+			\draw[incog] (0,0)--(0,0.60);
+			\node[et, above] at (0.07,0.52) {$Y_{CE}$};
+			\draw[incog] (0,0)--(0,0.36);
+			\node[et, above left] at (0.04,0.16) {$Y_{GE}$};
+			\draw[nota] (0,0)--(0,-0.96);
+			\node[etn, left]  at (-0.06,-0.80) {$2p\ell$};
+			\draw[nota] (0,0)--(0.48,0);
+			\node[etn, below] at (0.30,-0.06) {$p\ell$};
+
+			\node[nodoV] at (0,0) {};
+			\node[et] at (-0.22,-0.28) {$E$};
+			\node[et] at (0,-1.55) {(a)};
+		\end{scope}
+
+		% ═══════════ (b) dopo l'equilibrio ═══════════
+		\begin{scope}[xshift=6.4cm]
+			\draw[stub] (0,0)--(-1.90,0.95); \node[et] at (-2.14,0.95) {$CE$};
+			\draw[stub] (0,0)--(1.90,0.95);  \node[et] at (2.14,0.95)  {$GE$};
+			\draw[stub] (0,0)--(-1.70,0);    \node[et, below] at (-1.50,-0.05) {$ED$};
+			\draw[stub] (0,0)--(1.70,0);     \node[et, below] at (1.50,-0.05)  {$EF$};
+
+			\draw[gray!60, dashed, line width=0.35pt]
+				(-1.20,0)--(-1.20,0.60)--(0,0.60)
+				(0.72,0)--(0.72,0.36)--(0,0.36);
+
+			\draw[assiale] (0,0)--(-1.20,0.60);
+			\node[et] at (-1.00,0.86) {$\tfrac{5\sqrt5}{4}p\ell$};
+			\draw[assiale] (0,0)--(0.72,0.36);
+			\node[et] at (0.68,0.62) {$\tfrac{3\sqrt5}{4}p\ell$};
+
+			\draw[nota] (0,0)--(-1.20,0);
+			\node[etn, below] at (-0.84,-0.05) {$\tfrac52 p\ell$};
+			\draw[nota] (0,0)--(0.72,0);
+			\node[etn, below] at (0.76,-0.06) {$\tfrac32 p\ell$};
+			\draw[nota] (0,0)--(0,0.60);
+			\node[etn, above] at (0.11,0.52) {$\tfrac54 p\ell$};
+			\draw[nota] (0,0)--(0,0.36);
+			\node[etn, above left] at (-0.00,0.14) {$\tfrac34 p\ell$};
+			\draw[nota] (0,0)--(0,-0.96);
+			\node[etn, left]  at (-0.06,-0.80) {$2p\ell$};
+			\draw[nota] (0,0)--(0.48,0);
+			\node[etn, below] at (0.26,-0.06) {$p\ell$};
+
+			\node[nodoV] at (0,0) {};
+			\node[et] at (-0.20,-0.28) {$E$};
+			\node[et] at (0,-1.55) {(b)};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Il nodo $E$ come corpo libero. \emph{(a)}~Le
+		incognite e, a tratto grigio, le azioni già note
+		trasmesse dai due semi-impalcati. \emph{(b)}~L'esito del
+		calcolo: le componenti verticali dei due stralli,
+		$\tfrac54 p\ell$ e $\tfrac34 p\ell$, bilanciano i
+		$2p\ell$ ricevuti dagli impalcati, e le orizzontali
+		bilanciano la spinta $p\ell$ dell'impalcato di sinistra.
+		La verifica si legge sulla figura.}
+	\label{fig:strallato_nodo_E}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+\noindent\emph{Le reazioni dei vincoli esterni.}
+Le reazioni in $A$ e in $L$ sono quelle trasmesse dalle
+rispettive bielle, e se ne conoscono già le componenti:
+\[
+	X_A = Y_A = \frac{5}{2}\,p\ell , \qquad
+	X_L = Y_L = \frac{3}{2}\,p\ell ,
+\]
+la prima rivolta verso il basso e verso sinistra, la seconda
+verso il basso e verso destra: il terreno \emph{trattiene}
+gli ancoraggi, che le bielle tese tirano verso l'alto. Le
+reazioni dei carrelli seguono dall'equilibrio verticale
+delle antenne, ora chiudibile. Il nodo $C$ scarica
+sull'antenna la somma delle componenti verticali delle due
+bielle,
+\[
+	Y_C = -\bigl(Y_{AC} + Y_{CE}\bigr)
+	    = -\Bigl(\frac{5}{2} + \frac{5}{4}\Bigr)p\ell
+	    = -\frac{15}{4}\,p\ell ,
+\]
+cui si aggiungono il peso proprio
+$\tfrac{p}{4}\cdot 2\ell = \tfrac12 p\ell$ e la forza $p\ell$
+ricevuta in $D$ dall'impalcato:
+\[
+	Y_B = \frac{15}{4}p\ell + \frac{1}{2}p\ell + p\ell
+	    = \frac{21}{4}\,p\ell , \qquad
+	Y_H = \frac{9}{4}p\ell + \frac{1}{2}p\ell + p\ell
+	    = \frac{15}{4}\,p\ell ,
+\]
+essendo $Y_G = -\bigl(Y_{LG} + Y_{GE}\bigr) = -\tfrac94 p\ell$.
+
+\medskip
+\noindent\emph{Controllo: l'equilibrio globale.}
+La somma delle componenti verticali delle reazioni vale
+\[
+	-\frac{5}{2}p\ell + \frac{21}{4}p\ell
+	+ \frac{15}{4}p\ell - \frac{3}{2}p\ell = 5\,p\ell ,
+\]
+esattamente il carico verticale complessivo
+$p\,(4\ell) + 2\cdot\tfrac{p}{4}(2\ell) = 5p\ell$; la somma
+delle componenti orizzontali vale
+$-\tfrac52 p\ell + \tfrac32 p\ell = -p\ell$, opposta alla
+risultante $\tfrac{p}{2}(2\ell) = p\ell$ del carico
+orizzontale. L'equilibrio alla rotazione si verifica con
+altrettanta facilità prendendo i momenti attorno ad $A$.
+
+\begin{oss}[Le forze che i corpi trasmettono ai nodi]
+	Le forze con cui i semi-impalcati caricano il nodo $E$
+	sono le \emph{forze nodali equivalenti} al carico $p$,
+	ottenute per equipollenza secondo la
+	\SECref{subsec:sistema_descrizioni}. Esse bastano a
+	chiudere l'equilibrio del nodo e, con esso, la soluzione
+	globale, ma non restituiscono le caratteristiche della
+	sollecitazione lungo l'impalcato, che il carico effettivo
+	genera e il suo equivalente nodale no: quelle si
+	ottengono riequilibrando il corpo sotto il carico reale
+	e le forze di estremità ora determinate. È quanto si fa
+	al Passo~4.
+\end{oss}
+
+%............................................................................................................................
+\paragraph{Passo 3 --- Fibre inferiori e convenzioni di segno.}
+%............................................................................................................................
+
+Le fibre inferiori --- tracciate con linea tratteggiata
+nella \FIGref{fig:strallato_NTM}\,a --- sono assunte come
+segue: per i due semi-impalcati e per i due stralli il bordo
+inferiore geometrico; per le due antenne e per le due
+ritenute il bordo \emph{interno}, cioè quello rivolto verso
+la mezzeria $E$. La scelta è così simmetrica rispetto
+all'asse della struttura, come la geometria, e i versi di
+percorrenza risultano continui: dal basso verso l'alto lungo
+le antenne e le ritenute, dalle antenne verso la mezzeria
+lungo gli stralli e gli impalcati.
+
+Il momento flettente positivo si traccia dal lato della
+fibra inferiore. Per il taglio e la forza normale si assume
+il semiasse positivo verso l'alto per i tratti orizzontali e
+verso l'interno per quelli verticali e inclinati, coerente
+con la scelta delle fibre.
+
+\begin{oss}
+	Per le quattro bielle la scelta della fibra è
+	immateriale: essendo $T = M = 0$, l'unico diagramma è
+	quello della forza normale, il cui segno non dipende dal
+	lato di riferimento. La si assume ugualmente, e coerente
+	con quella dei corpi adiacenti, perché i diagrammi si
+	leggano sull'intera struttura senza cambiare regola da un
+	tratto all'altro.
+\end{oss}
+
+%............................................................................................................................
+\paragraph{Passo 4 --- Tracciamento dei diagrammi $N$, $T$,	$M$ sull'intera struttura.}
+%............................................................................................................................
+
+
+Note tutte le azioni di estremità, ciascun corpo si riequilibra sotto i
+carichi che effettivamente porta. È qui che si recuperano le
+caratteristiche della sollecitazione lungo gli elementi caricati, che le
+forze nodali del Passo~2 da sole non restituiscono. I diagrammi sono
+nella \FIGref{fig:strallato_NTM}, il cui pannello~\emph{(a)} riepiloga
+carichi, reazioni e fibre di riferimento adottate.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Stato di sollecitazione del ponte strallato.
+%  Figura autonoma: i primitivi sono definiti qui sotto e sono
+%  locali all'ambiente figure.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp!]
+	\centering
+	
+	%% ── stili comuni ai quattro pannelli ────────────────────────
+	\tikzset{
+		trv/.style   ={line width=1.7pt, line cap=round,
+			line join=round, black},
+		fib/.style   ={gray!65, dash pattern=on 2pt off 1.6pt,
+			line width=0.45pt},
+		dbordo/.style={draw=black, line width=0.7pt},
+		dtratto/.style={draw=gray!55, line width=0.35pt},
+		terra/.style ={line width=0.6pt},
+		rich/.style  ={line width=0.4pt, -{Stealth[length=1.4mm]}},
+		qt/.style    ={font=\footnotesize},
+		nd/.style    ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=3.4pt, line width=0.55pt}}
+	
+	%% ── primitivi ───────────────────────────────────────────────
+	% diagramma lineare fra #1 e #2; #3,#4 versore di riporto;
+	% #5,#6 ordinate agli estremi; #7 scala
+	\newcommand{\diagLin}[7]{%
+		\pgfmathsetmacro{\dax}{#5*#7*#3}\pgfmathsetmacro{\day}{#5*#7*#4}%
+		\pgfmathsetmacro{\dbx}{#6*#7*#3}\pgfmathsetmacro{\dby}{#6*#7*#4}%
+		\foreach \dj in {0,1,...,10}{%
+			\pgfmathsetmacro{\dt}{\dj/10}%
+			\pgfmathsetmacro{\dv}{(#5+(#6-#5)*\dt)*#7}%
+			\draw[dtratto] ($(#1)!\dt!(#2)$)--++({\dv*#3},{\dv*#4});}%
+		\draw[dbordo] ($(#1)+(\dax,\day)$)--($(#2)+(\dbx,\dby)$);
+		\draw[dbordo] (#1)--($(#1)+(\dax,\day)$);
+		\draw[dbordo] (#2)--($(#2)+(\dbx,\dby)$);}
+	% diagramma parabolico; #5,#6,#7 ordinate a inizio, mezzo, fine; #8 scala
+	\newcommand{\diagPar}[8]{%
+		\pgfmathsetmacro{\pca}{2*(#5-2*#6+#7)}%
+		\pgfmathsetmacro{\pcb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\pcc}{#5}%
+		\foreach \dj in {0,1,...,16}{%
+			\pgfmathsetmacro{\dt}{\dj/16}%
+			\pgfmathsetmacro{\dv}{(\pca*\dt*\dt+\pcb*\dt+\pcc)*#8}%
+			\coordinate (dP\dj) at ($(#1)!\dt!(#2)+({\dv*#3},{\dv*#4})$);
+			\draw[dtratto] ($(#1)!\dt!(#2)$)--(dP\dj);}%
+		\draw[dbordo] (dP0) \foreach \dj in {1,2,...,16}{ -- (dP\dj)};
+		\draw[dbordo] (#1)--(dP0);
+		\draw[dbordo] (#2)--(dP16);}
+	% cerchietto con il segno
+	\newcommand{\segno}[3]{%
+		\node[circle, draw=black, fill=white, line width=0.5pt,
+		inner sep=0.8pt, font=\tiny] at (#1,#2) {$#3$};}
+	% cerchietto ridotto, per il pannello del taglio
+	\newcommand{\segnoT}[3]{%
+		\node[circle, draw=black, fill=white, line width=0.4pt,
+		inner sep=0.4pt, font=\fontsize{4}{4}\selectfont]
+		at (#1,#2) {$#3$};}
+	% vincoli e mezzelune
+	\newcommand{\carrV}[1]{%
+		\draw[terra] (#1)--($(#1)+(-0.10,-0.18)$)--($(#1)+(0.10,-0.18)$)--cycle;
+		\draw[terra, fill=white, line width=0.4pt]
+		($(#1)+(-0.055,-0.215)$) circle(0.035);
+		\draw[terra, fill=white, line width=0.4pt]
+		($(#1)+( 0.055,-0.215)$) circle(0.035);
+		\draw[terra] ($(#1)+(-0.16,-0.25)$)--($(#1)+(0.16,-0.25)$);
+		\foreach \t in {-0.14,-0.07,0,0.07,0.14}
+		\draw[terra, line width=0.35pt] ($(#1)+(\t,-0.25)$)--++(-0.05,-0.07);}
+	\newcommand{\cernE}[1]{%
+		\draw[terra] (#1)--($(#1)+(-0.11,-0.19)$)--($(#1)+(0.11,-0.19)$)--cycle;
+		\draw[terra] ($(#1)+(-0.17,-0.19)$)--($(#1)+(0.17,-0.19)$);
+		\foreach \t in {-0.15,-0.075,0,0.075,0.15}
+		\draw[terra, line width=0.35pt] ($(#1)+(\t,-0.19)$)--++(-0.05,-0.07);}
+	\newcommand{\lunaD}[1]{%
+		\draw[black, fill=white, line width=0.8pt]
+		($(#1)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;}
+	\newcommand{\lunaS}[1]{%
+		\draw[black, fill=white, line width=0.8pt]
+		($(#1)+(0,-0.07)$) arc[start angle=-90,end angle=-270,radius=0.07]--cycle;}
+	% geometria, vincoli e nodi, comuni ai quattro pannelli
+	\newcommand{\schema}{%
+		\coordinate (A) at (0,0);  \coordinate (B) at (1,-1);
+		\coordinate (C) at (1,1);  \coordinate (D) at (1,0);
+		\coordinate (E) at (3,0);  \coordinate (F) at (5,0);
+		\coordinate (G) at (5,1);  \coordinate (H) at (5,-1);
+		\coordinate (L) at (6,0);
+		\draw[trv] (B)--(C) (H)--(G) (A)--(C) (L)--(G) (C)--(E) (G)--(E)
+		(1.07,0)--(E) (4.93,0)--(E);
+		\lunaD{D}\lunaS{F}
+		\cernE{A}\cernE{L}\carrV{B}\carrV{H}
+		\foreach \n in {A,B,C,E,G,H,L} \node[nd] at (\n) {};}
+	% fibre di riferimento: solo impalcato e antenne
+	\newcommand{\fibreIA}{%
+		\draw[fib] (1,-0.085)--(5,-0.085)
+		(1.085,-1)--(1.085,1) (4.915,-1)--(4.915,1);}
+	% fibre di riferimento: anche bielle
+	\newcommand{\fibreTutte}{%
+		\fibreIA
+		\draw[fib] ($(A)+(0.06,-0.06)$)--($(C)+(0.06,-0.06)$)
+		($(L)+(-0.06,-0.06)$)--($(G)+(-0.06,-0.06)$)
+		($(C)+(-0.038,-0.076)$)--($(E)+(-0.038,-0.076)$)
+		($(G)+(0.038,-0.076)$)--($(E)+(0.038,-0.076)$);}
+	
+	% ═══════════ (a) carichi e reazioni ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm,
+				carico/.style ={-{Stealth[length=1.8mm,width=1.10mm]},
+					line width=0.60pt},
+				caricoM/.style={-{Stealth[length=1.0mm,width=0.62mm]},
+					line width=0.50pt},
+				caricoS/.style={-{Stealth[length=1.2mm,width=0.58mm]},
+					line width=0.40pt},
+				bordo/.style  ={line width=0.5pt}]
+				\schema \fibreTutte
+				% carico p sull'impalcato
+				\draw[bordo] (1,-0.34)--(5,-0.34);
+				\foreach \x in {1.10,1.30,...,4.90} \draw[carico] (\x,0)--(\x,-0.34);
+				\node[qt, below] at (2,-0.36) {$p$};
+				\node[qt, below] at (4,-0.36) {$p$};
+				% peso proprio p/4
+				\foreach \y in {1,0.75,...,-0.75}{%
+					\draw[caricoS] (0.85,\y)--(0.85,{\y-0.22});
+					\draw[caricoS] (5.15,\y)--(5.15,{\y-0.22});}
+				\node[qt, left]  at (0.80,-0.60) {$p/4$};
+				\node[qt, right] at (5.20,-0.60) {$p/4$};
+				% carico orizzontale p/2
+				\draw[bordo] (1,-1)--(1,1);
+				\draw[bordo] (1.17,-1)--(1.17,1);
+				\foreach \y in {1,0.70,0.40,-0.48,-0.74,-1}
+				\draw[caricoM] (1,\y)--(1.17,\y);
+				\node[qt, right] at (1.22,-0.95) {$p/2$};
+				% etichette
+				\node[qt, above=4pt] at (A) {$A$};
+				\node[qt, left=5pt]  at (B) {$B$};
+				\node[qt, above]     at (C) {$C$};
+				\node[qt]            at (0.70,0.) {$D$};
+				\node[qt, above=4pt] at (E) {$E$};
+				\node[qt]            at (5.3,0.) {$F$};
+				\node[qt, above]     at (G) {$G$};
+				\node[qt, right=5pt] at (H) {$H$};
+				\node[qt, above=4pt] at (L) {$L$};
+				% reazioni, traslate lungo la propria retta d'azione
+				\draw[rich] (-0.36,0)--(-0.86,0);
+				\node[qt, above] at (-0.61,0.04) {$\tfrac52 p\ell$};
+				\draw[rich] (0,-0.42)--(0,-0.92);
+				\node[qt, left]  at (-0.04,-0.70) {$\tfrac52 p\ell$};
+				\draw[rich] (6.36,0)--(6.86,0);
+				\node[qt, above] at (6.61,0.04) {$\tfrac32 p\ell$};
+				\draw[rich] (6,-0.42)--(6,-0.92);
+				\node[qt, right] at (6.04,-0.70) {$\tfrac32 p\ell$};
+				\draw[rich] (1,-1.98)--(1,-1.48);
+				\node[qt, left]  at (0.96,-1.76) {$\tfrac{21}{4} p\ell$};
+				\draw[rich] (5,-1.98)--(5,-1.48);
+				\node[qt, right] at (5.04,-1.76) {$\tfrac{15}{4} p\ell$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (a) carichi e reazioni}
+	\end{minipage}\hfill
+	% ═══════════ (b) taglio ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm]
+				\pgfmathsetmacro{\kT}{0.88}% ordinata in p*l -> unita' di griglia
+				\schema \fibreIA
+				% impalcato: da +p*l a -p*l su ciascuna campata
+				\diagLin{1,0}{3,0}{0}{-1}{1}{-1}{\kT}
+				\diagLin{3,0}{5,0}{0}{-1}{1}{-1}{\kT}
+				% antenna BC
+				\diagLin{1,-1}{1,0}{1}{0}{0}{-0.5}{\kT}
+				\diagLin{1,0}{1,1}{1}{0}{0.5}{0}{\kT}
+				\segnoT{1.32}{-0.26}{+}\segnoT{2.7}{0.38}{-}
+				\segnoT{3.42}{-0.26}{+}\segnoT{4.58}{0.26}{-}
+				\segnoT{0.86}{-0.26}{-}\segnoT{1.18}{0.26}{+}
+				% quote
+				\draw[rich] (2.46,1.00)--(2.96,0.80);
+				\node[qt, left]  at (2.44,1.00) {$p\ell$};
+				\draw[rich] (3.54,-1.00)--(3.04,-0.80);
+				\node[qt, right] at (3.56,-1.00) {$p\ell$};
+				\draw[rich] (0.28,-0.66)--(0.58,-0.06);
+				\node[qt, left]  at (0.26,-0.68) {$\tfrac{p\ell}{2}$};
+				\draw[rich] (1.96,-0.28)--(1.45,0.04);
+				\node[qt, right] at (1.98,-0.40) {$\tfrac{p\ell}{2}$};
+				\draw[rich] (1.57,-1.06)--(1.03,-0.80);
+				\node[qt, right] at (1.59,-1.07) {$p\ell$};
+				\draw[rich] (4.43,1.06)--(4.97,0.80);
+				\node[qt, left]  at (4.41,1.07) {$p\ell$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (b) taglio $T$}
+	\end{minipage}\\[10pt]
+	% ═══════════ (c) forza normale ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm]
+				\pgfmathsetmacro{\kN}{0.15}
+				\pgfmathsetmacro{\kNi}{0.30}% scala locale dell'impalcato, fuori scala
+				\schema \fibreTutte
+				% ritenute
+				\diagLin{0,0}{1,1}{-0.7071}{0.7071}{3.5355}{3.5355}{\kN}
+				\diagLin{6,0}{5,1}{0.7071}{0.7071}{2.1213}{2.1213}{\kN}
+				% stralli
+				\diagLin{1,1}{3,0}{0.4472}{0.8944}{2.7951}{2.7951}{\kN}
+				\diagLin{5,1}{3,0}{-0.4472}{0.8944}{1.6771}{1.6771}{\kN}
+				% impalcato di sinistra (quello di destra e' scarico)
+				\diagLin{1,0}{3,0}{0}{1}{-1}{-1}{\kNi}
+				% antenne
+				\diagLin{1,-1}{1,0}{1}{0}{-5.25}{-5}{\kN}
+				\diagLin{1,0}{1,1}{1}{0}{-4}{-3.75}{\kN}
+				\diagLin{5,-1}{5,0}{-1}{0}{-3.75}{-3.5}{\kN}
+				\diagLin{5,0}{5,1}{-1}{0}{-2.5}{-2.25}{\kN}
+				\segno{0.30}{0.72}{+}\segno{5.64}{0.62}{+}
+				\segno{2.10}{0.70}{+}\segno{3.90}{0.60}{+}
+				\segno{2.00}{-0.18}{-}\segno{0.55}{-0.55}{-}\segno{5.25}{-0.55}{-}
+				% quote
+				\draw[rich] (-0.58,0.72)--(-0.08,0.70);
+				\node[qt, left]  at (-0.60,0.72) {$\tfrac{5\sqrt2}{2}p\ell$};
+				\draw[rich] (6.58,0.72)--(6.08,0.70);
+				\node[qt, right] at (6.60,0.72) {$\tfrac{3\sqrt2}{2}p\ell$};
+				\draw[rich] (1.80,1.52)--(2.12,0.98);
+				\node[qt, left]  at (1.78,1.53) {$\tfrac{5\sqrt5}{4}p\ell$};
+				\draw[rich] (4.20,1.52)--(3.92,0.86);
+				\node[qt, right] at (4.22,1.53) {$\tfrac{3\sqrt5}{4}p\ell$};
+				\node[qt, below] at (2.00,-0.34) {$p\ell$};
+				\draw[rich] (0.02,-1.12)--(0.24,-0.96);
+				\node[qt, left]  at (0.00,-1.13) {$\tfrac{21}{4}p\ell$};
+				\draw[rich] (0.18,1.32)--(0.46,1.02);
+				\node[qt, left]  at (0.16,1.33) {$\tfrac{15}{4}p\ell$};
+				\draw[rich] (5.98,-1.12)--(5.60,-0.96);
+				\node[qt, right] at (6.00,-1.13) {$\tfrac{15}{4}p\ell$};
+				\draw[rich] (5.82,1.32)--(5.42,1.02);
+				\node[qt, right] at (5.84,1.33) {$\tfrac{9}{4}p\ell$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (c) forza normale $N$}
+	\end{minipage}\hfill
+	% ═══════════ (d) momento flettente ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm]
+				\pgfmathsetmacro{\kM}{1.50}% ordinata in p*l^2 -> unita' di griglia
+				\schema \fibreIA
+				% impalcato: parabole con massimo p*l^2/2 in mezzeria
+				\diagPar{1,0}{3,0}{0}{-1}{0}{0.5}{0}{\kM}
+				\diagPar{3,0}{5,0}{0}{-1}{0}{0.5}{0}{\kM}
+				% antenna BC: -p*l^2/4 in D
+				\diagPar{1,-1}{1,0}{1}{0}{0}{-0.0625}{-0.25}{\kM}
+				\diagPar{1,0}{1,1}{1}{0}{-0.25}{-0.0625}{0}{\kM}
+				% quote
+				\node[qt, below] at (2,-0.78) {$\tfrac{p\ell^2}{2}$};
+				\node[qt, below] at (4,-0.78) {$\tfrac{p\ell^2}{2}$};
+				\draw[rich] (0.46,-0.52)--(0.64,-0.06);
+				\node[qt, left] at (0.74,-0.85) {$\tfrac{p\ell^2}{4}$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (d) momento flettente $M$}
+	\end{minipage}
+	
+	\caption{Ponte strallato: stato di sollecitazione. \emph{(a)}~Carichi
+		e reazioni esterne, con il tratteggio grigio della fibra di
+		riferimento adottata per ciascuna asta; \emph{(b)}~taglio,
+		\emph{(c)}~forza normale, \emph{(d)}~momento flettente. In
+		\emph{(c)} l'impalcato di sinistra è a scala doppia, per renderlo
+		leggibile accanto agli sforzi ben maggiori delle antenne; quello di
+		destra è scarico. L'antenna $HG$ non compare in \emph{(b)} e
+		\emph{(d)}, dove taglio e momento vi sono identicamente nulli.}
+	\label{fig:strallato_NTM}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\medskip
+\noindent\emph{Le bielle.}
+Ritenute e stralli portano il solo sforzo normale, costante
+lungo l'asta e di trazione, con i valori determinati al
+Passo~2. Taglio e momento sono identicamente nulli.
+
+\medskip
+\noindent\emph{I semi-impalcati.}
+Ciascuno lavora come trave appoggiata di luce $2\ell$ sotto
+il carico uniforme $p$. Il taglio varia linearmente da
+$+p\ell$ a $-p\ell$ e si annulla in mezzeria, dove il momento
+raggiunge il massimo
+\[
+M_{\max} = \frac{p\,(2\ell)^2}{8} = \frac{p\ell^2}{2},
+\]
+con momento nullo agli estremi, che sono cerniere. La forza
+normale è costante e vale $N_{DE} = -p\ell$, di compressione,
+sul tratto di sinistra, e $N_{FE} = 0$ su quello di destra:
+è la traduzione, in termini di sollecitazione, del risultato
+$X_F = 0$ ottenuto dall'equilibrio dell'antenna $HG$.
+
+La forza normale è uniforme e vale $N_{DE} = -p\ell$, di compressione,
+sul tratto di sinistra, e $N_{FE} = 0$ su quello di destra: è la
+traduzione, in termini di sollecitazione, del risultato $X_F = 0$
+ottenuto dall'equilibrio dell'antenna $HG$. Nel pannello~\emph{(c)}
+questo diagramma è tracciato a scala doppia, per renderlo leggibile
+accanto agli sforzi assai maggiori delle antenne.
+
+
+\medskip
+\noindent\emph{L'antenna $BC$.}
+La forza normale è ovunque di compressione e cresce
+scendendo: vale $-\tfrac{15}{4}p\ell$ sotto $C$, dove il
+nodo scarica le componenti verticali delle due bielle;
+$-4p\ell$ appena sopra $D$, per effetto del peso proprio
+accumulato su un tratto $\ell$; $-5p\ell$ appena sotto $D$,
+con un salto di $p\ell$ che è la forza con cui l'impalcato vi
+si appende; e $-\tfrac{21}{4}p\ell$ al piede, dove chiude
+sulla reazione $Y_B$ del carrello.
+
+Il taglio è dovuto al solo carico orizzontale: cresce
+linearmente da $0$ in $B$ a $+\tfrac12 p\ell$ sotto $D$,
+salta a $-\tfrac12 p\ell$ sopra $D$ per effetto della forza
+$p\ell$ trasmessa dall'impalcato, e torna a zero in $C$.
+Il momento è nullo agli estremi --- cerniera in $C$, carrello
+in $B$ --- parabolico su entrambi i tratti, e raggiunge il
+massimo in corrispondenza dell'impalcato:
+\[
+	M_D = \frac{p}{2}\,\ell\cdot\frac{\ell}{2}
+	    = \frac{p\ell^2}{4}.
+\]
+
+\medskip
+\noindent\emph{L'antenna $HG$.}
+Priva di carico orizzontale e non ricevendo forze
+orizzontali né in $F$ né in $G$, ha taglio e momento
+\emph{identicamente nulli}: lavora per solo sforzo normale,
+di compressione, da $-\tfrac94 p\ell$ sotto $G$ a
+$-\tfrac52 p\ell$ sopra $F$, $-\tfrac72 p\ell$ sotto $F$ e
+$-\tfrac{15}{4}p\ell$ al piede, dove chiude su $Y_H$.
+
+
+
+\begin{oss}[Lettura del meccanismo]
+	I diagrammi rendono visibile come i carichi fluiscano ai
+	vincoli. Il peso dell'impalcato è raccolto in mezzeria e
+	risalito lungo gli stralli fino alle sommità delle
+	antenne, che lo trasferiscono a terra per compressione;
+	le ritenute, tese, riequilibrano la spinta orizzontale
+	degli stralli e ancorano il sistema al suolo. La spinta
+	del carico orizzontale $p/2$, invece, non si ripartisce
+	fra le due metà: essa si scarica interamente
+	sull'impalcato di sinistra, che ne risulta compresso,
+	mentre quello di destra resta privo di forza normale.
+	L'asimmetria si ritrova nel rapporto $5:3$ fra gli sforzi
+	delle bielle di sinistra e di destra, e nel fatto che la
+	sola antenna $BC$ sia inflessa.
+\end{oss}
 
 
 
@@ -6307,144 +7635,294 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 	$M_D=M_F=-\tfrac12 p\ell^2$. I diagrammi sono riportati in
 	Figura~\ref{fig:stampella_NTM_a}.
 	
-	\begin{figure}[htbp!]\centering
-		\resizebox{\linewidth}{!}{%
-			\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
-				trave/.style={line width=1.7pt,line cap=round,line join=round,black},
-				traveC/.style={line width=1.7pt,line cap=round,line join=round,black},
-				traveT/.style={line width=0.7pt,line cap=round,line join=round,black},
-				biella/.style={line width=1.0pt,black},
-				carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
-				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
-				bordo/.style={line width=0.5pt,black!70},
-				terra/.style={line width=0.6pt,black},
-				diagfill/.style={fill=gray!28,draw=black,line width=0.8pt},
-				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
-				segno/.style={circle,draw=black,fill=white,inner sep=0.2pt,font=\tiny},
-				]
-				\def\sM{0.85}\def\sT{0.38}\def\sN{0.05}\def\sNc{0.18}
-				\newcommand{\nodi}{%
-					\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
-					\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
-					\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
-				% --- mezzo anellino cerniere D,F (lato piatto sulla trave, pancia verso il puntone) ---
-				\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
-				\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
-				\newcommand{\fibre}{\draw[gray!55,dash pattern=on 2pt off 1.5pt,line width=0.45pt] (-0.5,-0.05)--(4.5,-0.05);}
-				\newcommand{\gnd}[1]{%
-					\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
-					\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
-					\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
-				\newcommand{\semic}[1]{\draw[black,fill=white,line width=0.7pt] ($(#1)+(0.055,0)$) arc[start angle=0,end angle=-180,radius=0.055]--cycle;}
-				\newcommand{\diagLin}[7]{%
-					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
-					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
-					\filldraw[diagfill] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
-				\newcommand{\diagPar}[8]{%
-					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
-					\foreach \k in {0,1,...,20}{%
-						\pgfmathsetmacro{\tt}{\k/20}%
-						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
-						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
-						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
-					\filldraw[diagfill] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
-				\newcommand{\assi}{%
-					\fibre
-					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
-					\draw[trave] (C)--(G);
-					\gnd{A}\gnd{B}
-					\node[nodoV,xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV,xshift=-2pt] at (G){};
-					\node[nodoV] at (A){};\node[nodoV] at (B){};
-					\semicernD{D}{-1}\semicernF{F}{-1}}
-				
-				%==================== (a) STRUTTURA ====================
-				\begin{scope}[shift={(0,5.2)}]
-					\nodi
-					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
-					\draw[trave] (C)--(G);
-					\draw[bordo] (-0.5,0.225)--(4.5,0.225);
-					\foreach \x in {-0.5,-0.25,...,4.5}\draw[carico] (\x,0.225)--(\x,0);
-					\node[above] at (2,0.265){$p$};
-					\fibre
-					\draw[bordo] (-0.5,0.225)--(4.5,0.225);
-					\gnd{A}\gnd{B}
-					\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
-					\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
-					\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
-					\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
-					% --- cerniere interne complete C,E,G ---
-					\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
-					% --- cerniere D,F: pendolo (AD,BF) su trave continua (mezzo anellino) ---
-					\semicernD{D}{-1}
-					\semicernF{F}{-1}
-					\node[nodoV] at (A){};\node[nodoV] at (B){};
-					\node[below=1pt] at (C){$C$};\node[below]at(D){$D$};\node[below=1pt] at (E){$E$};
-					\node[below=1pt]at(F){$F$};\node[below=1pt] at (G){$G$};
-					\node[left=-1pt, yshift=-1pt] at (A){$A$};\node[right=1pt, yshift=-1pt] at (B){$B$};
-					\node[font=\tiny] at (2,-0.85){(a) schema, carico uniforme e reazioni};
-				\end{scope}
-				
-				%==================== (b) NORMALE N ====================
-				\begin{scope}[shift={(0,3.6)}]
-					\nodi
-					\diagLin{C}{D}{0}{1}{0.83333}{0.83333}{\sNc}
-					\diagLin{D}{E}{0}{1}{-7.5}{-7.5}{\sN}
-					\diagLin{E}{F}{0}{1}{-7.5}{-7.5}{\sN}
-					\diagLin{F}{G}{0}{1}{0.83333}{0.83333}{\sNc}
-					\assi
-					\node[segno] at ($(C)!0.5!(D)+(0,0.55*0.83333*\sNc)$){$+$};
-					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*7.5*\sN)$){$-$};
-					\node[segno] at ($(F)!0.5!(G)+(0,0.55*0.83333*\sNc)$){$+$};
-					\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,0.83333*\sNc)$){$\tfrac{5}{6}p\ell$};
-					\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.83333*\sNc)$){$\tfrac{5}{6}p\ell$};
-					\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-7.5*\sN)$){$\tfrac{15}{2}p\ell$};
-					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$\ \ {\tiny($CD$,\,$FG$: ordinate amplificate)}};
-				\end{scope}
-				
-				%==================== (c) TAGLIO T ====================
-				\begin{scope}[shift={(0,1.9)}]
-					\nodi
-					\diagLin{C}{D}{0}{1}{0.41667}{-1.08333}{\sT}
-					\diagLin{D}{E}{0}{1}{1}{0}{\sT}
-					\diagLin{E}{F}{0}{1}{0}{-1}{\sT}
-					\diagLin{F}{G}{0}{1}{1.08333}{-0.41667}{\sT}
-					\assi
-					\node[segno] at ($(C)+(0.10,0.08)$){$+$};
-					\node[segno] at ($(C)!0.78!(D)+(0,-0.45*\sT)$){$-$};
-					\node[segno] at ($(D)!0.55!(E)+(-0.3,0.34*\sT)$){$+$};
-					\node[segno] at ($(E)!0.45!(F)+(0.3,-0.34*\sT)$){$-$};
-					\node[segno] at ($(F)!0.22!(G)+(0,0.45*\sT)$){$+$};
-					\node[segno] at ($(G)+(-0.10,-0.08)$){$-$};
-					\node[above,font=\tiny] at ($(C)+(0.10,0.41667*\sT)$){$\tfrac{5}{12}$};
-					\node[right, yshift=2pt, font=\tiny] at ($(D)+(-0.02,-1.08333*\sT)$){$\tfrac{13}{12}$};
-					\node[left, xshift=-2pt, yshift=-2pt,font=\tiny] at ($(D)+(0.10,1*\sT)$){$1$};
-					\node[right, xshift=2pt, yshift=2pt,font=\tiny] at ($(F)+(-0.10,-1*\sT)$){$1$};
-					\node[left, xshift=-1pt, yshift=-2pt,font=\tiny] at ($(F)+(0.02,1.08333*\sT)$){$\tfrac{13}{12}$};
-					\node[below,font=\tiny] at ($(G)+(-0.10,-0.41667*\sT)$){$\tfrac{5}{12}$};
-					\node[font=\tiny] at (2,-0.72){(c) taglio $T$ \ ($\times\,p\ell$)};
-				\end{scope}
-				
-				%==================== (d) MOMENTO M ====================
-				\begin{scope}[shift={(0,0.4)}]
-					\nodi
-					\diagPar{C}{D}{0}{-1}{0}{0.03125}{-0.5}{\sM}
-					\diagPar{D}{E}{0}{-1}{-0.5}{-0.125}{0}{\sM}
-					\diagPar{E}{F}{0}{-1}{0}{-0.125}{-0.5}{\sM}
-					\diagPar{F}{G}{0}{-1}{-0.5}{0.03125}{0}{\sM}
-					\assi
-					\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
-					\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
-					\node[above,font=\tiny] at ($(C)!0.30!(D)+(-0.02,-0.07*\sM)$){$\tfrac{25}{288}p\ell^2$};
-					\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$};
-				\end{scope}
-		\end{tikzpicture}}
-		\caption{Caso (a), carico $p$ su tutta la travata $CDEFG$ --- (a) schema e reazioni; (b) sforzo normale
-			$N$ sulle travi (le bielle, scariche, portano $N$ uniforme:
-			$N_{AC}=N_{BG}=-\tfrac{5\sqrt5}{12}$, $N_{AD}=N_{BF}=-\tfrac{25\sqrt{17}}{12}$, in $p\ell$);
-			(c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
-			$M=0$ alle cerniere $C$, $E$, $G$; i diagrammi $N$ e $M$ simmetrici rispetto a $E$,  quello di $T$ è emisimmetrico.}
-		\label{fig:stampella_NTM_a}
-	\end{figure}
+	
+\begin{figure}[htbp!]\centering
+	\resizebox{\linewidth}{!}{%
+		\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
+			trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+			traveC/.style={line width=1.7pt,line cap=round,line join=round,black},
+			traveT/.style={line width=0.7pt,line cap=round,line join=round,black},
+			biella/.style={line width=1.0pt,black},
+			carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+			reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
+			bordo/.style={line width=0.5pt,black!70},
+			terra/.style={line width=0.6pt,black},
+			diagbordo/.style={draw=black,line width=0.7pt},
+			diagtratt/.style={gray!55,line width=0.35pt},
+			nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
+			segno/.style={circle,draw=black,fill=white,line width=0.3pt,inner sep=0pt,
+				minimum size=2.8pt,font=\fontsize{4}{4}\selectfont},
+			]
+			\def\sM{0.85}\def\sT{0.38}\def\sN{0.05}\def\sNc{0.18}
+			\newcommand{\nodi}{%
+				\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
+				\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
+				\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
+			% --- mezzo anellino cerniere D,F (lato piatto sulla trave, pancia verso il puntone) ---
+			\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+			\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+			\newcommand{\fibre}{\draw[gray!55,dash pattern=on 2pt off 1.5pt,line width=0.45pt] (-0.5,-0.05)--(4.5,-0.05);}
+			\newcommand{\gnd}[1]{%
+				\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
+				\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
+				\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+			\newcommand{\semic}[1]{\draw[black,fill=white,line width=0.7pt] ($(#1)+(0.055,0)$) arc[start angle=0,end angle=-180,radius=0.055]--cycle;}
+			\newcommand{\diagLin}[7]{%
+				\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
+				\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
+				\foreach \tt in {0,0.1,...,1.0001}{%
+					\pgfmathsetmacro{\mv}{(#5+(#6-#5)*\tt)*#7}%
+					\draw[diagtratt] ($(#1)!\tt!(#2)$) -- ++({\mv*#3},{\mv*#4});}%
+				\draw[diagbordo] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+			\newcommand{\diagPar}[8]{%
+				\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
+				\foreach \k in {0,1,...,20}{%
+					\pgfmathsetmacro{\tt}{\k/20}%
+					\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
+					\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
+					\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
+				\foreach \k in {0,2,...,20}{%
+					\pgfmathsetmacro{\tt}{\k/20}%
+					\draw[diagtratt] ($(#1)!\tt!(#2)$) -- (pp\k);}%
+				\draw[diagbordo] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+			\newcommand{\assi}{%
+				\fibre
+				\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+				\draw[trave] (C)--(G);
+				\gnd{A}\gnd{B}
+				\node[nodoV,xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV,xshift=-2pt] at (G){};
+				\node[nodoV] at (A){};\node[nodoV] at (B){};
+				\semicernD{D}{-1}\semicernF{F}{-1}}
+			
+			%==================== (a) STRUTTURA ====================
+			\begin{scope}[shift={(0,5.2)}]
+				\nodi
+				\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+				\draw[trave] (C)--(G);
+				\draw[bordo] (-0.5,0.225)--(4.5,0.225);
+				\foreach \x in {-0.5,-0.25,...,4.5}\draw[carico] (\x,0.225)--(\x,0);
+				\node[above] at (2,0.265){$p$};
+				\fibre
+				\draw[bordo] (-0.5,0.225)--(4.5,0.225);
+				\gnd{A}\gnd{B}
+				\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
+				\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
+				\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
+				\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
+				% --- cerniere interne complete C,E,G ---
+				\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
+				% --- cerniere D,F: pendolo (AD,BF) su trave continua (mezzo anellino) ---
+				\semicernD{D}{-1}
+				\semicernF{F}{-1}
+				\node[nodoV] at (A){};\node[nodoV] at (B){};
+				\node[below=1pt] at (C){$C$};\node[below]at(D){$D$};\node[below=1pt] at (E){$E$};
+				\node[below=1pt]at(F){$F$};\node[below=1pt] at (G){$G$};
+				\node[left=-1pt, yshift=-1pt] at (A){$A$};\node[right=1pt, yshift=-1pt] at (B){$B$};
+				\node[font=\tiny] at (2,-0.85){(a) schema, carico uniforme e reazioni};
+			\end{scope}
+			
+			%==================== (b) NORMALE N ====================
+			\begin{scope}[shift={(0,3.6)}]
+				\nodi
+				\diagLin{C}{D}{0}{1}{0.83333}{0.83333}{\sNc}
+				\diagLin{D}{E}{0}{1}{-7.5}{-7.5}{\sN}
+				\diagLin{E}{F}{0}{1}{-7.5}{-7.5}{\sN}
+				\diagLin{F}{G}{0}{1}{0.83333}{0.83333}{\sNc}
+				\assi
+				\node[segno] at ($(C)!0.5!(D)+(0,0.55*0.83333*\sNc)$){$+$};
+				\node[segno] at ($(D)!0.5!(F)+(0,-0.5*7.5*\sN)$){$-$};
+				\node[segno] at ($(F)!0.5!(G)+(0,0.55*0.83333*\sNc)$){$+$};
+				\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,0.83333*\sNc)$){$\tfrac{5}{6}$};
+				\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.83333*\sNc)$){$\tfrac{5}{6}$};
+				\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-7.5*\sN)$){$\tfrac{15}{2}$};
+				\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$ \ ($\times\,p\ell$;\ su $CD$ e $FG$ ordinate amplificate)};
+			\end{scope}
+			
+			%==================== (c) TAGLIO T ====================
+			\begin{scope}[shift={(0,1.9)}]
+				\nodi
+				\diagLin{C}{D}{0}{1}{0.41667}{-1.08333}{\sT}
+				\diagLin{D}{E}{0}{1}{1}{0}{\sT}
+				\diagLin{E}{F}{0}{1}{0}{-1}{\sT}
+				\diagLin{F}{G}{0}{1}{1.08333}{-0.41667}{\sT}
+				\assi
+				\node[segno] at ($(C)+(0.10,0.08)$){$+$};
+				\node[segno] at ($(C)!0.78!(D)+(0,-0.45*\sT)$){$-$};
+				\node[segno] at ($(D)!0.55!(E)+(-0.3,0.34*\sT)$){$+$};
+				\node[segno] at ($(E)!0.45!(F)+(0.3,-0.34*\sT)$){$-$};
+				\node[segno] at ($(F)!0.22!(G)+(0,0.45*\sT)$){$+$};
+				\node[segno] at ($(G)+(-0.10,-0.08)$){$-$};
+				\node[above,font=\tiny] at ($(C)+(0.10,0.41667*\sT)$){$\tfrac{5}{12}$};
+				\node[right, yshift=2pt, font=\tiny] at ($(D)+(-0.02,-1.08333*\sT)$){$\tfrac{13}{12}$};
+				\node[left, xshift=-2pt, yshift=-2pt,font=\tiny] at ($(D)+(0.10,1*\sT)$){$1$};
+				\node[right, xshift=2pt, yshift=2pt,font=\tiny] at ($(F)+(-0.10,-1*\sT)$){$1$};
+				\node[left, xshift=-1pt, yshift=-2pt,font=\tiny] at ($(F)+(0.02,1.08333*\sT)$){$\tfrac{13}{12}$};
+				\node[below,font=\tiny] at ($(G)+(-0.10,-0.41667*\sT)$){$\tfrac{5}{12}$};
+				\node[font=\tiny] at (2,-0.72){(c) taglio $T$ \ ($\times\,p\ell$)};
+			\end{scope}
+			
+			%==================== (d) MOMENTO M ====================
+			\begin{scope}[shift={(0,0.4)}]
+				\nodi
+				\diagPar{C}{D}{0}{-1}{0}{0.03125}{-0.5}{\sM}
+				\diagPar{D}{E}{0}{-1}{-0.5}{-0.125}{0}{\sM}
+				\diagPar{E}{F}{0}{-1}{0}{-0.125}{-0.5}{\sM}
+				\diagPar{F}{G}{0}{-1}{-0.5}{0.03125}{0}{\sM}
+				\assi
+				\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12$};
+				\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12$};
+				\node[above,font=\tiny] at ($(C)!0.30!(D)+(-0.02,-0.07*\sM)$){$\tfrac{25}{288}$};
+				\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$ \ ($\times\,p\ell^2$)};
+			\end{scope}
+	\end{tikzpicture}}
+	\caption{Caso (a), carico $p$ su tutta la travata $CDEFG$ --- (a) schema e reazioni; (b) sforzo normale
+		$N$ sulle travi (le bielle, scariche, portano $N$ uniforme:
+		$N_{AC}=N_{BG}=-\tfrac{5\sqrt5}{12}$, $N_{AD}=N_{BF}=-\tfrac{25\sqrt{17}}{12}$, in $p\ell$);
+		(c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
+		$M=0$ alle cerniere $C$, $E$, $G$; i diagrammi $N$ e $M$ simmetrici rispetto a $E$,  quello di $T$ è emisimmetrico.}
+	\label{fig:stampella_NTM_a}
+\end{figure}
+	
+	
+	
+%	\begin{figure}[htbp!]\centering
+%		\resizebox{\linewidth}{!}{%
+%			\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
+%				trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+%				traveC/.style={line width=1.7pt,line cap=round,line join=round,black},
+%				traveT/.style={line width=0.7pt,line cap=round,line join=round,black},
+%				biella/.style={line width=1.0pt,black},
+%				carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+%				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
+%				bordo/.style={line width=0.5pt,black!70},
+%				terra/.style={line width=0.6pt,black},
+%				diagfill/.style={fill=gray!28,draw=black,line width=0.8pt},
+%				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
+%				segno/.style={circle,draw=black,fill=white,inner sep=0.2pt,font=\tiny},
+%				]
+%				\def\sM{0.85}\def\sT{0.38}\def\sN{0.05}\def\sNc{0.18}
+%				\newcommand{\nodi}{%
+%					\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
+%					\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
+%					\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
+%				% --- mezzo anellino cerniere D,F (lato piatto sulla trave, pancia verso il puntone) ---
+%				\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+%				\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+%				\newcommand{\fibre}{\draw[gray!55,dash pattern=on 2pt off 1.5pt,line width=0.45pt] (-0.5,-0.05)--(4.5,-0.05);}
+%				\newcommand{\gnd}[1]{%
+%					\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
+%					\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
+%					\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+%				\newcommand{\semic}[1]{\draw[black,fill=white,line width=0.7pt] ($(#1)+(0.055,0)$) arc[start angle=0,end angle=-180,radius=0.055]--cycle;}
+%				\newcommand{\diagLin}[7]{%
+%					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
+%					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
+%					\filldraw[diagfill] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+%				\newcommand{\diagPar}[8]{%
+%					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
+%					\foreach \k in {0,1,...,20}{%
+%						\pgfmathsetmacro{\tt}{\k/20}%
+%						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
+%						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
+%						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
+%					\filldraw[diagfill] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+%				\newcommand{\assi}{%
+%					\fibre
+%					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+%					\draw[trave] (C)--(G);
+%					\gnd{A}\gnd{B}
+%					\node[nodoV,xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV,xshift=-2pt] at (G){};
+%					\node[nodoV] at (A){};\node[nodoV] at (B){};
+%					\semicernD{D}{-1}\semicernF{F}{-1}}
+%				
+%				%==================== (a) STRUTTURA ====================
+%				\begin{scope}[shift={(0,5.2)}]
+%					\nodi
+%					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+%					\draw[trave] (C)--(G);
+%					\draw[bordo] (-0.5,0.225)--(4.5,0.225);
+%					\foreach \x in {-0.5,-0.25,...,4.5}\draw[carico] (\x,0.225)--(\x,0);
+%					\node[above] at (2,0.265){$p$};
+%					\fibre
+%					\draw[bordo] (-0.5,0.225)--(4.5,0.225);
+%					\gnd{A}\gnd{B}
+%					\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
+%					\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
+%					\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
+%					\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
+%					% --- cerniere interne complete C,E,G ---
+%					\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
+%					% --- cerniere D,F: pendolo (AD,BF) su trave continua (mezzo anellino) ---
+%					\semicernD{D}{-1}
+%					\semicernF{F}{-1}
+%					\node[nodoV] at (A){};\node[nodoV] at (B){};
+%					\node[below=1pt] at (C){$C$};\node[below]at(D){$D$};\node[below=1pt] at (E){$E$};
+%					\node[below=1pt]at(F){$F$};\node[below=1pt] at (G){$G$};
+%					\node[left=-1pt, yshift=-1pt] at (A){$A$};\node[right=1pt, yshift=-1pt] at (B){$B$};
+%					\node[font=\tiny] at (2,-0.85){(a) schema, carico uniforme e reazioni};
+%				\end{scope}
+%				
+%				%==================== (b) NORMALE N ====================
+%				\begin{scope}[shift={(0,3.6)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{1}{0.83333}{0.83333}{\sNc}
+%					\diagLin{D}{E}{0}{1}{-7.5}{-7.5}{\sN}
+%					\diagLin{E}{F}{0}{1}{-7.5}{-7.5}{\sN}
+%					\diagLin{F}{G}{0}{1}{0.83333}{0.83333}{\sNc}
+%					\assi
+%					\node[segno] at ($(C)!0.5!(D)+(0,0.55*0.83333*\sNc)$){$+$};
+%					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*7.5*\sN)$){$-$};
+%					\node[segno] at ($(F)!0.5!(G)+(0,0.55*0.83333*\sNc)$){$+$};
+%					\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,0.83333*\sNc)$){$\tfrac{5}{6}p\ell$};
+%					\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.83333*\sNc)$){$\tfrac{5}{6}p\ell$};
+%					\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-7.5*\sN)$){$\tfrac{15}{2}p\ell$};
+%					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$\ \ {\tiny($CD$,\,$FG$: ordinate amplificate)}};
+%				\end{scope}
+%				
+%				%==================== (c) TAGLIO T ====================
+%				\begin{scope}[shift={(0,1.9)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{1}{0.41667}{-1.08333}{\sT}
+%					\diagLin{D}{E}{0}{1}{1}{0}{\sT}
+%					\diagLin{E}{F}{0}{1}{0}{-1}{\sT}
+%					\diagLin{F}{G}{0}{1}{1.08333}{-0.41667}{\sT}
+%					\assi
+%					\node[segno] at ($(C)+(0.10,0.08)$){$+$};
+%					\node[segno] at ($(C)!0.78!(D)+(0,-0.45*\sT)$){$-$};
+%					\node[segno] at ($(D)!0.55!(E)+(-0.3,0.34*\sT)$){$+$};
+%					\node[segno] at ($(E)!0.45!(F)+(0.3,-0.34*\sT)$){$-$};
+%					\node[segno] at ($(F)!0.22!(G)+(0,0.45*\sT)$){$+$};
+%					\node[segno] at ($(G)+(-0.10,-0.08)$){$-$};
+%					\node[above,font=\tiny] at ($(C)+(0.10,0.41667*\sT)$){$\tfrac{5}{12}$};
+%					\node[right, yshift=2pt, font=\tiny] at ($(D)+(-0.02,-1.08333*\sT)$){$\tfrac{13}{12}$};
+%					\node[left, xshift=-2pt, yshift=-2pt,font=\tiny] at ($(D)+(0.10,1*\sT)$){$1$};
+%					\node[right, xshift=2pt, yshift=2pt,font=\tiny] at ($(F)+(-0.10,-1*\sT)$){$1$};
+%					\node[left, xshift=-1pt, yshift=-2pt,font=\tiny] at ($(F)+(0.02,1.08333*\sT)$){$\tfrac{13}{12}$};
+%					\node[below,font=\tiny] at ($(G)+(-0.10,-0.41667*\sT)$){$\tfrac{5}{12}$};
+%					\node[font=\tiny] at (2,-0.72){(c) taglio $T$ \ ($\times\,p\ell$)};
+%				\end{scope}
+%				
+%				%==================== (d) MOMENTO M ====================
+%				\begin{scope}[shift={(0,0.4)}]
+%					\nodi
+%					\diagPar{C}{D}{0}{-1}{0}{0.03125}{-0.5}{\sM}
+%					\diagPar{D}{E}{0}{-1}{-0.5}{-0.125}{0}{\sM}
+%					\diagPar{E}{F}{0}{-1}{0}{-0.125}{-0.5}{\sM}
+%					\diagPar{F}{G}{0}{-1}{-0.5}{0.03125}{0}{\sM}
+%					\assi
+%					\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
+%					\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
+%					\node[above,font=\tiny] at ($(C)!0.30!(D)+(-0.02,-0.07*\sM)$){$\tfrac{25}{288}p\ell^2$};
+%					\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$};
+%				\end{scope}
+%		\end{tikzpicture}}
+%		\caption{Caso (a), carico $p$ su tutta la travata $CDEFG$ --- (a) schema e reazioni; (b) sforzo normale
+%			$N$ sulle travi (le bielle, scariche, portano $N$ uniforme:
+%			$N_{AC}=N_{BG}=-\tfrac{5\sqrt5}{12}$, $N_{AD}=N_{BF}=-\tfrac{25\sqrt{17}}{12}$, in $p\ell$);
+%			(c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
+%			$M=0$ alle cerniere $C$, $E$, $G$; i diagrammi $N$ e $M$ simmetrici rispetto a $E$,  quello di $T$ è emisimmetrico.}
+%		\label{fig:stampella_NTM_a}
+%	\end{figure}
 	
 	\medskip\noindent\textbf{Lettura ad arco.}
 	I diagrammi rivelano un netto comportamento ad arco. Il cammino
@@ -6513,9 +7991,11 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
 				bordo/.style={line width=0.5pt,black!70},
 				terra/.style={line width=0.6pt,black},
-				diagfill/.style={fill=gray!28,draw=black,line width=0.8pt},
+				diagbordo/.style={draw=black,line width=0.7pt},
+				diagtratt/.style={gray!55,line width=0.35pt},
 				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
-				segno/.style={circle,draw=black,fill=white,inner sep=0.2pt,font=\tiny},
+				segno/.style={circle,draw=black,fill=white,line width=0.3pt,inner sep=0pt,
+					minimum size=2.8pt,font=\fontsize{4}{4}\selectfont},
 				]
 				\def\sM{0.85}\def\sT{0.38}\def\sN{0.05}\def\sNc{0.18}
 				\newcommand{\nodi}{%
@@ -6532,7 +8012,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 				\newcommand{\diagLin}[7]{%
 					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
 					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
-					\filldraw[diagfill] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+					\foreach \tt in {0,0.1,...,1.0001}{%
+						\pgfmathsetmacro{\mv}{(#5+(#6-#5)*\tt)*#7}%
+						\draw[diagtratt] ($(#1)!\tt!(#2)$) -- ++({\mv*#3},{\mv*#4});}%
+					\draw[diagbordo] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
 				\newcommand{\diagPar}[8]{%
 					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
 					\foreach \k in {0,1,...,20}{%
@@ -6540,7 +8023,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
 						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
 						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
-					\filldraw[diagfill] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+					\foreach \k in {0,2,...,20}{%
+						\pgfmathsetmacro{\tt}{\k/20}%
+						\draw[diagtratt] ($(#1)!\tt!(#2)$) -- (pp\k);}%
+					\draw[diagbordo] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
 				\newcommand{\assi}{%
 					\fibre
 					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
@@ -6583,10 +8069,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 					\node[segno] at ($(C)!0.5!(D)+(0,-0.55*0.66667*\sNc)$){$-$};
 					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*6*\sN)$){$-$};
 					\node[segno] at ($(F)!0.5!(G)+(0,-0.55*0.66667*\sNc)$){$-$};
-					\node[below,font=\tiny] at ($(C)!0.5!(D)+(0,-0.66667*\sNc)$){$\tfrac23 p\ell$};
-					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.66667*\sNc)$){$\tfrac23 p\ell$};
-					\node[below,font=\tiny] at ($(D)!0.5!(F)+(0,-6*\sN)$){$6 p\ell$};
-					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$\ \ {\tiny($CD$,\,$FG$: ordinate amplificate)}};
+					\node[below,font=\tiny] at ($(C)!0.5!(D)+(0,-0.66667*\sNc)$){$\tfrac23$};
+					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.66667*\sNc)$){$\tfrac23$};
+					\node[below,font=\tiny] at ($(D)!0.5!(F)+(0,-6*\sN)$){$6$};
+					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$ \ ($\times\,p\ell$;\ su $CD$ e $FG$ ordinate amplificate)};
 				\end{scope}
 				
 				%==================== (c) TAGLIO T ====================
@@ -6616,9 +8102,9 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 					\diagPar{E}{F}{0}{-1}{0}{-0.125}{-0.5}{\sM}
 					\diagLin{F}{G}{0}{-1}{-0.5}{0}{\sM}
 					\assi
-					\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
-					\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
-					\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$};
+					\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12$};
+					\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12$};
+					\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$ \ ($\times\,p\ell^2$)};
 				\end{scope}
 		\end{tikzpicture}}
 		\caption{Caso (b), carico $p$ sul tratto centrale $DEF$ --- (a) schema e reazioni
@@ -6629,6 +8115,132 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 			$N$ e $M$ simmetrici rispetto a $E$, $T$ emisimmetrico.}
 		\label{fig:stampella_NTM_b}
 	\end{figure}
+	
+%	\begin{figure}[htbp!]\centering
+%		\resizebox{\linewidth}{!}{%
+%			\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
+%				trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+%				biella/.style={line width=1.0pt,black},
+%				carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+%				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
+%				bordo/.style={line width=0.5pt,black!70},
+%				terra/.style={line width=0.6pt,black},
+%				diagfill/.style={fill=gray!28,draw=black,line width=0.8pt},
+%				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
+%				segno/.style={circle,draw=black,fill=white,inner sep=0.2pt,font=\tiny},
+%				]
+%				\def\sM{0.85}\def\sT{0.38}\def\sN{0.05}\def\sNc{0.18}
+%				\newcommand{\nodi}{%
+%					\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
+%					\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
+%					\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
+%				\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+%				\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+%				\newcommand{\fibre}{\draw[gray!55,dash pattern=on 2pt off 1.5pt,line width=0.45pt] (-0.5,-0.05)--(4.5,-0.05);}
+%				\newcommand{\gnd}[1]{%
+%					\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
+%					\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
+%					\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+%				\newcommand{\diagLin}[7]{%
+%					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
+%					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
+%					\filldraw[diagfill] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+%				\newcommand{\diagPar}[8]{%
+%					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
+%					\foreach \k in {0,1,...,20}{%
+%						\pgfmathsetmacro{\tt}{\k/20}%
+%						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
+%						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
+%						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
+%					\filldraw[diagfill] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+%				\newcommand{\assi}{%
+%					\fibre
+%					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+%					\draw[trave] (C)--(G);
+%					\gnd{A}\gnd{B}
+%					\node[nodoV,xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV,xshift=-2pt] at (G){};
+%					\node[nodoV] at (A){};\node[nodoV] at (B){};
+%					\semicernD{D}{-1}\semicernF{F}{-1}}
+%				
+%				%==================== (a) STRUTTURA ====================
+%				\begin{scope}[shift={(0,5.2)}]
+%					\nodi
+%					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+%					\draw[trave] (C)--(G);
+%					\draw[bordo] (1,0.225)--(3,0.225);
+%					\foreach \x in {1,1.125,...,3.001}\draw[carico] (\x,0.225)--(\x,0);
+%					\node[above] at (2,0.265){$p$};
+%					\fibre \gnd{A}\gnd{B}
+%					\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.34,-0.04)$){$6p\ell$};
+%					\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$p\ell$};
+%					\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.34,-0.04)$){$6p\ell$};
+%					\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$p\ell$};
+%					\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
+%					\semicernD{D}{-1}\semicernF{F}{-1}
+%					\node[nodoV] at (A){};\node[nodoV] at (B){};
+%					\node[left=-1pt] at (C){$C$};\node[below right=-0.2pt]at(D){$D$};\node[below=1pt] at (E){$E$};
+%					\node[below left=0pt]at(F){$F$};\node[right=1pt] at (G){$G$};
+%					\node[left=-1pt, yshift=-1pt] at (A){$A$};\node[right=1pt, yshift=-1pt] at (B){$B$};
+%					\node[font=\tiny] at (2,-0.85){(a) schema, carico su $DF$ e reazioni};
+%				\end{scope}
+%				
+%				%==================== (b) NORMALE N ====================
+%				\begin{scope}[shift={(0,3.6)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{1}{-0.66667}{-0.66667}{\sNc}
+%					\diagLin{D}{E}{0}{1}{-6}{-6}{\sN}
+%					\diagLin{E}{F}{0}{1}{-6}{-6}{\sN}
+%					\diagLin{F}{G}{0}{1}{-0.66667}{-0.66667}{\sNc}
+%					\assi
+%					\node[segno] at ($(C)!0.5!(D)+(0,-0.55*0.66667*\sNc)$){$-$};
+%					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*6*\sN)$){$-$};
+%					\node[segno] at ($(F)!0.5!(G)+(0,-0.55*0.66667*\sNc)$){$-$};
+%					\node[below,font=\tiny] at ($(C)!0.5!(D)+(0,-0.66667*\sNc)$){$\tfrac23 p\ell$};
+%					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.66667*\sNc)$){$\tfrac23 p\ell$};
+%					\node[below,font=\tiny] at ($(D)!0.5!(F)+(0,-6*\sN)$){$6 p\ell$};
+%					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$\ \ {\tiny($CD$,\,$FG$: ordinate amplificate)}};
+%				\end{scope}
+%				
+%				%==================== (c) TAGLIO T ====================
+%				\begin{scope}[shift={(0,1.9)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{1}{-0.33333}{-0.33333}{\sT}
+%					\diagLin{D}{E}{0}{1}{1}{0}{\sT}
+%					\diagLin{E}{F}{0}{1}{0}{-1}{\sT}
+%					\diagLin{F}{G}{0}{1}{0.33333}{0.33333}{\sT}
+%					\assi
+%					\node[segno] at ($(C)!0.5!(D)+(0,-0.2*\sT)$){$-$};
+%					\node[segno] at ($(D)!0.45!(E)+(-0.15,0.30*\sT)$){$+$};
+%					\node[segno] at ($(E)!0.55!(F)+(0.15,-0.30*\sT)$){$-$};
+%					\node[segno] at ($(F)!0.5!(G)+(0,0.25*\sT)$){$+$};
+%					\node[below,font=\tiny] at ($(C)!0.5!(D)+(0,-0.33333*\sT)$){$\tfrac13$};
+%					\node[above,font=\tiny] at ($(D)+(0.06,1*\sT)$){$1$};
+%					\node[below,font=\tiny] at ($(F)+(-0.06,-1*\sT)$){$1$};
+%					\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.33333*\sT)$){$\tfrac13$};
+%					\node[font=\tiny] at (2,-0.72){(c) taglio $T$ \ ($\times\,p\ell$)};
+%				\end{scope}
+%				
+%				%==================== (d) MOMENTO M ====================
+%				\begin{scope}[shift={(0,0.4)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{-1}{0}{-0.5}{\sM}
+%					\diagPar{D}{E}{0}{-1}{-0.5}{-0.125}{0}{\sM}
+%					\diagPar{E}{F}{0}{-1}{0}{-0.125}{-0.5}{\sM}
+%					\diagLin{F}{G}{0}{-1}{-0.5}{0}{\sM}
+%					\assi
+%					\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
+%					\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12 p\ell^2$};
+%					\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$};
+%				\end{scope}
+%		\end{tikzpicture}}
+%		\caption{Caso (b), carico $p$ sul tratto centrale $DEF$ --- (a) schema e reazioni
+%			($V_A=V_B=p\ell$, $H_A=H_B=6p\ell$); (b) sforzo normale $N$ (le bielle, scariche, portano $N$
+%			uniforme: $N_{AC}=N_{BG}=+\tfrac{\sqrt5}{3}$, $N_{AD}=N_{BF}=-\tfrac{4\sqrt{17}}{3}$, in $p\ell$);
+%			(c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
+%			$M=0$ alle cerniere $C$, $E$, $G$ e ovunque non positivo (estradosso teso, lineare su $CD$, $FG$);
+%			$N$ e $M$ simmetrici rispetto a $E$, $T$ emisimmetrico.}
+%		\label{fig:stampella_NTM_b}
+%	\end{figure}
 	
 	\medskip\noindent\textbf{Lettura.}
 	Concentrando il carico sul tratto centrale, l'impalcato risulta
@@ -6695,9 +8307,11 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
 				bordo/.style={line width=0.5pt,black!70},
 				terra/.style={line width=0.6pt,black},
-				diagfill/.style={fill=gray!28,draw=black,line width=0.8pt},
+				diagbordo/.style={draw=black,line width=0.7pt},
+				diagtratt/.style={gray!55,line width=0.35pt},
 				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
-				segno/.style={circle,draw=black,fill=white,inner sep=0.2pt,font=\tiny},
+				segno/.style={circle,draw=black,fill=white,line width=0.3pt,inner sep=0pt,
+					minimum size=2.8pt,font=\fontsize{4}{4}\selectfont},
 				]
 				\def\sM{1.3}\def\sT{0.42}\def\sN{0.10}\def\sNc{0.14}\def\sNf{0.30}
 				\newcommand{\nodi}{%
@@ -6712,7 +8326,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 				\newcommand{\diagLin}[7]{%
 					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
 					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
-					\filldraw[diagfill] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+					\foreach \tt in {0,0.1,...,1.0001}{%
+						\pgfmathsetmacro{\mv}{(#5+(#6-#5)*\tt)*#7}%
+						\draw[diagtratt] ($(#1)!\tt!(#2)$) -- ++({\mv*#3},{\mv*#4});}%
+					\draw[diagbordo] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
 				\newcommand{\diagPar}[8]{%
 					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
 					\foreach \k in {0,1,...,20}{%
@@ -6720,7 +8337,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
 						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
 						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
-					\filldraw[diagfill] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+					\foreach \k in {0,2,...,20}{%
+						\pgfmathsetmacro{\tt}{\k/20}%
+						\draw[diagtratt] ($(#1)!\tt!(#2)$) -- (pp\k);}%
+					\draw[diagbordo] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
 				\newcommand{\assi}{%
 					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
 					\draw[trave] (C)--(G);
@@ -6768,10 +8388,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 					\node[segno] at ($(C)!0.5!(D)+(0,0.55*1.125*\sNc)$){$+$};
 					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*3.75*\sN)$){$-$};
 					\node[segno] at ($(F)!0.5!(G)+(0,-0.55*0.29167*\sNf)$){$-$};
-					\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,1.125*\sNc)$){$\tfrac{9}{8}p\ell$};
-					\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-3.75*\sN)$){$\tfrac{15}{4}p\ell$};
-					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.29167*\sNf)$){$\tfrac{7}{24}p\ell$};
-					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$\ \ {\tiny($CD$,\,$FG$: ordinate amplificate)}};
+					\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,1.125*\sNc)$){$\tfrac{9}{8}$};
+					\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-3.75*\sN)$){$\tfrac{15}{4}$};
+					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.29167*\sNf)$){$\tfrac{7}{24}$};
+					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$ \ ($\times\,p\ell$;\ su $CD$ e $FG$ ordinate amplificate)};
 				\end{scope}
 				
 				%==================== (c) TAGLIO T ====================
@@ -6804,10 +8424,10 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 					\diagPar{E}{F}{0}{-1}{0}{0.015625}{-0.21875}{\sM}
 					\diagLin{F}{G}{0}{-1}{-0.21875}{0}{\sM}
 					\assi
-					\node[above, xshift=16pt, yshift=8pt,font=\tiny] at ($(C)+(0.15,-0.16*\sM)$){$\tfrac{81}{512}p\ell^2$};
-					\node[above,font=\tiny] at ($(D)+(0,0.28125*\sM)$){$\tfrac{9}{32}p\ell^2$};
-					\node[above,font=\tiny] at ($(F)+(0,0.21875*\sM)$){$\tfrac{7}{32}p\ell^2$};
-					\node[font=\tiny] at (2,-0.92){(d) momento flettente $M$ (fibre tese)};
+					\node[above, xshift=16pt, yshift=8pt,font=\tiny] at ($(C)+(0.15,-0.16*\sM)$){$\tfrac{81}{512}$};
+					\node[above,font=\tiny] at ($(D)+(0,0.28125*\sM)$){$\tfrac{9}{32}$};
+					\node[above,font=\tiny] at ($(F)+(0,0.21875*\sM)$){$\tfrac{7}{32}$};
+					\node[font=\tiny] at (2,-0.92){(d) momento flettente $M$ \ ($\times\,p\ell^2$)};
 				\end{scope}
 		\end{tikzpicture}}
 		\caption{Caso (c), carico asimmetrico ($p$ su $CD$ ed $EF$) --- (a) schema con carichi e reazioni; (b) sforzo normale $N$ sulle travi
@@ -6817,6 +8437,139 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 			$M=0$ alle cerniere $C$, $E$, $G$.}
 		\label{fig:stampella_NTM_c}
 	\end{figure}
+	
+	
+%	\begin{figure}[htbp!]\centering
+%		\resizebox{\linewidth}{!}{%
+%			\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
+%				trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+%				biella/.style={line width=1.0pt,black},
+%				carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+%				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
+%				bordo/.style={line width=0.5pt,black!70},
+%				terra/.style={line width=0.6pt,black},
+%				diagfill/.style={fill=gray!28,draw=black,line width=0.8pt},
+%				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
+%				segno/.style={circle,draw=black,fill=white,inner sep=0.1pt,font=\tiny},
+%				]
+%				\def\sM{1.3}\def\sT{0.42}\def\sN{0.10}\def\sNc{0.14}\def\sNf{0.30}
+%				\newcommand{\nodi}{%
+%					\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
+%					\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
+%					\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
+%				\newcommand{\gnd}[1]{%
+%					\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
+%					\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
+%					\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+%				\newcommand{\semic}[1]{\draw[black,fill=white,line width=0.7pt] ($(#1)+(0.055,0)$) arc[start angle=0,end angle=-180,radius=0.055]--cycle;}
+%				\newcommand{\diagLin}[7]{%
+%					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
+%					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
+%					\filldraw[diagfill] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+%				\newcommand{\diagPar}[8]{%
+%					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
+%					\foreach \k in {0,1,...,20}{%
+%						\pgfmathsetmacro{\tt}{\k/20}%
+%						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
+%						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
+%						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
+%					\filldraw[diagfill] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+%				\newcommand{\assi}{%
+%					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+%					\draw[trave] (C)--(G);
+%					\gnd{A}\gnd{B}
+%					\node[nodoV] at (C){};\node[nodoV] at (E){};\node[nodoV] at (G){};
+%					\node[nodoV] at (A){};\node[nodoV] at (B){};
+%					\semic{D}\semic{F}}
+%				\newcommand{\etich}{%
+%					\node[above=1pt] at (C){$C$};\node[below=2pt] at (D){$D$};\node[above=1pt] at (E){$E$};
+%					\node[below=2pt] at (F){$F$};\node[above=1pt] at (G){$G$};}
+%				
+%				%==================== (a) STRUTTURA ====================
+%				\begin{scope}[shift={(0,5.2)}]
+%					\nodi
+%					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+%					\draw[trave] (C)--(G);
+%					\draw[bordo] (-0.5,0.225)--(1,0.225);
+%					\foreach \x in {-0.5,-0.25,...,1.001}\draw[carico] (\x,0.225)--(\x,0);
+%					\node[above] at (0.25,0.265){$p$};
+%					\draw[bordo] (2,0.225)--(3,0.225);
+%					\foreach \x in {2,2.25,...,3.001}\draw[carico] (\x,0.225)--(\x,0);
+%					\node[above] at (2.5,0.265){$p$};
+%					\gnd{A}\gnd{B}
+%					\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.33,-0.04)$){$\tfrac{15}{4}p\ell$};
+%					\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$\tfrac{57}{32}p\ell$};
+%					\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.33,-0.04)$){$\tfrac{15}{4}p\ell$};
+%					\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$\tfrac{23}{32}p\ell$};
+%					\node[nodoV] at (C){};\node[nodoV] at (E){};\node[nodoV] at (G){};
+%					\node[nodoV] at (A){};\node[nodoV] at (B){};
+%					\semic{D}\semic{F}
+%					\node[below=1pt] at (C){$C$};\node[below=1pt]at(D){$D$};\node[below=1pt] at (E){$E$};
+%					\node[below=1pt]at(F){$F$};\node[below=1pt] at (G){$G$};
+%					\node[left=1pt] at (A){$A$};\node[right=1pt] at (B){$B$};
+%					\node[font=\tiny] at (2,-1.05){(a) schema, carichi e reazioni};
+%				\end{scope}
+%				
+%				%==================== (b) NORMALE N ====================
+%				\begin{scope}[shift={(0,3.4)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{1}{1.125}{1.125}{\sNc}
+%					\diagLin{D}{E}{0}{1}{-3.75}{-3.75}{\sN}
+%					\diagLin{E}{F}{0}{1}{-3.75}{-3.75}{\sN}
+%					\diagLin{F}{G}{0}{1}{-0.29167}{-0.29167}{\sNf}
+%					\assi
+%					\node[segno] at ($(C)!0.5!(D)+(0,0.55*1.125*\sNc)$){$+$};
+%					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*3.75*\sN)$){$-$};
+%					\node[segno] at ($(F)!0.5!(G)+(0,-0.55*0.29167*\sNf)$){$-$};
+%					\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,1.125*\sNc)$){$\tfrac{9}{8}p\ell$};
+%					\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-3.75*\sN)$){$\tfrac{15}{4}p\ell$};
+%					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.29167*\sNf)$){$\tfrac{7}{24}p\ell$};
+%					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$\ \ {\tiny($CD$,\,$FG$: ordinate amplificate)}};
+%				\end{scope}
+%				
+%				%==================== (c) TAGLIO T ====================
+%				\begin{scope}[shift={(0,1.7)}]
+%					\nodi
+%					\diagLin{C}{D}{0}{1}{0.5625}{-0.9375}{\sT}
+%					\diagLin{D}{E}{0}{1}{0.28125}{0.28125}{\sT}
+%					\diagLin{E}{F}{0}{1}{0.28125}{-0.71875}{\sT}
+%					\diagLin{F}{G}{0}{1}{0.14583}{0.14583}{\sT}
+%					\assi
+%					\node[segno] at ($(C)+(0.10,0.08)$){$+$};
+%					\node[segno] at ($(C)!0.90!(D)+(0,-0.42*\sT)$){$-$};
+%					\node[segno] at ($(D)!0.5!(E)+(0,0.5*0.28125*\sT)$){$+$};
+%					%\node[segno] at ($(E)+(0.06,0.06)$){$+$};
+%					\node[segno] at ($(E)!0.84!(F)+(0,-0.30*\sT)$){$-$};
+%					\node[segno] at ($(F)!0.5!(G)+(0,0.5*0.14583*\sT)$){$+$};
+%					\node[above,font=\tiny] at ($(C)+(0.09,0.5625*\sT)$){$\tfrac{9}{16}$};
+%					\node[below,font=\tiny] at ($(D)+(0,-0.9375*\sT)$){$\tfrac{15}{16}$};
+%					\node[above,font=\tiny] at ($(D)!0.62!(E)+(0,0.28125*\sT)$){$\tfrac{9}{32}$};
+%					\node[below,font=\tiny] at ($(F)+(0,-0.71875*\sT)$){$\tfrac{23}{32}$};
+%					\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.14583*\sT)$){$\tfrac{7}{48}$};
+%					\node[font=\tiny] at (2,-0.92){(c) taglio $T$ \ ($\times\,p\ell$)};
+%				\end{scope}
+%				
+%				%==================== (d) MOMENTO M ====================
+%				\begin{scope}[shift={(0,0)}]
+%					\nodi
+%					\diagPar{C}{D}{0}{-1}{0}{0.140625}{-0.28125}{\sM}
+%					\diagLin{D}{E}{0}{-1}{-0.28125}{0}{\sM}
+%					\diagPar{E}{F}{0}{-1}{0}{0.015625}{-0.21875}{\sM}
+%					\diagLin{F}{G}{0}{-1}{-0.21875}{0}{\sM}
+%					\assi
+%					\node[above, xshift=16pt, yshift=8pt,font=\tiny] at ($(C)+(0.15,-0.16*\sM)$){$\tfrac{81}{512}p\ell^2$};
+%					\node[above,font=\tiny] at ($(D)+(0,0.28125*\sM)$){$\tfrac{9}{32}p\ell^2$};
+%					\node[above,font=\tiny] at ($(F)+(0,0.21875*\sM)$){$\tfrac{7}{32}p\ell^2$};
+%					\node[font=\tiny] at (2,-0.92){(d) momento flettente $M$ (fibre tese)};
+%				\end{scope}
+%		\end{tikzpicture}}
+%		\caption{Caso (c), carico asimmetrico ($p$ su $CD$ ed $EF$) --- (a) schema con carichi e reazioni; (b) sforzo normale $N$ sulle travi
+%			(le bielle, scariche, portano $N$ costante: $N_{AC}=-\tfrac{9\sqrt5}{16}$,
+%			$N_{AD}=-\tfrac{39\sqrt{17}}{32}$, $N_{BF}=-\tfrac{83\sqrt{17}}{96}$, $N_{BG}=+\tfrac{7\sqrt5}{48}$,
+%			in $p\ell$); (c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
+%			$M=0$ alle cerniere $C$, $E$, $G$.}
+%		\label{fig:stampella_NTM_c}
+%	\end{figure}
 	
 	\medskip\noindent\textbf{Lettura.}
 	Venuta meno la simmetria, la chiave $E$ trasmette anche taglio
@@ -7226,5 +8979,1119 @@ solo dalla struttura. Il secondo \emph{inverte} l'impostazione: fissata una pres
 \end{esercizio}
 
 
+%............................................................................................................................
+\begin{esercizio}[Anello a tre cerniere vincolato a trave appoggiata]
+	\label{ex:anello_vincolato_TA}
+	
+	Si consideri il sistema di \FIGref{fig:anelloTA_schema}, composto da
+	quattro aste rettilinee: $AC$, $CE$, $CD$ ed $EDB$. Quest'ultima è
+	\emph{continua} attraverso~$D$: i tratti $ED$ e $DB$ appartengono alla
+	medesima asta e ne condividono la linea d'asse.
+	
+	Le connessioni interne sono tre. In~$C$ la cerniera è \emph{tripla} e
+	collega fra loro le aste $AC$, $CE$ e $CD$; in~$E$ è \emph{semplice},
+	fra $CE$ ed $EDB$; in~$D$ un \emph{glifo} collega l'asta $CD$ all'asta
+	$EDB$, con piano di scorrimento parallelo all'asse di quest'ultima. Le
+	tre connessioni chiudono in circuito le aste $CE$, $CD$ ed $ED$:
+	l'\emph{anello} da cui il sistema prende nome, delle cui tre cerniere
+	una --- il glifo --- è impropria. I vincoli esterni sono le cerniere in
+	$A$ e in $B$.
+	
+	Le misure sono quotate in \FIGref{fig:anelloTA_schema}: luce fra i
+	piedi $\overline{AB} = 5\ell/2$, quote dei nodi $C$ ed $E$ pari a
+	$\ell$ e $2\ell$, luce dell'asta $CD$ pari a $\ell$. I punti $E$, $D$
+	e $B$ risultano allineati.
+	
+	I carichi sono due: un carico distribuito $p$ verticale discendente
+	sul tratto $ED$, \emph{riferito alla proiezione orizzontale} di
+	questo e dunque di risultante $p\ell$; e una coppia oraria di
+	intensità $p\ell^{2}$ applicata nella mezzeria $G$ dell'asta $CD$.
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}[x=2.0cm, y=2.0cm,
+			trave/.style  ={line width=2.0pt, line cap=round, line join=round, black},
+			carico/.style ={-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt},
+			bordo/.style  ={line width=0.5pt},
+			proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+			terra/.style  ={line width=0.7pt},
+			quota/.style  ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+			nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+			et/.style     ={font=\footnotesize}]
+			
+			%% ── coordinate (unita = ell, origine in A) ──────────────
+			\coordinate (A) at (0,0);     \coordinate (B) at (2.5,0);
+			\coordinate (C) at (0.5,1);   \coordinate (D) at (1.5,1);
+			\coordinate (E) at (0.5,2);   \coordinate (G) at (1,1);
+			
+			%% ── glifo in D: geometria (t = versore di EB, m = normale
+			%%    rivolta verso C) ────────────────────────────────────
+			\pgfmathsetmacro{\rw}{0.0387}   % raggio ruote = raggio dei pallini
+			%   delle cerniere (2.2pt con x=2.0cm)
+			\pgfmathsetmacro{\spess}{0.016} % semispessore della trave
+			\pgfmathsetmacro{\bw}{1.25*\rw} % semipasso ruote: luce fra i due
+			%   circoli pari a mezzo raggio
+			\pgfmathsetmacro{\ap}{0.15}     % semilunghezza del piatto
+			\pgfmathsetmacro{\tx}{ 0.70711} \pgfmathsetmacro{\ty}{-0.70711}
+			\pgfmathsetmacro{\mx}{-0.70711} \pgfmathsetmacro{\my}{-0.70711}
+			\pgfmathsetmacro{\offw}{\spess+\rw}
+			\pgfmathsetmacro{\offp}{\spess+2*\rw}
+			\pgfmathsetmacro{\Dgx}{1.5+\offp*\mx}  \pgfmathsetmacro{\Dgy}{1+\offp*\my}
+			\pgfmathsetmacro{\sQ}{(1-\Dgy)/\ty}   % ascissa di Q sull'asse del piatto
+			\pgfmathsetmacro{\Qx}{\Dgx+\tx*\sQ}
+			\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\tx} % centro del piatto: a meta'
+			\pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\ty} %   fra le ruote e l'asta CD
+			\pgfmathsetmacro{\Wx}{1.5+\offw*\mx}   \pgfmathsetmacro{\Wy}{1+\offw*\my}
+			\pgfmathsetmacro{\Pax}{\Pcx+\ap*\tx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\ty}
+			\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\tx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\ty}
+			\pgfmathsetmacro{\Wax}{\Wx+\bw*\tx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\ty}
+			\pgfmathsetmacro{\Wbx}{\Wx-\bw*\tx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\ty}
+			
+			%% ── carico p in proiezione orizzontale su ED ────────────
+			\pgfmathsetmacro{\yp}{2.12}     % retta delle punte, poco sopra E
+			\pgfmathsetmacro{\hp}{0.30}     % ordinata del carico
+			\draw[proiez] (E) -- (0.5,\yp);
+			\draw[proiez] (D) -- (1.5,\yp);
+			\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+			\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+			\foreach \x in {0.5,0.625,...,1.5}
+			\draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+			\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+			
+			%% ── le quattro aste ─────────────────────────────────────
+			\draw[trave] (A)--(C);
+			\draw[trave] (C)--(E);
+			\draw[trave] (E)--(B);
+			\draw[trave] (C)--(\Qx,1);
+			
+			%% ── glifo in D ──────────────────────────────────────────
+			\draw[line width=1.2pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+			\draw[line width=0.7pt, fill=white] (\Wax,\Way) circle (2.2pt);
+			\draw[line width=0.7pt, fill=white] (\Wbx,\Wby) circle (2.2pt);
+			
+			%% ── coppia oraria in G, con trattino radiale ────────────
+			\pgfmathsetmacro{\rc}{0.18}
+			\draw[line width=0.7pt] (G) -- (1,{1-\rc});
+			\draw[-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt]
+			(1,{1-\rc}) arc[start angle=270, end angle=90, radius=\rc];
+			\node[et] at (0.80,0.70) {$p\ell^2$};
+			
+			%% ── cerniere esterne in A e in B ────────────────────────
+			\foreach \P in {A,B}{%
+				\draw[terra] (\P)--($(\P)+(-0.083,-0.143)$)--($(\P)+(0.083,-0.143)$)--cycle;
+				\draw[terra] ($(\P)+(-0.128,-0.143)$)--($(\P)+(0.128,-0.143)$);
+				\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+				\draw[terra, line width=0.4pt] ($(\P)+(\s,-0.143)$)--++(-0.038,-0.053);}
+			
+			\foreach \P in {A,B,C,E} \node[nodoV] at (\P) {};
+			
+			%% ── etichette ───────────────────────────────────────────
+			\node[et, left=5pt]  at (A) {$A$};
+			\node[et, right=5pt] at (B) {$B$};
+			\node[et, left=4pt]  at (C) {$C$};
+			\node[et, left=4pt]  at (E) {$E$};
+			\node[et] at (1.61,1.07) {$D$};
+			\node[et] at (1.07,1.09) {$G$};
+			
+			%% ── quote ───────────────────────────────────────────────
+			\draw[quota] (0,-0.42)--(0.5,-0.42)  node[midway,above,black,et]{$\ell/2$};
+			\draw[quota] (0.5,-0.42)--(1.5,-0.42) node[midway,above,black,et]{$\ell$};
+			\draw[quota] (1.5,-0.42)--(2.5,-0.42) node[midway,above,black,et]{$\ell$};
+			\draw[quota] (-0.34,0)--(-0.34,1) node[midway,left,black,et]{$\ell$};
+			\draw[quota] (-0.34,1)--(-0.34,2) node[midway,left,black,et]{$\ell$};
+		\end{tikzpicture}
+	\caption{Anello a tre cerniere vincolato a trave appoggiata: schema
+		strutturale e di carico.}
+		\label{fig:anelloTA_schema}
+	\end{figure}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	Per la struttura così definita:
+	\begin{itemize}
+		\item[1)] se ne dia la classificazione statico-cinematica,
+		riconoscendo le bielle e verificando l'efficacia dei vincoli;
+		\item[2)] si determinino le reazioni dei vincoli esterni e le
+		azioni alle connessioni interne, e si traccino i \textit{diagrammi
+			quotati} della forza normale $N$, del taglio $T$ e del momento
+		flettente $M$ sull'intera struttura.
+	\end{itemize}
+	
+	
+	
+	\begin{svolgimento}
+		
+		%............................................................................................................................
+		\paragraph{Classificazione e riconoscimenti preliminari.}
+		%............................................................................................................................
+		
+		I corpi sono quattro --- le bielle $AC$ e $CE$, l'asta $CD$ e l'asta
+		$EDB$ --- e i gradi di libertà nel piano sono $n = 3 \times 4 = 12$.
+		Le molteplicità dei vincoli valgono $2$ per la cerniera esterna in
+		$A$; $4$ per la cerniera tripla in $C$, dove convergono tre corpi e
+		vale quindi $m_i = 2(3-1)$; $2$ per la cerniera semplice in $E$; $2$
+		per il glifo in $D$; e $2$ per la cerniera esterna in $B$. In totale
+		$m = 12$, dunque
+		\[
+		\nu = 3\,n_e - m = 12 - 12 = 0 ,
+		\]
+		e il sistema \emph{può} essere isostatico. Il conteggio, da solo, non
+		lo garantisce: occorre verificare che i vincoli siano efficaci.
+		
+		La verifica conviene condurla in due tempi, riconoscendo prima
+		l'anello e poi il modo in cui esso è vincolato al suolo. Le aste
+		$CE$, $CD$ ed $ED$ sono chiuse in circuito dalle tre connessioni
+		interne, e formano dunque un \emph{anello}. I centri di rotazione
+		relativi sono la cerniera $C$ fra $CE$ e $CD$, la cerniera $E$ fra
+		$CE$ ed $ED$, e --- per il glifo fra $CD$ ed $ED$ --- il punto
+		improprio $\infty_{\ab}$, con $\ab$ ortogonale all'asse $EB$
+		(\SECref{sec:glifo}). Le tre connessioni sarebbero allineate se la
+		corda $CE$ avesse la direzione di $\ab$; ma $CE$ è verticale mentre
+		$\ab$ è inclinato di $45^{\circ}$, sicché l'allineamento non
+		sussiste e l'anello è internamente rigido e isostatico.
+		
+		\begin{oss}[Il glifo come terza cerniera]
+			La condizione di non degenerazione dell'anello a tre cerniere si
+			estende senza modifiche al caso in cui una delle tre connessioni
+			sia un glifo, purché se ne assuma il centro relativo nel punto
+			improprio della direzione dell'asse. L'allineamento delle tre
+			cerniere diventa allora la condizione che la retta congiungente
+			le due cerniere proprie sia \emph{parallela} all'asse del glifo:
+			se lo fosse, i tre corpi dell'anello potrebbero traslare gli uni
+			rispetto agli altri nella direzione ortogonale, e l'anello
+			sarebbe labile. È la lettura del glifo come \emph{cerniera
+				impropria} già introdotta nel \CAPref{cap:vincoli_CR}.
+		\end{oss}
+		
+		Rigido l'anello, e rigidamente solidale a esso il tratto $DB$ che
+		dell'asta $EDB$ è il prolungamento, l'intera struttura si riduce a un
+		unico corpo rigido vincolato al suolo in due soli punti: in $C$ dalla
+		biella $AC$, che è un carrello ad asse inclinato secondo la propria
+		corda, e in $B$ dalla cerniera. Sono i vincoli della \emph{trave
+			appoggiata}, e sono efficaci perché la retta $AC$ non passa per $B$:
+		il centro di rotazione assoluto dovrebbe stare sull'asse della biella
+		e insieme coincidere con $B$, il che è impossibile. Il sistema è
+		dunque isostatico e ben vincolato.~$\checkmark$
+		
+		Un ultimo riconoscimento, di natura statica, precede il calcolo. Le
+		aste $AC$ e $CE$ sono \emph{scariche e vincolate ai soli estremi}:
+		sono cioè \emph{bielle}, e trasmettono una forza puramente assiale,
+		diretta secondo la propria corda. Ne discendono due conseguenze che
+		governeranno l'intero svolgimento: la reazione della cerniera in $A$
+		ha \emph{direzione nota} --- quella di $AC$ --- e si riduce a un solo
+		scalare; e la forza trasmessa in $C$ dalla biella $CE$ è
+		\emph{verticale}.
+		
+		%............................................................................................................................
+		\paragraph{Passo 1 --- Scelta della partizione e reazioni vincolari
+			esterne.}
+		%............................................................................................................................
+		
+		Si assume come partizione quella nei quattro corpi componenti,
+		integrata dal \emph{nodo $C$} isolato come corpo libero di dimensione
+		nulla (\SECref{sec:partizioni}). L'isolamento di $C$ è qui
+		particolarmente conveniente: vi convergono tre corpi, due dei quali
+		bielle, sicché le due equazioni di equilibrio del nodo contengono
+		soltanto due intensità assiali e le due componenti della forza
+		scambiata con l'asta $CD$.
+		
+		Le reazioni esterne incognite sono tre soltanto. La cerniera in $B$
+		ne porta due, $H_B$ e $V_B$; la cerniera in $A$, essendo $AC$ una
+		biella, ne porta una sola, perché le sue componenti stanno nel
+		rapporto dei lati della corda $AC$, che sale di $\ell$ ogni $\ell/2$:
+		\begin{equation}
+			\label{eq:anelloTA_direzioneA}
+			V_A = 2\,H_A .
+		\end{equation}
+		L'equilibrio globale, con le sue tre equazioni, basta dunque a
+		determinarle tutte, e la struttura si comporta in questo come una
+		comune trave appoggiata. Le incognite e la retta d'azione della risultante del carico sono
+		riportate nella \FIGref{fig:anelloTA_globale}\,(a); il
+		pannello~\emph{(b)} raccoglie i valori che seguono.
+		
+		
+		
+		
+		Il carico distribuito, riferito alla proiezione orizzontale del
+		tratto $ED$, ha risultante $p\ell$ verticale discendente, applicata
+		sulla verticale di mezzeria della proiezione, cioè all'ascissa
+		$\ell$ da $A$. L'equilibrio alla rotazione intorno ad $A$ dà allora
+		\[
+		\frac{5}{2}\,\ell\,V_B = \underbrace{p\ell \cdot \ell}_{\text{carico
+				distribuito}} + \underbrace{p\ell^{2}}_{\text{coppia in }G}
+		= 2\,p\ell^{2} ,
+		\qquad\Longrightarrow\qquad
+		V_B = \frac{4}{5}\,p\ell \quad (\uparrow) ,
+		\]
+		dove entrambi i carichi danno momento orario e la reazione in $A$,
+		passando per il polo, non compare. L'equilibrio alla traslazione
+		verticale fornisce
+		\[
+		V_A = p\ell - V_B = \frac{1}{5}\,p\ell \quad (\uparrow) ,
+		\]
+		e la \EQUref{eq:anelloTA_direzioneA} restituisce la componente
+		orizzontale
+		\[
+		H_A = \frac{V_A}{2} = \frac{1}{10}\,p\ell \quad (\rightarrow) .
+		\]
+		L'equilibrio alla traslazione orizzontale chiude il passo:
+		\[
+		H_B = -H_A = \frac{1}{10}\,p\ell \quad (\leftarrow) .
+		\]
+	
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%  FIGURA A -- Passo 1: equilibrio globale (due pannelli)
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}[htbp!]
+			\centering
+			\begin{minipage}[b]{0.49\textwidth}
+				\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=2.0cm, y=2.0cm,
+						trave/.style  ={line width=2.0pt, line cap=round, line join=round, black},
+						carico/.style ={-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt},
+						reaz/.style   ={-{Stealth[length=2.2mm,width=1.4mm]}, line width=0.9pt, black},
+						risul/.style  ={-{Stealth[length=2.2mm,width=1.4mm]}, line width=0.7pt, black},
+						bordo/.style  ={line width=0.5pt},
+						proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+						terra/.style  ={line width=0.7pt},
+						quota/.style  ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+						nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+						et/.style     ={font=\footnotesize}]
+						
+						%% ── ingombro forzato, identico nei due pannelli ────────
+						\path[use as bounding box] (-0.56,-0.88) rectangle (2.94,2.97);
+						
+						\coordinate (A) at (0,0);     \coordinate (B) at (2.5,0);
+						\coordinate (C) at (0.5,1);   \coordinate (D) at (1.5,1);
+						\coordinate (E) at (0.5,2);   \coordinate (G) at (1,1);
+						
+						\pgfmathsetmacro{\rw}{0.0387}   \pgfmathsetmacro{\spess}{0.016}
+						\pgfmathsetmacro{\bw}{1.25*\rw} \pgfmathsetmacro{\ap}{0.15}
+						\pgfmathsetmacro{\tx}{ 0.70711} \pgfmathsetmacro{\ty}{-0.70711}
+						\pgfmathsetmacro{\mx}{-0.70711} \pgfmathsetmacro{\my}{-0.70711}
+						\pgfmathsetmacro{\offw}{\spess+\rw}  \pgfmathsetmacro{\offp}{\spess+2*\rw}
+						\pgfmathsetmacro{\Dgx}{1.5+\offp*\mx}  \pgfmathsetmacro{\Dgy}{1+\offp*\my}
+						\pgfmathsetmacro{\sQ}{(1-\Dgy)/\ty}
+						\pgfmathsetmacro{\Qx}{\Dgx+\tx*\sQ}
+						\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\tx} \pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\ty}
+						\pgfmathsetmacro{\Wx}{1.5+\offw*\mx}   \pgfmathsetmacro{\Wy}{1+\offw*\my}
+						\pgfmathsetmacro{\Pax}{\Pcx+\ap*\tx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\ty}
+						\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\tx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\ty}
+						\pgfmathsetmacro{\Wax}{\Wx+\bw*\tx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\ty}
+						\pgfmathsetmacro{\Wbx}{\Wx-\bw*\tx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\ty}
+						
+						%% ── retta d'azione della risultante del carico ──────────
+						\draw[proiez] (1,1.5) -- (1,2.95);
+						
+						%% ── carico p in proiezione orizzontale su ED ────────────
+						\pgfmathsetmacro{\yp}{2.12}  \pgfmathsetmacro{\hp}{0.30}
+						\draw[proiez] (E) -- (0.5,\yp);
+						\draw[proiez] (D) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+						\foreach \x in {0.5,0.625,...,1.5} \draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+						\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+						
+						%% ── risultante del carico ───────────────────────────────
+						\draw[risul] (1,2.95) -- (1,2.55);
+						\node[et, right] at (1.05,2.78) {$p\ell$};
+						
+						%% ── le quattro aste ─────────────────────────────────────
+						\draw[trave] (A)--(C);  \draw[trave] (C)--(E);
+						\draw[trave] (E)--(B);  \draw[trave] (C)--(\Qx,1);
+						
+						%% ── glifo in D ──────────────────────────────────────────
+						\draw[line width=1.2pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+						\draw[line width=0.7pt, fill=white] (\Wax,\Way) circle (2.2pt);
+						\draw[line width=0.7pt, fill=white] (\Wbx,\Wby) circle (2.2pt);
+						
+						%% ── coppia oraria in G ──────────────────────────────────
+						\pgfmathsetmacro{\rc}{0.18}
+						\draw[line width=0.7pt] (G) -- (1,{1-\rc});
+						\draw[-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt]
+						(1,{1-\rc}) arc[start angle=270, end angle=90, radius=\rc];
+						\node[et] at (0.80,0.70) {$p\ell^2$};
+						
+						%% ── cerniere esterne ────────────────────────────────────
+						\foreach \P in {A,B}{%
+							\draw[terra] (\P)--($(\P)+(-0.083,-0.143)$)--($(\P)+(0.083,-0.143)$)--cycle;
+							\draw[terra] ($(\P)+(-0.128,-0.143)$)--($(\P)+(0.128,-0.143)$);
+							\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+							\draw[terra, line width=0.4pt] ($(\P)+(\s,-0.143)$)--++(-0.038,-0.053);}
+						\foreach \P in {A,B,C,E} \node[nodoV] at (\P) {};
+						
+						%% ── reazioni vincolari esterne (incognite) ──────────────
+						\draw[reaz] (A) -- ++(0.55,0);  \node[et, above] at (0.30,-0.03) {$H_A$};
+						\draw[reaz] (A) -- ++(0,0.55);  \node[et, left]  at (-0.02,0.34) {$V_A$};
+						\draw[reaz] (B) -- ++(-0.55,0); \node[et, below] at (2.22,-0.03) {$H_B$};
+						\draw[reaz] (B) -- ++(0,0.55);  \node[et, right] at (2.53,0.34) {$V_B$};
+						\node[et] at (0.74,0.30) {$V_A = 2\,H_A$};
+						
+						%% ── etichette ───────────────────────────────────────────
+						\node[et, left=5pt]  at (A) {$A$};   \node[et, right=5pt] at (B) {$B$};
+						\node[et, left=4pt]  at (C) {$C$};   \node[et, left=4pt]  at (E) {$E$};
+						\node[et] at (1.61,1.07) {$D$};      \node[et] at (1.07,1.09) {$G$};
+						
+						%% ── quote ───────────────────────────────────────────────
+						\draw[quota] (0,-0.42)--(0.5,-0.42)   node[midway,above,black,et]{$\ell/2$};
+						\draw[quota] (0.5,-0.42)--(1.5,-0.42) node[midway,above,black,et]{$\ell$};
+						\draw[quota] (1.5,-0.42)--(2.5,-0.42) node[midway,above,black,et]{$\ell$};
+						\draw[quota] (0,-0.82)--(1,-0.82)     node[midway,above,black,et]{$\ell$};
+						\draw[quota] (-0.34,0)--(-0.34,1) node[midway,left,black,et]{$\ell$};
+						\draw[quota] (-0.34,1)--(-0.34,2) node[midway,left,black,et]{$\ell$};
+				\end{tikzpicture}}
+				\\[4pt] $(a)$
+			\end{minipage}
+			\hfill
+			\begin{minipage}[b]{0.49\textwidth}
+				\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=2.0cm, y=2.0cm,
+						trave/.style  ={line width=2.0pt, line cap=round, line join=round, black},
+						carico/.style ={-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt},
+						reaz/.style   ={-{Stealth[length=2.2mm,width=1.4mm]}, line width=0.9pt, black},
+						risul/.style  ={-{Stealth[length=2.2mm,width=1.4mm]}, line width=0.7pt, black},
+						bordo/.style  ={line width=0.5pt},
+						proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+						terra/.style  ={line width=0.7pt},
+						quota/.style  ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+						nota/.style   ={-{Stealth[length=2.2mm,width=1.4mm]}, line width=0.9pt, gray!70},
+						nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+						et/.style     ={font=\footnotesize}]
+						
+						%% ── ingombro forzato, identico nei due pannelli ────────
+						\path[use as bounding box] (-0.56,-0.88) rectangle (2.94,2.97);
+						
+						\coordinate (A) at (0,0);     \coordinate (B) at (2.5,0);
+						\coordinate (C) at (0.5,1);   \coordinate (D) at (1.5,1);
+						\coordinate (E) at (0.5,2);   \coordinate (G) at (1,1);
+						
+						\pgfmathsetmacro{\rw}{0.0387}   \pgfmathsetmacro{\spess}{0.016}
+						\pgfmathsetmacro{\bw}{1.25*\rw} \pgfmathsetmacro{\ap}{0.15}
+						\pgfmathsetmacro{\tx}{ 0.70711} \pgfmathsetmacro{\ty}{-0.70711}
+						\pgfmathsetmacro{\mx}{-0.70711} \pgfmathsetmacro{\my}{-0.70711}
+						\pgfmathsetmacro{\offw}{\spess+\rw}  \pgfmathsetmacro{\offp}{\spess+2*\rw}
+						\pgfmathsetmacro{\Dgx}{1.5+\offp*\mx}  \pgfmathsetmacro{\Dgy}{1+\offp*\my}
+						\pgfmathsetmacro{\sQ}{(1-\Dgy)/\ty}
+						\pgfmathsetmacro{\Qx}{\Dgx+\tx*\sQ}
+						\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\tx} \pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\ty}
+						\pgfmathsetmacro{\Wx}{1.5+\offw*\mx}   \pgfmathsetmacro{\Wy}{1+\offw*\my}
+						\pgfmathsetmacro{\Pax}{\Pcx+\ap*\tx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\ty}
+						\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\tx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\ty}
+						\pgfmathsetmacro{\Wax}{\Wx+\bw*\tx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\ty}
+						\pgfmathsetmacro{\Wbx}{\Wx-\bw*\tx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\ty}
+						
+						%% ── retta d'azione della risultante del carico ──────────
+						\draw[proiez] (1,1.5) -- (1,2.95);
+						
+						%% ── carico p in proiezione orizzontale su ED ────────────
+						\pgfmathsetmacro{\yp}{2.12}  \pgfmathsetmacro{\hp}{0.30}
+						\draw[proiez] (E) -- (0.5,\yp);
+						\draw[proiez] (D) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+						\foreach \x in {0.5,0.625,...,1.5} \draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+						\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+						
+						%% ── risultante del carico ───────────────────────────────
+						\draw[risul] (1,2.95) -- (1,2.55);
+						\node[et, right] at (1.05,2.78) {$p\ell$};
+						
+						%% ── le quattro aste ─────────────────────────────────────
+						\draw[trave] (A)--(C);  \draw[trave] (C)--(E);
+						\draw[trave] (E)--(B);  \draw[trave] (C)--(\Qx,1);
+						
+						%% ── glifo in D ──────────────────────────────────────────
+						\draw[line width=1.2pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+						\draw[line width=0.7pt, fill=white] (\Wax,\Way) circle (2.2pt);
+						\draw[line width=0.7pt, fill=white] (\Wbx,\Wby) circle (2.2pt);
+						
+						%% ── coppia oraria in G ──────────────────────────────────
+						\pgfmathsetmacro{\rc}{0.18}
+						\draw[line width=0.7pt] (G) -- (1,{1-\rc});
+						\draw[-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt]
+						(1,{1-\rc}) arc[start angle=270, end angle=90, radius=\rc];
+						\node[et] at (0.80,0.70) {$p\ell^2$};
+						
+						%% ── cerniere esterne ────────────────────────────────────
+						\foreach \P in {A,B}{%
+							\draw[terra] (\P)--($(\P)+(-0.083,-0.143)$)--($(\P)+(0.083,-0.143)$)--cycle;
+							\draw[terra] ($(\P)+(-0.128,-0.143)$)--($(\P)+(0.128,-0.143)$);
+							\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+							\draw[terra, line width=0.4pt] ($(\P)+(\s,-0.143)$)--++(-0.038,-0.053);}
+						\foreach \P in {A,B,C,E} \node[nodoV] at (\P) {};
+						
+						%% ── reazioni vincolari esterne (incognite) ──────────────
+						\draw[nota] (A) -- ++(0.55,0);  \node[et, below] at (0.44,-0.04) {$\tfrac{1}{10}p\ell$};
+						\draw[nota] (A) -- ++(0,0.55);  \node[et, left]  at (-0.02,0.34) {$\tfrac{1}{5}p\ell$};
+						\draw[nota] (B) -- ++(-0.55,0); \node[et, below] at (1.96,-0.04) {$\tfrac{1}{10}p\ell$};
+						\draw[nota] (B) -- ++(0,0.55);  \node[et, right] at (2.53,0.34) {$\tfrac{4}{5}p\ell$};
+						
+						%% ── etichette ───────────────────────────────────────────
+						\node[et, left=5pt]  at (A) {$A$};   \node[et, right=5pt] at (B) {$B$};
+						\node[et, left=4pt]  at (C) {$C$};   \node[et, left=4pt]  at (E) {$E$};
+						\node[et] at (1.61,1.07) {$D$};      \node[et] at (1.07,1.09) {$G$};
+						
+				\end{tikzpicture}}
+				\\[4pt] $(b)$
+			\end{minipage}
+			\caption{Equilibrio globale: \emph{(a)} le incognite, con la retta
+				d'azione della risultante $p\ell$ del carico distribuito;
+				\emph{(b)} i valori trovati, nei versi effettivi.}
+			\label{fig:anelloTA_globale}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		
+		%............................................................................................................................
+		\paragraph{Passo 2 --- Gerarchia interna e azioni alle connessioni.}
+		%............................................................................................................................
+		
+		Fra i corpi non esiste gerarchia portante/portato: ogni cammino che
+		da terra torna a terra si richiude nell'anello, e nessun sottoinsieme
+		proprio di corpi possiede vincoli sufficienti a sostenersi da solo.
+		L'ordine di risoluzione è dettato allora dalla partizione, e muove
+		dal corpo libero il cui equilibrio determina subito qualche
+		grandezza: il nodo $C$. La partizione è riportata nella \FIGref{fig:anelloTA_corpiliberi}, con
+		i corpi allontanati dalle rispettive posizioni e le azioni che si
+		scambiano alle interfacce: in grigio quelle già note dal Passo~1, in
+		nero le incognite.
+		
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%  FIGURA B -- Passo 2: la partizione in corpi liberi (vista esplosa)
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}[htbp]
+			\centering
+			\resizebox{0.65\linewidth}{!}{%
+				\begin{tikzpicture}[x=2.3cm, y=2.3cm,
+					trave/.style  ={line width=2.0pt, line cap=round, line join=round, black},
+					carico/.style ={-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt},
+					inc/.style    ={-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt, black},
+					nota/.style   ={-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt, gray!70},
+					comp/.style   ={gray!60, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+					guida/.style  ={gray!40, line width=0.4pt, dotted},
+					bordo/.style  ={line width=0.5pt},
+					proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+					terra/.style  ={line width=0.7pt},
+					nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+					et/.style     ={font=\footnotesize},
+					ets/.style    ={font=\scriptsize}]
+					
+					\pgfmathsetmacro{\tx}{ 0.70711} \pgfmathsetmacro{\ty}{-0.70711}
+					\pgfmathsetmacro{\mx}{-0.70711} \pgfmathsetmacro{\my}{-0.70711}
+					\pgfmathsetmacro{\ux}{0.44721}  \pgfmathsetmacro{\uy}{0.89443}
+					
+					%% posizioni esplose
+					\coordinate (Nc) at (0.5,1);                    % nodo C
+					\coordinate (Ap) at (-0.880,-0.760);            % biella AC
+					\coordinate (Cp) at (-0.380, 0.240);
+					\coordinate (C2) at (-0.38,1);   \coordinate (E2) at (-0.38,2);   % biella CE
+					\coordinate (C3) at (0.5,0.05);  \coordinate (D3) at (1.5,0.05);  % asta CD
+					\coordinate (G3) at (1.0,0.05);
+					\coordinate (Ee) at (0.5,2); \coordinate (De) at (1.5,1); \coordinate (Be) at (2.5,0);
+					
+					%% ── linee di richiamo delle interfacce ──────────────────
+					\draw[guida] (Cp) -- (Nc);   \draw[guida] (C2) -- (Nc);
+					\draw[guida] (C3) -- (Nc);   \draw[guida] (E2) -- (Ee);
+					\draw[guida] (D3) -- (De);
+					
+					%% ══ biella AC ══
+					\draw[trave] (Ap) -- (Cp);
+					\draw[terra] (Ap)--($(Ap)+(-0.083,-0.143)$)--($(Ap)+(0.083,-0.143)$)--cycle;
+					\draw[terra] ($(Ap)+(-0.128,-0.143)$)--($(Ap)+(0.128,-0.143)$);
+					\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+					\draw[terra, line width=0.4pt] ($(Ap)+(\s,-0.143)$)--++(-0.038,-0.053);
+					\node[nodoV] at (Ap) {};  \node[nodoV] at (Cp) {};
+					\node[et, left=4pt] at (Ap) {$A$};
+					\draw[nota] (Ap) -- ++(0.44,0);  \node[et, below] at ($(Ap)+(0.30,-0.03)$) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (Ap) -- ++(0,0.44);  \node[et, left]  at ($(Ap)+(-0.02,0.26)$) {$\tfrac{1}{5}p\ell$};
+					\draw[nota] (Cp) -- ++(-0.42,0);  \node[et, above] at (-0.60,0.26) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (Cp) -- ++(0,-0.42);  \node[et, right] at (-0.36,0.04) {$\tfrac{1}{5}p\ell$};
+					
+					%% ══ biella CE ══
+					\draw[trave] (C2) -- (E2);
+					\node[nodoV] at (C2) {}; \node[nodoV] at (E2) {};
+					\draw[inc] (C2) -- ++(0,-0.40);  \draw[inc] (E2) -- ++(0,0.40);
+					\node[et, left] at (-0.42,1.5) {$N_{CE}$};
+					
+					%% ══ nodo C isolato ══
+					\node[nodoV, minimum size=5.6pt] at (Nc) {};
+					\draw[nota] (Nc) -- ++(0.48,0);   \node[et, below] at (0.86,0.98) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (0.548,1) -- ++(0,0.50);
+					\node[et, right] at (0.575,1.38) {$\tfrac{1}{5}p\ell$};
+					\draw[inc]  (0.452,1) -- ++(0,0.38); \node[et, left] at (0.425,1.26) {$N_{CE}$};
+					\draw[inc]  (Nc) -- ++(-0.40,0);  \node[et, below] at (0.26,0.99) {$H_C$};
+					\draw[inc]  (Nc) -- ++(0,-0.40);  \node[et, right] at (0.54,0.70) {$V_C$};
+					
+					%% ══ asta CD ══
+					\pgfmathsetmacro{\rw}{0.0387}   \pgfmathsetmacro{\spess}{0.016}
+					\pgfmathsetmacro{\bw}{1.25*\rw} \pgfmathsetmacro{\ap}{0.15}
+					\pgfmathsetmacro{\offw}{\spess+\rw}  \pgfmathsetmacro{\offp}{\spess+2*\rw}
+					\pgfmathsetmacro{\Dgx}{1.5+\offp*\mx}  \pgfmathsetmacro{\Dgy}{0.05+\offp*\my}
+					\pgfmathsetmacro{\sQ}{(0.05-\Dgy)/\ty}
+					\pgfmathsetmacro{\Qx}{\Dgx+\tx*\sQ}
+					\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\tx} \pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\ty}
+					\pgfmathsetmacro{\Wx}{1.5+\offw*\mx}   \pgfmathsetmacro{\Wy}{0.05+\offw*\my}
+					\pgfmathsetmacro{\Pax}{\Pcx+\ap*\tx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\ty}
+					\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\tx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\ty}
+					\pgfmathsetmacro{\Wax}{\Wx+\bw*\tx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\ty}
+					\pgfmathsetmacro{\Wbx}{\Wx-\bw*\tx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\ty}
+					\draw[comp] (1.10,0.45) -- (1.90,-0.35);
+					\node[ets, gray!60, rotate=-45, anchor=west] at (1.86,-0.31) {piano di scorrimento};
+					\draw[trave] (C3) -- (\Qx,0.05);
+					\draw[line width=1.2pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+					\draw[line width=0.7pt, fill=white] (\Wax,\Way) circle (2.2pt);
+					\draw[line width=0.7pt, fill=white] (\Wbx,\Wby) circle (2.2pt);
+					\node[nodoV] at (C3) {};
+					\draw[inc] (0.14,0.05) -- (0.44,0.05);  \node[et, above] at (0.28,0.04) {$H_C$};
+					\draw[inc] (0.5,-0.35) -- (0.5,-0.05);  \node[et, left] at (0.50,-0.28) {$V_C$};
+					\pgfmathsetmacro{\rc}{0.17}
+					\draw[line width=0.6pt] (G3) -- ($(G3)+(0,-\rc)$);
+					\draw[-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt]
+					($(G3)+(0,-\rc)$) arc[start angle=270, end angle=90, radius=\rc];
+					\node[et] at (0.80,-0.26) {$p\ell^2$};
+					\draw[comp] (1.86,0.41) -- (1.5,0.41) -- (1.5,0.05);
+					\node[ets, above] at (1.68,0.42) {$H_D$};
+					\node[ets, left]  at (1.55,0.26) {$V_D$};
+					\draw[inc] (1.86,0.41) -- (1.54,0.09);
+					\node[et, right] at (1.70,0.18) {$R_D$};
+					\draw[-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt]
+					({1.5+0.30*cos(160)},{0.05+0.30*sin(160)}) arc[start angle=160, end angle=255, radius=0.30];
+					\node[et] at (1.20,-0.28) {$M_D$};
+					
+					%% ══ asta EDB ══
+					\pgfmathsetmacro{\yp}{2.12}  \pgfmathsetmacro{\hp}{0.28}
+					\draw[proiez] (Ee) -- (0.5,\yp);  \draw[proiez] (1.5,1.6) -- (1.5,\yp);
+					\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+					\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+					\foreach \x in {0.5,0.625,...,1.5} \draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+					\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+					\draw[trave] (Ee) -- (Be);
+					\draw[terra] (Be)--($(Be)+(-0.083,-0.143)$)--($(Be)+(0.083,-0.143)$)--cycle;
+					\draw[terra] ($(Be)+(-0.128,-0.143)$)--($(Be)+(0.128,-0.143)$);
+					\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+					\draw[terra, line width=0.4pt] ($(Be)+(\s,-0.143)$)--++(-0.038,-0.053);
+					\node[nodoV] at (Ee) {}; \node[nodoV] at (Be) {};
+					\node[et, left=4pt] at (Ee) {$E$}; \node[et, right=4pt] at (Be) {$B$};
+					\node[et] at (1.45,0.90) {$D$};
+					\draw[inc]  (Ee) -- ++(0,-0.40);  \node[et, left] at (0.47,1.74) {$N_{CE}$};
+					\draw[inc]  (De) -- ++(0.283,0.283);
+					\node[et, right] at (1.84,1.30) {$R_D$};
+					\draw[-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt]
+					({1.5+0.30*cos(300)},{1+0.30*sin(300)}) arc[start angle=300, end angle=200, radius=0.30];
+					\node[et] at (1.32,0.62) {$M_D$};
+					\draw[nota] (Be) -- ++(-0.44,0);  \node[et, below] at (2.24,-0.03) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (Be) -- ++(0,0.60);   \node[et, right] at (2.53,0.36) {$\tfrac{4}{5}p\ell$};
+			\end{tikzpicture}}
+\caption{La partizione in corpi liberi: i quattro corpi componenti e il
+	nodo~$C$, allontanati dalle rispettive posizioni, con i tratteggini
+	puntati a ricongiungere le interfacce separate. In grigio le grandezze
+	note dal Passo~1, in nero le incognite. Le azioni assiali delle bielle
+	sono assunte positive se di trazione; $H_C$, $V_C$ e $R_D$ sono
+	riferite all'asta $CD$, e sul nodo e sull'asta $EDB$ compaiono le
+	opposte.}
+			\label{fig:anelloTA_corpiliberi}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+			\medskip\noindent\textbf{Il nodo $C$: la componente orizzontale su
+			$CD$.}
+		Sul nodo agiscono la forza trasmessa dalla biella $AC$ --- che, essendo
+		l'asta scarica e rettilinea, coincide con la reazione in $A$ e vale
+		dunque $(H_A, V_A) = \bigl(\tfrac{1}{10}, \tfrac{1}{5}\bigr) p\ell$
+		---, la forza trasmessa dalla biella $CE$, che è verticale, e la
+		forza scambiata con l'asta $CD$. Nell'equilibrio alla traslazione
+		\emph{orizzontale} la biella $CE$ non compare, e la componente
+		orizzontale resta determinata da sola:
+		\[
+		H_C = H_A = \frac{1}{10}\,p\ell \quad (\rightarrow) ,
+		\]
+		diretta verso destra sull'asta $CD$ e, per azione e reazione, verso
+		sinistra sul nodo.
+		
+		\medskip\noindent\textbf{L'asta $CD$ e la prestazione statica del
+			glifo.}
+		Sull'asta $CD$ agiscono la forza in $C$ appena trovata, la coppia
+		oraria $p\ell^{2}$ in $G$ e l'azione del glifo in $D$. La coppia non
+		entra nelle equazioni di traslazione, sicché l'equilibrio orizzontale
+		dà immediatamente
+		\[
+		H_D = H_C = \frac{1}{10}\,p\ell \quad (\leftarrow) .
+		\]
+		Il glifo, però, non trasmette una forza qualsiasi: la sua reazione è
+		\emph{ortogonale al piano di scorrimento}, dunque ortogonale
+		all'asse $EB$. Poiché $EB$ è inclinato di $45^{\circ}$, tale è anche
+		la normale, e le due componenti della forza al glifo hanno lo stesso
+		modulo:
+		\begin{equation}
+			\label{eq:anelloTA_glifo}
+			V_D = H_D = \frac{1}{10}\,p\ell \quad (\downarrow) .
+		\end{equation}
+		È il riconoscimento che rende il glifo risolutivo: come la biella,
+		esso riduce a un solo scalare la forza trasmessa, aggiungendovi però
+		la coppia.
+		
+		\begin{oss}
+			Il rapporto fra le due componenti al glifo dipende dalla sola
+			giacitura dell'asta $EB$, non dal carico. Se l'asta fosse
+			inclinata di $1:2$ anziché di $1:1$, la stessa $H_D$
+			produrrebbe $V_D = H_D/2$. È il duale statico del fatto
+			cinematico che lo scorrimento avvenga nella direzione dell'asta.
+		\end{oss}
+		
+		L'equilibrio alla traslazione verticale dell'asta $CD$ fornisce ora
+		la componente mancante in $C$,
+		\[
+		V_C = V_D = \frac{1}{10}\,p\ell \quad (\uparrow) ,
+		\]
+		e l'equilibrio alla rotazione intorno a $C$ la coppia trasmessa dal
+		glifo. La componente $H_D$ ha braccio nullo rispetto a $C$, giacendo
+		$C$ e $D$ alla stessa quota; restano il momento di $V_D$ e la coppia
+		applicata, entrambi orari:
+		\[
+		M_D = V_D\,\ell + p\ell^{2}
+		= \frac{1}{10}\,p\ell^{2} + p\ell^{2}
+		= \frac{11}{10}\,p\ell^{2} \quad (\circlearrowleft) ,
+		\]
+		antioraria sull'asta $CD$ e, per azione e reazione, oraria sull'asta
+		$EDB$.
+		
+		\medskip\noindent\textbf{Il nodo $C$: la biella $CE$.}
+		Chiuso l'equilibrio dell'asta $CD$, si torna al nodo $C$ e se ne
+		scrive l'equilibrio alla traslazione verticale. Vi compaiono la
+		componente $V_A = \tfrac{1}{5}p\ell$ verso l'alto trasmessa da $AC$,
+		la reazione dell'asta $CD$ sul nodo, pari a $V_C = \tfrac{1}{10}p\ell$
+		verso il basso, e la forza della biella $CE$:
+		\[
+		N_{CE} = -\Bigl(V_A - V_C\Bigr) = -\frac{1}{10}\,p\ell ,
+		\]
+		negativa: anche $CE$ è un \emph{puntone}. Entrambe le bielle
+		dell'anello risultano dunque compresse.
+		
+		\medskip\noindent\textbf{Verifica sull'asta $EDB$.}
+		Tutte le azioni sull'asta $EDB$ sono ora note e il suo equilibrio,
+		non più utilizzato, funge da controllo. Vi agiscono la forza
+		$\tfrac{1}{10}p\ell$ verso l'alto trasmessa in $E$ dalla biella
+		compressa $CE$; in $D$ la forza di componenti
+		$\bigl(\tfrac{1}{10}, \tfrac{1}{10}\bigr)p\ell$, verso destra e verso
+		l'alto, e la coppia oraria $\tfrac{11}{10}p\ell^{2}$; la risultante
+		$p\ell$ del carico distribuito; e la reazione
+		$\bigl(-\tfrac{1}{10}, \tfrac{4}{5}\bigr)p\ell$ della cerniera in
+		$B$. Le traslazioni si annullano per ispezione,
+		\[
+		\frac{1}{10} - \frac{1}{10} = 0 ,
+		\qquad
+		\frac{1}{10} + \frac{1}{10} - 1 + \frac{4}{5} = 0 ,
+		\]
+		e altrettanto fa la rotazione intorno ad $E$,
+		\[
+		\underbrace{\frac{1}{5}\,p\ell^{2}}_{\text{forza in }D}
+		- \underbrace{\frac{11}{10}\,p\ell^{2}}_{\text{coppia in }D}
+		- \underbrace{\frac{1}{2}\,p\ell^{2}}_{\text{carico}}
+		+ \underbrace{\frac{7}{5}\,p\ell^{2}}_{\text{reazione in }B}
+		= 0 . \qquad\checkmark
+		\]
+		Le grandezze reattive sono così tutte determinate e possono essere
+		riportate sui corpi liberi, pronte per il tracciamento dei
+		diagrammi.
+		
+		%............................................................................................................................
+		\paragraph{Passo 3 --- Fibre inferiori e convenzioni di segno.}
+		%............................................................................................................................
+		
+		Si assumono come \emph{fibre inferiori} quelle che corrono al di
+		sotto della spezzata $A$--$C$--$D$--$B$ e al di sotto delle aste
+		$CE$ ed $ED$. Per l'asta $CD$, orizzontale, sono le fibre di
+		sotto nel senso ordinario; per l'asta $EDB$, rettilinea e
+		inclinata di $45^{\circ}$, sono quelle del lato inferiore
+		sinistro, e la scelta è la stessa sui due tratti $ED$ e $DB$,
+		come deve essere per un'asta continua.
+		
+		\begin{oss}
+			Per le due bielle la scelta è indifferente. Scariche e
+			vincolate ai soli estremi, esse trasmettono la sola forza
+			normale, il cui segno --- positivo se di trazione --- non
+			dipende dal lato delle fibre né dal verso di percorrenza.
+			La convenzione conta dunque solo per le due aste che portano
+			anche taglio e momento, la $CD$ e la $EDB$.
+		\end{oss}
+		
+		Su ciascuna asta si fissa il riferimento locale della
+		\CAPref{cap:Diagrammi_CS}, con l'asse $z^e$ diretto da~$C$ verso~$D$
+		sull'asta $CD$ e da~$E$ verso~$B$ sull'asta $EDB$.
+		
+		Resta da proiettare il carico distribuito sul riferimento locale
+		dell'asta $EDB$. Il carico vale $p$ per unità di proiezione
+		orizzontale; su un'asta inclinata di $\alpha = 45^{\circ}$ la
+		lunghezza di trave corrispondente all'unità di proiezione è
+		$1/\cos\alpha$, sicché per unità di linea d'asse il carico ha
+		intensità $p\cos\alpha = p/\sqrt2$. Le sue componenti locali sono
+		\[
+		p(z^e) = p\cos^{2}\alpha = \frac{p}{2},
+		\qquad
+		q(z^e) = \frac{p}{2}\sin 2\alpha = \frac{p}{2},
+		\]
+		la prima concorde con $+y^e$, cioè rivolta verso le fibre
+		inferiori, la seconda concorde con $+z^e$, cioè da~$E$ verso~$D$.
+		Entrambe sono uniformi e di uguale intensità: taglio e forza
+		normale decrescono perciò con la stessa pendenza $-p/2$ lungo
+		tutto il tratto caricato.
+		
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%  FIGURA C -- Passo 4: i diagrammi delle caratteristiche
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\begin{figure}[htbp!]
+			\centering
+			%% ── stili comuni ai quattro pannelli ────────────────────────────────
+			\tikzset{
+				frecc/.style  ={-{Stealth[length=1.5mm,width=0.9mm]}, line width=0.35pt, black},
+				trave/.style  ={line width=1.8pt, line cap=round, line join=round, black},
+				carico/.style ={-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt},
+				nota/.style   ={-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt, gray!70},
+				bordo/.style  ={line width=0.5pt},
+				fibra/.style  ={line width=0.4pt, black, dash pattern=on 3pt off 2pt},
+				proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+				terra/.style  ={line width=0.7pt},
+				dbordo/.style ={line width=0.7pt, black},
+				dtratt/.style ={line width=0.35pt, gray!55},
+				nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.0pt, line width=0.7pt},
+				segno/.style  ={circle, draw=black, fill=white, line width=0.4pt, inner sep=0pt, minimum size=5.2pt, font=\tiny},
+				dett/.style   ={gray!55, line width=0.35pt},
+				et/.style     ={font=\footnotesize},
+				ets/.style    ={font=\scriptsize}}
+			%% ── struttura nuda, comune ai quattro pannelli ──────────────────────
+			\newcommand{\anelloBase}{%
+				\coordinate (A) at (0,0);     \coordinate (B) at (2.5,0);
+				\coordinate (C) at (0.5,1);   \coordinate (D) at (1.5,1);
+				\coordinate (E) at (0.5,2);   \coordinate (G) at (1,1);
+				\pgfmathsetmacro{\rw}{0.0387}   \pgfmathsetmacro{\spess}{0.016}
+				\pgfmathsetmacro{\bw}{1.25*\rw} \pgfmathsetmacro{\ap}{0.15}
+				\pgfmathsetmacro{\ttx}{ 0.70711} \pgfmathsetmacro{\tty}{-0.70711}
+				\pgfmathsetmacro{\mmx}{-0.70711} \pgfmathsetmacro{\mmy}{-0.70711}
+				\pgfmathsetmacro{\offw}{\spess+\rw}  \pgfmathsetmacro{\offp}{\spess+2*\rw}
+				\pgfmathsetmacro{\Dgx}{1.5+\offp*\mmx}  \pgfmathsetmacro{\Dgy}{1+\offp*\mmy}
+				\pgfmathsetmacro{\sQ}{(1-\Dgy)/\tty}
+				\pgfmathsetmacro{\Qx}{\Dgx+\ttx*\sQ}
+				\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\ttx} \pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\tty}
+				\pgfmathsetmacro{\Wx}{1.5+\offw*\mmx}   \pgfmathsetmacro{\Wy}{1+\offw*\mmy}
+				\pgfmathsetmacro{\Pax}{\Pcx+\ap*\ttx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\tty}
+				\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\ttx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\tty}
+				\pgfmathsetmacro{\Wax}{\Wx+\bw*\ttx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\tty}
+				\pgfmathsetmacro{\Wbx}{\Wx-\bw*\ttx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\tty}
+				\draw[trave] (A)--(C);  \draw[trave] (C)--(E);
+				\draw[trave] (E)--(B);  \draw[trave] (C)--(\Qx,1);
+				\draw[line width=1.1pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+				\draw[line width=0.6pt, fill=white] (\Wax,\Way) circle (2.0pt);
+				\draw[line width=0.6pt, fill=white] (\Wbx,\Wby) circle (2.0pt);
+				\foreach \P in {A,B}{%
+					\draw[terra] (\P)--($(\P)+(-0.083,-0.143)$)--($(\P)+(0.083,-0.143)$)--cycle;
+					\draw[terra] ($(\P)+(-0.128,-0.143)$)--($(\P)+(0.128,-0.143)$);
+					\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+					\draw[terra, line width=0.4pt] ($(\P)+(\s,-0.143)$)--++(-0.038,-0.053);}
+				\foreach \P in {A,B,C,E} \node[nodoV] at (\P) {};
+				\node[et, left=3pt]  at (A) {$A$};   \node[et, right=3pt] at (B) {$B$};
+				\node[et, left=3pt]  at (C) {$C$};   \node[et, left=3pt]  at (E) {$E$};
+				\node[et] at (1.62,1.06) {$D$};}
+			%% ── ordinate di un tratto a variazione lineare ──────────────────────
+			%% #1,#2 estremi  #3,#4 valori  #5,#6 versore fibre inferiori  #7 scala
+			\newcommand{\ordLin}[7]{%
+				\foreach \t in {0,0.08333,...,1.0001}{%
+					\pgfmathsetmacro{\vv}{(#3+(#4-#3)*\t)*#7}
+					\draw[dtratt] ($(#1)!\t!(#2)$) -- ++({\vv*#5},{\vv*#6});}
+				\draw[dbordo] ($(#1)+({#3*#7*#5},{#3*#7*#6})$) -- ($(#2)+({#4*#7*#5},{#4*#7*#6})$);
+				\draw[dbordo] (#1) -- ++({#3*#7*#5},{#3*#7*#6});
+				\draw[dbordo] (#2) -- ++({#4*#7*#5},{#4*#7*#6});}
+			
+			\def\bbA{\path[use as bounding box] (-0.65,-0.45) rectangle (3.90,2.45);}
+			%% ── fattori di scala, autonomi ──────────────────────────────────────
+			\def\sN{1.45}  \def\sT{1.45}  \def\sM{0.70}
+			%% amplificazione locale del tratto positivo di N e T presso E
+			\def\amp{2}
+			%% altezza della gobba che ingrossa il lobo positivo di M presso E
+			\def\Bmp{0.12}
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\pgfmathsetmacro{\yp}{2.12}  \pgfmathsetmacro{\hp}{0.26}
+						\draw[proiez] (E) -- (0.5,\yp);  \draw[proiez] (1.5,1.6) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+						\foreach \x in {0.5,0.625,...,1.5} \draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+						\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+						\pgfmathsetmacro{\rc}{0.17}
+						\draw[line width=0.6pt] (G) -- (1,{1-\rc});
+						\draw[-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt]
+						(1,{1-\rc}) arc[start angle=270, end angle=90, radius=\rc];
+						\node[et] at (0.79,0.72) {$p\ell^2$};
+						\draw[nota] (A) -- ++(0.50,0);  \node[ets, above] at (0.50,-0.0) {$\tfrac{1}{10}p\ell$};
+						\draw[nota] (A) -- ++(0,0.50);  \node[ets, left]  at (-0.02,0.32) {$\tfrac{1}{5}p\ell$};
+						\draw[nota] (B) -- ++(-0.50,0); \node[ets, above] at (1.80,-0.0) {$\tfrac{1}{10}p\ell$};
+						\draw[nota] (B) -- ++(0,0.50);  \node[ets, right] at (2.53,0.32) {$\tfrac{4}{5}p\ell$};
+						\draw[fibra] (0.5,0.945) -- (1.5,0.945);
+						\draw[fibra] ($(E)+(-0.039,-0.039)$) -- ($(B)+(-0.039,-0.039)$);
+				\end{tikzpicture}}
+				\\[-12pt] $(a)$
+			\end{minipage}
+			\hfill
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (b)  T %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\coordinate (Dm) at (1.5,1);
+						%% CD
+						\ordLin{C}{D}{0.1}{0.1}{0}{-1}{\sT}
+						\node[segno] at (1.05,0.9275) {$+$};
+						\node[ets] at (0.84,0.7) {$\tfrac{1}{10}p\ell$};
+						%% ED : retta unica; l'ordinata in E e' fuori scala (x\amp)
+						\pgfmathsetmacro{\vE}{0.070711*\amp}
+						\ordLin{E}{Dm}{\vE}{-0.636396}{-0.70711}{-0.70711}{\sT}
+						\node[segno] at (1.417,1.517) {$-$};
+						\node[ets, right] at (2.21,1.70) {$\tfrac{9\sqrt2}{20}p\ell$};
+						\node[ets, left]  at (0.31,1.86) {$\tfrac{\sqrt2}{20}p\ell$};
+						%% DB
+						\ordLin{Dm}{B}{-0.494975}{-0.494975}{-0.70711}{-0.70711}{\sT}
+						\node[segno] at (2.254,0.754) {$-$};
+						\node[ets, right] at (3.06,0.46) {$\tfrac{7\sqrt2}{20}p\ell$};
+				\end{tikzpicture}}
+				\\[-12pt] $(b)$
+			\end{minipage}
+			
+			\vspace{6pt}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (c)  N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\coordinate (Dm) at (1.5,1);
+						%% AC
+						\ordLin{A}{C}{-0.223607}{-0.223607}{0.89443}{-0.44721}{\sN}
+						\node[segno] at (0.105,0.572) {$-$};
+						\node[ets, left] at (-0.05,0.90) {$\tfrac{\sqrt5}{10}p\ell$};
+						%% CE
+						\ordLin{C}{E}{-0.1}{-0.1}{1}{0}{\sN}
+						\node[segno] at (0.4275,1.72) {$-$};
+						\node[ets, left] at (0.28,1.42) {$\tfrac{1}{10}p\ell$};
+						%% CD : campitura riportata sotto l'asta
+						\ordLin{C}{D}{-0.1}{-0.1}{0}{1}{\sN}
+						\node[segno] at (1.05,0.9275) {$-$};
+						\node[ets] at (0.80,0.75) {$\tfrac{1}{10}p\ell$};
+						%% ED : retta unica; l'ordinata in E e' fuori scala (x\amp)
+						\pgfmathsetmacro{\vE}{0.070711*\amp}
+						\ordLin{E}{Dm}{\vE}{-0.636396}{-0.70711}{-0.70711}{\sN}
+						\node[segno] at (1.417,1.517) {$-$};
+						\node[ets, right] at (2.21,1.70) {$\tfrac{9\sqrt2}{20}p\ell$};
+						\node[ets, left]  at (0.31,1.86) {$\tfrac{\sqrt2}{20}p\ell$};
+						%% DB
+						\ordLin{Dm}{B}{-0.636396}{-0.636396}{-0.70711}{-0.70711}{\sN}
+						\node[segno] at (2.326,0.826) {$-$};
+						\node[ets, right] at (3.21,0.62) {$\tfrac{9\sqrt2}{20}p\ell$};
+				\end{tikzpicture}}
+				\\[-12pt] $(c)$
+			\end{minipage}
+			\hfill
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (d)  M %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\coordinate (Dm) at (1.5,1);
+						%% CD
+						\ordLin{C}{G}{0}{0.05}{0}{-1}{\sM}
+						\ordLin{G}{D}{1.05}{1.1}{0}{-1}{\sM}
+						\node[ets] (lMD) at (0.85,0.09) {$\tfrac{11}{10}p\ell^2$};
+						\draw[frecc] (lMD) -- (1.5,0.23);
+						\node[ets] (lMG) at (0.72,0.70) {$\tfrac{1}{20}p\ell^2$};
+						\draw[frecc] (lMG) -- (1.0,0.965);
+						%% ED : momento. E' la primitiva del taglio come lo si e' disegnato,
+						%%   cioe' della retta che va dall'ordinata amplificata in E a quella
+						%%   in D: una sola parabola, con il vertice esattamente dove il taglio
+						%%   disegnato si annulla, nulla in E e pari a -2/5 p l^2 in D.
+						\pgfmathsetmacro{\vEd}{0.070711*\amp}
+						\pgfmathsetmacro{\zv}{1.414214*\vEd/(\vEd+0.636396)}
+						\pgfmathsetmacro{\bq}{-0.4/(2-2.828427*\zv)}
+						\pgfmathsetmacro{\aq}{-2*\bq*\zv}
+						\foreach \t in {0,0.05,...,1.0001}{%
+							\pgfmathsetmacro{\zz}{\t*1.414214}
+							\pgfmathsetmacro{\vv}{(\aq*\zz+\bq*\zz*\zz)*\sM}
+							\draw[dtratt] ($(E)!\t!(Dm)$) -- ++({-\vv*0.70711},{-\vv*0.70711});}
+						\draw[dbordo] plot[domain=0:1.414214, samples=71, variable=\z]
+						({0.5+0.70711*\z-0.70711*(\aq*\z+\bq*\z*\z)*\sM},
+						{2-0.70711*\z-0.70711*(\aq*\z+\bq*\z*\z)*\sM});
+						\draw[dbordo] (Dm) -- ++({0.4*\sM*0.70711},{0.4*\sM*0.70711});
+						\node[ets] (lMx) at (0.81,1.38) {$\tfrac{1}{200}p\ell^2$};
+						\draw[frecc] (lMx) -- (0.542,1.842);
+						\node[ets, right] (lME) at (1.86,1.30) {$\tfrac{2}{5}p\ell^2$};
+						\draw[frecc] (lME) -- (1.698,1.198);
+						%% DB
+						\ordLin{Dm}{B}{0.7}{0}{-0.70711}{-0.70711}{\sM}
+						\node[ets] (lMB) at (1.80,0.10) {$\tfrac{7}{10}p\ell^2$};
+						\draw[frecc] (lMB) -- (1.153,0.653);
+						%% ── dettaglio presso E ──────────────────────────────────────────────
+						%%   Lunghezze ingrandite \kL volte, ordinate \kO volte: il lobo
+						%%   positivo e il suo massimo diventano leggibili.
+						\pgfmathsetmacro{\kL}{2}
+						\pgfmathsetmacro{\kO}{12}
+						\coordinate (O) at (2.72,2.05);
+						%% finestra sul diagramma
+						\draw[dett] (1.0020,1.6252) -- (0.8748,1.4980) -- (0.4010,1.9718) -- (0.5282,2.0990) -- cycle;
+						%% cornice del dettaglio
+						\draw[dett] (3.7524,1.3288) -- (3.4412,1.0176) -- (2.4936,1.9652) -- (2.8048,2.2764) -- cycle;
+						%% raccordi
+						\draw[dett] (0.5282,2.0990) -- (2.8048,2.2764);
+						\draw[dett] (1.0020,1.6252) -- (2.4936,1.9652);
+						%% asta
+						\draw[line width=1.4pt, line cap=round]
+						($(O)+(-0.05*\kL*0.70711,0.05*\kL*0.70711)$) --
+						($(O)+( 0.62*\kL*0.70711,-0.62*\kL*0.70711)$);
+						%% ordinate
+						\foreach \z in {0,0.04,...,0.6201}{%
+							\pgfmathsetmacro{\vv}{(\aq*\z+\bq*\z*\z)*\sM*\kO}
+							\draw[dtratt] ($(O)+(\z*\kL*0.70711,-\z*\kL*0.70711)$)
+							-- ++({-\vv*0.70711},{-\vv*0.70711});}
+						\draw[dbordo] plot[domain=0:0.62, samples=41, variable=\z]
+						({2.72+\z*\kL*0.70711-0.70711*(\aq*\z+\bq*\z*\z)*\sM*\kO},
+						{2.05-\z*\kL*0.70711-0.70711*(\aq*\z+\bq*\z*\z)*\sM*\kO});
+						\pgfmathsetmacro{\vend}{(\aq*0.62+\bq*0.62*0.62)*\sM*\kO}
+						\draw[dbordo] ($(O)+(0.62*\kL*0.70711,-0.62*\kL*0.70711)$)
+						-- ++({-\vend*0.70711},{-\vend*0.70711});
+						\node[nodoV, minimum size=3.4pt] at (O) {};
+						\node[ets, left=2pt] at (O) {$E$};
+				\end{tikzpicture}}
+				\\[-12pt] $(d)$
+			\end{minipage}
+		\caption{Diagrammi delle caratteristiche della sollecitazione:
+			\emph{(a)} schema di riferimento, con i carichi, le reazioni esterne
+			e le fibre inferiori assunte; \emph{(b)} taglio, \emph{(c)} forza
+			normale, \emph{(d)} momento flettente.
+			Presso~$E$, dove le ordinate sono di due ordini di grandezza minori
+			che altrove, l'inversione di segno è tracciata fuori scala.}
+			\label{fig:anelloTA_diagrammi}
+		\end{figure}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		
+		\paragraph{Passo 4 --- Tracciamento dei diagrammi.}
+		
+		Le grandezze reattive sono tutte note e i diagrammi si tracciano tratto
+		per tratto; il risultato è nella \FIGref{fig:anelloTA_diagrammi}, il
+		cui pannello~\emph{(a)} riepiloga carichi, reazioni e fibre inferiori
+		assunte, mentre i tre successivi hanno ciascuno scala propria.
+		
+		\medskip\noindent\textbf{Le bielle.} Sulle aste $AC$ e $CE$ il taglio e il momento sono ovunque nulli e la
+		forza normale è costante. Per la biella $AC$ essa coincide, in modulo,
+		con la reazione della cerniera in $A$, che la biella trasmette
+		inalterata:
+		\[
+		N_{AC} = -\sqrt{H_A^{2}+V_A^{2}} = -\frac{\sqrt5}{10}\,p\ell,
+		\qquad
+		N_{CE} = -\frac{1}{10}\,p\ell .
+		\]
+		Entrambe le bielle dell'anello risultano compresse.
+		
+		\medskip\noindent\textbf{L'asta $CD$.}
+		Le due forze in~$C$ e in~$D$ sono uguali e opposte e non vi sono
+		carichi distribuiti: forza normale e taglio sono uniformi,
+		\[
+		N = -\frac{1}{10}\,p\ell ,
+		\qquad
+		T = +\frac{1}{10}\,p\ell .
+		\]
+		Il momento parte da zero nella cerniera~$C$ e cresce linearmente
+		con pendenza $T$, raggiungendo $\tfrac{1}{20}p\ell^{2}$ appena
+		prima della mezzeria. Lì la coppia oraria $p\ell^{2}$ produce un
+		\emph{salto} di pari intensità, e il diagramma risale a
+		$\tfrac{21}{20}p\ell^{2}$; da qui prosegue con la stessa pendenza
+		fino a
+		\[
+		M_D = \frac{11}{10}\,p\ell^{2}
+		\]
+		in corrispondenza del glifo, dove il valore coincide con la coppia
+		che la connessione trasmette. Il momento è ovunque positivo:
+		l'asta $CD$ ha le fibre inferiori tese su tutta la luce, ma il
+		diagramma è quasi interamente dovuto alla coppia applicata, non
+		alle forze di estremità.
+		
+		\medskip\noindent\textbf{L'asta $EDB$, tratto $ED$.}
+		Nella cerniera~$E$ agisce la sola forza $\tfrac{1}{10}p\ell$
+		verticale trasmessa dalla biella $CE$; le sue componenti locali
+		danno
+		\[
+		N(0) = T(0) = \frac{\sqrt2}{20}\,p\ell.
+		\]
+		Entrambe decrescono poi linearmente con pendenza $-p/2$  e 
+		si annullano alla stessa ascissa $z^e = \tfrac{\sqrt2}{10}\ell$,
+		cioè a un decimo della proiezione orizzontale dall'estremo~$E$; nella
+		\FIGref{fig:anelloTA_diagrammi}\,(b) e (c) il tratto positivo che
+		precede l'inversione è tracciato fuori scala.	A ridosso del glifo valgono
+		\[
+		N(D^-) = T(D^-) = -\frac{9\sqrt2}{20}\,p\ell.
+		\]
+		Il momento, nullo in~$E$, sale al modesto massimo
+		$\tfrac{1}{200}p\ell^{2}$ dove il taglio si annulla --- si veda il
+		dettaglio nella \FIGref{fig:anelloTA_diagrammi}\,(d) ---, poi discende
+		con legge parabolica fino a
+		\[
+		M(D^-) = -\frac{2}{5}\,p\ell^{2} ,
+		\]
+		negativo: sul tratto $ED$, salvo il breve tratto iniziale, sono
+		tese le fibre \emph{superiori}.
+		
+		\begin{oss}
+			Sul tratto $ED$ forza normale e taglio hanno lo stesso
+			diagramma. Non è una coincidenza: tutte le forze che agiscono
+			sul tronco compreso fra~$E$ e la sezione corrente --- la forza
+			in~$E$ e il carico distribuito --- sono verticali, e su un'asta
+			inclinata di $45^{\circ}$ una forza verticale si proietta in
+			parti uguali sull'asse e sulla normale. La coincidenza si
+			interrompe in~$D$, dove interviene una forza che verticale
+			non è.
+		\end{oss}
+		
+		\medskip\noindent\textbf{L'asta $EDB$, tratto $DB$.}
+		In~$D$ il glifo trasmette una forza ortogonale al piano di
+		scorrimento e una coppia. La forza, avendo componente assiale
+		nulla, lascia continua la forza normale e fa saltare il taglio di
+		$\tfrac{\sqrt2}{10}p\ell$; la coppia fa saltare il momento di
+		$\tfrac{11}{10}p\ell^{2}$. Oltre il glifo, non essendovi più
+		carico, forza normale e taglio restano uniformi:
+		\[
+		N = -\frac{9\sqrt2}{20}\,p\ell ,
+		\qquad
+		T = -\frac{7\sqrt2}{20}\,p\ell ,
+		\]
+		e il momento, passato di colpo da $-\tfrac{2}{5}p\ell^{2}$ a
+		\[
+		M(D^+) = +\frac{7}{10}\,p\ell^{2} ,
+		\]
+		decresce linearmente fino ad annullarsi nella cerniera~$B$, come
+		dev'essere. Sul tratto $DB$ sono dunque tese le fibre inferiori.
+		
+		\begin{oss}[Verifiche di chiusura]
+			Tre controlli chiudono il tracciamento. Il momento si annulla
+			nelle tre cerniere $C$, $E$ e $B$, dove nessuna coppia è
+			trasmessa. I salti del momento in mezzeria di $CD$ e in~$D$
+			valgono esattamente le coppie applicate, $p\ell^{2}$ e
+			$\tfrac{11}{10}p\ell^{2}$. E su ogni tratto la pendenza del
+			diagramma del momento coincide con l'ordinata del taglio:
+			sul tratto $DB$, per esempio, il momento cala di
+			$\tfrac{7}{10}p\ell^{2}$ su una lunghezza $\sqrt2\,\ell$, con
+			pendenza $-\tfrac{7\sqrt2}{20}p\ell$, che è il valore del
+			taglio.
+		\end{oss}
 
+	\end{svolgimento}
+	
+	
+\end{esercizio}
 

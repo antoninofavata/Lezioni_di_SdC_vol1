@@ -58,23 +58,47 @@ metodi di analisi cinematica e statica.
 %----------------------------------------------------------------------------------------------------------------------------
 Un \emph{sistema reticolare}\index{sistema reticolare|textbf} è un sistema di travi
 rettilinee --- dette \emph{aste}\index{asta|textbf} --- collegate
-esclusivamente mediante cerniere interne e vincolato
+esclusivamente mediante cerniere interne poste agli estremi dei rispettivi assi, e vincolato
 al suolo esclusivamente mediante cerniere e carrelli.
+
+\begin{oss}[La cerniera come punto dell'asse]\label{oss:cerniera_su_asse}
+		La clausola che colloca le cerniere sugli assi delle aste
+		non è pleonastica: è ciò che garantisce la concorrenza
+		degli assi in ciascun nodo, e con essa la coincidenza fra
+		la retta d'azione della forza scambiata e l'asse della
+		trave su cui sono definite le caratteristiche della
+		sollecitazione.
+		
+		Nei collegamenti reali questa coincidenza è approssimata.
+		Quando le rette d'azione non concorrono in un punto, la
+		forza scambiata resta diretta secondo la congiungente
+		delle cerniere --- il teorema del corpo soggetto a due
+		forze non ne risente --- ma tale retta non è più l'asse,
+		e nella riduzione alla sezione compaiono un taglio e un
+		momento pari al prodotto dello sforzo normale per
+		l'eccentricità del collegamento. Si tratta di una
+		flessione secondaria che non altera né l'indice $\nu$ né
+		il rango della matrice cinematica, perché la
+		classificazione è costruita sulla congiungente delle
+		cerniere e non sull'asse.
+\end{oss}
+
 
 Nella teoria generale dei sistemi di corpi rigidi
 sviluppata nella Parte~II, le travi sono i
-protagonisti e le connessioni sono i vincoli.
-Nei sistemi reticolari questa prospettiva rimane
-valida --- ed è la \emph{prima lettura} --- ma
-ammette una lettura alternativa, la
-\emph{seconda lettura}\index{lettura topologica!seconda}, in cui i punti di
-connessione --- i \emph{nodi a cerniera}\index{nodo!di reticolo|textbf} ---
-diventano i protagonisti e le aste diventano
-i vincoli. Il passaggio da una lettura all'altra
-è reso possibile da una proprietà geometrica
-peculiare delle cerniere: la rotazione di ogni
-asta è univocamente determinata dalle posizioni
-dei due nodi di estremità e non è quindi un
+protagonisti e le connessioni sono i vincoli: è la
+\emph{descrizione per corpi} del
+\CAPref{cap:assemblaggi_travi}, che nei sistemi
+reticolari rimane valida ed è quella che qui si chiama
+\emph{prima lettura}. L'omogeneità delle connessioni
+rende però disponibile anche la \emph{descrizione per
+	nodi}, la \emph{seconda lettura}, in cui i punti di
+connessione --- i \emph{nodi a cerniera} --- diventano
+i protagonisti e le aste diventano i vincoli. Il
+passaggio da una all'altra è reso possibile da una
+proprietà geometrica peculiare delle cerniere: la
+rotazione di ogni asta è univocamente determinata dalle
+posizioni dei due nodi di estremità e non è quindi un
 grado di libertà indipendente del sistema.
 
 \begin{itemize}[noitemsep]
@@ -82,8 +106,8 @@ grado di libertà indipendente del sistema.
 		rigidi}: le aste sono i protagonisti, le cerniere
 	sono i connettori. Ogni asta contribuisce con
 	$n = 3$ gradi di libertà (due traslazioni e una
-	rotazione); ogni cerniera interna tra $e_i$ aste
-	convergenti impone $m_i = 2(e_i-1)$ equazioni
+	rotazione); ogni cerniera interna tra $n_i$ aste
+	convergenti impone $m_i = 2(n_i-1)$ equazioni
 	di congruenza (uguaglianza degli spostamenti
 	traslazionali). Per dualità $\bm{B}=\bm{A}^\top$,
 	il problema statico ha come variabili le reazioni
@@ -102,7 +126,7 @@ grado di libertà indipendente del sistema.
 	$1$ equazione di vincolo scalare ---
 	l'inestensibilità\index{inestensibilita@inestensibilità} --- tra i due nodi che connette.
 	Per dualità, il problema statico ha come variabili
-	i soli sforzi normali $N_e$ nelle aste e le
+	i soli sforzi normali $N^e$ nelle aste e le
 	reazioni vincolari esterne, con le equazioni di
 	equilibrio nodale --- due proiezioni per ciascun
 	nodo libero --- come equazioni duali.
@@ -132,7 +156,11 @@ grado di libertà indipendente del sistema.
 	e $n_a$ equazioni di inestensibilità --- è non
 	solo equivalente alla prima, ma è quella che
 	coglie in modo diretto la struttura cinematica
-	del sistema.
+	del sistema. Questa proprietà cinematica ha un esatto corrispettivo
+		statico: che la rotazione dell'asta non sia un parametro
+		autonomo e che l'asta trasmetta il solo sforzo normale
+		sono la medesima affermazione, letta nei due spazi duali
+		(\TABref{tab:molt_nodale} del \CAPref{cap:telai_piani}).
 \end{oss}
 
 
@@ -143,8 +171,11 @@ grado di libertà indipendente del sistema.
 
 Le due letture topologiche sono algebricamente
 equivalenti e conducono allo stesso indice di
-classificazione $\nu$. Nella prima lettura si
-applica direttamente la formula generale dei
+classificazione $\nu$, come dev'essere: i meccanismi e
+gli stati di autotensione sono proprietà del sistema
+fisico e non della descrizione adottata
+(\SECref{subsec:bilancio_partizione}). Nella prima
+lettura si applica direttamente la formula generale dei
 sistemi di corpi rigidi:
 \[
 \nu = 3n_a - m_{\text{int}} - m_{\text{est}},
@@ -251,7 +282,7 @@ Con $n_a = 11$ aste e $m_{\text{est}} = 3$
 (cerniera di molteplicità $2$ nel nodo~$1$,
 carrello di molteplicità $1$ nel nodo~$4$),
 la molteplicità interna complessiva si calcola
-nodo per nodo: $m_i = 2(e_i - 1)$ con $e_i$
+nodo per nodo: $m_i = 2(n_i - 1)$ con $n_i$
 aste convergenti. I contributi sono $2$ nel
 nodo~$1$ (due aste), $6$ nel nodo~$2$ (quattro
 aste), $6$ nel nodo~$3$ (quattro aste), $2$ nel
@@ -1349,7 +1380,7 @@ stato adottato in alcune grandi travature da ponte,
 anche ferroviarie, in cui la suddivisione del
 pannello riduce la lunghezza libera delle diagonali
 e quindi la loro sensibilità all'instabilità
-(\CAPref{stabilita_travi} Vol.~III).
+(cfr.~Vol.~III).
 
 Anche qui un'asta particolare gioca il ruolo che
 il montante $AB$ ha nelle maglie romboidali: il
@@ -2392,21 +2423,21 @@ derivata, non un parametro autonomo --- come mostrato
 nell'\OSSref{oss:rotazione_asta}.
 
 Per l'asta $e$ che connette i nodi $P_i$ e $P_j$,
-sia $\mathbf{a}_e = \overrightarrow{P_iP_j}/|\overrightarrow{P_iP_j}|$
+sia $\mathbf{a}^e = \overrightarrow{P_iP_j}/|\overrightarrow{P_iP_j}|$
 il versore orientato da $P_i$ verso $P_j$.
 La condizione di \emph{inestensibilità} si scrive:
 \begin{equation}\label{eq:inestensibilita}
-	\mathbf{a}_e \cdot (\mathbf{u}_j - \mathbf{u}_i) = \varrho_e,
+	\mathbf{a}^e \cdot (\mathbf{u}_j - \mathbf{u}_i) = \varrho^e,
 \end{equation}
 dove $\mathbf{u}_k$ è il vettore spostamento del nodo $k$
-e $\varrho_e$ è la distorsione estensionale dell'asta
+e $\varrho^e$ è la distorsione estensionale dell'asta
 (nulla in assenza di cedimenti del vincolo di rigidità
-estensionale). Indicato con $\alpha_e$ l'angolo dell'asta
+estensionale). Indicato con $\alpha^e$ l'angolo dell'asta
 rispetto all'asse $x$ globale, la rappresentazione numerica
-$\bm{a}_e = (\cos\alpha_e\;\;\sin\alpha_e)^\top$
+$\bm{a}^e = (\cos\alpha^e\;\;\sin\alpha^e)^\top$
 porta alla forma scalare operativa:
 \begin{equation}\label{eq:inest_scalare}
-	(u_j - u_i)\cos\alpha_e + (v_j - v_i)\sin\alpha_e = \varrho_e.
+	(u_j - u_i)\cos\alpha^e + (v_j - v_i)\sin\alpha^e = \varrho^e.
 \end{equation}
 Il sistema delle~\EQUref{eq:inest_scalare} scritto
 per tutte le $n_a$ aste, insieme ai vincoli esterni,
@@ -2419,7 +2450,7 @@ le variabili cinematiche per la generica asta $e$.
 	\centering
 	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small]
 		
-		\def\ang{30}    % angolo alpha_e in gradi
+		\def\ang{30}    % angolo alpha^e in gradi
 		\def\Lb{3.8}    % lunghezza asta
 		\def\sep{6.0}   % offset pannello destro
 		\def\ds{0.75}   % lunghezza frecce spostamento
@@ -2441,12 +2472,12 @@ le variabili cinematiche per la generica asta $e$.
 		\draw[->] (-1.0, -1.0) -- ++(1.3, 0) node[right] {$x$};
 		\draw[->] (-1.0, -1.0) -- ++(0, 1.2) node[above] {$y$};
 		
-		%% Segmento orizzontale grigio (riferimento per alpha_e)
+		%% Segmento orizzontale grigio (riferimento per alpha^e)
 		\draw[gray!60, thin] (Pi) -- ++(1.8, 0);
 		
-		%% Arco alpha_e in grigio, raggio più grande e spostato a destra
+		%% Arco alpha^e in grigio, raggio più grande e spostato a destra
 		\draw[->, gray!60] (1.30, 0) arc (0:\ang:1.30);
-		\node[gray!80] at ({1.60*cos(\ang/2)}, {0.20}) {$\alpha_e$};
+		\node[gray!80] at ({1.60*cos(\ang/2)}, {0.20}) {$\alpha^e$};
 		
 		%% Fibra inferiore (tratteggiata, grigia)
 		\draw[dashed, gray!70, line width=1.0pt] (Pif) -- (Pjf);
@@ -2507,28 +2538,28 @@ le variabili cinematiche per la generica asta $e$.
 		\node[above left]  at (Pis) {$P_i$};
 		\node[above left] at (Pjs) {$P_j$};
 		
-		%% N_e in P_j: direzione +a_e (verso uscente estremo destro)
+		%% N^e in P_j: direzione +a_e (verso uscente estremo destro)
 		\draw[->, line width=1.3pt] (Pjs)
 		-- ++({cos(\ang)*\fn}, {sin(\ang)*\fn})
-		node[below right] {$N_e$};
+		node[below right] {$N^e$};
 		
-		%% N_e in P_i: direzione -a_e (verso uscente estremo sinistro)
+		%% N^e in P_i: direzione -a_e (verso uscente estremo sinistro)
 		\draw[->, line width=1.3pt] (Pis)
 		-- ++({-cos(\ang)*\fn}, {-sin(\ang)*\fn})
-		node[below right] {$N_e$};
+		node[below right] {$N^e$};
 		
 		%% Etichetta pannello
 		\node[font=\small] at ({\sep + 0.5*\Lb*cos(\ang)}, {-1.35}) {$(b)$};
 		
 	\end{tikzpicture}
 	\caption{Asta reticolare $e$ che connette i nodi $P_i$ (iniziale)
-		e $P_j$ (finale), inclinata di $\alpha_e$ rispetto all'asse
+		e $P_j$ (finale), inclinata di $\alpha^e$ rispetto all'asse
 		globale $x$. La linea tratteggiata indica la fibra inferiore
 		e definisce il verso di percorrenza da $P_i$ a $P_j$.
 		\emph{(a)}~Cinematica: spostamenti nodali $(u_i,\,v_i)$ e
 		$(u_j,\,v_j)$ nel riferimento globale $(x,\,y)$.
-		\emph{(b)}~Statica: sforzo normale $N_e$
-		($N_e > 0$ indica trazione) alle due sezioni di
+		\emph{(b)}~Statica: sforzo normale $N^e$
+		($N^e > 0$ indica trazione) alle due sezioni di
 		estremità, con il verso convenzionale positivo rivolto
 		verso l'esterno dell'asta.}
 	\label{fig:asta_reticolare_cin_stat}
@@ -2541,7 +2572,7 @@ le variabili cinematiche per la generica asta $e$.
 \label{subsec:equilibrio_nodale}
 
 Il problema statico ha come variabili i soli sforzi
-normali $N_e$ nelle $n_a$ aste --- taglio e momento
+normali $N^e$ nelle $n_a$ aste --- taglio e momento
 sono identicamente nulli per ipotesi di carichi nodali
 --- e le $m_\text{est}$ reazioni vincolari esterne.
 Le equazioni sono le $2n_n$ equazioni di equilibrio
@@ -2552,19 +2583,19 @@ l'equilibrio nel riferimento globale si scrive in forma
 vettoriale:
 \begin{equation}\label{eq:equilibrio_nodale}
 	\sum_{e \in \mathcal{E}_i}
-	\mp\, N_e\, \mathbf{a}_e
+	\mp\, N^e\, \mathbf{a}^e
 	+ \mathbf{f}_i + \mathbf{r}_i = \bm{0},
 \end{equation}
 dove $\mathcal{E}_i$ è l'insieme delle aste convergenti
 nel nodo $i$; il segno $-$ vale quando $i$ è l'estremo
 iniziale dell'asta $e$ e il segno $+$ quando $i$ è
-l'estremo finale; $N_e > 0$ indica trazione;
+l'estremo finale; $N^e > 0$ indica trazione;
 $\mathbf{f}_i$ è la forza
 attiva applicata al nodo $i$; $\mathbf{r}_i $ è la reazione vincolare
 esterna nel nodo $i$, nulla per i nodi liberi. 
 Il pannello $(b)$ della \FIGref{fig:asta_reticolare_cin_stat}
 mostra il contributo dell'asta $e$ all'equilibrio dei
-nodi $P_i$ e $P_j$: lo sforzo normale $N_e$ alle due
+nodi $P_i$ e $P_j$: lo sforzo normale $N^e$ alle due
 sezioni di estremità, con il verso convenzionale positivo
 rivolto verso l'esterno dell'asta.
 
@@ -2614,15 +2645,15 @@ singolo anziché lo spostamento relativo tra due nodi.
 
 
 \begin{oss}[Convenzione di segno nell'equilibrio nodale]
-	La formula $\mp\, N_e\, \bm{a}_e$ è equivalente
+	La formula $\mp\, N^e\, \mathbf{a}^e$ è equivalente
 	alla regola: \emph{un'asta in trazione tira entrambi
-		i nodi verso il nodo opposto}. Per $N_e > 0$ e nodo
-	$i$ estremo iniziale, il termine è $-N_e\mathbf{a}_e$,
-	ossia nel verso $-\bm{a}_e$, verso il nodo $j$:
+		i nodi verso il nodo opposto}. Per $N^e > 0$ e nodo
+	$i$ estremo iniziale, il termine è $-N^e\mathbf{a}^e$,
+	ossia nel verso $-\mathbf{a}^e$, verso il nodo $j$:
 	fisicamente, l'asta tende ad avvicinare $i$ a $j$.
-	All'estremo finale $j$ il termine è $+N_e\mathbf{a}_e$,
+	All'estremo finale $j$ il termine è $+N^e\mathbf{a}^e$,
 	ossia verso $i$: anche $j$ è attirato verso $i$.
-	Per un'asta in compressione ($N_e < 0$) i segni
+	Per un'asta in compressione ($N^e < 0$) i segni
 	si invertono e l'asta spinge i nodi verso l'esterno,
 	il che è fisicamente corretto.
 \end{oss}
@@ -2632,17 +2663,17 @@ singolo anziché lo spostamento relativo tra due nodi.
 	Le \EQUref{eq:inestensibilita}
 	e~\EQUref{eq:equilibrio_nodale} sono duali nel
 	senso della struttura $\bm{B} = \bm{A}^\top$:
-	il versore $\bm{a}_e$ che proietta lo spostamento
+	il versore $\bm{a}^e$ che proietta lo spostamento
 	relativo dei nodi nella direzione dell'asta in
 	cinematica è lo stesso che distribuisce lo sforzo
 	normale nelle direzioni globali in statica.
 	La matrice cinematica $\bm{A}$ e la matrice di
 	equilibrio $\bm{B} = \bm{A}^\top$ sono costruite
 	con gli stessi coefficienti geometrici
-	$(\cos\alpha_e,\, \sin\alpha_e)$; il dato di
-	distorsione $\varrho_e$ appare come termine noto
+	$(\cos\alpha^e,\, \sin\alpha^e)$; il dato di
+	distorsione $\varrho^e$ appare come termine noto
 	in cinematica esattamente nella posizione duale in
-	cui lo sforzo $N_e$ è l'incognita in statica.
+	cui lo sforzo $N^e$ è l'incognita in statica.
 \end{oss}
 
 
@@ -2656,7 +2687,7 @@ sistema cinematico globale
 \]
 dove $\bm{u}$ raccoglie le $2n_n$ incognite cinematiche
 nodali $(u_i, v_i)$ e $\bm{s}$ raccoglie i dati di
-distorsione $\varrho_e$ e i cedimenti vincolari $s_k$.
+distorsione $\varrho^e$ e i cedimenti vincolari $s_k$.
 Le equazioni di equilibrio nodale~\EQUref{eq:equilibrio_nodale}
 scritte per tutti i nodi si assemblano nel sistema
 statico globale
@@ -2664,13 +2695,13 @@ statico globale
 \bm{B}\bm{r} + \bm{f} = \bm{0},
 \]
 dove $\bm{r}$ raccoglie le $n_a$ incognite statiche
-$N_e$ e le $m_\text{est}$ reazioni vincolari esterne,
+$N^e$ e le $m_\text{est}$ reazioni vincolari esterne,
 e $\bm{f}$ raccoglie i carichi nodali applicati.
 I due sistemi sono duali nel senso della struttura
 $\bm{B} = \bm{A}^\top$: la matrice cinematica $\bm{A}$
 e la matrice di equilibrio $\bm{B}$ sono costruite con
-gli stessi coefficienti geometrici $(\cos\alpha_e,\,
-\sin\alpha_e)$, e il vettore dei dati $\bm{s}$ occupa
+gli stessi coefficienti geometrici $(\cos\alpha^e,\,
+\sin\alpha^e)$, e il vettore dei dati $\bm{s}$ occupa
 in cinematica la posizione duale di quella occupata
 dal vettore delle incognite $\bm{r}$ in statica.
 
@@ -2736,15 +2767,15 @@ la riga corrispondente all'asta $e$ che connette
 i nodi $i$ e $j$ ha la forma
 \[
 \bigl(\cdots\;\;
-{-\cos\alpha_e}\;\;{-\sin\alpha_e}
+{-\cos\alpha^e}\;\;{-\sin\alpha^e}
 \;\;\cdots\;\;
-{\cos\alpha_e}\;\;{\sin\alpha_e}
-\;\;\cdots\bigr)\,\bm{u} = \varrho_e,
+{\cos\alpha^e}\;\;{\sin\alpha^e}
+\;\;\cdots\bigr)\,\bm{u} = \varrho^e,
 \]
-con i coefficienti $\pm(\cos\alpha_e, \sin\alpha_e)$
+con i coefficienti $\pm(\cos\alpha^e, \sin\alpha^e)$
 nelle colonne corrispondenti ai nodi $i$ e $j$
 e zero altrove. Il termine noto $\bm{s}_\text{int}
-= (\varrho_1\;\;\cdots\;\;\varrho_{n_a})^\top$
+= (\varrho^1\;\;\cdots\;\;\varrho^{n_a})^\top$
 raccoglie le distorsioni estensionali delle aste:
 anch'esso è nullo in assenza di distorsioni.
 
@@ -2887,25 +2918,25 @@ aste rimangono inestese: esse costringono il moto relativo a una
 rotazione intorno al punto di intersezione delle loro rette d'azione.
 Tale punto è il \emph{polo dell'asta} $i$; essendo il centro della
 rotazione \emph{relativa} fra i due tronconi, lo si indica con
-$P_i\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
+$P^e\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
 
 \begin{oss}[Il polo come centro di rotazione relativa]
-	Quando una distorsione estensionale $\varrho_w$ è imposta nell'asta
-	$i$, i due tronconi ruotano rigidamente l'uno rispetto all'altro
-	intorno al polo $P_i\equiv C_{L,R}$ di un angolo
+	Quando una distorsione estensionale $\varrho_w\coloneqq \varrho_w^e$ è imposta nell'asta
+	$e$, i due tronconi ruotano rigidamente l'uno rispetto all'altro
+	intorno al polo $P^e\equiv C_{L,R}$ di un angolo
 	\begin{equation}\label{eq:rotazione_polo}
 		\Delta\vartheta = \frac{\varrho_w}{d},
 	\end{equation}
-	dove $d$ è il braccio dell'asta $i$ rispetto a $P_i$, ossia la
-	distanza tra $P_i$ e la retta d'azione dell'asta
+	dove $d\coloneqq d^e$ è il braccio dell'asta $e$ rispetto a $P^e$, ossia la
+	distanza tra $P^e$ e la retta d'azione dell'asta
 	(\FIGref{fig:polo_distorsione}\,(a--b), a destra). Lo spostamento di ciascun nodo è
-	quindi perpendicolare alla congiungente il nodo con $P_i$, e
-	proporzionale alla distanza da $P_i$.
+	quindi perpendicolare alla congiungente il nodo con $P^e$, e
+	proporzionale alla distanza da $P^e$.
 	
-	Lo stesso polo $P_i$ compare nel problema statico duale come
+	Lo stesso polo $P^e$ compare nel problema statico duale come
 	\emph{polo di Ritter}\index{polo dell'asta}: il punto rispetto al quale si scrive
 	l'equazione di momento per determinare lo sforzo normale nell'asta
-	$i$. La coincidenza non è casuale: è la manifestazione geometrica
+	$e$. La coincidenza non è casuale: è la manifestazione geometrica
 	della dualità $\bm{B} = \bm{A}^{\top}$ nelle travature reticolari.
 \end{oss}
 
@@ -2990,7 +3021,7 @@ $P_i\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
 				\foreach \p in {(0,0),(0,\bh)} \node[nodo]at\p{};
 				\node[nodo]at(TR){};
 				\node[nodo]at(BR){};
-				\node[etich,above]at(0,\bh+0.10){$P_i\equiv C_{LR}$};
+				\node[etich,above]at(0,\bh+0.10){$P^e\equiv C_{LR}$};
 			\end{scope}
 			
 			
@@ -3069,7 +3100,7 @@ $P_i\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
 					\draw[line width=0.3pt](q1)--($(q1)+(q2)-(Hh)$)--(q2);
 					%% centro relativo improprio: freccia orizzontale (direzione all'infinito)
 					\draw[->, line width=0.7pt](0.18,\bh+1.4)--(\gp-0.18,\bh+1.4);
-					\node[etich,above]at($(0.5*\gp,\bh+1.4)$){$P_i\equiv C_{L,R}^\infty$};
+					\node[etich,above]at($(0.5*\gp,\bh+1.4)$){$P^e\equiv C_{L,R}^\infty$};
 					
 					\draw[line width=0.5pt](O)++(-90:0.34)	arc[start angle=-90, end angle=\dang, radius=0.34];
 					\node[etich]at($(O)+({0.5*(-90+\dang)}:0.58)+(-0.08,0.06)$){$\alpha$};
@@ -3111,7 +3142,7 @@ $P_i\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
 				
 				\foreach \p in {(0,0),(0,\bh),(\gp,0)} \node[nodo]at\p{};
 				\node[nodo]at(TRc){};
-				\node[etich,below]at(\gp,-0.12){$P_i \equiv C_{LR}$};
+				\node[etich,below]at(\gp,-0.12){$P^e \equiv C_{LR}$};
 			\end{scope}
 			
 			
@@ -3184,7 +3215,7 @@ $P_i\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
 				\foreach \d in {D1,D2,D3,D4,D5,D6,D7} \node[nodo]at(\d){};
 				\node[nodo]at(CR){};
 				\node[etich,above left]at(D1){$C_L$};
-				\node[etich,above]at($(N6)+(0,0.12)$){$C_{L,R}\equiv P_i$};
+				\node[etich,above]at($(N6)+(0,0.12)$){$C_{L,R}\equiv P^e$};
 				\node[etich,above right]at(CR){$C_R$};
 				%% quota h (a sinistra)
 				\draw[ext](-0.48,0)--(-1.05,0);
@@ -3267,18 +3298,18 @@ $P_i\equiv C_{L,R}$ (\FIGref{fig:polo_distorsione}\,(b)).
 	\end{tikzpicture}}
 	\caption{Effetto di una distorsione estensionale $\varrho_w$ in una
 		travatura reticolare piana. \emph{(a)}~caso generale, con polo
-		proprio $C\equiv P_i$ e rotazione relativa
+		proprio $C\equiv P^e$ e rotazione relativa
 		$\Delta\vartheta=\varrho_w/d$; \emph{(b)}~polo improprio (a
 		sinistra) e distorsione nel corrente superiore (a destra);
 		\emph{(c)}~effetto globale su travatura vincolata: configurazione
-		deformata, centri di rotazione $C_L$, $C_{L,R}\equiv P_i$, $C_R$ e
+		deformata, centri di rotazione $C_L$, $C_{L,R}\equiv P^e$, $C_R$ e
 		campi degli spostamenti verticali $v^*$ e orizzontali $u^*$.}
 	\label{fig:polo_distorsione}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-Quando il polo $P_i$ è un punto improprio --- caso che si verifica
+Quando il polo $P^e$ è un punto improprio --- caso che si verifica
 quando le altre due aste della sezione canonica sono parallele --- il
 centro di rotazione relativa $C_{L,R}$ è all'infinito nella direzione
 comune di tali aste, e il moto relativo degenera in una
@@ -3597,11 +3628,11 @@ che agiscono su ciascun nodo sono la forza esterna
 eventualmente applicata e le forze assiali delle aste
 convergenti, dirette lungo le aste stesse.
 
-Per un nodo $i$ in cui convergono $e_i$ aste, l'equilibrio
+Per un nodo $i$ in cui convergono $n_i$ aste, l'equilibrio
 fornisce due equazioni scalari (proiezioni lungo due
-direzioni indipendenti nel piano), con $e_i$ incognite
+direzioni indipendenti nel piano), con $n_i$ incognite
 scalari --- gli sforzi normali nelle aste. Il sistema
-è determinato quando $e_i = 2$.
+è determinato quando $n_i = 2$.
 
 
 %............................................................................................................................
@@ -4602,16 +4633,16 @@ A ciascuna delle tre aste sezionate si associa
 un \emph{polo}, definito come l'intersezione delle
 rette d'azione delle altre due aste. Scrivendo
 l'equazione di momento del troncone rispetto al polo
-dell'asta $i$, i contributi delle altre due aste
+dell'asta $e$, i contributi delle altre due aste
 si annullano (le loro rette d'azione passano per il
 polo), e l'equazione coinvolge come unica incognita
-lo sforzo normale $N_i$:
+lo sforzo normale $N^e$:
 \begin{equation}\label{eq:ritter_momento}
-	N_i \cdot d_i = M_\text{est}(P_i),
+	N^e \cdot d^e = M_\text{est}(P^e),
 \end{equation}
-dove $d_i$ è il braccio di $N_i$ rispetto al polo
-$P_i$ e $M_\text{est}(P_i)$ è il momento risultante
-delle forze esterne sul troncone rispetto a $P_i$.
+dove $d^e$ è il braccio di $N^e$ rispetto al polo
+$P^e$ e $M_\text{est}(P^e)$ è il momento risultante
+delle forze esterne sul troncone rispetto a $P^e$.
 
 
 Quando due delle tre aste sezionate sono parallele,
@@ -4620,14 +4651,14 @@ In tal caso l'equazione di momento degenera in
 un'equazione di traslazione nella direzione
 perpendicolare alle aste parallele, che ancora
 elimina le due incognite nelle aste parallele e
-lascia solo $N_i$.
+lascia solo $N^e$.
 
 \begin{oss}
-	Il polo $P_i$ è lo stesso punto che nel
+	Il polo $P^e$ è lo stesso punto che nel
 	\PARref{sec:cinematica_reticolari} è stato
 	individuato come centro di rotazione relativa
 	dei due tronconi sotto distorsione estensionale
-	dell'asta $i$. La dualità è esplicita: in
+	dell'asta $e$. La dualità è esplicita: in
 	cinematica il polo è il centro del moto rigido
 	relativo, in statica è il centro di momento che
 	elimina le incognite nelle altre due aste.
@@ -4648,21 +4679,21 @@ passi seguenti.
 	modo che i tre poli siano facilmente
 	determinabili.
 	\item \emph{Calcolo del polo.} Si determina il
-	polo $P_i$ dell'asta di interesse come
+	polo $P^e$ dell'asta di interesse come
 	intersezione delle rette d'azione delle
 	altre due aste sezionate.
 	\item \emph{Equazione di momento.} Si scrive
 	l'equilibrio alla rotazione di uno dei due
-	tronconi rispetto a $P_i$ e si ricava $N_i$
+	tronconi rispetto a $P^e$ e si ricava $N^e$
 	dalla~\EQUref{eq:ritter_momento}.
 	\item \emph{Segno.} Nell'impostare l'equazione
-	di momento si assume per convenzione $N_i > 0$
+	di momento si assume per convenzione $N^e> 0$
 	con la forza diretta \emph{uscente} dal troncone
 	di cui si scrive l'equilibrio (convenzione di
 	trazione). Se il risultato è positivo l'asta
 	è in trazione, se negativo è in compressione.
 	Questa convenzione è equivalente alla
-	definizione globale $N_i > 0$ quando l'asta
+	definizione globale $N^e > 0$ quando l'asta
 	tira i propri nodi di estremità l'uno verso
 	l'altro: un'asta in trazione esercita sul
 	troncone una forza diretta verso l'esterno,
@@ -5883,27 +5914,66 @@ di \emph{Tecnica delle Costruzioni}.
 
 L'ipotesi di carichi applicati esclusivamente ai nodi,
 posta a fondamento dell'analisi delle travature
-reticolari, è talvolta rilassata nella pratica: una
-o più aste possono essere soggette a carichi
-distribuiti trasversali o longitudinali, a forze
-concentrate e a coppie applicate in punti interni.
-In tali casi le aste non sono più soggette al solo
-sforzo normale, ma presentano anche taglio e momento
-flettente.
+reticolari, non è un'assunzione sulla realtà ma un
+requisito della \emph{descrizione per nodi}: se i
+parametri descrittori sono quelli dei nodi, nel loro
+spazio duale vivono forze nodali, e i carichi applicati
+alle aste vanno tradotti di conseguenza
+(\SECref{subsec:sistema_descrizioni}). Nella pratica una
+o più aste possono essere soggette a carichi distribuiti
+trasversali o longitudinali, a forze concentrate e a
+coppie applicate in punti interni: in tali casi le aste
+non sono più soggette al solo sforzo normale, ma
+presentano anche taglio e momento flettente, e occorre
+costruirne le \emph{forze nodali equivalenti}.
 
-La strategia d'analisi si articola in \emph{due fasi
-	distinte}, fondate sulla seguente osservazione: per
-una trave appoggiata a due cerniere, l'equilibrio
-è \emph{isostatico} per i carichi trasversali e per
-le coppie concentrate --- le reazioni trasversali
-alle estremità sono univocamente determinate ---
-mentre è \emph{iperstatico} per i carichi
-longitudinali, poiché le due reazioni orizzontali
-soddisfano una sola equazione di equilibrio,
-lasciando indeterminata la distribuzione dello
-sforzo normale tra le due estremità. Questa
-indeterminazione è risolta dalla prima fase
-attraverso l'equilibrio globale della travatura.
+\begin{oss}[I carichi in campata non alterano la
+		classificazione]\label{oss:carichi_campata_classificazione}
+		Un'asta caricata nei punti interni non aggiunge incognite
+		al problema: aggiunge termini noti. Nel sistema statico
+		$\bm{B}\bm{r} + \bm{f} = \bm{0}$ le forze nodali
+		equivalenti si sommano al vettore $\bm{f}$ dei carichi,
+		mentre la matrice $\bm{B}$ --- e con essa la duale
+		$\bm{A}$ --- resta immutata, perché costruita sui soli
+		coefficienti geometrici $(\cos\alpha^e,\,\sin\alpha^e)$.
+		Poiché la classificazione dipende esclusivamente da
+		$\bm{A}$, attraverso l'indice $\nu$ e il rango, essa non
+		risente della posizione dei carichi: la travatura resta
+		isostatica, labile o iperstatica esattamente come prima.
+		
+		È questa la ragione per cui la presenza di carichi in
+		campata non richiede di uscire dalla tipologia, né di
+		trattare il sistema come un assemblaggio a connessioni
+		eterogenee. Ciò che cambia è lo stato di sollecitazione
+		della sola asta caricata, che accanto allo sforzo normale
+		presenta taglio e momento flettente
+		(\OSSref{oss:def_reticolare_tradizione} del
+		\CAPref{cap:assemblaggi_travi}).
+\end{oss}
+
+Per corpi rigidi la traduzione si riduce
+all'equipollenza, e da questa discende la struttura
+dell'analisi. Ripartire il carico di un'asta sui due nodi
+di estremità significa determinare quattro componenti ---
+due per nodo --- con le tre condizioni di equipollenza
+nel piano. Le componenti \emph{trasversali} sono
+univocamente determinate, essendo due incognite governate
+da due equazioni, la risultante trasversale e il momento;
+le \emph{longitudinali} soddisfano invece la sola
+equazione di risultante e restano indeterminate a meno di
+una coppia di forze uguali e opposte lungo la
+congiungente. La stessa conclusione si legge sull'asta
+isolata: per una trave appoggiata a due cerniere
+l'equilibrio è isostatico per i carichi trasversali e per
+le coppie concentrate, iperstatico per quelli
+longitudinali. L'indeterminazione residua è risolta dalla
+prima fase attraverso l'equilibrio globale della
+travatura; le caratteristiche della sollecitazione lungo
+l'asta caricata, che le forze nodali equivalenti non
+restituiscono, sono recuperate dalla seconda.
+
+La strategia si articola quindi in \emph{due fasi
+	distinte}.
 
 
 
@@ -5935,7 +6005,7 @@ trasversali di estremità delle aste caricate.
 
 La travatura equivalente si analizza con i metodi
 ordinari --- metodo dei nodi o metodo di Ritter ---
-e fornisce lo sforzo normale $N_e$ all'estremità
+e fornisce lo sforzo normale $N^e$ all'estremità
 destra di ciascuna asta caricata. In presenza di
 carichi longitudinali distribuiti $p(z)$ o di
 forze concentrate longitudinali in punti interni,
@@ -5944,12 +6014,12 @@ esso varia con legge determinata dall'equilibrio
 locale, e la reazione longitudinale all'estremità
 sinistra vale
 \begin{equation}\label{eq:reazione_long_sinistra}
-	N(0) = N_e + \int_0^\ell p(z^e)\,\mathrm{d}z^e
+	N(0) = N^e + \int_0^\ell p(z^e)\,\mathrm{d}z^e
 	+ \sum_k Z_k,
 \end{equation}
 dove $Z_k$ sono le componenti longitudinali
 delle forze concentrate applicate in punti interni.
-In assenza di carichi longitudinali, $N(z^e) = N_e$
+In assenza di carichi longitudinali, $N(z^e) = N^e$
 è uniforme e le reazioni longitudinali alle due
 estremità sono uguali in modulo.
 
@@ -5960,13 +6030,13 @@ Il pannello~(a) mostra i carichi applicati all'asta
 nel contesto della struttura globale; il pannello~(b)
 mostra l'asta isolata nel proprio riferimento locale,
 con le reazioni trasversali $R_A^\perp$ e $R_C^\perp$
-e le reazioni longitudinali $N(0)$ e $N_e$ alle
+e le reazioni longitudinali $N(0)$ e $N^e$ alle
 cerniere di estremità. Tutte queste reazioni,
 cambiate di segno per il principio di azione e
 reazione, vengono applicate come forze nodali
 equivalenti ai nodi $A$ e $C$ della travatura
 reticolare equivalente, la cui soluzione fornisce
-$N_e$ e quindi $N(0)$ tramite
+$N^e$ e quindi $N(0)$ tramite
 la~\EQUref{eq:reazione_long_sinistra}.
 
 
@@ -6086,7 +6156,7 @@ la~\EQUref{eq:reazione_long_sinistra}.
 				%% sforzo normale Ne (esce da C verso destra)
 				\draw[->, >=stealth, line width=1.5pt, black]
 				(8,0)--(9.5,0);
-				\node[above, font=\normalsize] at (9.5,0){$N_e$};
+				\node[above, font=\normalsize] at (9.5,0){$N^e$};
 				
 				%% sforzo normale N(0) (esce da A verso sinistra)
 				\draw[->, >=stealth, line width=1.5pt, black]
@@ -6123,7 +6193,7 @@ la~\EQUref{eq:reazione_long_sinistra}.
 		(radente ad $AC$ da $A$ verso $C$).
 		\emph{(b)}: asta $AC$ isolata nel riferimento locale
 		con $z^e$ diretto da $A$ verso $C$;
-		$N_e$ e $N(0)$ sono gli sforzi normali uscenti
+		$N^e$ e $N(0)$ sono gli sforzi normali uscenti
 		dalle due estremità; $R_A^\perp$ e $R_C^\perp$
 		sono le reazioni trasversali alle cerniere.}
 	\label{fig:asta_caricata}
@@ -6153,10 +6223,10 @@ al contorno sono:
 	determinate nella prima fase;
 	\item sforzo normale $N(z^e)$ variabile lungo l'asta
 	in presenza di carichi longitudinali distribuiti
-	o concentrati, con $N_e$ noto dalla prima fase
+	o concentrati, con $N^e$ noto dalla prima fase
 	come condizione al contorno all'estremità destra
 	e $N(0)$ determinato dall'equilibrio locale;
-	in assenza di carichi longitudinali, $N(z^e) = N_e$
+	in assenza di carichi longitudinali, $N(z^e) = N^e$
 	è uniforme.
 \end{itemize}
 
@@ -6166,11 +6236,11 @@ al contorno sono:
 	fase è esatto per una ragione puramente statica:
 	le reazioni trasversali alle cerniere di estremità
 	dipendono esclusivamente dai carichi applicati
-	all'asta e non da $N_e$, mentre le reazioni
-	longitudinali dipendono da $N_e$ ma non dai
+	all'asta e non da $N^e$, mentre le reazioni
+	longitudinali dipendono da $N^e$ ma non dai
 	carichi trasversali. Le due fasi non sono
 	intercambiabili: la prima deve precedere la
-	seconda perché $N_e$ --- determinato dalla
+	seconda perché $N^e$ --- determinato dalla
 	soluzione della travatura equivalente --- è
 	un dato necessario per la costruzione dei
 	diagrammi $N(z^e)$, $T(z^e)$ e $M(z^e)$
@@ -6200,19 +6270,36 @@ al contorno sono:
 \label{subsec:validita_due_fasi}
 %............................................................................................................................
 
-La separazione in due fasi è \emph{esatta} perché
-non modifica la struttura delle incognite del
-problema reticolare. I carichi applicati all'asta
---- trasversali e longitudinali --- vengono
-integralmente trasferiti ai nodi nella prima fase:
-le reazioni trasversali di estremità equilibrano
-i carichi trasversali e le coppie, mentre la
-risultante dei carichi longitudinali è riportata
-al nodo sinistro come forza nota. L'unica incognita
-che rimane è $N_e$ all'estremità destra, determinata
-dalla soluzione della travatura equivalente con i
-metodi ordinari. La seconda fase risolve poi
-l'equilibrio locale dell'asta con $N_e$ noto.
+La separazione in due fasi è \emph{esatta}, e la ragione
+è quella generale della sostituzione di un sistema di
+forze con uno equipollente: essendo le aste rigide, il
+campo di spostamento virtuale su ciascuna di esse è
+rigido, e su un campo rigido il lavoro di un sistema di
+forze dipende soltanto dalla risultante e dal momento
+risultante (\SECref{subsec:sistema_descrizioni}).
+Sostituire i carichi con le proprie forze nodali
+equivalenti non altera dunque né le reazioni vincolari né
+gli sforzi nelle aste.
+
+In concreto, i carichi applicati all'asta --- trasversali
+e longitudinali --- vengono integralmente trasferiti ai
+nodi nella prima fase: le reazioni trasversali di
+estremità equilibrano i carichi trasversali e le coppie,
+mentre la risultante dei carichi longitudinali è riportata
+al nodo sinistro come forza nota. L'unica incognita che
+rimane è $N^e$ all'estremità destra, determinata dalla
+soluzione della travatura equivalente con i metodi
+ordinari. La seconda fase risolve poi l'equilibrio locale
+dell'asta con $N^e$ noto.
+
+L'esattezza va però intesa nel proprio ambito: essa
+riguarda il problema \emph{globale} --- reazioni, sforzi
+nelle aste, equilibrio dei nodi --- e non le
+caratteristiche della sollecitazione lungo l'asta
+caricata, che la riduzione ai nodi non conserva e che la
+seconda fase ricostruisce. È la ragione per cui le due
+fasi sono entrambe necessarie, e non una il controllo
+dell'altra.
 
 
 \begin{esempio}[Travatura a correnti paralleli con carico distribuito]
@@ -6934,12 +7021,12 @@ chiarisce il ruolo dei due gradi di iperstaticità.
 La soluzione del problema statico iperstatico si
 scrive nella forma
 \begin{equation}\label{eq:sol_iperstatica}
-	N_i = N_{i0} + \sum_{j=1}^{g} \chi_j\, N_{ij},
-	\qquad i = 1, \ldots, n_a,
+	N^e = N^e_0 + \sum_{j=1}^{g} \chi_j\, N^e_j,
+	\qquad e = 1, \ldots, n_a,
 \end{equation}
 dove:
 \begin{itemize}[noitemsep]
-	\item $N_{i0}$ è lo sforzo nell'asta $i$-esima
+	\item $N^e_0$ è lo sforzo nell'asta $e$-esima
 	nel \emph{sistema principale}, ottenuto
 	rimuovendo $g$ vincoli ridondanti e
 	risolvendo la travatura isostatica risultante
@@ -6949,7 +7036,7 @@ dove:
 	nell'asta ridondante soppressa (per
 	iperstaticità interna) o la reazione del
 	vincolo rimosso (per iperstaticità esterna);
-	\item $N_{ij}$ è lo sforzo nell'asta $i$-esima
+	\item $N^e_j$ è lo sforzo nell'asta $e$-esima
 	nel sistema principale soggetto alla sola
 	incognita iperstatica $\chi_j = 1$, con
 	carichi esterni nulli.

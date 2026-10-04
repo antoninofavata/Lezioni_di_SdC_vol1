@@ -85,23 +85,24 @@ la connessione rigida trasmette integralmente
 tutte e tre le componenti di spostamento
 generalizzato --- due traslazioni e una rotazione
 --- e la rotazione diventa pertanto un grado di
-libertà autonomo di ciascun nodo. Anche per i
-telai la struttura ammette due letture duali
-complementari:
+libertà autonomo di ciascun nodo. Anche per i telai
+sono dunque disponibili entrambe le descrizioni del
+\CAPref{cap:assemblaggi_travi}, qui chiamate prima e
+seconda lettura:
 
 \begin{itemize}[noitemsep]
 	\item \emph{Prima lettura --- travi come corpi
 		rigidi}: le travi sono i protagonisti, i nodi
 	incastro sono i connettori. Ogni trave contribuisce
 	con $n = 3$ gradi di libertà (due traslazioni e
-	una rotazione); ogni nodo incastro tra $e_i$ travi
-	convergenti impone $m_i = 3(e_i - 1)$ equazioni
+	una rotazione); ogni nodo incastro tra $n_i$ travi
+	convergenti impone $m_i = 3(n_i - 1)$ equazioni
 	di congruenza (continuità completa di tutte e tre
 	le componenti di spostamento generalizzato).
 	Per dualità $\bm{B} = \bm{A}^\top$, il problema
 	statico ha come variabili le reazioni dei nodi
-	incastro interni --- $3(e_i-1)$ componenti per
-	ciascun nodo con $e_i$ travi convergenti, pari
+	incastro interni --- $3(n_i-1)$ componenti per
+	ciascun nodo con $n_i$ travi convergenti, pari
 	alla molteplicità del collegamento --- e le
 	reazioni dei vincoli esterni, con le equazioni
 	di equilibrio delle singole travi come equazioni
@@ -961,33 +962,26 @@ $(O;\, x,\, y)$.
 
 
 \medskip
-\noindent\textit{Cinematica: equazioni di compatibilità nodale.}\index{compatibilita@compatibilità!nodale|textbf}
-\label{subpar:cinematica_telai}
-
-Il problema cinematico ha come variabili gli spostamenti
-generalizzati nodali $(u_i,\, v_i,\, \vartheta_i)$ di
-ciascuno degli $n_n$ nodi, per un totale di $3n_n$
-incognite cinematiche.
-
-Per la trave $e$ di lunghezza $\ell_e$ che connette il
+Per la trave $e$ di lunghezza $\ell^e$ che connette il
 nodo $P_i$ (iniziale) al nodo $P_j$ (finale), siano
-$\mathbf{a}_e = \overrightarrow{P_iP_j}/|\overrightarrow{P_iP_j}|$
-il versore dell'asse della trave (direzione $z_e$) e
-$\mathbf{a}_t$ il versore trasversale (direzione $y_e$),
+$\mathbf{a}^e = \overrightarrow{P_iP_j}/|\overrightarrow{P_iP_j}|$
+il versore dell'asse della trave (direzione $z^e$) e
+$\mathbf{a}^e_t$ il versore trasversale (direzione $y^e$),
 orientato in modo che
 \begin{equation}\label{eq:conv_at}
-	\mathbf{a}_t \times \mathbf{a}_e = \mathbf{a}_z,
+	\mathbf{a}^e_t \times \mathbf{a}^e = \mathbf{a}_z,
 \end{equation}
-dove $\mathbf{a}_z$ è il versore fuori piano.
+dove $\mathbf{a}_z$ è il versore fuori piano, unico per
+tutto il sistema e privo perciò di indice di elemento.
 Lo spostamento che il nodo $P_j$ avrebbe se la trave si
 muovesse rigidamente con il nodo $P_i$ come polo è:
 \begin{equation}\label{eq:spost_rigido_polo}
 	\mathbf{u}_{j}^{\text{rig}}
-	= \mathbf{u}_i + \vartheta_i\,\mathbf{a}_z \times \ell_e\,\mathbf{a}_e
-	= \mathbf{u}_i - \ell_e\,\vartheta_i\,\mathbf{a}_t,
+	= \mathbf{u}_i + \vartheta_i\,\mathbf{a}_z \times \ell^e\,\mathbf{a}^e
+	= \mathbf{u}_i - \ell^e\,\vartheta_i\,\mathbf{a}^e_t,
 \end{equation}
 dove si è usata l'identità
-$\mathbf{a}_z \times \mathbf{a}_e = -\mathbf{a}_t$,
+$\mathbf{a}_z \times \mathbf{a}^e = -\mathbf{a}^e_t$,
 conseguenza diretta della~\eqref{eq:conv_at}.
 Le tre condizioni di compatibilità si scrivono in forma
 vettoriale. Le prime due, relative agli spostamenti,
@@ -995,44 +989,40 @@ si ottengono proiettando la differenza
 $\mathbf{u}_j - \mathbf{u}_{j}^{\text{rig}}$ nelle direzioni locali:
 \begin{equation}\label{eq:compat_vettoriale_trasl}
 	\bigl[\mathbf{u}_j -
-	\bigl(\mathbf{u}_i - \ell_e\,\vartheta_i\,\mathbf{a}_t\bigr)
-	\bigr] \cdot \mathbf{a}_e = \varrho_e,
+	\bigl(\mathbf{u}_i - \ell^e\,\vartheta_i\,\mathbf{a}^e_t\bigr)
+	\bigr] \cdot \mathbf{a}^e = \varrho^e,
 	\qquad
 	\bigl[\mathbf{u}_j -
-	\bigl(\mathbf{u}_i - \ell_e\,\vartheta_i\,\mathbf{a}_t\bigr)
-	\bigr] \cdot \mathbf{a}_t = \varrho_t,
+	\bigl(\mathbf{u}_i - \ell^e\,\vartheta_i\,\mathbf{a}^e_t\bigr)
+	\bigr] \cdot \mathbf{a}^e_t = \varrho^e_t,
 \end{equation}
-dove $\varrho_e$ e $\varrho_t$ sono le distorsioni
+dove $\varrho^e$ e $\varrho^e_t$ sono le distorsioni
 estensionale e trasversale. La terza condizione,
 relativa alle rotazioni, si scrive separatamente:
 \begin{equation}\label{eq:compat_rot}
-	\vartheta_j - \vartheta_i = \varrho_r,
+	\vartheta_j - \vartheta_i = \varrho^e_r,
 \end{equation}
-dove $\varrho_r$ è la distorsione rotazionale.
+dove $\varrho^e_r$ è la distorsione rotazionale.
 Le tre distorsioni sono nulle in assenza di cedimenti interni.
-Indicato con $\alpha_e$ l'angolo dell'asse $z_e$ rispetto
+Indicato con $\alpha^e$ l'angolo dell'asse $z^e$ rispetto
 all'asse $x$ globale, le rappresentazioni numeriche
-$\bm{a}_e = (\cos\alpha_e\,\;\sin\alpha_e)^\top$ e
-$\bm{a}_t = (\sin\alpha_e\,\;-\cos\alpha_e)^\top$
+$\bm{a}^e = (\cos\alpha^e\,\;\sin\alpha^e)^\top$ e
+$\bm{a}^e_t = (\sin\alpha^e\,\;-\cos\alpha^e)^\top$
 portano alla forma scalare operativa:
 \begin{equation}\label{eq:compat_globale_telaio}
 	\begin{cases}
-		(u_j - u_i)\cos\alpha_e +
-		(v_j - v_i)\sin\alpha_e
-		= \varrho_e, \\[6pt]
-		(u_j - u_i)\sin\alpha_e -
-		(v_j - v_i)\cos\alpha_e
-		+ \ell_e\,\vartheta_i
-		= \varrho_t, \\[6pt]
+		(u_j - u_i)\cos\alpha^e +
+		(v_j - v_i)\sin\alpha^e
+		= \varrho^e, \\[6pt]
+		(u_j - u_i)\sin\alpha^e -
+		(v_j - v_i)\cos\alpha^e
+		+ \ell^e\,\vartheta_i
+		= \varrho^e_t, \\[6pt]
 		\vartheta_j - \vartheta_i
-		= \varrho_r.
+		= \varrho^e_r.
 	\end{cases}
 \end{equation}
-Il sistema delle~\eqref{eq:compat_globale_telaio}
-scritto per tutte le $n_e$ travi, insieme ai vincoli
-esterni, costituisce il problema cinematico nella
-seconda lettura. La \FIGref{fig:trave_telaio_cin_stat}$(a)$
-illustra le variabili cinematiche della generica trave $e$.
+
 
 \begin{oss}
 	La prima delle~\eqref{eq:compat_globale_telaio}
@@ -1043,17 +1033,24 @@ illustra le variabili cinematiche della generica trave $e$.
 	di trasporto rigido si riduce al solo spostamento
 	traslazionale $\mathbf{u}_i$, perché i nodi a
 	cerniera non hanno rotazione propria; nelle travi
-	di telaio il termine $-\ell_e\,\vartheta_i\,\mathbf{a}_t$
+	di telaio il termine $-\ell^e\,\vartheta_i\,\mathbf{a}^e_t$
 	aggiunge il contributo della rotazione nodale,
 	dando origine ai due vincoli aggiuntivi ---
 	trasversale e rotazionale --- che distinguono
 	la trave di telaio dall'asta reticolare.
-	Le rotazioni $\vartheta_i$ e $\vartheta_j$
-	nelle equazioni seconda e terza sono grandezze
-	nodali: nella seconda lettura la rotazione della
-	trave non è una variabile autonoma del sistema,
-	ma è determinata dalle condizioni di congruenza
-	ai nodi.
+	
+	Le rotazioni $\vartheta_i$ e $\vartheta_j$ sono
+	grandezze nodali, e sono incognite autonome del
+	problema: è questa la differenza rispetto alle
+	travature reticolari, dove la rotazione dell'asta
+	non compare fra le variabili e resta determinata
+	dalle posizioni dei nodi
+	(\OSSref{oss:rotazione_asta} del
+	\CAPref{cap:reticolari}). Nel telaio la trave non
+	possiede comunque una rotazione propria, distinta
+	da quelle dei nodi cui si attesta: la sua rotazione
+	rigida è quella dei nodi, e le rotazioni relative
+	sono nulle per definizione di nodo rigido.
 \end{oss}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1061,7 +1058,7 @@ illustra le variabili cinematiche della generica trave $e$.
 	\centering
 	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small]
 		
-		\def\ang{25}      % angolo alpha_e in gradi
+		\def\ang{25}      % angolo alpha^e in gradi
 		\def\Lb{4.2}      % lunghezza trave
 		\def\sep{6.5}     % offset pannello destro
 		\def\ds{0.72}     % lunghezza frecce spostamento
@@ -1086,12 +1083,12 @@ illustra le variabili cinematiche della generica trave $e$.
 		\draw[->] (-1.0,-1.2) -- ++(1.3,0) node[right]{$x$};
 		\draw[->] (-1.0,-1.2) -- ++(0,1.2) node[above]{$y$};
 		
-		%% Segmento orizzontale grigio (riferimento per alpha_e)
+		%% Segmento orizzontale grigio (riferimento per alpha^e)
 		\draw[gray!60, thin] (Pi) -- ++(2.0,0);
 		
-		%% Arco alpha_e grigio (raggio ampio, a destra della fibra)
+		%% Arco alpha^e grigio (raggio ampio, a destra della fibra)
 		\draw[->, gray!60] (1.50,0) arc (0:\ang:1.50);
-		\node[gray!80] at ({1.82*cos(\ang/2)},{0.18}) {$\alpha_e$};
+		\node[gray!80] at ({1.82*cos(\ang/2)},{0.18}) {$\alpha^e$};
 		
 		%% Asta (linea d'asse)
 		\draw[line width=1.4pt] (Pi) -- (Pj);
@@ -1155,30 +1152,30 @@ illustra le variabili cinematiche della generica trave $e$.
 		%% N_e: direzione +a_e = (cos, sin)
 		\draw[->, line width=1.2pt] (Pjs)
 		-- ++({cos(\ang)*\fn},{sin(\ang)*\fn})
-		node[below right]{$N_e$};
+		node[below right]{$N^e$};
 		
 		%% T_e: direzione +a_t = (sin, -cos)
 		\draw[->, line width=1.2pt] (Pjs)
 		-- ++({sin(\ang)*\fn},{-cos(\ang)*\fn})
-		node[right]{$T_e$};
+		node[right]{$T^e$};
 		
 		%% M_e: arco CCW centrato in P_j
 		\draw[->, line width=1.2pt]
 		({\sep+\Lb*cos(\ang)+\rmarc*cos(\ang-50)},
 		{\Lb*sin(\ang)+\rmarc*sin(\ang-50)})
 		arc ({\ang-50}:{\ang+115}:\rmarc)
-		node[midway, above]{$M_e$};
+		node[midway, above]{$M^e$};
 		
 		%%── Forze in P_i (estremo sinistro, verso opposto) ─────────
 		%% N_e: direzione -a_e = (-cos, -sin)
 		\draw[->, line width=1.2pt] (Pis)
 		-- ++({-cos(\ang)*\fn},{-sin(\ang)*\fn})
-		node[below right]{$N_e$};
+		node[below right]{$N^e$};
 		
 		%% T_e: direzione -a_t = (-sin, +cos)
 		\draw[->, line width=1.2pt] (Pis)
 		-- ++({-sin(\ang)*\fn},{cos(\ang)*\fn})
-		node[left]{$T_e$};
+		node[left]{$T^e$};
 		
 		%% (M_e - T_e ell_e): arco CW centrato in P_i (verso opposto a M_e)
 		\draw[->, line width=1.2pt]
@@ -1186,23 +1183,23 @@ illustra le variabili cinematiche della generica trave $e$.
 		{\rmarc*sin(\ang+115)})
 		arc ({\ang+115}:{\ang-50}:\rmarc)
 		node[above, right, font=\footnotesize]
-		{$M_e\!-\!T_e\ell_e$};
+		{$M^e\!-\!T^e\ell^e$};
 		
 		%% Etichetta pannello
 		\node[font=\small] at ({\sep+0.5*\Lb*cos(\ang)},{-1.50}) {$(b)$};
 		
 	\end{tikzpicture}
 	\caption{Trave di telaio $e$ che connette i nodi $P_i$ (iniziale)
-		e $P_j$ (finale), inclinata di $\alpha_e$ rispetto all'asse
+		e $P_j$ (finale), inclinata di $\alpha^e$ rispetto all'asse
 		globale $x$. La linea tratteggiata grigia indica la fibra
 		inferiore e definisce il verso di percorrenza da $P_i$ a $P_j$.
 		\emph{(a)}~Cinematica: spostamenti nodali
 		$(u_i,\,v_i,\,\vartheta_i)$ e $(u_j,\,v_j,\,\vartheta_j)$
 		nel riferimento globale $(x,\,y)$.
 		\emph{(b)}~Statica: caratteristiche della sollecitazione
-		$N_e$, $T_e$, $M_e$ alle due sezioni di estremità con il
+		$N^e$, $T^e$, $M^e$ alle due sezioni di estremità con il
 		verso convenzionale positivo; in $P_i$ il momento vale
-		$M_e - T_e\ell_e$ in assenza di carichi distribuiti.}
+		$M^e - T^e\ell^e$ in assenza di carichi distribuiti.}
 	\label{fig:trave_telaio_cin_stat}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1215,7 +1212,7 @@ illustra le variabili cinematiche della generica trave $e$.
 \label{subpar:statica_telai}
 
 Il problema statico ha come incognite le caratteristiche
-della sollecitazione $(N_e,\, T_e,\, M_e)$ di ciascuna
+della sollecitazione $(N^e,\, T^e,\, M^e)$ di ciascuna
 delle $n_e$ travi --- le grandezze statiche duali delle
 tre condizioni cinematiche~\eqref{eq:compat_globale_telaio}
 --- e le $m_\text{est}$ reazioni vincolari esterne.
@@ -1228,7 +1225,7 @@ all'estremo destro nel riferimento locale --- non sono
 indipendenti: le tre equazioni di equilibrio della trave
 le riducono a tre componenti indipendenti, ad esempio
 quelle all'estremo destro
-$\bm{\sigma}_e = (N_e,\, T_e,\, M_e)^\top$,
+$\bm{\sigma}^e = (N^e,\, T^e,\, M^e)^\top$,
 da cui le componenti all'estremo sinistro si ricavano
 per equilibrio.\footnote{%
 	Nel caso omogeneo (assenza di carichi distribuiti
@@ -1236,11 +1233,11 @@ per equilibrio.\footnote{%
 	caratteristiche all'estremo sinistro a quelle
 	all'estremo destro:
 	\[
-	N_e^{\text{sin}} = -N_e,
+	N^e_{\text{sin}} = -N^e,
 	\qquad
-	T_e^{\text{sin}} = -T_e,
+	T^e_{\text{sin}} = -T^e,
 	\qquad
-	M_e^{\text{sin}} = -M_e + T_e\ell_e.
+	M^e_{\text{sin}} = -M^e + T^e\ell^e.
 	\]
 	Il momento all'estremo sinistro non è
 	semplicemente l'opposto di quello destro, ma
@@ -1250,23 +1247,23 @@ per equilibrio.\footnote{%
 	dalla distribuzione del carico. Si confronti
 	con le aste reticolari, dove lo sforzo normale
 	è costante e il legame tra i due estremi è
-	$N^{\text{sin}} = -N^{\text{dest}}$.}
+	$N_{\text{sin}} = -N_{\text{dest}}$.}
 Le equazioni sono le $3n_n$ equazioni di equilibrio
 di tutti i nodi --- due componenti di forza e una di momento
 per nodo. Per il nodo $i$ si scrivono nel riferimento
 globale:
 \begin{equation}\label{eq:equilibrio_nodale_telaio}
 	\sum_{e \in \mathcal{E}_i}
-	\mp\,\bm{R}(\alpha_e)\,
-	\bm{\sigma}_e
+	\mp\,\bm{R}(\alpha^e)\,
+	\bm{\sigma}^e
 	+ \bm{f}_i + \bm{r}_i = \bm{0},
 \end{equation}
 dove il segno $-$ vale quando il nodo $i$ è
 l'estremo sinistro della trave $e$ (faccia con
-normale uscente $-z_e$, ossia $z_e = 0$), e il
+normale uscente $-z^e$, ossia $z^e = 0$), e il
 segno $+$ vale quando il nodo $i$ è l'estremo
-destro (faccia con normale uscente $+z_e$, ossia
-$z_e = \ell_e$); $\mathcal{E}_i$ è l'insieme delle
+destro (faccia con normale uscente $+z^e$, ossia
+$z^e = \ell^e$); $\mathcal{E}_i$ è l'insieme delle
 travi convergenti nel nodo $i$; $\bm{f}_i$ è il
 vettore delle forze e coppie attive nel nodo $i$;
 $\bm{r}_i$ è il vettore delle reazioni vincolari
@@ -1274,25 +1271,25 @@ esterne nel nodo $i$, nullo per i nodi liberi.
 Il pannello $(b)$ della \FIGref{fig:trave_telaio_cin_stat}
 mostra il contributo della trave $e$ all'equilibrio
 dei nodi $P_i$ e $P_j$: le caratteristiche della
-sollecitazione $N_e$, $T_e$, $M_e$ alle due sezioni
+sollecitazione $N^e$, $T^e$, $M^e$ alle due sezioni
 di estremità con il verso convenzionale positivo.
-La matrice $\bm{R}(\alpha_e)$ è la matrice di
+La matrice $\bm{R}(\alpha^e)$ è la matrice di
 rotazione dal riferimento locale al globale:
 \begin{equation}\label{eq:matrice_rotazione}
-	\bm{R}(\alpha_e) =
+	\bm{R}(\alpha^e) =
 	\begin{pmatrix}
-		\cos\alpha_e & \phantom{-}\sin\alpha_e & 0 \\
-		\sin\alpha_e & -\cos\alpha_e & 0 \\
+		\cos\alpha^e & \phantom{-}\sin\alpha^e & 0 \\
+		\sin\alpha^e & -\cos\alpha^e & 0 \\
 		0 & 0 & 1
 	\end{pmatrix},
 \end{equation}
-con $\alpha_e$ angolo dell'asse $z_e$ della trave
+con $\alpha^e$ angolo dell'asse $z^e$ della trave
 rispetto all'asse $x$ globale
 (\FIGref{fig:trave_telaio_cin_stat}).
-Le colonne di $\bm{R}(\alpha_e)$ sono le rappresentazioni
-nel riferimento globale dei vettori $\mathbf{a}_{z_e}$ e
-$\mathbf{a}_{y_e}$ della base locale, in quest'ordine:
-la convenzione $\bm{\sigma}_e = (N_e\,\,T_e\,\,M_e)^\top$
+Le colonne di $\bm{R}(\alpha^e)$ sono le rappresentazioni
+nel riferimento globale dei vettori $\mathbf{a}_{z^e}$ e
+$\mathbf{a}_{y^e}$ della base locale, in quest'ordine:
+la convenzione $\bm{\sigma}^e = (N^e\,\,T^e\,\,M^e)^\top$
 antepone la forza normale al taglio, coerentemente
 con la~\eqref{eq:matrice_rotazione}.
 La terza riga e colonna hanno la forma $(0,\,0,\,1)$
@@ -1306,23 +1303,23 @@ rotazioni nel piano.
 	nel senso della struttura $\bm{B} = \bm{A}^\top$.
 	La corrispondenza è riga per riga:
 	la prima equazione cinematica (estensionale,
-	con coefficienti $\cos\alpha_e$, $\sin\alpha_e$)
-	è duale a $N_e$;
+	con coefficienti $\cos\alpha^e$, $\sin\alpha^e$)
+	è duale a $N^e$;
 	la seconda (trasversale, con coefficienti
-	$\sin\alpha_e$, $-\cos\alpha_e$ e $\ell_e$)
-	è duale a $T_e$;
-	la terza (rotazionale) è duale a $M_e$.
+	$\sin\alpha^e$, $-\cos\alpha^e$ e $\ell^e$)
+	è duale a $T^e$;
+	la terza (rotazionale) è duale a $M^e$.
 	I medesimi coefficienti geometrici compaiono
 	nella matrice cinematica $\bm{A}$ e nella matrice
 	di equilibrio $\bm{B} = \bm{A}^\top$; le distorsioni
-	$(\varrho_e,\, \varrho_t,\, \varrho_r)$ appaiono
+	$(\varrho^e,\, \varrho^e_t,\, \varrho^e_r)$ appaiono
 	come termini noti in cinematica nelle posizioni
 	esattamente duali a quelle in cui le sollecitazioni
-	$(N_e,\, T_e,\, M_e)$ sono le incognite in statica.
+	$(N^e,\, T^e,\, M^e)$ sono le incognite in statica.
 	Si confronti con la struttura analoga per le
 	travature reticolari~\eqref{eq:inestensibilita}
 	e~\eqref{eq:equilibrio_nodale}: lì un solo
-	coefficiente geometrico $\bm{a}_e$ governa
+	coefficiente geometrico $\bm{a}^e$ governa
 	sia il vincolo cinematico sia la distribuzione
 	dello sforzo normale; qui tre coppie di
 	coefficienti governano i tre vincoli e le
@@ -1389,7 +1386,7 @@ cinematico globale
 dove $\bm{u}$ raccoglie le $3n_n$ incognite
 cinematiche nodali $(u_i,\, v_i,\, \vartheta_i)$
 e $\bm{s}$ raccoglie le distorsioni
-$(\varrho_e,\, \varrho_t,\, \varrho_r)$ nel
+$(\varrho^e,\, \varrho^e_t,\, \varrho^e_r)$ nel
 riferimento intrinseco e i cedimenti vincolari
 $(s_k^x,\, s_k^y,\, s_k^\vartheta)$.
 Le equazioni di equilibrio
@@ -1400,19 +1397,19 @@ statico globale
 \bm{B}\bm{r} + \bm{f} = \bm{0},
 \]
 dove $\bm{r}$ raccoglie le $3n_e$ incognite statiche
-$(N_e,\, T_e,\, M_e)$ e le $m_\text{est}$ reazioni
+$(N^e,\, T^e,\, M^e)$ e le $m_\text{est}$ reazioni
 vincolari esterne, e $\bm{f}$ raccoglie i carichi
 nodali applicati.
 I due sistemi sono duali nel senso della struttura
 $\bm{B} = \bm{A}^\top$: la matrice di rotazione
-$\bm{R}(\alpha_e)$ che trasforma le caratteristiche
+$\bm{R}(\alpha^e)$ che trasforma le caratteristiche
 della sollecitazione dal riferimento locale al
 globale in statica è la stessa che governa il
 passaggio inverso in cinematica; le distorsioni
-$(\varrho_e,\, \varrho_t,\, \varrho_r)$ occupano
+$(\varrho^e,\, \varrho^e_t,\, \varrho^e_r)$ occupano
 in cinematica la posizione duale di quella occupata
 dalle caratteristiche della sollecitazione
-$(N_e,\, T_e,\, M_e)$ in statica.
+$(N^e,\, T^e,\, M^e)$ in statica.
 A differenza dei sistemi reticolari --- dove
 la dualità coinvolge un solo scalare per asta ---
 nei telai essa coinvolge un vettore di tre componenti
@@ -1457,7 +1454,8 @@ di condizioni cinematiche imposte.
 
 La \TABref{tab:molt_nodale} riassume i tre casi
 fondamentali nel piano, con la doppia lettura
-cinematica e statica per ciascuno. Tra il caso
+cinematica e statica per ciascuno. 
+Tra il caso
 estremo dell'asta reticolare ($m = 1$) e quello
 della trave di telaio ($m = 3$) si colloca la
 trave con svincolo\index{trave!con svincolo|textbf} ($m = 2$) --- una trave con
@@ -1472,6 +1470,18 @@ $\bm{A}$ e la matrice di equilibrio
 $\bm{B} = \bm{A}^\top$ si costruiscono
 assemblando i contributi di ciascun elemento
 secondo la sua molteplicità nodale.
+
+La tabella si legge nel verso della cinematica, e la
+	colonna statica ne discende per dualità. Le tre righe sono
+	l'applicazione diretta del conteggio stabilito
+	nell'\OSSref{oss:lambda_dimensioni} del
+	\CAPref{cap:assemblaggi_travi}: dei parametri nodali che
+	l'elemento vede, tre sono impiegati per collocarlo nel piano
+	e i restanti si fanno equazioni. Le grandezze trasmesse non
+	vanno poi determinate separatamente: ciascuna è la grandezza
+	coniugata della condizione imposta, per la struttura
+	$\bm{B} = \bm{A}^\top$. Ciò che non è vincolato non è
+	trasmesso.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htbp]
@@ -1512,27 +1522,86 @@ secondo la sua molteplicità nodale.
 		relative imposte tra i nodi di estremità,
 		espresse nel riferimento locale $(z^e, y^e)$
 		della trave $e$: $\Delta w = w_j^e - w_i^e$,
-		$\Delta v = v_j^e - (v_i^e - \ell_e\,\vartheta_i)$,
+		$\Delta v = v_j^e - (v_i^e - \ell^e\,\vartheta_i)$,
 		$\Delta\vartheta = \vartheta_j - \vartheta_i$
 		(lettura cinematica); e le grandezze statiche
 		indipendenti trasmesse (lettura statica),
 		duali per la struttura $\bm{B} = \bm{A}^\top$.
 		La molteplicità $m$ è il numero di condizioni
 		imposte, uguale per le due letture.}
-	%	\caption{Molteplicità nodale degli elementi trave
-		%		in funzione della natura delle connessioni
-		%		alle estremità. Per ciascun tipo di connessione
-		%		si riportano le condizioni di compatibilità
-		%		relative imposte tra i nodi di estremità
-		%		(lettura cinematica) e le grandezze statiche
-		%		indipendenti trasmesse (lettura statica),
-		%		duali per la struttura $\bm{B} = \bm{A}^\top$.
-		%		La molteplicità $m$ è il numero di condizioni
-		%		imposte, uguale per le due letture.}
 	\label{tab:molt_nodale}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{oss}[Perché l'asta reticolare ha $m = 1$ e non
+		$m = 2$]\label{oss:m_asta_vs_cerniera}
+		La cerniera interna ha molteplicità $m_i = 2$ e trasmette
+		entrambe le componenti di forza, $N$ e $T$
+		(\SECref{subsec:cerniera_interna} del
+		\CAPref{cap:assemblaggi_travi}); l'asta reticolare ha
+		molteplicità nodale $m = 1$ e trasmette il solo sforzo
+		normale. I due numeri si riferiscono alla stessa cerniera
+		fisica e non sono in contraddizione: la distinzione fra
+		le equazioni portate dall'asta nella descrizione per nodi
+		e la molteplicità della cerniera nella descrizione per
+		corpi è stata posta nell'\OSSref{oss:una_eq_vs_molteplicita}
+		del \CAPref{cap:assemblaggi_travi}, e qui se ne legge la
+		faccia statica.
+		
+		Il taglio non manca perché la cerniera non sappia
+		trasmetterlo, ma perché l'asta scarica non lo genera: è
+		l'equilibrio dell'elemento, non la prestazione della
+		connessione, a ridurre da due a uno il numero di
+		grandezze indipendenti trasmesse. Quando l'asta è
+		caricata in campata il taglio alla cerniera è diverso da
+		zero, ed è la reazione trasversale di estremità
+		$R^\perp$ della prima fase
+		(\SECref{sec:aste_caricate_trasv} del
+		\CAPref{cap:reticolari}); ma non è un'incognita del
+		problema nodale, bensì un dato determinato dai carichi
+		sull'asta. La molteplicità nodale resta $m = 1$, perché
+		una sola resta la condizione cinematica imposta,
+		$\Delta w = 0$.
+\end{oss}
+
+
+    La differenza di comportamento globale fra le due
+	tipologie non è una tendenza né una prevalenza: è una
+	conseguenza della struttura del problema nodale.
+	
+	Nel sistema cinematico di una travatura reticolare ogni
+	equazione è una condizione di inestensibilità, e dualmente
+	ogni incognita statica è uno sforzo normale. Nessuna
+	equazione esprime una condizione rotazionale, nessuna
+	incognita è un momento: nel problema globale la flessione
+	non ha rappresentanti. La radice è il nodo, che essendo un
+	punto possiede due soli gradi di libertà; non avendo
+	rotazione propria, per dualità non può equilibrare alcun
+	momento, e nessuna asta gliene può dunque consegnare uno.
+	La prima riga della \TABref{tab:molt_nodale} è per questo
+	la traduzione statica dell'\OSSref{oss:rotazione_asta} del
+	\CAPref{cap:reticolari}.
+	
+	Ne segue che la flessione di un'asta caricata è
+	necessariamente \emph{locale}. Non lo è per una scelta di
+	metodo: è il livello globale a non poterla ospitare, ed è
+	questa la ragione per cui l'analisi delle aste caricate si
+	articola in due fasi e la flessione compare soltanto nella
+	seconda (\SECref{sec:aste_caricate_trasv} del
+	\CAPref{cap:reticolari}).
+	
+	Nei telai il nodo possiede una rotazione propria e ogni
+	trave impone una condizione rotazionale, cui corrisponde
+	per dualità un momento fra le incognite del problema
+	globale. La flessione ha qui un rappresentante a livello
+	nodale e partecipa alla trasmissione dei carichi ai
+	vincoli: non esiste alcun livello locale cui confinarla.
+	
+	È questa la ragione della diversa efficienza delle due
+	tipologie sotto carichi trasversali, e del ruolo delle
+	travature reticolari nella copertura di grandi luci
+	richiamato nelle considerazioni introduttive del
+	\CAPref{cap:reticolari}.
 
 %----------------------------------------------------------------------------------------------------------------------------
 \section{Struttura della soluzione iperstatica}

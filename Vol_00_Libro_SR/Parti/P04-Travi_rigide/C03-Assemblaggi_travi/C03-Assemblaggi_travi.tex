@@ -12,28 +12,29 @@
 	\ref{cap:classificazione_sol_SCR}
 	e~\ref{cap:classificazione_SCR}
 	si trasferisca senza modifiche al contesto delle travi.
-	Si classificano le connessioni tra travi in base alle
-	componenti di spostamento che vincolano e alle
-	caratteristiche della sollecitazione che trasmettono,
-	ricavando per ciascuna tipologia la \emph{molteplicità}
-	$m_i$ del collegamento, e si presenta la procedura
-	operativa per l'impostazione dell'analisi.
+	Si distingue il \emph{sistema fisico} --- corpi,
+	dispositivi di collegamento e azioni --- dalle
+	\emph{descrizioni} che esso ammette, per corpi o per
+	nodi, e si mostra che il passaggio dall'una all'altra
+	obbliga a tradurre le azioni in \emph{forze nodali
+		equivalenti}.
 	
-	Si costruisce quindi un catalogo delle principali
-	tipologie strutturali, organizzato secondo la natura
-	delle connessioni, con rinvio ai capitoli dedicati.
-	I \emph{sistemi a connessioni eterogenee} e i
-	\emph{sistemi reticolari} sono trattati nel
-	Vol.~I perché ammettono configurazioni isostatiche
-	analizzabili con il solo equilibrio. Per i sistemi
-	a \emph{connessioni omogenee} si introduce la
-	\emph{doppia lettura topologica}, in cui i nodi
-	diventano i protagonisti e le travi i vincoli.
-	Le configurazioni iperstatiche di tutte le tipologie
-	--- e i \emph{telai} nella loro interezza ---
-	richiedono il legame costitutivo tra sforzi e
-	deformazioni, sviluppato nel Vol.~II.
+	Si classificano le connessioni in base alle componenti
+	di spostamento che vincolano e alle caratteristiche
+	della sollecitazione che trasmettono, ricavandone la
+	\emph{molteplicità} $m_i$; si stabiliscono le regole
+	delle \emph{partizioni} in corpi liberi, mostrando che
+	isolare un nodo non altera il bilancio fra incognite ed
+	equazioni; e si presenta la procedura operativa per
+	l'impostazione dell'analisi. Il catalogo delle tipologie
+	strutturali chiude il capitolo: le configurazioni
+	isostatiche dei sistemi a connessioni eterogenee e dei
+	sistemi reticolari sono trattate nel Vol.~I, mentre
+	quelle iperstatiche --- e i \emph{telai} nella loro
+	interezza --- richiedono il legame costitutivo del
+	Vol.~II.
 \end{sommario}
+
 
 
 %----------------------------------------------------------------------------------------------------------------------------
@@ -62,6 +63,401 @@ connessioni di diversa natura.
 
 
 %............................................................................................................................
+\subsection{Il sistema fisico e le sue descrizioni}
+\label{subsec:sistema_descrizioni}
+%............................................................................................................................
+
+Prima di entrare nel merito conviene distinguere con
+cura due piani che nella pratica corrente si sovrappongono:
+il \emph{sistema fisico} che si vuole studiare e la
+\emph{descrizione matematica} che se ne dà. Il primo è il
+dato del problema; la seconda è una scelta, e il presente
+capitolo ne userà più d'una.
+
+
+\paragraph{Il sistema fisico.}
+Un assemblaggio di travi è composto da \emph{corpi} ---
+le travi --- e da \emph{dispositivi di collegamento}, che
+uniscono i corpi fra loro e i corpi al suolo. Le azioni
+esterne sono applicate ai corpi, sotto forma di carichi
+distribuiti lungo l'asse o di forze e coppie concentrate;
+ma nulla vieta che siano applicate anche ai dispositivi
+di collegamento, come accade quando un carico concentrato
+è trasmesso alla struttura proprio in corrispondenza di
+una connessione. Corpi, dispositivi e azioni sono il
+sistema fisico: essi non dipendono da come sceglieremo
+di descriverlo.
+
+Chiameremo \emph{nodo} il punto della struttura in cui un
+dispositivo di collegamento unisce fra loro più corpi, o un
+corpo al suolo: il nodo non è dunque un ente distinto dal
+dispositivo, ma il dispositivo stesso riguardato come luogo
+geometrico. È a esso che si riferiscono le tipologie di
+connessione della \SECref{sec:connessioni}, ed è dal numero
+$n_i$ di travi che vi convergono che dipende la sua
+molteplicità.
+
+	La \FIGref{fig:sistema_fisico} raccoglie le tre
+categorie su un assemblaggio elementare.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		>=Stealth, scale=1.0,
+		trv/.style   ={line width=1.8pt},
+		car/.style   ={-{Stealth[length=2.0mm,width=1.2mm]},
+			line width=0.5pt},
+		carF/.style  ={-{Stealth[length=2.6mm,width=1.6mm]},
+			line width=0.8pt},
+		bordo/.style ={line width=0.5pt},
+		et/.style    ={font=\footnotesize},
+		etc/.style   ={font=\footnotesize},
+		ndc/.style   ={circle, fill=white, draw=black,
+			line width=0.7pt, inner sep=0pt, minimum size=5.5pt},
+		ndr/.style   ={rectangle, fill=black, draw=black,
+			inner sep=0pt, minimum size=5pt}]
+		
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (0,2.2);
+		\coordinate (C) at (3.4,2.2);
+		\coordinate (D) at (3.4,0);
+		
+		% ── le tre travi ─────────────────────────────────────
+		\draw[trv] (A)--(B);
+		\draw[trv] (B)--(C);
+		\draw[trv] (C)--(D);
+		\node[et] at (0.40,1.10) {$e_1$};
+		\node[et] at (1.70,1.90)  {$e_2$};
+		\node[et] at (3.00,1.10)  {$e_3$};
+		
+		% ── carico distribuito sulla traversa e_2 ────────────
+		\draw[bordo] (0,3.05)--(3.4,3.05);
+		\foreach \x in {0,0.283,...,3.401}
+		\draw[car] (\x,3.05)--(\x,2.30);
+		\node[etc, above] at (1.70,3.07) {$p$};
+		
+		% ── forza concentrata su un corpo (su e_1) ───────────
+		\draw[carF] (-1.05,1.10)--(-0.12,1.10);
+		\node[etc, above] at (-0.58,1.13) {$F$};
+		
+		% ── forza concentrata su un nodo (sul nodo 3) ────────
+		\draw[carF] (4.30,2.85)--(3.58,2.34);
+		\node[etc, right] at (4.32,2.88) {$P$};
+		
+		% ── vincolo esterno in A: cerniera ───────────────────
+		\draw[bordo] (A)--(-0.30,-0.52)--(0.30,-0.52)--cycle;
+		\draw[bordo] (-0.46,-0.52)--(0.46,-0.52);
+		\foreach \x in {-0.40,-0.24,...,0.41}
+		\draw[bordo] (\x,-0.52)--(\x-0.13,-0.70);
+		
+		% ── vincolo esterno in D: carrello ───────────────────
+		\draw[bordo] (D)--(3.10,-0.42)--(3.70,-0.42)--cycle;
+		\draw[bordo] (3.16,-0.53) circle (0.11);
+		\draw[bordo] (3.64,-0.53) circle (0.11);
+		\draw[bordo] (2.94,-0.66)--(3.86,-0.66);
+		\foreach \x in {3.00,3.16,...,3.81}
+		\draw[bordo] (\x,-0.66)--(\x-0.13,-0.84);
+		
+		% ── i nodi ───────────────────────────────────────────
+		\node[ndc] at (A) {};  \node[et, left=4pt]  at (A) {$1$};
+		\node[ndr] at (B) {};  \node[et,  left=4pt] at (B) {$2$};
+		\node[ndc] at (C) {};  \node[et,  right=4pt] at (C) {$3$};
+		\node[ndc] at (D) {};  \node[et, right=4pt] at (D) {$4$};
+		
+	\end{tikzpicture}
+	\caption{Il sistema fisico. I \emph{corpi} sono le tre
+		travi $e_1$, $e_2$, $e_3$; i \emph{nodi} $1,\dots,4$
+		sono i punti in cui i dispositivi di collegamento
+		uniscono le travi fra loro (nodi $2$ e $3$) o una trave
+		al suolo (nodi $1$ e $4$). Il nodo $2$ è rigido
+		(quadratino pieno), il nodo $3$ è una cerniera interna
+		(cerchietto vuoto). Le \emph{azioni} sono applicate ai
+		corpi --- il carico distribuito $p$ sulla trave $e_2$,
+		la forza concentrata $F$ sulla trave $e_1$ --- oppure
+		a un dispositivo di collegamento, come la forza $P$
+		applicata al nodo $3$.}
+	\label{fig:sistema_fisico}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\paragraph{Le descrizioni cinematiche.}
+Per descrivere i cambiamenti di configurazione del
+sistema occorre scegliere i \emph{parametri descrittori}.
+Due scelte estreme sono possibili.
+
+Nella \emph{descrizione per corpi} i parametri sono quelli
+dei singoli elementi: $3n_e$ nel caso piano, come si
+preciserà nella \SECref{subsec:trave_SCR}. I dispositivi di
+collegamento non aggiungono parametri, ma
+\emph{equazioni}: le condizioni di congruenza che essi
+impongono, in numero $m$, sono le righe della matrice dei
+vincoli~$\bm{A}$.
+
+Nella \emph{descrizione per nodi} i parametri sono invece
+quelli dei punti di connessione, e le condizioni di
+congruenza risultano già soddisfatte per costruzione: in
+un nodo rigido le due componenti di traslazione e la
+rotazione del nodo sono le incognite stesse, condivise da
+tutte le travi convergenti, e non il secondo membro di
+equazioni da imporre. In compenso sono le \emph{travi} a
+farsi equazioni: essendo rigide, esse vincolano fra loro i
+parametri dei nodi cui si attestano. I ruoli si scambiano:
+i nodi portano i parametri, le travi le equazioni.
+
+Le due descrizioni sono legate da un'applicazione lineare
+che esprime i parametri di elemento in funzione di quelli
+nodali,
+\begin{equation}\label{eq:mappa_descrizioni}
+	\bm{u}_{\mathrm{c}} = \bm{\Lambda}\,\bm{u}_{\mathrm{n}} ,
+\end{equation}
+dove $\bm{u}_{\mathrm{c}}$ raccoglie i $3n_e$ parametri di
+tutti gli elementi e $\bm{u}_{\mathrm{n}}$ quelli di tutti i
+nodi, in numero dipendente dal tipo di connessione. I pedici
+distinguono le due descrizioni soltanto qui, dove esse
+convivono: nei capitoli dedicati ai sistemi a connessioni
+omogenee la descrizione nodale è quella primaria, e il
+vettore dei parametri nodali si indica semplicemente con
+$\bm{u}$.
+Gli indici distinguono invece i singoli oggetti: l'apice è riservato all'elemento, il pedice resta libero per il resto.
+
+
+La costruzione della~\eqref{eq:mappa_descrizioni} richiede
+che le condizioni di congruenza ai nodi siano risolubili in
+forma chiusa, e in modo uniforme su tutto il sistema. È
+questa la ragione per cui la descrizione nodale è naturale
+nei sistemi a \emph{connessioni omogenee} --- quelli in cui
+tutte le connessioni sono dello stesso tipo, come i sistemi
+reticolari e i telai di cui si dirà nella
+\SECref{sec:catalogo} --- e non lo è quando le connessioni
+sono di tipo diverso da nodo a nodo.
+La struttura della mappa a livello di singolo elemento,
+	e il conteggio che ne discende, sono esaminati
+	nell'\OSSref{oss:lambda_dimensioni}.
+
+
+	La \FIGref{fig:due_descrizioni} mette a confronto le due
+descrizioni sullo stesso assemblaggio.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		>=Stealth, scale=0.90,
+		trv/.style    ={line width=1.8pt},
+		trvs/.style   ={line width=1.0pt, gray!60},
+		bordo/.style  ={line width=0.5pt},
+		bordos/.style ={line width=0.5pt, gray!60},
+		et/.style     ={font=\footnotesize},
+		ets/.style    ={font=\scriptsize, gray!60},
+		% simboli in grigio (pannello a): il nodo porta equazioni
+		ndcs/.style   ={circle, fill=white, draw=gray!60,
+			line width=0.7pt, inner sep=0pt, minimum size=5.5pt},
+		ndrs/.style   ={rectangle, fill=gray!60, draw=gray!60,
+			inner sep=0pt, minimum size=5pt},
+		% simboli in nero e maggiorati (pannello b): il nodo porta parametri
+		ndc/.style    ={circle, fill=white, draw=black,
+			line width=0.8pt, inner sep=0pt, minimum size=7pt},
+		ndr/.style    ={rectangle, fill=black, draw=black,
+			inner sep=0pt, minimum size=6.5pt}]
+		
+		% ═══════════════════════════════════════════════════════
+		%  PANNELLO (a) — descrizione per corpi
+		% ═══════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			\coordinate (A) at (0,0);     \coordinate (B) at (0,2.2);
+			\coordinate (C) at (3.0,2.2); \coordinate (D) at (3.0,0);
+			
+			% travi: portano i parametri
+			\draw[trv] (A)--(B);  \draw[trv] (B)--(C);  \draw[trv] (C)--(D);
+			\node[et] at (0.62,1.10) {$\bm{u}^{e_1}$};
+			\node[et] at (1.50,1.86) {$\bm{u}^{e_2}$};
+			\node[et] at (2.38,1.10) {$\bm{u}^{e_3}$};
+			
+			% vincoli al suolo (prima dei marcatori di nodo)
+			\draw[bordos] (A)--(-0.26,-0.45)--(0.26,-0.45)--cycle;
+			\draw[bordos] (-0.40,-0.45)--(0.40,-0.45);
+			\foreach \x in {-0.34,-0.20,...,0.41}
+			\draw[bordos] (\x,-0.45)--(\x-0.11,-0.61);
+			\draw[bordos] (D)--(2.74,-0.36)--(3.26,-0.36)--cycle;
+			\draw[bordos] (2.80,-0.46) circle (0.09);
+			\draw[bordos] (3.20,-0.46) circle (0.09);
+			\draw[bordos] (2.60,-0.57)--(3.40,-0.57);
+			\foreach \x in {2.66,2.80,...,3.41}
+			\draw[bordos] (\x,-0.57)--(\x-0.11,-0.73);
+			
+			% nodi: portano le equazioni
+			\node[ndrs] at (B) {};  \node[ets, above left=0pt]  at (B) {eq.};
+			\node[ndrs] at (C) {};  \node[ets, above right=0pt] at (C) {eq.};
+			\node[ndcs] at (A) {};  \node[ets, left=5pt]  at (A) {eq.};
+			\node[ndcs] at (D) {};  \node[ets, right=5pt] at (D) {eq.};
+			
+			\node[et] at (1.50,-1.15) {(a) descrizione per corpi};
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════
+		%  PANNELLO (b) — descrizione per nodi
+		% ═══════════════════════════════════════════════════════
+		\begin{scope}[xshift=7.2cm]
+			\coordinate (A) at (0,0);     \coordinate (B) at (0,2.2);
+			\coordinate (C) at (3.0,2.2); \coordinate (D) at (3.0,0);
+			
+			% travi: portano le equazioni
+			\draw[trvs] (A)--(B);  \draw[trvs] (B)--(C);  \draw[trvs] (C)--(D);
+			\node[ets] at (0.46,1.10) {eq.};
+			\node[ets] at (1.50,1.92) {eq.};
+			\node[ets] at (2.54,1.10) {eq.};
+			
+			% vincoli al suolo (prima dei marcatori di nodo)
+			\draw[bordo] (A)--(-0.26,-0.45)--(0.26,-0.45)--cycle;
+			\draw[bordo] (-0.40,-0.45)--(0.40,-0.45);
+			\foreach \x in {-0.34,-0.20,...,0.41}
+			\draw[bordo] (\x,-0.45)--(\x-0.11,-0.61);
+			\draw[bordo] (D)--(2.74,-0.36)--(3.26,-0.36)--cycle;
+			\draw[bordo] (2.80,-0.46) circle (0.09);
+			\draw[bordo] (3.20,-0.46) circle (0.09);
+			\draw[bordo] (2.60,-0.57)--(3.40,-0.57);
+			\foreach \x in {2.66,2.80,...,3.41}
+			\draw[bordo] (\x,-0.57)--(\x-0.11,-0.73);
+			
+			% nodi: portano i parametri
+			\node[ndr] at (B) {};  \node[et, above left=1pt]  at (B) {$\bm{u}_2$};
+			\node[ndr] at (C) {};  \node[et, above right=1pt] at (C) {$\bm{u}_3$};
+			\node[ndc] at (A) {};  \node[et, left=6pt]  at (A) {$\bm{u}_1$};
+			\node[ndc] at (D) {};  \node[et, right=6pt] at (D) {$\bm{u}_4$};
+			
+			\node[et] at (1.50,-1.15) {(b) descrizione per nodi};
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Le due descrizioni dello stesso assemblaggio, qui
+		con entrambe le connessioni interne rigide: è
+		l'uniformità delle connessioni a rendere disponibile la
+		descrizione~(b). In nero ciò che porta i
+		\emph{parametri}, in grigio ciò che porta le
+		\emph{equazioni}; i simboli dei dispositivi non cambiano,
+		perché non cambia il sistema fisico. Nella descrizione
+		per corpi~(a) i parametri $\bm{u}^{e}$ sono quelli delle
+		tre travi e i nodi impongono le condizioni di congruenza;
+		nella descrizione per nodi~(b) i parametri $\bm{u}_{i}$
+		sono quelli dei quattro nodi --- anche in $1$ e in $4$,
+		dove la rotazione del nodo è quella dell'unica trave che
+		vi si attesta --- e sono le travi, essendo rigide, a
+		imporre equazioni ai parametri dei nodi cui si attestano.
+		I vincoli al suolo portano equazioni in entrambe le
+		descrizioni.}
+	\label{fig:due_descrizioni}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{oss}
+	Le due descrizioni non esauriscono le possibilità: fra
+	di esse sta un'intera famiglia di \emph{descrizioni miste},
+	in cui alcune parti del sistema sono descritte per corpi
+	e altre per nodi. Sono queste, e non gli estremi, la
+	pratica corrente del calcolo. Se ne tratta nella
+	\SECref{sec:partizioni}.
+\end{oss}
+
+
+\paragraph{La controparte statica.}
+Cambiare i parametri descrittori della cinematica non
+cambia soltanto le incognite: cambia anche lo spazio in cui
+vivono le azioni, che è il duale di quello dei parametri.
+Se la cinematica è descritta dai parametri nodali, le forze
+devono essere espresse come \emph{forze nodali}: quelle
+applicate ai corpi vanno tradotte in forze applicate ai nodi.
+
+La traduzione è governata dall'uguaglianza dei lavori
+virtuali. Detta $\bm{f}_{\mathrm{c}}$ la rappresentazione
+delle azioni nella descrizione per corpi e
+$\bm{f}_{\mathrm{n}}$ quella nella descrizione per nodi,
+l'identità $\bm{u}_{\mathrm{c}}^{\top}\bm{f}_{\mathrm{c}}
+= \bm{u}_{\mathrm{n}}^{\top}\bm{f}_{\mathrm{n}}$, che deve
+valere per ogni cambiamento di configurazione, dà con
+la~\eqref{eq:mappa_descrizioni}
+\begin{equation}\label{eq:forze_nodali_equiv}
+	\bm{f}_{\mathrm{n}} = \bm{\Lambda}^{\top}\bm{f}_{\mathrm{c}} :
+\end{equation}
+le \emph{forze nodali equivalenti} sono l'immagine delle
+forze di corpo attraverso l'applicazione duale della
+trasformazione cinematica. Si riconosce qui, applicata al
+cambiamento di descrizione anziché al passaggio da corpi a
+vincoli, la stessa struttura $\bm{B} = \bm{A}^{\top}$ che
+governa l'intero volume (\CAPref{cap:TLV}).
+
+Per corpi rigidi la~\eqref{eq:forze_nodali_equiv} ammette
+una lettura elementare, che è bene tenere come forma
+operativa. Il campo di spostamento virtuale sull'elemento
+è infatti rigido, e su di esso il lavoro di un sistema di
+forze dipende soltanto dalla risultante e dal momento
+risultante: la traduzione si riduce dunque
+all'\emph{equipollenza} già introdotta nella
+\SECref{sec:equivalenza} del \CAPref{cap:statica_CR}:
+\begin{equation}\label{eq:equipollenza_nodale}
+	\fb_{\mathrm{n}} = \fb_{\mathrm{c}} , \qquad
+	\bm{\upmu}_{\mathrm{n}}(O) = \bm{\upmu}_{\mathrm{c}}(O) ,
+\end{equation}
+dove i due membri di ciascuna uguaglianza sono la
+risultante e il momento risultante del sistema delle forze
+nodali equivalenti e di quello delle forze effettivamente
+applicate all'elemento.
+Le forze nodali equivalenti si calcolano cioè riducendo ai
+nodi il sistema delle forze applicate all'elemento, con le
+regole della statica del corpo rigido. La forma
+matriciale~\eqref{eq:forze_nodali_equiv} è la sola che
+sopravvive nel Vol.~II, dove gli elementi sono deformabili,
+il campo virtuale non è più rigido e l'equipollenza non
+basta più.
+
+\begin{oss}[Ripartizione fra due nodi]
+	La riduzione ai \emph{due} nodi di estremità di una trave
+	non è del tutto determinata dalla sola equipollenza. Sia
+	la trave collegata ai nodi da cerniere, così che a essi
+	si trasmettano soltanto forze. Nel piano, le componenti
+	incognite sono allora quattro --- due per nodo --- e le
+	condizioni~\eqref{eq:equipollenza_nodale} sono tre: resta
+	un grado di indeterminazione, e giace
+	nella direzione della congiungente i due nodi, perché due
+	forze uguali e opposte lungo quella retta hanno risultante
+	e momento nulli. Le componenti \emph{trasversali} sono
+	invece univocamente determinate, essendo due incognite
+	governate da due equazioni (risultante trasversale e
+	momento). È esattamente la struttura del procedimento
+	usato per le aste caricate delle travature reticolari
+	(\CAPref{cap:reticolari}), dove l'indeterminazione
+	longitudinale è risolta a posteriori dall'equilibrio
+	globale. Con nodi rigidi le incognite salgono a sei, due
+	forze e una coppia per nodo, contro le stesse tre
+	condizioni: l'indeterminazione è di grado tre, e nessuna
+	componente è più determinata dalla sola equipollenza.
+\end{oss}
+
+\begin{oss}[Recupero delle caratteristiche della sollecitazione]
+	La sostituzione di un carico con le sue forze nodali
+	equivalenti lascia inalterata la soluzione del problema
+	\emph{globale} --- reazioni vincolari e forze scambiate
+	fra gli elementi --- ma non restituisce le caratteristiche
+	della sollecitazione lungo l'elemento caricato, che il
+	carico effettivo genera e il suo equivalente nodale no.
+	Esse vanno recuperate in una seconda fase, riequilibrando
+	l'elemento sotto il carico reale e le forze di estremità
+	già determinate.
+\end{oss}
+
+
+\paragraph{Convenzione.}
+Salvo avviso contrario, nel seguito di questo capitolo si
+adotta la descrizione per corpi: le travi sono i corpi del
+sistema, i nodi ne sono i vincoli. È la descrizione
+disponibile per qualunque topologia, e per questo la si
+assume come riferimento. Della descrizione nodale si dirà
+dove essa è lo strumento proprio.
+
+
+%............................................................................................................................
 \subsection{La trave come corpo rigido piano}
 \label{subsec:trave_SCR}
 %............................................................................................................................
@@ -74,7 +470,7 @@ da tre parametri cinematici: due componenti di traslazione
 e una rotazione, raccolti --- scelto un polo di riduzione
 $O$ --- nel vettore
 \begin{equation}
-	\bm{u}_e
+	\bm{u}^e
 	=
 	\bigl(
 	u(O)\,\; v(O)\,\; \vartheta
@@ -186,7 +582,7 @@ sia le caratteristiche della sollecitazione trasmesse.
 \begin{oss}
 	Il calcolo di $m_{\text{int}}$ per i sistemi di travi
 	richiede di identificare correttamente il tipo di
-	connessione in ogni nodo interno e il numero $e_i$
+	connessione in ogni nodo interno e il numero $n_i$
 	di travi che vi convergono. La molteplicità del nodo
 	non è la somma delle molteplicità delle singole
 	connessioni a coppie, ma dipende dalla struttura
@@ -225,7 +621,7 @@ fondamentali --- nodo rigido, cerniera interna, carrello
 interno --- e si ricava per ciascuna la molteplicità
 $m_i$ del collegamento e le caratteristiche trasmesse.
 Si introduce infine la formula generale valida per nodi
-in cui convergono $e_i$ travi.
+in cui convergono $n_i$ travi.
 
 
 %............................................................................................................................
@@ -235,18 +631,17 @@ in cui convergono $e_i$ travi.
 
 Il \emph{nodo rigido}\index{nodo!rigido|textbf} è la connessione più vincolante:
 gli elementi che vi convergono condividono integralmente
-spostamenti e rotazione nel punto di connessione. Nel caso
-piano, le condizioni di congruenza tra due travi $e$ ed
-$e'$ che si incontrano rigidamente nel nodo $i$ sono:
+spostamenti e rotazione nel punto di connessione.Nel caso piano, le condizioni di congruenza fra l
+e travi che convergono rigidamente nel nodo $i$  sono:
 \begin{equation}\label{eq:cong_nodo_rigido}
-	u_e(i) = u_i, \quad
-	v_e(i) = v_i, \quad
-	\vartheta_e(i) = \vartheta_i, \qquad \forall\, e \in \mathcal{E}_i,
+	u^e(i) = u_i, \quad
+	v^e(i) = v_i, \quad
+	\vartheta^e(i) = \vartheta_i, \qquad \forall\, e \in \mathcal{E}_i,
 \end{equation}
 dove $(u_i, v_i, \vartheta_i)$ sono le componenti dello
 spostamento nodale globale nel nodo $i$, condivise da
 tutte le travi convergenti, $\mathcal{E}_i$ è l'insieme
-dei loro indici e $e_i = |\mathcal{E}_i|$\nomenclature[L]{$e_i$}{numero di travi convergenti nel nodo $i$} è il loro numero.
+dei loro indici e $n_i = |\mathcal{E}_i|$\nomenclature[L]{$n_i$}{numero di travi convergenti nel nodo $i$} è il loro numero.
 
 
 \paragraph{Lettura cinematica.}
@@ -344,28 +739,28 @@ grafica e le grandezze coinvolte.
 				\draw[taglio] (-\dc,-0.18) -- (-\dc,0.18);            % sezione
 				\draw[guida]  (-\dc,-0.12) -- (-0.0,-0.12);          % lato fibre tese (tratteggio)
 				\draw[forza]  (-\dc,0) -- (-\dc-0.72,0);              % N_e (trazione, uscente)
-				\node[lab] at (-\dc-0.52,-0.30) {$N_e$};
+				\node[lab] at (-\dc-0.52,-0.30) {$N^e$};
 				\draw[forza]  (-\dc,0) -- (-\dc,0.62);                % T_e (trasversale, verso l'alto)
-				\node[lab] at (-\dc-0.26,0.44) {$T_e$};
+				\node[lab] at (-\dc-0.26,0.44) {$T^e$};
 				%				\draw[forza]  (-\dc,0) -- (-\dc,-0.62);               % T_e (trasversale)
 				%				\node[lab] at (-\dc-0.26,-0.44) {$T_e$};
 				\draw[momento] (-\dc+0.32,0.30) arc (90:-150:0.30);   % M_e
-				\node[lab] at (-\dc+0.40,-0.60) {$M_e$};
+				\node[lab] at (-\dc+0.40,-0.60) {$M^e$};
 				
 				% ---- estremità della trave e' (taglio in alto a destra) ----
 				\begin{scope}[shift={({\dc*cos(\ang)},{\dc*sin(\ang)})}, rotate=\ang]
 					\draw[taglio] (0,-0.18) -- (0,0.18);              % sezione
 					\draw[guida]  (0,-0.12) -- (-1.05,-0.12);         % lato fibre tese
 					\draw[forza]  (0,0) -- (0.72,0);                  % N_{e'} (trazione, uscente)
-					\node[lab] at (0.40,0.25) {$N_{e'}$};
+					\node[lab] at (0.40,0.25) {$N^{e'}$};
 					\draw[forza]  (0,0) -- (0,-0.62);                 % T_{e'} (invertito)
-					\node[lab] at (0.30,-0.46) {$T_{e'}$};
+					\node[lab] at (0.30,-0.46) {$T^{e'}$};
 					
 					
 					%					\draw[forza]  (0,0) -- (0,0.62);                  % T_{e'}
 					%					\node[lab] at (0.30,0.46) {$T_{e'}$};
 					\draw[momento] (-0.32,0.30) arc (90:330:0.30);    % M_{e'}
-					\node[lab] at (-0.60,0.60) {$M_{e'}$};
+					\node[lab] at (-0.60,0.60) {$M^{e'}$};
 				\end{scope}
 				
 				% carichi nodali esterni (eventuali): forza \fb_i e coppia \mu_i
@@ -406,12 +801,12 @@ tra gli elementi collegati, mantenendo il vincolo di
 coincidenza geometrica del punto. Le condizioni di
 congruenza nel nodo $i$ sono:
 \begin{equation}\label{eq:cong_cerniera}
-	u_e(i) = u_i, \quad
-	v_e(i) = v_i, \qquad \forall\, e \in \mathcal{E}_i,
+	u^e(i) = u_i, \quad
+	v^e(i) = v_i, \qquad \forall\, e \in \mathcal{E}_i,
 \end{equation}
 dove $(u_i, v_i)$ sono le componenti dello spostamento
-nodale globale nel nodo $i$, condivise da tutte le $e_i$
-travi convergenti, mentre le rotazioni $\vartheta_e(i)$
+nodale globale nel nodo $i$, condivise da tutte le $n_i$
+travi convergenti, mentre le rotazioni $\vartheta^e(i)$
 sono libere e in generale diverse per ciascuna trave.
 
 \paragraph{Lettura cinematica.}
@@ -509,17 +904,17 @@ lo schema cinematico e statico della cerniera interna.
 				% ---- estremità della trave e (taglio a sinistra): trasmette N, T; M = 0 ----
 				\draw[taglio] (-\dc,-0.18) -- (-\dc,0.18);            % sezione
 				\draw[forza]  (-\dc,0) -- (-\dc-0.72,0);              % N_e (trazione, uscente)
-				\node[lab] at (-\dc-0.52,-0.30) {$N_e$};
+				\node[lab] at (-\dc-0.52,-0.30) {$N^e$};
 				\draw[forza]  (-\dc,0) -- (-\dc,0.62);                % T_e (trasversale, verso l'alto)
-				\node[lab] at (-\dc-0.26,0.44) {$T_e$};
+				\node[lab] at (-\dc-0.26,0.44) {$T^e$};
 				
 				% ---- estremità della trave e' (taglio in alto a destra): trasmette N, T; M = 0 ----
 				\begin{scope}[shift={({\dc*cos(\ang)},{\dc*sin(\ang)})}, rotate=\ang]
 					\draw[taglio] (0,-0.18) -- (0,0.18);              % sezione
 					\draw[forza]  (0,0) -- (0.72,0);                  % N_{e'} (trazione, uscente)
-					\node[lab] at (0.40,0.25) {$N_{e'}$};
+					\node[lab] at (0.40,0.25) {$N^{e'}$};
 					\draw[forza]  (0,0) -- (0,-0.62);                 % T_{e'} (invertito)
-					\node[lab] at (0.30,-0.46) {$T_{e'}$};
+					\node[lab] at (0.30,-0.46) {$T^{e'}$};
 				\end{scope}
 				
 				% carico nodale esterno (eventuale): sola forza f_i
@@ -535,7 +930,7 @@ lo schema cinematico e statico della cerniera interna.
 	\caption{Cerniera interna tra due travi, $e$ ed $e'$. A sinistra:
 		cinematica del nodo --- le traslazioni $(u_i, v_i)$ nel
 		riferimento globale sono condivise da entrambe le travi,
-		mentre le rotazioni $\vartheta_e$ e $\vartheta_{e'}$ restano
+		mentre le rotazioni $\vartheta^e$ e $\vartheta^{e'}$ restano
 		indipendenti: l'angolo tra le travi non si conserva.
 		A destra: statica del nodo isolato come corpo libero ---
 		ciascuna trave trasmette le sole caratteristiche di forza
@@ -550,25 +945,6 @@ lo schema cinematico e statico della cerniera interna.
 
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htbp]
-	\centering
-	%\includegraphics[scale=0.75]{cerniera_interna.pdf}
-	\caption{Cerniera interna tra due travi. A sinistra:
-		schema cinematico --- le traslazioni $u$, $v$
-		sono uguali, le rotazioni $\vartheta_e$,
-		$\vartheta_{e'}$ sono indipendenti.
-		A destra: schema statico --- la cerniera
-		trasmette $N$ e $T$ ma impone $M = 0$ su
-		ciascun elemento; la reazione interna
-		$\mathbf{f}_C^\mathscr{v}$ con le sue due
-		componenti è indicata esplicitamente.}
-	\label{fig:cerniera_interna}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 %............................................................................................................................
 \subsection{Carrello interno}
 \label{subsec:carrello_interno}
@@ -577,17 +953,17 @@ lo schema cinematico e statico della cerniera interna.
 Il \emph{carrello interno}\index{carrello!interno} (detto anche giunzione
 scorrevole o cerniera scorrevole) consente spostamenti
 relativi in una direzione assegnata oltre alla
-rotazione relativa. Indicata con $\bm{a}$ la direzione
+rotazione relativa. Indicata con $\mathbf{a}$ la direzione
 vincolata (normale alla direzione di scorrimento),
 la condizione di congruenza nel nodo $i$ è:
 \begin{equation}\label{eq:cong_carrello_int}
-	\mathbf{u}_e(i) \cdot \mathbf{a} = u_{i,a}, \qquad 
+	\mathbf{u}^e(i) \cdot \mathbf{a} = u_{i,a}, \qquad 
 	\forall\, e \in \mathcal{E}_i,
 \end{equation}
 dove $u_{i,a}$ è la componente dello spostamento
 nodale nella direzione $\mathbf{a}$, condivisa da tutte
-le $e_i$ travi convergenti, mentre la componente
-ortogonale a $\mathbf{a}$ e le rotazioni $\vartheta_e(i)$
+le $n_i$ travi convergenti, mentre la componente
+ortogonale a $\mathbf{a}$ e le rotazioni $\vartheta^e(i)$
 sono libere e in generale diverse per ciascuna trave.
 
 \paragraph{Lettura cinematica.}
@@ -597,7 +973,7 @@ La sua molteplicità è $m_i = 1$.
 
 \paragraph{Lettura statica.}
 Il carrello interno trasmette la sola componente
-di \emph{forza nella direzione vincolata}: se $\bm{a}$
+di \emph{forza nella direzione vincolata}: se $\mathbf{a}$
 è la direzione ortogonale all'asse di scorrimento,
 soltanto la componente di forza in quella direzione
 è trasmessa tra i due elementi. Le forze nella direzione
@@ -622,55 +998,74 @@ agli estremi degli elementi nel nodo.
 
 %............................................................................................................................
 \subsection{Formula generale della molteplicità per nodi
-	con $e_i$ travi convergenti}
+	con $n_i$ travi convergenti}
 \label{subsec:molt_generale}
 %............................................................................................................................
 
-Quando in un nodo $i$ convergono $e_i \geq 2$ travi,
+Quando in un nodo $i$ convergono $n_i \geq 2$ travi,
 la molteplicità del vincolo interno si calcola
 moltiplicando la molteplicità intrinseca del tipo
 di connessione per il numero di relazioni di uguaglianza
 da imporre. La prima trave è assunta come riferimento:
-per ognuna delle $e_i - 1$ travi rimanenti si impongono
+per ognuna delle $n_i - 1$ travi rimanenti si impongono
 le condizioni di congruenza rispetto alla prima.
 Ne risulta la formula:
 \begin{equation}\label{eq:molt_nodo}
 	m_i =
 	\begin{cases}
-		3\,(e_i - 1) & \text{nodo rigido,} \\[4pt]
-		2\,(e_i - 1) & \text{cerniera interna,} \\[4pt]
-		1\,(e_i - 1) & \text{carrello interno (direzione } \bm{a}\text{).}
+		3\,(n_i - 1) & \text{nodo rigido,} \\[4pt]
+		2\,(n_i - 1) & \text{cerniera interna,} \\[4pt]
+		1\,(n_i - 1) & \text{carrello interno (direzione } \bm{a}\text{).}
 	\end{cases}
 \end{equation}
 
 \begin{oss}
 	La formula~\EQUref{eq:molt_nodo} mostra che la
 	molteplicità cresce \emph{linearmente} con il numero
-	di travi convergenti. Nodi di diramazione (con $e_i \geq 3$)
+	di travi convergenti. Nodi di diramazione (con $n_i \geq 3$)
 	contribuiscono quindi al vincolo in modo molto più
-	significativo dei semplici nodi di continuità ($e_i = 2$).
+	significativo dei semplici nodi di continuità ($n_i = 2$).
 	Questo vale in modo particolarmente marcato per i nodi
-	rigidi dei telai, dove $m_i = 3(e_i - 1)$ può
+	rigidi dei telai, dove $m_i = 3(n_i - 1)$ può
 	risultare elevato già con tre o quattro travi convergenti.
 \end{oss}
 
 \begin{oss}[Nodi misti]
-	In alcuni nodi, non tutte le travi convergenti sono
-	collegate con la stessa tipologia: ad esempio, una trave
-	può essere saldata rigidamente mentre un'altra è
-	connessa con cerniera. In questi casi la
-	formula~\EQUref{eq:molt_nodo} non si applica
-	direttamente: occorre contare separatamente le condizioni
-	di congruenza per ciascuna coppia, verificando le
-	relazioni di uguaglianza effettivamente imposte.
-	La sezione~\EQUref{eq:cong_nodo_rigido}--\EQUref{eq:cong_carrello_int}
-	fornisce le equazioni di base per ogni coppia; la loro
-	combinazione per nodi misti non presenta difficoltà
-	concettuali ma richiede attenzione nella contabilizzazione.
+	In alcuni nodi non tutte le travi convergenti sono
+	collegate con la stessa tipologia: una trave può essere
+	saldata rigidamente mentre un'altra è connessa con
+	cerniera. La~\EQUref{eq:molt_nodo}, costruita per nodi
+	omogenei, non si applica allora direttamente, ma il
+	conteggio resta sistematico. Detto $k^e_i$ il numero di
+	parametri che la trave $e$ condivide con il nodo $i$, e
+	$p_i$ il numero di parametri indipendenti del nodo,
+		\begin{equation}\label{eq:molt_nodo_misto}
+		m_i = \sum_{e \in \mathcal{E}_i} k^e_i - p_i ,
+	\end{equation}
+	formula che restituisce la~\EQUref{eq:molt_nodo} nei casi
+	omogenei e che vale anche nei nodi misti: una trave
+	saldata e una incernierata danno $3 + 2 - 3 = 2$.
+	
+	Il numero $p_i$ non è un dato indipendente: il nodo non è
+	un ente distinto dai dispositivi che vi convergono e non
+	possiede parametri propri, ma esattamente quelli che
+	almeno una delle travi è in grado di condividere. Vale
+	dunque $p_i = 3$ se almeno una trave è connessa
+	rigidamente, $p_i = 2$ se tutte sono incernierate, mentre
+	nei nodi con soli carrelli dipende dalle direzioni: due
+	carrelli non paralleli conferiscono al nodo due
+	componenti, due paralleli una sola.
+	
+	Si riconosce qui la stessa struttura del conteggio per
+	elemento: si sommano i parametri condivisi e si
+	sottraggono quelli propri dell'oggetto condiviso --- il
+	nodo in questo caso, l'elemento nell'altro. Le due
+	formule sono la medesima regola vista dai due lati della
+	connessione.
 \end{oss}
 
 La \TABref{tab:connessioni} riassume le tre tipologie
-di connessione con le relative molteplicità per $e_i = 2$
+di connessione con le relative molteplicità per $n_i = 2$
 e le caratteristiche trasmesse.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -684,21 +1079,21 @@ e le caratteristiche trasmesse.
 		\midrule
 		Nodo rigido      & 3 & $u,\,v,\,\vartheta$ & --- &
 		\checkmark & \checkmark & \checkmark \\
-		Cerniera interna & 2 & $u,\,v$ & $\vartheta_e$ &
+		Cerniera interna & 2 & $u,\,v$ & $\vartheta^e$ &
 		\checkmark & \checkmark & $0$ \\
-		Carrello interno (trasversale) & 1 & $v_e$ & $\vartheta_e$, $w_e$ &
+		Carrello interno (trasversale) & 1 & $v^e$ & $\vartheta^e$, $w^e$ &
 		$0$ & \checkmark & $0$ \\
-		Carrello interno (longitudinale) & 1 & $w_e$ & $\vartheta_e$, $v_e$ &
+		Carrello interno (longitudinale) & 1 & $w^e$ & $\vartheta^e$, $v^e$ &
 		\checkmark & $0$ & $0$ \\
 		\bottomrule
 	\end{tabular}
-	\caption{Tipologie di connessione interna per $e_i = 2$
+	\caption{Tipologie di connessione interna per $n_i = 2$
 		travi convergenti. Colonna $m_i$: molteplicità
 		del vincolo interno. Colonne \emph{Vincolato}
 		e \emph{Libero}: componenti di spostamento
 		vincolate --- espresse nel riferimento globale per il nodo rigido e la cerniera,
 		condivise da tutte le travi convergenti --- e
-		libere --- rotazioni $\vartheta_e$ indipendenti
+		libere --- rotazioni $\vartheta^e$ indipendenti
 		per ciascuna trave. Colonne $N$, $T$, $M$:
 		caratteristiche della sollecitazione trasmesse
 		(\checkmark) o nulle ($0$) nel nodo per ogni
@@ -707,6 +1102,372 @@ e le caratteristiche trasmesse.
 	\label{tab:connessioni}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{oss}[Struttura della mappa $\bm{\Lambda}$ e origine
+		della molteplicità nodale]\label{oss:lambda_dimensioni}
+		Stabilite le molteplicità delle connessioni, conviene tornare sulla~\eqref{eq:mappa_descrizioni} 
+		e leggerla a livello del singolo elemento.
+		 I parametri dell'elemento $e$ non
+		dipendono da tutti i parametri nodali, ma soltanto da
+		quelli dei due nodi $i$ e $j$ cui esso si attesta:
+		\begin{equation}\label{eq:lambda_elemento}
+		\bm{u}^e
+		= \bm{\Lambda}^e_i\,\bm{u}_i + \bm{\Lambda}^e_j\,\bm{u}_j .
+	\end{equation}
+		L'elemento legge i parametri dei due soli nodi cui si
+		attesta. Che entrambi siano necessari dipende dal tipo
+		di connessione: per un'asta incernierata sì, perché i
+		due parametri di un nodo non bastano a fissarne tre,
+		mentre per una trave rigidamente connessa i parametri
+		di un solo nodo già determinano la configurazione, e
+		quelli dell'altro si fanno per intero equazioni.
+		
+		Le dimensioni in gioco sono di natura diversa. Quella di
+		$\bm{u}^e$ è fissa e vale $3$ per un elemento
+		rigido nel piano: due traslazioni e una rotazione. Quelle
+		di $\bm{u}_i$ e $\bm{u}_j$ dipendono invece dal tipo di
+		connessione, e valgono $2$ dove l'elemento è
+		incernierato al nodo e $3$ dove vi è connesso
+		rigidamente. La loro somma è dunque $4$ per un
+		elemento incernierato a entrambe le estremità, $6$ per un
+		elemento a connessioni rigide, $5$ nel caso misto.
+		
+		Perché la mappa esista occorre che i parametri nodali
+		determinino univocamente la configurazione dell'elemento:
+		è la condizione di risolubilità in forma chiusa enunciata nella \SECref{subsec:sistema_descrizioni}. 
+		Ma allora non tutti i valori dei parametri nodali
+		sono ammissibili --- sono ammissibili quelli che un moto
+		rigido dell'elemento è in grado di produrre, e tali moti
+		formano una famiglia a tre parametri, purché l'elemento non conservi una 
+		labilità propria rispetto alle connessioni di estremità. I dati nodali
+		compatibili costituiscono pertanto un sottospazio di
+		dimensione $3$, e le condizioni che lo individuano sono in
+		numero pari alla somma dei parametri dei due nodi
+		diminuita di $3$.
+		
+		Si legge qui l'origine della \emph{molteplicità nodale}
+		dell'elemento, sulla quale si tornerà nel
+		\CAPref{cap:telai_piani}: dei parametri nodali che
+		l'elemento vede, tre sono impiegati per collocarlo nel
+		piano e i restanti si fanno equazioni. L'asta reticolare (\SECref{sec:catalogo})
+		ne vede quattro e ne impone una; la trave di telaio ne
+		vede sei e ne impone tre.
+		
+		Si riconosce qui, applicata al singolo elemento, la
+		stessa struttura che governa la classificazione
+		dell'intero sistema: il sottospazio dei dati nodali
+		compatibili è il nucleo dell'applicazione che li lega
+		alle misure di deformazione dell'elemento (quelle che
+		nel modello rigido si annullano o valgono le
+		distorsioni assegnate), e le condizioni imposte ne
+		sono il rango. Poiché l'applicazione dipende soltanto
+		dalla geometria dell'elemento e dalla natura delle
+		connessioni, nucleo e rango restano quelli qualunque
+		sia il modo in cui le misure di deformazione vengono
+		prescritte: il conteggio qui stabilito è pertanto
+		indipendente dal modello di elemento adottato.
+\end{oss}
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Corpi liberi e partizioni della struttura}
+\label{sec:partizioni}
+%----------------------------------------------------------------------------------------------------------------------------
+
+La \SECref{subsec:sistema_descrizioni} ha mostrato che il
+sistema fisico ammette più descrizioni, e che la scelta fra
+la descrizione per corpi e quella per nodi non è imposta
+dalla struttura ma dall'analista. Resta da vedere come
+questa libertà si eserciti nel calcolo, dove la scelta non
+è mai fra i due estremi ma quasi sempre per una via
+intermedia: si scrive l'equilibrio di alcuni corpi e quello
+di alcuni nodi, secondo ciò che in ciascun punto della
+struttura conviene.
+
+Questa sezione stabilisce le regole di tale libertà: che
+cosa può essere assunto come corpo libero, quali insiemi di
+corpi liberi forniscono un sistema di equazioni completo e
+indipendente, e perché la scelta non altera la
+classificazione del sistema.
+
+
+%............................................................................................................................
+\subsection{Il corpo libero come esito di un taglio}
+\label{subsec:corpo_libero}
+%............................................................................................................................
+
+Isolare un corpo libero significa tracciare sulla struttura
+una linea chiusa, rimuovere quanto le sta fuori e
+sostituirlo con le forze che esso trasmette attraverso il
+taglio. L'operazione è sempre lecita e sempre la stessa:
+cambia soltanto ciò che resta dentro la linea.
+
+Se dentro resta una trave, si ottiene il corpo libero già
+usato per la trave singola. Se restano più travi con le loro
+connessioni, si ottiene un \emph{assemblaggio}, ed è
+l'operazione con cui nella \SECref{subsec:est_int} si
+studia il comportamento esterno trattando l'intero sistema
+come un corpo solo. Se infine la linea si stringe attorno a
+un punto di connessione fino a non contenere alcuna trave,
+resta il \emph{nodo}.
+
+Corpo, assemblaggio e nodo non sono dunque enti di natura
+diversa: sono tre esiti della stessa operazione, e le
+equazioni cardinali della statica si applicano a ciascuno
+di essi allo stesso titolo.
+
+
+%............................................................................................................................
+\subsection{Il nodo come corpo libero di dimensione nulla}
+\label{subsec:nodo_corpo_libero}
+%............................................................................................................................
+
+Il nodo è il caso degenere: dentro il taglio non resta
+materia, e con essa si annullano i bracci di leva. Sul nodo
+agiscono le forze che le travi convergenti gli trasmettono
+e gli eventuali carichi concentrati applicati al nodo
+stesso; tutte hanno per punto di applicazione il nodo, e i
+loro momenti rispetto a esso sono nulli.
+
+Ne segue una proprietà che conviene enunciare
+esplicitamente, perché nella pratica corrente è usata senza
+essere giustificata. In un nodo a cerniera le travi
+trasmettono soltanto forze: l'equilibrio alla rotazione è
+identicamente soddisfatto e il nodo fornisce le sole due
+equazioni di traslazione,
+\begin{equation}\label{eq:equilibrio_nodo_cerniera}
+	\sum_{e \in \mathcal{E}_i} \bm{f}^e(i) + \bm{f}_i
+	= \bm{0},
+\end{equation}
+dove $\bm{f}^e(i)$ è la forza che la trave $e$ trasmette al
+nodo $i$ e $\bm{f}_i$ il carico concentrato eventualmente
+applicato al nodo. In un nodo rigido, invece, le travi
+trasmettono anche momenti flettenti, che sono finiti e non
+si annullano con la dimensione del nodo: l'equazione di
+equilibrio alla rotazione sopravvive nella forma
+\begin{equation}\label{eq:equilibrio_nodo_rigido}
+	\sum_{e \in \mathcal{E}_i} M^e(i) + \mu_i = 0,
+\end{equation}
+e il nodo fornisce tre equazioni. Il fatto che al nodo a
+cerniera non si scriva l'equilibrio alla rotazione non è
+dunque una convenzione da ricordare, ma una conseguenza:
+spariscono i momenti di trasporto $\bm{r} \times \bm{f}$,
+non i momenti trasmessi.
+
+\begin{oss}
+	La \EQUref{eq:equilibrio_nodo_cerniera} è la
+	controparte statica della congruenza
+	\EQUref{eq:cong_cerniera}, e la coppia
+	\EQUref{eq:equilibrio_nodo_cerniera}--\EQUref{eq:equilibrio_nodo_rigido}
+	riproduce al nodo la dualità $\bm{B} = \bm{A}^{\top}$
+	già riconosciuta connessione per connessione nella
+	\SECref{sec:connessioni}: tante equazioni di equilibrio
+	nodale quante sono le componenti di spostamento che il
+	nodo condivide.
+\end{oss}
+
+
+%............................................................................................................................
+\subsection{Partizioni ammissibili}
+\label{subsec:partizioni_ammissibili}
+%............................................................................................................................
+
+Un insieme di corpi liberi fornisce un sistema di equazioni
+di equilibrio completo e indipendente se costituisce una
+\emph{partizione} della struttura: ogni tratto di trave e
+ogni nodo appartiene a uno e un solo corpo libero
+dell'insieme.
+
+La condizione è più stringente di quanto sembri, e va letta
+nei due sensi. Se un tratto non appartiene ad alcun corpo
+libero, il suo equilibrio non è imposto e il sistema di
+equazioni è incompleto. Se un tratto appartiene a due corpi
+liberi, le equazioni che se ne ricavano non sono
+indipendenti.
+
+\begin{oss}[Equazioni che sembrano nuove]
+	L'errore più comune consiste nello scrivere l'equilibrio
+	di un corpo, quello del suo complementare e quello
+	dell'insieme dei due, contando tre gruppi di equazioni
+	dove i gruppi indipendenti sono due: il terzo è la somma
+	dei primi due, perché le forze scambiate all'interfaccia
+	compaiono a due a due con segno opposto e si elidono.
+	L'equilibrio dell'intera struttura, in particolare, non è
+	mai un'equazione nuova rispetto a quello dei suoi pezzi:
+	è la loro somma, e per questo serve come \emph{controllo}
+	della soluzione ottenuta, non come equazione per
+	ottenerla.
+\end{oss}
+
+
+%............................................................................................................................
+\subsection{Il bilancio del conteggio}
+\label{subsec:bilancio_partizione}
+%............................................................................................................................
+
+Isolare un nodo come corpo libero autonomo cambia sia il
+numero delle incognite sia quello delle equazioni, e le due
+variazioni si compensano esattamente.
+
+Si consideri un nodo $i$ a cerniera in cui convergono $n_i$
+travi. Se il nodo non è isolato, esso figura come vincolo
+interno e le sue incognite statiche sono $2(n_i - 1)$, in
+accordo con la molteplicità della \EQUref{eq:molt_nodo}. Se
+invece è isolato, ciascuna delle $n_i$ travi scambia con
+esso una forza di due componenti, e le incognite diventano
+$2n_i$: due in più. Ma il nodo, divenuto corpo libero,
+porta con sé le proprie due equazioni di equilibrio
+\eqref{eq:equilibrio_nodo_cerniera}. Il bilancio è nullo.
+Per un nodo rigido il conto è lo stesso con il numero tre
+al posto del due: $3n_i$ incognite in luogo di
+$3(n_i - 1)$, contro le tre equazioni
+\eqref{eq:equilibrio_nodo_cerniera}--\eqref{eq:equilibrio_nodo_rigido}.
+
+La \FIGref{fig:partizione_nodo} illustra il confronto nel
+caso di una cerniera tripla.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		>=Stealth, line width=0.8pt, scale=1.0,
+		asta/.style={line width=1.6pt},
+		fz/.style={-{Stealth[length=2.2mm]}, line width=0.9pt},
+		et/.style={font=\footnotesize},
+		nd/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt}]
+		
+		% ═══════════ PANNELLO (a): nodo non isolato ═══════════
+		\begin{scope}[xshift=0cm]
+			\def\R{1.25}
+			\foreach \a/\nome in {90/1, -30/2, -150/3}{
+				\draw[asta] (0,0)--(\a:\R);
+				\node[et] at (\a:{\R+0.30}) {$e_{\nome}$};}
+			% cerniera tripla: un solo pallino
+			\node[nd, minimum size=7pt] at (0,0) {};
+			\node[et, above left=1pt] at (0,0) {$i$};
+			\node[et, align=center] at (0,-2.20)
+			{cerniera tripla\\
+				$2(n_i-1) = 4$ incognite\\
+				nessuna equazione propria};
+		\end{scope}
+		
+		% ═══════════ PANNELLO (b): nodo isolato ═══════════
+		\begin{scope}[xshift=6.4cm]
+			\def\R{1.25}
+			\def\g{0.42}   % ampiezza del distacco
+			\foreach \a/\nome in {90/1, -30/2, -150/3}{
+				\draw[asta] (\a:\g)--(\a:\R);
+				\node[et] at (\a:{\R+0.30}) {$e_{\nome}$};
+				% forza trasmessa al nodo: due componenti
+				\draw[fz] (\a:\g)--($(\a:\g)+(\a:-0.32)$);}
+			\node[nd, minimum size=7pt] at (0,0) {};
+			\node[et, above left=1pt] at (0,0) {$i$};
+			\node[et, align=center] at (0,-2.20)
+			{nodo isolato\\
+				$2n_i = 6$ incognite\\
+				$+\,2$ equazioni di equilibrio};
+		\end{scope}
+		
+		% ═══════════ bilancio ═══════════
+		\node[et] at (3.2,-3.10)
+		{$+2$ incognite \quad contro \quad $+2$ equazioni};
+	\end{tikzpicture}
+	\caption{Le due letture di un nodo a cerniera in cui
+		convergono tre travi. A sinistra il nodo è un vincolo
+		interno e le sue incognite statiche sono quattro,
+		secondo la \EQUref{eq:molt_nodo}; non porta equazioni
+		proprie. A destra il nodo è isolato come corpo libero:
+		ciascuna trave scambia con esso una forza di due
+		componenti, per un totale di sei incognite, e il nodo
+		porta le due equazioni
+		\eqref{eq:equilibrio_nodo_cerniera}. Le due incognite
+		in più sono compensate dalle due equazioni in più.}
+	\label{fig:partizione_nodo}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Il bilancio nullo ha una conseguenza che va oltre il
+conteggio: poiché nessuna partizione altera la differenza
+fra il numero delle incognite e quello delle equazioni, la
+classificazione del sistema non dipende dalla partizione
+scelta. Del resto non potrebbe: i meccanismi e gli stati di
+autotensione sono proprietà del sistema fisico, non della
+sua descrizione. La stessa invarianza vale, per la stessa
+ragione, nel passaggio fra le descrizioni della
+\SECref{subsec:sistema_descrizioni}.
+
+\begin{oss}
+	Si consideri il triangolo formato da tre aste
+	incernierate ai vertici, vincolato al suolo con una
+	cerniera e un carrello. Nella descrizione per corpi:
+	$n = 3 \times 3 = 9$ e $m = 3\times 2 + (2+1) = 9$, con
+	le tre cerniere interne di molteplicità $2$ ciascuna
+	secondo la \EQUref{eq:molt_nodo}. Nella descrizione per
+	nodi: $n = 2 \times 3 = 6$, con due parametri per
+	ciascuno dei tre nodi, e $m = 3 + 3 = 6$, un'equazione
+	per ciascuna asta rigida e tre per i vincoli esterni.
+	I due conteggi sono diversi in entrambi i termini e danno
+	lo stesso $\nu = 0$.
+\end{oss}
+
+
+%............................................................................................................................
+\subsection{Quando conviene isolare un nodo}
+\label{subsec:conviene_nodo}
+%............................................................................................................................
+
+Se il bilancio è nullo, la scelta non è dettata dal
+conteggio ma dalla convenienza operativa. Tre situazioni la
+rendono vantaggiosa.
+
+\paragraph{Concorrono bielle.}
+Un'asta scarica e vincolata ai soli estremi trasmette una
+forza puramente assiale, diretta secondo la propria corda:
+essa si comporta cioè come il carrello della
+\SECref{sec:carrello} interposto fra i due punti che
+collega. Il riconoscimento è decisivo, perché riduce a un
+solo scalare l'interfaccia fra l'asta e il nodo, dove in
+generale le componenti sarebbero due. Se tutte le travi
+convergenti sono bielle, le due equazioni nodali sono un
+guadagno netto. È il caso dei sistemi reticolari, dove tutti
+i nodi convengono e la lettura nodale finisce per sostituire
+del tutto quella per corpi (\CAPref{cap:reticolari}).
+
+\paragraph{Qualche componente all'interfaccia è già nota.}
+Se l'equilibrio di una delle travi convergenti ha già
+fornito una o più componenti della forza che essa scambia
+con il nodo, le equazioni nodali si scrivono in un numero
+ridotto di incognite e spesso si risolvono a vista.
+
+\paragraph{Sul nodo agisce un carico concentrato.}
+È il caso in cui il carico è applicato al dispositivo di
+collegamento anziché a un corpo. Nella descrizione per
+corpi esso andrebbe attribuito a una delle travi
+convergenti, con una scelta arbitraria; isolando il nodo
+entra invece direttamente nella
+\EQUref{eq:equilibrio_nodo_cerniera}, al suo posto naturale.
+
+Specularmente, dove convergono travi inflesse e caricate
+l'isolamento del nodo non porta alcun vantaggio, e la
+partizione ottimale lascia quelle connessioni come vincoli
+interni. La partizione conveniente è quindi in generale
+\emph{mista}, e lo è tanto più quanto meno omogenea è la
+struttura.
+
+\begin{oss}[Un caso di riferimento]
+	Il \CAPref{cap:sistemi_conn_eterogenee} svolge per intero
+	l'analisi di un ponte strallato composto da otto travi,
+	nel quale l'equilibrio si scrive per quattro corpi ---
+	le due antenne e i due semi-impalcati --- e per tre nodi,
+	mentre le quattro aste rimanenti sono riconosciute
+	bielle e ciascuna delle loro interfacce si riduce a un
+	solo scalare. È un esempio in cui la partizione mista non
+	è una comodità ma la chiave della soluzione, e in cui la
+	struttura delle connessioni è tutt'altro che omogenea.
+\end{oss}
+
+
 
 %----------------------------------------------------------------------------------------------------------------------------
 \section{Procedura operativa per sistemi di travi}
@@ -720,7 +1481,7 @@ travi. Il presente paragrafo ne declina la versione
 specializzata al contesto delle travi, identificando
 i passi che nella pratica precedono il calcolo esplicito.
 
-La procedura si articola in cinque passi, che è utile
+La procedura si articola in sei passi, che è utile
 seguire nell'ordine indicato perché ciascuno condiziona
 i successivi.
 
@@ -730,7 +1491,7 @@ i successivi.
 Si individuano le $n_e$ travi del sistema, numerandole
 sistematicamente, e per ciascun nodo si identifica:
 il tipo di connessione (rigido, cerniera, carrello),
-il numero $e_i$ di travi convergenti e la presenza
+il numero $n_i$ di travi convergenti e la presenza
 di eventuali vincoli esterni. Questa fase è topologica:
 non richiede calcoli, ma una lettura attenta dello
 schema strutturale.
@@ -786,9 +1547,25 @@ catalogo delle sottostrutture del
 \CAPref{cap:classificazione_SCR}.
 
 \medskip
-\noindent\textbf{Passo 5 — Impostazione dell'analisi.}
-Una volta classificato il sistema, si sceglie la
-strategia di soluzione appropriata:
+\noindent\textbf{Passo 5 — Scelta della partizione.}
+Prima di scrivere una sola equazione occorre decidere in
+quali corpi liberi tagliare la struttura, secondo i criteri
+della \SECref{sec:partizioni}. Si riconoscono anzitutto le
+\emph{bielle} --- aste scariche e vincolate ai soli
+estremi --- perché ciascuna riduce a un solo scalare
+l'interfaccia con i nodi cui si attesta. Si individuano poi
+i nodi che conviene isolare come corpi liberi autonomi:
+quelli in cui convergono bielle, quelli su cui agisce un
+carico concentrato, quelli in cui l'equilibrio delle travi
+convergenti ha già fornito qualche componente. Le
+connessioni fra travi inflesse e caricate si lasciano invece
+come vincoli interni. Si verifica infine che l'insieme
+scelto sia effettivamente una partizione: ogni tratto di
+trave e ogni nodo in uno e un solo corpo libero.
+
+\medskip
+\noindent\textbf{Passo 6 — Impostazione dell'analisi.}
+Classificato il sistema e scelta la partizione, si sceglie la strategia di soluzione appropriata:
 \begin{itemize}[noitemsep]
 	\item per i sistemi \emph{isostatici} si procede
 	con il metodo dei corpi liberi per il problema
@@ -807,7 +1584,7 @@ strategia di soluzione appropriata:
 \end{itemize}
 
 \begin{oss}
-	I passi 1--4 costituiscono l'\emph{analisi
+	I passi 1--5 costituiscono l'\emph{analisi
 		qualitativa preliminare} del sistema, analoga
 	a quella introdotta per la trave singola nel
 	\CAPref{cap:Diagrammi_CS}. Come lì, essa non è
@@ -815,7 +1592,10 @@ strategia di soluzione appropriata:
 	di sistema prima di impostare le equazioni evita
 	di cercare soluzioni che non esistono o di
 	trascurare gradi di libertà che rendono la
-	soluzione non unica.
+	soluzione non unica; e sceglierne la partizione
+	prima di scriverle decide quante incognite si
+	dovranno portare avanti, che è ciò che separa un
+	calcolo di poche righe da uno lungo e ingovernabile.
 \end{oss}
 
 
@@ -826,106 +1606,165 @@ strategia di soluzione appropriata:
 
 Le tipologie strutturali che seguono costituiscono il
 vocabolario fondamentale degli assemblaggi di travi piane.
-Esse si organizzano naturalmente in due famiglie,
-distinte dalla natura delle connessioni tra le travi.
+Esse si organizzano in due famiglie, distinte dalla natura
+delle connessioni fra le travi, e la distinzione non è
+classificatoria soltanto: da essa dipende quale descrizione
+del sistema, fra quelle della
+\SECref{subsec:sistema_descrizioni}, sia praticabile.
 
-I \emph{sistemi a connessioni eterogenee}\index{connessione!eterogenea|textbf} ammettono
-connessioni di tipo diverso --- nodi rigidi, cerniere
-interne, carrelli interni, appoggi semplici --- all'interno
-dello stesso sistema. La formula di classificazione
-$\nu = 3n_e - m$ si applica senza modifiche, con $m$
-calcolato sommando le molteplicità di ciascuna connessione
-secondo la \EQUref{eq:molt_nodo}. L'analisi procede con
-la prima lettura topologica\index{lettura topologica|textbf} --- travi come corpi rigidi,
-connessioni come vincoli --- e si risolve con il metodo
-dei corpi liberi già sviluppato per la trave singola.
-Le configurazioni isostatiche di questa famiglia ---
-travi di Gerber\index{trave!di Gerber}, sistemi a tre cerniere e assemblaggi
-vari --- sono trattate in dettaglio nel
-\CAPref{cap:sistemi_conn_eterogenee}; le configurazioni iperstatiche
-(travi continue)\index{trave!continua} richiedono i metodi del Vol.~II.
 
-I \emph{sistemi a connessioni omogenee}\index{connessione!omogenea|textbf} si dividono
-in due tipologie estreme: i \emph{sistemi reticolari}\index{sistema reticolare},
-in cui tutte le connessioni sono cerniere ($m_i = 1$),
-e i \emph{telai}\index{telaio}, in cui tutte le connessioni sono
-nodi rigidi ($m_i = 3$). Per entrambi, l'omogeneità
-delle connessioni rende possibile una \emph{seconda
-	lettura topologica}\index{lettura topologica!seconda} in cui i nodi diventano i
-protagonisti e le travi i vincoli: questa prospettiva
-conduce a equazioni cinematiche e statiche di struttura
-particolarmente trasparente, esplicitate nei
-\CAPref{cap:reticolari} e~\CAPref{cap:telai_piani}.
+%............................................................................................................................
+\subsection{Sistemi a connessioni eterogenee}
+\label{subsec:cat_eterogenee}
+%............................................................................................................................
 
-I sistemi reticolari ammettono configurazioni
-isostatiche paradigmatiche --- analizzabili con il
-solo equilibrio e sviluppate nel \CAPref{cap:reticolari}
---- ma anche configurazioni iperstatiche, quando i
-vincoli esterni sono sovrabbondanti oppure il numero
-di aste supera il minimo necessario per l'isostaticità
-interna, o entrambe le cose. I telai sono invece
-intrinsecamente iperstatici nella configurazione
-standard con maglie chiuse, indipendentemente dai
-vincoli esterni.
+Sono i sistemi in cui convivono connessioni di tipo diverso
+--- nodi rigidi, cerniere interne, carrelli interni, appoggi
+semplici --- entro la stessa struttura. La formula di
+classificazione $\nu = 3n_e - m$ si applica senza modifiche,
+con $m$ ottenuto sommando le molteplicità di ciascuna
+connessione secondo la \EQUref{eq:molt_nodo}.
 
-In questo volume si trattano le configurazioni
-isostatiche dei sistemi a connessioni eterogenee e
-dei sistemi reticolari, perché in entrambi i casi
-la procedura di analisi --- classificazione,
-cinematica e determinazione delle caratteristiche
-della sollecitazione --- è completa con i soli
-strumenti dell'equilibrio. Per tutte le configurazioni
-iperstatiche --- sistemi eterogenei, reticolari o
-telai, con sovradeterminazione esterna o interna
-o entrambe --- le equazioni di equilibrio non sono
-sufficienti: il numero di incognite statiche supera
-il numero di equazioni disponibili. Le incognite
-iperstatiche si determinano imponendo le condizioni
-di compatibilità cinematica, che coinvolgono
-necessariamente il legame costitutivo tra sforzi
-e deformazioni. È questo legame che introduce le
-proprietà del materiale e della sezione trasversale
-nell'analisi strutturale, e che richiede gli
-strumenti sviluppati nel Vol.~II.
+Per questa famiglia la descrizione nodale non è disponibile
+in forma uniforme, e lo strumento naturale è la descrizione
+per corpi, eventualmente con le partizioni miste della
+\SECref{sec:partizioni}. L'eterogeneità delle connessioni,
+d'altra parte, è essa stessa una risorsa: determina spesso
+una gerarchia strutturale che consente la risoluzione in
+cascata e il tracciamento delle caratteristiche della
+sollecitazione su tutta la struttura.
 
-Il catalogo delle tipologie strutturali si articola
-nei capitoli che seguono, organizzati secondo la
-natura delle connessioni.
+Le configurazioni isostatiche di questa famiglia --- travi
+di Gerber, sistemi a tre cerniere, assemblaggi ramificati
+con nodi rigidi --- sono trattate nel
+\CAPref{cap:sistemi_conn_eterogenee}. La varietà degli
+schemi mostra come la stessa procedura operativa si applichi
+a geometrie e topologie molto diverse, dal sistema ramificato
+con nodi rigidi al sistema lineare della trave di Gerber.
+Le configurazioni iperstatiche --- le travi continue ---
+richiedono i metodi del Vol.~II.
 
-I \emph{sistemi a connessioni eterogenee} ---
-assemblaggi ramificati con nodi rigidi, sistemi a tre
-cerniere, travi continue e travi di Gerber 
---- sono trattati nel \CAPref{cap:sistemi_conn_eterogenee}.
-Per queste tipologie la prima lettura topologica
-è lo strumento naturale di analisi: le connessioni
-di tipo diverso determinano una gerarchia
-strutturale che consente la risoluzione in cascata
-e il tracciamento delle caratteristiche della
-sollecitazione sull'intera struttura. La varietà
-degli schemi trattati mostra come la stessa
-procedura operativa si applichi a geometrie e
-topologie molto diverse, dal sistema ramificato con nodi
-rigidi al sistema lineare della
-trave di Gerber.
 
-I \emph{sistemi reticolari} --- connessioni
-esclusivamente a cerniera --- sono trattati nel
-\CAPref{cap:reticolari}. La seconda lettura
-topologica, in cui i nodi sono i protagonisti
-e le aste i vincoli, conduce alla formula di
-Müller-Breslau e ai metodi operativi --- metodo
-dei nodi e metodo delle sezioni di Ritter ---
-per la determinazione degli sforzi normali nelle
-travature isostatiche.
+%............................................................................................................................
+\subsection{Sistemi a connessioni omogenee}
+\label{subsec:cat_omogenee}
+%............................................................................................................................
 
-I \emph{telai} --- connessioni esclusivamente
-rigide con maglie chiuse --- sono trattati nel
-\CAPref{cap:telai_piani}. La seconda lettura topologica
-conduce alle equazioni di compatibilità nodale e
-alle equazioni di equilibrio nodale con $N$, $T$,
-$M$ come incognite. I telai sono intrinsecamente
-iperstatici e la loro analisi completa richiede
-le relazioni costitutive sviluppate nel Vol.~II;
-il \CAPref{cap:telai_piani} ne costruisce i fondamenti
-topologici e la struttura formale.
+Sono i sistemi in cui tutte le connessioni sono dello stesso
+tipo, e si presentano in due forme estreme: i \emph{sistemi
+	reticolari}, in cui ogni connessione è una cerniera
+($m_i = 2$ per $n_i = 2$), e i \emph{telai}, in cui ogni
+connessione è un nodo rigido ($m_i = 3$).
+
+L'omogeneità delle connessioni è precisamente la condizione
+che rende costruibile la mappa
+\EQUref{eq:mappa_descrizioni}: le condizioni di congruenza
+si risolvono in forma chiusa e in modo uniforme su tutto il
+sistema, e la descrizione nodale diventa disponibile come
+alternativa completa a quella per corpi. È questa
+disponibilità, e non una diversa natura meccanica, a
+distinguere la famiglia.
+
+Nei \emph{sistemi reticolari} la descrizione nodale conduce
+alla formula di Müller-Breslau e ai metodi operativi ---
+metodo dei nodi e metodo delle sezioni di Ritter --- per la
+determinazione degli sforzi normali nelle travature
+isostatiche (\CAPref{cap:reticolari}). Essi ammettono
+configurazioni isostatiche paradigmatiche, ma anche
+iperstatiche, quando i vincoli esterni sono sovrabbondanti
+oppure il numero di aste supera il minimo necessario per
+l'isostaticità interna, o entrambe le cose.
+
+Nei \emph{telai} la descrizione nodale conduce alle
+equazioni di compatibilità nodale e a quelle di equilibrio
+nodale, con $N$, $T$, $M$ come incognite
+(\CAPref{cap:telai_piani}). I telai sono intrinsecamente
+iperstatici nella configurazione standard con maglie chiuse,
+indipendentemente dai vincoli esterni: il
+\CAPref{cap:telai_piani} ne costruisce i fondamenti
+topologici e la struttura formale, mentre l'analisi completa
+richiede le relazioni costitutive del Vol.~II.
+
+\begin{oss}\label{oss:una_eq_vs_molteplicita}
+	Nella descrizione nodale di una travatura reticolare ciascuna asta rigida impone \emph{una} 
+	equazione ai parametri dei due nodi cui si attesta (\OSSref{oss:lambda_dimensioni}). Questo numero non
+	va confuso con la molteplicità $m_i = 2$ della cerniera
+	che collega due aste: il primo conta le equazioni portate
+	dalle travi nella descrizione per nodi, la seconda quelle
+	portate dai nodi nella descrizione per corpi. Sono
+	grandezze omologhe di descrizioni diverse, e lo scambio
+	dei ruoli fra corpi e vincoli le tiene distinte.
+\end{oss}
+
+	\begin{oss}[Definizione per connessioni e tradizione dei
+		carichi nodali]\label{oss:def_reticolare_tradizione}
+		La tradizione definisce il sistema reticolare mediante
+		due requisiti congiunti: aste rettilinee collegate da
+		cerniere --- sferiche nello spazio, cilindriche nel
+		piano --- e carichi applicati esclusivamente ai nodi.
+		Il primo requisito è quello adottato anche qui. Il
+		secondo è di natura diversa: non riguarda ciò che il
+		sistema è, ma come lo si sollecita. Ponendolo nella
+		definizione, la tradizione fa di un'ipotesi un
+		requisito di ammissibilità, e di un teorema una
+		definizione.
+		
+		Il teorema è il seguente. \emph{Un'asta reticolare non
+			caricata nei punti interni è soggetta al solo sforzo
+			normale, costante lungo l'asta.} La dimostrazione è
+		immediata: l'asta è un corpo soggetto a due sole forze,
+		applicate alle cerniere di estremità; il momento è nullo
+		in ciascuna di esse, dunque le due forze sono collineari
+		con la congiungente, che per definizione è l'asse. Non
+		intervengono né la topologia della travatura né la sua
+		classificazione.
+		
+		Ne discendono due osservazioni. La prima è che la
+		proprietà è \emph{dell'asta}, non della travatura: in un
+		sistema in cui una sola asta sia caricata in campata,
+		tutte le altre continuano a soddisfare il teorema
+		esattamente. La tradizione qualifica come globale una
+		proprietà che decade in modo puntuale, ed è questa la
+		radice dell'equivoco per cui una travatura con un'asta
+		caricata sembrerebbe non essere più una travatura
+		reticolare.
+		
+		La seconda riguarda la coerenza dell'impianto. La
+		classificazione costruita nella Parte~II --- l'indice
+		$\nu = 3n_c - m$ e il rango della matrice $\bm{A}$ ---
+		dipende dai corpi e dalle connessioni, e mai dalle
+		azioni. Una definizione fondata sui carichi collocherebbe
+		i sistemi reticolari fuori dalla grammatica comune a
+		tutte le altre tipologie, e renderebbe non formulabile la
+		domanda sul comportamento delle aste caricate, trattata
+		nel \SECref{sec:aste_caricate_trasv} del
+		\CAPref{cap:reticolari}. L'ipotesi dei carichi nodali non
+		è un'assunzione sulla realtà: è un requisito della
+		descrizione per nodi, e come tale va trattata.
+\end{oss}
+
+
+%............................................................................................................................
+\subsection{Che cosa si tratta in questo volume}
+\label{subsec:cat_volumi}
+%............................................................................................................................
+
+In questo volume si trattano le configurazioni isostatiche
+dei sistemi a connessioni eterogenee e dei sistemi
+reticolari, perché in entrambi i casi la procedura di
+analisi --- classificazione, cinematica e determinazione
+delle caratteristiche della sollecitazione --- si compie con
+i soli strumenti dell'equilibrio.
+
+Per tutte le configurazioni iperstatiche --- sistemi
+eterogenei, reticolari o telai, con sovradeterminazione
+esterna o interna o entrambe --- le equazioni di equilibrio
+non bastano: il numero di incognite statiche supera quello
+delle equazioni disponibili. Le incognite iperstatiche si
+determinano imponendo le condizioni di compatibilità
+cinematica, che coinvolgono necessariamente il legame
+costitutivo fra sforzi e deformazioni. È questo legame a
+introdurre nell'analisi le proprietà del materiale e della
+sezione trasversale, e a richiedere gli strumenti sviluppati
+nel Vol.~II.
 
