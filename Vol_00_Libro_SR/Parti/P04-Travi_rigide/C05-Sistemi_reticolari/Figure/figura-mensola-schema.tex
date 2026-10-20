@@ -1,0 +1,83 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.52\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.85,
+					asta/.style={line width=1.5pt, line cap=round, line join=round, black},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt, line width=1.2pt},
+					quota/.style={thin, gray,
+						{Stealth[length=4pt,width=3pt]}-{Stealth[length=4pt,width=3pt]}},
+					richiam/.style={thin, gray, dashed},
+					forza/.style={->, >=stealth, line width=1.5pt, black},
+					]
+					\useasboundingbox (-2.2,-1.4) rectangle (5.0,5.9);
+					
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (0,4);
+					\coordinate (C) at (2,4);
+					\coordinate (D) at (4,4);
+					\coordinate (E) at (2,2);
+					
+					\draw[asta](A)--(B);
+					\draw[asta](B)--(C);
+					\draw[asta](C)--(D);
+					\draw[asta](A)--(E);
+					\draw[asta](B)--(E);
+					\draw[asta](C)--(E);
+					\draw[asta](D)--(E);
+					
+					%% carrello in A: piano verticale (reazione orizzontale)
+					\draw[line width=1.2pt](A)--++(-0.50,0.4)--++(0,-0.8)--cycle;
+					\draw[line width=1.2pt]($(A)+(-0.50,0.55)$)--($(A)+(-0.50,-0.55)$);
+					\draw[line width=1.2pt]($(A)+(-0.65,0.25)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(A)+(-0.65,-0.25)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(A)+(-0.82,0.55)$)--($(A)+(-0.82,-0.55)$);
+					\foreach \y in {0.45,0.25,0.05,-0.15,-0.35}
+					\draw[thin]($(A)+(-0.82,\y)$)--++(-0.22,0.18);
+					
+					%% cerniera in B
+					\draw[line width=1.2pt](B)--++(-0.65,0.4)--++(0,-0.8)--cycle;
+					\draw[line width=1.2pt]($(B)+(-0.65,0.55)$)--($(B)+(-0.65,-0.55)$);
+					\foreach \y in {0.45,0.25,0.05,-0.15,-0.35}
+					\draw[thin]($(B)+(-0.65,\y)$)--++(-0.22,0.18);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					\node[nodo]at(E){};
+					
+					\draw[forza]($(C)+(0,1.25)$)--($(C)+(0,0.18)$);
+					\node[above,font=\normalsize]at($(C)+(0,1.25)$){$F$};
+					\draw[forza]($(D)+(0,1.25)$)--($(D)+(0,0.18)$);
+					\node[above,font=\normalsize]at($(D)+(0,1.25)$){$F$};
+					
+					\node[below right=-1pt, font=\footnotesize]at(A){$A$};
+					\node[above=2pt,        font=\footnotesize]at(B){$B$};
+					\node[above left=-1pt,  font=\footnotesize]at(C){$C$};
+					\node[above right=-1pt, font=\footnotesize]at(D){$D$};
+					\node[below right=0pt,  font=\footnotesize]at(E){$E$};
+					
+					%% quota verticale sinistra
+					\draw[richiam](A)--++(-1.7,0);
+					\draw[richiam](E)--++(-3.7,0);
+					\draw[richiam](B)--++(-1.7,0);
+					\draw[quota](-1.5,0)--node[left,font=\small]{$\ell/2$}(-1.5,2);
+					\draw[quota](-1.5,2)--node[left,font=\small]{$\ell/2$}(-1.5,4);
+					
+					%% quota orizzontale in basso
+					\draw[richiam](A)--++(0,-1.0);
+					\draw[richiam](E)--++(0,-3.0);
+					\draw[richiam](D)--++(0,-5.0);
+					\draw[quota](0,-0.9)--node[below,font=\small]{$\ell/2$}(2,-0.9);
+					\draw[quota](2,-0.9)--node[below,font=\small]{$\ell/2$}(4,-0.9);
+					
+				\end{tikzpicture}
+			}
+			\caption{Mensola reticolare a tre maglie
+				triangolari $ABE$, $BCE$, $CDE$, vincolata a
+				una parete verticale. Carrello a piano di
+				scorrimento verticale in $A$ (reazione
+				orizzontale) e cerniera in $B$; carichi
+				verticali $F$ nei nodi $C$ ed $D$.}
+			\label{fig:mensola_schema}
+		\end{figure}

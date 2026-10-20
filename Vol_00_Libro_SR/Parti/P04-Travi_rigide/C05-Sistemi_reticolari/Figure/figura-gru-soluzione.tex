@@ -1,0 +1,97 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.96\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.6,
+					asta/.style={line width=1.2pt, line cap=round, line join=round, black},
+					astaG/.style={line width=1.0pt, line cap=round, line join=round, gray!45},
+					puntone/.style={line width=3.0pt, line cap=round, line join=round, black},
+					tirante/.style={line width=0.9pt, line cap=round, line join=round, black},
+					zline/.style={line width=0.9pt, line cap=round, gray!60},
+					ztick/.style={line width=0.9pt, line cap=round, black},
+					nodo/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.5pt, line width=0.9pt},
+					mnodo/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=6pt, line width=1.3pt},
+					forza/.style={->, >=stealth, line width=1.3pt, black},
+					sez/.style={black, thick, dashed},
+					lab/.style={font=\scriptsize, gray!70},
+					]
+					\def\l{2.0}
+					%%──── (a) stato di sollecitazione ────
+					\begin{scope}
+						\foreach \k in {0,1,2,3,4}{ \coordinate (A\k) at (0,{\k*\l}); \coordinate (B\k) at (\l,{\k*\l}); }
+						\coordinate (E1) at ({2*\l},{4*\l}); \coordinate (I1) at ({2*\l},{3*\l}); \coordinate (I2) at ({3*\l},{3*\l});
+						\draw[zline](A3)--(A4);
+						\draw[zline](A0)--(B0); \draw[zline](A1)--(B1); \draw[zline](A2)--(B2); \draw[zline](A4)--(B4);
+						\draw[zline](A0)--(B1); \draw[zline](A1)--(B2); \draw[zline](A2)--(B3);
+						\foreach \y in {0,2,4,8}{ \begin{scope}[shift={(\l/2,\y)}]
+								\draw[ztick](-0.16,-0.18)--(-0.16,0.18); \draw[ztick](0.16,-0.18)--(0.16,0.18); \end{scope} }
+						\foreach \y in {1,3,5}{ \begin{scope}[shift={(\l/2,\y)},rotate=45]
+								\draw[ztick](-0.16,-0.18)--(-0.16,0.18); \draw[ztick](0.16,-0.18)--(0.16,0.18); \end{scope} }
+						\begin{scope}[shift={(0,7)},rotate=90]
+							\draw[ztick](-0.16,-0.18)--(-0.16,0.18); \draw[ztick](0.16,-0.18)--(0.16,0.18); \end{scope}
+						\draw[puntone](B0)--(B1)--(B2)--(B3)--(B4);
+						\draw[puntone](A3)--(B3);
+						\draw[puntone](B3)--(I1); \draw[puntone](I1)--(I2); \draw[puntone](E1)--(I1);
+						\draw[tirante](A0)--(A1)--(A2)--(A3);
+						\draw[tirante](A3)--(B4);
+						\draw[tirante](B4)--(E1); \draw[tirante](B4)--(I1); \draw[tirante](E1)--(I2);
+						\draw[line width=1.0pt](A0)--++(-0.3,-0.5)--++(0.6,0)--cycle;
+						\draw[line width=1.0pt]($(A0)+(-0.42,-0.5)$)--($(A0)+(0.42,-0.5)$);
+						\foreach \x in {-0.34,-0.16,0.02,0.20,0.30}\draw[thin]($(A0)+(\x,-0.5)$)--++(-0.14,-0.18);
+						\draw[line width=1.0pt](B0)--++(-0.3,-0.42)--++(0.6,0)--cycle;
+						\draw[line width=1.0pt]($(B0)+(-0.40,-0.42)$)--($(B0)+(0.40,-0.42)$);
+						\draw[line width=1.0pt]($(B0)+(-0.16,-0.54)$)circle(2.4pt);
+						\draw[line width=1.0pt]($(B0)+( 0.16,-0.54)$)circle(2.4pt);
+						\draw[line width=1.0pt]($(B0)+(-0.42,-0.66)$)--($(B0)+(0.42,-0.66)$);
+						\foreach \x in {-0.34,-0.16,0.02,0.20,0.30}\draw[thin]($(B0)+(\x,-0.66)$)--++(-0.14,-0.18);
+						\foreach \k in {0,1,2,3,4}{ \node[nodo]at(A\k){}; \node[nodo]at(B\k){}; }
+						\node[nodo]at(E1){}; \node[nodo]at(I1){}; \node[nodo]at(I2){};
+						\draw[forza](I1)--($(I1)+(0,-1.0)$); \node[below,font=\scriptsize]at($(I1)+(0,-1.0)$){$F$};
+						\draw[forza](I2)--($(I2)+(0,-1.0)$); \node[below,font=\scriptsize]at($(I2)+(0,-1.0)$){$F$};
+						\node[font=\scriptsize]at({1.8*\l},-0.60){$(a)$};
+					\end{scope}
+					%%──── (b) sezione orizzontale di Ritter ────
+					\begin{scope}[xshift=9.2cm]
+						\foreach \k in {0,1,2,3,4}{ \coordinate (A\k) at (0,{\k*\l}); \coordinate (B\k) at (\l,{\k*\l}); }
+						\coordinate (E1) at ({2*\l},{4*\l}); \coordinate (I1) at ({2*\l},{3*\l}); \coordinate (I2) at ({3*\l},{3*\l});
+						\draw[astaG](A0)--(A1)--(A2)--(A3)--(A4); \draw[astaG](B0)--(B1)--(B2)--(B3)--(B4);
+						\foreach \k in {0,1,2,3,4}{ \draw[astaG](A\k)--(B\k); }
+						\foreach \k in {0,1,2,3}{ \pgfmathtruncatemacro{\kk}{\k+1} \draw[astaG](A\k)--(B\kk); }
+						\draw[astaG](B4)--(E1); \draw[astaG](B3)--(I1)--(I2); \draw[astaG](E1)--(I1);
+						\draw[astaG](B4)--(I1); \draw[astaG](E1)--(I2);
+						% troncone superiore (nero): sopra y=3
+						\draw[asta](A2)--(A3)--(A4); \draw[asta](B2)--(B3)--(B4);
+						\draw[asta](A2)--(B2); \draw[asta](A3)--(B3); \draw[asta](A4)--(B4);
+						\draw[asta](A2)--(B3); \draw[asta](A3)--(B4);
+						\draw[asta](B4)--(E1); \draw[asta](B3)--(I1)--(I2); \draw[asta](E1)--(I1); \draw[asta](B4)--(I1); \draw[asta](E1)--(I2);
+						% monconi delle aste tagliate (da y=3 ai nodi di livello 2)
+						\draw[asta](0,3)--(A2); \draw[asta](\l,3)--(B2); \draw[asta](1,3)--(B2);
+						\draw[sez](-0.8,3)--({2*\l+0.8},3) node[right,font=\scriptsize]{sezione};
+						\draw[forza](I1)--($(I1)+(0,-1.0)$); \node[below,font=\scriptsize]at($(I1)+(0,-1.0)$){$F$};
+						\draw[forza](I2)--($(I2)+(0,-1.0)$); \node[below,font=\scriptsize]at($(I2)+(0,-1.0)$){$F$};
+						\foreach \k in {2,3,4}{ \node[nodo]at(A\k){}; }
+						\node[nodo]at(B3){}; \node[nodo]at(B4){}; \node[nodo]at(E1){}; \node[nodo]at(I1){}; \node[nodo]at(I2){};
+						\node[mnodo]at(B2){};
+						\node[lab,left=2pt]at(A2){$A_2$}; \node[lab,left=2pt]at(A3){$A_3$}; \node[lab,left=2pt]at(A4){$A_4$};
+						\node[font=\scriptsize,right=2pt]at(B2){$B_2$}; \node[font=\scriptsize,above left=-1pt]at(B3){$B_3$}; \node[lab,above=2pt]at(B4){$B_4$};
+						\node[font=\scriptsize,above=2pt]at(E1){$E_1$};
+						\node[font=\scriptsize,below left=1pt]at(I1){$I_1$}; \node[font=\scriptsize,below right=-1pt]at(I2){$I_2$};
+						\node[font=\scriptsize]at(-0.55,2.55){$N_A$}; \node[font=\scriptsize]at({\l+0.55},2.55){$N_B$};
+						\node[font=\scriptsize]at({1.8*\l},-0.60){$(b)$};
+					\end{scope}
+				\end{tikzpicture}
+			}
+			\caption{$(a)$~Stato di sollecitazione: tratto
+				spesso le aste compresse, tratto sottile le tese;
+				i due trattini trasversali marcano le aste
+				scariche (le diagonali e i traversi del fusto al
+				di sotto della connessione, e il tratto $A_3A_4$).
+				$(b)$~Sezione orizzontale che recide un interpiano
+				del fusto: il troncone superiore porta le sole due
+				forze $F$; il momento rispetto al polo $B_2$ dà la
+				trazione $N_A$ del corrente posteriore, quello
+				rispetto al corrente posteriore la compressione
+				$N_B$ dell'anteriore. Entrambi non dipendono dalla
+				quota del taglio.}
+			\label{fig:gru_soluzione}
+		\end{figure}

@@ -1,0 +1,107 @@
+\begin{figure}[!htbp]
+		\centering
+		\begin{tikzpicture}[
+			trave/.style={line width=2.0pt, line cap=round,
+				line join=round, black},
+			terra/.style={line width=0.8pt, black},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=6pt, line width=0.9pt},
+			]
+			
+			\def\Lp{2.4}   % unità di lunghezza (= ell): altezza = luce/2
+			\def\dx{6.5}   % offset orizzontale tra i due pannelli
+			
+			%%═══════════════════════════════════════════════════════════════
+			%% PANNELLO (a) — PORTALE A TRE CERNIERE
+			%% A=(0,0), B=(0,L), C=(L,L), D=(2L,L), E=(2L,0)
+			%%═══════════════════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm]
+				
+				%% ── Coordinate ─────────────────────────────────────────
+				\coordinate (A) at (0,       0   );
+				\coordinate (B) at (0,       \Lp );
+				\coordinate (C) at (\Lp,     \Lp );
+				\coordinate (D) at (2*\Lp,   \Lp );
+				\coordinate (E) at (2*\Lp,   0   );
+				
+				%% ── Corpi: A-B-C e C-D-E ──────────────────────────────
+				\draw[trave] (A) -- (B) -- (C);
+				\draw[trave] (C) -- (D) -- (E);
+				
+				%% ── Cerniera esterna in A ──────────────────────────────
+				\draw[terra] (A) -- ++(-0.25,-0.42) -- ++(0.50,0) -- cycle;
+				\draw[terra] ($(A)+(-0.34,-0.42)$) -- ($(A)+(0.34,-0.42)$);	\foreach \x in {-0.28,-0.14,0,0.14,0.28}
+				\draw[very thin,black] ($(A)+(\x,-0.42)$) -- ++(-0.10,-0.13);
+				\node[nodoV] at (A) {};
+				
+				%% ── Cerniera esterna in E ──────────────────────────────
+				\draw[terra] (E) -- ++(-0.25,-0.42) -- ++(0.50,0) -- cycle;
+				\draw[terra] ($(E)+(-0.34,-0.42)$) -- ($(E)+(0.34,-0.42)$);	\foreach \x in {-0.28,-0.14,0,0.14,0.28}
+				\draw[very thin,black] ($(E)+(\x,-0.42)$) -- ++(-0.10,-0.13);
+				\node[nodoV] at (E) {};
+				
+				%% ── Cerniera interna in C (chiave) ─────────────────────
+				\node[nodoV] at (C) {};
+				
+				%% ── Etichette dei nodi ─────────────────────────────────
+				\node[left,  font=\small] at (A) {$A$};
+				\node[above left,  font=\small] at (B) {$B$};
+				\node[above,       font=\small] at ($(C)+(0,0.14)$) {$C$};
+				\node[above right, font=\small] at (D) {$D$};
+				\node[right, font=\small] at (E) {$E$};
+				
+				%% ── Etichette dei corpi ────────────────────────────────
+				\node[font=\small] at ({0.60},{0.55*\Lp}) {$\mathcal{C}_1$};
+				\node[font=\small] at ({2.0*\Lp-0.60},{0.55*\Lp}) {$\mathcal{C}_2$};
+				
+				%% ── Didascalia del pannello ────────────────────────────
+				\node[font=\small] at (\Lp,0)
+				{(a)};
+				
+			\end{scope}
+			
+			%%═══════════════════════════════════════════════════════════════
+			%% PANNELLO (b) — PORTALE DOPPIAMENTE INCASTRATO
+			%%═══════════════════════════════════════════════════════════════
+			\begin{scope}[xshift=\dx cm]
+				
+				%% ── Coordinate ─────────────────────────────────────────
+				\coordinate (A2) at (0,       0   );
+				\coordinate (B2) at (0,       \Lp );
+				\coordinate (C2) at (\Lp,     \Lp );
+				\coordinate (D2) at (2*\Lp,   \Lp );
+				\coordinate (E2) at (2*\Lp,   0   );
+				
+				%% ── Corpo unico: A-B-C-D-E (traversa continua) ────────
+				\draw[trave] (A2) -- (B2) -- (D2) -- (E2);
+				
+				%% ── Incastro in A: parete orizzontale a y=0 sotto, hatching giù
+				\draw[terra] ($(A2)+(-0.40, 0)$) -- ($(A2)+(0.40, 0)$);
+				\foreach \x in {-0.34,-0.20,-0.06,0.08,0.22,0.36}
+				\draw[very thin,black] ($(A2)+(\x,0)$) -- ++(-0.10,-0.13);
+				
+				%% ── Incastro in E: parete orizzontale a y=0 sotto, hatching giù
+				\draw[terra] ($(E2)+(-0.40, 0)$) -- ($(E2)+(0.40, 0)$);
+				\foreach \x in {-0.34,-0.20,-0.06,0.08,0.22,0.36}
+				\draw[very thin,black] ($(E2)+(\x,0)$) -- ++(-0.10,-0.13);
+				
+				%% ── Etichette dei nodi ─────────────────────────────────
+				\node[above left,  font=\small] at (A2) {$A$};
+				\node[above left,  font=\small] at (B2) {$B$};
+				%\node[above,       font=\small] at ($(C2)+(0,0.14)$) {$C$};
+				\node[above right, font=\small] at (D2) {$D$};
+				\node[above right, font=\small] at (E2) {$E$};
+				
+				%% ── Etichetta del corpo unico ──────────────────────────
+				\node[font=\small] at (\Lp,{\Lp+0.3}) {$\mathcal{C}$};
+				
+				%% ── Didascalia del pannello ────────────────────────────
+				\node[font=\small] at (\Lp,0)
+				{(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{(a) Portale a tre cerniere e (b) e portale	incastrato.}
+		\label{fig:portali_confronto}
+	\end{figure}

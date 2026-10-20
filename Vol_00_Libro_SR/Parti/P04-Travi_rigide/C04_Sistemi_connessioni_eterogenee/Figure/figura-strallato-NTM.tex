@@ -1,0 +1,253 @@
+\begin{figure}[htbp!]
+	\centering
+	
+	%% ── stili comuni ai quattro pannelli ────────────────────────
+	\tikzset{
+		trv/.style   ={line width=1.7pt, line cap=round,
+			line join=round, black},
+		fib/.style   ={gray!65, dash pattern=on 2pt off 1.6pt,
+			line width=0.45pt},
+		dbordo/.style={draw=black, line width=0.7pt},
+		dtratto/.style={draw=gray!55, line width=0.35pt},
+		terra/.style ={line width=0.6pt},
+		rich/.style  ={line width=0.4pt, -{Stealth[length=1.4mm]}},
+		qt/.style    ={font=\footnotesize},
+		nd/.style    ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=3.4pt, line width=0.55pt}}
+	
+	%% ── primitivi ───────────────────────────────────────────────
+	% diagramma lineare fra #1 e #2; #3,#4 versore di riporto;
+	% #5,#6 ordinate agli estremi; #7 scala
+	\newcommand{\diagLin}[7]{%
+		\pgfmathsetmacro{\dax}{#5*#7*#3}\pgfmathsetmacro{\day}{#5*#7*#4}%
+		\pgfmathsetmacro{\dbx}{#6*#7*#3}\pgfmathsetmacro{\dby}{#6*#7*#4}%
+		\foreach \dj in {0,1,...,10}{%
+			\pgfmathsetmacro{\dt}{\dj/10}%
+			\pgfmathsetmacro{\dv}{(#5+(#6-#5)*\dt)*#7}%
+			\draw[dtratto] ($(#1)!\dt!(#2)$)--++({\dv*#3},{\dv*#4});}%
+		\draw[dbordo] ($(#1)+(\dax,\day)$)--($(#2)+(\dbx,\dby)$);
+		\draw[dbordo] (#1)--($(#1)+(\dax,\day)$);
+		\draw[dbordo] (#2)--($(#2)+(\dbx,\dby)$);}
+	% diagramma parabolico; #5,#6,#7 ordinate a inizio, mezzo, fine; #8 scala
+	\newcommand{\diagPar}[8]{%
+		\pgfmathsetmacro{\pca}{2*(#5-2*#6+#7)}%
+		\pgfmathsetmacro{\pcb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\pcc}{#5}%
+		\foreach \dj in {0,1,...,16}{%
+			\pgfmathsetmacro{\dt}{\dj/16}%
+			\pgfmathsetmacro{\dv}{(\pca*\dt*\dt+\pcb*\dt+\pcc)*#8}%
+			\coordinate (dP\dj) at ($(#1)!\dt!(#2)+({\dv*#3},{\dv*#4})$);
+			\draw[dtratto] ($(#1)!\dt!(#2)$)--(dP\dj);}%
+		\draw[dbordo] (dP0) \foreach \dj in {1,2,...,16}{ -- (dP\dj)};
+		\draw[dbordo] (#1)--(dP0);
+		\draw[dbordo] (#2)--(dP16);}
+	% cerchietto con il segno
+	\newcommand{\segno}[3]{%
+		\node[circle, draw=black, fill=white, line width=0.5pt,
+		inner sep=0.8pt, font=\tiny] at (#1,#2) {$#3$};}
+	% cerchietto ridotto, per il pannello del taglio
+	\newcommand{\segnoT}[3]{%
+		\node[circle, draw=black, fill=white, line width=0.4pt,
+		inner sep=0.4pt, font=\fontsize{4}{4}\selectfont]
+		at (#1,#2) {$#3$};}
+	% vincoli e mezzelune
+	\newcommand{\carrV}[1]{%
+		\draw[terra] (#1)--($(#1)+(-0.10,-0.18)$)--($(#1)+(0.10,-0.18)$)--cycle;
+		\draw[terra, fill=white, line width=0.4pt]
+		($(#1)+(-0.055,-0.215)$) circle(0.035);
+		\draw[terra, fill=white, line width=0.4pt]
+		($(#1)+( 0.055,-0.215)$) circle(0.035);
+		\draw[terra] ($(#1)+(-0.16,-0.25)$)--($(#1)+(0.16,-0.25)$);
+		\foreach \t in {-0.14,-0.07,0,0.07,0.14}
+		\draw[terra, line width=0.35pt] ($(#1)+(\t,-0.25)$)--++(-0.05,-0.07);}
+	\newcommand{\cernE}[1]{%
+		\draw[terra] (#1)--($(#1)+(-0.11,-0.19)$)--($(#1)+(0.11,-0.19)$)--cycle;
+		\draw[terra] ($(#1)+(-0.17,-0.19)$)--($(#1)+(0.17,-0.19)$);
+		\foreach \t in {-0.15,-0.075,0,0.075,0.15}
+		\draw[terra, line width=0.35pt] ($(#1)+(\t,-0.19)$)--++(-0.05,-0.07);}
+	\newcommand{\lunaD}[1]{%
+		\draw[black, fill=white, line width=0.8pt]
+		($(#1)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;}
+	\newcommand{\lunaS}[1]{%
+		\draw[black, fill=white, line width=0.8pt]
+		($(#1)+(0,-0.07)$) arc[start angle=-90,end angle=-270,radius=0.07]--cycle;}
+	% geometria, vincoli e nodi, comuni ai quattro pannelli
+	\newcommand{\schema}{%
+		\coordinate (A) at (0,0);  \coordinate (B) at (1,-1);
+		\coordinate (C) at (1,1);  \coordinate (D) at (1,0);
+		\coordinate (E) at (3,0);  \coordinate (F) at (5,0);
+		\coordinate (G) at (5,1);  \coordinate (H) at (5,-1);
+		\coordinate (L) at (6,0);
+		\draw[trv] (B)--(C) (H)--(G) (A)--(C) (L)--(G) (C)--(E) (G)--(E)
+		(1.07,0)--(E) (4.93,0)--(E);
+		\lunaD{D}\lunaS{F}
+		\cernE{A}\cernE{L}\carrV{B}\carrV{H}
+		\foreach \n in {A,B,C,E,G,H,L} \node[nd] at (\n) {};}
+	% fibre di riferimento: solo impalcato e antenne
+	\newcommand{\fibreIA}{%
+		\draw[fib] (1,-0.085)--(5,-0.085)
+		(1.085,-1)--(1.085,1) (4.915,-1)--(4.915,1);}
+	% fibre di riferimento: anche bielle
+	\newcommand{\fibreTutte}{%
+		\fibreIA
+		\draw[fib] ($(A)+(0.06,-0.06)$)--($(C)+(0.06,-0.06)$)
+		($(L)+(-0.06,-0.06)$)--($(G)+(-0.06,-0.06)$)
+		($(C)+(-0.038,-0.076)$)--($(E)+(-0.038,-0.076)$)
+		($(G)+(0.038,-0.076)$)--($(E)+(0.038,-0.076)$);}
+	
+	% ═══════════ (a) carichi e reazioni ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm,
+				carico/.style ={-{Stealth[length=1.8mm,width=1.10mm]},
+					line width=0.60pt},
+				caricoM/.style={-{Stealth[length=1.0mm,width=0.62mm]},
+					line width=0.50pt},
+				caricoS/.style={-{Stealth[length=1.2mm,width=0.58mm]},
+					line width=0.40pt},
+				bordo/.style  ={line width=0.5pt}]
+				\schema \fibreTutte
+				% carico p sull'impalcato
+				\draw[bordo] (1,-0.34)--(5,-0.34);
+				\foreach \x in {1.10,1.30,...,4.90} \draw[carico] (\x,0)--(\x,-0.34);
+				\node[qt, below] at (2,-0.36) {$p$};
+				\node[qt, below] at (4,-0.36) {$p$};
+				% peso proprio p/4
+				\foreach \y in {1,0.75,...,-0.75}{%
+					\draw[caricoS] (0.85,\y)--(0.85,{\y-0.22});
+					\draw[caricoS] (5.15,\y)--(5.15,{\y-0.22});}
+				\node[qt, left]  at (0.80,-0.60) {$p/4$};
+				\node[qt, right] at (5.20,-0.60) {$p/4$};
+				% carico orizzontale p/2
+				\draw[bordo] (1,-1)--(1,1);
+				\draw[bordo] (1.17,-1)--(1.17,1);
+				\foreach \y in {1,0.70,0.40,-0.48,-0.74,-1}
+				\draw[caricoM] (1,\y)--(1.17,\y);
+				\node[qt, right] at (1.22,-0.95) {$p/2$};
+				% etichette
+				\node[qt, above=4pt] at (A) {$A$};
+				\node[qt, left=5pt]  at (B) {$B$};
+				\node[qt, above]     at (C) {$C$};
+				\node[qt]            at (0.70,0.) {$D$};
+				\node[qt, above=4pt] at (E) {$E$};
+				\node[qt]            at (5.3,0.) {$F$};
+				\node[qt, above]     at (G) {$G$};
+				\node[qt, right=5pt] at (H) {$H$};
+				\node[qt, above=4pt] at (L) {$L$};
+				% reazioni, traslate lungo la propria retta d'azione
+				\draw[rich] (-0.36,0)--(-0.86,0);
+				\node[qt, above] at (-0.61,0.04) {$\tfrac52 p\ell$};
+				\draw[rich] (0,-0.42)--(0,-0.92);
+				\node[qt, left]  at (-0.04,-0.70) {$\tfrac52 p\ell$};
+				\draw[rich] (6.36,0)--(6.86,0);
+				\node[qt, above] at (6.61,0.04) {$\tfrac32 p\ell$};
+				\draw[rich] (6,-0.42)--(6,-0.92);
+				\node[qt, right] at (6.04,-0.70) {$\tfrac32 p\ell$};
+				\draw[rich] (1,-1.98)--(1,-1.48);
+				\node[qt, left]  at (0.96,-1.76) {$\tfrac{21}{4} p\ell$};
+				\draw[rich] (5,-1.98)--(5,-1.48);
+				\node[qt, right] at (5.04,-1.76) {$\tfrac{15}{4} p\ell$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (a) carichi e reazioni}
+	\end{minipage}\hfill
+	% ═══════════ (b) taglio ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm]
+				\pgfmathsetmacro{\kT}{0.88}% ordinata in p*l -> unita' di griglia
+				\schema \fibreIA
+				% impalcato: da +p*l a -p*l su ciascuna campata
+				\diagLin{1,0}{3,0}{0}{-1}{1}{-1}{\kT}
+				\diagLin{3,0}{5,0}{0}{-1}{1}{-1}{\kT}
+				% antenna BC
+				\diagLin{1,-1}{1,0}{1}{0}{0}{-0.5}{\kT}
+				\diagLin{1,0}{1,1}{1}{0}{0.5}{0}{\kT}
+				\segnoT{1.32}{-0.26}{+}\segnoT{2.7}{0.38}{-}
+				\segnoT{3.42}{-0.26}{+}\segnoT{4.58}{0.26}{-}
+				\segnoT{0.86}{-0.26}{-}\segnoT{1.18}{0.26}{+}
+				% quote
+				\draw[rich] (2.46,1.00)--(2.96,0.80);
+				\node[qt, left]  at (2.44,1.00) {$p\ell$};
+				\draw[rich] (3.54,-1.00)--(3.04,-0.80);
+				\node[qt, right] at (3.56,-1.00) {$p\ell$};
+				\draw[rich] (0.28,-0.66)--(0.58,-0.06);
+				\node[qt, left]  at (0.26,-0.68) {$\tfrac{p\ell}{2}$};
+				\draw[rich] (1.96,-0.28)--(1.45,0.04);
+				\node[qt, right] at (1.98,-0.40) {$\tfrac{p\ell}{2}$};
+				\draw[rich] (1.57,-1.06)--(1.03,-0.80);
+				\node[qt, right] at (1.59,-1.07) {$p\ell$};
+				\draw[rich] (4.43,1.06)--(4.97,0.80);
+				\node[qt, left]  at (4.41,1.07) {$p\ell$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (b) taglio $T$}
+	\end{minipage}\\[10pt]
+	% ═══════════ (c) forza normale ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm]
+				\pgfmathsetmacro{\kN}{0.15}
+				\pgfmathsetmacro{\kNi}{0.30}% scala locale dell'impalcato, fuori scala
+				\schema \fibreTutte
+				% ritenute
+				\diagLin{0,0}{1,1}{-0.7071}{0.7071}{3.5355}{3.5355}{\kN}
+				\diagLin{6,0}{5,1}{0.7071}{0.7071}{2.1213}{2.1213}{\kN}
+				% stralli
+				\diagLin{1,1}{3,0}{0.4472}{0.8944}{2.7951}{2.7951}{\kN}
+				\diagLin{5,1}{3,0}{-0.4472}{0.8944}{1.6771}{1.6771}{\kN}
+				% impalcato di sinistra (quello di destra e' scarico)
+				\diagLin{1,0}{3,0}{0}{1}{-1}{-1}{\kNi}
+				% antenne
+				\diagLin{1,-1}{1,0}{1}{0}{-5.25}{-5}{\kN}
+				\diagLin{1,0}{1,1}{1}{0}{-4}{-3.75}{\kN}
+				\diagLin{5,-1}{5,0}{-1}{0}{-3.75}{-3.5}{\kN}
+				\diagLin{5,0}{5,1}{-1}{0}{-2.5}{-2.25}{\kN}
+				\segno{0.30}{0.72}{+}\segno{5.64}{0.62}{+}
+				\segno{2.10}{0.70}{+}\segno{3.90}{0.60}{+}
+				\segno{2.00}{-0.18}{-}\segno{0.55}{-0.55}{-}\segno{5.25}{-0.55}{-}
+				% quote
+				\draw[rich] (-0.58,0.72)--(-0.08,0.70);
+				\node[qt, left]  at (-0.60,0.72) {$\tfrac{5\sqrt2}{2}p\ell$};
+				\draw[rich] (6.58,0.72)--(6.08,0.70);
+				\node[qt, right] at (6.60,0.72) {$\tfrac{3\sqrt2}{2}p\ell$};
+				\draw[rich] (1.80,1.52)--(2.12,0.98);
+				\node[qt, left]  at (1.78,1.53) {$\tfrac{5\sqrt5}{4}p\ell$};
+				\draw[rich] (4.20,1.52)--(3.92,0.86);
+				\node[qt, right] at (4.22,1.53) {$\tfrac{3\sqrt5}{4}p\ell$};
+				\node[qt, below] at (2.00,-0.34) {$p\ell$};
+				\draw[rich] (0.02,-1.12)--(0.24,-0.96);
+				\node[qt, left]  at (0.00,-1.13) {$\tfrac{21}{4}p\ell$};
+				\draw[rich] (0.18,1.32)--(0.46,1.02);
+				\node[qt, left]  at (0.16,1.33) {$\tfrac{15}{4}p\ell$};
+				\draw[rich] (5.98,-1.12)--(5.60,-0.96);
+				\node[qt, right] at (6.00,-1.13) {$\tfrac{15}{4}p\ell$};
+				\draw[rich] (5.82,1.32)--(5.42,1.02);
+				\node[qt, right] at (5.84,1.33) {$\tfrac{9}{4}p\ell$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (c) forza normale $N$}
+	\end{minipage}\hfill
+	% ═══════════ (d) momento flettente ═══════════
+	\begin{minipage}[t]{0.49\textwidth}\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.02cm, y=1.02cm]
+				\pgfmathsetmacro{\kM}{1.50}% ordinata in p*l^2 -> unita' di griglia
+				\schema \fibreIA
+				% impalcato: parabole con massimo p*l^2/2 in mezzeria
+				\diagPar{1,0}{3,0}{0}{-1}{0}{0.5}{0}{\kM}
+				\diagPar{3,0}{5,0}{0}{-1}{0}{0.5}{0}{\kM}
+				% antenna BC: -p*l^2/4 in D
+				\diagPar{1,-1}{1,0}{1}{0}{0}{-0.0625}{-0.25}{\kM}
+				\diagPar{1,0}{1,1}{1}{0}{-0.25}{-0.0625}{0}{\kM}
+				% quote
+				\node[qt, below] at (2,-0.78) {$\tfrac{p\ell^2}{2}$};
+				\node[qt, below] at (4,-0.78) {$\tfrac{p\ell^2}{2}$};
+				\draw[rich] (0.46,-0.52)--(0.64,-0.06);
+				\node[qt, left] at (0.74,-0.85) {$\tfrac{p\ell^2}{4}$};
+		\end{tikzpicture}}\\[2pt]{\footnotesize (d) momento flettente $M$}
+	\end{minipage}
+	
+	\caption{Ponte strallato: stato di sollecitazione. \emph{(a)}~Carichi
+		e reazioni esterne, con il tratteggio grigio della fibra di
+		riferimento adottata per ciascuna asta; \emph{(b)}~taglio,
+		\emph{(c)}~forza normale, \emph{(d)}~momento flettente. In
+		\emph{(c)} l'impalcato di sinistra è a scala doppia, per renderlo
+		leggibile accanto agli sforzi ben maggiori delle antenne; quello di
+		destra è scarico. L'antenna $HG$ non compare in \emph{(b)} e
+		\emph{(d)}, dove taglio e momento vi sono identicamente nulli.}
+	\label{fig:strallato_NTM}
+\end{figure}

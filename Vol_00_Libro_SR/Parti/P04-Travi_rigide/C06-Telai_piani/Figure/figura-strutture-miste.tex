@@ -1,0 +1,209 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		scale=0.85,
+		trave/.style={line width=1.8pt, line cap=round,
+			line join=round, black},
+		diag/.style={line width=1.8pt, line cap=round,
+			line join=round, gray!60},
+		nodoInc/.style={},
+		nodoCer/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4pt,
+			line width=1.2pt},
+		cerInt/.style={circle, fill=white,
+			draw=black!60!orange,
+			inner sep=0pt, minimum size=4pt,
+			line width=1.5pt},
+		inc/.style={line width=1.2pt},
+		etasta/.style={circle, draw=black, fill=white,
+			inner sep=1pt, font=\scriptsize,
+			line width=0.6pt},
+		]
+		
+		\def\h{1.6}
+		\def\sep{4.5}
+		
+		%% ── separatori verticali ─────────────────────────────────
+		\draw[very thin, gray!40](3.6,-0.8)--(3.6,4.5);
+		\draw[very thin, gray!40](8.2,-0.8)--(8.2,4.5);
+		
+		%% ═══════════════════════════════════════════════════════
+		%% PORTALE A — cerniera nel nodo 3 (tre vie)
+		%% nodi: 1(0.5,0) 2(2.5,0) 3(0.5,h) 4(2.5,h)
+		%%        5(0.5,2h) 6(2.5,2h)
+		%% ═══════════════════════════════════════════════════════
+		
+		\coordinate(AN1) at (0.5, 0);
+		\coordinate(AN2) at (2.5, 0);
+		\coordinate(AN3) at (0.5, \h);
+		\coordinate(AN4) at (2.5, \h);
+		\coordinate(AN5) at (0.5, 2*\h);
+		\coordinate(AN6) at (2.5, 2*\h);
+		
+		\draw[trave](AN1)--(AN3);
+		\draw[trave](AN2)--(AN4);
+		\draw[trave](AN3)--(AN4);
+		\draw[trave](AN3)--(AN5);
+		\draw[trave](AN4)--(AN6);
+		\draw[trave](AN5)--(AN6);
+		
+		%% incastri
+		\draw[inc](AN1)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(AN1)+(\x,0)$)--++(-.14,-0.17);
+		\draw[inc](AN2)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(AN2)+(\x,0)$)--++(-.14,-0.17);
+		
+		%% cerniera interna nel nodo 3
+		\node[nodoCer] at (AN3){};
+		
+		%% nodi incastro (nessun simbolo — travi continue)
+		%% etichette nodi
+		\node[above left, font=\scriptsize] at (AN1){$1$};
+		\node[above right,font=\scriptsize] at (AN2){$2$};
+		\node[left, font=\scriptsize]	at (AN3){$3$};
+		\node[right,font=\scriptsize] at (AN4){$4$};
+		\node[left, font=\scriptsize] at (AN5){$5$};
+		\node[right,font=\scriptsize] at (AN6){$6$};
+		
+		%% numerazione aste
+		\node[etasta] at ($(AN1)!0.5!(AN3)+(-0.30,0)$){$1$};
+		\node[etasta] at ($(AN2)!0.5!(AN4)+(0.30,0)$) {$2$};
+		\node[etasta] at ($(AN3)!0.5!(AN4)+(0,0.22)$) {$3$};
+		\node[etasta] at ($(AN3)!0.5!(AN5)+(-0.30,0)$){$4$};
+		\node[etasta] at ($(AN4)!0.5!(AN6)+(0.30,0)$) {$5$};
+		\node[etasta] at ($(AN5)!0.5!(AN6)+(0,0.22)$) {$6$};
+		
+		\node[font=\small,gray] at (1.5,-0.60){$g=4$};
+		
+		%% ═══════════════════════════════════════════════════════
+		%% PORTALE B — diagonale reticolare nodo 3 → nodo 6
+		%% nodi: 1..6, offset x = sep
+		%% ═══════════════════════════════════════════════════════
+		
+		\coordinate(BN1) at (\sep+0.5, 0);
+		\coordinate(BN2) at (\sep+2.5, 0);
+		\coordinate(BN3) at (\sep+0.5, \h);
+		\coordinate(BN4) at (\sep+2.5, \h);
+		\coordinate(BN5) at (\sep+0.5, 2*\h);
+		\coordinate(BN6) at (\sep+2.5, 2*\h);
+		
+		\draw[trave](BN1)--(BN3);
+		\draw[trave](BN2)--(BN4);
+		\draw[trave](BN3)--(BN4);
+		\draw[trave](BN3)--(BN5);
+		\draw[trave](BN4)--(BN6);
+		\draw[trave](BN5)--(BN6);
+		%% diagonale reticolare (grigia)
+		\draw[diag](BN3)--(BN6);
+		
+		%% incastri
+		\draw[inc](BN1)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(BN1)+(\x,0)$)--++(-.14,-0.17);
+		\draw[inc](BN2)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(BN2)+(\x,0)$)--++(-.14,-0.17);
+		
+		%% cerniere alle estremità della diagonale
+		\node[nodoCer] at (BN3){};
+		\node[nodoCer] at (BN6){};
+		
+		%% etichette nodi
+		\node[above left, font=\scriptsize] at (BN1){$1$};
+		\node[above right,font=\scriptsize] at (BN2){$2$};
+		\node[left, font=\scriptsize] at (BN3){$3$};
+		\node[right,font=\scriptsize] at (BN4){$4$};
+		\node[left, font=\scriptsize] at (BN5){$5$};
+		\node[right,font=\scriptsize] at (BN6){$6$};
+		
+		%% numerazione aste
+		\node[etasta] at ($(\sep+0.5,0)!0.5!(\sep+0.5,\h)+(-0.30,0)$){$1$};
+		\node[etasta] at ($(\sep+2.5,0)!0.5!(\sep+2.5,\h)+(0.30,0)$) {$2$};
+		\node[etasta] at ($(\sep+0.5,\h)!0.5!(\sep+2.5,\h)+(0,0.22)$){$3$};
+		\node[etasta] at ($(\sep+0.5,\h)!0.5!(\sep+0.5,2*\h)+(-0.30,0)$){$4$};
+		\node[etasta] at ($(\sep+2.5,\h)!0.5!(\sep+2.5,2*\h)+(0.30,0)$){$5$};
+		\node[etasta] at ($(\sep+0.5,2*\h)!0.5!(\sep+2.5,2*\h)+(0,0.22)$){$6$};
+		%% diagonale: etichetta a metà
+		\node[etasta] at ($(\sep+0.5,\h)!0.5!(\sep+2.5,2*\h)+(0.35,0)$){$7$};
+		
+		\node[font=\small,gray] at (\sep+1.5,-0.60){$g=4$};
+		
+		%% ═══════════════════════════════════════════════════════
+		%% PORTALE C — cerniera in 3 + diagonale 5 → 4
+		%% nodi: 1..6, offset x = 2*sep
+		%% ═══════════════════════════════════════════════════════
+		
+		\def\secc{9.0}
+		
+		\coordinate(CN1) at (\secc+0.5, 0);
+		\coordinate(CN2) at (\secc+2.5, 0);
+		\coordinate(CN3) at (\secc+0.5, \h);
+		\coordinate(CN4) at (\secc+2.5, \h);
+		\coordinate(CN5) at (\secc+0.5, 2*\h);
+		\coordinate(CN6) at (\secc+2.5, 2*\h);
+		
+		\draw[trave](CN1)--(CN3);
+		\draw[trave](CN2)--(CN4);
+		\draw[trave](CN3)--(CN4);
+		\draw[trave](CN3)--(CN5);
+		\draw[trave](CN4)--(CN6);
+		\draw[trave](CN5)--(CN6);
+		%% diagonale reticolare 5→4 (grigia)
+		\draw[diag](CN5)--(CN4);
+		
+		%% incastri
+		\draw[inc](CN1)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(CN1)+(\x,0)$)--++(-.14,-0.17);
+		\draw[inc](CN2)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(CN2)+(\x,0)$)--++(-.14,-0.17);
+		
+		%% cerniera interna nel nodo 3
+		\node[nodoCer] at (CN3){};
+		%% cerniere alle estremità della diagonale
+		\node[nodoCer] at (CN5){};
+		\node[nodoCer] at (CN4){};
+		
+		%% etichette nodi
+		\node[above left, font=\scriptsize] at (CN1){$1$};
+		\node[above right,font=\scriptsize] at (CN2){$2$};
+		\node[left, font=\scriptsize] at (CN3){$3$};
+		\node[right,font=\scriptsize] at (CN4){$4$};
+		\node[left, font=\scriptsize] at (CN5){$5$};
+		\node[right,font=\scriptsize] at (CN6){$6$};
+		
+		%% numerazione aste
+		\node[etasta] at ($(\secc+0.5,0)!0.5!(\secc+0.5,\h)+(-0.30,0)$){$1$};
+		\node[etasta] at ($(\secc+2.5,0)!0.5!(\secc+2.5,\h)+(0.30,0)$) {$2$};
+		\node[etasta] at ($(\secc+0.5,\h)!0.5!(\secc+2.5,\h)+(0,0.22)$){$3$};
+		\node[etasta] at ($(\secc+0.5,\h)!0.5!(\secc+0.5,2*\h)+(-0.30,0)$){$4$};
+		\node[etasta] at ($(\secc+2.5,\h)!0.5!(\secc+2.5,2*\h)+(0.30,0)$){$5$};
+		\node[etasta] at ($(\secc+0.5,2*\h)!0.5!(\secc+2.5,2*\h)+(0,0.22)$){$6$};
+		%% diagonale 5→4
+		\node[etasta] at ($(\secc+0.5,2*\h)!0.5!(\secc+2.5,\h)+(0.35,0)$){$7$};
+		
+		\node[font=\small,gray] at (\secc+1.5,-0.60){$g=2$};
+		
+	\end{tikzpicture}
+	\caption{Strutture miste: coesistenza di elementi
+		di molteplicità diversa nello stesso sistema.
+		\emph{(A)}: cerniera interna nel nodo~$3$
+		(nodo a tre vie, cerchio arancione);
+		la maglia perde una condizione di congruenza
+		rotazionale per ciascuna delle due coppie di
+		travi convergenti: $g = 3 + 3\times1 - 2 = 4$.
+		\emph{(B)}: diagonale reticolare ($m=1$,
+		in grigio) tra i nodi~$3$ e~$6$; le cerniere
+		alle estremità della diagonale (cerchi vuoti)
+		riducono la molteplicità del collegamento
+		da $3$ a $1$: $g = 4$.
+		\emph{(C)}: cerniera interna nel nodo~$3$
+		e diagonale reticolare tra i nodi~$5$ e~$4$;
+		le due modifiche interagiscono e il grado
+		di iperstaticità si riduce ulteriormente:
+		$g = 2$.}
+	\label{fig:strutture_miste}
+\end{figure}

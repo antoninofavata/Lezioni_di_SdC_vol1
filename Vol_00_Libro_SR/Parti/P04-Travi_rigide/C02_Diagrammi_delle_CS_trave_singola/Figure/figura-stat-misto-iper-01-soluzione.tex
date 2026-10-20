@@ -1,0 +1,131 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.75\textwidth}{!}{%
+				\begin{tikzpicture}[>=Stealth, line width=0.8pt,
+					carico/.style={->, line width=0.8pt},
+					hatch/.style={line width=0.3pt, gray!50},
+					rif/.style={line width=0.5pt},
+					diag/.style={line width=0.7pt},
+					campit/.style={line width=0.3pt},
+					quota/.style={line width=0.4pt},forza/.style={line width=0.8pt}]
+					
+					\def\Lell{3.6}\def\Lc{1.2}\def\Ld{2.4}
+					\def\uP{0.20}\def\uM{0.70}      % scale illustrative (knob P e P l)
+					
+					\newcommand\incastro[1]{%
+						\draw[line width=1.0pt] (#1)+(0,-0.34) -- ($(#1)+(0,0.34)$);
+						\foreach \yy in {-0.30,-0.18,-0.06,0.06,0.18,0.30}{\draw[hatch] ($(#1)+(0,\yy)$) -- ($(#1)+(-0.16,\yy-0.16)$);}}
+					\newcommand\glifoincl[1]{%
+						\begin{scope}[shift={(#1)}, rotate=45]
+							\draw[thick] (-0.40,-0.11) -- (0.40,-0.11); \draw[thick] (-0.40,0.11) -- (0.40,0.11);
+							\draw[thick] (-0.16,0) circle (0.085); \draw[thick] (0.16,0) circle (0.085);
+							\foreach \x in {-0.32,-0.16,0,0.16,0.32}{\draw[hatch] (\x,-0.11) -- (\x-0.12,-0.25);}
+					\end{scope}}
+					\newcommand\pianoincl[1]{%
+						\draw[rif, gray!60] (#1) -- ($(#1)+(0.9,0)$);
+						\draw[rif, gray!60] (#1) -- ($(#1)+(45:0.9)$);
+						\draw[gray!60] ($(#1)+(0.62,0)$) arc (0:45:0.62);
+						\node[gray!80, font=\scriptsize] at ($(#1)+(0.86,0.30)$) {$\pi/4$};}
+					\newcommand\campcost[3]{\foreach \k in {1,...,9}{\pgfmathsetmacro\xx{#1+(#2-#1)*\k/10}\draw[campit] (\xx,0) -- (\xx,#3);}}
+					
+					%Aggiunta
+					\def\rCoppia{0.24}\def\Lwing{0.12}\def\AoffX{0.20}\def\BoffX{0.20}
+					
+					\newcommand\cerniera[1]{%
+						\begin{scope}[shift={(#1)}]
+							\draw[thick](0,0)--(-0.22,-0.38)--(0.22,-0.38)--cycle;
+							\draw[thick](-0.32,-0.38)--(0.32,-0.38);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch](\x,-0.38)--(\x-0.12,-0.52);}
+						\end{scope}
+						\node[circle,fill=white,draw=black,inner sep=0pt,minimum size=5pt,line width=0.8pt] at (#1) {};}
+					
+					\newcommand\carrelloincl[1]{%
+						\begin{scope}[shift={(#1)},rotate=45]
+							\draw[thick](0,0)--(-0.22,-0.38)--(0.22,-0.38)--cycle;
+							\draw[thick](-0.15,-0.45) circle (0.06); \draw[thick](0.15,-0.45) circle (0.06);
+							\draw[thick](-0.32,-0.53)--(0.32,-0.53);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch](\x,-0.53)--(\x-0.12,-0.67);}
+						\end{scope}
+						\node[circle,fill=white,draw=black,inner sep=0pt,minimum size=5pt,line width=0.8pt] at (#1) {};}
+					
+					\def\coppiaA#1{%
+						\draw[forza](\AoffX,-\rCoppia) arc[start angle=-90,end angle=90,radius=\rCoppia];
+						\draw[forza](\AoffX,\rCoppia)--({\AoffX+\Lwing*cos(25)},{\rCoppia+\Lwing*sin(25)});
+						\draw[forza](\AoffX,\rCoppia)--({\AoffX+\Lwing*cos(-25)},{\rCoppia+\Lwing*sin(-25)});
+						\node[font=\footnotesize] at (\AoffX+0.28,\rCoppia+0.06) {#1};}
+					
+					\def\coppiaB#1{%
+						\draw[forza](\Lell-\BoffX,\rCoppia) arc[start angle=90,end angle=270,radius=\rCoppia];
+						\draw[forza](\Lell-\BoffX,-\rCoppia)--({\Lell-\BoffX+\Lwing*cos(155)},{-\rCoppia+\Lwing*sin(155)});
+						\draw[forza](\Lell-\BoffX,-\rCoppia)--({\Lell-\BoffX+\Lwing*cos(205)},{-\rCoppia+\Lwing*sin(205)});
+						\node[font=\footnotesize] at (\Lell-\BoffX-\rCoppia-0.10,-0.30) {#1};}
+					
+					% ================= (b) sistema principale: cerniera + carrello =================
+					\begin{scope}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\draw[gray!55, dashed, line width=0.4pt] (0,-0.07) -- (\Lell,-0.07);
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						\coppiaA{$\chi_1$}
+						\coppiaB{$\chi_2$}
+						\draw[carico] (\Lc,0.52) -- (\Lc,0.04); \node[font=\small,right] at (\Lc,0.32) {$P$};
+						\draw[carico] (\Ld,0.52) -- (\Ld,0.04); \node[font=\small,right] at (\Ld,0.32) {$P$};
+						\node[font=\small] at (\Lell/2,-0.50) {(a)};
+					\end{scope}
+					% ===================== (b) N = 2P (trazione, sopra) =====================
+					\begin{scope}[xshift=6.2cm]
+						\pgfmathsetmacro\hNN{2*\uP}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						%\incastro{0,0} \glifoincl{\Lell,0}
+						\draw[diag] (0,\hNN) -- (\Lell,\hNN);
+						\draw[diag] (0,0) -- (0,\hNN); \draw[diag] (\Lell,0) -- (\Lell,\hNN);
+						\campcost{0}{\Lell}{\hNN}
+						\node[font=\small, fill=white, inner sep=1pt] at (\Lell/2,{\hNN/2}) {$\oplus$};
+						\node[font=\small, above] at (\Lell-0.5,\hNN) {$2P$};
+						\node[font=\small] at (\Lell/2,-0.50) {(b)};
+					\end{scope}
+					% ===================== (c) T : 4P / 3P / 2P (sopra) =====================
+					\begin{scope}[yshift=-2.4cm]
+						\pgfmathsetmacro\hAC{4*\uP}\pgfmathsetmacro\hCD{3*\uP}\pgfmathsetmacro\hDB{2*\uP}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						%\incastro{0,0} \glifoincl{\Lell,0}
+						\draw[diag] (0,\hAC) -- (\Lc,\hAC); \draw[diag] (0,0)--(0,\hAC);
+						\draw[diag] (\Lc,\hAC) -- (\Lc,\hCD);
+						\draw[diag] (\Lc,\hCD) -- (\Ld,\hCD);
+						\draw[diag] (\Ld,\hCD) -- (\Ld,\hDB);
+						\draw[diag] (\Ld,\hDB) -- (\Lell,\hDB); \draw[diag] (\Lell,0)--(\Lell,\hDB);
+						\campcost{0}{\Lc}{\hAC} \campcost{\Lc}{\Ld}{\hCD} \campcost{\Ld}{\Lell}{\hDB}
+						\node[font=\small, fill=white, inner sep=1pt] at ({(\Lc+\Ld)/2},{\hCD/2}) {$\oplus$};
+						\node[font=\small, above] at (\Lc/2,\hAC) {$4P$};
+						\node[font=\small, above] at ({(\Lc+\Ld)/2},\hCD) {$3P$};
+						\node[font=\small, above] at ({(\Ld+\Lell)/2},\hDB) {$2P$};
+						\node[font=\small] at (\Lell/2,-0.60) {(c)};
+					\end{scope}
+					% ===================== (d) M : spezzata -2Pl (A) -> +Pl (B), zero in 5l/9 =====================
+					\begin{scope}[xshift=6.2cm, yshift=-2.4cm]
+						\pgfmathsetmacro\mA{2*\uM}\pgfmathsetmacro\mC{2*\uM/3}\pgfmathsetmacro\mD{-\uM/3}\pgfmathsetmacro\mB{-\uM}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						%\incastro{0,0} \glifoincl{\Lell,0}
+						\draw[rif, gray!55, dashed] (0,\mA) -- (\Lell,\mB);   % retta di chiusura
+						\draw[diag] (0,0)--(0,\mA);
+						\draw[diag] (0,\mA) -- (\Lc,\mC) -- (\Ld,\mD) -- (\Lell,\mB);
+						\draw[diag] (\Lell,0)--(\Lell,\mB);
+						\foreach \xx in {0.15,0.3,...,3.45}{%
+							\pgfmathsetmacro\mm{(\xx<\Lc)*(-2+4*\xx/\Lell) + (\xx>=\Lc)*(\xx<=\Ld)*(3*\xx/\Lell-5/3) + (\xx>\Ld)*(2*\xx/\Lell-1)}%
+							\pgfmathsetmacro\yy{-\uM*\mm}%
+							\draw[campit] (\xx,0)--(\xx,\yy);}
+						\node[font=\small, fill=white, inner sep=1pt] at (0.62,0.30) {$\ominus$};
+						\node[font=\small, fill=white, inner sep=1pt] at (3.05,-0.16) {$\oplus$};
+						\node[font=\small, left] at (0,\mA/2) {$2P\ell$};
+						\node[font=\small,  right] at (\Lell,\mB/2) {$P\ell$};
+						\node[font=\small] at (\Lell/2,-.60) {(d)};
+					\end{scope}
+			\end{tikzpicture}}
+			\caption{Soluzione, combinazione illustrativa $\chi_1=2P\ell$, $\chi_2=P\ell$:
+				trave reale (a); sforzo normale $N=2P$ (b); taglio $T$ a gradini $4P,3P,2P$ (c);
+				momento flettente $M$, spezzata da $-2P\ell$ in $A$ a $+P\ell$ in $B$ con cambio
+				di segno in $z=5\ell/9$, con la retta di chiusura tratteggiata (d).}
+			\label{fig:stat_misto_iper_01-soluzione}
+		\end{figure}

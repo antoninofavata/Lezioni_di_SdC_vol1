@@ -1,0 +1,227 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			trave/.style={line width=2.0pt, line cap=round, line join=round, black},
+			fibra/.style={line width=0.6pt, dashed, gray!50, line cap=round},
+			carico/.style={->, >=stealth, line width=0.9pt, black},
+			reaz/.style={->, >=stealth, line width=0.9pt, gray!60},
+			terra/.style={line width=0.7pt, black},
+			nodoV/.style={circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt},
+			diag/.style={line width=0.6pt, black},
+			hatch/.style={line width=0.3pt, gray!50},
+			segno/.style={circle, draw=black, inner sep=0.8pt,
+				line width=0.5pt, font=\scriptsize},
+			etichetta/.style={circle, draw=black, inner sep=2.5pt,
+				line width=0.8pt, font=\small},
+			quota/.style={<->, >=stealth, thin, gray!60},
+			]
+			
+			\def\L{2.4}
+			\pgfmathsetmacro{\Lv}{\L}
+			\pgfmathsetmacro{\scv}{0.52}
+			\def\OX{6.0}
+			\def\OY{-4.0}
+			
+			%% macro struttura (disegnata DOPO i diagrammi)
+			\newcommand{\struttura}{%
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (\L,0);
+				\coordinate (C) at (2*\L,0);
+				\coordinate (D) at (\L,\L);
+				\coordinate (E) at (2*\L,\L);
+				\draw[trave](A)--(B); \draw[trave](B)--(C);
+				\draw[trave](B)--(D); \draw[trave](D)--(E);
+				\draw[terra](A)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra](-0.30,-0.38)--(0.30,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black](\x,-0.38)--++(-0.09,-0.11);
+				\node[nodoV] at (A){};
+				\draw[terra](C)--++(-0.22,-0.32)--++(0.44,0)--cycle;
+				\draw[terra]($(C)+(-0.30,-0.32)$)--($(C)+(0.30,-0.32)$);
+				\draw[terra]($(C)+(-0.16,-0.44)$) circle(2.4pt);
+				\draw[terra]($(C)+( 0.16,-0.44)$) circle(2.4pt);
+				\draw[terra]($(C)+(-0.30,-0.56)$)--($(C)+(0.30,-0.56)$);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black]($(C)+(\x,-0.56)$)--++(-0.09,-0.11);
+				\node[nodoV] at (C){};
+				\node[left,font=\small]at(A){$A$};
+				\node[above right,font=\small]at(B){$B$};
+				\node[right,font=\small]at(C){$C$};
+				\node[below right,font=\small]at(D){$D$};
+				\node[below,font=\small]at(E){$E$};
+			}
+			
+			%% ── PANNELLO (a) ───────────────────────────────────────────────
+			\begin{scope}
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (\L,0);
+				\coordinate (C) at (2*\L,0);
+				\coordinate (D) at (\L,\L);
+				\coordinate (E) at (2*\L,\L);
+				\draw[fibra]($(A)+(0,-0.09)$)--($(B)+(0,-0.09)$);
+				\draw[fibra]($(B)+(0,-0.09)$)--($(C)+(0,-0.09)$);
+				\draw[fibra]($(D)+(0,-0.09)$)--($(E)+(0,-0.09)$);
+				\draw[fibra]($(B)+(0.09,0)$)--($(D)+(0.09,0)$);
+				\draw[trave](A)--(B); \draw[trave](B)--(C);
+				\draw[trave](B)--(D); \draw[trave](D)--(E);
+				\draw[terra](A)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra](-0.30,-0.38)--(0.30,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black](\x,-0.38)--++(-0.09,-0.11);
+				\node[nodoV] at (A){};
+				\draw[terra](C)--++(-0.22,-0.32)--++(0.44,0)--cycle;
+				\draw[terra]($(C)+(-0.30,-0.32)$)--($(C)+(0.30,-0.32)$);
+				\draw[terra]($(C)+(-0.16,-0.44)$) circle(2.4pt);
+				\draw[terra]($(C)+( 0.16,-0.44)$) circle(2.4pt);
+				\draw[terra]($(C)+(-0.30,-0.56)$)--($(C)+(0.30,-0.56)$);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black]($(C)+(\x,-0.56)$)--++(-0.09,-0.11);
+				\node[nodoV] at (C){};
+				\draw[reaz](A)--($(A)+(0,0.80)$)
+				node[midway,right,font=\small,gray!70]{$p\ell$};
+				\draw[reaz](C)--($(C)+(0,0.80)$)
+				node[midway,right,font=\small,gray!70]{$p\ell$};
+				\draw[carico]($(A)!0.5!(B)+(0,0.85)$)--($(A)!0.5!(B)+(0,0.07)$);
+				\node[above,font=\small] at ($(A)!0.5!(B)+(0,0.85)$){$p\ell$};
+				\draw[black,line width=0.6pt]($(D)+(0,0.55)$)--($(E)+(0,0.55)$);
+				\draw[black,line width=0.6pt]($(D)+(0,0.07)$)--($(E)+(0,0.07)$);
+				\foreach \t in {0.00,0.17,0.34,0.50,0.67,0.84,1.00}
+				\draw[carico,line width=0.7pt]
+				($(D)!\t!(E)+(0,0.55)$)--($(D)!\t!(E)+(0,0.07)$);
+				\node[above,font=\small] at ($(D)!0.5!(E)+(0,0.55)$){$p$};
+				\node[left,font=\small]at(A){$A$};
+				\node[above right,font=\small]at(B){$B$};
+				\node[right,font=\small]at(C){$C$};
+				\node[below right,font=\small]at(D){$D$};
+				\node[below,font=\small]at(E){$E$};
+				\node[font=\small] at (0.20*\L,-1.10){$(a)$};
+			\end{scope}
+			
+			%% ── PANNELLO (b) — N ───────────────────────────────────────────
+			\begin{scope}[xshift=\OX cm]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (\L,0);
+				\coordinate (C) at (2*\L,0);
+				\coordinate (D) at (\L,\L);
+				\coordinate (E) at (2*\L,\L);
+				%% diagramma PRIMA
+				\fill[gray!15](\L,0)--(\L-\scv,0)--(\L-\scv,\L)--(\L,\L)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\yy}{\k*\Lv/10+0.5*\Lv/10}
+					\draw[hatch](\L-\scv,\yy)--(\L,\yy);
+				}
+				\draw[diag](\L,0)--(\L-\scv,0)--(\L-\scv,\L)--(\L,\L);
+				\node[segno] at (\L-\scv*0.55,\L*0.5){$-$};
+				\node[left,font=\small] at (\L-\scv,\L*0.5){$p\ell$};
+				%% struttura DOPO
+				\struttura
+				%% etichetta N nel centro del riquadro BDEC
+				\node[etichetta] at (1.5*\L, 0.5*\L){$N$};
+				\node[font=\small] at (0.20*\L,-1.10){$(b)$};
+			\end{scope}
+			
+			%% ── PANNELLO (c) — T ───────────────────────────────────────────
+			\begin{scope}[yshift=\OY cm]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (\L,0);
+				\coordinate (C) at (2*\L,0);
+				\coordinate (D) at (\L,\L);
+				\coordinate (E) at (2*\L,\L);
+				%% diagrammi PRIMA
+				\fill[gray!15](0,0)--(0,\scv)--(0.5*\L,\scv)--(0.5*\L,0)--cycle;
+				\foreach \k in {0,...,4}{
+					\pgfmathsetmacro{\xx}{\k*\Lv/10+0.5*\Lv/10}
+					\draw[hatch](\xx,0)--(\xx,\scv);
+				}
+				\draw[diag](0,0)--(0,\scv)--(0.5*\L,\scv)--(0.5*\L,0);
+				\node[segno] at (0.25*\L,\scv*0.55){$+$};
+				\node[above,font=\small] at (0.25*\L,\scv){$p\ell$};
+				\fill[gray!15](\L,0)--(\L,-\scv)--(2*\L,-\scv)--(2*\L,0)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\xx}{\Lv+\k*\Lv/10+0.5*\Lv/10}
+					\draw[hatch](\xx,0)--(\xx,-\scv);
+				}
+				\draw[diag](\L,0)--(\L,-\scv)--(2*\L,-\scv)--(2*\L,0);
+				\node[segno] at (1.5*\L,-\scv*0.55){$-$};
+				\node[below,font=\small] at (1.5*\L,-\scv){$p\ell$};
+				\fill[gray!15](\L,\L)--(\L,\L+\scv)--(2*\L,\L)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\tt}{\k/10+0.05}
+					\pgfmathsetmacro{\xx}{\Lv+\tt*\Lv}
+					\pgfmathsetmacro{\yy}{\Lv+(1-\tt)*\scv}
+					\draw[hatch](\xx,\L)--(\xx,\yy);
+				}
+				\draw[diag](\L,\L)--(\L,\L+\scv)--(2*\L,\L);
+				\node[segno] at (\L+0.28*\L,\L+0.38*\scv){$+$};
+				\node[below left,font=\small] at (\L,\L+\scv){$p\ell$};
+				%% struttura DOPO
+				\struttura
+				%% etichetta T nel centro del riquadro BDEC
+				\node[etichetta] at (1.5*\L, 0.5*\L){$T$};
+				\node[font=\small] at (0.20*\L,-1.10){$(c)$};
+			\end{scope}
+			
+			%% ── PANNELLO (d) — M ───────────────────────────────────────────
+			\begin{scope}[xshift=\OX cm, yshift=\OY cm]
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (\L,0);
+				\coordinate (C) at (2*\L,0);
+				\coordinate (D) at (\L,\L);
+				\coordinate (E) at (2*\L,\L);
+				\pgfmathsetmacro{\Mhv}{\scv}
+				\pgfmathsetmacro{\Mfv}{2*\scv}
+				%% diagrammi PRIMA
+				\fill[gray!15](0,0)--(0.5*\L,-\Mhv)--(\L,-\Mhv)--(\L,0)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\tt}{\k/10+0.05}
+					\pgfmathsetmacro{\xx}{\tt*\Lv}
+					\pgfmathsetmacro{\yy}{min(\tt,0.5)*2*\Mhv}
+					\draw[hatch](\xx,0)--(\xx,-\yy);
+				}
+				\draw[diag](0,0)--(0.5*\L,-\Mhv)--(\L,-\Mhv)--(\L,0);
+				\node[below,font=\small] at (0.75*\L,-\Mhv){$p\ell^2/2$};
+				\fill[gray!15](\L,0)--(\L,-\Mfv)--(2*\L,0)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\tt}{\k/10+0.05}
+					\pgfmathsetmacro{\xx}{\Lv+\tt*\Lv}
+					\pgfmathsetmacro{\yy}{(1-\tt)*\Mfv}
+					\draw[hatch](\xx,0)--(\xx,-\yy);
+				}
+				\draw[diag](\L,0)--(\L,-\Mfv)--(2*\L,0);
+				\node[below,font=\small] at (1.35*\L-0.6,-\Mfv*0.8){$p\ell^2$};
+				\fill[gray!15](\L,0)--(\L-\Mhv,0)--(\L-\Mhv,\L)--(\L,\L)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\yy}{\k*\Lv/10+0.5*\Lv/10}
+					\draw[hatch](\L,\yy)--(\L-\Mhv,\yy);
+				}
+				\draw[diag](\L,0)--(\L-\Mhv,0)--(\L-\Mhv,\L)--(\L,\L);
+				\node[left,font=\small] at (\L-\Mhv,\L*0.38){$p\ell^2/2$};
+				\fill[gray!15]
+				(\L,\L)--
+				plot[domain=0:1,samples=25]({\Lv+\x*\Lv},{\Lv+(1-\x)*(1-\x)*\Mhv})
+				--(2*\L,\L)--cycle;
+				\foreach \k in {0,...,9}{
+					\pgfmathsetmacro{\tt}{\k/10+0.05}
+					\pgfmathsetmacro{\xx}{\Lv+\tt*\Lv}
+					\pgfmathsetmacro{\yy}{\Lv+(1-\tt)*(1-\tt)*\Mhv}
+					\draw[hatch](\xx,\L)--(\xx,\yy);
+				}
+				\draw[diag](\L,\L+\Mhv)--
+				plot[domain=0:1,samples=25]({\Lv+\x*\Lv},{\Lv+(1-\x)*(1-\x)*\Mhv});
+				\draw[diag](\L,\L)--(\L,\L+\Mhv);
+				\node[above right,font=\small] at (\L,\L+\Mhv){$p\ell^2/2$};
+				\draw[black,line width=0.7pt](\L-\Mhv,\L) arc(180:90:\Mhv);
+				%% struttura DOPO
+				\struttura
+				%% etichetta M nel centro del riquadro BDEC
+				\node[etichetta] at (1.5*\L, 0.5*\L){$M$};
+				\node[font=\small] at (0.20*\L,-1.10){$(d)$};
+			\end{scope}
+			
+		\end{tikzpicture}%
+	}% fine resizebox
+	\caption{Trave ramificata: \emph{(a)}~schema strutturale con fibre inferiori (tratteggio), carichi e reazioni; \emph{(b)}~sforzo normale $N$; \emph{(c)}~taglio $T$; \emph{(d)}~momento flettente $M$: l'arco in $D$ mostra la continuità dell'ordinata $p\ell^2/2$ tra i tratti $BD$ e $DE$.}
+	\label{fig:trave_ramificata_NTM}
+\end{figure}

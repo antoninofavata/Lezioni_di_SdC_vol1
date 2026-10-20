@@ -1,0 +1,43 @@
+\begin{figure}[htbp]
+		\centering
+		\newcommand{\cerniera}[1]{%
+			\draw[terra] (#1) -- ++(-0.10,-0.18) -- ++(0.20,0) -- cycle;
+			\draw[terra] ($(#1)+(-0.16,-0.18)$)--($(#1)+(0.16,-0.18)$);
+			\foreach \t in {-0.14,-0.07,0,0.07,0.14} \draw[terra] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+		\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+		\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+		\resizebox{0.82\linewidth}{!}{%
+			\begin{tikzpicture}[x=2.4cm,y=2.4cm,
+				terra/.style={line width=0.8pt,black},
+				biella/.style={line width=1.0pt,black},
+				trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+				quota/.style={{Latex[length=1.4mm]}-{Latex[length=1.4mm]},line width=0.4pt,black!55},
+				guida/.style={black!45,line width=0.3pt,dashed},
+				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt}]
+				\coordinate (A) at (0,0); \coordinate (B) at (4,0);
+				\coordinate (C) at (-0.5,0.25); \coordinate (D) at (1,0.25);
+				\coordinate (E) at (2,0.25); \coordinate (F) at (3,0.25); \coordinate (G) at (4.5,0.25);
+				\draw[biella] (A)--(C); \draw[biella] (A)--(D); \draw[biella] (B)--(F); \draw[biella] (B)--(G);
+				\draw[trave] (C)--(G);
+				\cerniera{A}\cerniera{B}
+				\node[nodoV,xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV,xshift=-2pt] at (G){};
+				\semicernD{D}{-1}\semicernF{F}{-1}
+				\node[nodoV] at (A){};\node[nodoV] at (B){};
+				\node[above=1.5pt] at (C){$C$}; \node[above=1.5pt] at (D){$D$}; \node[above=1.5pt] at (E){$E$};
+				\node[above=1.5pt] at (F){$F$}; \node[above=1.5pt] at (G){$G$};
+				\node[right, xshift=2pt, yshift=-3pt] at (A){$A$}; \node[right, xshift=2pt, yshift=-3pt] at (B){$B$};
+				\draw[guida] (-0.82,0)--(0.05,0); \draw[guida] (-0.82,0.25)--(-0.5,0.25);
+				\draw[quota] (-0.82,0)--(-0.82,0.25) node[midway,left,font=\footnotesize]{$f$};
+				\draw[guida] (-0.5,0.25)--(-0.5,-0.30); \draw[guida] (0,0)--(0,-0.30); \draw[guida] (1,0.25)--(1,-0.30);
+				\draw[quota] (-0.5,-0.28)--(0,-0.28) node[midway,below,font=\footnotesize]{$\alpha$};
+				\draw[quota] (0,-0.28)--(1,-0.28) node[midway,below,font=\footnotesize]{$\beta$};
+				\draw[quota] (0,-0.52)--(4,-0.52) node[midway,below,font=\footnotesize]{$L$};
+				\draw[quota] (1,0.55)--(3,0.55) node[midway,above,font=\footnotesize]{$\overline{DF}=L-2\beta$};
+				\draw[quota] (-0.5,0.78)--(4.5,0.78) node[midway,above,font=\footnotesize]{luce impalcato $\;\overline{CG}=L+2\alpha$};
+		\end{tikzpicture}}
+		\caption{Parametri geometrici dell'arco a tre cerniere: ribassamento $f$, sbalzo esterno $\alpha$
+			e interno $\beta$, luce degli appoggi $L$. Ne discendono $\overline{CG}=L+2\alpha$ e
+			$\overline{DF}=L-2\beta$; il criterio $\overline{DF}>\tfrac12\overline{CG}$ assicura impalcato
+			compresso sotto peso proprio.}
+		\label{fig:stampella_param}
+	\end{figure}

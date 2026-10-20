@@ -1,0 +1,90 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.75\textwidth}{!}{%
+				\begin{tikzpicture}[>=Stealth, line width=0.8pt,
+					forza/.style={line width=0.8pt},
+					hatch/.style={line width=0.3pt, gray!50},
+					rif/.style={line width=0.5pt},
+					diag/.style={line width=0.7pt},
+					campit/.style={line width=0.3pt},
+					quota/.style={line width=0.4pt}]
+					
+					\def\Lell{3.6}\def\Lc{1.2}\def\Ld{2.4}
+					\def\hN{0.55}\def\hT{0.55}\def\hM{0.80}
+					\def\rCoppia{0.24}\def\Lwing{0.12}\def\AoffX{0.20}
+					
+					% se gia' nel preambolo, NON ridefinire \cerniera \carrelloincl \pianoincl \campcost \coppiaA
+					\newcommand\cerniera[1]{%
+						\begin{scope}[shift={(#1)}]
+							\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+							\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch] (\x,-0.38) -- (\x-0.12,-0.52);}
+						\end{scope}
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (#1) {};}
+					\newcommand\carrelloincl[1]{%
+						\begin{scope}[shift={(#1)}, rotate=45]
+							\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+							\draw[thick] (-0.15,-0.45) circle (0.06); \draw[thick] (0.15,-0.45) circle (0.06);
+							\draw[thick] (-0.32,-0.53) -- (0.32,-0.53);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch] (\x,-0.53) -- (\x-0.12,-0.67);}
+						\end{scope}
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (#1) {};}
+					\newcommand\pianoincl[1]{%
+						\draw[rif, gray!60] (#1) -- ($(#1)+(0.9,0)$);
+						\draw[rif, gray!60] (#1) -- ($(#1)+(45:0.9)$);
+						\draw[gray!60] ($(#1)+(0.62,0)$) arc (0:45:0.62);
+						\node[gray!80, font=\scriptsize] at ($(#1)+(0.86,0.30)$) {$\pi/4$};}
+					\newcommand\campcost[3]{\foreach \k in {1,...,9}{\pgfmathsetmacro\xx{#1+(#2-#1)*\k/10}\draw[campit] (\xx,0) -- (\xx,#3);}}
+					\def\coppiaA#1{%
+						\draw[forza] (\AoffX,-\rCoppia) arc[start angle=-90, end angle=90, radius=\rCoppia];
+						\draw[forza] (\AoffX,\rCoppia) -- ({\AoffX+\Lwing*cos(25)},{\rCoppia+\Lwing*sin(25)});
+						\draw[forza] (\AoffX,\rCoppia) -- ({\AoffX+\Lwing*cos(-25)},{\rCoppia+\Lwing*sin(-25)});
+						\node[font=\footnotesize] at (\AoffX+0.28,\rCoppia+0.06) {#1};}
+					
+					% ===================== (a) coppia unitaria in A =====================
+					\begin{scope}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\draw[gray!55, dashed, line width=0.4pt] (0,-0.07) -- (\Lell,-0.07);
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						\coppiaA{$1$}
+						\node[font=\small] at (\Lell/2,-0.50) {(a)};
+					\end{scope}
+					% ===================== (b) N_1 = 1/l  (trazione, sopra) =====================
+					\begin{scope}[xshift=6.2cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0}
+						\draw[diag] (0,\hN) -- (\Lell,\hN);
+						\draw[diag] (0,0) -- (0,\hN); \draw[diag] (\Lell,0) -- (\Lell,\hN);
+						\campcost{0}{\Lell}{\hN}
+						\node[font=\small, fill=white, inner sep=1pt] at (\Lell/2,\hN/2) {$\oplus$};
+						\node[font=\small, above] at (\Lell-0.5,\hN) {$1/\ell$};
+						\node[font=\small] at (\Lell/2,-0.50) {(b)};
+					\end{scope}
+					% ===================== (c) T_1 = 1/l  (positivo, sopra) =====================
+					\begin{scope}[yshift=-2.0cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0}
+						\draw[diag] (0,\hT) -- (\Lell,\hT);
+						\draw[diag] (0,0) -- (0,\hT); \draw[diag] (\Lell,0) -- (\Lell,\hT);
+						\campcost{0}{\Lell}{\hT}
+						\node[font=\small, fill=white, inner sep=1pt] at (\Lell/2,\hT/2) {$\oplus$};
+						\node[font=\small, above] at (\Lell-0.5,\hT) {$1/\ell$};
+						\node[font=\small] at (\Lell/2,-0.50) {(c)};
+					\end{scope}
+					% ===================== (d) M_1 = -1 + z/l : triangolo sopra (1 in A -> 0 in B) =====================
+					\begin{scope}[xshift=6.2cm, yshift=-2.0cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0}
+						\draw[diag] (0,0) -- (0,\hM) -- (\Lell,0);
+						\foreach \xx in {0.2,0.4,...,3.4}{%
+							\pgfmathsetmacro\hh{\hM*(1-\xx/\Lell)}%
+							\draw[campit] (\xx,0) -- (\xx,\hh);}
+						\draw[quota,->] (-0.5,\hM/2) -- (0,\hM/2);
+						\node[font=\small, left] at (-0.5,\hM/2) {$1$};
+						\node[font=\small] at (\Lell/2,-0.50) {(d)};
+					\end{scope}
+			\end{tikzpicture}}
+			\caption{Problema ``1'': coppia unitaria in $A$ (a); sforzo normale $N_1$ (b);
+				taglio $T_1$ (c); momento flettente $M_1$ (d).}
+			\label{fig:stat_misto_iper_01-p1}
+		\end{figure}

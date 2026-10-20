@@ -211,45 +211,9 @@ dove $W^\perp = \{\xb \in X \mid \xb \cdot \wb = 0 \;\; \forall\, \wb \in W\}$ d
 	X=\Nc(\Abb) \oplus \Ic(\Abb^\top), \qquad Y=\Nc(\Abb^\top) \oplus \Ic(\Abb).
 \end{equation}
 %---------------------------------------------------------------------------------------------------------------------
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.8]
-		\draw[thick] (-3.5, 0) ellipse [x radius=2.2, y radius=2.8];
-		\node at (-3.5, 3.2) {$\mathbb{R}^n$};
-		\draw[thick] (-5.69, 0.3)
-		.. controls (-4.5, 0.6) and (-2.5, -0.6) ..
-		(-1.31, -0.3);
-		\node at (-4.3,  1.6) {$\Nc(\Abb)$};
-		\fill (-4.0,  0.9) circle (1.5pt) node[right=2pt] {$\xb_n$};
-		\node at (-2.7, -1.6) {$\Ic(\Abb^\top)$};
-		\fill (-3.0, -0.9) circle (1.5pt) node[right=2pt] {$\xb_c$};
-		\draw[thick] (3.5, 0) ellipse [x radius=2.2, y radius=2.8];
-		\node at (3.5, 3.2) {$\mathbb{R}^m$};
-		\draw[thick] (1.31, 0.3)
-		.. controls (2.5, 0.6) and (4.5, -0.6) ..
-		(5.69, -0.3);
-		\node at (2.7,  1.6) {$\Ic(\Abb)$};
-		\fill (3.0,  0.9) circle (1.5pt) node[right=2pt] {$\yb_c$};
-		\node at (4.3, -1.6) {$\Nc(\Abb^\top)$};
-		\fill (4.0, -0.9) circle (1.5pt) node[right=2pt] {$\yb_n$};
-		\draw[->, thick] (-1.0, 1.5) to[bend left=20]
-		node[midway, above=4pt] {$\Abb_{m\times n}$}
-		(1.0, 1.5);
-		\draw[->, thick] (1.0, -1.5) to[bend left=20]
-		node[midway, below=4pt] {$\Abb^\top_{n\times m}$}
-		(-1.0, -1.5);
-	\end{tikzpicture}
-	\caption{I quattro sottospazi fondamentali di $\Abb_{m\times n}$.
-		Ogni $\xb \in \mathbb{R}^n$ si decompone in modo unico come
-		$\xb = \xb_n + \xb_c$ con $\xb_n \in \Nc(\Abb)$ (componente
-		nel \emph{nucleo}) e $\xb_c \in \Ic(\Abb^\top)$ (componente
-		\emph{complementare} al nucleo); analogamente ogni
-		$\yb \in \mathbb{R}^m$ si decompone come $\yb = \yb_c + \yb_n$
-		con $\yb_c \in \Ic(\Abb)$ e $\yb_n \in \Nc(\Abb^\top)$.
-		L'operatore $\Abb$ mappa $\xb_c$ in $\yb_c$ e annulla $\xb_n$;
-		l'operatore $\Abb^\top$ mappa $\yb_c$ in $\xb_c$ e annulla $\yb_n$.}
-	\label{fig:quattro_sottospazi}
-\end{figure}
+
+\input{Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/Figure/figura-quattro-sottospazi}
+
 %---------------------------------------------------------------------------------------------------------------------
 
 Le dimensioni dei quattro sottospazi sono vincolate dal teorema di nullit\`a pi\`u rango, applicato sia ad $\Abb$ sia al suo aggiunto $\Abb^\top$, combinato con le relazioni di ortogonalit\`a appena dimostrate. Poniamo $r:=\rg\Abb=\dim\Ic(\Abb)$: il teorema, applicato ad $\Abb$, d\`a $\dim\Nc(\Abb)=n-r$. Per la relazione $\Nc(\Abb^\top)=\bigl(\Ic(\Abb)\bigr)^\perp$, e poich\'e il complemento ortogonale di un sottospazio di dimensione $r$ in uno spazio di dimensione $m$ ha dimensione $m-r$, si ha $\dim\Nc(\Abb^\top)=m-r$. Applicando allora il teorema di nullit\`a pi\`u rango ad $\Abb^\top:Y\to X$:
@@ -334,25 +298,9 @@ vettori colonna).
 
 La struttura simmetrica dei due problemi \`e sintetizzata nello schema seguente, che si legge per righe (problema primale) e per colonne (problema duale):
 
-\begin{figure}[H]%[ht]
-	\centering
-	\begin{equation*}
-		\begin{array}{c|cccccc|c}
-			& x_1 & x_2 & \dots & x_j & \dots & x_n & \\
-			\hline
-			y_1 & a_{11} & a_{12} & \dots & a_{1j} & \dots & a_{1n} & b_1 \\
-			y_2 & a_{21} & a_{22} & \dots & a_{2j} & \dots & a_{2n} & b_2 \\
-			\vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
-			y_i & a_{i1} & a_{i2} & \dots & a_{ij} & \dots & a_{in} & b_i \\
-			\vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots & \vdots \\
-			y_m & a_{m1} & a_{m2} & \dots & a_{mj} & \dots & a_{mn} & b_m \\
-			\hline
-			& c_1 & c_2 & \dots & c_j & \dots & c_n &
-		\end{array}
-	\end{equation*}
-	\caption{Rappresentazione schematica della dualit\`a nei sistemi lineari.}
-	\label{fig:duale}
-\end{figure}
+
+\input{Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/Figure/figura-duale}
+
 
 \noindent La dualit\`a si manifesta nelle seguenti corrispondenze:
 \begin{enumerate}[label=(\roman*)]
@@ -407,48 +355,9 @@ Nella rappresentazione matriciale, $\bm{A}\bm{x}=\bm{b}$ ammette soluzione se e 
 	$\bm{y}_n \in \Nc(\bm{A}^\top)$ libero.
 \end{oss}
 %---------------------------------------------------------------------------------------------------------------------
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.8]
-		\draw[thick] (-3.5, 0) ellipse [x radius=2.2, y radius=2.8];
-		\node at (-3.5, 3.2) {$\mathbb{R}^n$};
-		\draw[thick] (-5.7, 0)
-		.. controls (-4.5, 0.5) and (-2.5, -0.5) ..
-		(-1.3, 0);
-		\node at (-3.5,  2.0) {$\Nc(\bm{A})$};
-		\fill (-3.5,  1.2) circle (1.5pt) node[right=2pt] {$\bm{x}_n$};
-		\node[gray!80] at (-3.5,  0.5) {$\bm{c}_n = \bm{0}$};
-		\fill (-3.5, -0.5) circle (1.5pt) node[right=2pt] {$\bm{x}_c$};
-		\fill (-3.5, -1.2) circle (1.5pt) node[right=2pt] {$\bm{c}_c$};
-		\node at (-3.5, -2.0) {$\Ic(\bm{A}^\top)$};
-		\draw[thick] (3.5, 0) ellipse [x radius=2.2, y radius=2.8];
-		\node at (3.5, 3.2) {$\mathbb{R}^m$};
-		\draw[thick] (1.3, 0)
-		.. controls (2.5, 0.5) and (4.5, -0.5) ..
-		(5.7, 0);
-		\node at (3.5,  2.0) {$\Ic(\bm{A})$};
-		\fill (3.5,  1.2) circle (1.5pt) node[right=2pt] {$\bm{b}_c$};
-		\fill (3.5,  0.5) circle (1.5pt) node[right=2pt] {$\bm{y}_c$};
-		\node[gray!80] at (3.5, -0.5) {$\bm{b}_n = \bm{0}$};
-		\fill (3.5, -1.2) circle (1.5pt) node[right=2pt] {$\bm{y}_n$};
-		\node at (3.5, -2.0) {$\Nc(\bm{A}^\top)$};
-		\draw[->, thick] (-1.0, 1.5) to[bend left=20]
-		node[midway, above=4pt] {$\bm{A}\bm{x}_c = \bm{b}_c$}
-		(1.0, 1.5);
-		\draw[->, thick] (1.0, -1.5) to[bend left=20]
-		node[midway, below=4pt] {$\bm{A}^\top\bm{y}_c = \bm{c}_c$}
-		(-1.0, -1.5);
-	\end{tikzpicture}
-	\caption{Struttura dei problemi primale $\bm{A}\bm{x} = \bm{b}$ e duale
-		$\bm{A}^\top\bm{y} = \bm{c}$. Il pedice $c$ denota la componente
-		\emph{complementare al nucleo}: $\bm{x}_c \in \Ic(\bm{A}^\top)$,
-		$\bm{b}_c \in \Ic(\bm{A})$, $\bm{y}_c \in \Ic(\bm{A})$,
-		$\bm{c}_c \in \Ic(\bm{A}^\top)$. Il pedice $n$ denota la componente
-		nel nucleo: $\bm{x}_n \in \Nc(\bm{A})$, $\bm{y}_n \in \Nc(\bm{A}^\top)$.
-		Il primale ammette soluzione se e solo se $\bm{b}_n = \bm{0}$;
-		il duale se e solo se $\bm{c}_n = \bm{0}$.}
-	\label{fig:problemi_duali}
-\end{figure}
+
+\input{Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/Figure/figura-problemi-duali}
+
 %---------------------------------------------------------------------------------------------------------------------
 
 \subsection{Classificazione dei problemi primale e duale}

@@ -1,0 +1,73 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		scale=1.0,
+		asta/.style={line width=1.2pt, line cap=round, line join=round, black},
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt, line width=1.2pt},
+		etasta/.style={circle, draw=black, fill=white,
+			inner sep=1pt, font=\scriptsize, line width=0.6pt},
+		]
+		\coordinate (N1) at (0,   0);
+		\coordinate (N2) at (2,   0);
+		\coordinate (N3) at (4,   0);
+		\coordinate (N4) at (6,   0);
+		\coordinate (N5) at (1,   1.6);
+		\coordinate (N6) at (3,   1.6);
+		\coordinate (N7) at (5,   1.6);
+		
+		\draw[asta](N1)--(N5);
+		\draw[asta](N2)--(N5);
+		\draw[asta](N2)--(N6);
+		\draw[asta](N3)--(N6);
+		\draw[asta](N3)--(N7);
+		\draw[asta](N4)--(N7);
+		\draw[asta](N1)--(N2)--(N3)--(N4);
+		\draw[asta](N5)--(N6)--(N7);
+		
+		%% Cerniera in N1
+		\draw[line width=1.0pt](N1)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+		\draw[line width=1.0pt](-0.34,-0.40)--(0.34,-0.40);
+		\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+		\draw[very thin](\x,-0.40)--++(-.10,-0.13);
+		
+		%% Carrello in N4
+		\draw[line width=1.0pt](N4)--++(-0.24,-0.34)--++(0.48,0)--cycle;
+		\draw[line width=1.0pt]($(N4)+(-0.34,-0.34)$)--($(N4)+(0.34,-0.34)$);
+		\draw[line width=1.0pt]($(N4)+(-0.16,-0.47)$) circle(2.2pt);
+		\draw[line width=1.0pt]($(N4)+( 0.16,-0.47)$) circle(2.2pt);
+		\draw[line width=1.0pt]($(N4)+(-0.34,-0.58)$)--($(N4)+(0.34,-0.58)$);
+		\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+		\draw[very thin]($(N4)+(\x,-0.58)$)--++(-.10,-0.13);
+		
+		\foreach \n in {N1,N2,N3,N4,N5,N6,N7}
+		{\node[nodo]at(\n){};}
+		
+		\node[left,       font=\small] at (N1){$1$};
+		\node[below,      font=\small] at (N2){$2$};
+		\node[below,      font=\small] at (N3){$3$};
+		\node[right,      font=\small] at (N4){$4$};
+		\node[above left, font=\small] at (N5){$5$};
+		\node[above,      font=\small] at (N6){$6$};
+		\node[above right,font=\small] at (N7){$7$};
+		
+		\node[etasta] at (1.0, -0.28){$1$};
+		\node[etasta] at (3.0, -0.28){$2$};
+		\node[etasta] at (5.0, -0.28){$3$};
+		\node[etasta] at (2.0,  1.88){$4$};
+		\node[etasta] at (4.0,  1.88){$5$};
+		\node[etasta] at (0.30, 0.90){$6$};
+		\node[etasta] at (1.20, 0.90){$7$};
+		\node[etasta] at (2.30, 0.90){$8$};
+		\node[etasta] at (3.20, 0.90){$9$};
+		\node[etasta] at (4.30, 0.90){$10$};
+		\node[etasta] at (5.70, 0.90){$11$};
+	\end{tikzpicture}
+	\caption{Travatura reticolare piana isostatica con
+		$n_n = 7$ nodi, $n_a = 11$ aste e
+		$m_{\text{est}} = 3$ (cerniera nel nodo~$1$,
+		carrello nel nodo~$4$).
+		I nodi sono numerati $1$--$7$, le aste
+		$1$--$11$ con il numero cerchiato.}
+	\label{fig:reticolare}
+\end{figure}

@@ -1,0 +1,40 @@
+\begin{figure}[htbp]
+	\centering
+	\subfloat[]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			\draw[dashed, gray!50] (-0.8,0) -- (4.5,0);
+			\fill (0,0)  circle (2pt) node[below=5pt] {$C_i$};
+			\fill (3,0)  circle (2pt) node[below=5pt] {$C_j$};
+			\fill (2,0)  circle (2pt) node[below=5pt] {$C_{ij}$};
+			\draw[<->, thin] (0,-1.0) -- (2,-1.0) node[midway, below] {\small$\tfrac{2}{3}|C_iC_j|$};
+			\draw[<->, thin] (2,-1.0) -- (3,-1.0) node[midway, below] {\small$\tfrac{1}{3}|C_iC_j|$};
+			\draw[->, thick] (-0.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
+			\node[above] at (0,0.65) {\small$\vartheta_i$};
+			\draw[->, thick] (3.5,0.1) arc[start angle=20, end angle=160, radius=0.55];
+			\node[above] at (3,0.65) {\small$\vartheta_j{=}{-}2\vartheta_i$};
+	\end{tikzpicture}}%
+	\hspace{0.06\textwidth}%
+	\subfloat[]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			\draw[dashed, gray!50] (-0.8,0) -- (5.5,0);
+			\fill (0,0)  circle (2pt) node[below=5pt] {$C_i$};
+			\fill (2,0)  circle (2pt) node[below=5pt] {$C_j$};
+			\fill (4,0)  circle (2pt) node[below=5pt] {$C_{ij}$};
+			\draw[thick] (0,0) -- (2,0);
+			\draw[<->, thin] (0,-1.0) -- (2,-1.0) node[midway, below] {\small$|C_iC_j|$};
+			\draw[<->, thin] (0,-1.6) -- (4,-1.6) node[midway, below] {\small$2|C_iC_j|$};
+			\draw[->, thick] (-0.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
+			\node[above] at (0,0.65) {\small$\vartheta_i$};
+			\draw[->, thick] (1.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
+			\node[above] at (2,0.65) {\small$\vartheta_j{=}2\vartheta_i$};
+	\end{tikzpicture}}
+	\caption{Allineamento dei centri di rotazione $C_i$, $C_j$ e $C_{ij}$
+		con $|\vartheta_j| = 2|\vartheta_i|$.
+		\textbf{\textit{(a)}}~Rotazioni discordi ($\vartheta_i > 0$,
+		$\vartheta_j = -2\vartheta_i$): $C_{ij}$ cade all'interno del segmento
+		$C_iC_j$, a distanza $\tfrac{2}{3}|C_iC_j|$ da $C_i$.
+		\textbf{\textit{(b)}}~Rotazioni concordi ($\vartheta_i > 0$,
+		$\vartheta_j = 2\vartheta_i$): $C_{ij}$ cade all'esterno, oltre $C_j$,
+		a distanza $2|C_iC_j|$ da $C_i$.}
+	\label{fig:allineamento_CR}
+\end{figure}

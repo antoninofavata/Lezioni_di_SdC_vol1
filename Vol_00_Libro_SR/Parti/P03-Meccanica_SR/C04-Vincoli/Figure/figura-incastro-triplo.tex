@@ -1,0 +1,224 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica dell'incastro tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\Lquadr{0.32}    % semi-lato del quadrato dell'incastro
+			\def\rcorpo{1.10}
+			\def\rrot{0.32}
+			
+			\def\angCuno{90}
+			\def\angCdue{-30}
+			\def\angCtre{-150}
+			
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			%% ── Corpi C_1, C_2, C_3 (identici alla cerniera multipla) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.10, -0.30) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.20, 0.30) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Quadrato grigio dell'incastro in A ──
+			\draw[line width=0.8pt, fill=gray!30] 
+			(-\Lquadr, -\Lquadr) rectangle (\Lquadr, \Lquadr);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ── Archi di rotazione ϑ_1=ϑ_2=ϑ_3 (semicerchi, 180°) ──
+			\draw[->, line width=1pt] 
+			({\xCuno+\rrot}, {\yCuno+0.40}) arc(0:180:\rrot);
+			\node[font=\small] 
+			at ({\xCuno-\rrot+0.3}, {\yCuno+0.40}) {$\vartheta_1$};
+			
+			\draw[->, line width=1pt] 
+			({\xCdue+\rrot}, {\yCdue+0.20}) arc(0:180:\rrot);
+			\node[font=\small] 
+			at ({\xCdue+\rrot-0.30}, {\yCdue+0.20}) {$\vartheta_2$};
+			
+			\draw[->, line width=1pt] 
+			({\xCtre+\rrot}, {\yCtre+0.20}) arc(0:180:\rrot);
+			\node[font=\small] 
+			at ({\xCtre-\rrot+0.30}, {\yCtre+0.20}) {$\vartheta_3$};
+			
+			%% ── Equazioni di vincolo (a sinistra del pannello) ──
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 1.50) {$\ub_2(A) = \ub_1(A)$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 1.00) {$\ub_3(A) = \ub_1(A)$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.50) {$\vartheta_2 = \vartheta_1$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.00) {$\vartheta_3 = \vartheta_1$};
+			
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica dell'incastro tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6cm]
+			
+			\def\Lquadr{0.32}
+			\def\rcorpo{1.10}
+			\def\rmu{0.30}
+			
+			\def\angCuno{90}
+			\def\angCdue{-30}
+			\def\angCtre{-150}
+			
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			
+			
+			%% ── Corpi (identici al pannello (a)) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.0) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.30, 0.40) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Quadrato grigio dell'incastro in A ──
+			\draw[line width=0.8pt, fill=gray!30] 
+			(-\Lquadr, -\Lquadr) rectangle (\Lquadr, \Lquadr);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ── Forze r_1, r_2, r_3 (radiali, dal bordo del quadrato) ──
+			\def\Lfreccia{0.50}
+			
+			% Reazione r_1
+			\draw[->, line width=1.4pt] 
+			({\Lquadr*cos(\angCuno)}, {\Lquadr*sin(\angCuno)}) 
+			-- ++({\Lfreccia*cos(\angCuno)}, {\Lfreccia*sin(\angCuno)});
+			\node[font=\small, anchor=west] 
+			at ({(\Lquadr+\Lfreccia)*cos(\angCuno)+0.10}, 
+			{(\Lquadr+\Lfreccia)*sin(\angCuno)}) {$\rb_1$};
+			
+			% Reazione r_2
+			\draw[->, line width=1.4pt] 
+			({\Lquadr*cos(\angCdue)}, {\Lquadr*sin(\angCdue)}) 
+			-- ++({\Lfreccia*cos(\angCdue)}, {\Lfreccia*sin(\angCdue)});
+			\node[font=\small, anchor=north] 
+			at ({(\Lquadr+\Lfreccia)*cos(\angCdue)+0.0}, 
+			{(\Lquadr+\Lfreccia)*sin(\angCdue)-0.05}) {$\rb_2$};
+			
+			% Reazione r_3
+			\draw[->, line width=1.4pt] 
+			({\Lquadr*cos(\angCtre)}, {\Lquadr*sin(\angCtre)}) 
+			-- ++({\Lfreccia*cos(\angCtre)}, {\Lfreccia*sin(\angCtre)});
+			\node[font=\small, anchor=west] 
+			at ({(\Lquadr+\Lfreccia)*cos(\angCtre)-0.10}, 
+			{(\Lquadr+\Lfreccia)*sin(\angCtre)-0.15}) {$\rb_3$};
+			
+			%% ── Coppie μ_1, μ_2, μ_3 (semicerchi dentro ai corpi) ──
+			% Coppia in C_1 (in alto, dentro al corpo, sotto la label)
+			
+			% Coppia μ_1
+			\draw[->, line width=1.4pt] 
+			({\xCuno+\rmu}, {\yCuno+0.40}) arc(0:180:\rmu);
+			\node[font=\small] 
+			at ({\xCuno-\rmu+0.30}, {\yCuno+0.40}) {$\mu_1$};
+			
+			% Coppia μ_2
+			\draw[->, line width=1.4pt] 
+			({\xCdue+\rmu}, {\yCdue+0.20}) arc(0:180:\rmu);
+			\node[font=\small] 
+			at ({\xCdue+\rmu-0.30}, {\yCdue+0.20}) {$\mu_2$};
+			
+			% Coppia μ_3
+			\draw[->, line width=1.4pt] 
+			({\xCtre+\rmu}, {\yCtre+0.20}) arc(0:180:\rmu);
+			\node[font=\small] 
+			at ({\xCtre-\rmu+0.30}, {\yCtre+0.20}) {$\mu_3$};
+			
+			
+			
+			%% ── Equazioni di equilibrio del nodo (a sinistra) ──
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.80) {$\sum_i \rb_i = \zerovb$};
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.30) {$\sum_i \mu_i = 0$};
+			
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Incastro multiplo fra tre corpi]{%
+		Incastro multiplo fra i corpi $\mathcal{C}_1$, $\mathcal{C}_2$,
+		$\mathcal{C}_3$ nel punto $A$. Prestazione cinematica (a):
+		le equazioni di vincolo $\ub_2(A) = \ub_1(A)$,
+		$\ub_3(A) = \ub_1(A)$, $\vartheta_2 = \vartheta_1$,
+		$\vartheta_3 = \vartheta_1$ impongono l'uguaglianza degli
+		spostamenti e delle rotazioni dei tre corpi in $A$; i tre
+		corpi si comportano come un unico corpo rigido nel nodo.
+		Prestazione statica (b): i tre corpi si scambiano in $A$
+		forze $\rb_1, \rb_2, \rb_3$ e coppie $\mu_1, \mu_2, \mu_3$
+		di direzione e verso arbitrari, soggette all'equilibrio
+		del nodo $\sum_i \rb_i = \zerovb$ e $\sum_i \mu_i = 0$.
+		Le incognite indipendenti sono le componenti delle
+		coppie e delle forze relative a $\mathcal{C}_2$ e
+		$\mathcal{C}_3$ (per un totale di $3(k-1) = 6$), in
+		accordo con la molteplicità.}
+	\label{fig:incastro_triplo}
+\end{figure}

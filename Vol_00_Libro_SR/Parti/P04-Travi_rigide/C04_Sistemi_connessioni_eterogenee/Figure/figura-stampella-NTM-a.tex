@@ -1,0 +1,146 @@
+\begin{figure}[htbp!]\centering
+	\resizebox{\linewidth}{!}{%
+		\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
+			trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+			traveC/.style={line width=1.7pt,line cap=round,line join=round,black},
+			traveT/.style={line width=0.7pt,line cap=round,line join=round,black},
+			biella/.style={line width=1.0pt,black},
+			carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+			reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
+			bordo/.style={line width=0.5pt,black!70},
+			terra/.style={line width=0.6pt,black},
+			diagbordo/.style={draw=black,line width=0.7pt},
+			diagtratt/.style={gray!55,line width=0.35pt},
+			nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
+			segno/.style={circle,draw=black,fill=white,line width=0.3pt,inner sep=0pt,
+				minimum size=2.8pt,font=\fontsize{4}{4}\selectfont},
+			]
+			\def\sM{0.85}\def\sT{0.38}\def\sN{0.05}\def\sNc{0.18}
+			\newcommand{\nodi}{%
+				\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
+				\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
+				\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
+			% --- mezzo anellino cerniere D,F (lato piatto sulla trave, pancia verso il puntone) ---
+			\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+			\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+			\newcommand{\fibre}{\draw[gray!55,dash pattern=on 2pt off 1.5pt,line width=0.45pt] (-0.5,-0.05)--(4.5,-0.05);}
+			\newcommand{\gnd}[1]{%
+				\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
+				\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
+				\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+			\newcommand{\semic}[1]{\draw[black,fill=white,line width=0.7pt] ($(#1)+(0.055,0)$) arc[start angle=0,end angle=-180,radius=0.055]--cycle;}
+			\newcommand{\diagLin}[7]{%
+				\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
+				\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
+				\foreach \tt in {0,0.1,...,1.0001}{%
+					\pgfmathsetmacro{\mv}{(#5+(#6-#5)*\tt)*#7}%
+					\draw[diagtratt] ($(#1)!\tt!(#2)$) -- ++({\mv*#3},{\mv*#4});}%
+				\draw[diagbordo] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+			\newcommand{\diagPar}[8]{%
+				\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
+				\foreach \k in {0,1,...,20}{%
+					\pgfmathsetmacro{\tt}{\k/20}%
+					\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
+					\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
+					\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
+				\foreach \k in {0,2,...,20}{%
+					\pgfmathsetmacro{\tt}{\k/20}%
+					\draw[diagtratt] ($(#1)!\tt!(#2)$) -- (pp\k);}%
+				\draw[diagbordo] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+			\newcommand{\assi}{%
+				\fibre
+				\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+				\draw[trave] (C)--(G);
+				\gnd{A}\gnd{B}
+				\node[nodoV,xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV,xshift=-2pt] at (G){};
+				\node[nodoV] at (A){};\node[nodoV] at (B){};
+				\semicernD{D}{-1}\semicernF{F}{-1}}
+			
+			%==================== (a) STRUTTURA ====================
+			\begin{scope}[shift={(0,5.2)}]
+				\nodi
+				\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+				\draw[trave] (C)--(G);
+				\draw[bordo] (-0.5,0.225)--(4.5,0.225);
+				\foreach \x in {-0.5,-0.25,...,4.5}\draw[carico] (\x,0.225)--(\x,0);
+				\node[above] at (2,0.265){$p$};
+				\fibre
+				\draw[bordo] (-0.5,0.225)--(4.5,0.225);
+				\gnd{A}\gnd{B}
+				\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
+				\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
+				\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.34,-0.04)$){$\tfrac{15}{2}p\ell$};
+				\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$\tfrac{5}{2}p\ell$};
+				% --- cerniere interne complete C,E,G ---
+				\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
+				% --- cerniere D,F: pendolo (AD,BF) su trave continua (mezzo anellino) ---
+				\semicernD{D}{-1}
+				\semicernF{F}{-1}
+				\node[nodoV] at (A){};\node[nodoV] at (B){};
+				\node[below=1pt] at (C){$C$};\node[below]at(D){$D$};\node[below=1pt] at (E){$E$};
+				\node[below=1pt]at(F){$F$};\node[below=1pt] at (G){$G$};
+				\node[left=-1pt, yshift=-1pt] at (A){$A$};\node[right=1pt, yshift=-1pt] at (B){$B$};
+				\node[font=\tiny] at (2,-0.85){(a) schema, carico uniforme e reazioni};
+			\end{scope}
+			
+			%==================== (b) NORMALE N ====================
+			\begin{scope}[shift={(0,3.6)}]
+				\nodi
+				\diagLin{C}{D}{0}{1}{0.83333}{0.83333}{\sNc}
+				\diagLin{D}{E}{0}{1}{-7.5}{-7.5}{\sN}
+				\diagLin{E}{F}{0}{1}{-7.5}{-7.5}{\sN}
+				\diagLin{F}{G}{0}{1}{0.83333}{0.83333}{\sNc}
+				\assi
+				\node[segno] at ($(C)!0.5!(D)+(0,0.55*0.83333*\sNc)$){$+$};
+				\node[segno] at ($(D)!0.5!(F)+(0,-0.5*7.5*\sN)$){$-$};
+				\node[segno] at ($(F)!0.5!(G)+(0,0.55*0.83333*\sNc)$){$+$};
+				\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,0.83333*\sNc)$){$\tfrac{5}{6}$};
+				\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.83333*\sNc)$){$\tfrac{5}{6}$};
+				\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-7.5*\sN)$){$\tfrac{15}{2}$};
+				\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$ \ ($\times\,p\ell$;\ su $CD$ e $FG$ ordinate amplificate)};
+			\end{scope}
+			
+			%==================== (c) TAGLIO T ====================
+			\begin{scope}[shift={(0,1.9)}]
+				\nodi
+				\diagLin{C}{D}{0}{1}{0.41667}{-1.08333}{\sT}
+				\diagLin{D}{E}{0}{1}{1}{0}{\sT}
+				\diagLin{E}{F}{0}{1}{0}{-1}{\sT}
+				\diagLin{F}{G}{0}{1}{1.08333}{-0.41667}{\sT}
+				\assi
+				\node[segno] at ($(C)+(0.10,0.08)$){$+$};
+				\node[segno] at ($(C)!0.78!(D)+(0,-0.45*\sT)$){$-$};
+				\node[segno] at ($(D)!0.55!(E)+(-0.3,0.34*\sT)$){$+$};
+				\node[segno] at ($(E)!0.45!(F)+(0.3,-0.34*\sT)$){$-$};
+				\node[segno] at ($(F)!0.22!(G)+(0,0.45*\sT)$){$+$};
+				\node[segno] at ($(G)+(-0.10,-0.08)$){$-$};
+				\node[above,font=\tiny] at ($(C)+(0.10,0.41667*\sT)$){$\tfrac{5}{12}$};
+				\node[right, yshift=2pt, font=\tiny] at ($(D)+(-0.02,-1.08333*\sT)$){$\tfrac{13}{12}$};
+				\node[left, xshift=-2pt, yshift=-2pt,font=\tiny] at ($(D)+(0.10,1*\sT)$){$1$};
+				\node[right, xshift=2pt, yshift=2pt,font=\tiny] at ($(F)+(-0.10,-1*\sT)$){$1$};
+				\node[left, xshift=-1pt, yshift=-2pt,font=\tiny] at ($(F)+(0.02,1.08333*\sT)$){$\tfrac{13}{12}$};
+				\node[below,font=\tiny] at ($(G)+(-0.10,-0.41667*\sT)$){$\tfrac{5}{12}$};
+				\node[font=\tiny] at (2,-0.72){(c) taglio $T$ \ ($\times\,p\ell$)};
+			\end{scope}
+			
+			%==================== (d) MOMENTO M ====================
+			\begin{scope}[shift={(0,0.4)}]
+				\nodi
+				\diagPar{C}{D}{0}{-1}{0}{0.03125}{-0.5}{\sM}
+				\diagPar{D}{E}{0}{-1}{-0.5}{-0.125}{0}{\sM}
+				\diagPar{E}{F}{0}{-1}{0}{-0.125}{-0.5}{\sM}
+				\diagPar{F}{G}{0}{-1}{-0.5}{0.03125}{0}{\sM}
+				\assi
+				\node[above,font=\tiny] at ($(D)+(0,0.5*\sM)$){$\tfrac12$};
+				\node[above,font=\tiny] at ($(F)+(0,0.5*\sM)$){$\tfrac12$};
+				\node[above,font=\tiny] at ($(C)!0.30!(D)+(-0.02,-0.07*\sM)$){$\tfrac{25}{288}$};
+				\node[font=\tiny] at (2,-0.42){(d) momento flettente $M$ \ ($\times\,p\ell^2$)};
+			\end{scope}
+	\end{tikzpicture}}
+	\caption{Caso (a), carico $p$ su tutta la travata $CDEFG$ --- (a) schema e reazioni; (b) sforzo normale
+		$N$ sulle travi (le bielle, scariche, portano $N$ uniforme:
+		$N_{AC}=N_{BG}=-\tfrac{5\sqrt5}{12}$, $N_{AD}=N_{BF}=-\tfrac{25\sqrt{17}}{12}$, in $p\ell$);
+		(c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
+		$M=0$ alle cerniere $C$, $E$, $G$; i diagrammi $N$ e $M$ simmetrici rispetto a $E$,  quello di $T$ è emisimmetrico.}
+	\label{fig:stampella_NTM_a}
+\end{figure}

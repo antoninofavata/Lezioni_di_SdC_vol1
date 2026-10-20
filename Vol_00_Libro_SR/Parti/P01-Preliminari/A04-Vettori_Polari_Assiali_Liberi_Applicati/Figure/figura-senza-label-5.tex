@@ -1,0 +1,50 @@
+\begin{figure}[!htbp]
+	\centering
+	\def\ax{0.5}\def\ay{0.30}
+	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\providecommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.2mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.2mm!(#3)$);
+		\draw[gray!55, line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+		% u, v nel piano base (z=0); u x v verticale; (u x v) x w nel piano base
+		\coordinate (O)  at (\xyz{0}{0}{0});
+		\coordinate (A)  at (\xyz{-0.8}{3.0}{0});   % u
+		\coordinate (B)  at (\xyz{2.8}{0.9}{0});    % v
+		\coordinate (UV) at (\xyz{2.0}{3.9}{0});    % u+v
+		\coordinate (X)  at (\xyz{0}{0}{2.6});      % u x v (verticale)
+		\coordinate (W)  at (\xyz{1.0}{1.2}{1.8});  % w
+		\coordinate (P)  at (\xyz{3.8}{-3.2}{0});   % (u x v) x w  (combinazione di u,v)
+		\coordinate (AP) at (\xyz{1.0}{1.2}{4.4});  % apice = (u x v)+w
+		
+		% piano base (su u,v), esteso per contenere anche (u x v) x w
+		\coordinate (Q1) at (\xyz{-1.2}{-5.7}{0});   % era -4.3
+		\coordinate (Q2) at (\xyz{4.3}{-4.9}{0});    % era -3.5
+		\coordinate (Q3) at (\xyz{4.3}{5.5}{0});
+		\coordinate (Q4) at (\xyz{-1.2}{4.2}{0});
+		\fill[gray!6] (Q1) -- (Q2) -- (Q3) -- (Q4) -- cycle;
+		\draw[gray!40, thin] (Q1) -- (Q2) -- (Q3) -- (Q4) -- cycle;
+		% parallelogramma costruito su u e v
+		\fill[gray!18] (O) -- (A) -- (UV) -- (B) -- cycle;
+		\draw[gray!60, thin] (A) -- (UV) -- (B);
+		% piano di (u x v, w): lati ausiliari verso l'apice
+		\draw[gray!55, thin] (X) -- (AP) -- (W);
+		
+		% angolo retto: (u x v) x w perpendicolare a w
+		\rightangle{W}{O}{P}
+		\rightangle{X}{O}{P}
+		
+		% vettori base
+		\draw[->, thick] (O) -- (A) node[midway, above, xshift=14pt] {$\ub$};
+		\draw[->, thick] (O) -- (B) node[midway, above left=-2pt, xshift=6pt] {$\vb$};
+		% u x v, w, (u x v) x w
+		\draw[->, thick] (O) -- (X) node[above left=-1pt] {$\ub\times\vb$};
+		\draw[->, thick] (O) -- (W) node[midway, above=4pt] {$\wb$};
+		\draw[->, thick] (O) -- (P) node[below left=-6pt,  yshift=-8pt] {$(\ub\times\vb)\times\wb$};
+		
+		\fill (O) circle (1.2pt);
+	\end{tikzpicture}
+	\caption{Il doppio prodotto vettoriale $(\ub\times\vb)\times\wb$
+		giace nel piano di $\ub$ e $\vb$.}
+	\label{f:doppio_prodotto_vettoriale}
+\end{figure}

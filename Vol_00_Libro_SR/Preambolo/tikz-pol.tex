@@ -1,0 +1,61 @@
+% ================================================================
+%  Preambolo/tikz-pol.tex
+%  Stili per le figure dell'appendice "Il poligono delle forze e il
+%  poligono funicolare" (Volume III, A02).
+%  Da richiamare con \input{Preambolo/tikz-pol} DOPO Preambolo/tikz.
+%  Prefisso pol, sul modello degli stili fun di Preambolo/tikz-fun e
+%  tcp di Preambolo/tikz-tcp; spessori e punte coincidono con quelli
+%  di fun, perche' le figure dell'appendice sono richiamate dal
+%  capitolo della fune e da quello della trave curva piana. Qui stanno
+%  solo gli stili usati da piu' figure.
+% ================================================================
+
+\tikzset{
+	pollato/.style={line width=1.1pt,line cap=round,line join=round},           % lati del poligono funicolare
+	polforza/.style={-{Stealth[length=2.4mm,width=1.8mm]},line width=1.0pt},      % forze del sistema (nei due piani)
+	polrisultante/.style={-{Stealth[length=2.8mm,width=2.1mm]},line width=1.5pt,black!55}, % risultante
+	polestremo/.style={-{Stealth[length=2.4mm,width=1.8mm]},line width=1.0pt},    % forze di estremita' f_A, f_B
+	polraggio/.style={line width=.5pt,line cap=round},                           % raggi polari
+	polretta/.style={line width=.35pt,black!55},                                 % rette d'azione
+	polcostruzione/.style={line width=.35pt,black!55,dash pattern=on 2pt off 1.5pt}, % prolungamenti, linee di costruzione
+	polverso/.style={-{Stealth[length=1.5mm,width=1.1mm]},line width=.5pt},      % verso delle forze lungo un raggio o un lato
+	polquota/.style={{Bar[width=2.4mm]Stealth[length=1.4mm,width=1.0mm]}-{Stealth[length=1.4mm,width=1.0mm]Bar[width=2.4mm]},line width=.4pt},
+	polsuolo/.style={line width=.4pt,black!60},                                  % linee di riferimento
+	% campo del piano di posizione: numero cerchiato (il polo e' il campo P)
+	polcampo/.style={draw,circle,line width=.4pt,inner sep=0.5pt,minimum size=3.6mm,font=\scriptsize},
+	% triangolo di equilibrio di un nodo, nel poligono delle forze
+	poltriangolo/.style={fill=black!10},
+}
+
+% --- vertice del poligono delle forze, nodo del poligono funicolare, polo
+\tikzset{
+	pics/polpunto/.style={code={\fill (0,0) circle (1.2pt);}},
+	pics/polpolo/.style={code={\fill (0,0) circle (1.6pt);}},
+}
+
+% --- lato di chiusura e poligono di prova
+\tikzset{
+	polchiusura/.style={line width=.7pt,dash pattern=on 4pt off 2pt},           % lato di chiusura
+	polprova/.style={line width=.6pt,line cap=round,line join=round},            % poligono funicolare di prova
+	polvincolo/.style={line width=.6pt,line join=round},                         % corpo dei vincoli
+	polperno/.style={fill=white,draw=black,line width=.5pt},                     % perno delle cerniere
+	polcarico/.style={-{Stealth[length=1.4mm,width=1.0mm]},line width=.4pt},     % forze distribuite
+	polcurva/.style={line width=1.6pt,black!45,line cap=round},                  % curva funicolare
+}
+
+% --- vincoli a terra (dimensioni di funcerniera e funcarrello): perno nell'origine del pic
+\tikzset{
+	pics/polcerniera/.style={code={%
+		\draw[polvincolo] (0,0) -- (-0.20,-0.34) -- (0.20,-0.34) -- cycle;
+		\draw[polvincolo] (-0.36,-0.34) -- (0.36,-0.34);
+		\foreach \k in {0,...,5}{
+			\draw[line width=.35pt] ({-0.30+0.12*\k},-0.34) -- ++(-0.10,-0.12);}
+		\draw[polperno] (0,0) circle (0.055);}},
+	pics/polcarrello/.style={code={%
+		\draw[polvincolo] (0,0) -- (-0.20,-0.30) -- (0.20,-0.30) -- cycle;
+		\draw[line width=.5pt] (-0.10,-0.36) circle (0.06) (0.10,-0.36) circle (0.06);
+		\draw[polvincolo] (-0.36,-0.42) -- (0.36,-0.42);
+		\foreach \k in {0,...,5}{
+			\draw[line width=.35pt] ({-0.30+0.12*\k},-0.42) -- ++(-0.10,-0.12);}
+		\draw[polperno] (0,0) circle (0.055);}},
+}

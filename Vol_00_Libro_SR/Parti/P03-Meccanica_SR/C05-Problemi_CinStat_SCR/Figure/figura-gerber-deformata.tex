@@ -1,0 +1,69 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4pt, line width=0.7pt},
+		nodoR/.style={circle, fill=black, draw=black,
+			inner sep=0pt, minimum size=3pt}]
+		
+		\def\a{1.0}
+		
+		% --- configurazione di riferimento (tratteggiata) ---
+		\draw[dashed, gray!60, line width=0.9pt] (0,0) -- ({5*\a},0);
+		\node[gray!70, above=2pt] at (0,0)      {$A$};
+		\node[gray!70, above=2pt] at ({2*\a},0) {$B$};
+		\node[gray!70, above=2pt] at ({3*\a},0) {$C$};
+		\node[gray!70, above=2pt] at ({5*\a},0) {$D$};
+		\node[nodo] at (0,0) {};
+		\node[nodo] at ({2*\a},0) {};
+		\node[nodo] at ({3*\a},0) {};
+		\node[nodo] at ({5*\a},0) {};
+		
+		% --- configurazione deformata ---
+		\coordinate (Ad) at (0,0);
+		\coordinate (Bd) at ({2*\a},-0.6);
+		\coordinate (Cd) at ({3*\a},-0.9);
+		\coordinate (Dd) at ({5*\a},-0.3);
+		
+		\draw[line width=1.6pt] (Ad) -- (Cd);
+		\draw[line width=1.6pt] (Cd) -- (Dd);
+		
+		\node[nodoR] at (Ad) {};
+		\node[nodoR, label={[yshift=-11pt]below:$B$}] at (Bd) {};
+		\node[nodoR, label={[xshift=6pt,yshift=-9pt]below:$C$}] at (Cd) {};
+		\node[nodoR, label={[yshift=-11pt]below:$D$}] at (Dd) {};
+		
+		% --- riferimenti orizzontali locali per gli angoli ---
+		\draw[dashed, gray!60, thin] (Ad) -- ++(0.9,0);
+		\draw[dashed, gray!60, thin] (Cd) -- ++(0.9,0);
+		
+		% --- angolo theta_1 in A (orario, sotto l'orizzontale) ---
+		\draw[->, thin] ({0.6*\a},0) arc[start angle=0, end angle=-16.7, radius={0.6*\a}];
+		\node[font=\scriptsize] at (1,-0.16) {$\vartheta_1$};
+		
+		% --- angolo theta_2 in C (antiorario, sopra l'orizzontale locale) ---
+		\draw[->, thin] ({3*\a+0.6},-0.9) arc[start angle=0, end angle=16.7, radius=0.6];
+		\node[font=\scriptsize] at ({3*\a+1},-0.76) {$\vartheta_2$};
+		
+		% --- cedimenti ---
+		\draw[->, thick] ({2*\a},-0.05) -- ({2*\a},-0.55)
+		node[right=1pt, pos=0.6, font=\scriptsize] {$2\bar v$};
+		\draw[->, thick] ({5*\a},-0.05) -- ({5*\a},-0.25)
+		node[right=1pt, pos=0.6, font=\scriptsize] {$\bar v$};
+		
+	\end{tikzpicture}
+	\caption{Configurazione deformata della trave di Gerber (in grigio
+		tratteggiato la configurazione di riferimento, non deformata),
+		soluzione del problema cinematico del
+		\PARref{sec:gerber_congruenza}; spostamenti esagerati per
+		chiarezza. $\mathcal{C}_1$ ruota rigidamente attorno ad $A$
+		dell'angolo $\vartheta_1=-\bar v/a$ (orario); $\mathcal{C}_2$
+		ruota, indipendentemente da $\mathcal{C}_1$, dell'angolo
+		$\vartheta_2=+\bar v/a$ (antiorario) attorno al punto $C$, che
+		segue $\mathcal{C}_1$ senza distaccarsene. Il punto $C$ non
+		presenta alcuna discontinuità di \emph{spostamento} --- le due
+		travi restano a contatto --- ma la pendenza della configurazione
+		deformata cambia bruscamente in $C$: è la manifestazione
+		visibile dello svincolo rotazionale della cerniera interna.}
+	\label{fig:gerber_deformata}
+\end{figure}

@@ -1,0 +1,77 @@
+\begin{figure}[!htbp]
+	\centering
+	\def\ax{0.5}\def\ay{0.30}
+	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth, line width=0.8pt, scale=1.1]
+			\def\ax{0.5}\def\ay{-0.30}
+			\begin{scope}[local bounding box=panA]
+				\draw[gray!60] (\xyz{-1.5}{-0.9}{0}) -- (\xyz{-1.5}{4.7}{0})-- (\xyz{4.5}{4.7}{0}) -- (\xyz{4.5}{-0.9}{0}) -- cycle;
+				\node[gray!75] at (\xyz{4.35}{4.5}{0}) {$\pi$};
+				\coordinate (O) at (\xyz{0}{0}{0});
+				\draw[->, thin] (O) -- (\xyz{0.9}{0}{0})  node[below right=-2pt] {$\ab_x$};
+				\draw[->, thin] (O) -- (\xyz{0}{0.9}{0})  node[above=0pt]       {$\ab_y$};
+				\draw[->, thin] (O) -- (\xyz{0}{0}{1.05}) node[left=-1pt]       {$\ab_z$};
+				\newcommand{\axvec}[8]{%
+					\coordinate (#1)  at (\xyz{#2}{#3}{0});
+					\coordinate (#1t) at (\xyz{#2}{#3}{#4});
+					\draw[->>, #8] (#1) -- (#1t) node[right=0pt, inner sep=1pt] {#6};
+					\fill (#1) circle (1.4pt) node[#7, inner sep=1pt] {#5};
+				}
+				\axvec{C1}{2.6}{-0.02}{0.7}{$C_1$}{$\bm{\upvartheta}_1$}{below=2pt}{thick}
+				\axvec{Ci}{0.9}{3.6}{0.7}{$C_i$}{$\bm{\upvartheta}_i$}{below right=-2pt}{thick}
+				\axvec{Cn}{2.8}{3.9}{0.7}{$C_n$}{$\bm{\upvartheta}_n$}{below=2pt}{thick}
+				\axvec{CC}{1.8}{2.3}{1.5}{}{$\bm{\upvartheta}=\textstyle\sum_i\bm{\upvartheta}_i$}{below=2pt}{line width=1.3pt}
+				\fill (CC) circle (1.9pt) node[below=2pt, inner sep=1pt] {$C$};
+				\draw[gray!75, thin, midarrow] (O) -- (Ci);
+				\node[gray!75, font=\small, above] at ($(O)!0.86!(Ci)+(-0.75,0)$) {$\overrightarrow{OC_i}$};
+				\draw[->, gray!30!black, thin] (O) -- (CC);
+				\node[font=\small, below=1.5pt] at ($(O)!0.58!(CC)+(0.35,0)$) {$\overrightarrow{OC}$};
+				\fill (O) circle (1.5pt) node[above left=-2pt] {$O$};
+			\end{scope}
+			\begin{scope}[xshift=8.6cm, yshift=-1.05cm, local bounding box=panB]
+				\draw[->, thin] (-0.3,0) -- (5.4,0) node[right] {$x$};
+				\draw[->, thin] (0,-0.3) -- (0,3.4) node[above] {$y$};
+				\coordinate (C1) at (2.10,0.4);
+				\coordinate (Ci) at (1.8,2.6);
+				\coordinate (Cn) at (4.6,1.7);
+				\coordinate (CC) at (2.4667,1.8667);
+				\draw[->,gray!60, thin, midarrow] (CC)--(C1);
+				\draw[->,gray!60, thin] (CC)--(Ci);
+				\draw[->,gray!60, thin, midarrow] (CC)--(Cn);
+				\newcommand{\rotc}[4]{%
+					\draw[->, thick] ([shift={(-30:#2)}]#1)
+					arc[start angle=-30, end angle=210, radius=#2];
+					\node[inner sep=1pt] at ([shift={(#4:#2+0.20)}]#1) {#3};
+				}
+				\rotc{C1}{0.30}{$\vartheta_1$}{150}
+				\rotc{Ci}{0.30}{$\vartheta_i$}{95}
+				\rotc{Cn}{0.30}{$\vartheta_n$}{95}
+				\rotc{CC}{0.42}{}{0}
+				\node[inner sep=1pt] at ([shift={(0.6,0.60)}]CC) {$\vartheta=\textstyle\sum_i\vartheta_i$};
+				\fill (C1) circle (1.5pt) node[below] {$C_1$};
+				\fill (Ci) circle (1.5pt) node[left=10pt]       {$C_i$};
+				\fill (Cn) circle (1.5pt) node[below]      {$C_n$};
+				\fill (CC) circle (1.9pt) node[below=4pt]      {$C$};
+				\draw[->, gray!30!black, thin] (0,0) -- (CC);
+				\node[font=\small, above=1.5pt] at ($(0,0)!0.55!(CC)$) {$\overrightarrow{OC}$};
+				\fill (0,0) circle (1.3pt) node[below left=-2pt] {$O$};
+			\end{scope}
+			\path let \p1=(panA.south), \p2=(panB.south) in	coordinate (ybase) at (0,{min(\y1,\y2)-12pt});
+			\node[anchor=north] at (panA.south |- ybase) {(a)};
+			\node[anchor=north] at (panB.south |- ybase) {(b)};
+		\end{tikzpicture}
+	}
+	\caption{Composizione di $n$ rotazioni infinitesime nel piano.
+		(a)~Vista tridimensionale: le rotazioni sono vettori assiali
+		$\bm{\upvartheta}_i$ ortogonali al piano $\pi$, che si sommano nella
+		risultante $\bm{\upvartheta}=\protect\sum_i\bm{\upvartheta}_i$ in $C$.
+		(b)~Vista nel piano $(x,y)$: ampiezze $\vartheta_i$ come archi orientati
+		(positivi se antiorari) e centro risultante $C$ nel baricentro dei $C_i$.
+		Il centro $C$ è individuato da $\protect\overrightarrow{OC}=\protect\bigl(
+		\protect\sum_i\vartheta_i\,\protect\overrightarrow{OC_i}\protect\bigr)/\vartheta$
+		o, in forma equivalente, da $\protect\sum_i\vartheta_i\,
+		\protect\overrightarrow{CC_i}=\zerovb$ (frecce grigie in~(b)).}
+	\label{fig:composizione_rot}
+\end{figure}

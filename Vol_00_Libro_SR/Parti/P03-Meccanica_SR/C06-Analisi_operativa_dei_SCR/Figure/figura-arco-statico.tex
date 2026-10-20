@@ -1,0 +1,199 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\R{2.0}
+			\def\arr{0.55}
+			\def\dx{1.4}    % separazione tra C_1 e C_2 nei corpi liberi
+			
+			% ============================================================
+			% PANNELLO (a) — dati del problema
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% semiarchi
+				\draw[line width=1.5pt] (-\R,0)
+				arc[start angle=180, end angle=90, radius=\R];
+				\draw[line width=1.5pt] (0,\R)
+				arc[start angle=90, end angle=0, radius=\R];
+				
+				% cerniera in A
+				\draw[thick] (-\R,0) -- (-\R-0.22,-0.38)
+				-- (-\R+0.22,-0.38) -- cycle;
+				\draw[thick] (-\R-0.32,-0.38) -- (-\R+0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (-\R+\x,-0.38) -- (-\R+\x-0.10,-0.52);
+				}
+				% cerniera in B
+				\draw[thick] (\R,0) -- (\R-0.22,-0.38)
+				-- (\R+0.22,-0.38) -- cycle;
+				\draw[thick] (\R-0.32,-0.38) -- (\R+0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\R+\x,-0.38) -- (\R+\x-0.10,-0.52);
+				}
+				
+				% perni A, B, D
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (-\R,0) {};
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\R,0) {};
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,\R) {};
+				
+				% etichette punti
+				\node[left, font=\scriptsize] at (-\R,+0.2) {$A$};
+				\node[right, font=\scriptsize] at (\R,+0.2) {$B$};
+				\node[font=\scriptsize] at (-0.,\R+0.30) {$D$};
+				
+				% etichette corpi (esterne)
+				\node[font=\small] at ({(\R+0.35)*cos(150)},{(\R+0.35)*sin(150)})	{$\mathcal{C}_1$};
+				\node[font=\small] at ({(\R+0.35)*cos(35)},{(\R+0.35)*sin(35)})		{$\mathcal{C}_2$};
+				
+				% punto P_1 (centro asse C_1, a 135°)
+				\node[circle, fill=black, inner sep=0pt, minimum size=2pt]
+				at ({\R*cos(135)},{\R*sin(135)}) {};
+				\node[font=\scriptsize] at ({(\R-0.30)*cos(135)},{(\R-0.30)*sin(135)+0.07}) {$P_1$};
+				% coppia mu antioraria in P_1
+				\draw[->, thick] ({\R*cos(135)+0.30},{\R*sin(135)+0.05}) arc[start angle=10, end angle=310, radius=0.30];
+				\node[font=\scriptsize]	at ({\R*cos(135)+0.55},{\R*sin(135)+0.10}) {$\mu$};
+				
+				% punto P_2 (centro asse C_2, a 45°)
+				\node[circle, fill=black, inner sep=0pt, minimum size=2pt]
+				at ({\R*cos(45)},{\R*sin(45)}) {};
+				\node[font=\scriptsize]	at ({(\R-0.30)*cos(45)},{(\R-0.30)*sin(45)}) {$P_2$};
+				% forza F verticale verso il basso in P_2
+				\draw[->, thick] ({\R*cos(45)},{\R*sin(45)+\arr}) -- ({\R*cos(45)},{\R*sin(45)});
+				\node[font=\scriptsize]	at ({\R*cos(45)+0.25},{\R*sin(45)+\arr-0.10}) {$F$};
+				
+				
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (0,-0.50) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — schemi dei corpi liberi
+			% ============================================================
+			\begin{scope}[xshift=7.0cm]
+				
+				% ----- C_1 libero (decentrato a sinistra) -----
+				\begin{scope}[xshift=-\dx cm]
+					
+					% semiarco C_1
+					\draw[line width=1.5pt] (-\R,0)
+					arc[start angle=180, end angle=90, radius=\R];
+					
+					% cerniera in A (grigia, vincolo rotto)
+					\draw[thick, gray!50] (-\R,0) -- (-\R-0.22,-0.38)
+					-- (-\R+0.22,-0.38) -- cycle;
+					\draw[thick, gray!50] (-\R-0.32,-0.38) -- (-\R+0.32,-0.38);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+						\draw[thin, gray!50] (-\R+\x,-0.38) -- (-\R+\x-0.10,-0.52);
+					}
+					
+					% perni A, D
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (-\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (0,\R) {};
+					
+					% etichette
+					\node[left, font=\scriptsize] at (-\R,-0.) {$A$};
+					\node[below=2pt, font=\scriptsize] at (0,\R+0.05) {$D$};
+					\node[font=\small] at ({(\R+0.35)*cos(150)},{(\R+0.35)*sin(150)})	{$\mathcal{C}_1$};
+					
+					
+					
+					% reazioni in A
+					\draw[->, thick] (-\R,0.0) -- (-\R+\arr,0.0)
+					node[above, font=\scriptsize] {$X_A$};
+					\draw[->, thick] (-\R-0.05,0) -- (-\R-0.05,\arr)
+					node[left, yshift=-3pt, font=\scriptsize] {$Y_A$};
+					
+					% reazioni interne in D (su C_1): X_D verso destra, Y_D verso l'alto
+					\draw[->, thick] (0,\R) -- (\arr,\R)
+					node[below, font=\scriptsize] {$X_D$};
+					\draw[->, thick] (-0.05,\R) -- (-0.05,\R+\arr)
+					node[left, yshift=-3pt, font=\scriptsize] {$Y_D$};
+					
+					% coppia mu in P_1
+					\node[circle, fill=black, inner sep=0pt, minimum size=2pt]
+					at ({\R*cos(135)},{\R*sin(135)}) {};
+					\draw[->, thick]
+					({\R*cos(135)+0.25},{\R*sin(135)+0.05})
+					arc[start angle=10, end angle=310, radius=0.25];
+					\node[font=\scriptsize]	at ({\R*cos(135)+0.50},{\R*sin(135)+0.05}) {$\mu$};
+					\node[font=\scriptsize] at ({(\R-0.30)*cos(135)},{(\R-0.30)*sin(135)+0.10}) {$P_1$};
+					
+				\end{scope}
+				
+				% ----- C_2 libero (decentrato a destra) -----
+				\begin{scope}[xshift=\dx-0.10 cm]
+					
+					% semiarco C_2
+					\draw[line width=1.5pt] (0,\R)
+					arc[start angle=90, end angle=0, radius=\R];
+					
+					% cerniera in B (grigia)
+					\draw[thick, gray!50] (\R,0) -- (\R-0.22,-0.38)
+					-- (\R+0.22,-0.38) -- cycle;
+					\draw[thick, gray!50] (\R-0.32,-0.38) -- (\R+0.32,-0.38);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+						\draw[thin, gray!50] (\R+\x,-0.38) -- (\R+\x-0.10,-0.52);
+					}
+					
+					% perni B, D
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (0,\R) {};
+					
+					% etichette
+					\node[left, font=\scriptsize] at (\R,+0.) {$B$};
+					\node[above, font=\scriptsize] at (0,\R) {$D$};
+					\node[font=\small] at ({(\R+0.35)*cos(35)},{(\R+0.35)*sin(35)})	{$\mathcal{C}_2$};
+					
+					
+					% reazioni in B
+					\draw[->, thick] (\R,0.0) -- (\R+\arr,0.0)
+					node[above, font=\scriptsize] {$X_B$};
+					\draw[->, thick] (\R+0.05,0) -- (\R+0.05,\arr)
+					node[left, yshift=-3pt, font=\scriptsize] {$Y_B$};
+					
+					% reazioni interne in D (su C_2): opposte (verso sinistra e basso)
+					\draw[->, thick] (0,\R) -- (-\arr,\R)
+					node[above, font=\scriptsize] {$X_D$};
+					\draw[->, thick] (0.05,\R) -- (0.05,\R-\arr)
+					node[right, yshift=3pt, font=\scriptsize] {$Y_D$};
+					
+					% forza F in P_2
+					\node[circle, fill=black, inner sep=0pt, minimum size=2pt]
+					at ({\R*cos(45)},{\R*sin(45)}) {};
+					\draw[->, thick] ({\R*cos(45)},{\R*sin(45)+\arr}) -- ({\R*cos(45)},{\R*sin(45)});
+					\node[font=\scriptsize]	at ({\R*cos(45)+0.25},{\R*sin(45)+\arr-0.10}) {$F$};
+					\node[font=\scriptsize]	at ({(\R-0.30)*cos(45)},{(\R-0.30)*sin(45)}) {$P_2$};
+					
+				\end{scope}
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (-0.60,-0.50) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Arco a tre cerniere
+			(\ESEref{ex:arco_statico}):
+			\emph{(a)}~dati del problema statico ---
+			carico verticale $F$ in $P_2$ (punto medio
+			dell'asse di $\mathcal{C}_2$) e coppia $\mu$
+			antioraria in $P_1$ (punto medio dell'asse
+			di $\mathcal{C}_1$); le frecce indicano il
+			verso positivo dei carichi assegnati.
+			\emph{(b)}~schemi dei corpi liberi di
+			$\mathcal{C}_1$ (sinistra) e $\mathcal{C}_2$
+			(destra): reazioni esterne $X_A, Y_A$ in $A$
+			e $X_B, Y_B$ in $B$; reazioni interne $X_D, Y_D$
+			in $D$, uguali e opposte sui due corpi.}
+		\label{fig:arco_statico}
+	\end{figure}

@@ -1,0 +1,177 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			trave/.style={line width=2.2pt, line cap=round, line join=round, black},
+			terra/.style={line width=0.7pt, black},
+			nodoV/.style={circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt},
+			carico/.style={->, >=stealth, line width=1.0pt, black},
+			reaz/.style={->, >=stealth, line width=1.0pt, gray!60},
+			forza/.style={->, >=stealth, line width=1.0pt, black},
+			blob/.style={draw=gray!45, fill=gray!10, line width=0.7pt,
+				rounded corners=14pt},
+			]
+			
+			\def\L{3.2}
+			\def\sc{0.65}
+			\def\rm{0.38}  % raggio archi momento — più grande per visibilità
+			
+			%% Macro arco ORARIO (~200° CCW, wraps RIGHT side)
+			%% Visivamente: C aperta a sinistra, freccia punta in basso-sinistra in cima
+			\newcommand{\arcORA}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-100)},{\rm*sin(-100)})$) arc(-100:100:\rm);
+			}
+			%% Macro arco ANTIORARIO (~200° CCW, wraps LEFT side)
+			%% Visivamente: C aperta a destra, freccia punta in basso-destra in fondo
+			\newcommand{\arcANTI}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(80)},{\rm*sin(80)})$) arc(80:280:\rm);
+			}
+			%% Macro arco ANTIORARIO (~200° CCW, wraps LEFT side)
+			%% Visivamente: C aperta a destra, freccia punta in basso-destra in fondo
+			\newcommand{\arcANTIAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(80)},{\rm*sin(80)})$) arc(80:280:\rm);
+			}
+			%% Macro arco ORARIO (~200° CCW, wraps RIGHT side)
+			%% Visivamente: C aperta a sinistra, freccia punta in basso-sinistra in cima
+			\newcommand{\arcORAAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-100)},{\rm*sin(-100)})$) arc(-100:100:\rm);
+			}
+			
+			%% Macro arco ORARIO per asta VERTICALE
+			%% (arcORA ruotato di 90°: avvolge in alto, aperto verso il basso,
+			%%  attraversa l'asta verticale)
+			\newcommand{\arcORAV}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-10)},{\rm*sin(-10)})$) arc(-10:190:\rm);
+			}
+			
+			%% Macro arco ANTIORARIO per asta VERTICALE
+			%% (arcANTI ruotato di 90°: avvolge in basso, aperto verso l'alto,
+			%%  attraversa l'asta verticale)
+			\newcommand{\arcANTIV}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(170)},{\rm*sin(170)})$) arc(170:370:\rm);
+			}
+			
+			%% Versioni con freccia capovolta (AP = freccia alla partenza)
+			\newcommand{\arcORAVAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-10)},{\rm*sin(-10)})$) arc(-10:190:\rm);
+			}
+			\newcommand{\arcANTIVAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(170)},{\rm*sin(170)})$) arc(170:370:\rm);
+			}
+			%% Layout globale:
+			%% AB:  xshift=0,   B_AB  in x=3.2
+			%% BC:  xshift=6.4, B_BC  in x=6.4   (gap tra B = 3.2)
+			%% BD:  xshift=4.8  (midpoint 3.2+6.4/2=4.8), yshift=3.8
+			%% DE:  xshift=6.4, yshift=3.8  (direttamente sopra BC)
+			%%
+			%% Blob BD:  da -1.6 a +1.3  → destra a 6.1
+			%% Blob DE:  da -0.3 a +...  → sinistra a 6.1  ✓ nessuna sovrapposizione
+			
+			%% ════════════════════════════════════════
+			%% TRATTO AB
+			%% ════════════════════════════════════════
+			\begin{scope}[xshift=0cm, yshift=0cm]
+				\coordinate (A) at (0,0); \coordinate (B) at (\L,0);
+				\coordinate (Mm) at (0.5*\L,0);
+				\draw[blob](-0.80,-0.90) rectangle (\L+0.8, 0.90);
+				\draw[trave](A)--(B);
+				\draw[terra](A)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra](-0.30,-0.38)--(0.30,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black](\x,-0.38)--++(-0.09,-0.11);
+				\node[nodoV] at (A){};
+				\draw[reaz](A)--++(0,\sc);
+				\node[right,font=\small,gray!70] at ($(A)+(0.08,\sc*0.5)$){$p\ell$};
+				\draw[carico](Mm)++(0,\sc)--(Mm);
+				\node[left,font=\small] at ($(Mm)+(0,\sc)$){$p\ell$};
+				\arcANTIAP{B}
+				\node[above,font=\small] at ($(B)+(-0.50,0.3)$){$p\ell^2/2$};
+				\node[left,font=\small] at (A){$A$};
+				\node[right,font=\small] at (B){$B$};
+			\end{scope}
+			
+			%% ════════════════════════════════════════
+			%% TRATTO BC
+			%% ════════════════════════════════════════
+			\begin{scope}[xshift=6.5cm, yshift=0cm]
+				\coordinate (B2) at (0,0); \coordinate (C) at (\L,0);
+				\draw[blob](-0.80,-0.90) rectangle (\L+0.80, 0.90);
+				\draw[trave](B2)--(C);
+				\draw[terra](C)--++(-0.22,-0.32)--++(0.44,0)--cycle;
+				\draw[terra]($(C)+(-0.30,-0.32)$)--($(C)+(0.30,-0.32)$);
+				\draw[terra]($(C)+(-0.16,-0.44)$) circle(2.4pt);
+				\draw[terra]($(C)+( 0.16,-0.44)$) circle(2.4pt);
+				\draw[terra]($(C)+(-0.30,-0.56)$)--($(C)+(0.30,-0.56)$);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black]($(C)+(\x,-0.56)$)--++(-0.09,-0.11);
+				\node[nodoV] at (C){};
+				\draw[reaz](C)--++(0,\sc);
+				\node[left,font=\small,gray!70] at ($(C)+(-0.08,\sc*0.5)$){$p\ell$};
+				\draw[forza](B2)++(0,\sc)--(B2);
+				\node[right,font=\small] at ($(B2)+(0,\sc)$){$p\ell$};
+				\arcORAAP{B2}
+				\node[below,font=\small] at ($(B2)+(0.60,-0.2)$){$p\ell^2$};
+				\node[left,font=\small] at (B2){$B$};
+				\node[right,font=\small] at (C){$C$};
+			\end{scope}
+			
+			%% ════════════════════════════════════════
+			%% TRATTO BD  (verticale, centrato tra i due B)
+			%% ════════════════════════════════════════
+			\begin{scope}[xshift=4.8cm, yshift=1.8cm]
+				\coordinate (B3) at (0,0); \coordinate (D) at (0,\L);
+				\draw[blob](-1.10,-0.80) rectangle (1.0, \L+0.80);
+				\draw[trave](B3)--(D);
+				%% compressione B verso il basso
+				\draw[forza](B3)--++(0,-\sc);
+				\node[right,font=\small] at ($(B3)+(0.08,-\sc*0.5)$){$p\ell$};
+				%% momento B ANTIORARIO: arco wraps LEFT, label a sinistra
+				\arcORAV{B3}
+				\node[left,font=\small] at ($(B3)+(-0.10,0.5)$){$p\ell^2/2$};
+				%% compressione D verso l'alto
+				\draw[forza](D)--++(0,\sc);
+				\node[right,font=\small] at ($(D)+(0.08,\sc*0.5)$){$p\ell$};
+				%% momento D ORARIO: arco wraps RIGHT, label a destra
+				\arcANTIVAP{D}
+				\node[right,font=\small] at ($(D)+(-1.20,-0.5)$){$p\ell^2/2$};
+				\node[below left,font=\small] at (B3){$B$};
+				\node[above left,font=\small] at (D){$D$};
+			\end{scope}
+			
+			%% ════════════════════════════════════════
+			%% TRATTO DE  (orizzontale, direttamente sopra BC)
+			%% ════════════════════════════════════════
+			\begin{scope}[xshift=6.5cm, yshift=5.0cm]
+				\coordinate (D2) at (0,0); \coordinate (E) at (\L,0);
+				\draw[blob](-0.55,-0.90) rectangle (\L+0.20, 1.20);
+				\draw[trave](D2)--(E);
+				\draw[black,line width=0.6pt]($(D2)+(0,0.65)$)--($(E)+(0,0.65)$);
+				\draw[black,line width=0.6pt]($(D2)+(0,0.07)$)--($(E)+(0,0.07)$);
+				\foreach \t in {0.00,0.17,0.34,0.50,0.67,0.84,1.00}
+				\draw[carico,line width=0.7pt]
+				($(D2)!\t!(E)+(0,0.65)$)--($(D2)!\t!(E)+(0,0.07)$);
+				\node[above,font=\small] at ($(D2)!0.5!(E)+(0,0.65)$){$p$};
+				%\draw[forza](D2)--++(0,\sc);
+				%\node[left,font=\small] at ($(D2)+(-0.06,\sc*0.5)$){$p\ell$};
+				\draw[forza](D2)--++(0,1.00);
+				\node[left,font=\small] at ($(D2)+(0,1.40*0.5)$){$p\ell$};
+				\arcORA{D2}
+				\node[below,font=\small] at ($(D2)+(0.80,-0.10)$){$p\ell^2/2$};
+				\node[below left,font=\small] at (D2){$D$};
+				\node[below,font=\small] at (E){$E$};
+			\end{scope}
+			
+		\end{tikzpicture}%
+	}%
+	\caption{Trave ramificata: isolamento dei quattro tratti come corpi liberi con le azioni alle connessioni interne.}
+	\label{fig:corpi_liberi_ramificata}
+\end{figure}

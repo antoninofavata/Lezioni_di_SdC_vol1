@@ -1,0 +1,125 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica dell'incastro
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lcamp{0.65}      % era 0.50, semi-altezza fascia campita
+			
+			%% ── Corpo C (ingrandito) ──
+			\draw[line width=1pt] 
+			(\xA, -\Lcamp)
+			.. controls ( 0.65, -1.65) and ( 1.65, -1.75)
+			.. ( 2.25, -1.40)
+			.. controls ( 3.00, -0.75) and ( 3.10,  0.50)
+			.. ( 2.65, 1.25)
+			.. controls ( 1.90, 1.75) and ( 0.75, 1.65)
+			.. (\xA, \Lcamp)
+			-- cycle;
+			\node at (1.80, 0.10) {$\mathcal{C}$};
+			
+			%% ── Campitura (tratteggio obliquo) lungo il bordo sinistro ──
+			\foreach \y in {-0.55,-0.40,-0.25,-0.10,0.05,0.20,0.35,0.50}
+			\draw[thin] (\xA, \y) -- ++(-0.13, -0.10);
+			
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south west, font=\small] 
+			at ({\xA+0.05}, {\yA+0.05}) {$A$};
+			
+			%% ── Equazioni di vincolo (a sinistra, fuori dal corpo) ──
+			\node[font=\small, anchor=east] 
+			at (-0.40, 0.50) {$\ub(A) = \zerovb$};
+			\node[font=\small, anchor=east] 
+			at (-0.40, 0.10) {$\vartheta = 0$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (-0.06, -1.0) {$(a)$};
+			
+		\end{scope}
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica dell'incastro
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lcamp{0.65}      % era 0.50, semi-altezza fascia campita
+			
+			%% ── Corpo C (ingrandito) ──
+			\draw[line width=1pt] 
+			(\xA, -\Lcamp)
+			.. controls ( 0.65, -1.65) and ( 1.65, -1.75)
+			.. ( 2.25, -1.40)
+			.. controls ( 3.00, -0.75) and ( 3.10,  0.50)
+			.. ( 2.65, 1.25)
+			.. controls ( 1.90, 1.75) and ( 0.75, 1.65)
+			.. (\xA, \Lcamp)
+			-- cycle;
+			\node at (1.80, 0.10) {$\mathcal{C}$};
+			
+			%% ── Campitura (tratteggio obliquo) lungo il bordo sinistro ──
+			\foreach \y in {-0.55,-0.40,-0.25,-0.10,0.05,0.20,0.35,0.50}
+			\draw[thin] (\xA, \y) -- ++(-0.13, -0.10);
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south east, font=\small] 
+			at ({\xA-0.05}, {\yA+0.05}) {$A$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: X(A), Y(A), μ(A)
+			%% ──────────────────────────────────────────────────
+			
+			%% Forza X(A): da A verso destra
+			\draw[->, line width=1.4pt] 
+			(\xA+0.05, \yA) -- (\xA+1.05, \yA);
+			\node[anchor=north, font=\small] at ({\xA+0.85}, {\yA-0.05}) {$X(A)\,\ab_x$};
+			
+			%% Forza Y(A): da A verso l'alto
+			\draw[->, line width=1.4pt] 
+			(\xA, \yA+0.05) -- (\xA, \yA+1.05);
+			\node[anchor=south, font=\small] 	at ({\xA-0.05}, {\yA+1.0}) {$Y(A)\,\ab_y$};
+			
+			%% ── Terna x, y in basso a sinistra ──
+			\draw[->, line width=0.8pt] (-1.50, -1.20) -- (-0.70, -1.20);
+			\node[anchor=west, font=\footnotesize] at (-0.70, -1.25) {$x$};
+			\draw[->, line width=0.8pt] (-1.50, -1.20) -- (-1.50, -0.40);
+			\node[anchor=south, font=\footnotesize] at (-1.50, -0.40) {$y$};
+			
+			%% Coppia μ(A): arco antiorario dentro al corpo
+			\def\xMu{1.10}     % era 0.80
+			\def\yMu{0.50}     % era 0.80
+			
+			%% Coppia μ(A): arco di π/2 centrato in A, fra le due frecce di forza
+			\def\rmu{0.55}
+			\draw[->, line width=1.4pt] 
+			({\xA+\rmu}, \yA) arc(0:90:\rmu);
+			\node[font=\small] 
+			at ({\xA+\rmu*1.7}, {\yA+\rmu*0.707+0.05}) {$\mu(A)$};
+			
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 	at (-0.06, -1.0) {$(b)$};
+			
+		\end{scope}
+	\end{tikzpicture}
+	\caption[Incastro in $A$: prestazioni cinematica e statica.]{%
+		Incastro applicato al corpo $\mathcal{C}$ nel punto $A$.
+		Prestazione cinematica (a): nessuno spostamento è ammesso, 
+		né traslazione né rotazione ($\ub(A) = \zerovb$, 
+		$\vartheta = 0$); il corpo è completamente bloccato.
+		Prestazione statica (b): la reazione vincolare è una forza
+		generica $X(A)\,\ab_x + Y(A)\,\ab_y$ e una coppia $\mu(A)$,
+		applicate in $A$, in accordo con la molteplicità tre.}
+	\label{fig:incastro}
+\end{figure}

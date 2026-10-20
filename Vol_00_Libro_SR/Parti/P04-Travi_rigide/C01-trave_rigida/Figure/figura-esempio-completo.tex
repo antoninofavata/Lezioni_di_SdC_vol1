@@ -1,0 +1,343 @@
+\begin{figure}[!htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					>=stealth, line width=0.8pt,
+					trave/.style={line width=1.5pt, line cap=round,
+						line join=round, black},
+					travedef/.style={line width=1.5pt, line cap=round,
+						line join=round, gray!55},
+					terra/.style={line width=0.8pt, black},
+					carico/.style={->, >=stealth, line width=1.2pt, black},
+					quota/.style={<->, >=stealth, thin, gray!60},
+					nodoV/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=4pt,
+						line width=0.7pt}, diag/.style={line width=0.7pt, black},
+					hatch/.style={line width=0.3pt, gray!50},
+					segno/.style={circle, draw=black, inner sep=0.8pt,
+						line width=0.5pt, font=\scriptsize},
+					etichetta/.style={circle, draw=black, inner sep=2.5pt,
+						line width=0.8pt, font=\small}
+					]
+					
+					%% ===============================================================
+					%% PANNELLO (a) — Schema: geometria, vincoli, carichi, distorsione
+					%% ===============================================================
+					\begin{scope}[xshift=0cm, yshift=0cm]
+						
+						\def\L{6.0}
+						\pgfmathsetmacro{\xS}{\L/3}
+						
+						%% linea d'asse + fibra inferiore
+						\draw[trave] (0,0) -- (\L,0);
+						\draw[dashed, thin] (0,-0.1) -- (\L,-0.1);
+						
+						%% ferri di chiamata grigi (verso la quota)
+						\draw[very thin, gray!50] (0  ,-0.05) -- (0  ,-1.02);
+						\draw[very thin, gray!50] (\xS,-0.05) -- (\xS,-1.02);
+						\draw[very thin, gray!50] (\L ,-0.05) -- (\L ,-1.02);
+						
+						%% cerniera esterna in A
+						\draw[terra] (0,0) -- ++(-0.22,-0.38) -- ++(0.44,0) -- cycle;
+						\draw[terra] (-0.30,-0.38) -- (0.30,-0.38);
+						\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+						\draw[very thin, black] (\x,-0.38) -- ++(-0.09,-0.11);
+						\node[nodoV] at (0,0) {};
+						\node[above left=1pt and 2pt, font=\small] at (0,0) {$A$};
+						
+						%% carrello verticale in B (canone ridotto)
+						\draw[terra] (\L,0) -- ++(-0.25,-0.36) -- ++(0.50,0) -- cycle;
+						\draw[terra] (\L-0.34,-0.36) -- (\L+0.34,-0.36);
+						\draw[terra] (\L-0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L+0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L-0.34,-0.64) -- (\L+0.34,-0.64);
+						\foreach \x in {-0.28,-0.15,-0.02,0.11,0.24}
+						\draw[very thin, black] (\L+\x,-0.64) -- ++(-0.10,-0.13);
+						\node[nodoV] at (\L,0) {};
+						\node[above right=1pt and 2pt, font=\small] at (\L,0) {$B$};
+						
+						%% sezione S
+						%\node[nodoV] at (\xS,0) {};
+						\node[below=2pt, font=\small] at (\xS,0.04) {$S$};
+						
+						
+						%% carico distribuito \bar{p} (verso +y^e = verso il basso)
+						\def\hp{0.65}
+						\draw[thin] (0,\hp) -- (\L,\hp);            %% linea superiore
+						\foreach \t in {0.00,0.10,0.20,0.30,0.40,0.50,	0.60,0.70,0.80,0.90,1.00}
+						\draw[carico] (\t*\L,\hp) -- (\t*\L,0.06);
+						\draw[thin] (0,0.08) -- (\L,0.08);          %% linea inferiore alle punte
+						\node[above=1pt, font=\small] at (\L/2,\hp) {$\bar{p}$};
+						
+						%% forza concentrata F in S (sopra il blocco di \bar{p})
+						\def\hF{1.30}
+						\draw[carico, line width=1.6pt] (\xS,\hF) -- (\xS,0.06);
+						\node[right=2pt, font=\small] at (\xS-0.1,0.85*\hF+0.10) {$F$};
+						
+						%% distorsione rotazionale varrho_vartheta in S
+						\draw[->, >=stealth, line width=0.85pt]	(\xS-0.14,-0.68) arc (270: 90:0.18);
+						\draw[->, >=stealth, line width=0.85pt]	(\xS+0.14,-0.68) arc ( -90: 90:0.18);
+						\node[right=1pt, font=\small] at (\xS+0.32,-0.50)	{$\varrho_\vartheta$};
+						
+						%% quote orizzontali
+						\draw[quota] (0  ,-0.92) -- (\xS,-0.92)
+						node[midway, above, font=\small] {$\ell/3$};
+						\draw[quota] (\xS,-0.92) -- (\L ,-0.92)
+						node[midway, above, font=\small] {$2\ell/3$};
+						
+						%% etichetta pannello
+						\node[below=1.cm, font=\small] at (\L/2,0) {(a)};
+					\end{scope}
+					
+					%% ===============================================================
+					%% PANNELLO (b) — Configurazione deformata v(z) sotto la sola
+					%%                 distorsione varrho_vartheta
+					%% ===============================================================
+					
+					\begin{scope}[xshift=8cm, yshift=0cm]
+						
+						\def\L{6.0}
+						\pgfmathsetmacro{\xS}{\L/3}
+						%% Valori esagerati per leggibilita': v(S)=0.5 (rho ~ 0.37 rad)
+						\def\yS{-0.5}      %% y di S'
+						\def\yPstar{-1.5}  %% y del prolungamento di AS' a z=L
+						
+						%% --- Configurazione indeformata (riferimento) ---
+						\draw[trave] (0,0) -- (\L,0);
+						
+						%% cerniera esterna in A
+						\draw[terra] (0,0) -- ++(-0.22,-0.38) -- ++(0.44,0) -- cycle;
+						\draw[terra] (-0.30,-0.38) -- (0.30,-0.38);
+						\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+						\draw[very thin, black] (\x,-0.38) -- ++(-0.09,-0.11);
+						\node[nodoV] at (0,0) {};
+						\node[above left=1pt and 2pt, font=\small] at (0,0) {$A$};
+						
+						%% carrello verticale in B
+						\draw[terra] (\L,0) -- ++(-0.25,-0.36) -- ++(0.50,0) -- cycle;
+						\draw[terra] (\L-0.34,-0.36) -- (\L+0.34,-0.36);
+						\draw[terra] (\L-0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L+0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L-0.34,-0.64) -- (\L+0.34,-0.64);
+						\foreach \x in {-0.28,-0.15,-0.02,0.11,0.24}
+						\draw[very thin, black] (\L+\x,-0.64) -- ++(-0.10,-0.13);
+						\node[nodoV] at (\L,0) {};
+						\node[above right=1pt and 2pt, font=\small] at (\L,0) {$B$};
+						
+						%% cerniera interna in S (sull'indeformata)
+						\node[nodoV] at (\xS,0) {};
+						\node[above=1pt, font=\small] at (\xS,0) {$S$};
+						
+						%% --- Configurazione deformata (in grigio) ---
+						\draw[travedef] (0,0) -- (\xS,\yS) -- (\L,0);
+						
+						%% prolungamento di AS' oltre S' (grigio tratteggiato)
+						\draw[gray!55, thin] (\xS,\yS) -- (\L/2,\yPstar/2);
+						
+						%% cerniera interna in S' (sulla deformata)
+						\node[nodoV] at (\xS,\yS) {};
+						\node[below=1pt, font=\small] at (\xS,\yS) {$S'$};
+						
+						
+						%% archetto rotazione AS' = (2/3) rho (orario, presso A)
+						\draw[->, >=stealth, line width=0.6pt]	(1.2,0) arc (0:-14:1.2);
+						\node[font=\footnotesize] at (1.0,-0.50)
+						{$\tfrac{2}{3}\varrho_\vartheta$};
+						
+						
+						%% archetto rotazione S'B = (1/3) rho (antiorario, presso B)
+						\draw[->, >=stealth, line width=0.6pt]	(\L-1.8,0) arc (180:187:1.8);
+						\node[font=\footnotesize] at (\L-1.50,-0.50)	{$\tfrac{1}{3}\varrho_\vartheta$};
+						
+						
+						%% indicatore angolo rho_vartheta in S'
+						%% fra prolungamento (angolo -14) e tratto S'B (angolo +7)
+						\draw[->, >=stealth, line width=0.6pt]
+						(2.68,-0.67) arc (-14:7:0.70);
+						\node[font=\footnotesize] at (2.95,-0.55) {$\varrho_\vartheta$};
+						
+						%% etichetta pannello
+						\node[below=1.0cm, font=\small] at (\L/2,0) {(b)};
+					\end{scope}
+					
+					%% ===============================================================
+					%% PANNELLO (c) — Diagramma del taglio T(z) per F = 2 \bar{p} \ell
+					%% ===============================================================
+					\begin{scope}[xshift=0cm, yshift=-3cm]
+						
+						\def\L{6.0}
+						\pgfmathsetmacro{\xS}{\L/3}
+						\def\sc{0.55}            %% scala del diagramma
+						
+						%% Valori notevoli di T (in unita di \bar{p}\ell, con segno).
+						\pgfmathsetmacro{\TA}{11/6}     \pgfmathsetmacro{\yA}{\TA*\sc}
+						\pgfmathsetmacro{\TSm}{3/2}     \pgfmathsetmacro{\ySm}{\TSm*\sc}
+						\pgfmathsetmacro{\TSp}{-1/2}    \pgfmathsetmacro{\ySp}{\TSp*\sc}
+						\pgfmathsetmacro{\TB}{-7/6}     \pgfmathsetmacro{\yB}{\TB*\sc}
+						\pgfmathsetmacro{\yAlab}{\yA-0.50}      %% <— questa riga, quinta, nuova
+						\pgfmathsetmacro{\ySmlab}{\ySm-0.40}      %% <— questa riga, quinta, nuova
+						\pgfmathsetmacro{\ySplab}{\ySp+0.30}      %% <— questa riga, quinta, nuova
+						
+						
+						
+						%% --- Tratto AS (T > 0, sopra la trave) ---
+						\fill[gray!15] (0,0) -- (0,\yA) -- (\xS,\ySm) -- (\xS,0) -- cycle;
+						\foreach \k in {0,...,11} {
+							\pgfmathsetmacro{\t}{(\k+0.5)/12}
+							\pgfmathsetmacro{\xk}{\t*\xS}
+							\pgfmathsetmacro{\yk}{(\TA-(\TA-\TSm)*\t)*\sc}
+							\draw[hatch] (\xk,0) -- (\xk,\yk);}
+						\draw[diag] (0,0)   -- (0,\yA);         %% chiusura in A^+ (reazione Y_A)
+						\draw[diag] (0,\yA) -- (\xS,\ySm);      %% linea T(z) in AS
+						\node[segno] at ({0.45*\xS},{0.5*\TSm*\sc}) {$+$};
+						
+						%% --- Salto in S (di ampiezza -F = -2 \bar{p}\ell) ---
+						\draw[diag] (\xS,\ySm) -- (\xS,\ySp);
+						
+						%% --- Tratto SB (T < 0, sotto la trave) ---
+						\fill[gray!15] (\xS,0) -- (\xS,\ySp) -- (\L,\yB) -- (\L,0) -- cycle;
+						\foreach \k in {0,...,15} {
+							\pgfmathsetmacro{\t}{(\k+0.5)/16}
+							\pgfmathsetmacro{\xk}{\xS+\t*(\L-\xS)}
+							\pgfmathsetmacro{\yk}{(\TSp-(\TSp-\TB)*\t)*\sc}
+							\draw[hatch] (\xk,0) -- (\xk,\yk);}
+						\draw[diag] (\xS,\ySp) -- (\L,\yB);     %% linea T(z) in SB
+						\draw[diag] (\L,\yB)   -- (\L,0);       %% chiusura in B^- (reazione Y_B)
+						\node[segno] at ({(\xS+\L)/2+0.7},{0.5*\TB*\sc+0.04}) {$-$};
+						
+						%% --- Etichette dei valori notevoli (valore assoluto) ---
+						\node[above left=1pt and 2pt, font=\footnotesize]  at (0  ,\yAlab)		{$\tfrac{11}{6}\bar{p}\ell$};
+						\node[above right=1pt and 2pt, font=\footnotesize] at (\xS-0.1,\ySmlab) {$\tfrac{3}{2}\bar{p}\ell$};
+						\node[below left=1pt and 2pt, font=\footnotesize]  at (\xS+0.06,\ySplab)
+						{$\tfrac{1}{2}\bar{p}\ell$};
+						\node[below right=1pt and 2pt, font=\footnotesize] at (\L ,\yB)
+						{$\tfrac{7}{6}\bar{p}\ell$};
+						
+						%% --- Struttura sovrapposta (linea d'asse  + vincoli) ---
+						\draw[trave] (0,0) -- (\L,0);
+						%% cerniera in A
+						\draw[terra] (0,0) -- ++(-0.22,-0.38) -- ++(0.44,0) -- cycle;
+						\draw[terra] (-0.30,-0.38) -- (0.30,-0.38);
+						\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+						\draw[very thin, black] (\x,-0.38) -- ++(-0.09,-0.11);
+						\node[nodoV] at (0,0) {};
+						\node[above left=1pt and 2pt, font=\small] at (0,0) {$A$};
+						%% carrello in B
+						\draw[terra] (\L,0) -- ++(-0.25,-0.36) -- ++(0.50,0) -- cycle;
+						\draw[terra] (\L-0.34,-0.36) -- (\L+0.34,-0.36);
+						\draw[terra] (\L-0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L+0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L-0.34,-0.64) -- (\L+0.34,-0.64);
+						\foreach \x in {-0.28,-0.15,-0.02,0.11,0.24}
+						\draw[very thin, black] (\L+\x,-0.64) -- ++(-0.10,-0.13);
+						\node[nodoV] at (\L,0) {};
+						\node[above right=1pt and 2pt, font=\small] at (\L,0) {$B$};
+						\node[above right=1pt and 1pt, font=\small] at (\xS,0) {$S$};
+						
+						%% --- Etichetta del diagramma (cerchio "T") ---
+						\node[etichetta] at ({\xS + 0.55*(\L-\xS)},{+0.80}) {$T$};
+						
+						%% --- Etichetta pannello ---
+						\node[below=1.0cm, font=\small] at (\L/2,0) {(c)};
+					\end{scope}
+					
+					%% ===============================================================
+					%% PANNELLO (d) — Diagramma del momento M(z) per F = 2 \bar{p} \ell
+					%% ===============================================================
+					\begin{scope}[xshift=8cm, yshift=-3cm]
+						
+						\def\L{6.0}
+						\pgfmathsetmacro{\xS}{\L/3}
+						\def\scM{1.20}           %% scala del diagramma (M ha valori piu piccoli di T)
+						
+						%% Valori notevoli di M (in unita di \bar{p}\ell^2, con segno).
+						\pgfmathsetmacro{\MS}{5/9}      \pgfmathsetmacro{\yS}{-\MS*\scM}
+						\pgfmathsetmacro{\yMSlab}{\yS-0.15}    %% quota etichetta in S
+						
+						%% --- Tratto AS (parabola: M(z) = Y_A z - (1/2) p z^2,
+						
+						\fill[gray!15]
+						plot[domain=0:{1/3}, samples=14]
+						({\x*\L},{-(11/6*\x - 1/2*\x*\x)*\scM})
+						-- (\xS,0) -- (0,0) -- cycle;
+						\foreach \k in {0,...,11} {
+							\pgfmathsetmacro{\t}{(\k+0.5)/12*(1/3)}
+							\pgfmathsetmacro{\xk}{\t*\L}
+							\pgfmathsetmacro{\yk}{-(11/6*\t - 1/2*\t*\t)*\scM}
+							\draw[hatch] (\xk,0) -- (\xk,\yk);}
+						\draw[diag]
+						plot[domain=0:{1/3}, samples=14]
+						({\x*\L},{-(11/6*\x - 1/2*\x*\x)*\scM});
+						
+						%% --- Tratto SB (parabola: M(z) = Y_B(ell-z) - (1/2) p (ell-z)^2,
+						
+						\fill[gray!15]
+						plot[domain={1/3}:1, samples=20]
+						({\x*\L},{-(7/6*(1-\x) - 1/2*(1-\x)*(1-\x))*\scM})
+						-- (\L,0) -- (\xS,0) -- cycle;
+						\foreach \k in {0,...,15} {
+							\pgfmathsetmacro{\t}{1/3 + (\k+0.5)/16*(2/3)}
+							\pgfmathsetmacro{\xk}{\t*\L}
+							\pgfmathsetmacro{\yk}{-(7/6*(1-\t) - 1/2*(1-\t)*(1-\t))*\scM}
+							\draw[hatch] (\xk,0) -- (\xk,\yk);}
+						\draw[diag]
+						plot[domain={1/3}:1, samples=20]
+						({\x*\L},{-(7/6*(1-\x) - 1/2*(1-\x)*(1-\x))*\scM});
+						
+						
+						%% --- Etichetta del valore notevole in S ---
+						\node[below=2pt, font=\footnotesize] at (\xS,\yMSlab+0.9){$\tfrac{5}{9}\bar{p}\ell^2$};
+						
+						%% --- Struttura sovrapposta (linea d'asse + vincoli) ---
+						\draw[trave] (0,0) -- (\L,0);
+						%% cerniera in A
+						\draw[terra] (0,0) -- ++(-0.22,-0.38) -- ++(0.44,0) -- cycle;
+						\draw[terra] (-0.30,-0.38) -- (0.30,-0.38);
+						\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+						\draw[very thin, black] (\x,-0.38) -- ++(-0.09,-0.11);
+						\node[nodoV] at (0,0) {};
+						\node[above left=1pt and 2pt, font=\small] at (0,0) {$A$};
+						%% carrello in B
+						\draw[terra] (\L,0) -- ++(-0.25,-0.36) -- ++(0.50,0) -- cycle;
+						\draw[terra] (\L-0.34,-0.36) -- (\L+0.34,-0.36);
+						\draw[terra] (\L-0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L+0.18,-0.50) circle (2.7pt);
+						\draw[terra] (\L-0.34,-0.64) -- (\L+0.34,-0.64);
+						\foreach \x in {-0.28,-0.15,-0.02,0.11,0.24}
+						\draw[very thin, black] (\L+\x,-0.64) -- ++(-0.10,-0.13);
+						\node[nodoV] at (\L,0) {};
+						\node[above right=1pt and 2pt, font=\small] at (\L,0) {$B$};
+						%% cerniera interna in S
+						%\node[nodoV] at (\xS,0) {};
+						\node[above, font=\small] at (\xS,0) {$S$};
+						
+						%% --- Etichetta del diagramma (cerchio "M") ---
+						\node[etichetta] at ({\xS + 0.55*(\L-\xS)},{+0.80}) {$M$};
+						
+						%% --- Etichetta pannello ---
+						\node[below=1.0cm, font=\small] at (\L/2,0) {(d)};
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Trave appoggiata $AB$ con distorsione
+				rotazionale $\varrho_\vartheta > 0$ in
+				$S = \ell/3$, carico distribuito uniforme $p_0$
+				e forza concentrata $F = 2\,\bar{p}\,\ell$ in $S$.
+				(a)~Schema con geometria, vincoli,
+				carichi e distorsione.
+				(b)~Configurazione deformata prodotta
+				dalla sola distorsione $\varrho_\vartheta$:
+				i carichi non modificano la cinematica del
+				corpo rigido.
+				(c)~Diagramma del taglio $T(z)$:
+				lineare a tratti, con salto $-F$ in $S$.
+				(d)~Diagramma del momento flettente
+				$M(z)$: parabolico a tratti, continuo in $S$,
+				nullo agli estremi. La distorsione non
+				contribuisce ai diagrammi~(c) e~(d):
+				in un sistema isostatico le distorsioni
+				producono spostamenti ma non sollecitazioni
+				(Oss.~\ref{oss:distorsione_isostatica}).}
+			\label{fig:esempio_completo}
+		\end{figure}

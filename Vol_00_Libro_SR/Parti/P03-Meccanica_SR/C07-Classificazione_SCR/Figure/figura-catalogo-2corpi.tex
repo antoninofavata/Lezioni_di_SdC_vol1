@@ -1,0 +1,257 @@
+\begin{figure}[!ht]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			
+			\def\Lel{1.0}    % unità geometrica
+			
+			% ============================================================
+			% PANNELLO (a) — caso regolare: portale a tre cerniere
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% --- corpi: due aste rettilinee AC e CB ---
+				\draw[line width=1.5pt] (0,0) -- ({2*\Lel},{2*\Lel});      % asta AC = C_1
+				\draw[line width=1.5pt] ({2*\Lel},{2*\Lel}) -- ({4*\Lel},0);  % asta CB = C_2
+				
+				% --- cerniera esterna in A (al suolo) ---
+				\begin{scope}[shift={(0,0)}]
+					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+						\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+					}
+				\end{scope}
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,0) {};
+				
+				% --- cerniera esterna in B (al suolo) ---
+				\begin{scope}[shift={({4*\Lel},0)}]
+					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+						\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+					}
+				\end{scope}
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at ({4*\Lel},0) {};
+				
+				% --- cerniera interna in C (cerchio bianco sulla congiunzione) ---
+				\draw[fill=white, thick] ({2*\Lel},{2*\Lel}) circle (2.5pt);
+				
+				% --- etichette dei nodi ---
+				\node[ left,  font=\scriptsize] at (0,0)             {$A$};
+				\node[above,       font=\scriptsize] at ({2*\Lel},{2*\Lel+0.10}) {$C$};
+				\node[ right, font=\scriptsize] at ({4*\Lel},0)      {$B$};
+				
+				% --- etichette dei corpi ---
+				\node[font=\small] at ({\Lel-0.30},{\Lel+0.15}) {$\mathcal{C}_1$};
+				\node[font=\small] at ({3*\Lel+0.20},{\Lel+0.15}) {$\mathcal{C}_2$};
+				
+				% --- didascalia del pannello ---
+				\node[font=\scriptsize] at ({2*\Lel},-1.30)
+				{(a) caso regolare, $\rg(\bm{A})=6$};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — caso degenere: poligonale spezzata
+			%                A=(0,0), D=(l,l), C=(2l,0), E=(3l,-l), B=(4l,0)
+			%                con rette di proiezione r_H, r_V e meccanismo q
+			% ============================================================
+			\begin{scope}[xshift=6.0cm]
+				
+				\def\qa{0.30}    % ampiezza del parametro |q|
+				
+				% linea ausiliaria di allineamento di A, C, B (collinearità)
+				\draw[gray!50, thin, dashed]	(-0.3,0) -- ({4*\Lel+0.3},0);
+				
+				
+				% ============================================================
+				% RETTE DI PROIEZIONE (grigio chiaro, sotto e a destra)
+				% ============================================================
+				% retta di proiezione orizzontale r_H (sopra la struttura)
+				\draw[gray!50, thin] (-0.5,{2*\Lel}) -- ({4.5*\Lel},{2*\Lel});
+				\node[gray!70, font=\scriptsize, right] at ({4.5*\Lel},{2*\Lel}) {$r_H$};
+				
+				% etichette dei centri di rotazione, proiettate su r_H
+				\fill[gray!60] (0,{2*\Lel})         circle (1.2pt);
+				\fill[gray!60] ({2*\Lel},{2*\Lel})  circle (1.2pt);
+				\fill[gray!60] ({4*\Lel},{2*\Lel})  circle (1.2pt);
+				
+				\node[gray!70, font=\scriptsize, above] at (0,{2*\Lel})        {$C_1$};
+				\node[gray!70, font=\scriptsize, above] at ({2*\Lel},{2*\Lel}) {$C_{12}$};
+				\node[gray!70, font=\scriptsize, above] at ({4*\Lel},{2*\Lel}) {$C_2$};
+				
+				% linee di proiezione dai punti A, C, B verso i rispettivi centri su r_H
+				\draw[gray!40, thin, dotted] (0,0)        -- (0,{2*\Lel});
+				\draw[gray!40, thin, dotted] ({2*\Lel},0) -- ({2*\Lel},{2*\Lel});
+				\draw[gray!40, thin, dotted] ({4*\Lel},0) -- ({4*\Lel},{2*\Lel});
+				
+				% ============================================================
+				% CAMPI v_1 e v_2 sulla retta r_H
+				% Convenzione: v < 0 (spostamento verso il basso) -> linea sotto r_H
+				% ============================================================
+				\def\qa{0.30}    % modulo del parametro |q|
+				
+				
+				
+				% frecce dei campi v_1 e v_2 nei punti notevoli D, C, E
+				% (in A e B il campo è nullo, niente freccia)
+				\draw[->, gray!70, thin] ({\Lel},{2*\Lel})	-- ({\Lel},{2*\Lel-\Lel*\qa});
+				\draw[->, gray!70, thick] ({2*\Lel},{2*\Lel})	-- ({2*\Lel},{2*\Lel-2*\Lel*\qa});
+				\draw[->, gray!70, thin] ({3*\Lel},{2*\Lel})	-- ({3*\Lel},{2*\Lel-\Lel*\qa});
+				
+				% frecce intermedie su v_1 (a x = L/2 e x = 3L/2)
+				\draw[->, gray!70, thin] ({0.5*\Lel},{2*\Lel})	-- ({0.5*\Lel},{2*\Lel-0.5*\Lel*\qa});
+				\draw[->, gray!70, thick] ({1.5*\Lel},{2*\Lel})	-- ({1.5*\Lel},{2*\Lel-1.5*\Lel*\qa});
+				
+				% frecce intermedie su v_2 (a x = 5L/2 e x = 7L/2)
+				\draw[->, gray!70, thick] ({2.5*\Lel},{2*\Lel})	-- ({2.5*\Lel},{2*\Lel-1.5*\Lel*\qa});
+				\draw[->, gray!70, thin] ({3.5*\Lel},{2*\Lel}) -- ({3.5*\Lel},{2*\Lel-0.5*\Lel*\qa});
+				
+				% --- campo v_1 su C_1: A, D, C ---
+				\draw[gray!70, line width=1.0pt]	(0,{2*\Lel})	-- ({\Lel},{2*\Lel-\Lel*\qa})	-- ({2*\Lel},{2*\Lel-2*\Lel*\qa});
+				
+				
+				% --- campo v_2 su C_2: C, E, B ---
+				\draw[gray!70, line width=1.0pt]	({2*\Lel},{2*\Lel-2*\Lel*\qa})	-- ({3*\Lel},{2*\Lel-\Lel*\qa})	-- ({4*\Lel},{2*\Lel});
+				
+				% pallini sui punti notevoli del campo v_2
+				%\fill[gray!70] ({3*\Lel},{2*\Lel-\Lel*\qa})  circle (1.0pt);
+				
+				% --- linee di proiezione tratteggiate da D, E verso il rispettivo punto sul campo ---
+				\draw[gray!50, thin, dotted] ({\Lel},\Lel)	-- ({\Lel},{2*\Lel-\Lel*\qa});
+				\draw[gray!50, thin, dotted] ({3*\Lel},{-\Lel})		-- ({3*\Lel},{2*\Lel-\Lel*\qa});
+				
+				% --- etichette dei campi ---
+				\node[gray!70, font=\scriptsize, above] at	({\Lel},{2*\Lel-0.5*\Lel*\qa+0.05}) {$v_1$};
+				\node[gray!70, font=\scriptsize, above] at	({3.0*\Lel},{2*\Lel-0.5*\Lel*\qa+0.05}) {$v_2$};
+				
+				
+				% ============================================================
+				% RETTA DI PROIEZIONE r_V (verticale, a destra) e campi u_1, u_2
+				% Convenzione: u > 0 (spostamento verso destra) -> punto a destra di r_V
+				% ============================================================
+				
+				% retta r_V
+				\draw[gray!50, thin]({5*\Lel},{-\Lel-0.3}) -- ({5*\Lel},{\Lel+0.3});
+				\node[gray!70, font=\scriptsize, above] at ({5*\Lel},{\Lel+0.3}) {$r_V$};
+				
+				% campo u_1 su C_1: lineare tra (r_V, 0) e (r_V + |q|*L, L)
+				\draw[gray!70, line width=1.0pt] ({5*\Lel},0) -- ({5*\Lel+\Lel*\qa},\Lel);
+				
+				% campo u_2 su C_2: lineare tra (r_V + |q|*L, -L) e (r_V, 0)
+				\draw[gray!70, line width=1.0pt] ({5*\Lel+\Lel*\qa},{-\Lel}) -- ({5*\Lel},0);
+				
+				% frecce intermedie su u_1 (a y = L/2 e y = L = D)
+				\draw[->, gray!70, thin] ({5*\Lel},{0.5*\Lel})	-- ({5*\Lel+0.5*\Lel*\qa},{0.5*\Lel});
+				\draw[->, gray!70, thin] ({5*\Lel},\Lel)	-- ({5*\Lel+\Lel*\qa},\Lel);
+				
+				% frecce intermedie su u_2 (a y = -L/2 e y = -L = E)
+				\draw[->, gray!70, thin] ({5*\Lel},{-0.5*\Lel}) -- ({5*\Lel+0.5*\Lel*\qa},{-0.5*\Lel});
+				\draw[->, gray!70, thin] ({5*\Lel},{-\Lel}) -- ({5*\Lel+\Lel*\qa},{-\Lel});
+				
+				% linee di proiezione tratteggiate da D e E verso il rispettivo punto su r_V
+				\draw[gray!50, thin, dotted] (\Lel,\Lel) -- ({5*\Lel+\Lel*\qa},\Lel);
+				\draw[gray!50, thin, dotted] ({3*\Lel},{-\Lel})	-- ({5*\Lel+\Lel*\qa},{-\Lel});
+				
+				% etichette dei campi
+				\node[gray!70, font=\scriptsize, right] at	({5*\Lel+0.5*\Lel*\qa+0.05},{0.5*\Lel+0.10}) {$u_1$};
+				\node[gray!70, font=\scriptsize, right] at	({5*\Lel+0.5*\Lel*\qa+0.05},{-0.5*\Lel-0.10}) {$u_2$};
+				
+				% ============================================================
+				% CONFIGURAZIONE DEFORMATA (in grigio)
+				% ============================================================
+				% C_1' deformato: A -> D' -> C'
+				\draw[gray!55, line width=1.2pt](0,0) -- ({\Lel+\Lel*\qa},{\Lel-\Lel*\qa})	-- ({2*\Lel},{-2*\Lel*\qa}); % C_2' deformato: C' -> E' -> B
+				\draw[gray!55, line width=1.2pt] ({2*\Lel},{-2*\Lel*\qa}) -- ({3*\Lel+\Lel*\qa},{-\Lel-\Lel*\qa})-- ({4*\Lel},0);
+				
+				% etichette dei punti spostati
+				\node[gray!70, font=\scriptsize] at	({\Lel+\Lel*\qa+0.20},{\Lel-\Lel*\qa+0.10}) {$D'$};
+				\node[gray!70, font=\scriptsize, right] at	({2*\Lel+0.10},{-2*\Lel*\qa}) {$C'$};
+				\node[gray!70, font=\scriptsize] at	({3*\Lel+\Lel*\qa+0.25},{-\Lel-\Lel*\qa-0.04}) {$E'$};
+				
+				% archetto del parametro lagrangiano q sul corpo C_1
+				% tra la direzione AD (iniziale) e AD' (deformata)
+				\draw[->, gray!70, thin](0,0) ++(45:0.8*\Lel) arc[start angle=45, end angle=27.8, radius=0.8*\Lel];
+				\node[gray!70, font=\scriptsize, right] at	({0.8*\Lel*cos(36.4)},{0.8*\Lel*sin(36.4)-0.2})			{$q$};
+				
+				
+				
+				% ============================================================
+				% FRECCE DEGLI SPOSTAMENTI in D, C, E
+				% ============================================================
+				% u(D) verso (+1,-1)*|q|*l
+				\draw[->, gray!70, thick] (\Lel,\Lel)	-- ({\Lel+\Lel*\qa},{\Lel-\Lel*\qa});	% u(C) verso il basso di 2*l*|q|
+				\draw[->, gray!70, thick] ({2*\Lel},0)	-- ({2*\Lel},{-2*\Lel*\qa});	% u(E) verso (+1,-1)*|q|*l
+				\draw[->, gray!70, thick] ({3*\Lel},{-\Lel})	-- ({3*\Lel+\Lel*\qa},{-\Lel-\Lel*\qa});
+				
+				% ============================================================
+				% CONFIGURAZIONE INIZIALE (in nero)
+				% ============================================================
+				% C_1: A -> D -> C
+				\draw[line width=1.5pt] (0,0) -- (\Lel,\Lel) -- ({2*\Lel},0);
+				% C_2: C -> E -> B
+				\draw[line width=1.5pt] ({2*\Lel},0)-- ({3*\Lel},{-\Lel}) -- ({4*\Lel},0);
+				
+				% ============================================================
+				% CERNIERE
+				% ============================================================
+				% cerniera esterna in A
+				\begin{scope}[shift={(0,0)}]
+					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+						\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+					}
+				\end{scope}
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,0) {};
+				
+				% cerniera esterna in B
+				\begin{scope}[shift={({4*\Lel},0)}]
+					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);	}
+				\end{scope}
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at ({4*\Lel},0) {};
+				
+				% cerniera interna in C
+				\draw[fill=white, thick] ({2*\Lel},0) circle (2.5pt);
+				
+				% ============================================================
+				% ETICHETTE DEI NODI (in primo piano)
+				% ============================================================
+				\node[above left,  font=\scriptsize] at (0,0)             {$A\equiv C_1$};
+				\node[above,       font=\scriptsize] at (\Lel,{\Lel+0.0}) {$D$};
+				\node[above right,       font=\scriptsize] at ({2*\Lel},0.)   {$C\equiv C_{12}$};
+				\node[above,       font=\scriptsize] at ({3*\Lel},{-\Lel+0.04}) {$E$};
+				\node[above, font=\scriptsize] at ({4*\Lel},0)      {$B\equiv C_2$};
+				
+				% ============================================================
+				% ETICHETTE DEI CORPI (in primo piano)
+				% ============================================================
+				\node[font=\scriptsize] at ({0.5*\Lel-0.20},{0.5*\Lel+0.10}) {$\mathcal{C}_1$};
+				\node[font=\scriptsize] at ({3.5*\Lel-0.20},{-0.5*\Lel+0.20}) {$\mathcal{C}_2$};
+				
+				% ============================================================
+				% DIDASCALIA DEL PANNELLO
+				% ============================================================
+				\node[font=\scriptsize] at ({2*\Lel},{-1.5*\Lel-0.40})	{(b) caso degenere, $g_{\ell} = g_{i} = 1$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+	}
+	\caption{Arco a tre cerniere: \emph{(a)}~caso regolare,
+		portale con $A$, $C$, $B$ non collineari
+		($\rg(\bm{A})=6$, isostatico); \emph{(b)}~caso
+		degenere, struttura poligonale con $A$, $C$, $B$
+		collineari ($g_\ell = g_{\mathscr{i}} = 1$),
+		meccanismo parametrizzato da $q$ e rette di
+		proiezione $r_H$, $r_V$.}
+	\label{fig:catalogo_2corpi}
+\end{figure}

@@ -1,0 +1,194 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			trave/.style={line width=2.2pt, line cap=round,
+				line join=round, black},
+			terra/.style={line width=0.7pt, black},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=0.8pt},
+			carico/.style={->, >=stealth, line width=1.0pt, black},
+			reaz/.style={->, >=stealth, line width=1.0pt, gray!60},
+			forza/.style={->, >=stealth, line width=1.0pt, black},
+			blob/.style={draw=gray!45, fill=gray!10, line width=0.7pt,
+				rounded corners=14pt},
+			]
+			
+			\def\L{2.8}
+			\def\sc{0.72}    % lunghezza frecce forze concentrate
+			\def\hLoad{0.65} % altezza blocco frecce carichi distribuiti
+			\def\hTri{0.82}  % lunghezza max frecce carico triangolare
+			
+			%% ════════════════════════════════════════════════
+			%% SEMIARCO SINISTRO  A–C–D
+			%% ════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm, yshift=0cm]
+				\coordinate (A)    at (0,   0   );
+				\coordinate (C)    at (0,   \L  );
+				\coordinate (Dsin) at (\L,  \L  );
+				
+				%% Blob
+				\draw[blob] (-1.,-0.6) rectangle (\L+0.8, \L+1.10);
+				
+				%% Travi
+				\draw[trave] (A) -- (C) -- (Dsin);
+				
+				%% ── Cerniera esterna in A ────────────────────
+				\draw[terra] (A)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra] (-0.30,-0.38)--(0.30,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black](\x,-0.38)--++(-0.09,-0.11);
+				\node[nodoV] at (A) {};
+				
+				%% ── Cerniera interna in D ────────────────────
+				\node[nodoV] at (Dsin) {};
+				
+				%% ── Reazioni in A ────────────────────────────
+				%% H_A = (2/3)pℓ  verso destra (→)
+				\draw[reaz] (A) -- ++(\sc, 0)
+				node[above, font=\small, gray!70]
+				{$\tfrac{2}{3}p\ell$};
+				%% V_A = (4/3)pℓ  verso l'alto (↑)
+				\draw[reaz] (A) -- ++(0, \sc)
+				node[right, font=\small, gray!70]
+				{$\tfrac{4}{3}p\ell$};
+				
+				%% ── Carico triangolare su AC (→) ─────────────
+				%% Profilo triangolare
+				\draw[black, line width=0.6pt]
+				(A) -- ($(C)+(-\hTri, 0)$);
+				%% Frecce (t=0 escluso: freccia di lunghezza nulla)
+				\foreach \t in {0.15,0.30,0.45,0.60,0.75,0.90,1.00}{
+					\pgfmathsetmacro{\lungh}{\t*\hTri}
+					\draw[carico]
+					($(A)!\t!(C)+(-\lungh,0)$)
+					-- ($(A)!\t!(C)$);
+				}
+				\node[left, font=\small]
+				at ($(C)+(-\hTri+0.3,0.2)$) {$p$};
+				
+				%% ── Carico uniforme su CD (↓) ────────────────
+				\draw[black, line width=0.6pt]
+				($(C)+(0,\hLoad)$) -- ($(Dsin)+(0,\hLoad)$);
+				\draw[black, line width=0.4pt]
+				($(C)+(0,0.07)$)   -- ($(Dsin)+(0,0.07)$);
+				\foreach \t in {0.00,0.17,0.33,0.50,0.67,0.83,1.00}{
+					\draw[carico, line width=0.8pt]
+					($(C)!\t!(Dsin)+(0,\hLoad)$)
+					-- ($(C)!\t!(Dsin)+(0,0.07)$);
+				}
+				\node[above, font=\small]
+				at ($(C)!0.5!(Dsin)+(0,\hLoad)$) {$p$};
+				
+				%% ── Forze interne in D su semiarco sinistro ──
+				%% H_D = (7/6)pℓ  verso sinistra (←)
+				\draw[forza] ($(Dsin)+(\sc,0)$) -- (Dsin);
+				\node[below, font=\small] at ($(Dsin)+(0.5*\sc,0)$) {$\tfrac{7}{6}p\ell$};
+				
+				%%				\draw[forza] (Dsin) -- ++(-\sc, 0)
+				%%				node[below, font=\small]
+				%%				{$\tfrac{7}{6}p\ell$};
+				%% V_D = (1/3)pℓ  verso il basso (↓)
+				\draw[forza] (Dsin) -- ++(0, -\sc)
+				node[left, font=\small]
+				{$\tfrac{1}{3}p\ell$};
+				
+				%% ── Etichette nodi ───────────────────────────
+				\node[left,  font=\small] at (A)    {$A$};
+				\node[above left,  font=\small]
+				at ($(C)+(-0.05,0.08)$) {$C$};
+				\node[above right, font=\small] at (Dsin) {$D$};
+				
+			\end{scope}
+			
+			
+			%% ════════════════════════════════════════════════
+			%% SEMIARCO DESTRO  D–E–B
+			%% ════════════════════════════════════════════════
+			\pgfmathsetmacro{\XD}{\L + 1.90}
+			\begin{scope}[xshift=\XD cm, yshift=0cm]
+				\coordinate (Ddes) at (0,   \L      );
+				\coordinate (E)    at (\L,  \L      );
+				\coordinate (B)    at (\L,  0       );
+				\coordinate (F)    at (\L,  0.5*\L  );
+				
+				%% Blob
+				\draw[blob] (-0.8,-0.6) rectangle (\L+1.0, \L+1.10);
+				
+				
+				%% Travi
+				\draw[trave] (Ddes) -- (E) -- (B);
+				
+				%% ── Cerniera esterna in B ────────────────────
+				\draw[terra] (B)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra] ($(B)+(-0.30,-0.38)$)
+				-- ($(B)+(0.30,-0.38)$);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black]
+				($(B)+(\x,-0.38)$)--++(-0.09,-0.11);
+				\node[nodoV] at (B) {};
+				
+				%% ── Cerniera interna in D ────────────────────
+				\node[nodoV] at (Ddes) {};
+				
+				%% ── Punto F (trattino) ───────────────────────
+				\draw[gray!60, line width=0.8pt]
+				($(F)+(-0.14,0)$) -- ($(F)+(0.14,0)$);
+				
+				%% ── Forze interne in D su semiarco destro ────
+				%% H_D = (7/6)pℓ  verso destra (→)  [azione e reazione]
+				\draw[forza] ($(Ddes)+(-\sc,0)$) -- (Ddes);
+				\node[below, font=\small] at ($(Ddes)+(-0.5*\sc,0)$) {$\tfrac{7}{6}p\ell$};
+				%% V_D = (1/3)pℓ  verso l'alto (↑)
+				\draw[forza] ($(Ddes)+(0,-\sc)$) -- (Ddes);
+				\node[right, font=\small] at ($(Ddes)+(0,-0.5*\sc)$) {$\tfrac{1}{3}p\ell$};
+				%% ── Carico uniforme su DE (↓) ────────────────
+				\draw[black, line width=0.6pt]
+				($(Ddes)+(0,\hLoad)$) -- ($(E)+(0,\hLoad)$);
+				\draw[black, line width=0.4pt]
+				($(Ddes)+(0,0.07)$)   -- ($(E)+(0,0.07)$);
+				\foreach \t in {0.00,0.17,0.33,0.50,0.67,0.83,1.00}{
+					\draw[carico, line width=0.8pt]
+					($(Ddes)!\t!(E)+(0,\hLoad)$)
+					-- ($(Ddes)!\t!(E)+(0,0.07)$);
+				}
+				\node[above, font=\small]
+				at ($(Ddes)!0.5!(E)+(0,\hLoad)$) {$p$};
+				
+				%% ── Coppia antioraria in F ───────────────────
+				\def\rcop{0.32}
+				\draw[->, >=stealth, line width=0.9pt]
+				($(F)+(\rcop,0)$) arc(0:270:\rcop);
+				\node[right, font=\small]
+				at ($(F)+(\rcop+0.06,0.08)$) {$p\ell^2$};
+				
+				%% ── Reazioni in B ────────────────────────────
+				%% H_B = (7/6)pℓ  verso sinistra (←)
+				\draw[reaz] (B) -- ++(-\sc, 0)
+				node[above, font=\small, gray!70]
+				{$\tfrac{7}{6}p\ell$};
+				%% V_B = (2/3)pℓ  verso l'alto (↑)
+				\draw[reaz] (B) -- ++(0, \sc)
+				node[right, font=\small, gray!70]
+				{$\tfrac{2}{3}p\ell$};
+				
+				%% ── Etichette nodi ───────────────────────────
+				\node[above left,  font=\small] at (Ddes) {$D$};
+				\node[above right, font=\small]
+				at ($(E)+(0.05,0.08)$) {$E$};
+				\node[right, font=\small] at (B)    {$B$};
+				\node[left,        font=\small]
+				at ($(F)+(-0.22,0)$)   {$F$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}%
+	}%
+	\caption{Portale a tre cerniere: isolamento dei due semiarchi
+		come corpi liberi.
+		Frecce grigie: reazioni vincolari esterne.
+		Frecce nere alle cerniere~$D$: azioni interne,
+		opposte sui due semiarchi per il principio di
+		azione e reazione.}
+	\label{fig:arco3c_corpi_liberi}
+\end{figure}

@@ -1,0 +1,115 @@
+\begin{figure}[htbp]
+	\centering
+	% ===== helper condivisi da TUTTI i pannelli (definiti una volta sola) =====
+	\def\ax{0.5}\def\ay{0.30}
+	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\providecommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.2mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.2mm!(#3)$);
+		\draw[gray!55, line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	
+	% =========================== RIGA 1 ===========================
+	\begin{minipage}[b]{0.48\linewidth}
+		\centering
+		% --------- PANNELLO (a): vista 3D ---------
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			\coordinate (O)  at (\xyz{0}{0}{0});
+			\coordinate (U)  at (\xyz{-0.8}{2.6}{0});
+			\coordinate (V)  at (\xyz{2.6}{0.7}{0});
+			\coordinate (UV) at (\xyz{1.8}{3.3}{0});
+			\coordinate (X)  at (\xyz{0}{0}{2.2});
+			\fill[gray!7] (\xyz{-1.2}{-1.0}{0}) -- (\xyz{2.6}{-0.5}{0})
+			-- (\xyz{2.6}{3.6}{0})  -- (\xyz{-1.2}{3.1}{0}) -- cycle;
+			\draw[gray!40, thin] (\xyz{-1.2}{-1.0}{0}) -- (\xyz{2.6}{-0.5}{0})
+			-- (\xyz{2.6}{3.6}{0})  -- (\xyz{-1.2}{3.1}{0}) -- cycle;
+			\fill[gray!22] (O) -- (U) -- (UV) -- (V) -- cycle;
+			\draw[gray!60, thin] (U) -- (UV) -- (V);
+			\node[gray!75, font=\footnotesize] at (\xyz{0.8}{1.9}{0}) {$\mathrm{Span}\{\ub,\vb\}$};
+			\draw[->, thick] (O) -- (X) node[above=1pt] {$\ub\times\vb$};
+			\rightangle{X}{O}{U}
+			\rightangle{X}{O}{V}
+			\draw[->, thick] (O) -- (U) node[midway, below right=-2pt] {$\ub$};
+			\draw[->, thick] (O) -- (V) node[midway, above=1pt] {$\vb$};
+			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.4,	"$\theta$"{font=\footnotesize}] {angle = U--O--V};
+			\fill (O) circle (1.2pt);
+		\end{tikzpicture}\\[4pt]
+		{\small (a)}
+	\end{minipage}\hfill
+	\begin{minipage}[b]{0.48\linewidth}
+		\centering
+		% --------- PANNELLO (b): area nel piano ---------
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			\coordinate (Od)  at (0,0);
+			\coordinate (Ud)  at (2.6,0);
+			\coordinate (Vd)  at (40:1.9);
+			\coordinate (UVd) at ($(Ud)+(Vd)$);
+			\coordinate (Fd)  at ($(Od)!(Vd)!(Ud)$);
+			\fill[gray!14] (Od) -- (Ud) -- (UVd) -- (Vd) -- cycle;
+			\draw[gray!60, thin] (Ud) -- (UVd) -- (Vd);
+			\draw[gray!55, thin, dashed] (Vd) -- (Fd);
+			\rightangle{Od}{Fd}{Vd}
+			
+			\node[font=\footnotesize, right=1pt] at ($(Vd)!0.22!(Fd)$) {$|\vb|\sin\theta$};
+			\draw[->, thick] (Od) -- (Ud) node[midway, below=2pt]{$\ub$};
+			\draw[->, thick] (Od) -- (Vd) node[pos=0.62, above left=-3pt]{$\vb$};
+			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.4, "$\theta$"{font=\footnotesize}] {angle = Ud--Od--Vd};
+			\node[font=\footnotesize] at (3.0,0.62) {$|\ub\times\vb|$};
+			\draw[gray!55, thin] (Od) -- ($(Od)+(0,-0.95)$);
+			\draw[gray!55, thin] (Ud) -- ($(Ud)+(0,-0.95)$);
+			\draw[<->, thin] ($(Od)+(0,-0.8)$) -- ($(Ud)+(0,-0.8)$)
+			node[midway, below=1pt, font=\footnotesize]{$|\ub|$};
+		\end{tikzpicture}\\[4pt]
+		{\small (b)}
+	\end{minipage}
+	
+	\vspace{1.6em}
+	
+	% =========================== RIGA 2 ===========================
+	\begin{minipage}[b]{0.48\linewidth}
+		\centering
+		% --------- PANNELLO (b) sinistra: u x v uscente ---------
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			\coordinate (Ob) at (0,0);
+			\coordinate (Ub) at (1.7,0);
+			\coordinate (Vb) at (42:1.55);
+			\draw (Ob) circle (0.17); \fill (Ob) circle (1.3pt);
+			\draw[->, thick] ($(Ob)+(0.17,0)$) -- (Ub) node[right=1pt]{$\ub$};
+			\draw[->, thick] ($(Ob)+(42:0.17)$) -- (Vb) node[above right=-2pt]{$\vb$};
+			\pic[draw, ->, thin, angle radius=6mm, angle eccentricity=1.35,	"$\theta$"{font=\footnotesize}] {angle = Ub--Ob--Vb};
+			\node[left=4pt, font=\footnotesize] at (Ob) {$\ub\times\vb$};
+		\end{tikzpicture}\\[4pt]
+		{\small (c)\quad $\ub\times\vb$ uscente ($\odot$)}
+	\end{minipage}\hfill
+	\begin{minipage}[b]{0.48\linewidth}
+		\centering
+		% --------- PANNELLO (b) destra: v x u entrante ---------
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			\coordinate (Oc) at (0,0);
+			\coordinate (Uc) at (1.7,0);
+			\coordinate (Vc) at (42:1.55);
+			\draw (Oc) circle (0.17);
+			\draw (-0.12,-0.12) -- (0.12,0.12);
+			\draw (-0.12,0.12) -- (0.12,-0.12);
+			\draw[->, thick] ($(Oc)+(0.17,0)$) -- (Uc) node[right=1pt]{$\ub$};
+			\draw[->, thick] ($(Oc)+(42:0.17)$) -- (Vc) node[above right=-2pt]{$\vb$};
+			\pic[draw, <-, thin, angle radius=6mm, angle eccentricity=1.35,
+			"$\theta$"{font=\footnotesize}] {angle = Uc--Oc--Vc};
+			\node[left=4pt, font=\footnotesize] at (Oc) {$\vb\times\ub$};
+		\end{tikzpicture}\\[4pt]
+		{\small (d)\quad $\vb\times\ub$ entrante ($\otimes$)}
+	\end{minipage}
+	
+	\caption{Rappresentazione geometrica del prodotto vettoriale $\ub\times\vb$.
+		In (a) il vettore $\ub\times\vb$ è ortogonale al piano
+		$\mathrm{Span}\{\ub,\vb\}$ e orientato secondo la regola della mano
+		destra; il suo modulo eguaglia l'area del parallelogramma costruito
+		su $\ub$ e $\vb$. In (b) tale area è letta come prodotto della base
+		$|\ub|$ per l'altezza $|\vb|\sin\theta$, da cui
+		$|\ub\times\vb| = |\ub|\,|\vb|\sin\theta$. In (c) e (d) è illustrata
+		l'antisimmetria $\ub\times\vb = -(\vb\times\ub)$: a parità di $\ub$,
+		$\vb$ e di angolo $\theta$, il prodotto cambia verso --- uscente dal
+		piano ($\odot$) per $\ub\times\vb$, entrante ($\otimes$) per
+		$\vb\times\ub$ --- coerentemente col senso di rotazione che porta il
+		primo fattore sul secondo.}
+	\label{f:prodotto_vettoriale}
+\end{figure}

@@ -1,0 +1,26 @@
+\begin{figure}[htbp]
+	\centering
+	
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+		% ===================== sinistra: alpha = 2 =====================
+		\coordinate (OL) at (0,0);
+		% v
+		\draw[->, thick] (OL) -- ++(0.85,1.6) node[midway, above left=-3pt] {$\vb$};
+		% alpha v = 2v (parallelo, traslato a destra, lunghezza doppia)
+		\draw[->, thick] ($(OL)+(0.8,-0.2)$) -- ++(1.7,3.2)
+		node[midway, right=2pt] {$\alpha\vb = 2\vb$};
+		%\node at ($(OL)+(1.15,3.55)$) {$\alpha = 2$};
+		
+		% ===================== destra: alpha = -1 =====================
+		\coordinate (OR) at (5.2,0);
+		% v
+		\draw[->, thick] (OR) -- ++(0.85,1.6) node[midway, above left=-3pt] {$\vb$};
+		% alpha v = -v (parallelo, traslato a destra, verso opposto)
+		\draw[->, thick] ($(OR)+(2.0,1.85)$) -- ++(-0.85,-1.6)
+		node[midway, right=2pt] {$\alpha\vb = -\vb$};
+		%\node at ($(OR)+(1.0,3.55)$) {$\alpha = -1$};
+	\end{tikzpicture}
+	\caption{Prodotto di un vettore $\vb$ per uno scalare:
+		$\alpha = 2$ (sinistra) e $\alpha = -1$ (destra).}
+	\label{f:prodotto_per_uno_scalare}
+\end{figure}

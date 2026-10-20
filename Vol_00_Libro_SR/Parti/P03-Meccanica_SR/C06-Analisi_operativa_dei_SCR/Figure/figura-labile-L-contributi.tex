@@ -1,0 +1,280 @@
+\begin{figure} [ht]
+			\centering
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+				
+				\def\L{1.5}
+				\def\sA{0.3}
+				\def\sB{0.3}
+				\def\q{0.3}
+				\def\yH{1.0}
+				
+				% ============================================================
+				% PANNELLO (a) — cedimento s_A
+				% ============================================================
+				\begin{scope}[xshift=0cm]
+					
+					% carrello verticale fittizio in D (grigio) — gomito della L
+					\draw[gray!50, thick] (\L,0) -- (\L-0.21,-0.36)
+					-- (\L+0.21,-0.36) -- cycle;
+					\draw[gray!50, thick] (\L-0.14,-0.41) circle (0.06);
+					\draw[gray!50, thick] (\L+0.14,-0.41) circle (0.06);
+					\draw[gray!50, thick] (\L-0.29,-0.49) -- (\L+0.29,-0.49);
+					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+						\draw[gray!50, thin] (\L+\x,-0.49) -- (\L+\x-0.09,-0.62);
+					}
+					% tre-quarti di luna grigio attorno al gomito (passaggio libero in alto-sinistra)
+					\fill[white]          (\L,0.075) arc(90:-180:0.075) -- cycle;
+					\draw[gray!50, thick] (\L,0.075) arc(90:-180:0.075);
+					
+					
+					\draw[gray!40, thin] (-1.0,-0.3) -- (-1.0,2.0)
+					node[above, font=\scriptsize] {$r_V$};
+					\node[gray!60, left=2pt, font=\scriptsize]
+					at (-1.0,1.0) {$u$};
+					\draw[gray!40, thin] (-0.3,-\yH) -- (\L+0.3,-\yH)
+					node[right, font=\scriptsize] {$r_H$};
+					\node[gray!60, above=3pt, font=\scriptsize]
+					at (0.6,-\yH) {$v$};
+					
+					\draw[gray!50, dashed, thin]
+					(0,{-\yH-0.1}) -- (0,\L+0.3);
+					
+					\draw[gray!60, thick] (0,0) -- (\L,0) -- (\L,\L);
+					\draw[line width=1.5pt]
+					({-\sA},{\sA}) -- ({\L-\sA},0) -- (\L,\L);
+					
+					\fill (0,0)  %circle (2pt)
+					node[left, font=\scriptsize] {$A$};
+					\fill (\L,0) %circle (2pt)
+					node[right, font=\scriptsize] {$D$};
+					\fill (\L,\L) %circle (2pt)
+					node[left, font=\scriptsize] {$C_1\equiv B$};
+					
+					
+					% carrello orizzontale in B (in grigio: spettatore in questo pannello)
+					\draw[gray!50, thick] (\L,\L) -- (\L+0.29,\L+0.17)
+					-- (\L+0.29,\L-0.17) -- cycle;
+					\draw[gray!50, thick] (\L+0.29,\L-0.22) -- (\L+0.29,\L+0.22);
+					\draw[gray!50, thick] (\L+0.36,\L-0.10) circle (0.05);
+					\draw[gray!50, thick] (\L+0.36,\L+0.10) circle (0.05);
+					\draw[gray!50, thick] (\L+0.43,\L-0.22) -- (\L+0.43,\L+0.22);
+					\foreach \y in {-0.18,-0.09,0,0.09,0.18}{
+						\draw[gray!50, thin] (\L+0.43,\L+\y) -- (\L+0.55,\L+\y-0.08);
+					}
+					% perno grigio vuoto sopra il vertice del triangolo
+					\draw[gray!50, fill=white, thick] (\L,\L) circle (2.5pt);
+					
+					% campo u su r_V
+					\draw[gray!60, thin] ({-1.0-\sA},0) -- (-1.0,\L);
+					\foreach \k in {0,1,2,3,4}{
+						\pgfmathsetmacro{\yy}{\k*\L/4}
+						\pgfmathsetmacro{\uu}{-\sA*(1-\k/4)}
+						\fill[gray!60] (-1.0,\yy) circle (1pt);
+						\ifnum\k<4
+						\draw[->, gray!70, thin]
+						(-1.0,\yy) -- ({-1.0+\uu},\yy);
+						\fi
+					}
+					\draw[->, gray!70, thick] (-1.0,0) -- ({-1.0-\sA},0)
+					node[below, font=\scriptsize] {$s_A$};
+					
+					% campo v su r_H
+					\draw[gray!60, thin]
+					(0,{-\yH+\sA}) -- (\L,{-\yH});
+					\foreach \k in {0,1,2,3,4}{
+						\pgfmathsetmacro{\xx}{\k*\L/4}
+						\pgfmathsetmacro{\vv}{\sA*(1-\k/4)}
+						\fill[gray!60] (\xx,-\yH) circle (1pt);
+						\ifnum\k<4
+						\draw[->, gray!70, thin]
+						(\xx,-\yH) -- (\xx,{-\yH+\vv});
+						\fi
+					}
+					\draw[->, gray!70, thick] (0,-\yH) -- (0,{-\yH+\sA})
+					node[left, font=\scriptsize] {$s_A$};
+					
+					\node[font=\scriptsize] at (-\L/2,-1.4) {(a)};
+					
+				\end{scope}
+				
+				% ============================================================
+				% PANNELLO (b) — cedimento s_B
+				% ============================================================
+				\begin{scope}[xshift=4.0cm]
+					
+					% carrello verticale fittizio in D (grigio) — gomito della L
+					\draw[gray!50, thick] (\L,0) -- (\L-0.21,-0.36)
+					-- (\L+0.21,-0.36) -- cycle;
+					\draw[gray!50, thick] (\L-0.14,-0.41) circle (0.06);
+					\draw[gray!50, thick] (\L+0.14,-0.41) circle (0.06);
+					\draw[gray!50, thick] (\L-0.29,-0.49) -- (\L+0.29,-0.49);
+					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+						\draw[gray!50, thin] (\L+\x,-0.49) -- (\L+\x-0.09,-0.62);
+					}
+					% tre-quarti di luna grigio attorno al gomito (passaggio libero in alto-sinistra)
+					\fill[white]          (\L,0.075) arc(90:-180:0.075) -- cycle;
+					\draw[gray!50, thick] (\L,0.075) arc(90:-180:0.075);
+					
+					\draw[gray!40, thin] (-1.0,-0.3) -- (-1.0,2.0)
+					node[above, font=\scriptsize] {$r_V$};
+					\node[gray!60, left=2pt, font=\scriptsize]
+					at (-1.0,1.0) {$u$};
+					
+					\draw[gray!60, thick] (0,0) -- (\L,0) -- (\L,\L);
+					\draw[line width=1.5pt]
+					({\sB},0) -- ({\L+\sB},0) -- ({\L+\sB},\L);
+					
+					\fill (0,0)  node[left,  font=\scriptsize] {$A$};
+					\fill (\L,0) node[above left, font=\scriptsize] {$D$};
+					\fill (\L,\L) node[left, font=\scriptsize] {$B$};
+					%\node[right, font=\scriptsize] at ({\L+\sB},\L) {$s_B$};
+					
+					
+					% carrello verticale rimosso in A (tutto grigio)
+					\draw[gray!50, thick] (0,0) -- (-0.17,-0.29)
+					-- (0.17,-0.29) -- cycle;
+					\draw[gray!50, thick] (-0.22,-0.29) -- (0.22,-0.29);
+					\draw[gray!50, thick] (-0.10,-0.36) circle (0.05);
+					\draw[gray!50, thick] ( 0.10,-0.36) circle (0.05);
+					\draw[gray!50, thick] (-0.22,-0.43) -- (0.22,-0.43);
+					\foreach \x in {-0.18,-0.09,0,0.09,0.18}{
+						\draw[gray!50, thin] (\x,-0.43) -- (\x-0.08,-0.55);
+					}
+					% perno grigio vuoto sopra il vertice del triangolo
+					\draw[gray!50, fill=white, thick] (0,0) circle (2.5pt);
+					
+					% centro di rotazione all'infinito
+					\draw[->, gray!60, thick] (-1.0,1.7) -- (-1.0,2.0)
+					node[left, font=\scriptsize] {$C_1^\infty$};
+					
+					% campo u: retta parallela a r_V, limitata a [0,L]
+					\draw[gray!60, thin]
+					({-1.0+\sB},0) -- ({-1.0+\sB},\L);
+					\foreach \k in {0,1,2,3,4}{
+						\pgfmathsetmacro{\yy}{\k*\L/4}
+						\draw[->, gray!70, thin]
+						(-1.0,\yy) -- ({-1.0+\sB},\yy);
+					}
+					% quota s_B
+					%\draw[<->, gray!70, thin]	(-1.0,{\L+0.2}) -- ({-1.0+\sB},{\L+0.2});
+					\node[gray!70, above, font=\scriptsize]
+					at ({-0.85+\sB/2},{\L}) {$s_B$};
+					
+					\node[font=\scriptsize] at (-\L/2,-1.4) {(b)};
+					
+				\end{scope}
+				
+				% ============================================================
+				% PANNELLO (c) — cedimento q
+				% ============================================================
+				\begin{scope}[xshift=8.0cm]
+					
+					
+					\draw[gray!40, thin] (-1.0,-0.3) -- (-1.0,2.0)
+					node[above, font=\scriptsize] {$r_V$};
+					\node[gray!60, left=2pt, font=\scriptsize]
+					at (-1.0,1.0) {$u$};
+					\draw[gray!40, thin] (-0.3,-\yH) -- (\L+0.3,-\yH)
+					node[right, font=\scriptsize] {$r_H$};
+					\node[gray!60, above=2pt, font=\scriptsize]
+					at (0.6,-\yH) {$v$};
+					
+					\draw[gray!50, dashed, thin]
+					(0,{-\yH-0.1}) -- (0,\L+0.3);
+					\draw[gray!50, dashed, thin]
+					(-0.3,\L) -- (\L+0.3,\L);
+					
+					
+					\fill (0,0)  %circle (2pt)
+					node[left,  font=\scriptsize] {$A$};
+					\fill (\L,0) %circle (2pt)
+					node[right, font=\scriptsize] {$D$};
+					\fill (\L,\L) %circle (2pt)
+					node[below right, font=\scriptsize] {$B$};
+					\fill (0,\L)  circle (2pt)
+					node[left, font=\scriptsize] {$C$};
+					
+					
+					% carrello verticale rimosso in A (tutto grigio)
+					\draw[gray!50, thick] (0,0) -- (-0.17,-0.29)
+					-- (0.17,-0.29) -- cycle;
+					\draw[gray!50, thick] (-0.22,-0.29) -- (0.22,-0.29);
+					\draw[gray!50, thick] (-0.10,-0.36) circle (0.05);
+					\draw[gray!50, thick] ( 0.10,-0.36) circle (0.05);
+					\draw[gray!50, thick] (-0.22,-0.43) -- (0.22,-0.43);
+					\foreach \x in {-0.18,-0.09,0,0.09,0.18}{
+						\draw[gray!50, thin] (\x,-0.43) -- (\x-0.08,-0.55);
+					}
+					% perno grigio vuoto sopra il vertice del triangolo
+					\draw[gray!50, fill=white, thick] (0,0) circle (2.5pt);
+					
+					
+					% carrello orizzontale in B (in grigio: spettatore in questo pannello)
+					\draw[gray!50, thick] (\L,\L) -- (\L+0.29,\L+0.17)
+					-- (\L+0.29,\L-0.17) -- cycle;
+					\draw[gray!50, thick] (\L+0.29,\L-0.22) -- (\L+0.29,\L+0.22);
+					\draw[gray!50, thick] (\L+0.36,\L-0.10) circle (0.05);
+					\draw[gray!50, thick] (\L+0.36,\L+0.10) circle (0.05);
+					\draw[gray!50, thick] (\L+0.43,\L-0.22) -- (\L+0.43,\L+0.22);
+					\foreach \y in {-0.18,-0.09,0,0.09,0.18}{
+						\draw[gray!50, thin] (\L+0.43,\L+\y) -- (\L+0.55,\L+\y-0.08);
+					}
+					% perno grigio vuoto sopra il vertice del triangolo
+					\draw[gray!50, fill=white, thick] (\L,\L) circle (2.5pt);
+					
+					% configurazioni iniizale e deformata
+					\draw[gray!60, thick] (0,0) -- (\L,0) -- (\L,\L);
+					\draw[line width=1.5pt]
+					({\q},0) -- ({\L+\q},{\q}) -- (\L,{\L+\q});
+					
+					% campo u su r_V
+					\draw[gray!60, thin] ({-1.0+\q},0) -- (-1.0,\L);
+					\foreach \k in {0,1,2,3,4}{
+						\pgfmathsetmacro{\yy}{\k*\L/4}
+						\pgfmathsetmacro{\uu}{\q*(1-\k/4)}
+						\fill[gray!60] (-1.0,\yy) circle (1pt);
+						\ifnum\k<4
+						\draw[->, gray!70, thin]
+						(-1.0,\yy) -- ({-1.0+\uu},\yy);
+						\fi
+					}
+					\draw[->, gray!70, thick] (-1.0,0) -- ({-1.0+\q},0)
+					node[below, font=\scriptsize] {$q$};
+					
+					% campo v su r_H
+					\draw[gray!60, thin] (0,-\yH) -- (\L,{-\yH+\q});
+					\foreach \k in {0,1,2,3,4}{
+						\pgfmathsetmacro{\xx}{\k*\L/4}
+						\pgfmathsetmacro{\vv}{\q*\k/4}
+						\fill[gray!60] (\xx,-\yH) circle (1pt);
+						\ifnum\k>0
+						\draw[->, gray!70, thin]
+						(\xx,-\yH) -- (\xx,{-\yH+\vv});
+						\fi
+					}
+					\draw[->, gray!70, thick] (\L,-\yH) -- (\L,{-\yH+\q})
+					node[right, font=\scriptsize] {$q$};
+					
+					\node[font=\scriptsize] at (-\L/2,-1.4) {(c)};
+					
+				\end{scope}
+				
+			\end{tikzpicture}
+			\caption{Corpo a L (\ESEref{ex:labile_L}):
+				contributi separati dei tre cedimenti alla
+				configurazione variata, ottenuti per
+				sovrapposizione.
+				\emph{(a)}~Cedimento $s_A \neq 0$: rotazione
+				oraria attorno a $B$, $\vartheta = -s_A/\ell$.
+				\emph{(b)}~Cedimento $s_B \neq 0$: traslazione
+				orizzontale di ampiezza $s_B$, centro di
+				rotazione all'infinito.
+				\emph{(c)}~Cedimento $q \neq 0$: rotazione
+				antioraria attorno a $C$, $\vartheta = q/\ell$
+				--- questo è il meccanismo del sistema labile.
+				In ciascun pannello: vincoli attivi in nero,
+				fittizi in grigio; rette ausiliarie $r_V$ e
+				$r_H$ con i campi $u$ e $v$; configurazione
+				variata in nero continuo.}
+			\label{fig:labile_L_contributi}
+		\end{figure}

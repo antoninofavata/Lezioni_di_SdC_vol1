@@ -1,0 +1,44 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.15cm, y=1.15cm,
+		trave/.style ={line width=2.0pt, line cap=round, black},
+		carico/.style={-{Stealth[length=1.8mm,width=1.1mm]},
+			line width=0.5pt},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		bordo/.style ={line width=0.5pt},
+		quota/.style ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize}]
+
+		\draw[trave] (0,0)--(2.6,0);
+		\foreach \x in {0,0.2,...,2.6} \draw[carico] (\x,0.50)--(\x,0.06);
+		\draw[bordo] (0,0.50)--(2.6,0.50);
+		\draw[bordo] (0,0.06)--(2.6,0.06);
+		\node[et, above] at (1.3,0.52) {$p$};
+
+		\node[nodoV] at (0,0) {};  \node[nodoV] at (2.6,0) {};
+		\node[et] at (0.22,-0.20) {$D$};
+		\node[et] at (2.38,-0.20) {$E$};
+
+		\draw[incog] (-0.70,0)--(0,0);
+		\node[et, above] at (-0.35,0.03) {$X_D$};
+		\draw[incog] (0,0)--(0,-0.64);
+		\node[et, left]  at (-0.04,-0.44) {$Y_D$};
+		\draw[incog] (2.6,0)--(3.30,0);
+		\node[et, above] at (2.95,0.03) {$X_{ED}$};
+		\draw[incog] (2.6,0)--(2.6,-0.64);
+		\node[et, right] at (2.64,-0.44) {$Y_{ED}$};
+
+		\draw[quota] (0,-1.00)--(2.6,-1.00)
+			node[midway,below,black,et]{$2\ell$};
+	\end{tikzpicture}
+	\caption{Corpo libero del semi-impalcato $DE$: una trave
+		appoggiata a due cerniere, di luce $2\ell$, sotto il
+		carico uniforme $p$. L'equilibrio alla rotazione attorno
+		a $D$ determina $Y_{ED}$, e quello alla traslazione
+		verticale $Y_D$; le componenti orizzontali restano
+		incognite e opposte.}
+	\label{fig:strallato_cdl_DE}
+\end{figure}

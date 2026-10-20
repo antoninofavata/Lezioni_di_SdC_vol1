@@ -1,0 +1,238 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt,
+			font=\small]
+			
+			% dimensioni blocchi
+			\def\bone{1.0}
+			\def\btwo{1.0}
+			\def\bthree{1.0}
+			% valori derivati precalcolati
+			\pgfmathsetmacro{\bonebtwo}{\bone+\btwo}
+			\pgfmathsetmacro{\bonebtwobthree}{\bone+\btwo+\bthree}
+			\pgfmathsetmacro{\halftot}{(\bone+\btwo+\bthree)/2}
+			\pgfmathsetmacro{\halfone}{\bone/2}
+			\pgfmathsetmacro{\halftwo}{\btwo/2}
+			\pgfmathsetmacro{\halfthree}{\bthree/2}
+			
+			\colorlet{diag}{gray!30}
+			\colorlet{subdiag}{gray!15}
+			\colorlet{zero}{white}
+			
+			% ============================================================
+			% MATRICE A (triangolare inferiore)
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% blocchi diagonali
+				\fill[diag] (0,-\bone) rectangle (\bone,0);
+				\fill[diag] (\bone,-\bonebtwo)
+				rectangle (\bonebtwo,-\bone);
+				\fill[diag] (\bonebtwo,-\bonebtwobthree)
+				rectangle (\bonebtwobthree,-\bonebtwo);
+				
+				% blocchi sotto-diagonali
+				\fill[subdiag] (0,-\bonebtwo)
+				rectangle (\bone,-\bone);
+				\fill[subdiag] (0,-\bonebtwobthree)
+				rectangle (\bone,-\bonebtwo);
+				\fill[subdiag] (\bone,-\bonebtwobthree)
+				rectangle (\bonebtwo,-\bonebtwo);
+				
+				% blocchi nulli
+				\fill[zero] (\bone,-\bone)
+				rectangle (\bonebtwobthree,0);
+				\fill[zero] (\bonebtwo,-\bonebtwo)
+				rectangle (\bonebtwobthree,-\bone);
+				
+				% griglia
+				\draw[thick] (0,0)
+				rectangle (\bonebtwobthree,-\bonebtwobthree);
+				\draw[thick] (\bone,0) -- (\bone,-\bonebtwobthree);
+				\draw[thick] (\bonebtwo,0)
+				-- (\bonebtwo,-\bonebtwobthree);
+				\draw[thick] (0,-\bone)
+				-- (\bonebtwobthree,-\bone);
+				\draw[thick] (0,-\bonebtwo)
+				-- (\bonebtwobthree,-\bonebtwo);
+				
+				% etichette blocchi
+				\node at (\halfone,-\halfone) {$\bm{A}_{11}$};
+				\node at (\bone+\halftwo,-\bone-\halftwo)
+				{$\bm{A}_{22}$};
+				\node at (\bonebtwo+\halfthree,-\bonebtwo-\halfthree)
+				{$\bm{A}_{33}$};
+				\node at (\halfone,-\bone-\halftwo)
+				{$\bm{A}_{21}$};
+				\node at (\halfone,-\bonebtwo-\halfthree)
+				{$\bm{A}_{31}$};
+				\node at (\bone+\halftwo,-\bonebtwo-\halfthree)
+				{$\bm{A}_{32}$};
+				\node at (\bone+\halftwo,-\halfone) {$\bm{0}$};
+				\node at (\bonebtwo+\halfthree,-\halfone) {$\bm{0}$};
+				\node at (\bonebtwo+\halfthree,-\bone-\halftwo)
+				{$\bm{0}$};
+				
+				% annotazioni colonne
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(0,0) -- (\bone,0)
+				node[midway,above=9pt]
+				{$\bm{u}_{\mathcal{S}_1}$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bone,0) -- (\bonebtwo,0)
+				node[midway,above=9pt]
+				{$\bm{u}_{\mathcal{S}_2}$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bonebtwo,0) -- (\bonebtwobthree,0)
+				node[midway,above=9pt]
+				{$\bm{u}_{\mathcal{S}_3}$};
+				
+				% annotazioni righe
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,
+					raise=4pt,mirror}]
+				(0,0) -- (0,-\bone)
+				node[midway,left=10pt,align=right,
+				font=\scriptsize]
+				{vincoli\\di $\mathcal{S}_1$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,
+					raise=4pt,mirror}]
+				(0,-\bone) -- (0,-\bonebtwo)
+				node[midway,left=10pt,align=right,
+				font=\scriptsize]
+				{vincoli int.\\
+					$\mathcal{S}_1$-$\mathcal{S}_2$,\\
+					est. di $\mathcal{S}_2$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,
+					raise=4pt,mirror}]
+				(0,-\bonebtwo) -- (0,-\bonebtwobthree)
+				node[midway,left=10pt,align=right,
+				font=\scriptsize]
+				{vincoli int.\\
+					$\mathcal{S}_2$-$\mathcal{S}_3$,\\
+					est. di $\mathcal{S}_3$};
+				
+				\node[left=60pt] at (0,-\halftot)
+				{$\bm{A}=$};
+				
+			\end{scope}
+			
+			% ============================================================
+			% MATRICE A^T (triangolare superiore)
+			% ============================================================
+			\begin{scope}[xshift=5.2cm]
+				
+				% blocchi diagonali
+				\fill[diag] (0,-\bone) rectangle (\bone,0);
+				\fill[diag] (\bone,-\bonebtwo)
+				rectangle (\bonebtwo,-\bone);
+				\fill[diag] (\bonebtwo,-\bonebtwobthree)
+				rectangle (\bonebtwobthree,-\bonebtwo);
+				
+				% blocchi sopra-diagonali
+				\fill[subdiag] (\bone,-\bone)
+				rectangle (\bonebtwo,0);
+				\fill[subdiag] (\bonebtwo,-\bone)
+				rectangle (\bonebtwobthree,0);
+				\fill[subdiag] (\bonebtwo,-\bonebtwo)
+				rectangle (\bonebtwobthree,-\bone);
+				
+				% blocchi nulli
+				\fill[zero] (0,-\bonebtwo)
+				rectangle (\bone,-\bone);
+				\fill[zero] (0,-\bonebtwobthree)
+				rectangle (\bonebtwo,-\bonebtwo);
+				
+				% griglia
+				\draw[thick] (0,0)
+				rectangle (\bonebtwobthree,-\bonebtwobthree);
+				\draw[thick] (\bone,0) -- (\bone,-\bonebtwobthree);
+				\draw[thick] (\bonebtwo,0)
+				-- (\bonebtwo,-\bonebtwobthree);
+				\draw[thick] (0,-\bone)
+				-- (\bonebtwobthree,-\bone);
+				\draw[thick] (0,-\bonebtwo)
+				-- (\bonebtwobthree,-\bonebtwo);
+				
+				% etichette blocchi
+				\node at (\halfone,-\halfone)
+				{$\bm{A}_{11}^{\top}$};
+				\node at (\bone+\halftwo,-\bone-\halftwo)
+				{$\bm{A}_{22}^{\top}$};
+				\node at (\bonebtwo+\halfthree,-\bonebtwo-\halfthree)
+				{$\bm{A}_{33}^{\top}$};
+				\node at (\bone+\halftwo,-\halfone)
+				{$\bm{A}_{21}^{\top}$};
+				\node at (\bonebtwo+\halfthree,-\halfone)
+				{$\bm{A}_{31}^{\top}$};
+				\node at (\bonebtwo+\halfthree,-\bone-\halftwo)
+				{$\bm{A}_{32}^{\top}$};
+				\node at (\halfone,-\bone-\halftwo) {$\bm{0}$};
+				\node at (\halfone,-\bonebtwo-\halfthree) {$\bm{0}$};
+				\node at (\bone+\halftwo,-\bonebtwo-\halfthree)
+				{$\bm{0}$};
+				
+				% annotazioni colonne
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(0,0) -- (\bone,0)
+				node[midway,above=9pt]
+				{$\bm{r}_{\mathcal{S}_1}$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bone,0) -- (\bonebtwo,0)
+				node[midway,above=9pt]
+				{$\bm{r}_{\mathcal{S}_2}$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bonebtwo,0) -- (\bonebtwobthree,0)
+				node[midway,above=9pt]
+				{$\bm{r}_{\mathcal{S}_3}$};
+				
+				% annotazioni righe
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bonebtwobthree,0) -- (\bonebtwobthree,-\bone)
+				node[midway,right=10pt,align=left,
+				font=\scriptsize]
+				{equilibrio\\di $\mathcal{S}_1$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bonebtwobthree,-\bone)
+				-- (\bonebtwobthree,-\bonebtwo)
+				node[midway,right=10pt,align=left,
+				font=\scriptsize]
+				{equilibrio\\di $\mathcal{S}_2$};
+				\draw[decorate,
+				decoration={brace,amplitude=5pt,raise=4pt}]
+				(\bonebtwobthree,-\bonebtwo)
+				-- (\bonebtwobthree,-\bonebtwobthree)
+				node[midway,right=10pt,align=left,
+				font=\scriptsize]
+				{equilibrio\\di $\mathcal{S}_3$};
+				
+				\node[left=10pt] at (0,-\halftot)
+				{$\bm{A}^{\top}=$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Struttura a blocchi triangolare di $\bm{A}$
+			(sinistra) e $\bm{A}^{\top}$ (destra) per un
+			sistema con gerarchia
+			$\mathcal{S}_1 \to \mathcal{S}_2 \to \mathcal{S}_3$.
+			Blocchi diagonali (grigio scuro): vincoli propri
+			di ciascun sottosistema. Blocchi fuori diagonale
+			(grigio chiaro): vincoli di connessione.
+			Il problema cinematico $\bm{A}\bm{u}=\bm{s}$ si
+			risolve per sostituzione in avanti (da
+			$\mathcal{S}_1$ a $\mathcal{S}_3$); quello statico
+			$\bm{A}^{\top}\bm{r}=-\bm{f}$ per sostituzione
+			all'indietro (da $\mathcal{S}_3$ a $\mathcal{S}_1$).}
+		\label{fig:blocchi_triangolari}
+	\end{figure}

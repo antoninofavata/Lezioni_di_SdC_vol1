@@ -1,0 +1,50 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:tre_cerniere_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-tre-cerniere}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Portale a tre cerniere con la geometria di sec:arco_tre_cerniere (capitolo Sistemi a connessioni
+% eterogenee), in unita' l: A(0,0), C(0,1), D(1,1), E(2,1), B(2,0); cerniere in A, D, B.
+% Una sola forza F verticale sul traverso CD, in x = l/2. Il semiarco DEB e' scarico: e' soggetto a due
+% forze, e la reazione in B ha la retta BD. Le tre forze sull'intero portale concorrono in K(0,5; 1,5).
+% Triangolo delle forze: r_A = (0.250,0.750) F, r_B = (-0.250,0.250) F (verificato con le equazioni cardinali).
+% Struttura in scala 1.9 cm per l; triangolo delle forze in scala 3.0 cm per F.
+% (a) portale, retta d'azione della forza, rette BD e AK; (b) triangolo delle forze.
+\begin{tikzpicture}[font=\footnotesize]
+\begin{scope}[x=1.9cm,y=1.9cm]
+\draw[polretta] (0.500,-0.200) -- (0.500,1.900);
+\draw[polcostruzione] (2.085,-0.085) -- (0.288,1.712);
+\draw[polcostruzione] (0.000,0.000) -- (0.595,1.785);
+\draw[sgrtrave] (0.000,0.000) -- (0.000,1.000) -- (1.000,1.000);
+\draw[sgrtrave] (1.000,1.000) -- (2.000,1.000) -- (2.000,0.000);
+\pic at (0.000,0.000) {polcerniera};
+\pic at (2.000,0.000) {polcerniera};
+\pic at (1.000,1.000) {sgrnodo};
+\draw[polforza] (0.500,1.420) -- (0.500,1.040) node[pos=0.3,anchor=east,inner sep=3pt] {$F$};
+\pic at (0.500,1.500) {polpunto};
+\node[anchor=south west,inner sep=2.5pt] at (0.500,1.500) {$K$};
+\node[anchor=east,inner sep=4pt] at (0.000,0.000) {$A$};
+\node[anchor=west,inner sep=4pt] at (2.000,0.000) {$B$};
+\node[anchor=south east,inner sep=2.5pt] at (0.000,1.000) {$C$};
+\node[anchor=north,inner sep=4.5pt] at (1.000,1.000) {$D$};
+\node[anchor=south west,inner sep=2.5pt] at (2.000,1.000) {$E$};
+\node[anchor=west,inner sep=2.5pt] at (0.210,0.630) {$a_A$};
+\node[anchor=north east,inner sep=1.5pt] at (1.550,0.450) {$a_B$};
+\draw[polquota] (0,-0.62) -- (1,-0.62) node[midway,anchor=north,inner sep=2.5pt] {$\ell$};
+\draw[polquota] (1,-0.62) -- (2,-0.62) node[midway,anchor=north,inner sep=2.5pt] {$\ell$};
+\draw[polquota] (-0.45,0) -- (-0.45,1) node[midway,anchor=east,inner sep=2.5pt] {$\ell$};
+\draw[polquota] (0,2.08) -- (0.5,2.08) node[midway,anchor=south,inner sep=2.5pt] {$\ell/2$};
+\node at (1.0,-1.25) {(a)};
+\end{scope}
+\begin{scope}[shift={(6.3,2.9)},x=3.0cm,y=3.0cm]
+\draw[polforza] (0.000,0.000) -- (0.000,-1.000) node[pos=0.5,anchor=west,inner sep=3pt] {$F$};
+\draw[polestremo] (0.000,-1.000) -- (-0.250,-0.750) node[pos=0.5,anchor=north east,inner sep=1.5pt] {$\rb_B$};
+\draw[polestremo] (-0.250,-0.750) -- (0.000,0.000) node[pos=0.5,anchor=east,inner sep=3pt] {$\rb_A$};
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.000,-1.000) {polpunto};
+\draw[fill=white,line width=.6pt] (-0.250,-0.750) circle (1.5pt);
+\node[anchor=south,inner sep=3.5pt] at (0.000,0.000) {$0$};
+\node[anchor=north,inner sep=3.5pt] at (0.000,-1.000) {$1$};
+\node[anchor=east,inner sep=3.5pt] at (-0.250,-0.750) {$m$};
+\node at (-0.1,-1.758) {(b)};
+\end{scope}
+\end{tikzpicture}%

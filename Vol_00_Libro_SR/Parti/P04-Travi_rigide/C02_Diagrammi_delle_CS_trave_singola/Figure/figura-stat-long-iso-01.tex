@@ -1,0 +1,173 @@
+\begin{figure}[htbp]
+			\centering
+			\begin{tikzpicture}[
+				scale=0.95,
+				>=latex,
+				trave/.style={line width=2pt},
+				carico/.style={black, line width=0.8pt},
+				forza/.style={black, line width=1pt},
+				diagN/.style={black, line width=0.8pt},
+				hatch/.style={gray!70, line width=0.4pt},
+				quota/.style={black, line width=0.4pt},
+				freccia/.style={black, line width=0.4pt, {Latex[length=1.5mm]}-{Latex[length=1.5mm]}}
+				]
+				
+				% ── Parametri dei vincoli (convenzione C06/C07) ──
+				\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.06}
+				\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+				\def\hh{0.10}
+				
+				% ── Geometria ──
+				\def\Lell{4}
+				\def\aa{2}
+				\def\yq{-0.80}              % y della quota nel pannello (a)
+				\def\ylab{\yq-0.7}          % y dei label (a) e (b) — allineati per costruzione
+				
+				% =========================================================
+				% PANNELLO (a) — Schema strutturale
+				% =========================================================
+				\begin{scope}[xshift=0cm]
+					
+					% Trave
+					\draw[trave] (0,0) -- (\Lell,0);
+					
+					% Cerniera in A
+					\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+					\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+					\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+					\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+					
+					% Carrello trasversale in B (asse di scorrimento orizzontale)
+					\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+					\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+					\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+					\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+					\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+					\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+					
+					% Anellini
+					\draw[thick, fill=white] (0,0) circle (\rn);
+					\draw[thick, fill=white] (\Lell,0) circle (\rn);
+					
+					% Etichette A, B, C
+					\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+					\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+					\node[below,            font=\small] at (\aa,0.05) {$C$};
+					
+					% Carico distribuito q nel tratto AC
+					
+					% parametri geometrici del riquadro
+					\def\hbase{0.22}    \def\hcar{0.50}
+					
+					% (1) frecce longitudinali sulla trave, in linea con la base del riquadro
+					\pgfmathsetmacro{\yfre}{\hbase-0.04}
+					\foreach \t in {0.10, 0.40, 0.70} {
+						\pgfmathsetmacro{\px}{\aa*\t}
+						\draw[->, carico] (\px, \yfre) -- (\px + 0.40, \yfre);
+					}
+					
+					% (2) rettangolo soprastante con campitura verticale
+					\foreach \x in {0.25, 0.50, ..., 1.75} {
+						\draw[hatch] (\x, \hbase) -- (\x, \hbase+\hcar);
+					}
+					
+					\draw[carico, line width=0.6pt] (0, \hbase) rectangle (\aa, \hbase+\hcar);
+					
+					% (3) etichetta del carico
+					\node[right, font=\small] at (\aa+0.08, \hbase+0.5*\hcar) {$\bar{q}$};
+					
+					% Forza concentrata in B (orizzontale, verso destra)
+					\def\Lf{0.85}
+					\draw[->, forza] (\Lell, 0.0) -- (\Lell+\Lf, 0.0);
+					\node[above, font=\small] at (\Lell+0.5*\Lf+0.1, -0.6) {$\bar{q}a$};
+					
+					% Quota a sotto la trave
+					\def\yq{-0.80}
+					\draw[quota] (0,\yq) -- (\aa,\yq);
+					\draw[quota] (0,\yq+0.07) -- (0,\yq-0.07);
+%					\draw[quota] (\aa,\yq+0.07) -- (\aa,\yq-0.07);
+%					\node[above, font=\small] at (0.5*\aa, \yq-0.04) {$a$};
+					
+					% trattini di estremità (linee di riferimento)
+					\draw[quota] (0,\yq+0.07) -- (0,\yq-0.07);
+					\draw[quota] (\aa,\yq+0.07) -- (\aa,\yq-0.07);
+					
+					% linea di quota con frecce alle due estremità
+					\draw[freccia] (0,\yq) -- (\aa,\yq);
+					
+					% etichetta
+					\node[above, font=\small] at (0.5*\aa, \yq+0.02) {$a$};
+					
+					% Etichetta pannello
+					\node[font=\small] at (0.75*\Lell, \yq-0.2) {(a)};
+					
+				\end{scope}
+				
+				% =========================================================
+				% PANNELLO (b) — Diagramma di N(z)
+				% =========================================================
+				\begin{scope}[xshift=6cm]
+					
+					% Trave (clone)
+					\draw[trave] (0,0) -- (\Lell,0);
+					
+					% Vincoli (clone esatto dal pannello a)
+					\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+					\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+					\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+					\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+					\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+					\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+					\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+					\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+					\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+					\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+					\draw[thick, fill=white] (0,0) circle (\rn);
+					\draw[thick, fill=white] (\Lell,0) circle (\rn);
+					\node[left,  font=\small] at (0,-0.04)     {$A$};
+					\node[right, font=\small] at (\Lell,-0.04) {$B$};
+					
+					% Diagramma N(z): scala 1 qa = 0.55 unità di figura
+					% (convenzione: N positivo = trazione, disegnato sopra l'asse)
+					\def\sN{0.55}
+					\pgfmathsetmacro{\Nuno}{2*\sN}     % valore 2 qa
+					\pgfmathsetmacro{\Ndue}{\sN}       % valore qa
+					
+					
+					% dopo — tratto AC
+					\foreach \x in {0.25, 0.50, ..., 1.75} {
+						\pgfmathsetmacro{\h}{\Nuno - (\Nuno-\Ndue)*\x/\aa}
+						\draw[hatch] (\x, 0) -- (\x, \h);
+					}
+					% dopo — tratto CB
+					\foreach \x in {2.25, 2.50, ..., 3.75} {
+						\draw[hatch] (\x, 0) -- (\x, \Ndue);
+					}
+					
+					
+					
+					% Bordo del diagramma (linea spessa nera)
+					\draw[diagN]
+					(0, 0) -- (0, \Nuno) -- (\aa, \Ndue) -- (\Lell, \Ndue) -- (\Lell, 0);
+					
+					% Segno "+" (trazione) al centro dell'area
+					\node[circle, draw, fill=white, thick, minimum size=10pt, inner sep=0pt, font=\large]	at (0.5*\Lell, 0.55*\sN-0.03) {$+$};
+					
+					% Etichette dei valori notevoli
+					\node[below left,  font=\small] at (0,   \Nuno) {$2\bar{q}a$};
+					\node[below right, font=\small] at (\Lell, \Ndue+0.2) {$\bar{q}a$};
+					
+					% Etichetta pannello
+					%\node[font=\small\bfseries] at (0.5*\Lell, -1.80) {(b)};
+					\node[font=\small] at (0.75*\Lell, \ylab+0.6) {(b)};
+					
+				\end{scope}
+				
+			\end{tikzpicture}
+			\caption{Trave con carico longitudinale distribuito $\bar{q}$ nel tratto
+				$AC$ e forza concentrata $\bar{q}a$ in $B$:
+				(a)~schema strutturale;
+				(b)~diagramma dello sforzo normale $N(z)$, in trazione su
+				tutta la lunghezza.}
+			\label{fig:stat_long_iso_01}
+		\end{figure}

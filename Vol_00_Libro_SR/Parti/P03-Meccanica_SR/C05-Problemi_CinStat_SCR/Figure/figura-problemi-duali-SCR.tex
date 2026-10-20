@@ -1,0 +1,69 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.8]
+		
+		% --- Ellisse sinistra: spazio R^n ---
+		\draw[thick] (-3.5, 0) ellipse [x radius=2.2, y radius=3.0];
+		\node at (-3.5, 3.4) {$\mathbb{R}^n$};
+		
+		% Curva divisoria sinistra
+		\draw[thick] (-5.7, 0)
+		.. controls (-4.5, 0.5) and (-2.5, -0.5) ..
+		(-1.3, 0);
+		
+		% Regione superiore — N(A)
+		\node          at (-3.5,  2.3) {$\Nc(\bm{A})$};
+		\node[font=\small\itshape] at (-3.5,  1.65) {meccanismi};
+		\fill (-3.5,  1.0) circle (1.5pt) node[right=2pt] {$\bm{u}_n$};
+		\node[gray!60] at (-3.5,  0.35) {$\bm{f}_n = \bm{0}$};
+		
+		% Regione inferiore — Im(A^T)
+		\fill (-3.5, -0.35) circle (1.5pt) node[right=2pt] {$\bm{u}_c$};
+		\fill (-3.5, -1.0)  circle (1.5pt) node[right=2pt] {$\bm{f}_c$};
+		\node[font=\small\itshape] at (-3.5, -1.65) {forze equilibrabili};
+		\node          at (-3.5, -2.3) {$\Ic(\bm{A}^\top)$};
+		
+		% --- Ellisse destra: spazio R^m ---
+		\draw[thick] (3.5, 0) ellipse [x radius=2.2, y radius=3.0];
+		\node at (3.5, 3.4) {$\mathbb{R}^m$};
+		
+		% Curva divisoria destra
+		\draw[thick] (1.3, 0)
+		.. controls (2.5, 0.5) and (4.5, -0.5) ..
+		(5.7, 0);
+		
+		% Regione superiore — Im(A)
+		\node          at (3.5,  2.3) {$\Ic(\bm{A})$};
+		\node[font=\small\itshape] at (3.5,  1.65) {ced.\ ammissibili};
+		\fill (3.5,  1.0) circle (1.5pt) node[right=2pt] {$\bm{s}_c$};
+		\fill (3.5,  0.35) circle (1.5pt) node[right=2pt] {$\bm{r}_c$};
+		
+		% Regione inferiore — N(A^T)
+		\node[gray!60] at (3.5, -0.35) {$\bm{s}_n = \bm{0}$};
+		\fill (3.5, -1.0)  circle (1.5pt) node[right=2pt] {$\bm{r}_n$};
+		\node[font=\small\itshape] at (3.5, -1.65) {autoequilibrio};
+		\node          at (3.5, -2.3) {$\Nc(\bm{A}^\top)$};
+		
+		% --- Freccia problema cinematico ---
+		\draw[->, thick] (-1.0, 1.5) to[bend left=20]
+		node[midway, above=4pt] {$\bm{A}\bm{u}_c = \bm{s}_c$}
+		(1.0, 1.5);
+		
+		% --- Freccia problema statico ---
+		\draw[->, thick] (1.0, -1.5) to[bend left=20]
+		node[midway, below=4pt] {$\bm{A}^\top\bm{r}_c = -\bm{f}_c$}
+		(-1.0, -1.5);
+		
+	\end{tikzpicture}
+	\caption{Struttura duale dei problemi cinematico $\bm{A}\bm{u} = \bm{s}$
+		e statico $\bm{A}^\top\bm{r} = -\bm{f}$. Il problema cinematico ammette
+		soluzione se e solo se $\bm{s}_c \in \Ic(\bm{A})$, cioè $\bm{s}_n = \bm{0}$:
+		il cedimento deve essere cinematicamente ammissibile. Il problema statico
+		ammette soluzione se e solo se $\bm{f}_c \in \Ic(\bm{A}^\top)$, cioè
+		$\bm{f}_n = \bm{0}$: la forza attiva deve essere equilibrabile dai vincoli.
+		Le soluzioni generali sono $\bm{u} = \bm{u}_c + \bm{u}_n$ con
+		$\bm{u}_n \in \Nc(\bm{A})$ (meccanismo) arbitrario, e
+		$\bm{r} = \bm{r}_c + \bm{r}_n$ con $\bm{r}_n \in \Nc(\bm{A}^\top)$
+		(stato di autoequilibrio) arbitrario.}
+	\label{fig:problemi_duali_SCR}
+\end{figure}

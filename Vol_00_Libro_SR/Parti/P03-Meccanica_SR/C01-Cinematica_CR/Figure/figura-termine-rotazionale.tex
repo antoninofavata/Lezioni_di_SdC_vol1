@@ -1,0 +1,56 @@
+\begin{figure}[H]
+		\centering
+		\tikzset{midarrow/.style={postaction={decorate},
+				decoration={markings, mark=at position 0.58 with {\arrow{Stealth}}}}}
+		\resizebox{0.66\textwidth}{!}{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.25,
+				pt/.style={circle,fill,inner sep=1.3pt}]
+				
+				% proiezione obliqua:  (x,y,z) -> (x + 0.45 y , 0.26 y + z)
+				\coordinate (O)    at (0,0);
+				\coordinate (Ppi)  at (2.54,0.312);   % P_pi = proiezione di P nel piano
+				\coordinate (P)    at (2.54,1.612);   % P sopra il piano
+				\coordinate (Ad)   at (0,1.30);       % piede di d sull'asse (quota di P)
+				\coordinate (C1) at (-1.95,-0.26);    % piano pi
+				\coordinate (C2) at ( 3.55,-0.26);
+				\coordinate (C3) at ( 4.90, 0.52);
+				\coordinate (C4) at (-0.60, 0.52);
+				
+				% piano pi
+				\draw[thin] (C1) -- (C2) -- (C3) -- (C4) -- cycle;
+				\node at (-1.2,-0.06) {$\pi$};
+				
+				% asse per O parallelo a theta (tratteggiato) + theta assiale (doppia freccia)
+				\draw[dashed, gray!60] (0,-0.7) -- (0,1.75);
+				\draw[->>, thick] (0,1.75) -- (0,2.55) node[pos=0.6,left=2pt] {$\bm{\upvartheta}$};
+				
+				% componenti
+				\draw[->, thick] (O) -- (Ppi) node[pos=0.80,below] {$\overrightarrow{OP}_{\!\perp}$};
+				\draw[->, thick] (Ppi) -- (P) node[pos=0.5,right=1pt] {$\overrightarrow{OP}_{\!\parallel}$};
+				
+				% OP totale (freccia a meta', per non affollare P)
+				\draw[thick, midarrow] (O) -- (P) node[pos=0.52,above left=-2pt] {$\overrightarrow{OP}$};
+				
+				% distanza d dall'asse (alla quota di P, parallela a OP_perp)
+				\draw[thin] (Ad) -- (P) node[pos=0.5,above=1pt] {$d$};
+				
+				% angolo alpha in O fra OP e OP_perp
+				\draw[->, thin] ($(O)+(7:0.7)$) arc[start angle=7, end angle=32.4, radius=0.7];
+				\node at ($(O)+(19:0.92)$) {$\alpha$};
+				
+				% punti
+				\node[pt,label={left:$O$}]           at (O)   {};
+				\node[pt,label={right:$P$}]     at (P)   {};
+				\node[pt,label={right:$P_\pi$}] at (Ppi) {};
+				
+			\end{tikzpicture}
+		}
+		\caption{Interpretazione geometrica del termine rotazionale
+			$\bm{\upvartheta} \times \protect\overrightarrow{OP}$:
+			la componente $\protect\overrightarrow{OP}_{\!\perp}$, ortogonale
+			all'asse di rotazione, determina la distanza $d$ del punto $P$
+			dall'asse; lo spostamento rotazionale ha modulo
+			$|\bm{\upvartheta}|\,d$ ed è tangente alla circonferenza
+			di raggio $d$.}
+		\label{fig:termine_rotazionale}
+	\end{figure}

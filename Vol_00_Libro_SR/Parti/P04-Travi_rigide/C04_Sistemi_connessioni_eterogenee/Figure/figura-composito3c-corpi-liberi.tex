@@ -1,0 +1,122 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\linewidth}{!}{%
+		\begin{tikzpicture}[
+			x=1.6cm, y=1.6cm, font=\scriptsize,
+			trave/.style={line width=2.0pt, line cap=round, line join=round, black},
+			forza/.style={-{Stealth[length=2mm]}, line width=0.9pt, black},
+			reaz/.style={-{Stealth[length=2mm]}, line width=0.9pt, gray!60},
+			risu/.style={-{Stealth[length=2.2mm]}, line width=1.0pt, gray!60},
+			proj/.style={gray!60, dashed, line width=0.4pt},
+			carico/.style={-{Stealth[length=1.5mm]}, line width=0.5pt, black},
+			bordo/.style={line width=0.5pt, black},
+			terra/.style={line width=0.7pt, black},
+			nodoV/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt},
+			nodo/.style={circle, fill=black, inner sep=0pt, minimum size=3pt},
+			blob/.style={draw=gray!45, fill=gray!10, line width=0.7pt, rounded corners=10pt},
+			]
+			% ---- UNICA definizione: argomento opzionale = opzioni del nodo (posizione libera) ----
+			\newcommand{\fin}[4][]{\pgfmathsetmacro{\bk}{#3+180}%
+				\draw[forza] ($(#2)+(\bk:0.46)$)--(#2);
+				\node[font=\scriptsize,#1] at ($(#2)+(\bk:0.76)$) {#4};}
+			\newcommand{\fout}[4][]{%
+				\draw[forza] (#2)--($(#2)+(#3:0.46)$);
+				\node[font=\scriptsize,#1] at ($(#2)+(#3:0.76)$) {#4};}
+				
+			% \foutLen[opz]{punto}{angolo}{lunghezza}{etichetta}
+			\newcommand{\foutLen}[5][]{%
+				\draw[forza] (#2)--($(#2)+(#3:#4)$);
+				\node[font=\scriptsize,#1] at ($(#2)+(#3:#4+0.30)$) {#5};}
+				
+			\newcommand{\cerniera}[1]{%
+				\draw[terra] #1--++(-0.13,-0.22)--++(0.26,0)--cycle;
+				\draw[terra] ($#1+(-0.18,-0.22)$)--($#1+(0.18,-0.22)$);
+				\foreach \t in {-0.16,-0.08,0,0.08,0.16}\draw[terra] ($#1+(\t,-0.22)$)--++(-0.06,-0.09);}
+			
+			% ===================== asta CE (verticale, alto-sx) ===================
+			\begin{scope}[shift={(0,3.6)}]
+				\draw[blob] (-1.05,-0.95) rectangle (1.05,1.95);
+				\draw[trave] (0,0)--(0,1);
+				% C: esempio -- etichette a sinistra
+				\fout[left]{0,0}{0}{$p\ell$} \fout[left, xshift=-2pt, yshift=14pt]{0,0}{270}{$\tfrac12 p\ell$}
+				% E: forze con coda in E
+				\fout{0,1}{180}{$p\ell$} \fout[left, xshift=-2pt, yshift=-14pt]{0,1}{90}{$\tfrac12 p\ell$}
+				\draw[line width=0.7pt,black] (-0.10,0.5)--(0.10,0.5);
+				\draw[black,line width=1.0pt,-{Stealth[length=2mm]}] (0,0.5)++(215:0.16) arc[start angle=215,end angle=-35,radius=0.16];
+				\node[right] at (0.32,0.5){$p\ell^2$};
+				\node[nodoV] at (0,0){}; \node[nodoV] at (0,1){};
+				\node at (-0.20,0.10){$C$}; \node at (0.20,1.10){$E$};
+			\end{scope}
+			
+			% ===================== asta ED (inclinata, alto-dx) ===================
+			\begin{scope}[shift={(3.4,3.6)}]
+				\coordinate (Eed) at (0,1.4);  \coordinate (Ded) at (1.4,0);
+				\draw[blob] (-1.05,-0.95) rectangle (2.25,2.);
+				\draw[trave] (Eed)--(Ded);
+				\foreach \x in {0,0.2,...,1.401}\draw[carico] ($(\x,{1.4-\x})+(0,0.40)$)--(\x,{1.4-\x});
+				\draw[bordo] (0,1.80)--(1.4,0.40);
+				\node at (-0.2,1.75){$\tfrac{p}{\sqrt2}$};
+				\draw[risu] (0.7,1.35)--(0.7,0.70);
+				\node[gray!70,right] at (0.80,1.06){$p\ell$};
+				%\fout{Eed}{0}{$p\ell$} 
+				\draw[forza] (Eed)--($(Eed)+(0:0.70)$);
+				\node[font=\scriptsize,  above, xshift=-14pt, yshift=0pt] at ($(Eed)+(0:0.90)$){$p\ell$};
+				\fout{Eed}{270}{$\tfrac12 p\ell$}
+				\fout{Ded}{180}{$p\ell$} %\fout[right, xshift=2pt, yshift=-16pt]{Ded}{90}{$\tfrac32 p\ell$}
+				\foutLen[right, xshift=2pt, yshift=-16pt]{Ded}{90}{0.70}{$\tfrac32 p\ell$}
+				\node[nodoV] at (Eed){}; \node[nodoV] at (Ded){};
+				\node at ($(Eed)+(-0.18,0.0)$){$E$}; \node at ($(Ded)+(0.20,-0.0)$){$D$};
+			\end{scope}
+			
+			% ===================== biella AC (basso-sx) =====================
+			\begin{scope}[shift={(0,0)}]
+				\def\s{0.9}
+				\draw[blob] (-1.05,-1.15) rectangle (1.65,1.95);
+				\draw[trave] (0,0)--(0.5,1);
+				\cerniera{(0,0)}
+				\draw[reaz] (0,0)--($(0,0)+(-\s*1/3,0)$); \node[gray!70,above] at ($(0,0)+(-\s*1/6,0.02)$){$\tfrac13 p\ell$};
+				\draw[reaz] (0,0)--($(0,0)+(0,-\s*2/3)$); \node[gray!70,left] at ($(0.25,0)+(0.25,-\s*1/2)$){$\tfrac23 p\ell$};
+				\draw[risu] (0,0)--($(0,0)+(-\s*1/3,-\s*2/3)$);
+				\node[gray!70,below left=-2pt] at ($(0,0)+(-\s*1/3,-\s*2/3)$){$\tfrac{\sqrt5}{3}p\ell$};
+				\draw[proj] ($(0,0)+(-\s*1/3,0)$)--($(0,0)+(-\s*1/3,-\s*2/3)$);
+				\draw[proj] ($(0,0)+(0,-\s*2/3)$)--($(0,0)+(-\s*1/3,-\s*2/3)$);
+				\draw[forza] (0.5,1)--($(0.5,1)+(\s*1/3,0)$); \node[below] at ($(0.5,1)+(\s*1/6,0)$){$\tfrac13 p\ell$};
+				\draw[forza] (0.5,1)--($(0.5,1)+(0,\s*2/3)$); \node[right] at ($(0.5,1)+(0,\s*1/3)$){$\tfrac23 p\ell$};
+				\node[nodoV] at (0,0){}; \node[nodoV] at (0.5,1){};
+				\node at (0.18,0.06){$A$}; \node at (0.34,1.06){$C$};
+			\end{scope}
+			
+			% ===================== trave CDB (a L, basso-dx) =======================
+			\begin{scope}[shift={(3.4,0)}]
+				\draw[blob] (-1.05,-1.15) rectangle (2.15,1.95);
+				\draw[trave] (0,1)--(1,1)--(1,0);
+				\draw[line width=0.7pt,black] (0.5,0.90)--(0.5,1.10);
+				\draw[black,line width=1.0pt,-{Stealth[length=2mm]}] (0.5,1)++(215:0.16) arc[start angle=215,end angle=-35,radius=0.16];
+				\node[above] at (0.30,1.0){$p\ell^2$};
+				\foreach \y in {0.12,0.235,...,1.001}\draw[carico] (1.225,\y)--(1.0,\y);
+				\draw[bordo] (1.225,0.12)--(1.225,1);
+				\node[right] at (1.245,0.56){$p$};
+				\fout{0,1}{180}{$\tfrac43 p\ell$} \fout{0,1}{270}{$\tfrac16 p\ell$}
+				\fout{1,1}{0}{$p\ell$} 
+				\draw[forza] ($(1,1)+(90:0.60)$)--(1,1);
+				\node[font=\scriptsize, left, xshift=-2pt, yshift=-14pt] at ($(1,1)+(90:0.86)$){$\tfrac32 p\ell$};
+				%\fin{1,1}{270}{$\tfrac32 p\ell$}
+				\cerniera{(1,0)}
+				\draw[reaz] (1,0)--($(1,0)+(0.66,0)$); \node[gray!70,below] at ($(1,0)+(0.44,-0.02)$){$\tfrac43 p\ell$};
+				\draw[reaz] ($(1,-1.05)$)--($(1,-0.42)$); \node[gray!70,left] at ($(1,-0.74)$){$\tfrac53 p\ell$};
+				\node[nodoV] at (0,1){}; \node[nodo] at (1,1){}; \node[nodoV] at (1,0){};
+				\node at (-0.04,1.16){$C$}; \node at (1.14,1.16){$D$}; \node at (0.80,0.1){$B$};
+			\end{scope}
+		\end{tikzpicture}
+	}%
+	\caption{Sistemi compositi a tre cerniere: esploso dei quattro
+		corpi liberi con i carichi attivi e le forze scambiate alle
+		connessioni, riportate nel riferimento globale. I trattini
+		trasversali su~$CE$ e~$CD$ individuano i punti di applicazione
+		delle coppie; su~$ED$ la freccia grigia~$p\ell$ è la risultante
+		del carico distribuito. Sulla biella~$AC$ le componenti
+		$\tfrac13 p\ell$ e $\tfrac23 p\ell$ compongono la risultante
+		$\tfrac{\sqrt5}{3}p\ell$ (in grigio), diretta lungo l'asse
+		dell'asta. Le reazioni a terra in~$A$ e~$B$ sono in grigio.}
+	\label{fig:composito3c_corpi_liberi}
+\end{figure}

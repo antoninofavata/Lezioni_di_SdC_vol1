@@ -1,0 +1,249 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.95,
+					>=latex,
+					trave/.style={line width=1.2pt},
+					carico/.style={black, line width=0.6pt},
+					forza/.style={black, line width=1pt},
+					diagT/.style={black, line width=0.8pt},
+					diagM/.style={black, line width=0.8pt},
+					hatch/.style={gray!50, line width=0.3pt},
+					quota/.style={black, line width=0.4pt},
+					fibre/.style={gray!70, line width=0.3pt},
+					]
+					
+					% ── Parametri dei vincoli (convenzione C06/C07) ──
+					\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.06}
+					\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+					\def\hh{0.10}
+					
+					% ── Geometria del problema ──
+					\def\Lell{4}                            % lunghezza trave ℓ
+					\pgfmathsetmacro{\xA}{0}
+					\pgfmathsetmacro{\xC}{0.5*\Lell}        % C in mezzeria: ℓ/2 = 2
+					\def\yqi{-0.80}                         % y delle quote sotto la trave
+					\def\ylab{-3.30}                        % y delle etichette di pannello
+					
+					% ── Parametri del carico distribuito ──
+					\def\pgap{0.05}                         % gap fra trave e base del riquadro
+					\def\php{0.40}                          % altezza del riquadro
+					\pgfmathsetmacro{\pBase}{\pgap}         % base del riquadro: y = 0.05
+					\pgfmathsetmacro{\pTop}{\pgap+\php}     % cima del riquadro: y = 0.45
+					
+					% =========================================================
+					% PANNELLO (a) — Schema statico
+					% =========================================================
+					\begin{scope}[xshift=0cm]
+						
+						% ── Trave ──
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						% ── Fibra inferiore (tratteggio sotto la trave) ──
+						\draw[fibre, dashed] (0, -0.1) -- (\Lell, -0.1);
+						
+						% ── Cerniera in A ──
+						\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+						\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+						
+						% ── Carrello verticale in B ──
+						\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+						\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+						
+						% ── Anellini bianchi sui perni ──
+						\draw[thick, fill=white] (0,0) circle (\rn);
+						\draw[thick, fill=white] (\Lell,0) circle (\rn);
+						
+						% ── Etichette A, B, C ──
+						\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						\node[below,            font=\small] at (\xC,-0.05) {$C$};
+						
+						% ── Carico distribuito p̄ sopra la trave nel tratto AC ──
+						\draw[carico] (0,\pBase) -- (\xC,\pBase);
+						\draw[carico] (0,\pTop)  -- (\xC,\pTop);
+						\foreach \x in {0, 0.50, 1.00, 1.50, 2.00} {
+							\draw[->, carico, >={Latex[length=3.5pt, width=2.5pt]}]
+							(\x, \pTop) -- (\x, \pBase);
+						}
+						% Etichetta p̄ sopra il riquadro, centrata
+						\node[above, font=\small] at (0.5*\xC, \pTop) {$\bar{p}$};
+						
+						% ── Forza concentrata Y(C) in C (verso il basso) ──
+						\def\Lf{0.80}
+						\def\Foff{0.30}    % offset verticale: alza la forza di 0.50 unità
+						% tacca verticale che marca C
+						\draw[forza] (\xC, -0.10) -- (\xC, 0.10);
+						% freccia: coda alta sopra la trave (sopra il riquadro del carico), punta sulla trave
+						\draw[->, forza] (\xC, 0.10 + \Lf + \Foff) -- (\xC, 0.10 + \Foff);
+						% etichetta a destra della freccia
+						\node[right, font=\small] at (\xC+0.05, 0.10 + 0.5*\Lf + \Foff)
+						{$\tfrac{\bar{p}\ell}{2}$};
+						
+						% ── Quota ℓ/2 sotto la trave (da A a C) ──
+						\draw[<->, quota] (0,\yqi) -- (\xC,\yqi);
+						\draw[quota] (0,\yqi+0.07)   -- (0,\yqi-0.07);
+						\draw[quota] (\xC,\yqi+0.07) -- (\xC,\yqi-0.07);
+						\node[above, font=\small] at (0.5*\xC, \yqi-0.04) {$\ell/2$};
+						
+						% Etichetta pannello (a)
+						\node[font=\small] at (0.5*\Lell, 0.4*\ylab) {(a)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (b) — Diagramma di T(z)
+					% =========================================================
+					\begin{scope}[xshift=5.5cm]
+						
+						% ── Trave (clone) ──
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						% ── Vincoli (clone) ──
+						\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+						\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+						\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+						\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+						\draw[thick, fill=white] (0,0) circle (\rn);
+						\draw[thick, fill=white] (\Lell,0) circle (\rn);
+						
+						% ── Etichette A, B, C ──
+						\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						% C: salto da +p̄ℓ/8 a -3p̄ℓ/8 → asse occupato → etichetta in basso a sinistra
+						\node[below left=-2pt, font=\small] at (\xC, 0) {$C$};
+						
+						% ── Tacca verticale in C ──
+						\draw[forza] (\xC, -0.10) -- (\xC, 0.10);
+						
+						% ── Diagramma T(z) ──
+						\def\sT{0.35}
+						\pgfmathsetmacro{\TA}{ (5*\Lell/8)*\sT}     % T(A) = +5p̄ℓ/8 → +0.625
+						\pgfmathsetmacro{\TCm}{ (\Lell/8)*\sT}      % T(C⁻) = +p̄ℓ/8 → +0.125
+						\pgfmathsetmacro{\TCp}{-(3*\Lell/8)*\sT}    % T(C⁺) = -3p̄ℓ/8 → -0.375
+						
+						% Hatching nel tratto AC (positivo, sopra l'asse)
+						\foreach \x in {0.10, 0.30, ..., 1.90} {
+							\pgfmathsetmacro{\h}{\sT*(5*\Lell/8 - \x)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						% Hatching nel tratto CB (negativo, sotto l'asse) — costante
+						\foreach \x in {2.10, 2.30, ..., 3.90} {
+							\draw[hatch] (\x, 0) -- (\x, \TCp);
+						}
+						
+						% Bordo del diagramma — percorso continuo
+						\draw[diagT]
+						(0, 0) -- (0, \TA)               % verticale di chiusura in A
+						-- (\xC, \TCm)                   % lineare in AC (da T_A a T_C⁻)
+						-- (\xC, \TCp)                   % salto -Y(C) = -p̄ℓ/2 in C
+						-- (\Lell, \TCp)                 % uniforme in CB
+						-- (\Lell, 0);                   % verticale di chiusura in B
+						
+						% Segni cerchiati nelle due aree
+						\node[font=\small] at ({\xC/3}, {0.4*\TA})	{$\boldsymbol{\oplus}$};
+						\node[font=\small] at ({(\xC+\Lell)/2}, {0.5*\TCp})	{$\boldsymbol{\ominus}$};
+						
+						% Valori notevoli (senza segno, come da convenzione)
+						\node[left,  font=\small] at (0, \TA){$\tfrac{5\bar{p}\ell}{8}$};
+						\node[above right=-1.4pt, font=\small] at (\xC, \TCm-0.2)	{$\tfrac{\bar{p}\ell}{8}$};
+						\node[right, font=\small] at (\Lell+0.1, \TCp)	{$\tfrac{3\bar{p}\ell}{8}$};
+						
+						% Etichetta pannello (b)
+						\node[font=\small] at (0.5*\Lell, 0.4*\ylab) {(b)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (c) — Diagramma di M(z)
+					% =========================================================
+					\begin{scope}[xshift=11.0cm]
+						
+						% ── Trave (clone) ──
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						% ── Vincoli (clone) ──
+						\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+						\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+						\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+						\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+						\draw[thick, fill=white] (0,0) circle (\rn);
+						\draw[thick, fill=white] (\Lell,0) circle (\rn);
+						
+						% ── Etichette A, B, C ──
+						\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						\node[above,            font=\small] at (\xC,0.05) {$C$};
+						
+						% ── Tacca verticale in C ──
+						\draw[forza] (\xC, -0.10) -- (\xC, 0.10);
+						
+						% ── Diagramma M(z) ──
+						\def\sM{0.30}
+						\pgfmathsetmacro{\MC}{-(3*\Lell*\Lell/16)*\sM}    % M(C) = +3p̄ℓ²/16 → -0.90 (sotto)
+						
+						% Hatching nel tratto AC: dall'asse al diagramma parabolico
+						% h(x) = -sM · (5ℓ/8 · x - x²/2)
+						\foreach \x in {0.20, 0.40, ..., 1.80} {
+							\pgfmathsetmacro{\h}{-\sM*(5*\Lell/8*\x - \x*\x/2)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						% Hatching nel tratto CB: dall'asse al diagramma lineare
+						\foreach \x in {2.20, 2.40, ..., 3.80} {
+							\pgfmathsetmacro{\h}{-\sM*(3*\Lell/8)*(\Lell - \x)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Bordo del diagramma — parabola in AC + segmento lineare in CB
+						\draw[diagM]
+						(0, 0)
+						\foreach \x in {0.20, 0.40, ..., 1.80} {
+							-- ({\x}, {-\sM*(5*\Lell/8*\x - \x*\x/2)})
+						}
+						-- (\xC, \MC)            % vertice in C (chiusura parabola)
+						-- (\Lell, 0);           % segmento lineare CB
+						
+						% Valore notevole — etichetta sotto il vertice in C
+						\node[above, font=\small] at (\xC, \MC-0.04){$\tfrac{3\bar{p}\ell^2}{16}$};
+						
+						% Etichetta pannello (c)
+						\node[font=\small] at (0.5*\Lell, 0.4*\ylab) {(c)};
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Trave appoggiata con carico uniformemente distribuito
+				$p(z) = \bar{p}$ (verso il basso) nel tratto $AC$ di
+				lunghezza $\ell/2$ e forza concentrata $Y(C) = \bar{p}\ell/2$
+				(verso il basso) in $C$:
+				(a)~schema strutturale;
+				(b)~diagramma del taglio $T(z)$, lineare decrescente nel
+				tratto $AC$ da $5\bar{p}\ell/8$ in $A$ a $\bar{p}\ell/8$
+				in $C^-$, con salto $-\bar{p}\ell/2$ in $C$, e uniforme
+				pari a $-3\bar{p}\ell/8$ nel tratto $CB$;
+				(c)~diagramma del momento flettente $M(z)$, parabolico con
+				concavità verso l'alto nel tratto $AC$ e lineare decrescente
+				nel tratto $CB$, continuo in $C$ con valore massimo
+				$3\bar{p}\ell^2/16$ e nullo agli estremi.}
+			\label{fig:stat_trasv_iso_01}
+		\end{figure}

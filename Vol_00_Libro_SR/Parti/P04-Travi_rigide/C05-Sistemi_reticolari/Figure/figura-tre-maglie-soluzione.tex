@@ -1,0 +1,94 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=1.05,
+					asta/.style={line width=1.5pt, line cap=round, line join=round, black},
+					puntone/.style={line width=3.5pt, line cap=round, line join=round, black},
+					tirante/.style={line width=1.0pt, line cap=round, line join=round, black},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt, line width=1.2pt},
+					forza/.style={->, >=stealth, line width=1.5pt, black},
+					sez/.style={black, thick, dashed},
+					]
+					\def\SEP{8.5}
+					
+					%%──────── PANNELLO (a): stato di sollecitazione ────────
+					\begin{scope}
+						\coordinate (A) at (0,0); \coordinate (B) at (3,0); \coordinate (C) at (6,0);
+						\coordinate (D) at (2,1); \coordinate (E) at (4,1);
+						\draw[puntone](A)--(D);
+						\draw[puntone](D)--(E);
+						\draw[puntone](B)--(E);
+						\draw[puntone](E)--(C);
+						\draw[tirante](A)--(B);
+						\draw[tirante](B)--(C);
+						\draw[tirante](D)--(B);
+						\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}\draw[thin](\x,-0.65)--++(-.18,-.22);
+						\draw[line width=1.2pt](C)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt]($(C)+(-0.50,-0.50)$)--($(C)+(0.50,-0.50)$);
+						\draw[line width=1.2pt]($(C)+(-0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(C)+( 0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(C)+(-0.55,-0.82)$)--($(C)+(0.55,-0.82)$);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}\draw[thin]($(C)+(\x,-0.82)$)--++(-.18,-.22);
+						\node[nodo]at(A){};\node[nodo]at(B){};\node[nodo]at(C){};\node[nodo]at(D){};\node[nodo]at(E){};
+						\draw[forza]($(D)+(-1.25,0)$)--($(D)+(-0.12,0)$);
+						\node[left,font=\small]at($(D)+(-1.25,0)$){$2F$};
+						\draw[forza]($(E)+(0,1.20)$)--($(E)+(0,0.12)$);
+						\node[above,font=\small]at($(E)+(0,1.20)$){$3F$};
+						\node[above left=-1pt,font=\small]at(A){$A$};
+						\node[below=3pt,font=\small]at(B){$B$};
+						\node[above right=-1pt,font=\small]at(C){$C$};
+						\node[above=2pt,font=\small]at(D){$D$};
+						\node[above right=0pt,font=\small]at(E){$E$};
+						\node[font=\normalsize]at(3,-1.6){$(a)$};
+					\end{scope}
+					
+					%%──────── PANNELLO (b): sezione di Ritter ────────
+					\begin{scope}[xshift=\SEP cm]
+						\coordinate (A) at (0,0); \coordinate (B) at (3,0); \coordinate (C) at (6,0);
+						\coordinate (D) at (2,1); \coordinate (E) at (4,1);
+						\draw[asta](A)--(B);\draw[asta](B)--(C);\draw[asta](A)--(D);
+						\draw[asta](D)--(B);\draw[asta](D)--(E);\draw[asta](B)--(E);\draw[asta](E)--(C);
+						\draw[sez](2.4,-0.95)--(2.4,1.75) node[above,font=\small]{sezione};
+						\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}\draw[thin](\x,-0.65)--++(-.18,-.22);
+						\draw[line width=1.2pt](C)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt]($(C)+(-0.50,-0.50)$)--($(C)+(0.50,-0.50)$);
+						\draw[line width=1.2pt]($(C)+(-0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(C)+( 0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(C)+(-0.55,-0.82)$)--($(C)+(0.55,-0.82)$);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}\draw[thin]($(C)+(\x,-0.82)$)--++(-.18,-.22);
+						\node[nodo]at(A){};\node[nodo]at(B){};\node[nodo]at(C){};\node[nodo]at(D){};\node[nodo]at(E){};
+						\draw[forza]($(D)+(-1.25,0)$)--($(D)+(-0.12,0)$);
+						\node[left,font=\small]at($(D)+(-1.25,0)$){$2F$};
+						\draw[forza]($(E)+(0,1.20)$)--($(E)+(0,0.12)$);
+						\node[above,font=\small]at($(E)+(0,1.20)$){$3F$};
+						\node[above=2pt,font=\small,gray!70]at(D){$P_{AB}$};
+						\node[below=3pt,font=\small,gray!70]at(B){$P_{DE}$};
+						\node[above left=-1pt,font=\small]at(A){$A$};
+						\node[above right=-1pt,font=\small]at(C){$C$};
+						\node[below=2pt,font=\small]at(D){$D$};
+						\node[above right=0pt,font=\small]at(E){$E$};
+						\node[font=\normalsize]at(3,-1.6){$(b)$};
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{$(a)$~Stato di sollecitazione: tratto
+				spesso le aste compresse (puntoni $AD$, $DE$,
+				$BE$, $EC$), tratto sottile le aste tese
+				(tiranti $AB$, $BC$, $DB$).
+				$(b)$~Sezione di Ritter sul pannello centrale:
+				il taglio attraversa $AB$, $DB$ ed $DE$. I poli
+				dei due correnti coincidono con nodi della
+				travatura, $P_{DE}\equiv B$ e $P_{AB}\equiv D$;
+				poiché i correnti $AB$ e $DE$ sono paralleli,
+				il polo della diagonale $DB$ è all'infinito e
+				$N_{DB}$ si ricava dall'equilibrio alla
+				traslazione verticale.}
+			\label{fig:tre_maglie_soluzione}
+		\end{figure}

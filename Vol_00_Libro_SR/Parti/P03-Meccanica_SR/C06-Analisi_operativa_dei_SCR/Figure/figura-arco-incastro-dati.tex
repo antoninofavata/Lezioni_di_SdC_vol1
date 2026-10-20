@@ -1,0 +1,167 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\R{2.0}
+			\def\arr{0.55}
+			
+			% ============================================================
+			% PANNELLO (a) — Dato cinematico
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% semiarchi
+				\draw[line width=1.5pt] (-\R,0)
+				arc[start angle=180, end angle=90, radius=\R];
+				\draw[line width=1.5pt] (0,\R)
+				arc[start angle=90, end angle=0, radius=\R];
+				
+				
+				% incastro in A (suolo orizzontale + tratteggio obliquo verso il basso)
+				\draw[thick] (-\R-0.38, 0) -- (-\R+0.38, 0);
+				\foreach \x in {-0.28,-0.14,0,0.14,0.28}{
+					\draw[thin] (-\R+\x, 0) -- (-\R+\x-0.13, -0.20);
+				}
+				
+				
+				% carrello verticale in B (triangolo + 2 ruote + suolo + tratteggio)
+				\draw[thick] (\R,0) -- (\R-0.28,-0.48)
+				-- (\R+0.28,-0.48) -- cycle;
+				\draw[thick] (\R-0.18,-0.55) circle (0.08);
+				\draw[thick] (\R+0.18,-0.55) circle (0.08);
+				\draw[thick] (\R-0.38,-0.65) -- (\R+0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\R+\x,-0.65) -- (\R+\x-0.12,-0.83);
+				}
+				
+				% anellino in B (perno tra corpo e carrello)
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\R,0) {};
+				
+				% cerniera interna in C — perno unico
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,\R) {};
+				
+				% etichette punti
+				\node[left, font=\scriptsize] at (-\R-0.22,+0.15)
+				{$A \!\equiv\! O_1$};
+				\node[left, font=\scriptsize] at (\R,+0.20)
+				{$B \!\equiv\! O_2$};
+				\node[above, font=\scriptsize] at (0,\R+0.10) {$C$};
+				
+				% etichette corpi (esterne, parte bassa per non collidere)
+				\node[font=\small] at ({(\R+0.35)*cos(150)},{(\R+0.35)*sin(150)})
+				{$\mathcal{C}_1$};
+				\node[font=\small] at ({(\R+0.35)*cos(30)},{(\R+0.35)*sin(30)})
+				{$\mathcal{C}_2$};
+				
+				
+				% retta ausiliaria da A all'origine di bar{v}_A
+				\draw[gray!50, thin] (-\R,0) -- (-\R+0.50,0);
+				% cedimento bar{v}_A verso il basso (decentrato a destra dell'incastro)
+				\draw[->, thick] (-\R+0.50,0) -- (-\R+0.50,-\arr)
+				node[right, font=\scriptsize] {$\bar{v}_A$};
+				
+				% retta ausiliaria da B all'origine di bar{v}_B
+				\draw[gray!50, thin] (\R,0) -- (\R+0.55,0);
+				% cedimento bar{v}_B verso l'alto (decentrato a destra del carrello)
+				\draw[->, thick] (\R+0.55,0) -- (\R+0.55,\arr)
+				node[left, font=\scriptsize] {$\bar{v}_B$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (0,-0.50) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — Dato statico
+			% ============================================================
+			\begin{scope}[xshift=7.0cm]
+				
+				% semiarchi
+				\draw[line width=1.5pt] (-\R,0)
+				arc[start angle=180, end angle=90, radius=\R];
+				\draw[line width=1.5pt] (0,\R)
+				arc[start angle=90, end angle=0, radius=\R];
+				
+				% incastro in A (suolo orizzontale + tratteggio obliquo verso il basso)
+				\draw[thick] (-\R-0.38, 0) -- (-\R+0.38, 0);
+				\foreach \x in {-0.28,-0.14,0,0.14,0.28}{
+					\draw[thin] (-\R+\x, 0) -- (-\R+\x-0.13, -0.20);
+				}
+				
+				% carrello verticale in B
+				\draw[thick] (\R,0) -- (\R-0.28,-0.48)
+				-- (\R+0.28,-0.48) -- cycle;
+				\draw[thick] (\R-0.18,-0.55) circle (0.08);
+				\draw[thick] (\R+0.18,-0.55) circle (0.08);
+				\draw[thick] (\R-0.38,-0.65) -- (\R+0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\R+\x,-0.65) -- (\R+\x-0.12,-0.83);
+				}
+				
+				% anellino in B (perno tra corpo e carrello)
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\R,0) {};
+				
+				
+				% cerniera interna in C
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,\R) {};
+				
+				% etichette punti
+				\node[left, font=\scriptsize] at (-\R-0.22,+0.15)
+				{$A \!\equiv\! O_1$};
+				\node[left, font=\scriptsize] at (\R,+0.20)
+				{$B \!\equiv\! O_2$};
+				\node[above, font=\scriptsize] at (0,\R+0.10) {$C$};
+				
+				% etichette corpi
+				\node[font=\small] at ({(\R+0.35)*cos(150)},{(\R+0.35)*sin(150)}) {$\mathcal{C}_1$};
+				\node[font=\small] at ({(\R+0.35)*cos(30)},{(\R+0.35)*sin(30)})	{$\mathcal{C}_2$};
+				
+				% coppia mu antioraria su C_1 (centro asse C_1, a 135°)
+				\node[circle, fill=black, inner sep=0pt, minimum size=2pt]
+				at ({\R*cos(135)},{\R*sin(135)}) {};
+				\draw[->, thick]
+				({\R*cos(135)+0.30},{\R*sin(135)+0.05})
+				arc[start angle=10, end angle=310, radius=0.30];
+				\node[font=\scriptsize]
+				at ({\R*cos(135)+0.55},{\R*sin(135)+0.10}) {$\mu$};
+				
+				% forza F su C_2 a distanza orizzontale R/2 da B
+				% P = (R - R/2, R*sin(60)) = (R/2, R*sqrt(3)/2)
+				\node[circle, fill=black, inner sep=0pt, minimum size=2pt]
+				at ({\R/2},{\R*0.866}) {};
+				\draw[->, thick]
+				({\R/2},{\R*0.866+\arr}) -- ({\R/2},{\R*0.866});
+				\node[font=\scriptsize]
+				at ({\R/2-0.20},{\R*0.866+\arr-0.10}) {$F$};
+				\node[font=\scriptsize]
+				at ({\R/2},{\R*0.866-0.25}) {$P$};
+				
+				% linea tratteggiata grigia da B a P (per evidenziare la distanza R/2)
+				\draw[gray!50,  thin] (\R,{\R*0.866}) -- ({\R/2},{\R*0.866});
+				\draw[gray!50,  thin] (\R,0) -- (\R,{\R*0.866});
+				\node[gray!70, font=\scriptsize] at ({(\R+\R/2)/2},{\R*0.866+0.18})
+				{$R/2$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (0,-0.50) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Arco a tutto sesto con incastro: poli
+			$O_1 \equiv A$ e $O_2 \equiv B$.
+			\emph{(a)}~Dato cinematico: cedimento
+			verticale $\bar{v}_A$ verso il basso
+			all'incastro in $A$ e cedimento verticale
+			$\bar{v}_B$ verso l'alto al carrello in $B$.
+			\emph{(b)}~Dato statico: coppia $\mu$
+			antioraria su $\mathcal{C}_1$ e forza
+			verticale $F$ verso il basso su
+			$\mathcal{C}_2$, a distanza orizzontale
+			$R/2$ da $B$.}
+		\label{fig:arco_incastro_dati}
+	\end{figure}

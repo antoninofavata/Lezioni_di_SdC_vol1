@@ -1,0 +1,132 @@
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		\def\Lel{1.0}
+		\def\base{3.0}   % dimensione orizzontale del rettangolo
+		\def\altezza{2.0} % dimensione verticale del rettangolo
+		\def\dglifo{0.24}
+		\def\Wpiatto{0.40}
+		
+		
+		% ============================================================
+		% PANNELLO (a) — anello libero (sottostruttura interna)
+		% ============================================================
+		
+		\begin{scope}[xshift=0cm]
+			
+			\def\dglifo{0.24}    % spessore verticale del glifo (gap tra i piatti)
+			\def\Wpiatto{0.40}   % semi-larghezza dei piatti del glifo
+			
+			% --- C_1: lato sinistro + lato superiore (L rovesciata) ---
+			\draw[line width=1.5pt] (0,0) -- (0,\altezza) -- (\base,\altezza);
+			
+			% --- C_3: lato inferiore = piatto inferiore del glifo
+			%          si estende da (0,0) a (\base + Wpiatto, 0) ---
+			\draw[line width=1.5pt] (0,0) -- ({\base+\Wpiatto},0);
+			
+			% --- C_2: piatto superiore del glifo + asta verticale
+			\draw[line width=1.5pt] ({\base-\Wpiatto},\dglifo)
+			-- ({\base+\Wpiatto},\dglifo);
+			\draw[line width=1.5pt] (\base,\dglifo) -- (\base,\altezza);
+			
+			% --- rotelle del glifo (tra i piatti, a quota dglifo/2) ---
+			\draw[thick] ({\base-0.15},{\dglifo/2}) circle (0.08);
+			\draw[thick] ({\base+0.15},{\dglifo/2}) circle (0.08);
+			
+			% --- cerniera interna C_31 in (0,0): cerchio bianco ---
+			\draw[fill=white, thick] (0,0) circle (2.5pt);
+			
+			% --- cerniera interna C_12 in (\base, \altezza): cerchio bianco ---
+			\draw[fill=white, thick] (\base,\altezza) circle (2.5pt);
+			
+			% --- etichette dei corpi ---
+			\node[font=\scriptsize] at (-0.30,{\altezza/2})        {$\mathcal{C}_1$};
+			\node[font=\scriptsize] at ({\base+0.30},{\altezza/2}) {$\mathcal{C}_2$};
+			\node[font=\scriptsize] at ({\base/2},-0.30)           {$\mathcal{C}_3$};
+			
+			% --- etichette dei centri di rotazione relativi ---
+			\node[font=\scriptsize, below]  at (0,0)             {$C_{31}$};
+			\node[font=\scriptsize, above] at (\base,\altezza)  {$C_{12}$};
+			
+			% --- C_{23}: punto improprio in direzione verticale ---
+			\draw[->, gray!60, thin] ({\base+\Wpiatto+0.30},{\dglifo/2})-- ({\base+\Wpiatto+0.30},{\altezza+0.30});
+			\node[font=\scriptsize,  above]	at ({\base+\Wpiatto+0.30},{\altezza+0.30})	{$C_{23}^{\infty}$};
+			
+			% --- didascalia del pannello ---
+			\node[font=\scriptsize] at ({\base/2},-1.00)
+			{(a) anello libero, $\nu_{\rm loc}=0$};
+			
+		\end{scope}
+		
+		% ============================================================
+		% PANNELLO (b) — anello vincolato al suolo
+		% ============================================================
+		\begin{scope}[xshift={5cm}]
+			
+			% --- C_1: lato sinistro + lato superiore ---
+			\draw[line width=1.5pt] (0,0) -- (0,\altezza) -- (\base,\altezza);
+			
+			% --- C_3: lato inferiore = piatto inferiore del glifo ---
+			\draw[line width=1.5pt] (0,0) -- ({\base+\Wpiatto},0);
+			
+			% --- C_2: piatto superiore del glifo + asta verticale ---
+			\draw[line width=1.5pt] ({\base-\Wpiatto},\dglifo)
+			-- ({\base+\Wpiatto},\dglifo);
+			\draw[line width=1.5pt] (\base,\dglifo) -- (\base,\altezza);
+			
+			% --- rotelle del glifo ---
+			\draw[thick] ({\base-0.15},{\dglifo/2}) circle (0.08);
+			\draw[thick] ({\base+0.15},{\dglifo/2}) circle (0.08);
+			
+			% --- cerniere interne C_31 e C_12 ---
+			\draw[fill=white, thick] (0,0) circle (2.5pt);
+			\draw[fill=white, thick] (\base,\altezza) circle (2.5pt);
+			
+			% ============================================================
+			% --- CERNIERA ESTERNA in A (sul lato sinistro di C_1, a y=altezza/2) ---
+			% ============================================================
+			% triangolo della cerniera (vertice in A, base più a sinistra)
+			\draw[thick] (0,{\altezza/2}) -- (-0.38,{\altezza/2-0.22})	-- (-0.38,{\altezza/2+0.22}) -- cycle;
+			% suolo verticale (linea verticale a sinistra del triangolo)
+			\draw[thick] (-0.38,{\altezza/2-0.32}) -- (-0.38,{\altezza/2+0.32});
+			% hatching verticale (segmentini obliqui sulla linea del suolo)
+			\foreach \y in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (-0.38,{\altezza/2+\y}) -- (-0.52,{\altezza/2+\y-0.10});			}
+			
+			% mezzaluna in A: si apre verso sinistra (verso il vincolo)
+			\fill[white] (0,{\altezza/2+0.08}) arc(90:270:0.08) -- cycle;
+			\draw[thick] (0,{\altezza/2+0.08}) arc(90:270:0.08);
+			
+			% ============================================================
+			% --- CARRELLO in B (sul lato inferiore di C_3, in x=base/2), asse verticale ---
+			% Triangolo rivolto in BASSO (fuori da C_3), base in basso, hatching sotto
+			% ============================================================
+			\draw[thick] ({\base/2},0) -- ({\base/2-0.22},-0.38) -- ({\base/2+0.22},-0.38) -- cycle;
+			\draw[thick] ({\base/2-0.15},-0.44) circle (0.07);
+			\draw[thick] ({\base/2+0.15},-0.44) circle (0.07);
+			\draw[thick] ({\base/2-0.32},-0.54) -- ({\base/2+0.32},-0.54);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] ({\base/2+\x},-0.54) -- ({\base/2+\x-0.10},-0.68);			}
+			% mezzaluna in B: la trave C_3 continua attraverso B
+			\fill[white] ({\base/2-0.08},0) arc(180:360:0.08) -- cycle;
+			\draw[thick] ({\base/2-0.08},0) arc(180:360:0.08);
+			
+			
+			% --- etichette dei corpi ---
+			\node[font=\scriptsize] at (0.30,{\altezza/4})         {$\mathcal{C}_1$};
+			\node[font=\scriptsize] at ({\base+0.30},{\altezza/2}) {$\mathcal{C}_2$};
+			\node[font=\scriptsize] at ({\base/2+0.70},-0.20)       {$\mathcal{C}_3$};
+			
+			% --- etichette dei vincoli esterni ---
+			\node[font=\scriptsize, right] at (0.02,{\altezza/2}) {$A$};
+			\node[font=\scriptsize, above] at ({\base/2},-0.)  {$B$};
+			
+			% --- didascalia del pannello ---
+			\node[font=\scriptsize] at ({\base/2},-1.30)
+			{(b) anello vincolato, $\nu=0$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Anello a tre cerniere realizzato come rettangolo	a tre corpi con due cerniere interne proprie	($C_{31}$, $C_{12}$) e un glifo orizzontale di centro	improprio $C_{23}^{\infty}$. (a)~Sottostruttura	libera ($\nu=3$, anello internamente determinato);	(b)~vincolata al suolo da cerniera in $A$ e	carrello verticale in $B$ ($\nu=0$, isostatico).}
+	\label{fig:catalogo_3corpi}
+\end{figure}

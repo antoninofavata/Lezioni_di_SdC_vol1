@@ -1,0 +1,63 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth,
+		x={(0.85cm,0cm)}, y={(0cm,0.85cm)}, z={(0.425cm,0.255cm)},% proiezione obliqua (ax=0.5, ay=0.30) a scala 0.85
+		vec/.style={->,thick},
+		aux/.style={->,thin,gray!60},
+		lact/.style={gray!55,thin,dashed},
+		pt/.style={circle,fill,inner sep=1.1pt}]
+		% ---- punti principali (coordinate: orizz, vert, profondita' [recede in alto a dx]) ----
+		\coordinate (O)   at (0, 0, 0);            % O = r intersezione sigma
+		\coordinate (P)   at (2.6, 0, 0.9);        % punto di applicazione, NEL piano
+		\coordinate (Pq)  at (3.1, 0, 2.0);        % P + v_perp (nel piano)
+		\coordinate (Pv)  at (3.1, 1.0, 2.0);      % P + v
+		\coordinate (Hf)  at (1.816, 0, -0.825);   % piede del braccio d
+		\coordinate (La)  at (1.55, 0, -1.41);     % linea d'azione di v_perp, estremo a
+		\coordinate (Lb)  at (3.175, 0, 2.165);    % estremo b
+		\coordinate (Ra)  at (0, 1.1, 0);          % O + a_r
+		\coordinate (Re)  at (0, 2.6, 0);          % estremo alto di r
+		% ---- piano \pi per P ortogonale a r ----
+		\draw[gray!60] (-2.1, 0, -2.6) -- (4.5, 0, -2.6) -- (4.5, 0, 2.8) -- (-2.1, 0, 2.8) -- cycle;
+		%\draw[gray!60] (-2.1, 0, -2.1) -- (4.5, 0, -2.1) -- (4.5, 0, 2.8)	-- (-2.1, 0, 2.8) -- cycle;
+		\node[gray!75] at (-1.6, 0, -1.8) {$\pi$};
+		% ---- retta r (perfora il piano in O) e versore ----
+		\draw[line width=0.6pt] (0, -1.0, 0) -- (Re) node[above=1pt] {$r$};
+		\coordinate (raA1) at ($(O)!2.4mm!(Re)$);
+		\coordinate (raA3) at ($(O)!2.4mm!(Hf)$);
+		\draw[line width=0.5pt] (raA1) -- ($(raA1)+(raA3)-(O)$) -- (raA3);
+		\draw[vec] (O) -- (Ra) node[pos=0.95,anchor=east,xshift=-3pt] {$\ab_r$};
+		
+		% ---- verso positivo di rotazione attorno a r (mano destra, antiorario da sopra) ----
+		\draw[thin, postaction={decorate},
+		decoration={markings, mark=at position 1 with {\arrow{Stealth}}}]
+		plot[domain=15:255,samples=90] ({0.52*cos(\x)}, 0.5, {0.52*sin(\x)});
+		
+		
+		% ---- linea d'azione di v_perp nel piano e braccio d ----
+		\draw[lact] (La) -- (Lb);
+		\draw[thin] (O) -- (Hf) node[midway,anchor=south,yshift=2pt,font=\small] {$d$};
+		\coordinate (raB1) at ($(Hf)!2.4mm!(Lb)$);
+		\coordinate (raB3) at ($(Hf)!2.4mm!(O)$);
+		\draw[line width=0.5pt] (raB1) -- ($(raB1)+(raB3)-(Hf)$) -- (raB3);
+		% ---- decomposizione di v in P: v_perp nel piano, v_par lungo r ----
+		\draw[aux] (Pq) -- (Pv) node[midway,anchor=west,xshift=2pt,gray!75,font=\footnotesize] {$\vb_\parallel$};
+		\draw[vec] (P) -- (Pv) node[pos=0.55,anchor=south east,xshift=-1pt] {$\vb$};
+		\draw[vec] (P) -- (Pq) node[pos=0.55,anchor=north west,xshift=2pt,yshift=-1pt] {$\vb_\perp$};
+		% ---- punti ----
+		\node[pt] at (O) {};
+		\node[anchor=north east,xshift=-2pt] at (O) {$O$};
+		\node[pt] at (P) {};
+		\node[below right=1pt] at (P) {$P$};
+		\node[pt] at (Hf) {};
+		\node[anchor=north west,xshift=2pt,yshift=1pt] at (Hf) {$H$};
+	\end{tikzpicture}
+	\caption[Momento assiale come momento piano]{Riduzione al piano del
+		momento assiale: per la doppia invarianza si sceglie il piano
+		$\pi$ per $P$ ortogonale a $r$ e, come polo, l'intersezione
+		$O = r \cap \pi$. Decomposto $\vb = \vb_\parallel + \vb_\perp$,
+		la componente parallela non contribuisce e $\mu_r = |\vb_\perp|\,d$
+		è il momento piano di $\vb_\perp$ rispetto a $O$, positivo se la
+		rotazione indotta è concorde con $\ab_r$ secondo la regola della
+		mano destra.}
+	\label{f:momento_assiale_piano}
+\end{figure}

@@ -1,0 +1,120 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		trave/.style={line width=2.0pt, line cap=round,
+			line join=round, black},
+		fibra/.style={line width=0.8pt, dashed, gray!50,
+			line cap=round},
+		carico/.style={->, >=stealth, line width=1.2pt, black},
+		reaz/.style={->, >=stealth, line width=1.2pt, gray!70},
+		terra/.style={line width=0.8pt, black},
+		nodoV/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt,
+			line width=0.9pt},
+		quota/.style={|<->|, >=stealth, thin, gray!60},
+		]
+		
+		\def\L{3.0}   % lunghezza asta in cm
+		
+		%% ── Coordinate nodali ───────────────────────────────
+		\coordinate (A) at (0,    0);
+		\coordinate (B) at (\L,   0);
+		\coordinate (C) at (2*\L, 0);
+		\coordinate (D) at (\L,   \L);
+		\coordinate (E) at (2*\L, \L);
+		
+		%		%% ── Fibre inferiori (tratteggiate) ──────────────────
+		%		%% Tratti orizzontali: sotto la trave
+		%		\draw[fibra] ($(A)+(0,-0.12)$)   -- ($(B)+(0,-0.12)$);
+		%		\draw[fibra] ($(B)+(0,-0.12)$)   -- ($(C)+(0,-0.12)$);
+		%		\draw[fibra] ($(D)+(0,-0.12)$)   -- ($(E)+(0,-0.12)$);
+		%		%% Tratto verticale BD: a destra della trave
+		%		\draw[fibra] ($(B)+(0.12,0.00)$) -- ($(D)+(0.12,0.00)$);
+		
+		%% ── Travi ───────────────────────────────────────────
+		\draw[trave] (A) -- (B);
+		\draw[trave] (B) -- (C);
+		\draw[trave] (B) -- (D);
+		\draw[trave] (D) -- (E);
+		
+		%% ── Vincolo: cerniera in A ──────────────────────────
+		\draw[terra] (A) -- ++(-0.30,-0.52) -- ++(0.60,0) -- cycle;
+		\draw[terra] (-0.40,-0.52) -- (0.40,-0.52);
+		\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}
+		\draw[very thin, black] (\x,-0.52) -- ++(-0.12,-0.15);
+		
+		%% ── Vincolo: carrello verticale in C ────────────────
+		\draw[terra] (C) -- ++(-0.30,-0.42) -- ++(0.60,0) -- cycle;
+		\draw[terra] ($(C)+(-0.40,-0.42)$) -- ($(C)+(0.40,-0.42)$);
+		\draw[terra] ($(C)+(-0.22,-0.58)$) circle (3.2pt);
+		\draw[terra] ($(C)+( 0.22,-0.58)$) circle (3.2pt);
+		\draw[terra] ($(C)+(-0.40,-0.74)$) -- ($(C)+(0.40,-0.74)$);
+		\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}
+		\draw[very thin, black] ($(C)+(\x,-0.74)$) -- ++(-0.12,-0.15);
+		
+		%% ── Nodi vincolati: cerchio bianco sopra i vincoli ──
+		\node[nodoV] at (A) {};
+		\node[nodoV] at (C) {};
+		
+		%% ── Reazioni vincolari (code in A e C, punte in alto)
+		\draw[reaz]
+		($(A)+(0,0.00)$) -- ($(A)+(0,1.00)$)
+		node[midway, right, font=\small, gray!80]
+		{$V_A$};
+		\draw[reaz]
+		($(C)+(0,0.00)$) -- ($(C)+(0,1.00)$)
+		node[midway, right, font=\small, gray!80]
+		{$Y_C$};
+		\draw[reaz]
+		($(A)+(-1.00,0)$) -- ($(A)+(0,0)$)
+		node[midway, below, font=\small, gray!80]
+		{$H_A $};
+		
+		%% ── Carico concentrato su AB ────────────────────────
+		\draw[carico]
+		($(A)!0.5!(B)+(0,1.10)$) -- ($(A)!0.5!(B)+(0,0.08)$);
+		\node[above, font=\small]
+		at ($(A)!0.5!(B)+(0,1.10)$) {$p\ell$};
+		
+		%% ── Carico distribuito su DE ────────────────────────
+		\draw[black, line width=0.8pt]
+		($(D)+(0,0.70)$) -- ($(E)+(0,0.70)$);
+		\foreach \t in {0.00,0.17,0.34,0.50,0.67,0.84,1.00} {
+			\draw[carico, line width=0.8pt]
+			($(D)!\t!(E)+(0,0.70)$) -- ($(D)!\t!(E)+(0,0.08)$);
+		}
+		%% Linea inferiore del carico distribuito (altezza punte)
+		\draw[black, line width=0.5pt]
+		($(D)+(0,0.08)$) -- ($(E)+(0,0.08)$);
+		\node[above, font=\small]
+		at ($(D)!0.5!(E)+(0,0.70)$) {$p$};
+		
+		%% ── Etichette nodi ──────────────────────────────────
+		\node[above left,  font=\small] at (A) {$A$};
+		\node[above left,       font=\small] at (B) {$B$};
+		\node[above left, font=\small] at (C) {$C$};
+		\node[left,        font=\small] at (D) {$D$};
+		\node[right,       font=\small] at (E) {$E$};
+		
+		%% ── Quote ───────────────────────────────────────────
+		%% Quota AB: sotto la struttura
+		\draw[quota] ($(A)+(0,-1.30)$) -- ($(B)+(0,-1.30)$)
+		node[midway, above, font=\small] {$\ell$};
+		%% Quota BC: sotto la struttura
+		\draw[quota] ($(B)+(0,-1.30)$) -- ($(C)+(0,-1.30)$)
+		node[midway, above, font=\small] {$\ell$};
+		%% Quota BD: a sinistra della reazione V_A,
+		%% posizionata tra x=-1.20 e x=-1.20+\L
+		\draw[quota] (-1.20, 0) -- (-1.20, \L)
+		node[midway, right, font=\small] {$\ell$};
+		
+	\end{tikzpicture}
+	\caption{Trave ramificata con connessioni rigide in
+		$B$ e $D$. Cerniera in $A$, carrello
+		verticale in $C$. Carico concentrato $p\ell$
+		nel punto medio di $AB$; carico distribuito
+		uniforme $p$ sul tratto $DE$.
+		Le linee tratteggiate indicano le fibre inferiori
+		dei quattro tratti.}
+	\label{fig:trave_ramificata}
+\end{figure}

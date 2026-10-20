@@ -1,0 +1,90 @@
+\begin{figure}[!ht]
+	\centering
+	\resizebox{0.70\textwidth}{!}{%
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+
+		\def\Lel{1.0}
+
+		% Coordinate (in unità \Lel):
+		%   A = 0        cerniera esterna, estremo sinistro di \mathcal{C}_1
+		%   B = 2        carrello esterno, appoggio intermedio di \mathcal{C}_1
+		%   C = 3        cerniera interna, giunzione \mathcal{C}_1--\mathcal{C}_2
+		%   D = 5        carrello esterno, estremo destro di \mathcal{C}_2
+
+		% ----------------------------------------------------------------
+		%  Corpi (disegnati prima dei vincoli per la corretta sovrapposizione)
+		% ----------------------------------------------------------------
+		\draw[line width=1.5pt] (0,0)       -- (3*\Lel,0);   % \mathcal{C}_1
+		\draw[line width=1.5pt] (3*\Lel,0) -- (5*\Lel,0);   % \mathcal{C}_2
+
+		% ----------------------------------------------------------------
+		%  Cerniera esterna in A
+		% ----------------------------------------------------------------
+		\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+		\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+			\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+		}
+		\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (0,0) {};
+
+		% ----------------------------------------------------------------
+		%  Carrello esterno in B (asse verticale, ruote verso il basso)
+		% ----------------------------------------------------------------
+		\draw[thick] (2*\Lel,0) -- (2*\Lel-0.22,-0.38)
+			-- (2*\Lel+0.22,-0.38) -- cycle;
+		\draw[thick] (2*\Lel-0.15,-0.44) circle (0.07);
+		\draw[thick] (2*\Lel+0.15,-0.44) circle (0.07);
+		\draw[thick] (2*\Lel-0.32,-0.54) -- (2*\Lel+0.32,-0.54);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+			\draw[thin] (2*\Lel+\x,-0.54) -- (2*\Lel+\x-0.10,-0.68);
+		}
+		\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (2*\Lel,0) {};
+
+		% ----------------------------------------------------------------
+		%  Carrello esterno in D (asse verticale, ruote verso il basso)
+		% ----------------------------------------------------------------
+		\draw[thick] (5*\Lel,0) -- (5*\Lel-0.22,-0.38)
+			-- (5*\Lel+0.22,-0.38) -- cycle;
+		\draw[thick] (5*\Lel-0.15,-0.44) circle (0.07);
+		\draw[thick] (5*\Lel+0.15,-0.44) circle (0.07);
+		\draw[thick] (5*\Lel-0.32,-0.54) -- (5*\Lel+0.32,-0.54);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+			\draw[thin] (5*\Lel+\x,-0.54) -- (5*\Lel+\x-0.10,-0.68);
+		}
+		\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (5*\Lel,0) {};
+
+		% ----------------------------------------------------------------
+		%  Cerniera interna in C
+		%  (disegnata dopo i corpi, copre la linea di giunzione)
+		% ----------------------------------------------------------------
+		\draw[fill=white, thick] (3*\Lel,0) circle (2.5pt);
+
+		% ----------------------------------------------------------------
+		%  Etichette nodi
+		% ----------------------------------------------------------------
+		\node[above left,  font=\scriptsize] at (0,0)      {$A$};
+		\node[above,       font=\scriptsize] at (2*\Lel,0) {$B$};
+		\node[above,       font=\scriptsize] at (3*\Lel,0) {$C$};
+		\node[above right, font=\scriptsize] at (5*\Lel,0) {$D$};
+
+		% ----------------------------------------------------------------
+		%  Etichette corpi
+		% ----------------------------------------------------------------
+		\node[font=\small] at (1.5*\Lel, 0.42) {$\mathcal{C}_1$};
+		\node[font=\small] at (4.0*\Lel, 0.42) {$\mathcal{C}_2$};
+
+	\end{tikzpicture}
+	}
+	\caption{Trave Gerber elementare ($n_c=2$, $m=6$, $\nu=0$):
+		corpo \emph{portante}~$\mathcal{C}_1$ (cerniera in~$A$, carrello
+		in~$B$, $m_1=3$, $\nu_1=0$) e corpo \emph{appendice}~$\mathcal{C}_2$
+		(cerniera interna in~$C$, carrello in~$D$, $m_2=3$, $\nu_2=0$
+		una volta fissato~$\mathcal{C}_1$).
+		La collinearità di $A$, $B$, $C$, $D$ sulla stessa retta
+		\emph{non} costituisce degenerazione: la dipendenza tra i corpi
+		è \emph{sequenziale} (non reciproca).}
+	\label{fig:catalogo_gerber}
+\end{figure}

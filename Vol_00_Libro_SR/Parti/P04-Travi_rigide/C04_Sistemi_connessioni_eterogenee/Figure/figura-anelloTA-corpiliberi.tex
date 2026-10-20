@@ -1,0 +1,132 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.65\linewidth}{!}{%
+				\begin{tikzpicture}[x=2.3cm, y=2.3cm,
+					trave/.style  ={line width=2.0pt, line cap=round, line join=round, black},
+					carico/.style ={-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt},
+					inc/.style    ={-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt, black},
+					nota/.style   ={-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt, gray!70},
+					comp/.style   ={gray!60, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+					guida/.style  ={gray!40, line width=0.4pt, dotted},
+					bordo/.style  ={line width=0.5pt},
+					proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+					terra/.style  ={line width=0.7pt},
+					nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+					et/.style     ={font=\footnotesize},
+					ets/.style    ={font=\scriptsize}]
+					
+					\pgfmathsetmacro{\tx}{ 0.70711} \pgfmathsetmacro{\ty}{-0.70711}
+					\pgfmathsetmacro{\mx}{-0.70711} \pgfmathsetmacro{\my}{-0.70711}
+					\pgfmathsetmacro{\ux}{0.44721}  \pgfmathsetmacro{\uy}{0.89443}
+					
+					%% posizioni esplose
+					\coordinate (Nc) at (0.5,1);                    % nodo C
+					\coordinate (Ap) at (-0.880,-0.760);            % biella AC
+					\coordinate (Cp) at (-0.380, 0.240);
+					\coordinate (C2) at (-0.38,1);   \coordinate (E2) at (-0.38,2);   % biella CE
+					\coordinate (C3) at (0.5,0.05);  \coordinate (D3) at (1.5,0.05);  % asta CD
+					\coordinate (G3) at (1.0,0.05);
+					\coordinate (Ee) at (0.5,2); \coordinate (De) at (1.5,1); \coordinate (Be) at (2.5,0);
+					
+					%% ── linee di richiamo delle interfacce ──────────────────
+					\draw[guida] (Cp) -- (Nc);   \draw[guida] (C2) -- (Nc);
+					\draw[guida] (C3) -- (Nc);   \draw[guida] (E2) -- (Ee);
+					\draw[guida] (D3) -- (De);
+					
+					%% ══ biella AC ══
+					\draw[trave] (Ap) -- (Cp);
+					\draw[terra] (Ap)--($(Ap)+(-0.083,-0.143)$)--($(Ap)+(0.083,-0.143)$)--cycle;
+					\draw[terra] ($(Ap)+(-0.128,-0.143)$)--($(Ap)+(0.128,-0.143)$);
+					\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+					\draw[terra, line width=0.4pt] ($(Ap)+(\s,-0.143)$)--++(-0.038,-0.053);
+					\node[nodoV] at (Ap) {};  \node[nodoV] at (Cp) {};
+					\node[et, left=4pt] at (Ap) {$A$};
+					\draw[nota] (Ap) -- ++(0.44,0);  \node[et, below] at ($(Ap)+(0.30,-0.03)$) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (Ap) -- ++(0,0.44);  \node[et, left]  at ($(Ap)+(-0.02,0.26)$) {$\tfrac{1}{5}p\ell$};
+					\draw[nota] (Cp) -- ++(-0.42,0);  \node[et, above] at (-0.60,0.26) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (Cp) -- ++(0,-0.42);  \node[et, right] at (-0.36,0.04) {$\tfrac{1}{5}p\ell$};
+					
+					%% ══ biella CE ══
+					\draw[trave] (C2) -- (E2);
+					\node[nodoV] at (C2) {}; \node[nodoV] at (E2) {};
+					\draw[inc] (C2) -- ++(0,-0.40);  \draw[inc] (E2) -- ++(0,0.40);
+					\node[et, left] at (-0.42,1.5) {$N_{CE}$};
+					
+					%% ══ nodo C isolato ══
+					\node[nodoV, minimum size=5.6pt] at (Nc) {};
+					\draw[nota] (Nc) -- ++(0.48,0);   \node[et, below] at (0.86,0.98) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (0.548,1) -- ++(0,0.50);
+					\node[et, right] at (0.575,1.38) {$\tfrac{1}{5}p\ell$};
+					\draw[inc]  (0.452,1) -- ++(0,0.38); \node[et, left] at (0.425,1.26) {$N_{CE}$};
+					\draw[inc]  (Nc) -- ++(-0.40,0);  \node[et, below] at (0.26,0.99) {$H_C$};
+					\draw[inc]  (Nc) -- ++(0,-0.40);  \node[et, right] at (0.54,0.70) {$V_C$};
+					
+					%% ══ asta CD ══
+					\pgfmathsetmacro{\rw}{0.0387}   \pgfmathsetmacro{\spess}{0.016}
+					\pgfmathsetmacro{\bw}{1.25*\rw} \pgfmathsetmacro{\ap}{0.15}
+					\pgfmathsetmacro{\offw}{\spess+\rw}  \pgfmathsetmacro{\offp}{\spess+2*\rw}
+					\pgfmathsetmacro{\Dgx}{1.5+\offp*\mx}  \pgfmathsetmacro{\Dgy}{0.05+\offp*\my}
+					\pgfmathsetmacro{\sQ}{(0.05-\Dgy)/\ty}
+					\pgfmathsetmacro{\Qx}{\Dgx+\tx*\sQ}
+					\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\tx} \pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\ty}
+					\pgfmathsetmacro{\Wx}{1.5+\offw*\mx}   \pgfmathsetmacro{\Wy}{0.05+\offw*\my}
+					\pgfmathsetmacro{\Pax}{\Pcx+\ap*\tx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\ty}
+					\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\tx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\ty}
+					\pgfmathsetmacro{\Wax}{\Wx+\bw*\tx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\ty}
+					\pgfmathsetmacro{\Wbx}{\Wx-\bw*\tx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\ty}
+					\draw[comp] (1.10,0.45) -- (1.90,-0.35);
+					\node[ets, gray!60, rotate=-45, anchor=west] at (1.86,-0.31) {piano di scorrimento};
+					\draw[trave] (C3) -- (\Qx,0.05);
+					\draw[line width=1.2pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+					\draw[line width=0.7pt, fill=white] (\Wax,\Way) circle (2.2pt);
+					\draw[line width=0.7pt, fill=white] (\Wbx,\Wby) circle (2.2pt);
+					\node[nodoV] at (C3) {};
+					\draw[inc] (0.14,0.05) -- (0.44,0.05);  \node[et, above] at (0.28,0.04) {$H_C$};
+					\draw[inc] (0.5,-0.35) -- (0.5,-0.05);  \node[et, left] at (0.50,-0.28) {$V_C$};
+					\pgfmathsetmacro{\rc}{0.17}
+					\draw[line width=0.6pt] (G3) -- ($(G3)+(0,-\rc)$);
+					\draw[-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt]
+					($(G3)+(0,-\rc)$) arc[start angle=270, end angle=90, radius=\rc];
+					\node[et] at (0.80,-0.26) {$p\ell^2$};
+					\draw[comp] (1.86,0.41) -- (1.5,0.41) -- (1.5,0.05);
+					\node[ets, above] at (1.68,0.42) {$H_D$};
+					\node[ets, left]  at (1.55,0.26) {$V_D$};
+					\draw[inc] (1.86,0.41) -- (1.54,0.09);
+					\node[et, right] at (1.70,0.18) {$R_D$};
+					\draw[-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt]
+					({1.5+0.30*cos(160)},{0.05+0.30*sin(160)}) arc[start angle=160, end angle=255, radius=0.30];
+					\node[et] at (1.20,-0.28) {$M_D$};
+					
+					%% ══ asta EDB ══
+					\pgfmathsetmacro{\yp}{2.12}  \pgfmathsetmacro{\hp}{0.28}
+					\draw[proiez] (Ee) -- (0.5,\yp);  \draw[proiez] (1.5,1.6) -- (1.5,\yp);
+					\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+					\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+					\foreach \x in {0.5,0.625,...,1.5} \draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+					\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+					\draw[trave] (Ee) -- (Be);
+					\draw[terra] (Be)--($(Be)+(-0.083,-0.143)$)--($(Be)+(0.083,-0.143)$)--cycle;
+					\draw[terra] ($(Be)+(-0.128,-0.143)$)--($(Be)+(0.128,-0.143)$);
+					\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+					\draw[terra, line width=0.4pt] ($(Be)+(\s,-0.143)$)--++(-0.038,-0.053);
+					\node[nodoV] at (Ee) {}; \node[nodoV] at (Be) {};
+					\node[et, left=4pt] at (Ee) {$E$}; \node[et, right=4pt] at (Be) {$B$};
+					\node[et] at (1.45,0.90) {$D$};
+					\draw[inc]  (Ee) -- ++(0,-0.40);  \node[et, left] at (0.47,1.74) {$N_{CE}$};
+					\draw[inc]  (De) -- ++(0.283,0.283);
+					\node[et, right] at (1.84,1.30) {$R_D$};
+					\draw[-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt]
+					({1.5+0.30*cos(300)},{1+0.30*sin(300)}) arc[start angle=300, end angle=200, radius=0.30];
+					\node[et] at (1.32,0.62) {$M_D$};
+					\draw[nota] (Be) -- ++(-0.44,0);  \node[et, below] at (2.24,-0.03) {$\tfrac{1}{10}p\ell$};
+					\draw[nota] (Be) -- ++(0,0.60);   \node[et, right] at (2.53,0.36) {$\tfrac{4}{5}p\ell$};
+			\end{tikzpicture}}
+\caption{La partizione in corpi liberi: i quattro corpi componenti e il
+	nodo~$C$, allontanati dalle rispettive posizioni, con i tratteggini
+	puntati a ricongiungere le interfacce separate. In grigio le grandezze
+	note dal Passo~1, in nero le incognite. Le azioni assiali delle bielle
+	sono assunte positive se di trazione; $H_C$, $V_C$ e $R_D$ sono
+	riferite all'asta $CD$, e sul nodo e sull'asta $EDB$ compaiono le
+	opposte.}
+			\label{fig:anelloTA_corpiliberi}
+		\end{figure}

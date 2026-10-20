@@ -1,0 +1,166 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		scale=0.85,
+		trave/.style={line width=1.8pt, line cap=round,
+			line join=round, black},
+		etasta/.style={circle, draw=black, fill=white,
+			inner sep=1pt, font=\scriptsize,
+			line width=0.6pt},
+		inc/.style={line width=1.2pt},
+		]
+		\draw[very thin, gray!40](3.8,-0.8)--(3.8,7.0);
+		\draw[very thin, gray!40](8.2,-0.8)--(8.2,7.0);
+		
+		\def\h{1.6}
+		
+		%% ── PORTALE 1: 1 campata, 2 piani (p=1) ─────────────
+		\coordinate(P1N1) at (0.5, 0);
+		\coordinate(P1N2) at (2.5, 0);
+		\coordinate(P1N3) at (0.5, \h);
+		\coordinate(P1N4) at (2.5, \h);
+		\coordinate(P1N5) at (0.5, 2*\h);
+		\coordinate(P1N6) at (2.5, 2*\h);
+		
+		\draw[trave](P1N1)--(P1N3)--(P1N5);
+		\draw[trave](P1N2)--(P1N4)--(P1N6);
+		\draw[trave](P1N3)--(P1N4);
+		\draw[trave](P1N5)--(P1N6);
+		
+		\draw[inc](P1N1)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(P1N1)+(\x,0)$)--++(-.14,-0.17);
+		\draw[inc](P1N2)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(P1N2)+(\x,0)$)--++(-.14,-0.17);
+		
+		\node[above left, font=\scriptsize] at (P1N1){$1$};
+		\node[above right,font=\scriptsize] at (P1N2){$2$};
+		\node[left, font=\scriptsize] at (P1N3){$3$};
+		\node[right,font=\scriptsize] at (P1N4){$4$};
+		\node[left, font=\scriptsize] at (P1N5){$5$};
+		\node[right,font=\scriptsize] at (P1N6){$6$};
+		
+		\node[etasta] at ($(P1N1)!0.5!(P1N3)+(-0.30,0)$){$1$};
+		\node[etasta] at ($(P1N2)!0.5!(P1N4)+(0.30,0)$) {$2$};
+		\node[etasta] at ($(P1N3)!0.5!(P1N4)+(0,0.25)$) {$3$};
+		\node[etasta] at ($(P1N3)!0.5!(P1N5)+(-0.30,0)$){$4$};
+		\node[etasta] at ($(P1N4)!0.5!(P1N6)+(0.30,0)$) {$5$};
+		\node[etasta] at ($(P1N5)!0.5!(P1N6)+(0,0.25)$) {$6$};
+		
+		\node[font=\small,gray] at (1.5,-0.60){$p=1$};
+		
+		%% ── PORTALE 2: 1 campata, 3 piani (p=2) ─────────────
+		\def\ox{4.5}
+		
+		\coordinate(P2N1) at (\ox+0, 0);
+		\coordinate(P2N2) at (\ox+2, 0);
+		\coordinate(P2N3) at (\ox+0,   \h);
+		\coordinate(P2N4) at (\ox+2,   \h);
+		\coordinate(P2N5) at (\ox+0, 2*\h);
+		\coordinate(P2N6) at (\ox+2, 2*\h);
+		\coordinate(P2N7) at (\ox+0, 3*\h);
+		\coordinate(P2N8) at (\ox+2, 3*\h);
+		
+		\draw[trave](P2N1)--(P2N3)--(P2N5)--(P2N7);
+		\draw[trave](P2N2)--(P2N4)--(P2N6)--(P2N8);
+		\draw[trave](P2N3)--(P2N4);
+		\draw[trave](P2N5)--(P2N6);
+		\draw[trave](P2N7)--(P2N8);
+		
+		\draw[inc](P2N1)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(P2N1)+(\x,0)$)--++(-.14,-0.17);
+		\draw[inc](P2N2)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(P2N2)+(\x,0)$)--++(-.14,-0.17);
+		
+		\node[above left, font=\scriptsize] at (P2N1){$1$};
+		\node[above right,font=\scriptsize] at (P2N2){$2$};
+		\node[left, font=\scriptsize] at (P2N3){$3$};
+		\node[right,font=\scriptsize] at (P2N4){$4$};
+		\node[left, font=\scriptsize] at (P2N5){$5$};
+		\node[right,font=\scriptsize] at (P2N6){$6$};
+		\node[left, font=\scriptsize] at (P2N7){$7$};
+		\node[right,font=\scriptsize] at (P2N8){$8$};
+		
+		\node[etasta] at ($(\ox+0,0)!0.5!(\ox+0,\h)+(-0.30,0)$)    {$1$};
+		\node[etasta] at ($(\ox+2,0)!0.5!(\ox+2,\h)+(0.30,0)$)     {$2$};
+		\node[etasta] at ($(\ox+0,\h)!0.5!(\ox+2,\h)+(0,0.25)$)    {$3$};
+		\node[etasta] at ($(\ox+0,\h)!0.5!(\ox+0,2*\h)+(-0.30,0)$) {$4$};
+		\node[etasta] at ($(\ox+2,\h)!0.5!(\ox+2,2*\h)+(0.30,0)$)  {$5$};
+		\node[etasta] at ($(\ox+0,2*\h)!0.5!(\ox+2,2*\h)+(0,0.25)$){$6$};
+		\node[etasta] at ($(\ox+0,2*\h)!0.5!(\ox+0,3*\h)+(-0.30,0)$){$7$};
+		\node[etasta] at ($(\ox+2,2*\h)!0.5!(\ox+2,3*\h)+(0.30,0)$){$8$};
+		\node[etasta] at ($(\ox+0,3*\h)!0.5!(\ox+2,3*\h)+(0,0.25)$){$9$};
+		
+		\node[font=\small,gray] at (\ox+1,-0.60){$p=2$};
+		
+		%% ── PORTALE 3: 1 campata, 4 piani (p=3) ─────────────
+		\def\oxx{9.0}
+		
+		\coordinate(P3N1)  at (\oxx+0, 0);
+		\coordinate(P3N2)  at (\oxx+2, 0);
+		\coordinate(P3N3)  at (\oxx+0,   \h);
+		\coordinate(P3N4)  at (\oxx+2,   \h);
+		\coordinate(P3N5)  at (\oxx+0, 2*\h);
+		\coordinate(P3N6)  at (\oxx+2, 2*\h);
+		\coordinate(P3N7)  at (\oxx+0, 3*\h);
+		\coordinate(P3N8)  at (\oxx+2, 3*\h);
+		\coordinate(P3N9)  at (\oxx+0, 4*\h);
+		\coordinate(P3N10) at (\oxx+2, 4*\h);
+		
+		\draw[trave](P3N1)--(P3N3)--(P3N5)--(P3N7)--(P3N9);
+		\draw[trave](P3N2)--(P3N4)--(P3N6)--(P3N8)--(P3N10);
+		\draw[trave](P3N3)--(P3N4);
+		\draw[trave](P3N5)--(P3N6);
+		\draw[trave](P3N7)--(P3N8);
+		\draw[trave](P3N9)--(P3N10);
+		
+		\draw[inc](P3N1)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(P3N1)+(\x,0)$)--++(-.14,-0.17);
+		\draw[inc](P3N2)--++(-0.45,0)--++(0.90,0);
+		\foreach \x in {-0.38,-0.20,-0.02,0.16,0.34}
+		\draw[very thin]($(P3N2)+(\x,0)$)--++(-.14,-0.17);
+		
+		\node[above left, font=\scriptsize] at (P3N1) {$1$};
+		\node[above right,font=\scriptsize] at (P3N2) {$2$};
+		\node[left, font=\scriptsize] at (P3N3) {$3$};
+		\node[right,font=\scriptsize] at (P3N4) {$4$};
+		\node[left, font=\scriptsize] at (P3N5) {$5$};
+		\node[right,font=\scriptsize] at (P3N6) {$6$};
+		\node[left, font=\scriptsize] at (P3N7) {$7$};
+		\node[right,font=\scriptsize] at (P3N8) {$8$};
+		\node[left, font=\scriptsize] at (P3N9) {$9$};
+		\node[right,font=\scriptsize] at (P3N10){$10$};
+		
+		\node[etasta] at ($(\oxx+0,0)!0.5!(\oxx+0,\h)+(-0.30,0)$)     {$1$};
+		\node[etasta] at ($(\oxx+2,0)!0.5!(\oxx+2,\h)+(0.30,0)$)      {$2$};
+		\node[etasta] at ($(\oxx+0,\h)!0.5!(\oxx+2,\h)+(0,0.25)$)     {$3$};
+		\node[etasta] at ($(\oxx+0,\h)!0.5!(\oxx+0,2*\h)+(-0.30,0)$)  {$4$};
+		\node[etasta] at ($(\oxx+2,\h)!0.5!(\oxx+2,2*\h)+(0.30,0)$)   {$5$};
+		\node[etasta] at ($(\oxx+0,2*\h)!0.5!(\oxx+2,2*\h)+(0,0.25)$) {$6$};
+		\node[etasta] at ($(\oxx+0,2*\h)!0.5!(\oxx+0,3*\h)+(-0.30,0)$){$7$};
+		\node[etasta] at ($(\oxx+2,2*\h)!0.5!(\oxx+2,3*\h)+(0.30,0)$) {$8$};
+		\node[etasta] at ($(\oxx+0,3*\h)!0.5!(\oxx+2,3*\h)+(0,0.25)$) {$9$};
+		\node[etasta] at ($(\oxx+0,3*\h)!0.5!(\oxx+0,4*\h)+(-0.30,0)$){$10$};
+		\node[etasta] at ($(\oxx+2,3*\h)!0.5!(\oxx+2,4*\h)+(0.30,0)$) {$11$};
+		\node[etasta] at ($(\oxx+0,4*\h)!0.5!(\oxx+2,4*\h)+(0,0.25)$) {$12$};
+		
+		\node[font=\small,gray] at (\oxx+1,-0.60){$p=3$};
+		
+	\end{tikzpicture}
+	\caption{Tre configurazioni di telaio piano a una
+		campata: due piani ($p=1$, $n_e=6$, $n_n=6$,
+		sinistra), tre piani ($p=2$, $n_e=9$, $n_n=8$,
+		centro), quattro piani ($p=3$, $n_e=12$,
+		$n_n=10$, destra). I vincoli esterni sono
+		incastri alla base in tutti e tre i casi
+		($m_{\text{est}}=6$, $g_{\mathscr{i}}^{\text{est}}=3$).
+		Il grado di iperstaticità globale è
+		$g = 3 + 3p$: rispettivamente $6$, $9$, $12$.
+		I nodi sono numerati $1$--$n_n$, le aste
+		con il numero cerchiato.}
+	\label{fig:telai}
+\end{figure}

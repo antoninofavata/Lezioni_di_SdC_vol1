@@ -1,0 +1,191 @@
+\begin{figure}[htbp]
+			\centering
+			%── pannello (a): schema strutturale ──────────────────────
+			\begin{minipage}[t]{0.48\textwidth}
+				\centering
+				\begin{tikzpicture}[
+					scale=0.52,
+					asta/.style={line width=1.5pt, line cap=round,
+						line join=round},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt,
+						line width=1.2pt},
+					quota/.style={very thin, gray, |<->|, >=stealth},
+					richiam/.style={thin, gray, dashed},
+					forza/.style={->, >=stealth, line width=1.5pt, black},
+					]
+					\useasboundingbox (-1.6,-1.9) rectangle (9.3,6.1);
+					
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (4,0);
+					\coordinate (C) at (8,0);
+					\coordinate (D) at (2,2);
+					\coordinate (E) at (6,2);
+					\coordinate (F) at (4,4);
+					
+					\draw[asta](A)--(B);
+					\draw[asta](B)--(C);
+					\draw[asta](A)--(D);
+					\draw[asta](C)--(E);
+					\draw[asta](D)--(F);
+					\draw[asta](F)--(E);
+					\draw[asta](D)--(B);
+					\draw[asta](E)--(B);
+					\draw[asta](B)--(F);
+					
+					%% cerniera A
+					\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin](\x,-0.65)--++(-.18,-.22);
+					
+					%% carrello C (asse verticale)
+					\draw[line width=1.2pt](C)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt]($(C)+(-0.50,-0.50)$)--($(C)+(0.50,-0.50)$);
+					\draw[line width=1.2pt]($(C)+(-0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(C)+( 0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(C)+(-0.55,-0.82)$)--($(C)+(0.55,-0.82)$);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin]($(C)+(\x,-0.82)$)--++(-.18,-.22);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					\node[nodo]at(E){}; \node[nodo]at(F){};
+					
+					%% carichi verticali
+					\draw[forza]($(D)+(0,1.45)$)--($(D)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(D)+(0,1.45)$){$F$};
+					\draw[forza]($(E)+(0,1.45)$)--($(E)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(E)+(0,1.45)$){$F$};
+					\draw[forza]($(F)+(0,1.45)$)--($(F)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(F)+(0,1.45)$){$F$};
+					
+					\node[left=2pt,    font=\normalsize]at(A){$A$};
+					\node[below=2pt,   font=\normalsize]at(B){$B$};
+					\node[right=2pt,   font=\normalsize]at(C){$C$};
+					\node[left=2pt,    font=\normalsize]at(D){$D$};
+					\node[right=2pt,   font=\normalsize]at(E){$E$};
+					\node[above right, font=\normalsize]at(F){$F$};
+					
+					%% quote orizzontali
+					\draw[richiam](A)--++(0,-1.45);
+					\draw[richiam](2,0)--++(0,-1.45);
+					\draw[richiam](B)--++(0,-1.45);
+					\draw[richiam](6,0)--++(0,-1.45);
+					\draw[richiam](C)--++(0,-1.45);
+					\draw[quota](0,-1.25)--node[below,font=\small]{$\ell$}(2,-1.25);
+					\draw[quota](2,-1.25)--node[below,font=\small]{$\ell$}(4,-1.25);
+					\draw[quota](4,-1.25)--node[below,font=\small]{$\ell$}(6,-1.25);
+					\draw[quota](6,-1.25)--node[below,font=\small]{$\ell$}(8,-1.25);
+					%% quote verticali
+					\draw[richiam](A)--++(-1.4,0);
+					\draw[richiam](D)--++(-3.4,0);
+					\draw[richiam](F)--++(-5.4,0);
+					\draw[quota](-1.25,0)--node[left,font=\small]{$\ell$}(-1.25,2);
+					\draw[quota](-1.25,2)--node[left,font=\small]{$\ell$}(-1.25,4);
+				\end{tikzpicture}
+				\par\smallskip$(a)$
+			\end{minipage}
+			\hfill
+			%── pannello (b): stato di sollecitazione ─────────────────
+			\begin{minipage}[t]{0.48\textwidth}
+				\centering
+				\begin{tikzpicture}[
+					scale=0.52,
+					puntone/.style={line width=3.5pt, line cap=round,
+						line join=round, black},
+					tirante/.style={line width=1.0pt, line cap=round,
+						line join=round, black},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt,
+						line width=1.2pt},
+					forza/.style={->, >=stealth, line width=1.5pt, black},
+					val/.style={font=\scriptsize, fill=white, inner sep=1pt},
+					]
+					\useasboundingbox (-1.2,-1.9) rectangle (9.4,6.1);
+					
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (4,0);
+					\coordinate (C) at (8,0);
+					\coordinate (D) at (2,2);
+					\coordinate (E) at (6,2);
+					\coordinate (F) at (4,4);
+					
+					%% puntoni (compressione): falde AD,DF,CE,FE e saette DB,EB
+					\draw[puntone](A)--(D);
+					\draw[puntone](D)--(F);
+					\draw[puntone](C)--(E);
+					\draw[puntone](F)--(E);
+					\draw[puntone](D)--(B);
+					\draw[puntone](E)--(B);
+					%% tiranti (trazione): catena AB,BC e monaco BF
+					\draw[tirante](A)--(B);
+					\draw[tirante](B)--(C);
+					\draw[tirante](B)--(F);
+					
+					%% cerniera A
+					\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin](\x,-0.65)--++(-.18,-.22);
+					
+					%% carrello C
+					\draw[line width=1.2pt](C)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt]($(C)+(-0.50,-0.50)$)--($(C)+(0.50,-0.50)$);
+					\draw[line width=1.2pt]($(C)+(-0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(C)+( 0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(C)+(-0.55,-0.82)$)--($(C)+(0.55,-0.82)$);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin]($(C)+(\x,-0.82)$)--++(-.18,-.22);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					\node[nodo]at(E){}; \node[nodo]at(F){};
+					
+					%% reazioni
+					\draw[forza]($(A)+(0,-1.55)$)--($(A)+(0,-0.35)$);
+					\node[below,font=\small]at($(A)+(0,-1.55)$){$\tfrac{3}{2}$};
+					\draw[forza]($(C)+(0,-1.75)$)--($(C)+(0,-0.55)$);
+					\node[below,font=\small]at($(C)+(0,-1.75)$){$\tfrac{3}{2}$};
+					
+					%% carichi verticali
+					\draw[forza]($(D)+(0,1.45)$)--($(D)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(D)+(0,1.45)$){$1$};
+					\draw[forza]($(E)+(0,1.45)$)--($(E)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(E)+(0,1.45)$){$1$};
+					\draw[forza]($(F)+(0,1.45)$)--($(F)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(F)+(0,1.45)$){$1$};
+					
+					%% valori (al netto di F)
+					\node[val,below, yshift=-2pt]      at($(A)!0.5!(B)$){$\tfrac{3}{2}$};
+					\node[val,below, yshift=-2pt]      at($(B)!0.5!(C)$){$\tfrac{3}{2}$};
+					\node[val,above left, xshift=-2pt] at($(A)!0.5!(D)$){$\tfrac{3\sqrt2}{2}$};
+					\node[val,above left, xshift=2pt, yshift=6pt] at($(D)!0.5!(F)$){$\sqrt2$};
+					\node[val,above right, xshift=2pt]at($(C)!0.5!(E)$){$\tfrac{3\sqrt2}{2}$};
+					\node[val,above right,xshift=-2pt,yshift=4pt]at($(F)!0.5!(E)$){$\sqrt2$};
+					\node[val,xshift=-8pt, yshift=-6pt]            at(2.78,1.05){$\tfrac{\sqrt2}{2}$};
+					\node[val,xshift=8pt, yshift=-6pt]            at(5.22,1.05){$\tfrac{\sqrt2}{2}$};
+					\node[val,right]      at($(B)!0.5!(F)$){$1$};
+					
+					\node[left=2pt,   font=\normalsize]at(A){$A$};
+					\node[below=2pt,  font=\normalsize]at(B){$B$};
+					\node[right=2pt,  font=\normalsize]at(C){$C$};
+					\node[left=2pt,   font=\normalsize]at(D){$D$};
+					\node[right=2pt,  font=\normalsize]at(E){$E$};
+					\node[above right,font=\normalsize]at(F){$F$};
+				\end{tikzpicture}
+				\par\smallskip$(b)$
+			\end{minipage}
+			%
+			\caption{Capriata palladiana con carichi simmetrici.
+				\emph{(a)}: schema strutturale con denominazione dei nodi
+				(ogni asta è individuata dalla coppia dei nodi di estremità).
+				\emph{(b)}: stato di sollecitazione, con i valori delle forze
+				--- carichi, reazioni e sforzi normali --- al netto del fattore $F$.
+				Tratto spesso: aste compresse --- le falde $AD$,
+				$DF$, $CE$, $FE$ e le saette $DB$, $EB$ (puntoni).
+				Tratto sottile: aste tese --- la catena $AB$, $BC$
+				e il monaco $BF$ (tiranti). Sotto gli appoggi le due
+				reazioni verticali $\tfrac{3}{2}$.}
+			\label{fig:capriata_palladiana}
+		\end{figure}

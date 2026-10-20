@@ -1,0 +1,105 @@
+\begin{figure}[!htbp]
+	\centering
+	\def\ax{0.5}\def\ay{0.30}
+	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\providecommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
+	%
+	\begin{minipage}[b]{0.46\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			% ===== PANNELLO (a) =====
+			\draw[gray!60] (\xyz{-1.7}{-1.2}{0}) -- (\xyz{-1.7}{3.50}{0})-- (\xyz{3.0}{3.50}{0}) -- (\xyz{3.0}{-1.2}{0}) -- cycle;
+			\node[gray!75] at (\xyz{-1.2}{-1.0}{0}) {$\pi$};
+			\coordinate (O)  at (\xyz{0}{0}{0});
+			\coordinate (Pk) at (\xyz{0.5}{2.0}{0});
+			\coordinate (Ff) at (\xyz{1.7}{2.3}{0});
+			\coordinate (Of) at (\xyz{1.2}{0.3}{0});
+			\coordinate (MuB) at (\xyz{0}{0}{1.25});
+			\coordinate (MuC) at (\xyz{0}{0}{1.47});
+			\draw[gray!55, thin] (O) -- (Of) -- (Ff) -- (Pk) -- cycle;
+			%\draw[->, thin] (O) -- (Pk);
+			%\node[font=\small, below] at ($(O)!0.5!(Pk)$) {$\overrightarrow{OP}$};
+			
+			\draw[->,thick] (O) -- (Pk) node[font=\small, midway, sloped, below] {$\overrightarrow{OP}$};
+			
+			\draw[->, thick] (Pk) -- (Ff) node[right=-2pt] {$\vb$};
+			\draw[->>, thick] (O) -- (MuB) node[left=1pt, yshift=-10pt] {$\bm{\upmu}(O)$};
+			\begin{scope}[gray!55]
+				\rightangle{MuB}{O}{Of}
+				\rightangle{MuB}{O}{Pk}
+			\end{scope}
+			\fill (O)  circle (1.5pt) node[left=2pt] {$O$};
+			\fill (Pk) circle (1.5pt) node[below right=-1pt] {$P$};
+		\end{tikzpicture}\\[0.8ex]
+		(a)
+	\end{minipage}\hfill
+	\begin{minipage}[b]{0.50\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			% ===== PANNELLO (b) =====
+			\draw[gray!60] (\xyz{-1.7}{-1.2}{0}) -- (\xyz{-1.7}{3.50}{0})-- (\xyz{3.0}{3.50}{0}) -- (\xyz{3.0}{-1.2}{0}) -- cycle;
+			\node[gray!75] at (\xyz{-1.2}{-1.0}{0}) {$\pi$};
+			\coordinate (O)  at (\xyz{0}{0}{0});
+			\coordinate (Pk) at (\xyz{0.5}{2.0}{0});
+			\coordinate (Ff) at (\xyz{1.7}{2.3}{0});
+			\coordinate (Of) at (\xyz{1.2}{0.3}{0});
+			\coordinate (MuB) at (\xyz{0}{0}{1.25});
+			% piede della perpendicolare da O alla retta d'azione (calcolato nel piano)
+			\coordinate (Foot) at (\xyz{-0.4412}{1.7647}{0});
+			% retta d'azione di v (estesa)
+			\coordinate (LAa) at (\xyz{-1.05}{1.6150}{0});
+			\coordinate (LAb) at (\xyz{2.30}{2.4500}{0});
+			% marcatore angolo retto al piede (vertici calcolati nel piano)
+			\coordinate (raA) at (\xyz{-0.3878}{1.5513}{0});
+			\coordinate (raB) at (\xyz{-0.1744}{1.6046}{0});
+			\coordinate (raC) at (\xyz{-0.2277}{1.8181}{0});
+			
+			\begin{scope}[gray!55]
+				\rightangle{MuB}{O}{Of}
+				\rightangle{MuB}{O}{Pk}
+			\end{scope}
+			
+			% --- retta d'azione di v (dietro a tutto) ---
+			\draw[gray!55, thin] (LAa) -- (LAb);
+			
+			% --- parallelogramma riempito (riuso da (a)) ---
+			\filldraw[gray!12, draw=gray!55, thin] (O) -- (Of) -- (Ff) -- (Pk) -- cycle;
+			
+			% --- braccio b + angolo retto al piede ---
+			\draw[thin] (O) -- (Foot);
+			\node[font=\small, below=0pt] at ($(O)!0.5!(Foot)$) {$b$};
+			\draw[line width=0.5pt] (raA) -- (raB) -- (raC);
+			
+			% --- OP ---
+			%				\draw[->, thin] (O) -- (Pk);
+			%				\node[font=\small, above left=-3pt] at ($(O)!0.5!(Pk)$) {$\overrightarrow{OP}$};
+			
+			\draw[->,thin] (O) -- (Pk) node[font=\small, midway, sloped, above] {$\overrightarrow{OP}$};
+			
+			% --- v ---
+			\draw[->, thick] (Pk) -- (Ff) node[above=-2pt] {$\vb$};
+			
+			% --- angolo alpha fra OP e v in P ---
+			\coordinate (Pext) at ($(O)!1.33!(Pk)$);
+			\pic[draw, thin, angle radius=6.5mm, angle eccentricity=1.5, "$\alpha$"{font=\small}] {angle = Pext--Pk--Ff};
+			
+			\coordinate (Pext) at ($(O)!1.45!(Pk)$);   % punto oltre P lungo OP
+			\draw[gray!55, thin] (Pk) -- (Pext);        % prolungamento grigio
+			
+			% --- momento mu(O) ---
+			\draw[->>, thick] (O) -- (MuB) node[left=1pt, yshift=-10pt] {$\bm{\upmu}(O)$};
+			
+			% --- punti ---
+			\fill (O)  circle (1.5pt) node[left=2pt] {$O$};
+			\fill (Pk) circle (1.5pt) node[below right=-1pt] {$P$};
+		\end{tikzpicture}\\[0.8ex]
+		(b)
+	\end{minipage}
+	\caption{Momento polare di un vettore applicato: (a)~definizione
+		come prodotto vettoriale $\protect\overrightarrow{OP}\times\vb$;
+		(b)~calcolo come prodotto del modulo $|\vb|$ per il
+		braccio~$b$.}
+	\label{f:momento_polare}
+\end{figure}

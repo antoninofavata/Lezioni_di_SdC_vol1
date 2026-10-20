@@ -1,0 +1,136 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica della cerniera esterna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.80}
+			\def\yA{0.00}
+			\def\tw{0.30}
+			\def\thA{0.40}
+			\def\gw{0.45}
+			\def\rn{0.10}    % raggio semicerchio (anellino a metà)
+			
+			%% ── Terna x, y in basso a sinistra ──
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-1.40, 0.00);
+			\node[anchor=west, font=\footnotesize] at (-1.40, -0.05) {$x$};
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-2.20, 0.80);
+			\node[anchor=south, font=\footnotesize] at (-2.20, 0.80) {$y$};
+			
+			%% ── Equazione di vincolo (in alto) ──
+			\node[font=\small] at (\xA-1.5, 2.0) {$\ub(A) = \zerovb$};
+			
+			
+			
+			%% ── Corpo C ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.80, 0.00) (1.60, 0.15) (2.20, 0.70) (2.00, 1.70) 
+				(1.00, 2.00) (-0.10, 1.70) (-0.60, 1.00) (-0.30, 0.30)};
+			\node at (1.50, 1.10) {$\mathcal{C}$};
+			
+			
+			%% ── Cerniera in A: triangolo + barra + tratteggio ──
+			\draw (\xA, \yA) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yA-\thA) -- (\xA+\gw, \yA-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thA) -- ++(-0.10, -0.13);
+			
+			
+			%% ── Semicerchio in A (corpo libero di ruotare sul perno) ──
+			\draw[line width=0.8pt, fill=white] ({\xA-\rn}, \yA) arc(180:360:\rn) -- cycle;
+			
+			
+			
+			%% ── Etichetta A ──
+			\node[above, font=\small] at (\xA, \yA+0.05) {$A$};
+			
+			%% ── Etichetta C ≡ A ──
+			\node[font=\footnotesize, anchor=west] 
+			at (\xA+0.50, \yA-0.20) {$C \equiv A$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (\xA-0.8, \yA-\thA-0.30) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica della cerniera esterna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\xA{0.80}
+			\def\yA{0.00}
+			\def\tw{0.30}
+			\def\thA{0.40}
+			\def\gw{0.45}
+			\def\rn{0.10}    % raggio semicerchio (anellino a metà)
+			
+			%% ── Terna x, y in basso a sinistra (identica ad (a)) ──
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-1.40, 0.00);
+			\node[anchor=west, font=\footnotesize] at (-1.40, -0.05) {$x$};
+			\draw[->, line width=0.8pt] (-2.20, 0.00) -- (-2.20, 0.80);
+			\node[anchor=south, font=\footnotesize] at (-2.20, 0.80) {$y$};
+			
+			%% ── Corpo C (identico ad (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.80, 0.00) (1.60, 0.15) (2.20, 0.70) (2.00, 1.70) 
+				(1.00, 2.00) (-0.10, 1.70) (-0.60, 1.00) (-0.30, 0.30)};
+			\node at (1.50, 0.50) {$\mathcal{C}$};
+			
+			%% ── Cerniera in A: triangolo + barra + tratteggio (identica ad (a)) ──
+			\draw (\xA, \yA) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yA-\thA) -- (\xA+\gw, \yA-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thA) -- ++(-0.10, -0.13);
+			
+			
+			%% ── Semicerchio in A (corpo libero di ruotare sul perno) ──
+			\draw[line width=0.8pt, fill=white] ({\xA-\rn}, \yA) arc(180:360:\rn) -- cycle;
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONE: due componenti X(A) e Y(A)
+			%% ──────────────────────────────────────────────────
+			
+			%% Componente orizzontale X(A) a_x: da A verso destra
+			\draw[->, line width=1.4pt] 
+			(\xA+0.10, \yA) -- (\xA+1.10, \yA);
+			\node[anchor=west, font=\small] 
+			at (\xA+1.15, \yA) {$X(A)\,\ab_x$};
+			
+			%% Componente verticale Y(A) a_y: da A verso l'alto
+			\draw[->, line width=1.4pt] 
+			(\xA, \yA) -- (\xA, \yA+1.0);
+			\node[anchor=south, font=\small] 
+			at (\xA, \yA+1.15) {$Y(A)\,\ab_y$};
+			
+			%% ── Etichetta A (a sinistra del perno) ──
+			\node[anchor=east, font=\small] at (\xA, \yA+0.3) {$A$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (\xA-0.8, \yA-\thA-0.30) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Cerniera esterna applicata in $A$: prestazioni cinematica e statica.]{%
+		Cerniera esterna applicata al corpo $\mathcal{C}$ nel
+		punto $A$. Prestazione cinematica (a): il punto $A$ è
+		fisso, $\ub(A) = \zerovb$, e il corpo ruota liberamente
+		attorno ad esso; il \CRa\ coincide con il punto di
+		applicazione, $C \equiv A$. Prestazione statica (b): la
+		reazione vincolare è una forza generica
+		$X(A)\,\ab_x + Y(A)\,\ab_y$ applicata in $A$, in dualità
+		con le due componenti di spostamento bloccate; la coppia
+		reattiva è identicamente nulla, in accordo con la
+		molteplicità due.}
+	\label{fig:cerniera_esterna}
+\end{figure}

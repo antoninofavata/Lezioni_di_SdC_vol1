@@ -1,0 +1,332 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[>=stealth, font=\small,
+					asta/.style    = {line width=1.2pt, line cap=round, line join=round, black},
+					nodo/.style    = {circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt, line width=1.2pt},
+					etasta/.style  = {circle, draw=black, fill=white,
+						inner sep=1pt, font=\scriptsize, line width=0.6pt},
+					quota/.style   = {<->, >={Latex[length=1.6mm]}, line width=0.5pt},
+					ext/.style     = {line width=0.3pt},
+					lab/.style     = {font=\small},
+					]
+					
+					%% ── Parametri geometrici globali ─────────────────────────────────────────
+					\def\L{2.0}
+					\def\h{1.6}
+					\def\DX{8.5}
+					
+					%% Posizioni nodi
+					\pgfmathsetmacro{\xNa}{0}
+					\pgfmathsetmacro{\xNb}{\L}
+					\pgfmathsetmacro{\xNc}{2*\L}
+					\pgfmathsetmacro{\xNd}{3*\L}
+					\pgfmathsetmacro{\xNe}{0.5*\L}
+					\pgfmathsetmacro{\xNf}{1.5*\L}
+					\pgfmathsetmacro{\xNg}{2.5*\L}
+					
+					%% =========================================================================
+					%% PANNELLO 1 — DATO REALE: DISTORSIONI SULLE ASTE 2, 4, 8 E CEDIMENTO IN N1
+					%% =========================================================================
+					\begin{scope}[xshift=0cm, yshift=0cm]
+						
+						\coordinate (N1) at (\xNa, 0);
+						\coordinate (N2) at (\xNb, 0);
+						\coordinate (N3) at (\xNc, 0);
+						\coordinate (N4) at (\xNd, 0);
+						\coordinate (N5) at (\xNe, \h);
+						\coordinate (N6) at (\xNf, \h);
+						\coordinate (N7) at (\xNg, \h);
+						
+						%				%% --- aste (aste 2, 4, 8 in grigio chiaro: sede delle distorsioni)
+						%				\draw[asta, gray!55](N2)--(N3);     % asta 2 (si accorcia)
+						%				\draw[asta, gray!55](N5)--(N6);     % asta 4 (si allunga)
+						%				\draw[asta, gray!55](N2)--(N6);     % asta 8 (si allunga)
+						%				%% --- altre aste (nere)
+						%				\draw[asta](N1)--(N5);
+						%				\draw[asta](N2)--(N5);
+						%				\draw[asta](N3)--(N6);
+						%				\draw[asta](N3)--(N7);
+						%				\draw[asta](N4)--(N7);
+						%				\draw[asta](N1)--(N2);
+						%				\draw[asta](N3)--(N4);
+						%				\draw[asta](N6)--(N7);
+						
+						%% --- aste (tutte nere; le aste 2, 4, 8 sono identificate solo
+						%%     dalle frecce di distorsione)
+						\draw[asta](N1)--(N5);
+						\draw[asta](N2)--(N5);
+						\draw[asta](N2)--(N6);      % asta 8
+						\draw[asta](N3)--(N6);
+						\draw[asta](N3)--(N7);
+						\draw[asta](N4)--(N7);
+						\draw[asta](N1)--(N2)--(N3)--(N4);   % corrente inferiore, include asta 2
+						\draw[asta](N5)--(N6)--(N7);         % corrente superiore, include asta 4
+						
+						%% --- cerniera in N1
+						\draw[line width=1.0pt](N1)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+						\draw[line width=1.0pt]($(N1)+(-0.34,-0.40)$)--($(N1)+(0.34,-0.40)$);
+						\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+						\draw[very thin]($(N1)+(\x,-0.40)$)--++(-.10,-0.13);
+						
+						%% --- carrello in N4
+						\draw[line width=1.0pt](N4)--++(-0.24,-0.34)--++(0.48,0)--cycle;
+						\draw[line width=1.0pt]($(N4)+(-0.34,-0.34)$)--($(N4)+(0.34,-0.34)$);
+						\draw[line width=1.0pt]($(N4)+(-0.16,-0.47)$) circle(2.2pt);
+						\draw[line width=1.0pt]($(N4)+( 0.16,-0.47)$) circle(2.2pt);
+						\draw[line width=1.0pt]($(N4)+(-0.34,-0.58)$)--($(N4)+(0.34,-0.58)$);
+						\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+						\draw[very thin]($(N4)+(\x,-0.58)$)--++(-.10,-0.13);
+						
+						%% --- pallini dei nodi
+						\foreach \n in {N1,N2,N3,N4,N5,N6,N7}
+						{\node[nodo]at(\n){};}
+						
+						%% --- etichette dei nodi
+						\node[left,       lab] at (N1){$1$};
+						\node[below=0.04,      lab] at (N2){$2$};
+						\node[below=0.04,      lab] at (N3){$3$};
+						\node[right,      lab] at (N4){$4$};
+						\node[above left, lab] at (N5){$5$};
+						\node[above=0.04,      lab] at (N6){$6$};
+						\node[above right,lab] at (N7){$7$};
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% DISTORSIONE asta 4 (si allunga): frecce USCENTI sopra l'asta
+						%% ═════════════════════════════════════════════════════════════════
+						\pgfmathsetmacro{\yf}{\h+0.18}
+						\pgfmathsetmacro{\xfc}{0.5*(\xNe+\xNf)}
+						\def\frL{0.30}
+						\draw[->, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\xfc-0.06, \yf) -- (\xfc-\frL, \yf);
+						\draw[->, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\xfc+0.06, \yf) -- (\xfc+\frL, \yf);
+						\node[above, font=\footnotesize] at (\xfc, \yf+0.02){$\bar\varrho^{(4)}$};
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% DISTORSIONE asta 2 (si accorcia): frecce ENTRANTI sotto l'asta
+						%% ═════════════════════════════════════════════════════════════════
+						\pgfmathsetmacro{\yf}{-0.18}
+						\pgfmathsetmacro{\xfc}{0.5*(\xNb+\xNc)}
+						\draw[<-, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\xfc-0.06, \yf) -- (\xfc-\frL, \yf);
+						\draw[<-, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\xfc+0.06, \yf) -- (\xfc+\frL, \yf);
+						\node[below, font=\footnotesize] at (\xfc, \yf-0.02){$\bar\varrho^{(2)}$};
+						
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% DISTORSIONE asta 8 (si allunga): frecce USCENTI lungo l'asta,
+						%% offset laterale dalla diagonale
+						%% ═════════════════════════════════════════════════════════════════
+						\pgfmathsetmacro{\dAx}{\xNf-\xNb}
+						\pgfmathsetmacro{\dAy}{\h}
+						\pgfmathsetmacro{\Lmod}{sqrt(\dAx*\dAx + \dAy*\dAy)}
+						\pgfmathsetmacro{\tux}{\dAx/\Lmod}
+						\pgfmathsetmacro{\tuy}{\dAy/\Lmod}
+						\pgfmathsetmacro{\nux}{-\tuy}
+						\pgfmathsetmacro{\nuy}{ \tux}
+						\def\off{0.16}
+						\def\gap{0.06}
+						\pgfmathsetmacro{\xmidotto}{0.5*(\xNb+\xNf)}
+						\pgfmathsetmacro{\ymidotto}{0.5*\h}
+						\pgfmathsetmacro{\Bx}{\xmidotto + \off*\nux}
+						\pgfmathsetmacro{\By}{\ymidotto + \off*\nuy}
+						%% freccia verso N2 (giù-sinistra)
+						\draw[->, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\Bx - \gap*\tux, \By - \gap*\tuy) --
+						(\Bx - \frL*\tux, \By - \frL*\tuy);
+						%% freccia verso N6 (su-destra)
+						\draw[->, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\Bx + \gap*\tux, \By + \gap*\tuy) --
+						(\Bx + \frL*\tux, \By + \frL*\tuy);
+						\node[font=\footnotesize]
+						at (\Bx + 0.20*\nux, \By + 0.20*\nuy){$\bar\varrho^{(8)}$};
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% CEDIMENTO VERTICALE in N1: freccia verso il basso
+						%% ═════════════════════════════════════════════════════════════════
+						\def\Sh{0.70}
+						\draw[->, >={Latex[length=1.8mm]}, line width=0.8pt]
+						(\xNa, -0.65) -- (\xNa, -0.65-\Sh);
+						\node[left, font=\footnotesize] at (\xNa-0.05, -0.65-\Sh/2){$\bar s_1$};
+						
+					\end{scope}
+					
+					
+					%% =========================================================================
+					%% PANNELLO 2 — SISTEMA VIRTUALE: FORZA UNITARIA IN N6, SEZIONE DI RITTER,
+					%%              SFORZI N*(2), N*(4), N*(8), POLI R2, R4
+					%% =========================================================================
+					\begin{scope}[xshift=\DX cm, yshift=0cm]
+						
+						\coordinate (N1) at (\xNa, 0);
+						\coordinate (N2) at (\xNb, 0);
+						\coordinate (N3) at (\xNc, 0);
+						\coordinate (N4) at (\xNd, 0);
+						\coordinate (N5) at (\xNe, \h);
+						\coordinate (N6) at (\xNf, \h);
+						\coordinate (N7) at (\xNg, \h);
+						
+						%% --- punti della sezione di Ritter (inclinata)
+						%% P2 a 3/4 dell'asta 2 (tra N2 e N3, spostato verso N3)
+						%% P8 a metà dell'asta 8 (diagonale N2-N6)
+						%% P4 a 1/4 dell'asta 4 (tra N5 e N6, spostato verso N5)
+						%\pgfmathsetmacro{\xPdue}{\xNb + 0.75*(\xNc-\xNb)}
+						\pgfmathsetmacro{\xPdue}{\xNb + 0.25*(\xNc-\xNb)}
+						\pgfmathsetmacro{\xPotto}{0.5*(\xNb+\xNf)}
+						\pgfmathsetmacro{\yPotto}{0.5*\h}
+						\pgfmathsetmacro{\xPquattro}{\xNe + 0.45*(\xNf-\xNe)}
+						%\pgfmathsetmacro{\xPquattro}{\xNe + 0.75*(\xNf-\xNe)}
+						\coordinate (P2) at (\xPdue, 0);
+						\coordinate (P8) at (\xPotto, \yPotto);
+						\coordinate (P4) at (\xPquattro, \h);
+						
+						%% --- campitura del troncone sinistro (poligono: N1, P2 lungo inf,
+						%%     P4 lungo il taglio, N5, N1 lungo il corrente di bordo)
+						\fill[black!12]
+						(N1) -- (P2) -- (P4) -- (N5) -- cycle;
+						
+						%% --- aste
+						\draw[asta](N1)--(N5);
+						\draw[asta](N2)--(N5);
+						%\draw[asta](N2)--(N6);
+						\draw[asta](N3)--(N6);
+						\draw[asta](N3)--(N7);
+						\draw[asta](N4)--(N7);
+						%\draw[asta](N1)--(N2)--(N3)--(N4);
+						%\draw[asta](N5)--(N6)--(N7);
+						
+						\draw[asta, gray!55](N2)--(N6);      % asta 8: recisa dalla sezione
+						\draw[asta](N1)--(N2);
+						\draw[asta, gray!55](N2)--(N3);      % asta 2: recisa dalla sezione
+						\draw[asta](N3)--(N4);
+						\draw[asta, gray!55](N5)--(N6);      % asta 4: recisa dalla sezione
+						\draw[asta](N6)--(N7);
+						
+						
+						
+						%% --- cerniera in N1
+						\draw[line width=1.0pt](N1)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+						\draw[line width=1.0pt]($(N1)+(-0.34,-0.40)$)--($(N1)+(0.34,-0.40)$);
+						\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+						\draw[very thin]($(N1)+(\x,-0.40)$)--++(-.10,-0.13);
+						
+						%% --- carrello in N4
+						\draw[line width=1.0pt](N4)--++(-0.24,-0.34)--++(0.48,0)--cycle;
+						\draw[line width=1.0pt]($(N4)+(-0.34,-0.34)$)--($(N4)+(0.34,-0.34)$);
+						\draw[line width=1.0pt]($(N4)+(-0.16,-0.47)$) circle(2.2pt);
+						\draw[line width=1.0pt]($(N4)+( 0.16,-0.47)$) circle(2.2pt);
+						\draw[line width=1.0pt]($(N4)+(-0.34,-0.58)$)--($(N4)+(0.34,-0.58)$);
+						\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+						\draw[very thin]($(N4)+(\x,-0.58)$)--++(-.10,-0.13);
+						
+						%% --- pallini dei nodi
+						\foreach \n in {N1,N2,N3,N4,N5,N6,N7}
+						{\node[nodo]at(\n){};}
+						
+						%% --- etichette dei nodi
+						\node[left,       lab] at (N1){$1$};
+						\node[below,      lab] at (N2){$2\equiv R_4$};
+						\node[below,      lab] at (N3){$3$};
+						\node[right,      lab] at (N4){$4$};
+						\node[above left, lab] at (N5){$5$};
+						\node[above,      lab] at (N6){$6\equiv R_2$};
+						\node[above right,lab] at (N7){$7$};
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% SEZIONE DI RITTER (a tratto continuo, nera, da P2 a P4 via P8)
+						%% ═════════════════════════════════════════════════════════════════
+						%\draw[line width=0.8pt] (P2) -- (P4);
+						\pgfmathsetmacro{\extR}{0.50}
+						\draw[line width=0.8pt]
+						($(P2)!-\extR!(P4)$) -- ($(P4)!-\extR!(P2)$);
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% FORZA VIRTUALE F*=1 in N6, verso il basso
+						%% ═════════════════════════════════════════════════════════════════
+						
+						\def\Fh{0.70}
+						\def\Fgap{0.60}        % stacco verticale tra punta freccia e N6
+						\draw[->, >={Latex[length=1.8mm]}, line width=0.8pt]
+						(\xNf, \h+\Fgap+\Fh) -- (\xNf, \h+\Fgap);
+						\node[above, font=\footnotesize] at (\xNf, \h+\Fgap+\Fh){$F^{*}=1$};
+						
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% REAZIONI VIRTUALI Y1*=1/2 e Y4*=1/2 (entrambe verso l'alto)
+						%% ═════════════════════════════════════════════════════════════════
+						\def\Rh{0.55}
+						%% Y1* sotto la cerniera
+						\draw[->, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\xNa, -1.10) -- (\xNa, -1.12+\Rh);
+						\node[below=0.10, font=\footnotesize] at (\xNa-0.05, -1.10+\Rh/2){$Y_1^{*}=\tfrac{1}{2}$};
+						%% Y4* sotto il carrello
+						\draw[->, >={Latex[length=1.4mm]}, line width=0.7pt]
+						(\xNd, -1.10) -- (\xNd, -1.10+\Rh);
+						\node[below=0.12, font=\footnotesize] at (\xNd+0.05, -1.10+\Rh/2){$Y_4^{*}=\tfrac{1}{2}$};
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% SFORZI NELLE TRE ASTE RECISE
+						%% ═════════════════════════════════════════════════════════════════
+						\def\vL{0.40}        % mezza lunghezza di ciascun vettore sforzo
+						
+						%% N*(2): orizzontale sul corrente inferiore, attraversa P2
+						%					\draw[->, >={Latex[length=1.8mm]}, line width=0.8pt]
+						%					(\xPdue-\vL, 0) -- (\xPdue+\vL, 0);
+						%					\node[above, font=\footnotesize] at (\xPdue, 0.08){$N^{*(2)}$};
+						\draw[->, >={Latex[length=1.8mm]}, line width=1.0pt]
+						(\xPdue-\vL+0.40, 0) -- (\xPdue+\vL+0.40, 0);
+						\node[below=0.04, font=\footnotesize] at (\xPdue+0.60, 0.08){$N^{*(2)}$};
+						
+						%% N*(4): orizzontale sul corrente superiore, attraversa P4
+						\draw[->, >={Latex[length=1.8mm]}, line width=1.0pt]
+						(\xPquattro-\vL+0.4, \h) -- (\xPquattro+\vL+0.4, \h);
+						\node[below, font=\footnotesize] at (\xPquattro+0.55, \h+0.06){$N^{*(4)}$};
+						
+						%% N*(8): diagonale, lungo N2-N6, attraversa P8
+						\pgfmathsetmacro{\dAx}{\xNf-\xNb}
+						\pgfmathsetmacro{\dAy}{\h}
+						\pgfmathsetmacro{\Lmod}{sqrt(\dAx*\dAx + \dAy*\dAy)}
+						\pgfmathsetmacro{\tuxotto}{\dAx/\Lmod}
+						\pgfmathsetmacro{\tuyotto}{\dAy/\Lmod}
+						\draw[->, >={Latex[length=1.8mm]}, line width=0.8pt]
+						(\xPotto-\vL*\tuxotto, \yPotto-\vL*\tuyotto) --
+						(\xPotto+\vL*\tuxotto, \yPotto+\vL*\tuyotto);
+						%% etichetta del N*(8) spostata dalla parte della diagonale
+						\pgfmathsetmacro{\nuxotto}{-\tuyotto}
+						\pgfmathsetmacro{\nuyotto}{ \tuxotto}
+						\node[font=\footnotesize]
+						at (\xPotto - 0.40*\nuxotto, \yPotto - 0.30*\nuyotto){$N^{*(8)}$};
+						
+						%% ═════════════════════════════════════════════════════════════════
+						%% POLI DI RITTER R2 = N6 e R4 = N2
+						%% ═════════════════════════════════════════════════════════════════
+						%% cerchio concentrico su N6 (R2) e N2 (R4)
+						\draw[line width=0.6pt] (N6) circle (4pt);
+						\draw[line width=0.6pt] (N2) circle (4pt);
+						%\node[above right=2pt, font=\footnotesize] at (N6){$R_2$};
+						%\node[below right=2pt, font=\footnotesize] at (N2){$R_4$};
+						
+						
+					\end{scope}
+					
+				\end{tikzpicture}%
+			}
+			\caption{Teorema delle forze virtuali applicato alla travatura
+				reticolare del \PARref{subsec:LI_reticolare}. A sinistra: sistema
+				reale, con distorsioni longitudinali $\bar\varrho^{(4)}$, $\bar\varrho^{(2)}$,
+				$\bar\varrho^{(8)}$ assegnate sulle aste~$4$, $2$, $8$ (due di
+				allungamento, una di accorciamento) e cedimento verticale $\bar s_1$
+				del nodo~$1$. A destra: sistema virtuale, con forza unitaria verticale
+				$F^{*}=1$ applicata nel nodo~$6$, reazioni virtuali $Y_1^{*}=Y_4^{*}
+				=\tfrac{1}{2}$ ai vincoli e sforzi normali $N^{*(2)}$, $N^{*(4)}$,
+				$N^{*(8)}$ nelle tre aste recise dalla sezione di Ritter.
+				I poli di Ritter $R_2\equiv 6$ e $R_4\equiv 2$ sono evidenziati con
+				cerchio concentrico; il polo $R_8$ è all'infinito in direzione
+				orizzontale, come duale statico del centro relativo $C_{L,R}$
+				all'infinito del pannello~(d) della figura del
+				\PARref{subsec:LI_reticolare}.}
+			\label{fig:TFV_reticolare}
+		\end{figure}

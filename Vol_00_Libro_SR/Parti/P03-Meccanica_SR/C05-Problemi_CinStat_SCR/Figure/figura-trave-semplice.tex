@@ -1,0 +1,120 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=0.8pt}, tacca/.style={thin, gray!70}]
+			
+			
+			\def\L{5.0}
+			\def\tw{0.22}
+			\def\thA{0.38}
+			\def\thR{0.32}
+			\def\bw{0.16}
+			\def\gw{0.30}
+			\def\dx{0.6}    % offset orizzontale del cedimento
+			
+			% ============================================================
+			% PANNELLO (a) — dato cinematico
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				%% trave
+				\draw[line width=2.2pt] (0,0) -- (\L,0);
+				
+				%% etichette nodi
+				\node[above=2pt] at (0,0)  {$A$};
+				\node[above=2pt] at (\L,0) {$B$};
+				
+				%% cerniera in A
+				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+				\draw (-\gw,-\thA) -- (\gw,-\thA);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+				\node[nodo] at (0,0) {};
+				
+				%% carrello terminale in B
+				\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+				\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
+				\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
+				\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
+				\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+				\node[nodo] at (\L,0) {};
+				
+				%% cedimento di B (a destra: tacca orizzontale + freccia verticale)
+				\draw[thin] (\L,0) -- (\L+\dx,0);
+				\draw[->, thick] (\L+\dx,0) -- (\L+\dx,-0.50)
+				node[right=3pt, pos=0.5] {$\bar{v}_B$};
+				
+				%% quota
+				\draw[<->, thin] (0,-0.90) -- (\L,-0.90)
+				node[midway, above=2pt] {$\ell$};
+				
+				\draw[tacca] (0, -1.00) -- (0, -0.80);
+				\draw[tacca] (\L,-1.00) -- (\L,-0.80);
+				
+				
+				
+				\node at (\L/2, -1.40) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — dato statico
+			% ============================================================
+			\begin{scope}[xshift=7.5cm]
+				
+				\def\xa{3.0}
+				
+				%% trave
+				\draw[line width=2.2pt] (0,0) -- (\L,0);
+				
+				%% etichette nodi
+				\node[above=2pt] at (0,0)  {$A$};
+				\node[above=2pt] at (\L,0) {$B$};
+				
+				%% cerniera in A
+				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+				\draw (-\gw,-\thA) -- (\gw,-\thA);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+				\node[nodo] at (0,0) {};
+				
+				%% carrello terminale in B
+				\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+				\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
+				\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
+				\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
+				\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+				\node[nodo] at (\L,0) {};
+				
+				%% forza F
+				\draw[thin] (\xa,0.05) -- (\xa,-0.05);
+				\draw[->, thick] (\xa,0.85) -- (\xa,0.10)
+				node[right=3pt, pos=0] {$F$};
+				
+				%% quotatura: parziali (a, ell-a)
+				\draw[<->, thin] (0,-0.90) -- (\xa,-0.90)
+				node[midway, above=2pt] {$a$};
+				\draw[<->, thin] (\xa,-0.90) -- (\L,-0.90)
+				node[midway, above=2pt] {$\ell - a$};
+				
+				\draw[tacca] (0,  -1.00) -- (0,  -0.80);
+				\draw[tacca] (\xa,-1.00) -- (\xa,-0.80);
+				\draw[tacca] (\L, -1.00) -- (\L, -0.80);
+				
+				\node at (\L/2, -1.40) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Trave semplicemente appoggiata
+			(\ESEref{ex:trave_semplice}): dato cinematico (a) e dato
+			statico (b). In entrambi i casi la cerniera è in $A=(0,0)$
+			e il carrello verticale in $B=(\ell,0)$, con polo
+			$O\equiv A$.}
+		\label{fig:trave_semplice}
+	\end{figure}

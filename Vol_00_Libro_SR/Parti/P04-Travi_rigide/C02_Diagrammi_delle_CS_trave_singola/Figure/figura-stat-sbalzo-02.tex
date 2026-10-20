@@ -1,0 +1,290 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.95,
+					>=latex,
+					trave/.style={line width=1.2pt},
+					carico/.style={black, line width=0.4pt},
+					forza/.style={black, line width=1pt},
+					risultante/.style={gray!65, line width=1.8pt},
+					diagT/.style={black, line width=0.8pt},
+					diagM/.style={black, line width=0.8pt},
+					diagTb/.style={gray!65, line width=1.0pt},
+					diagMb/.style={gray!65, line width=1.0pt},
+					hatch/.style={gray!40, line width=0.3pt},
+					quota/.style={black, line width=0.4pt},
+					fibre/.style={gray!70, line width=0.3pt},
+					segno/.style={circle, draw=black, line width=0.4pt,
+						minimum size=10pt, inner sep=0pt, font=\small\bfseries},
+					]
+					
+					% ── Parametri dei vincoli (convenzione C06/C07) ──
+					\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.12}
+					\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+					\def\hh{0.10}
+					
+					% ── Geometria del problema ──
+					\def\Lell{3}                            % ℓ = lunghezza campata BC
+					\def\Lsb{1.5}                           % ℓ/2 = lunghezza di ciascuno sbalzo
+					\pgfmathsetmacro{\xA}{0}                % estremo libero sinistro
+					\pgfmathsetmacro{\xB}{\Lsb}             % cerniera interna
+					\pgfmathsetmacro{\xMid}{\xB + 0.5*\Lell}% mezzeria BC = ℓ
+					\pgfmathsetmacro{\xC}{\xB + \Lell}      % carrello interno
+					\pgfmathsetmacro{\xD}{\xC + \Lsb}       % estremo libero destro
+					\pgfmathsetmacro{\xMidAB}{0.5*\Lsb}     % mezzeria AB
+					\pgfmathsetmacro{\xMidBmid}{0.5*(\xB+\xMid)} % mezzo di B-mezzeria
+					\pgfmathsetmacro{\xMidmidC}{0.5*(\xMid+\xC)} % mezzo di mezzeria-C
+					\pgfmathsetmacro{\xMidCD}{0.5*(\xC+\xD)}    % mezzeria CD
+					\def\yqi{-0.80}
+					\def\ylab{-2.80}
+					
+					% ── Macro vincoli ──
+					\def\cerniera#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\gw,-\thR) -- (#1+\gw,-\thR);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1,0) circle (\rn);}
+					% variante per cerniera in punto INTERNO della trave
+					\def\cernieraInt#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\gw,-\thR) -- (#1+\gw,-\thR);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1-\rn,0) arc(180:360:\rn) -- cycle;}
+					% variante per carrello in punto INTERNO della trave
+					\def\carrelloInt#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (#1+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (#1-\gw,-\thR-2*\rw-0.04) -- (#1+\gw,-\thR-2*\rw-0.04);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1-\rn,0) arc(180:360:\rn) -- cycle;}
+					
+					% ── Carico distribuito (riquadro) ──
+					\def\pgap{0.10}    \def\php{0.40}
+					\pgfmathsetmacro{\pBase}{\pgap}
+					\pgfmathsetmacro{\pTop}{\pgap+\php}
+					
+					% ── Fattori di scala ──
+					\def\sT{1.8}
+					\def\sM{7.0}
+					
+					% =========================================================
+					% PANNELLO (a) — Schema strutturale
+					% =========================================================
+					\begin{scope}[xshift=0cm]
+						
+						\draw[trave] (\xA,0) -- (\xD,0);
+						\draw[fibre, dashed] (\xA, -0.1) -- (\xD, -0.1);
+						
+						\cernieraInt{\xB}
+						\carrelloInt{\xC}
+						
+						% Riquadro del carico distribuito p̄ su tutta la trave
+						\draw[carico] (\xA,\pBase) rectangle (\xD,\pTop);
+						\foreach \x in {0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75,
+							4.25, 4.75, 5.25, 5.75} {
+							\draw[carico, -{Latex[length=2pt, width=1.5pt]}]
+							(\x, \pTop) -- (\x, \pBase);
+						}
+						\node[above, font=\small] at (0.5, \pTop+0.02) {$\bar{p}$};
+						
+						% Risultanti grigie (sostituzione caso b: ogni distribuito → propria risultante)
+						\def\Rstart{1.5}
+						% Risultante sullo sbalzo AB
+						\draw[risultante, -{Latex[length=5pt, width=4pt]}]
+						(\xMidAB, \Rstart) -- (\xMidAB, 0);
+						\node[left, font=\small, gray!50!black] at (\xMidAB-0.06, \Rstart-0.18)
+						{$\bar p\ell/2$};
+						% Risultante sulla campata BC
+						\draw[risultante, -{Latex[length=5pt, width=4pt]}]
+						(\xMid, \Rstart) -- (\xMid, 0);
+						\node[right, font=\small, gray!50!black] at (\xMid+0.08, \Rstart-0.18)
+						{$\bar p\ell$};
+						% Risultante sullo sbalzo CD
+						\draw[risultante, -{Latex[length=5pt, width=4pt]}]
+						(\xMidCD, \Rstart) -- (\xMidCD, 0);
+						\node[right, font=\small, gray!50!black] at (\xMidCD+0.08, \Rstart-0.18)
+						{$\bar p\ell/2$};
+						
+						\node[above left=-2pt,  font=\small] at (\xA,0)   {$A$};
+						\node[above, font=\small] at (\xB, 0.04)          {$B$};
+						\node[above, font=\small] at (\xC, 0.04)          {$C$};
+						\node[above right=-2pt, font=\small] at (\xD,0)   {$D$};
+						
+						% Quote orizzontali
+						\draw[<->, quota] (\xA,\yqi) -- (\xB,\yqi);
+						\draw[<->, quota] (\xB,\yqi) -- (\xC,\yqi);
+						\draw[<->, quota] (\xC,\yqi) -- (\xD,\yqi);
+						\draw[quota] (\xA,\yqi+0.07) -- (\xA,\yqi-0.07);
+						\draw[quota] (\xB,\yqi+0.07) -- (\xB,\yqi-0.07);
+						\draw[quota] (\xC,\yqi+0.07) -- (\xC,\yqi-0.07);
+						\draw[quota] (\xD,\yqi+0.07) -- (\xD,\yqi-0.07);
+						\node[above, font=\footnotesize] at (\xMidAB, \yqi-0.08) {$\ell/2$};
+						\node[above, font=\footnotesize] at (\xMid, \yqi-0.08) {$\ell$};
+						\node[above, font=\footnotesize] at (\xMidCD, \yqi-0.08) {$\ell/2$};
+						
+						\node[font=\small] at (\xD/2, \ylab/2-0.25) {(a)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (b) — Diagramma del taglio T(z)
+					% =========================================================
+					\begin{scope}[xshift=7.5cm]
+						
+						\draw[trave] (\xA,0) -- (\xD,0);
+						\cernieraInt{\xB}
+						\carrelloInt{\xC}
+						
+						\node[above left=-2pt,  font=\small] at (\xA,0)   {$A$};
+						\node[above left, font=\small] at (\xB, 0.04)          {$B$};
+						\node[above left, font=\small] at (\xC, 0.04)          {$C$};
+						\node[above right=-2pt, font=\small] at (\xD,0)   {$D$};
+						
+						\pgfmathsetmacro{\Tval}{0.5*\sT}    % |T_max| = p̄ℓ/2 → 0.8
+						
+						% Hatching del caso (a) — lineare a tratti
+						\foreach \x in {0.10, 0.30, ..., 1.40} {
+							\pgfmathsetmacro{\h}{-\sT*\x/\Lell}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						\foreach \x in {1.60, 1.80, ..., 4.40} {
+							\pgfmathsetmacro{\h}{\sT*(\xMid - \x)/\Lell}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						\foreach \x in {4.60, 4.80, ..., 5.90} {
+							\pgfmathsetmacro{\h}{\sT*(\xD - \x)/\Lell}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Caso (b) GRIGIO: spezzata costante a tratti — sostituzione completa
+						% Salti in mezzeria AB, in B, in mezzeria BC, in C, in mezzeria CD
+						\draw[diagTb]
+						(\xA, 0) -- (\xMidAB, 0)
+						-- (\xMidAB, -\Tval) -- (\xB, -\Tval)
+						-- (\xB, \Tval) -- (\xMid, \Tval)
+						-- (\xMid, -\Tval) -- (\xC, -\Tval)
+						-- (\xC, \Tval) -- (\xMidCD, \Tval)
+						-- (\xMidCD, 0) -- (\xD, 0);
+						
+						% Caso (a) NERO: lineare a tratti continuo
+						\draw[diagT]
+						(\xA, 0) -- (\xB, -\Tval)
+						-- (\xB, \Tval) -- (\xC, -\Tval)
+						-- (\xC, \Tval) -- (\xD, 0);
+						
+						% Segni delle aree
+						\node[segno] at (\xMidAB, {-0.5*\Tval}) {$-$};
+						\node[segno] at (\xMidBmid, {0.5*\Tval}) {$+$};
+						\node[segno] at (\xMidmidC, {-0.5*\Tval}) {$-$};
+						\node[segno] at (\xMidCD, {0.5*\Tval}) {$+$};
+						
+						% Etichette valori notevoli
+						\node[left, font=\small] at (\xB-0.02, \Tval-0.02){$\tfrac{\bar p\ell}{2}$};
+						\node[right, font=\small] at (\xB-0.02, -\Tval+0.02){$\tfrac{\bar p\ell}{2}$};
+						\node[right, font=\small] at (\xC+0.02, -\Tval+0.02){$\tfrac{\bar p\ell}{2}$};
+						\node[left, font=\small] at (\xC+0.02, \Tval+0.02){$\tfrac{\bar p\ell}{2}$};
+						\node[below, font=\footnotesize] at (\xMid, -0.05) {$z_0$};
+						
+						\node[font=\small] at (\xD/2, \ylab/2-0.25) {(b)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (c) — Diagramma del momento M(z)
+					% =========================================================
+					\begin{scope}[xshift=15.0cm]
+						
+						\draw[trave] (\xA,0) -- (\xD,0);
+						\cernieraInt{\xB}
+						\carrelloInt{\xC}
+						
+						\node[above left=-2pt,  font=\small] at (\xA,0)   {$A$};
+						\node[above, font=\small] at (\xB, 0.04)          {$B$};
+						\node[above, font=\small] at (\xC, 0.04)          {$C$};
+						\node[above right=-2pt, font=\small] at (\xD,0)   {$D$};
+						
+						\pgfmathsetmacro{\Mval}{\sM/8}     % |M_max| = p̄ℓ²/8 → 0.625
+						
+						% Hatching del caso (a) — parabole nei tre tratti
+						\foreach \x in {0.05, 0.15, ..., 1.45} {
+							\pgfmathsetmacro{\h}{(\sM/(2*\Lell*\Lell))*\x*\x}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						% BC
+						\foreach \x in {1.55, 1.65, ..., 4.45} {
+							\pgfmathsetmacro{\h}{(\sM/(2*\Lell*\Lell))*(\x - \xMid)*(\x - \xMid)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						% CD
+						\foreach \x in {4.55, 4.65, ..., 5.95} {
+							\pgfmathsetmacro{\h}{(\sM/(2*\Lell*\Lell))*(\xD - \x)*(\xD - \x)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Caso (b) GRIGIO: spezzata lineare a tratti su TUTTA la trave
+						% Vertici nei punti notevoli A, mezz.AB, B, mezz.BC, C, mezz.CD, D
+						% Ogni segmento è tangente alla parabola caso (a) in un punto notevole
+						\draw[diagMb]
+						(\xA, 0) -- (\xMidAB, 0) -- (\xB, \Mval) -- (\xMid, -\Mval)
+						-- (\xC, \Mval) -- (\xMidCD, 0) -- (\xD, 0);
+						
+						% Caso (a) NERO: tre parabole concave verso l'alto
+						% AB: parte da A in (0,0) con tang. orizz., arriva in B a (xB, Mval)
+						\draw[diagM]
+						(\xA, 0)
+						\foreach \x in {0.10, 0.20, ..., 1.40} {
+							-- ({\x}, {(\sM/(2*\Lell*\Lell))*\x*\x})
+						}
+						-- (\xB, \Mval);
+						% BC: parte da B a (xB, Mval), tocca asse in mezzeria con tang. orizz.,
+						% risale a C a (xC, Mval)
+						\draw[diagM]
+						(\xB, \Mval)
+						\foreach \x in {1.60, 1.70, ..., 4.40} {
+							-- ({\x}, {(\sM/(2*\Lell*\Lell))*(\x - \xMid)*(\x - \xMid)})
+						}
+						-- (\xC, \Mval);
+						% CD: parte da C a (xC, Mval), arriva in D a (xD, 0) con tang. orizz.
+						\draw[diagM]
+						(\xC, \Mval)
+						\foreach \x in {4.60, 4.70, ..., 5.90} {
+							-- ({\x}, {(\sM/(2*\Lell*\Lell))*(\xD - \x)*(\xD - \x)})
+						}
+						-- (\xD, 0);
+						
+						% Corda dei momenti d'estremità della campata centrale BC
+						\draw[diagMb, dashed] (\xB, \Mval) -- (\xC, \Mval);
+						
+						
+						% Etichette valori notevoli (M negativo → segno meno; M positivo → senza segno)
+						\node[left, font=\small] at (\xB-0.02, \Mval-0.02){$\tfrac{\bar p\ell^2}{8}$};
+						\node[right, font=\small] at (\xC+0.02, \Mval-0.02){$\tfrac{\bar p\ell^2}{8}$};
+						\node[right, font=\footnotesize, gray!50!black]	at (\xMid, -\Mval-0.02) {$\tfrac{\bar p\ell^2}{8}$};
+						
+						\node[font=\small] at (\xD/2, \ylab/2-0.25) {(c)};
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Trave con doppio sbalzo simmetrico e carico uniforme $\bar p$
+				(caso~a, tratto nero) confrontata con la sostituzione di ogni
+				carico distribuito con la propria risultante applicata nel
+				baricentro del tratto: $\bar p\ell/2$ in mezzeria di $AB$ e di
+				$CD$, $\bar p\ell$ in mezzeria di $BC$ (caso~b, tratto grigio).
+				(a)~schema strutturale; (b)~diagrammi del taglio; (c)~diagrammi
+				del momento. Ogni segmento della spezzata grigia del momento è
+				tangente alla parabola caso~(a) in uno dei punti
+				$\{A,\,B^-,\,B^+,\,C^-,\,C^+,\,D\}$. Sul tratto centrale $BC$
+				è inoltre tracciata (tratto grigio tratteggiato) la corda dei
+				momenti d'estremità, retta orizzontale a quota $-\bar p\ell^2/8$;
+				la tangente parallela alla parabola in mezzeria di $BC$ coincide
+				con l'asse della trave (poiché $T(\ell) = 0$) e non è disegnata
+				separatamente.}
+			\label{fig:stat_sbalzo_02}
+		\end{figure}

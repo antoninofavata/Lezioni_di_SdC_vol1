@@ -1,0 +1,102 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{0.80\linewidth}{!}{%
+		\begin{tikzpicture}[
+			x=1cm,y=1cm,font=\scriptsize,
+			vthr/.style ={-{Stealth[length=2mm]},line width=1.0pt,black!55},
+			kthr/.style ={-{Stealth[length=2mm]},line width=1.4pt,black},
+			gdash/.style={black!55,dashed,line width=0.7pt},
+			kdash/.style={black,dashed,line width=0.8pt},
+			fan/.style  ={black!55,dashed,line width=0.5pt},
+			lead/.style ={black!55,dashed,line width=0.4pt},
+			vent/.style ={fill=black!10},
+			deck/.style ={black,line width=1.4pt},
+			lato/.style ={black,line width=1.2pt},
+			senso/.style={-{Stealth[length=1.8mm]},line width=1.2pt,black},
+			quota/.style={{Bar[width=1.4mm] Stealth[length=1.4mm]}-{Stealth[length=1.4mm] Bar[width=1.4mm]},line width=0.4pt,black!75},
+			nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.4pt,line width=0.6pt},
+			]
+			%% ===================== PANNELLO SUPERIORE: VENTAGLIO GEOMETRICO =====================
+			\coordinate (Aa) at (2.0,1.6);
+			\coordinate (Ca) at (0.6,4.4); \coordinate (Da) at (3.6,4.4); \coordinate (Ea) at (5.2,4.4);
+			\fill[vent] (Aa)--(Ca)--(Da)--cycle;
+			\draw[black,line width=0.9pt] (Aa)--(Ca);
+			\draw[black,line width=0.9pt] (Aa)--(Da);
+			\draw[deck] (Ca)--(Ea);
+			% spinta nel ventaglio (entro CD) -- grigia, pieno+tratteggio COLLINEARI
+			\draw[vthr]  (Aa)--(2.15,3.0); \draw[gdash] (2.15,3.0)--(2.3,4.4);
+			\fill[black!55] (2.3,4.4) circle (1.7pt);
+			% spinta fuori dal ventaglio (oltre D) -- nera marcata, pieno+tratteggio COLLINEARI
+			\draw[kthr]  (Aa)--(3.15,3.0); \draw[kdash] (3.15,3.0)--(4.3,4.4);
+			\fill[black] (4.3,4.4) circle (2.0pt);
+			% nodi ed etichette
+			\node[nodoV] at (Ca){}; \node[nodoV] at (Da){}; \node[nodoV] at (Ea){}; \node[nodoV] at (Aa){};
+			\node[above left=1pt] at (Ca){$C$}; \node[below=2pt] at (Da){$D$};
+			\node[above right=1pt] at (Ea){$E$}; \node[below=2pt] at (Aa){$A$};
+			% quota f (ribassamento) a sinistra
+			\draw[lead] (-0.1,4.4)--(0.6,4.4); \draw[lead] (-0.1,1.6)--(2.0,1.6);
+			\draw[quota] (-0.1,1.6)--(-0.1,4.4) node[midway,left]{$f$};
+			% quota beta (sbalzo biella interna: da A a D) sopra la travata
+			\draw[lead] (2.0,4.4)--(2.0,5.05); \draw[lead] (3.6,4.4)--(3.6,5.05);
+			\draw[quota] (2.0,5.05)--(3.6,5.05) node[midway,above]{$\beta$};
+			% richiami regioni
+			\draw[-{Stealth[length=1.6mm]},line width=0.6pt,black!70] (1.55,5.42)--(2.3,4.52); \node[anchor=south] at (1.45,5.5){spinta entro $CD$};
+			\draw[-{Stealth[length=1.6mm]},line width=0.6pt,black!70] (4.55,5.42)--(4.3,4.52); \node[anchor=south] at (4.6,5.5){spinta oltre $D$};
+			\node[anchor=west] at (-0.2,6.35){\footnotesize\emph{lettura geometrica}};
+			
+			%% ===================== POLIGONO SINISTRO: r_A NEL VENTAGLIO (scomposizione) =====================
+			\coordinate (Ol) at (1.0,-1.1);
+			\coordinate (Rl) at (1.372,0.140);   % punta r_A
+			\coordinate (Cl) at (0.843,-0.786);  % punta N_AC (verso C)
+			\coordinate (Dl) at (1.529,-0.175);  % punta N_AD (verso D)
+			\draw[fan] (Ol)--(0.686,-0.472);     % retta biella AC -> C
+			\draw[fan] (Ol)--(1.846,0.380);      % retta biella AD -> D (prolungamento di N_AD)
+			\draw[black!45,densely dotted,line width=0.5pt] (Cl)--(Rl);
+			\draw[black!45,densely dotted,line width=0.5pt] (Dl)--(Rl);
+			\draw[senso,line width=1.6pt] (Ol)--(Rl);   % r_A (risultante)
+			\draw[senso] (Ol)--(Dl);                    % N_AD
+			\draw[senso] (Ol)--(Cl);                    % N_AC
+			\node[nodoV] at (Ol){};
+			\node[anchor=north] at (0.98,-1.24){$A$};
+			\node[font=\tiny,anchor=east] at (0.66,-0.43){$C$};
+			\node[font=\tiny,anchor=west] at (1.87,0.40){$D$};
+			\node[anchor=east] at (1.05,-0.45){$\mathbf r_A$};
+			\node[anchor=east] at (0.76,-0.80){$N_{AC}$};
+			\node[anchor=west] at (1.60,-0.15){$N_{AD}$};
+			\node[anchor=south] at (1.0,0.42){\footnotesize $\mathbf r_A$ \emph{nel ventaglio}};
+			
+			%% ===================== POLIGONO DESTRO: r_A FUORI DAL VENTAGLIO (scomposizione) =====================
+			\coordinate (Or) at (4.0,-1.1);
+			\coordinate (Rr) at (4.868,-0.294);
+			\coordinate (Cr) at (4.190,-1.480);  % punta N_AC (rovesciata: via da C)
+			\coordinate (Dr) at (4.678,0.086);   % punta N_AD (verso D)
+			\draw[fan] (3.620,-0.340)--(4.257,-1.613);  % retta biella AC (passa per A; N_AC vi giace)
+			\draw[fan] (Or)--(5.016,0.679);              % retta biella AD -> D (prolungamento di N_AD)
+			\draw[black!45,densely dotted,line width=0.5pt] (Cr)--(Rr);
+			\draw[black!45,densely dotted,line width=0.5pt] (Dr)--(Rr);
+			\draw[senso,line width=1.6pt] (Or)--(Rr);   % r_A
+			\draw[senso] (Or)--(Dr);                    % N_AD
+			\draw[senso] (Or)--(Cr);                    % N_AC (rovesciata)
+			\node[nodoV] at (Or){};
+			\node[anchor=east] at (3.88,-1.06){$A$};
+			\node[font=\tiny,anchor=east] at (3.57,-0.30){$C$};
+			\node[font=\tiny,anchor=north] at (5.06,0.71){$D$};
+			\node[anchor=west] at (4.93,-0.32){$\mathbf r_A$};
+			\node[anchor=east] at (4.58,0.12){$N_{AD}$};
+			\node[anchor=north] at (4.21,-1.58){$N_{AC}$};
+			\node[anchor=south] at (4.3,0.42){\footnotesize $\mathbf r_A$ \emph{fuori dal ventaglio}};
+	\end{tikzpicture}}%
+	\caption{Sintesi del segno al nodo $A$. \emph{(In alto)} Lettura geometrica:
+		la retta d'azione di $\mathbf r_A$, prolungata fino all'impalcato, cade
+		entro il segmento $CD$ (spinta nel ventaglio, $AC$ compressa) oppure
+		oltre $D$ ($AC$ tesa, impalcato compresso); il triangolo $A$--$C$--$D$ è
+		l'anello a tre cerniere d'imposta. Sono quotati lo sbalzo $\beta$ della
+		biella interna e il ribassamento $f$, i due parametri della soglia
+		$H_A/V_A=\beta/f$. \emph{(In basso)} Poligoni di equilibrio del nodo $A$:
+		a sinistra $\mathbf r_A$ è nel ventaglio e le bielle $AC$, $AD$ sono
+		entrambe compresse (carico su $CG$); a destra $\mathbf r_A$ ne esce oltre
+		$AD$ e la biella esterna $AC$ si inverte in tirante (carico su $DF$). In ciascun poligono la reazione $\mathbf r_A$ è scomposta lungo le rette
+		delle due bielle (parallelogramma): le componenti $N_{AC}$, $N_{AD}$ vi
+		giacciono e quella di $N_{AD}$, prolungata, passa per $D$. Una componente	concorde con la propria biella, verso $C$ o $D$, indica biella compressa;	discorde, biella tesa.}
+	\label{fig:stampella_ventaglio}
+	\end{figure}

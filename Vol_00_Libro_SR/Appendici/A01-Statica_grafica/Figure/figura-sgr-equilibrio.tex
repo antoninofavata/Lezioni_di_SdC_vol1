@@ -1,0 +1,87 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:equilibrio_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-equilibrio}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Tre forze a risultante nulla: f_1 = (0.2, -1.7), f_2 = (1.4, 1.0), f_3 = (-1.6, 0.7); polo P = (0.600,-0.800), interno al
+% triangolo delle forze. Il poligono delle forze e' il triangolo chiuso 0 1 2 (3 = 0), e i raggi 0P e
+% 3P coincidono: il primo e l'ultimo lato del poligono funicolare sono paralleli.
+% (a) la retta a_3 dista 0.5 dal punto di concorso K di a_1 e a_2: i lati b_0 e b_3 distano
+%     d = 0.8732, e il sistema equivale alla coppia di momento N_0 d = 1.0000 x 0.8732 = 0.8732
+%     (= |f_3| x 0.5 = 0.8732, verificato sul momento delle tre forze);
+% (b) le tre rette d'azione concorrono in K: l'ultimo lato torna sulla retta del primo, il poligono
+%     funicolare e' il triangolo chiuso A_1 A_2 A_3 e il sistema e' equilibrato;
+% (c) poligono delle forze, comune ai due casi.
+% Nel piano di posizione le forze sono disegnate in scala 0.5.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+\begin{scope}[shift={(2.0,0)}]
+\draw[polretta] (-0.199,1.688) -- (0.047,-0.397);
+\draw[polforza] (-0.199,1.688) -- (-0.099,0.838);
+\node[anchor=west,inner sep=2.5pt] at (-0.104,0.881) {$\fb_1$};
+\draw[polretta] (-1.390,-0.993) -- (0.325,0.232);
+\draw[polforza] (-1.390,-0.993) -- (-0.690,-0.493);
+\node[anchor=north west,inner sep=1.5pt] at (-0.690,-0.493) {$\fb_2$};
+\draw[polretta] (2.604,-0.594) -- (-0.166,0.618);
+\draw[polforza] (2.604,-0.594) -- (1.804,-0.244);
+\node[anchor=north east,inner sep=1.5pt] at (1.804,-0.244) {$\fb_3$};
+\draw[polcostruzione] (-0.199,1.688) -- (1.541,-0.632);
+\draw[pollato] (-0.739,2.408) -- (-0.199,1.688) -- (-1.390,-0.993) -- (2.604,-0.594) -- (1.704,0.606);
+\draw[polquota] (0.821,0.328) -- (1.520,0.852) node[midway,anchor=north west,inner sep=1.5pt] {$d$};
+\node[anchor=south west,inner sep=1.5pt] at (-0.523,2.120) {$b_0$};
+\node[anchor=south west,inner sep=1.5pt] at (2.064,0.126) {$b_3$};
+\pic at (-0.739,2.408) {polpunto};
+\pic at (1.704,0.606) {polpunto};
+\pic at (0.000,0.000) {polpunto};
+\node[anchor=west,inner sep=3.5pt] at (0.000,0.000) {$K$};
+\pic at (-0.199,1.688) {polpunto};
+\node[anchor=east,inner sep=2.5pt] at (-0.279,1.688) {$A_1$};
+\pic at (-1.390,-0.993) {polpunto};
+\node[anchor=east,inner sep=2.5pt] at (-1.450,-0.993) {$A_2$};
+\pic at (2.604,-0.594) {polpunto};
+\node[anchor=west,inner sep=2.5pt] at (2.664,-0.614) {$A_3$};
+\node[anchor=east,inner sep=2.5pt] at (-0.795,0.348) {$b_1$};
+\node[anchor=north,inner sep=3pt] at (0.407,-0.813) {$b_2$};
+\node at (0.000,-2.300) {(a)};
+\end{scope}
+\begin{scope}[shift={(6.9,0)}]
+\draw[polretta] (-0.199,1.688) -- (0.047,-0.397);
+\draw[polforza] (-0.199,1.688) -- (-0.099,0.838);
+\node[anchor=west,inner sep=2.5pt] at (-0.104,0.881) {$\fb_1$};
+\draw[polretta] (-1.390,-0.993) -- (0.325,0.232);
+\draw[polforza] (-1.390,-0.993) -- (-0.690,-0.493);
+\node[anchor=north west,inner sep=1.5pt] at (-0.690,-0.493) {$\fb_2$};
+\draw[polretta] (1.589,-0.695) -- (-0.366,0.160);
+\draw[polforza] (1.589,-0.695) -- (0.789,-0.345);
+\node[anchor=north east,inner sep=1.5pt] at (0.789,-0.345) {$\fb_3$};
+\draw[pollato] (-0.529,2.128) -- (1.919,-1.135);
+\draw[pollato] (-0.199,1.688) -- (-1.390,-0.993) -- (1.589,-0.695);
+\pic at (0.000,0.000) {polpunto};
+\node[anchor=north,inner sep=4pt] at (0.000,0.000) {$K$};
+\node[anchor=south west,inner sep=1.5pt] at (0.695,0.497) {$b_0 \equiv b_3$};
+\pic at (-0.199,1.688) {polpunto};
+\node[anchor=east,inner sep=2.5pt] at (-0.279,1.688) {$A_1$};
+\pic at (-1.390,-0.993) {polpunto};
+\node[anchor=east,inner sep=2.5pt] at (-1.450,-0.993) {$A_2$};
+\pic at (1.589,-0.695) {polpunto};
+\node[anchor=west,inner sep=2.5pt] at (1.649,-0.715) {$A_3$};
+\node[anchor=east,inner sep=2.5pt] at (-0.795,0.348) {$b_1$};
+\node[anchor=north,inner sep=3pt] at (-0.050,-0.859) {$b_2$};
+\node at (0.000,-2.300) {(b)};
+\end{scope}
+\begin{scope}[shift={(10.3,0.75)}]
+\draw[polraggio] (0.000,0.000) -- (0.600,-0.800);
+\draw[polraggio] (0.200,-1.700) -- (0.600,-0.800);
+\draw[polraggio] (1.600,-0.700) -- (0.600,-0.800);
+\draw[polforza] (0.000,0.000) -- (0.200,-1.700) node[midway,anchor=east,inner sep=2.5pt] {$\fb_1$};
+\draw[polforza] (0.200,-1.700) -- (1.600,-0.700) node[midway,anchor=north west,inner sep=2.5pt] {$\fb_2$};
+\draw[polforza] (1.600,-0.700) -- (-0.000,0.000) node[midway,anchor=south west,inner sep=2.5pt] {$\fb_3$};
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.200,-1.700) {polpunto};
+\pic at (1.600,-0.700) {polpunto};
+\pic at (0.600,-0.800) {polpolo};
+\node[anchor=south,inner sep=3.5pt] at (0.000,0.000) {$0 \equiv 3$};
+\node[anchor=north,inner sep=3.5pt] at (0.200,-1.700) {$1$};
+\node[anchor=west,inner sep=3.5pt] at (1.600,-0.700) {$2$};
+\node[anchor=north,inner sep=4pt] at (0.680,-0.800) {$P$};
+\node at (0.800,-3.050) {(c)};
+\end{scope}
+\end{tikzpicture}%

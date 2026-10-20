@@ -1,0 +1,411 @@
+\begin{figure}[ht]
+		\centering
+		\resizebox{\textwidth}{!}{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+				
+				\def\R{1.4}
+				\def\arr{0.55}
+				\def\ss{0.65}
+				\def\xV{-2.8}      % retta r_V a sinistra dell'arco
+				\def\yH{-1.3}
+				\def\rt{0.28}
+				\def\dxp{7.0}      % separazione tra i due pannelli (da rifinire)
+				
+				% ============================================================
+				% PANNELLO (a) — Cedimento s_3 (orizzontale in D)
+				% ============================================================
+				\begin{scope}[xshift=0cm]
+					
+					% --- semiarchi ---
+					\draw[line width=1.2pt] (-\R,0)
+					arc[start angle=180, end angle=90, radius=\R];
+					\draw[line width=1.2pt] (0,\R)
+					arc[start angle=90, end angle=0, radius=\R];
+					
+					% --- cerniera al suolo in A ---
+					\draw[thick] (-\R,0) -- (-\R-0.18,-0.30)
+					-- (-\R+0.18,-0.30) -- cycle;
+					\draw[thick] (-\R-0.28,-0.30) -- (-\R+0.28,-0.30);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (-\R+\x,-0.30) -- (-\R+\x-0.09,-0.42);
+					}
+					% --- cerniera al suolo in B ---
+					\draw[thick] (\R,0) -- (\R-0.18,-0.30)
+					-- (\R+0.18,-0.30) -- cycle;
+					\draw[thick] (\R-0.28,-0.30) -- (\R+0.28,-0.30);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\R+\x,-0.30) -- (\R+\x-0.09,-0.42);
+					}
+					
+					% --- costruzione di C_{12}: retta AB e verticale per D ---
+					\draw[gray!55, dashed, thin] (-\R-0.30, 0) -- (\R+0.30, 0);
+					\draw[gray!55, dashed, thin] (0, -0.50) -- (0, \R+0.20);
+					
+					% --- perni in A, B (esterni) e D (interno) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (-\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (0,\R) {};
+					
+					% --- centro C_{12} (punto medio di AB) ---
+					\fill (0, 0) circle (1.8pt);
+					
+					% --- etichette dei corpi ---
+					\node[font=\scriptsize] at ({0.95*cos(110)-1.0},{0.95*sin(110)}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize] at ({0.95*cos(70)+1.0},{0.95*sin(70)})  {$\mathcal{C}_2$};
+					
+					% --- etichette punti notevoli ---
+					\node[font=\scriptsize, anchor=east]  at ({-\R-0.10}, 0.18) {$A\!\equiv\!C_1$};
+					\node[font=\scriptsize, anchor=west]  at ({\R+0.10}, 0.18)  {$B\!\equiv\!C_2$};
+					\node[font=\scriptsize, anchor=north] at (0.0, \R-0.10)     {$D$};
+					\node[font=\scriptsize, anchor=south] at (0.05, -0.05) {$C_{12}$};
+					
+					% --- cedimento relativo s_3 in D (frecce divergenti orizzontali) ---
+					\def\eps{0.08}
+					\draw[->, thick] (\eps, \R+0.05) -- ++({\ss/2}, 0);
+					\draw[->, thick] (-\eps, \R+0.05) -- ++({-\ss/2}, 0);
+					\node[above, font=\scriptsize] at (0, \R+0.02) {$s_3$};
+					
+					% ==========================================================
+					% retta r_V (verticale, a sinistra dell'arco) — campo u(y)
+					% ==========================================================
+					\draw[gray!45, thin] (\xV, -0.30) -- (\xV, \R+0.55)
+					node[above, font=\scriptsize] {$r_V$};
+					
+					% proiezioni dei punti notevoli su r_V (tutti i centri in y=0)
+					\draw[gray!40, dashed, thin] (-\R, 0) -- (\xV, 0);
+					\draw[gray!40, dashed, thin] (0, \R)  -- (\xV, \R);
+					
+					\fill[gray!75] (\xV, 0) circle (1.3pt);
+					\fill[gray!75] (\xV, \R) circle (1.3pt);
+					
+					% --- skyline u_1 di C_1 (verso sinistra: u<0) ---
+					\draw[gray!75, thin] (\xV, 0) -- ({\xV-\ss/2}, \R);
+					\foreach \k in {1,2,3,4}{
+						\pgfmathsetmacro{\yy}{\k*\R/4}
+						\pgfmathsetmacro{\uu}{(\ss/2)*\k/4}
+						\draw[->, gray!80, thin] (\xV, \yy) -- ({\xV-\uu}, \yy);
+					}
+					\node[gray!85, font=\scriptsize, anchor=east]
+					at ({\xV-\ss/2-0.02}, {\R/2+0.05}) {$u_1$};
+					
+					% --- skyline u_2 di C_2 (verso destra: u>0, dashed) ---
+					\draw[black!55, thin, dashed] (\xV, 0) -- ({\xV+\ss/2}, \R);
+					\foreach \k in {1,2,3,4}{
+						\pgfmathsetmacro{\yy}{\k*\R/4}
+						\pgfmathsetmacro{\uu}{(\ss/2)*\k/4}
+						\draw[->, black!60, thin, dashed] (\xV, \yy) -- ({\xV+\uu}, \yy);
+					}
+					\node[black!70, font=\scriptsize, anchor=west]
+					at ({\xV+\ss/2+0.02}, {\R/2+0.05}) {$u_2$};
+					
+					% --- etichette delle proiezioni dei centri/D su r_V ---
+					\node[font=\scriptsize, anchor=north]
+					at ({\xV-0.05}, 0) {$C_1\!\equiv\!C_2\!\equiv\!C_{12}$};
+					%			\node[font=\scriptsize, anchor=east]
+					%			at ({\xV-0.05}, \R) {$D$};
+					
+					% --- etichette dei valori al picco ---
+					\node[font=\scriptsize, anchor=south]
+					at ({\xV-\ss/4-0.02}, {\R-0.02}) {$\tfrac{s_3}{2}$};
+					\node[font=\scriptsize, anchor=south]
+					at ({\xV+\ss/4+0.02}, {\R-0.02}) {$\tfrac{s_3}{2}$};
+					
+					% ==========================================================
+					% retta r_H (orizzontale, sotto) — campo v(x)
+					% ==========================================================
+					\draw[gray!45, thin] (-\R-0.40, \yH) -- (\R+0.40, \yH)
+					node[right, font=\scriptsize] {$r_H$};
+					
+					\draw[gray!40, dashed, thin] (-\R, -0.45) -- (-\R, \yH);
+					\draw[gray!40, dashed, thin] (0, -0.10)   -- (0, \yH);
+					\draw[gray!40, dashed, thin] (\R, -0.45)  -- (\R, \yH);
+					
+					\fill[gray!75] (-\R, \yH) circle (1.3pt);
+					\fill[gray!75] (0, \yH)   circle (1.3pt);
+					\fill[gray!75] (\R, \yH)  circle (1.3pt);
+					
+					% --- skyline v_1 di C_1 (sopra r_H, sale da A verso D) ---
+					\draw[gray!75, thin] (-\R, \yH) -- (0, {\yH+\ss/2});
+					\foreach \k in {1,2,3,4}{
+						\pgfmathsetmacro{\xx}{-\R + \k*\R/4}
+						\pgfmathsetmacro{\vv}{(\ss/2)*\k/4}
+						\draw[->, gray!80, thin] (\xx, \yH) -- (\xx, {\yH+\vv});
+					}
+					\node[gray!85, font=\scriptsize] at ({-\R/2-0.05}, {\yH-0.30}) {$v_1$};
+					
+					% --- skyline v_2 di C_2 (sopra r_H, scende da D verso B, dashed) ---
+					\draw[black!55, thin] (0, {\yH+\ss/2}) -- (\R, \yH);
+					\foreach \k in {0,1,2,3}{
+						\pgfmathsetmacro{\xx}{\k*\R/4}
+						\pgfmathsetmacro{\vv}{(\ss/2)*(1-\k/4)}
+						\ifnum\k>0
+						\draw[->, black!60, thin] (\xx, \yH) -- (\xx, {\yH+\vv});
+						\fi
+					}
+					\node[black!70, font=\scriptsize] at ({\R/2+0.05}, {\yH-0.30}) {$v_2$};
+					
+					% --- etichetta picco su r_H ---
+					\node[font=\scriptsize, anchor=south] at (0, {\yH+\ss/2+0.00}) {$\tfrac{s_3}{2}$};
+					
+					% --- etichette delle proiezioni dei centri su r_H ---
+					\node[font=\scriptsize, anchor=north] at (-\R, {\yH-0.04}) {$C_1$};
+					\node[font=\scriptsize, anchor=north] at (0, {\yH-0.04})   {$C_{12}$};
+					\node[font=\scriptsize, anchor=north] at (\R, {\yH-0.04})  {$C_2$};
+					
+					
+					% ==========================================================
+					% Configurazione variata
+					% ==========================================================
+					
+					% diagonali A-D_2' e B-D_1' (parallelogramma A D_1' D_2' B)
+					\draw[gray!65, thin] (-\R, 0) -- ({\ss/2},  {\R+\ss/2});
+					\draw[gray!65, thin] (\R, 0)  -- ({-\ss/2}, {\R+\ss/2});
+					
+					% raggi AD_1' e BD_2' (chorde dei due semiarchi deformati)
+					\draw[gray!65, thin] (-\R, 0) -- ({-\ss/2}, {\R+\ss/2});
+					\draw[gray!65, thin] (\R, 0)  -- ({\ss/2},  {\R+\ss/2});
+					
+					% marker D_1' e D_2'
+					\fill[gray!65] ({-\ss/2}, {\R+\ss/2}) circle (1.5pt);
+					\fill[gray!65] ({\ss/2},  {\R+\ss/2}) circle (1.5pt);
+					
+					\node[gray!65, font=\scriptsize, anchor=east]at ({-\ss/4}, {\R+\ss/2+0.2}) {$D_1'$};
+					\node[gray!65, font=\scriptsize, anchor=west] at ({\ss/4},  {\R+\ss/2+0.2}) {$D_2'$};
+					
+					
+					% semiarchi deformati (linearizzazione del campo di rotazione)
+					\draw[gray!75, line width=0.9pt]
+					plot[domain=90:180, samples=24, smooth, variable=\t]
+					({\R*cos(\t) - (\ss/2)*sin(\t)},
+					{\R*sin(\t) + (\ss/2)*(cos(\t)+1)});
+					% C_2: rotazione oraria di ss/(2R) attorno a B=(R,0)
+					\draw[gray!75, line width=0.9pt]
+					plot[domain=0:90, samples=24, smooth, variable=\t]
+					({\R*cos(\t) + (\ss/2)*sin(\t)},
+					{\R*sin(\t) + (\ss/2)*(1-cos(\t))});
+					
+					% --- archi degli angoli di rotazione ---
+					\pgfmathsetmacro{\dtheta}{atan(\ss/(2*\R))}
+					\def\rB{0.7}
+					
+					
+					\def\rB{0.90}                                  % era 0.7
+					\pgfmathsetmacro{\dtheta}{atan(\ss/(2*\R))}
+					
+					% vartheta_1 in A: coda a 45°, punta a 45°+dtheta, antiorario
+					\draw[->, gray!85, thin]
+					({-\R + \rB*cos(45)}, {\rB*sin(45)})
+					arc[start angle=45, end angle={45+\dtheta}, radius=\rB];
+					\node[gray!85, font=\scriptsize, anchor=south west]	at ({-\R + \rB*cos(45)-0.04}, {\rB*sin(45)-0.30})
+					{$\vartheta_1$};
+					
+					% vartheta_2 in B: coda a 135°, punta a 135°-dtheta, orario
+					\draw[->, gray!85, thin]
+					({\R + \rB*cos(135)}, {\rB*sin(135)})
+					arc[start angle=135, end angle={135-\dtheta}, radius=\rB];
+					\node[gray!85, font=\scriptsize, anchor=south east]	at ({\R + \rB*cos(135)+0.10}, {\rB*sin(135)-0.30})
+					{$\vartheta_2$};
+					
+					% --- etichetta pannello ---
+					\node[font=\scriptsize] at ({(\xV-\R)/2}, \yH-0.55) {(a)};
+					
+				\end{scope}
+				
+				% ============================================================
+				% PANNELLO (b) — Cedimento s_4 (verticale in D)
+				% ============================================================
+				\begin{scope}[xshift=\dxp cm]
+					
+					% --- semiarchi ---
+					\draw[line width=1.2pt] (-\R,0)
+					arc[start angle=180, end angle=90, radius=\R];
+					\draw[line width=1.2pt] (0,\R)
+					arc[start angle=90, end angle=0, radius=\R];
+					
+					% --- cerniera al suolo in A ---
+					\draw[thick] (-\R,0) -- (-\R-0.18,-0.30)
+					-- (-\R+0.18,-0.30) -- cycle;
+					\draw[thick] (-\R-0.28,-0.30) -- (-\R+0.28,-0.30);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (-\R+\x,-0.30) -- (-\R+\x-0.09,-0.42);
+					}
+					% --- cerniera al suolo in B ---
+					\draw[thick] (\R,0) -- (\R-0.18,-0.30)
+					-- (\R+0.18,-0.30) -- cycle;
+					\draw[thick] (\R-0.28,-0.30) -- (\R+0.28,-0.30);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\R+\x,-0.30) -- (\R+\x-0.09,-0.42);
+					}
+					
+					% --- costruzione: retta AB estesa (luogo dei tre centri allineati) ---
+					\draw[gray!55, dashed, thin] (-\R-0.30, 0) -- (\R+1.20, 0);
+					% indicazione di C_{12} all'infinito orizzontale, lungo la retta AB
+					\draw[->, gray!55, thin] (\R+0.40, 0) -- (\R+1.10, 0);
+					\node[gray!75, font=\scriptsize, anchor=north]	at ({\R+1.10}, 0) {$C_{12}\to\infty$};
+					
+					% --- perni in A, B (esterni) e D (interno) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (-\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (0,\R) {};
+					
+					% --- etichette dei corpi ---
+					\node[font=\scriptsize] at ({0.95*cos(110)-0.6},{0.95*sin(110)+0.50}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize] at ({0.95*cos(70)+1.2},{0.95*sin(70)})  {$\mathcal{C}_2$};
+					
+					% --- etichette punti notevoli ---
+					\node[font=\scriptsize, anchor=east]  at ({-\R-0.10}, 0.18) {$A\!\equiv\!C_1$};
+					\node[font=\scriptsize, anchor=west]  at ({\R+0.10}, 0.18)  {$B\!\equiv\!C_2$};
+					\node[font=\scriptsize, anchor=south] at (-0.20, \R)     {$D$};
+					
+					% --- cedimento relativo s_4 in D: D_2 sale, D_1 scende ---
+					\def\eps{0.08}
+					\draw[->, thick] ({\eps}, \R+0.05)  -- ++(0, {\ss/2});
+					\draw[->, thick] ({-\eps}, \R-0.05) -- ++(0, {-\ss/2});
+					\node[font=\scriptsize, anchor=west] at ({\eps+0.10}, {\R+\ss/4}) {$s_4$};
+					
+					% ==========================================================
+					% retta r_V (verticale, a sinistra dell'arco) — campo u(y)
+					% ==========================================================
+					\draw[gray!45, thin] (\xV, -0.30) -- (\xV, \R+0.55)
+					node[above, font=\scriptsize] {$r_V$};
+					
+					\draw[gray!40, dashed, thin] (-\R, 0) -- (\xV, 0);
+					\draw[gray!40, dashed, thin] (0, \R)  -- (\xV, \R);
+					
+					\fill[gray!75] (\xV, 0) circle (1.3pt);
+					\fill[gray!75] (\xV, \R) circle (1.3pt);
+					
+					% skyline u_1 = u_2 (coincidenti)
+					\draw[gray!75, thin] (\xV, 0) -- ({\xV+\ss/2}, \R);
+					\foreach \k in {1,2,3,4}{
+						\pgfmathsetmacro{\yy}{\k*\R/4}
+						\pgfmathsetmacro{\uu}{(\ss/2)*\k/4}
+						\draw[->, gray!80, thin] (\xV, \yy) -- ({\xV+\uu}, \yy);
+					}
+					\node[gray!85, font=\scriptsize, anchor=west]
+					at ({\xV+\ss/3}, {\R/2+0.10}) {$u_1\!=\!u_2$};
+					
+					% --- etichette delle proiezioni dei centri/D su r_V ---
+					\node[font=\scriptsize, anchor=north]
+					at ({\xV-0.05}, 0) {$C_1\!\equiv\!C_2\!\equiv\!C_{12}$};
+					\node[font=\scriptsize, anchor=east]
+					at ({\xV-0.05}, \R) {$D$};
+					
+					% etichetta del valore al picco
+					\node[font=\scriptsize, anchor=south]	at ({\xV+\ss/4+0.02}, {\R-0.02}) {$\tfrac{s_4}{2}$};
+					
+					% ==========================================================
+					% retta r_H (orizzontale, sotto) — campo v(x)
+					% ==========================================================
+					\draw[gray!45, thin] (-\R-0.40, \yH) -- (\R+0.40, \yH)
+					node[right, font=\scriptsize] {$r_H$};
+					
+					\draw[gray!40, dashed, thin] (-\R, -0.45) -- (-\R, \yH);
+					\draw[gray!40, dashed, thin] (0, -0.10)   -- (0, \yH);
+					\draw[gray!40, dashed, thin] (\R, -0.45)  -- (\R, \yH);
+					
+					\fill[gray!75] (-\R, \yH) circle (1.3pt);
+					\fill[gray!75] (0, \yH)   circle (1.3pt);
+					\fill[gray!75] (\R, \yH)  circle (1.3pt);
+					
+					% --- skyline v_1 di C_1 (sotto r_H, scende da A a D_1) ---
+					\draw[gray!75, thin] (-\R, \yH) -- (0, {\yH-\ss/2});
+					\foreach \k in {1,2,3,4}{
+						\pgfmathsetmacro{\xx}{-\R + \k*\R/4}
+						\pgfmathsetmacro{\vv}{(\ss/2)*\k/4}
+						\draw[->, gray!80, thin] (\xx, \yH) -- (\xx, {\yH-\vv});
+					}
+					\node[gray!85, font=\scriptsize] at ({-\R/2-0.05}, {\yH-\ss/2-0.25}) {$v_1$};
+					
+					% --- skyline v_2 di C_2 (sopra r_H, scende da D_2 a B) ---
+					\draw[gray!75, thin] (0, {\yH+\ss/2}) -- (\R, \yH);
+					\foreach \k in {0,1,2,3}{
+						\pgfmathsetmacro{\xx}{\k*\R/4}
+						\pgfmathsetmacro{\vv}{(\ss/2)*(1-\k/4)}
+						\ifnum\k>0
+						\draw[->, gray!80, thin] (\xx, \yH) -- (\xx, {\yH+\vv});
+						\fi
+					}
+					\node[gray!85, font=\scriptsize] at ({\R/2+0.05}, {\yH+\ss/2+0.20}) {$v_2$};
+					\node[black!70, font=\scriptsize] at ({\R/2+0.05}, {\yH+\ss/2+0.20}) {$v_2$};
+					
+					% etichette del salto in D
+					\node[font=\scriptsize, anchor=east] at (0.04, {\yH+\ss/4}) {$\tfrac{s_4}{2}$};
+					\node[font=\scriptsize, anchor=west] at (0.02, {\yH-\ss/4-0.04}) {$\tfrac{s_4}{2}$};
+					
+					% --- etichette delle proiezioni dei centri su r_H ---
+					\node[font=\scriptsize, anchor=north] at (-\R, {\yH-0.04}) {$C_1$};
+					\node[font=\scriptsize, anchor=north] at (\R, {\yH-0.04})  {$C_2$};
+					
+					% ==========================================================
+					% Configurazione variata
+					% ==========================================================
+					
+					% diagonali AD_2' e BD_1' (parallelogramma A D_1' D_2' B)
+					\draw[gray!65, thin] (-\R, 0) -- ({\ss/2}, {\R+\ss/2});
+					\draw[gray!65, thin] (\R, 0)  -- ({\ss/2}, {\R-\ss/2});
+					
+					% corde AD_1' e BD_2'
+					\draw[gray!65, thin] (-\R, 0) -- ({\ss/2}, {\R-\ss/2});
+					\draw[gray!65, thin] (\R, 0)  -- ({\ss/2}, {\R+\ss/2});
+					
+					% marker D_1' e D_2'
+					\fill[gray!65] ({\ss/2}, {\R-\ss/2}) circle (1.5pt);
+					\fill[gray!65] ({\ss/2}, {\R+\ss/2}) circle (1.5pt);
+					
+					\node[gray!65, font=\scriptsize, anchor=west]  at ({0}, {\R-\ss/2-0.25}) {$D_1'$};
+					\node[gray!65, font=\scriptsize, anchor=west]  at ({0}, {\R+\ss/2+0.20}) {$D_2'$};
+					
+					% semiarchi deformati (linearizzazione del campo di rotazione)
+					% C_1: rotazione oraria di ss/(2R) attorno ad A=(-R,0)
+					\draw[gray!75, line width=0.9pt]
+					plot[domain=90:180, samples=24, smooth, variable=\t]
+					({\R*cos(\t) + (\ss/2)*sin(\t)},
+					{\R*sin(\t) - (\ss/2)*(cos(\t)+1)});
+					% C_2: rotazione oraria di ss/(2R) attorno a B=(R,0)
+					\draw[gray!75, line width=0.9pt]
+					plot[domain=0:90, samples=24, smooth, variable=\t]
+					({\R*cos(\t) + (\ss/2)*sin(\t)},
+					{\R*sin(\t) + (\ss/2)*(1-cos(\t))});
+					
+					% --- archi degli angoli di rotazione (entrambi orari) ---
+					\pgfmathsetmacro{\dtheta}{atan(\ss/(2*\R))}
+					\def\rB{1.0}
+					
+					% vartheta_1 in A: coda a 45°, punta a 45°-dtheta, ORARIO
+					\draw[->, gray!85, thin]
+					({-\R + \rB*cos(45)}, {\rB*sin(45)})
+					arc[start angle=45, end angle={45-\dtheta}, radius=\rB];
+					\node[gray!85, font=\scriptsize, anchor=south west]	at ({-\R + \rB*cos(45)-0.02}, {\rB*sin(45)-0.15})
+					{$\vartheta_1$};
+					
+					% vartheta_2 in B: coda a 135°, punta a 135°-dtheta, ORARIO
+					\draw[->, gray!85, thin]
+					({\R + \rB*cos(135)}, {\rB*sin(135)})
+					arc[start angle=135, end angle={135-\dtheta}, radius=\rB];
+					\node[gray!85, font=\scriptsize, anchor=south east]	at ({\R + \rB*cos(135)+0.60}, {\rB*sin(135)-0.40})
+					{$\vartheta_2$};
+					
+					% --- etichetta pannello ---
+					\node[font=\scriptsize] at ({(\xV-\R)/2}, \yH-0.55) {(b)};
+					
+				\end{scope}
+				
+			\end{tikzpicture}
+		}
+		\caption{Soluzione grafica per i cedimenti interni in $D$.
+			\emph{(a)}~cedimento $s_3$ (orizzontale): tre centri
+			distinti, $C_1\equiv A$, $C_2\equiv B$ fissati dai
+			vincoli a cedimento nullo, $C_{12}$ punto medio di $AB$.
+			\emph{(b)}~cedimento $s_4$ (verticale): caso degenere,
+			$C_{12}$ punto improprio della direzione orizzontale,
+			e i due semiarchi ruotano della stessa quantità attorno
+			ai rispettivi centri $C_1\equiv A$ e $C_2\equiv B$.}
+		\label{fig:arco_cedimenti_interni}
+	\end{figure}

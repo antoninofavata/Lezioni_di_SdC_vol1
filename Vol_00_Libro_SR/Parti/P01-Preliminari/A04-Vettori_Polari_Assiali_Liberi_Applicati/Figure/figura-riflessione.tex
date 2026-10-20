@@ -1,0 +1,104 @@
+\begin{figure}[!htbp]
+	\centering
+	% ---- helper locali (blocco autocontenuto) --------------------------------------------------
+	\providecommand{\rightangle}[3]{\coordinate (ra1) at ($(#2)!2.2mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.2mm!(#3)$);
+		\draw[gray!55,line width=0.5pt](ra1)--($(ra1)+(ra3)-(#2)$)--(ra3);}% angolo retto in #2
+	\begin{tikzpicture}[>=Stealth,scale=1.0,
+		vec/.style={->,thick},
+		aux/.style={->,thin,gray!60},
+		auxlab/.style={gray!75,font=\footnotesize},
+		pt/.style={circle,fill,inner sep=1.1pt},
+		mirror/.style={thin,gray!55,dashed}]
+		%
+		% ---- traccia del piano di riflessione (asse di simmetria) -------------------------------
+		\coordinate (A) at (235:3.3);          % estremo inferiore
+		\coordinate (B) at (55:3.3);           % estremo superiore
+		\draw[very thick] (A) -- (B);
+		\node[anchor=west] at ($(B)+(0.10,0.08)$) {$\uppi$};
+		% simbolo dell'asse di simmetria: due tratti passanti per lo stesso punto, inclinati
+		% di +-35 rispetto all'asse (che ne e' bisettrice); in punta a ciascuno un pennone
+		% triangolare con il cateto superiore ortogonale all'asta e un cateto sul tratto stesso;
+		% #1 = posizione del punto sull'asse
+		\providecommand{\symaxis}[1]{%
+			\draw[line width=0.6pt] ($(55:#1)+(200:0.40)$) -- ($(55:#1)+(20:0.55)$)
+			-- ($(55:#1)+(20:0.55)+(-70:0.18)$) -- ($(55:#1)+(20:0.31)$);
+			\draw[line width=0.6pt] ($(55:#1)+(270:0.40)$) -- ($(55:#1)+(90:0.55)$)
+			-- ($(55:#1)+(90:0.55)+(180:0.18)$) -- ($(55:#1)+(90:0.31)$);}
+		\symaxis{-2.85}
+		% normale al piano
+		\coordinate (N0)   at (55:2.85);
+		\coordinate (Ntip) at ($(N0)+(-35:0.85)$);
+		\draw[vec] (N0) -- (Ntip) node[anchor=west,xshift=1pt] {$\nb$};
+		\rightangle{B}{N0}{Ntip}
+		%
+		%==========================================================================================
+		% COPPIA SUPERIORE: vettore polare
+		%==========================================================================================
+		\coordinate (F1) at (55:1.2);                       % piede sulla traccia
+		\coordinate (P)  at ($(F1)+(-35:1.9)$);             % punto originale
+		\coordinate (Ps) at ($(F1)+(145:1.9)$);             % punto simmetrico
+		\draw[mirror] (P) -- (Ps);
+		% --- lato originale: v = comp.parallela + comp.normale
+		\coordinate (Pu) at ($(P)+(55:1.6)$);               % P + (v - (v.n)n)
+		\coordinate (Pv) at ($(Pu)+(-35:0.7)$);             % P + v
+		\draw[aux] (P) -- (Pu) node[auxlab,pos=0.6,sloped,above=1pt] {$\vb-(\vb\cdot\nb)\,\nb$};
+		\draw[aux] (Pu) -- (Pv);
+		\node[auxlab,anchor=west] at ($(Pu)!0.5!(Pv)+(0.10,0.05)$) {$(\vb\cdot\nb)\,\nb$};
+		\draw[vec] (P) -- (Pv) node[midway,below=2pt,yshift=-1pt] {$\vb$};
+		\node[pt] at (P) {};
+		\node[below=3pt] at (P) {$P$};
+		% --- lato riflesso: R_n v = comp.parallela - comp.normale
+		\coordinate (Qu) at ($(Ps)+(55:1.6)$);              % Ps + (v - (v.n)n)
+		\coordinate (Qv) at ($(Qu)+(145:0.7)$);             % Ps + R_n v
+		\draw[aux] (Ps) -- (Qu) node[auxlab,pos=0.55,sloped,below=1pt] {$\vb-(\vb\cdot\nb)\,\nb$};
+		\draw[aux] (Qu) -- (Qv);
+		\node[auxlab,anchor=west] at ($(Qu)!0.5!(Qv)+(0.12,0.10)$) {$-(\vb\cdot\nb)\,\nb$};
+		\draw[vec] (Ps) -- (Qv) node[midway,anchor=east,xshift=-3pt] {$\Rbb_{\nb}\vb$};
+		\node[pt] at (Ps) {};
+		\node[anchor=east,xshift=-3pt,yshift=-2pt] at (Ps) {$P_\star$};
+		%
+		%==========================================================================================
+		% COPPIA INFERIORE: vettore assiale
+		%==========================================================================================
+		\coordinate (F2) at (235:1.4);                      % piede sulla traccia
+		\coordinate (Q)  at ($(F2)+(-35:1.7)$);             % punto originale
+		\coordinate (Qs) at ($(F2)+(145:1.7)$);             % punto simmetrico
+		\draw[mirror] (Q) -- (Qs);
+		% --- lato originale: v, w e parallelogramma; circolazione antioraria (omega uscente)
+		\coordinate (Wv)  at ($(Q)+(55:0.5)+(-35:1.2)$);    % Q + v
+		\coordinate (Ww)  at ($(Q)+(55:1.4)+(145:0.2)$);    % Q + w
+		\coordinate (Wvw) at ($(Wv)+(55:1.4)+(145:0.2)$);   % Q + v + w
+		\draw[thin,gray!60] (Wv) -- (Wvw) -- (Ww);
+		\node[auxlab] at ($(Q)!0.5!(Wvw)$) {$|\bm{\upomega}|$};
+		\draw[vec] (Q) -- (Wv) node[midway,below=2pt,xshift=2pt] {$\vb$};
+		\draw[vec] (Q) -- (Ww) node[midway,anchor=east,xshift=-2pt] {$\wb$};
+		\draw[thick,->] ($(Q)+(60:0.30)$) arc[start angle=60,end angle=330,radius=0.30];
+		\node[pt] at (Q) {};
+		\node[anchor=east,xshift=-9pt,yshift=4pt]  at (Q) {$P$};
+		\node[anchor=north east,xshift=-2pt,yshift=-9pt] at (Q) {$\bm{\upomega}$};
+		\node at ($(Q)+(0.85,-1.05)$) {$\bm{\upomega}=\vb\times\wb$};
+		% --- lato riflesso: R_n v, R_n w; circolazione oraria (omega_star entrante)
+		\coordinate (Zv)  at ($(Qs)+(55:0.5)+(145:1.2)$);   % Qs + R_n v
+		\coordinate (Zw)  at ($(Qs)+(55:1.4)+(-35:0.2)$);   % Qs + R_n w
+		\coordinate (Zvw) at ($(Zv)+(55:1.4)+(-35:0.2)$);   % Qs + R_n v + R_n w
+		\draw[thin,gray!60] (Zv) -- (Zvw) -- (Zw);
+		\node[auxlab] at ($(Qs)!0.5!(Zvw)$) {$|\bm{\upomega}_\star|$};
+		\draw[vec] (Qs) -- (Zv) node[midway,anchor=east,xshift=-3pt] {$\Rbb_{\nb}\vb$};
+		\draw[vec] (Qs) -- (Zw) node[midway,anchor=west,xshift=4pt,yshift=-3pt] {$\Rbb_{\nb}\wb$};
+		\draw[thick,->] ($(Qs)+(120:0.30)$) arc[start angle=120,end angle=-150,radius=0.30];
+		\node[pt] at (Qs) {};
+		\node[anchor=east,xshift=-9pt,yshift=2pt] at (Qs) {$P_\star$};
+		\node[anchor=north,yshift=-9pt] at (Qs) {$\bm{\upomega}_\star$};
+		\node at ($(Qs)+(-0.15,-1.15)$) {$\bm{\upomega}_\star=-\Rbb_{\nb}\bm{\upomega}$};
+	\end{tikzpicture}
+	\caption{Riflessione rispetto al piano $\uppi$ di normale $\nb$. In alto:
+		il vettore polare $\vb$, applicato in $P$, si trasforma nel simmetrico
+		$\Rbb_{\nb}\vb$, applicato nel punto simmetrico $P_\star$: la componente
+		parallela al piano resta invariata, quella normale si inverte. In basso:
+		i riflessi $\Rbb_{\nb}\vb$ e $\Rbb_{\nb}\wb$ definiscono una circolazione
+		di verso opposto, e il vettore assiale $\bm{\upomega}=\vb\times\wb$ si
+		trasforma nell'antisimmetrico
+		$\bm{\upomega}_\star=-\Rbb_{\nb}(\bm{\upomega})$.}
+	\label{fig:riflessione}
+\end{figure}

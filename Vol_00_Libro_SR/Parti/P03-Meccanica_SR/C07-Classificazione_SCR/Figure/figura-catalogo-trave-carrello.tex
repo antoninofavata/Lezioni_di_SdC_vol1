@@ -1,0 +1,111 @@
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		\def\L{4.0}
+		
+		% ============================================================
+		% PANNELLO (a) — caso regolare
+		% ============================================================
+		\begin{scope}[xshift=0cm]
+			
+			% trave
+			\draw[line width=1.5pt] (0,0) -- (\L,0);
+			
+			% --- cerniera in A (cerniera al suolo) ---
+			\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+			\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (0,0) {};
+			
+			% --- carrello in B (asse verticale, sotto la trave) ---
+			\draw[thick] (\L,0) -- (\L-0.22,-0.38)
+			-- (\L+0.22,-0.38) -- cycle;
+			\draw[thick] (\L-0.15,-0.44) circle (0.07);
+			\draw[thick] (\L+0.15,-0.44) circle (0.07);
+			\draw[thick] (\L-0.32,-0.54) -- (\L+0.32,-0.54);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] (\L+\x,-0.54) -- (\L+\x-0.10,-0.68);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (\L,0) {};
+			
+			% --- etichette dei nodi ---
+			\node[above left,  font=\scriptsize] at (0,0)  {$A$};
+			\node[above right, font=\scriptsize] at (\L,0) {$B$};
+			
+			% --- didascalia del pannello ---
+			\node[font=\scriptsize] at (\L/2,-1.20)
+			{(a) caso regolare, $\rg(\bm{A})=3$};
+			
+		\end{scope}
+		
+		
+		% ============================================================
+		% PANNELLO (b) — caso degenere (carrello con asse orizzontale)
+		% ============================================================
+		\begin{scope}[xshift=6.5cm]
+			
+			\def\thetadeg{15}   % ampiezza dell'angolo di rotazione, in gradi
+			
+			
+			% --- meccanismo (cinematica infinitesima): rotazione theta attorno ad A ---
+			% B' è sotto B alla distanza theta*L (linearizzato), sulla verticale di B
+			\def\dB{1.0}   % ampiezza grafica del cedimento verticale di B (= theta*L)
+			
+			% trave deformata: A fisso, B' = B - dB * \ab_y
+			\draw[gray!55, line width=1.2pt] (0,0) -- (\L,-\dB);
+			
+			% etichetta B'
+			\node[gray!70,  right, font=\scriptsize] at (\L,-\dB) {$B'$};
+			
+			% freccia dello spostamento u(B), dal B originale verso B' (verticale)
+			\draw[->, gray!70, thick] (\L,0) -- (\L,-\dB);
+			\node[gray!70, right, font=\scriptsize] at (\L,-\dB/2) {$q$};
+			
+			% --- trave (configurazione iniziale) ---
+			\draw[line width=1.5pt] (0,0) -- (\L,0);
+			
+			% --- cerniera in A (cerniera al suolo) ---
+			\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+			\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (0,0) {};
+			
+			% --- carrello in B con asse ORIZZONTALE (a muro, a destra) ---
+			\draw[thick] (\L,0) -- (\L+0.38,-0.22)
+			-- (\L+0.38, 0.22) -- cycle;
+			\draw[thick] (\L+0.44,-0.15) circle (0.07);
+			\draw[thick] (\L+0.44, 0.15) circle (0.07);
+			\draw[thick] (\L+0.54,-0.32) -- (\L+0.54, 0.32);
+			\foreach \y in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] (\L+0.54,\y) -- (\L+0.68,\y-0.10);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (\L,0) {};
+			
+			% --- linea d'azione di R_B (tratteggiata lungo AB) ---
+			\draw[dashed, thin, gray!70] (-0.5,0) -- (\L+0.5,0);
+			\node[font=\scriptsize, gray!80] at (\L/2,0.30)
+			{linea d'azione di $R_B$};
+			
+			% --- etichette dei nodi (in primo piano) ---
+			\node[above left,  font=\scriptsize] at (0,0)   {$A$};
+			\node[above,       font=\scriptsize] at (\L,0.05) {$B$};
+			
+			% --- didascalia del pannello ---
+			\node[font=\scriptsize] at (\L/2,-1.20)
+			{(b) caso degenere, $g_\ell = g_{\mathscr{i}} = 1$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Trave appoggiata: \emph{(a)}~caso regolare, $\rg(\bm{A})=3$ (isostatico); \emph{(b)}~caso	degenere, $g_\ell = g_{\mathscr{i}} = 1$. In (b) la	linea d'azione del carrello (tratteggio grigio)	coincide con la retta $AB$; il meccanismo è	rappresentato dalla configurazione deformata	(grigio) e dal parametro lagrangiano $q$.}
+	\label{fig:catalogo_trave_carrello}
+\end{figure}

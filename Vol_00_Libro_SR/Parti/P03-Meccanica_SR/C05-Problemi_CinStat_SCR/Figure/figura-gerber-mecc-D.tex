@@ -1,0 +1,76 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+nodo/.style={circle, fill=white, draw=black,
+	inner sep=0pt, minimum size=5pt, line width=0.8pt},
+cint/.style={circle, fill=white, draw=black,
+	inner sep=0pt, minimum size=6pt, line width=0.8pt},
+fantasma/.style={thin, gray, dashed},
+tacca/.style={thin, gray!70}]
+
+\def\a{1.0}
+\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+
+%% riferimento indeformato, tratteggiato
+\draw[fantasma] (0,0) -- ({5*\a},0);
+
+%% configurazione del meccanismo: C1 fermo, C2 ruotato attorno a C
+\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},-0.6);
+
+\node[above=2pt] at (0,0)      {$A$};
+\node[above=2pt] at ({2*\a},0) {$B$};
+\node[above=2pt] at ({3*\a},0) {$C$};
+\node[below right=1pt] at ({5*\a},-0.6) {$D$};
+
+\node at ({1.4*\a},0.28)  {$\mathcal{C}_1$};
+\node at ({4.3*\a},-0.2)   {$\mathcal{C}_2$};
+
+%% angolo virtuale theta_2 in C
+\draw[tacca] ({3.2*\a-0.35},0) -- ({3.2*\a+0.35},0);
+\draw[thin] ({3.2*\a+0.3},0) arc (0:-16.7:0.3);
+\node[right=1pt] at ({3*\a+0.32},-0.4) {$\vartheta_2$};
+
+%% cerniera in A e carrello in B, invariati
+\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+\draw (-\gw,-\thA) -- (\gw,-\thA);
+\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+\node[nodo] at (0,0) {};
+
+\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+\draw ({2*\a-\sr},0) arc(180:360:\sr);
+
+\node[cint] at ({3*\a},0) {};
+
+%% carrello in D soppresso: fantasma nella posizione originaria
+\draw[fantasma] ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+\node[gray, above=2pt] at ({5*\a},0) {\footnotesize(soppresso)};
+\node[nodo] at ({5*\a},-0.6) {};
+
+%% reazione incognita Y_D, verso l'alto, applicata nel punto attuale
+\draw[-{Latex[length=2.8mm]}, thick] ({5*\a},-1.2) -- ({5*\a},-0.65);
+\node[below=2pt] at ({5*\a},-0.95) {$Y_D$};
+
+%% carico F, verso il basso, applicato nel punto attuale
+\draw[-{Latex[length=2.8mm]}, thick] ({4*\a},0.7) -- ({4*\a},0.1);
+\node[right=2pt] at ({3.4*\a},0.5) {$F$};
+
+\end{tikzpicture}
+\caption{Il meccanismo usato per determinare $Y_D$: si sopprime
+(concettualmente) il carrello in $D$, in grigio nella sua posizione
+originaria. Cerniera in $A$ e carrello in $B$ bloccano
+$\mathcal{C}_1$, che resta fermo; $\mathcal{C}_2$ è allora libero di
+ruotare, di un angolo virtuale $\vartheta_2$, attorno al punto fisso
+$C$. Solo $F$ e la reazione incognita $Y_D$ compiono lavoro in
+questo moto.}
+\label{fig:gerber_mecc_D}
+\end{figure}

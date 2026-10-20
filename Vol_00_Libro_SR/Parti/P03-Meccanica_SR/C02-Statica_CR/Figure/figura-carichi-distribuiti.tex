@@ -1,0 +1,105 @@
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][\emph{carico generico $p(x)$}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			% asse x
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			% curva generica: stessa funzione usata per le frecce
+			\draw[thick, domain=0:3, samples=100]
+			plot (\x, {1.0 + 0.6*sin(\x*120)});
+			\node[right] at (3, {1.0 + 0.6*sin(360)}) {$p(x)$};
+			% frecce che partono esattamente dalla curva
+			\foreach \x in {0.0, 0.2, 0.5, 0.8, 1.1, 1.4,
+				1.7, 2.0, 2.3, 2.55, 2.8, 3.0}{
+				\pgfmathsetmacro{\h}{1.0 + 0.6*sin(\x*120)}
+				\draw[->, thin] (\x, \h) -- (\x, 0);
+			}
+			% punto baricentro (calcolato numericamente ~1.5)
+			\fill (1.5,0) circle (1.5pt);
+			% risultante
+			\draw[->, thick] (1.5,0) -- (1.5,-1.2)
+			node[right] {$|\fb|$};
+			% quota d dal bordo sinistro al baricentro
+			\draw[<->, thin] (0,-0.5) -- (1.5,-0.5)
+			node[midway, below] {$d$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{carico uniforme}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			\foreach \x in {0, 0.375, 0.75, 1.125, 1.5,
+				1.875, 2.25, 2.625, 3.0}{
+				\draw[->, thin] (\x, 1.5) -- (\x, 0);
+			}
+			\draw[thick] (0,1.5) -- (3,1.5);
+			\node[left] at (0,1.5) {$p$};
+			\fill (1.5,0) circle (1.5pt);
+			\draw[->, thick] (1.5,0) -- (1.5,-1.2)
+			node[right] {$p\ell$};
+			\draw[<->, thin] (0,-0.5) -- (1.5,-0.5)
+			node[midway, below] {$\frac{\ell}{2}$};
+	\end{tikzpicture}}
+	\\[1em]
+	\subfloat[][\emph{carico lineare}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			\foreach \x in {0.375, 0.75, 1.125, 1.5,
+				1.875, 2.25, 2.625, 3.0}{
+				\draw[->, thin] (\x, {1.5*\x/3}) -- (\x, 0);
+			}
+			\draw[thick] (0,0) -- (3,1.5);
+			\node[right] at (3,1.5) {$p$};
+			\fill (2.0,0) circle (1.5pt);
+			\draw[->, thick] (2.0,0) -- (2.0,-1.2)
+			node[right] {$\frac{p\ell}{2}$};
+			\draw[<->, thin] (0,-0.5) -- (2.0,-0.5)
+			node[midway, below] {$\frac{2\ell}{3}$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{carico parabolico}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
+			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
+			\node[below] at (0,0) {$0$};
+			\node[below] at (3,0) {$\ell$};
+			\draw[thick] (0,-0.1) -- (0,0.1);
+			\draw[thick] (3,-0.1) -- (3,0.1);
+			\foreach \x in {0.375, 0.75, 1.125, 1.5,
+				1.875, 2.25, 2.625, 3.0}{
+				\draw[->, thin] (\x, {1.5*\x*\x/9}) -- (\x, 0);
+			}
+			\draw[thick, domain=0:3, samples=50]
+			plot (\x, {1.5*\x*\x/9});
+			\node[right] at (3,1.5) {$p$};
+			\fill (2.25,0) circle (1.5pt);
+			\draw[->, thick] (2.25,0) -- (2.25,-1.2)
+			node[right] {$\frac{p\ell}{3}$};
+			\draw[<->, thin] (0,-0.5) -- (2.25,-0.5)
+			node[midway, below] {$\frac{3\ell}{4}$};
+	\end{tikzpicture}}
+	\caption{Riduzione di carichi distribuiti
+		$\fb_L(x) = -p(x)\,\ab_y$ con $p(x) \geq 0$
+		su un intervallo di lunghezza $\ell$: la risultante
+		(freccia spessa) è applicata nel baricentro del
+		diagramma di carico.
+		\textbf{\textit{(a)}}~Caso generico $p(x)$:
+		risultante $|\fb|$ applicata a distanza $d$.
+		\textbf{\textit{(b)}}~Carico uniforme:
+		$|\fb|=p\ell$, $d=\ell/2$.
+		\textbf{\textit{(c)}}~Carico lineare:
+		$|\fb|=p\ell/2$, $d=2\ell/3$.
+		\textbf{\textit{(d)}}~Carico parabolico:
+		$|\fb|=p\ell/3$, $d=3\ell/4$.}
+	\label{fig:carichi_distribuiti}
+\end{figure}

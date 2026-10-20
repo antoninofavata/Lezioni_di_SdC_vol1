@@ -1,0 +1,62 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:parallele_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-parallele}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Esempio «Forze concentrate su un intervallo», caso (b), del capitolo Statica del corpo rigido:
+% forze F in l/3 e 2F in 2l/3 (l = 4.5 unita' di disegno), dirette verso il basso.
+% Polo di componenti H = 2.0, V_0 = 1.3; nodi A_1 = (1.500,-0.975), A_2 = (3.000,-1.200); il primo e l'ultimo lato si
+% incontrano in R = (2.500,-1.625): la risultante 3F agisce sulla retta x = d = 5 l/9 (verificato).
+% Forze nel piano di posizione in scala 0.5.
+% (a) intervallo, forze, poligono funicolare, R e retta d'azione a della risultante; (b) linea dei carichi e polo.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+\begin{scope}
+\draw[polretta] (1.500,1.000) -- (1.500,-1.875) node[anchor=north,inner sep=1.5pt,black] {$a_1$};
+\draw[polforza] (1.500,1.560) -- (1.500,1.060) node[pos=0.3,anchor=east,inner sep=3pt] {$F$};
+\draw[polretta] (3.000,1.000) -- (3.000,-1.875) node[anchor=north,inner sep=1.5pt,black] {$a_2$};
+\draw[polforza] (3.000,2.060) -- (3.000,1.060) node[pos=0.3,anchor=east,inner sep=3pt] {$2F$};
+\draw[line width=1.3pt] (0.000,1.000) -- (4.500,1.000);
+\draw[line width=.6pt] (0.000,0.900) -- (0.000,1.100);
+\draw[line width=.6pt] (4.500,0.900) -- (4.500,1.100);
+\draw[polquota] (0.000,2.450) -- (1.500,2.450) node[midway,anchor=south,inner sep=2.5pt] {$\ell/3$};
+\draw[polquota] (1.500,2.450) -- (3.000,2.450) node[midway,anchor=south,inner sep=2.5pt] {$\ell/3$};
+\draw[polquota] (3.000,2.450) -- (4.500,2.450) node[midway,anchor=south,inner sep=2.5pt] {$\ell/3$};
+\draw[polretta] (2.500,1.000) -- (2.500,-2.125) node[anchor=north,inner sep=1.5pt,black] {$a$};
+\draw[polrisultante] (2.500,-0.125) -- (2.500,-1.625) node[pos=0.25,anchor=west,inner sep=3pt,black] {$3F$};
+\draw[polcostruzione] (1.500,-0.975) -- (2.793,-1.816);
+\draw[polcostruzione] (3.000,-1.200) -- (2.233,-1.852);
+\draw[pollato] (0.000,-0.000) -- (1.500,-0.975) -- (3.000,-1.200) -- (4.500,0.075);
+\pic at (1.500,-0.975) {polpunto};
+\pic at (3.000,-1.200) {polpunto};
+\pic at (2.500,-1.625) {polpunto};
+\node[anchor=north east,inner sep=2.5pt] at (1.500,-0.975) {$A_1$};
+\node[anchor=north west,inner sep=2.5pt] at (3.000,-1.200) {$A_2$};
+\node[anchor=north east,inner sep=3pt] at (2.500,-1.625) {$R$};
+\node[anchor=south west,inner sep=1.5pt] at (0.600,-0.390) {$b_0$};
+\node[anchor=south,inner sep=2.5pt] at (1.950,-1.043) {$b_1$};
+\node[anchor=south east,inner sep=1.5pt] at (3.900,-0.435) {$b_2$};
+\draw[polcostruzione] (0.000,0.850) -- (0.000,-3.025);
+\draw[polquota] (0.000,-2.875) -- (2.500,-2.875) node[midway,anchor=north,inner sep=2.5pt] {$d = \tfrac{5}{9}\,\ell$};
+\draw[polcostruzione] (2.500,-2.475) -- (2.500,-3.025);
+\node at (2.250,-3.825) {(a)};
+\end{scope}
+\begin{scope}[shift={(6.6,1.3)}]
+\draw[polraggio] (0.000,0.000) -- (2.000,-1.300);
+\draw[polraggio] (0.000,-1.000) -- (2.000,-1.300);
+\draw[polraggio] (0.000,-3.000) -- (2.000,-1.300);
+\draw[polforza] (0.000,0.000) -- (0.000,-1.000);
+\draw[polforza] (0.000,-1.000) -- (0.000,-3.000);
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.000,-1.000) {polpunto};
+\pic at (0.000,-3.000) {polpunto};
+\pic at (2.000,-1.300) {polpolo};
+\node[anchor=west,inner sep=2pt,font=\scriptsize] at (0.070,-0.300) {$F$};
+\node[anchor=west,inner sep=2pt,font=\scriptsize] at (0.070,-2.450) {$2F$};
+\draw[polrisultante] (-0.600,0.000) -- (-0.600,-3.000) node[midway,anchor=east,inner sep=3pt,black] {$3F$};
+\draw[polcostruzione] (0.000,0.000) -- (-0.750,0.000) (0.000,-3.000) -- (-0.750,-3.000);
+\node[anchor=south west,inner sep=2pt] at (0.000,0.000) {$0$};
+\node[anchor=east,inner sep=3pt] at (0.000,-1.000) {$1$};
+\node[anchor=north west,inner sep=2pt] at (0.000,-3.000) {$2$};
+\node[anchor=west,inner sep=3.5pt] at (2.000,-1.300) {$P$};
+\node at (0.700,-5.125) {(b)};
+\end{scope}
+\end{tikzpicture}%

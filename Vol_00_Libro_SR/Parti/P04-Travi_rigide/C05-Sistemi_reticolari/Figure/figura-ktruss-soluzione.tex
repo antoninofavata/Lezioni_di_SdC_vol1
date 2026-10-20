@@ -1,0 +1,103 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.80\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.62,
+					asta/.style={line width=1.2pt, line cap=round, line join=round, black},
+					astaG/.style={line width=1.0pt, line cap=round, line join=round, gray!45},
+					puntone/.style={line width=3.0pt, line cap=round, line join=round, black},
+					tirante/.style={line width=0.9pt, line cap=round, line join=round, black},
+					scarico/.style={line width=1.0pt, line cap=round, gray!55},
+					ztick/.style={line width=1.0pt, line cap=round, black},
+					cut/.style={line width=1.6pt, line cap=round, black},
+					nodo/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.5pt, line width=0.9pt},
+					mnodo/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=6pt, line width=1.3pt},
+					forza/.style={->, >=stealth, line width=1.3pt, black},
+					reaz/.style={->, >=stealth, line width=1.2pt, black},
+					sez/.style={black, thick, dashed},
+					lab/.style={font=\scriptsize},
+					]
+					\def\dd{2.6}\def\hh{2.6}
+					
+					%%──── (a) stato di sollecitazione ────
+					\begin{scope}
+						\foreach \i in {0,1,2,3,4}{ \coordinate (E\i) at ({\i*\dd},\hh); \coordinate (I\i) at ({\i*\dd},0); }
+						\foreach \i in {1,2,3,4}{ \coordinate (M\i) at ({\i*\dd},{\hh/2}); }
+							\foreach \i in {0,1,2,3,4}{ \node[lab,above=2pt]at(E\i){$E_\i$}; }
+						\foreach \i in {1,2,3}{ \node[lab,below left=-2pt]at(I\i){$I_\i$}; }
+						\node[lab,left=5pt]at(I0){$I_0$};
+						\node[lab,right=5pt]at(I4){$I_4$};
+						\foreach \i in {1,2,3,4}{ \node[lab,right=2pt]at(M\i){$M_\i$}; }
+						\draw[puntone](E0)--(E1); \draw[puntone](E1)--(E2); \draw[puntone](E2)--(E3);
+						\draw[puntone](E0)--(I0); \draw[puntone](E1)--(M1);
+						\draw[puntone](M1)--(I0); 
+						\draw[puntone](M2)--(I1); \draw[puntone](M3)--(E2); \draw[puntone](M4)--(E3); \draw[puntone](M4)--(I4);
+						\draw[tirante](I0)--(I1); \draw[tirante](I1)--(I2); \draw[tirante](I2)--(I3);
+						\draw[tirante](M1)--(I1); \draw[tirante](E2)--(M2); \draw[tirante](M2)--(I2);
+						\draw[tirante](E3)--(M3); \draw[tirante](M3)--(I3);
+						\draw[tirante](M1)--(E0); \draw[tirante](M2)--(E1); \draw[tirante](M3)--(I2); \draw[tirante](M4)--(I3);
+						\draw[scarico](E3)--(E4); \draw[scarico](I3)--(I4); \draw[scarico](E4)--(M4);
+						%% marcatura asta scarica: due trattini trasversali
+						\foreach \s in {-0.14,0.14}{
+							\draw[ztick]({3.5*\dd+\s},{\hh-0.16})--({3.5*\dd+\s},{\hh+0.16});   % E3E4 (orizz.)
+							\draw[ztick]({3.5*\dd+\s},{-0.16})--({3.5*\dd+\s},{0.16});            % I3I4 (orizz.)
+						}
+						\foreach \s in {-0.14,0.14}{
+							\draw[ztick]({4*\dd-0.16},{0.75*\hh+\s})--({4*\dd+0.16},{0.75*\hh+\s}); % E4M4 (vert.)
+						}
+						\draw[line width=1.0pt](I0)--++(-0.3,-0.5)--++(0.6,0)--cycle;
+						\draw[line width=1.0pt]($(I0)+(-0.42,-0.5)$)--($(I0)+(0.42,-0.5)$);
+						\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}\draw[thin]($(I0)+(\x,-0.5)$)--++(-0.14,-0.18);
+						\draw[line width=1.0pt](I4)--++(-0.3,-0.4)--++(0.6,0)--cycle;
+						\draw[line width=1.0pt]($(I4)+(-0.40,-0.4)$)--($(I4)+(0.40,-0.4)$);
+						\draw[line width=1.0pt]($(I4)+(-0.18,-0.52)$)circle(2.6pt);
+						\draw[line width=1.0pt]($(I4)+( 0.18,-0.52)$)circle(2.6pt);
+						\draw[line width=1.0pt]($(I4)+(-0.42,-0.64)$)--($(I4)+(0.42,-0.64)$);
+						\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}\draw[thin]($(I4)+(\x,-0.64)$)--++(-0.14,-0.18);
+						\foreach \i in {0,1,2,3,4}{ \node[nodo]at(E\i){}; \node[nodo]at(I\i){}; }
+						\foreach \i in {1,2,3,4}{ \node[nodo]at(M\i){}; }
+						\foreach \i in {1,2,3}{ \draw[forza](I\i)--($(I\i)+(0,-1.0)$); \node[left,font=\footnotesize]at($(I\i)+(0,-1.0)$){$F$}; }
+						\node[font=\footnotesize]at({2*\dd},-1.8){$(a)$};
+					\end{scope}
+					
+					%%──── (b) sezione a quattro aste ────
+					\begin{scope}[yshift=-7.2cm]
+						\foreach \i in {0,1,2,3,4}{ \coordinate (E\i) at ({\i*\dd},\hh); \coordinate (I\i) at ({\i*\dd},0); }
+						\foreach \i in {1,2,3,4}{ \coordinate (M\i) at ({\i*\dd},{\hh/2}); }
+						\draw[astaG](E0)--(E1)--(E2)--(E3)--(E4);
+						\draw[astaG](I0)--(I1)--(I2)--(I3)--(I4);
+						\draw[astaG](E0)--(I0);
+						\foreach \i in {1,2,3,4}{\pgfmathtruncatemacro{\p}{\i-1}
+							\draw[astaG](E\i)--(M\i); \draw[astaG](M\i)--(I\i); \draw[astaG](M\i)--(E\p); \draw[astaG](M\i)--(I\p);}
+						\draw[asta](E0)--(E1); \draw[asta](I0)--(I1); \draw[asta](E0)--(I0);
+						\draw[asta](E1)--(M1); \draw[asta](M1)--(I1); \draw[asta](M1)--(E0); \draw[asta](M1)--(I0);
+						\draw[cut](E1)--(E2); \draw[cut](I1)--(I2); \draw[cut](M2)--(E1); \draw[cut](M2)--(I1);
+						\draw[sez]({1.5*\dd},-1.0)--({1.5*\dd},{\hh+1.0}) node[above,font=\footnotesize,align=center]{sezione\\(4 aste)};
+						\draw[reaz]($(I0)+(0,-1.15)$)--($(I0)+(0,-0.1)$); \node[below,font=\footnotesize]at($(I0)+(0,-1.15)$){$V_0=\tfrac32F$};
+						\draw[forza](I1)--($(I1)+(0,-1.0)$); \node[below,font=\footnotesize]at($(I1)+(0,-1.0)$){$F$};
+						\foreach \i in {0,1,2,3,4}{ \node[nodo]at(E\i){}; \node[nodo]at(I\i){}; }
+						\foreach \i in {1,3,4}{ \node[nodo]at(M\i){}; }
+						\node[mnodo]at(M2){};
+						\node[lab,above=2pt]at(E1){$E_1$}; \node[lab,above=2pt]at(E2){$E_2$};
+						\node[lab,below left=-2pt]at(I1){$I_1$}; \node[lab,below=4pt]at(I2){$I_2$};
+						\node[lab,left=4pt]at(I0){$I_0$}; \node[lab,above=2pt]at(E0){$E_0$};
+						\node[lab,right=2pt]at(M1){$M_1$}; \node[font=\footnotesize,right=3pt]at(M2){$M_2$};
+						\node[font=\footnotesize]at({2*\dd},-2.0){$(b)$};
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{$(a)$~Stato di sollecitazione: tratto
+				spesso le aste compresse, tratto sottile le
+				tese; i due trattini trasversali marcano le
+				aste scariche ($E_3E_4$, $I_3I_4$, $E_4M_4$).
+				In ciascuna maglia a $K$ un braccio è teso e
+				l'altro compresso, con sforzi uguali e opposti.
+				$(b)$~Sezione del pannello centrale: il taglio
+				interseca quattro aste ($E_1E_2$, $I_1I_2$ e i
+				bracci $M_2E_1$, $M_2I_1$). Il troncone di
+				sinistra (in nero) si risolve aggiungendo alle
+				tre equazioni di Ritter l'equilibrio del
+				mid-nodo~$M_2$.}
+			\label{fig:ktruss_soluzione}
+		\end{figure}

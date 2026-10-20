@@ -1,0 +1,148 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small]
+		
+		\def\ang{25}      % angolo alpha^e in gradi
+		\def\Lb{4.2}      % lunghezza trave
+		\def\sep{6.5}     % offset pannello destro
+		\def\ds{0.72}     % lunghezza frecce spostamento
+		\def\fn{0.90}     % lunghezza frecce forza
+		\def\fib{0.18}    % distanza fibra inferiore dall'asse
+		\def\rarc{0.32}   % raggio arco rotazione (cinematica)
+		\def\rmarc{0.42}  % raggio arco momento (statica)
+		
+		%%=============================================================
+		%% PANNELLO (a) — CINEMATICA
+		%%=============================================================
+		
+		\coordinate (Pi) at (0, 0);
+		\coordinate (Pj) at ({\Lb*cos(\ang)}, {\Lb*sin(\ang)});
+		
+		%% Fibra inferiore (grigia tratteggiata)
+		\coordinate (Pif) at ({\fib*sin(\ang)},               {-\fib*cos(\ang)});
+		\coordinate (Pjf) at ({\Lb*cos(\ang)+\fib*sin(\ang)}, {\Lb*sin(\ang)-\fib*cos(\ang)});
+		\draw[dashed, gray!70, line width=1.0pt] (Pif) -- (Pjf);
+		
+		%% Assi globali
+		\draw[->] (-1.0,-1.2) -- ++(1.3,0) node[right]{$x$};
+		\draw[->] (-1.0,-1.2) -- ++(0,1.2) node[above]{$y$};
+		
+		%% Segmento orizzontale grigio (riferimento per alpha^e)
+		\draw[gray!60, thin] (Pi) -- ++(2.0,0);
+		
+		%% Arco alpha^e grigio (raggio ampio, a destra della fibra)
+		\draw[->, gray!60] (1.50,0) arc (0:\ang:1.50);
+		\node[gray!80] at ({1.82*cos(\ang/2)},{0.18}) {$\alpha^e$};
+		
+		%% Asta (linea d'asse)
+		\draw[line width=1.4pt] (Pi) -- (Pj);
+		
+		%% Nodi (cerchietti vuoti)
+		\filldraw[fill=white, draw=black, line width=1pt] (Pi) circle(3.5pt);
+		\filldraw[fill=white, draw=black, line width=1pt] (Pj) circle(3.5pt);
+		
+		%% Etichette nodi
+		\node[below right]  at (Pi) {$P_i$};
+		\node[below right] at (Pj) {$P_j$};
+		
+		%% Spostamenti in P_i
+		\draw[->, line width=1.1pt] (Pi) -- ++(\ds,0)  node[below]{$u_i$};
+		\draw[->, line width=1.1pt] (Pi) -- ++(0,\ds)  node[right] {$v_i$};
+		
+		%% Rotazione vartheta_i (arco antiorario, CCW)
+		\draw[->] ($(Pi)+(\rarc,0)$) arc (0:270:\rarc);
+		\node[above left] at ($(Pi)+(-\rarc+0.02,-0.10)$) {$\vartheta_i$};
+		
+		%% Spostamenti in P_j
+		\draw[->, line width=1.1pt] (Pj) -- ++(\ds,0)  node[below]{$u_j$};
+		\draw[->, line width=1.1pt] (Pj) -- ++(0,\ds)  node[right]{$v_j$};
+		
+		%% Rotazione vartheta_j (arco antiorario, CCW)
+		\draw[->] ($(Pj)+(\rarc,0)$) arc (0:270:\rarc);
+		\node[above left] at ($(Pj)+(-\rarc+0.02,-0.10)$) {$\vartheta_j$};
+		
+		%% Etichetta pannello
+		\node[font=\small] at ({0.5*\Lb*cos(\ang)},{-1.50}) {$(a)$};
+		
+		
+		%%=============================================================
+		%% PANNELLO (b) — STATICA
+		%%=============================================================
+		
+		\coordinate (Pis) at (\sep, 0);
+		\coordinate (Pjs) at ({\sep+\Lb*cos(\ang)}, {\Lb*sin(\ang)});
+		
+		%% Fibra inferiore pannello (b)
+		\coordinate (Pisf) at ({\sep+\fib*sin(\ang)},               {-\fib*cos(\ang)});
+		\coordinate (Pjsf) at ({\sep+\Lb*cos(\ang)+\fib*sin(\ang)}, {\Lb*sin(\ang)-\fib*cos(\ang)});
+		\draw[dashed, gray!70, line width=1.0pt] (Pisf) -- (Pjsf);
+		
+		%% Assi globali
+		\draw[->] ({\sep-1.0},-1.2) -- ++(1.3,0) node[right]{$x$};
+		\draw[->] ({\sep-1.0},-1.2) -- ++(0,1.2) node[above]{$y$};
+		
+		%% Asta
+		\draw[line width=1.4pt] (Pis) -- (Pjs);
+		
+		%% Nodi (cerchietti vuoti)
+		\filldraw[fill=white, draw=black, line width=1pt] (Pis) circle(3.5pt);
+		\filldraw[fill=white, draw=black, line width=1pt] (Pjs) circle(3.5pt);
+		
+		%% Etichette nodi
+		\node[below right]  at (Pis) {$P_i$};
+		\node[below right] at (Pjs) {$P_j$};
+		
+		%%── Forze in P_j (estremo destro) ──────────────────────────
+		%% N_e: direzione +a_e = (cos, sin)
+		\draw[->, line width=1.2pt] (Pjs)
+		-- ++({cos(\ang)*\fn},{sin(\ang)*\fn})
+		node[below right]{$N^e$};
+		
+		%% T_e: direzione +a_t = (sin, -cos)
+		\draw[->, line width=1.2pt] (Pjs)
+		-- ++({sin(\ang)*\fn},{-cos(\ang)*\fn})
+		node[right]{$T^e$};
+		
+		%% M_e: arco CCW centrato in P_j
+		\draw[->, line width=1.2pt]
+		({\sep+\Lb*cos(\ang)+\rmarc*cos(\ang-50)},
+		{\Lb*sin(\ang)+\rmarc*sin(\ang-50)})
+		arc ({\ang-50}:{\ang+115}:\rmarc)
+		node[midway, above]{$M^e$};
+		
+		%%── Forze in P_i (estremo sinistro, verso opposto) ─────────
+		%% N_e: direzione -a_e = (-cos, -sin)
+		\draw[->, line width=1.2pt] (Pis)
+		-- ++({-cos(\ang)*\fn},{-sin(\ang)*\fn})
+		node[below right]{$N^e$};
+		
+		%% T_e: direzione -a_t = (-sin, +cos)
+		\draw[->, line width=1.2pt] (Pis)
+		-- ++({-sin(\ang)*\fn},{cos(\ang)*\fn})
+		node[left]{$T^e$};
+		
+		%% (M_e - T_e ell_e): arco CW centrato in P_i (verso opposto a M_e)
+		\draw[->, line width=1.2pt]
+		({\sep+\rmarc*cos(\ang+115)},
+		{\rmarc*sin(\ang+115)})
+		arc ({\ang+115}:{\ang-50}:\rmarc)
+		node[above, right, font=\footnotesize]
+		{$M^e\!-\!T^e\ell^e$};
+		
+		%% Etichetta pannello
+		\node[font=\small] at ({\sep+0.5*\Lb*cos(\ang)},{-1.50}) {$(b)$};
+		
+	\end{tikzpicture}
+	\caption{Trave di telaio $e$ che connette i nodi $P_i$ (iniziale)
+		e $P_j$ (finale), inclinata di $\alpha^e$ rispetto all'asse
+		globale $x$. La linea tratteggiata grigia indica la fibra
+		inferiore e definisce il verso di percorrenza da $P_i$ a $P_j$.
+		\emph{(a)}~Cinematica: spostamenti nodali
+		$(u_i,\,v_i,\,\vartheta_i)$ e $(u_j,\,v_j,\,\vartheta_j)$
+		nel riferimento globale $(x,\,y)$.
+		\emph{(b)}~Statica: caratteristiche della sollecitazione
+		$N^e$, $T^e$, $M^e$ alle due sezioni di estremità con il
+		verso convenzionale positivo; in $P_i$ il momento vale
+		$M^e - T^e\ell^e$ in assenza di carichi distribuiti.}
+	\label{fig:trave_telaio_cin_stat}
+\end{figure}

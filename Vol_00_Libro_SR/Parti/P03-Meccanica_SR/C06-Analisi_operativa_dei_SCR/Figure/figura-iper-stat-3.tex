@@ -1,0 +1,191 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\L{3.6}
+			\def\dy{1.50}
+			
+			% ============================================================
+			% SP1 — cerniera in A + carrello in C
+			%        (rimossi: momento in A, cerniera in B)
+			% ============================================================
+			
+			\begin{scope}[yshift=0cm]
+				
+				
+				\draw[line width=1.5pt] (0,0) -- (\L,0);
+				
+				
+				% incastro in A rimosso (grigio) — disegnato per primo
+				\draw[gray!50, thick] (0,-0.38) -- (0, 0.38);
+				\foreach \y in {-0.28,-0.14,0,0.14,0.28}{
+					\draw[gray!50, thin] (0,\y) -- (-0.20,\y-0.13);
+				}
+				
+				% cerniera in A (attiva) — triangolo
+				\draw[thick] (0,0) -- (-0.20,-0.34)
+				-- (0.20,-0.34) -- cycle;
+				\draw[thick] (-0.30,-0.34) -- (0.30,-0.34);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[thin] (\x,-0.34) -- (\x-0.10,-0.50);
+				}
+				
+				% carrello verticale in C (attivo)
+				\draw[thick] (\L/2,0) -- (\L/2-0.20,-0.34)
+				-- (\L/2+0.20,-0.34) -- cycle;
+				\draw[thick] (\L/2-0.14,-0.40) circle (0.07);
+				\draw[thick] (\L/2+0.14,-0.40) circle (0.07);
+				\draw[thick] (\L/2-0.30,-0.50) -- (\L/2+0.30,-0.50);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[thin] (\L/2+\x,-0.50)
+					-- (\L/2+\x-0.10,-0.64);
+				}
+				% mezzaluna sopra il vertice del triangolo in C
+				\fill[white]      (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[thick]      (\L/2-0.08,0) arc(180:360:0.08);
+				
+				% cerniera in B rimossa (grigio)
+				\draw[gray!50, thick] (\L,0) -- (\L-0.20,-0.34)
+				-- (\L+0.20,-0.34) -- cycle;
+				\draw[gray!50, thick] (\L-0.30,-0.34)
+				-- (\L+0.30,-0.34);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[gray!50, thin] (\L+\x,-0.34)
+					-- (\L+\x-0.10,-0.50);
+				}
+				
+				% pallini A e B — disegnati per ultimi, sopra i vincoli
+				\draw[fill=white, thick]       (0,0)  circle (2pt);
+				\draw[gray!50, fill=white, thick] (\L,0) circle (2pt);
+				
+				% etichette dei punti
+				\node[above right,  font=\scriptsize]            at (0,0)    {$A$};
+				\node[above,        font=\scriptsize]            at (\L/2,0) {$C$};
+				\node[above, font=\scriptsize, gray!60]    at (\L,0)   {$B$};
+				
+				% etichetta del sistema principale e nomenclatura iperstatiche
+				\node[font=\scriptsize, anchor=east] at (-0.5,0) {SP1};
+				\node[font=\scriptsize, anchor=west] at (\L+0.3,0)
+				{$\chi_1\!\equiv\!\mu_A,\;
+					\chi_2\!\equiv\!X_B,\;
+					\chi_3\!\equiv\!Y_B$};
+				
+			\end{scope}
+			
+			% ============================================================
+			% SP2 — mensola (incastro in A)
+			%        (rimossi: carrello in C, cerniera in B)
+			% ============================================================
+			\begin{scope}[yshift=-\dy cm]
+				
+				\draw[line width=1.5pt] (0,0) -- (\L,0);
+				
+				% incastro in A (attivo) — niente perno: l'incastro non ha pallino
+				\draw[thick] (0,-0.38) -- (0, 0.38);
+				\foreach \y in {-0.28,-0.14,0,0.14,0.28}{
+					\draw[thin] (0,\y) -- (-0.20,\y-0.13);
+				}
+				
+				% carrello verticale in C rimosso (grigio)
+				\draw[gray!50, thick] (\L/2,0) -- (\L/2-0.20,-0.34)
+				-- (\L/2+0.20,-0.34) -- cycle;
+				\draw[gray!50, thick] (\L/2-0.14,-0.40) circle (0.07);
+				\draw[gray!50, thick] (\L/2+0.14,-0.40) circle (0.07);
+				\draw[gray!50, thick] (\L/2-0.30,-0.50)
+				-- (\L/2+0.30,-0.50);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[gray!50, thin] (\L/2+\x,-0.50)
+					-- (\L/2+\x-0.10,-0.64);
+				}
+				% mezzaluna grigia sopra il vertice del triangolo in C (vincolo rimosso)
+				\fill[white]            (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[gray!50, thick]   (\L/2-0.08,0) arc(180:360:0.08);
+				
+				% cerniera in B rimossa (grigio)
+				\draw[gray!50, thick] (\L,0) -- (\L-0.20,-0.34)
+				-- (\L+0.20,-0.34) -- cycle;
+				\draw[gray!50, thick] (\L-0.30,-0.34)
+				-- (\L+0.30,-0.34);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[gray!50, thin] (\L+\x,-0.34)
+					-- (\L+\x-0.10,-0.50);
+				}
+				
+				% pallino in B — disegnato per ultimo, sopra il triangolo grigio
+				\draw[gray!50, fill=white, thick] (\L,0) circle (2pt);
+				
+				% etichette dei punti
+				\node[above right,  font=\scriptsize]              at (0,0)    {$A$};
+				\node[above,        font=\scriptsize, gray!60]    at (\L/2,0) {$C$};
+				\node[above, font=\scriptsize, gray!60]     at (\L,0)   {$B$};
+				
+				% etichetta del sistema principale e nomenclatura iperstatiche
+				\node[font=\scriptsize, anchor=east] at (-0.5,0) {SP2};
+				\node[font=\scriptsize, anchor=west] at (\L+0.3,0)
+				{$\chi_1\!\equiv\!X_B,\;
+					\chi_2\!\equiv\!Y_B,\;
+					\chi_3\!\equiv\!Y_C$};
+				
+			\end{scope}
+			
+			% ============================================================
+			% SP3 — cerniera in B + carrello in C
+			%        (rimosso: incastro in A)
+			% ============================================================
+			\begin{scope}[yshift=-2*\dy cm]
+				
+				\draw[line width=1.5pt] (0,0) -- (\L,0);
+				
+				% incastro in A rimosso (grigio)
+				\draw[gray!50, thick] (0,-0.38) -- (0, 0.38);
+				\foreach \y in {-0.28,-0.14,0,0.14,0.28}{
+					\draw[gray!50, thin] (0,\y) -- (-0.20,\y-0.13);
+				}
+				
+				% carrello verticale in C (attivo)
+				\draw[thick] (\L/2,0) -- (\L/2-0.20,-0.34)
+				-- (\L/2+0.20,-0.34) -- cycle;
+				\draw[thick] (\L/2-0.14,-0.40) circle (0.07);
+				\draw[thick] (\L/2+0.14,-0.40) circle (0.07);
+				\draw[thick] (\L/2-0.30,-0.50) -- (\L/2+0.30,-0.50);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[thin] (\L/2+\x,-0.50)
+					-- (\L/2+\x-0.10,-0.64);
+				}
+				% mezzaluna nera sopra il vertice del triangolo in C (vincolo attivo)
+				\fill[white]      (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[thick]      (\L/2-0.08,0) arc(180:360:0.08);
+				
+				% cerniera in B (attiva)
+				\draw[thick] (\L,0) -- (\L-0.20,-0.34)
+				-- (\L+0.20,-0.34) -- cycle;
+				\draw[thick] (\L-0.30,-0.34) -- (\L+0.30,-0.34);
+				\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+					\draw[thin] (\L+\x,-0.34) -- (\L+\x-0.10,-0.50);
+				}
+				
+				% pallino in B — disegnato per ultimo, sopra il triangolo nero
+				\draw[fill=white, thick] (\L,0) circle (2pt);
+				
+				% etichette dei punti
+				\node[above right,  font=\scriptsize, gray!60]   at (0,0)    {$A$};
+				\node[above,        font=\scriptsize]            at (\L/2,0) {$C$};
+				\node[above, font=\scriptsize]             at (\L,0)   {$B$};
+				
+				% etichetta del sistema principale e nomenclatura iperstatiche
+				\node[font=\scriptsize, anchor=east] at (-0.5,0) {SP3};
+				\node[font=\scriptsize, anchor=west] at (\L+0.3,0)
+				{$\chi_1\!\equiv\!X_A,\;
+					\chi_2\!\equiv\!Y_A,\;
+					\chi_3\!\equiv\!\mu_A$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Trave iperstatica di grado 3
+			(\ESEref{ex:iper_stat_3}): tre sistemi principali
+			isostatici. I vincoli rimossi sono in grigio;
+			le corrispondenti reazioni diventano le incognite
+			iperstatiche $\chi_1$, $\chi_2$, $\chi_3$.}
+		\label{fig:iper_stat_3}
+	\end{figure}

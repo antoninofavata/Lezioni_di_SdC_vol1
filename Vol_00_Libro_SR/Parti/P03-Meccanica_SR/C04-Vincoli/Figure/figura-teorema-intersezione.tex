@@ -1,0 +1,254 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Cerniera equivalente: rette concorrenti
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xAuno{-0.80}
+			\def\yAuno{-0.65}     % quota di A_1 (più bassa per tangenza)
+			\def\xAdue{ 0.80}
+			\def\yAdue{-0.55}     % quota di A_2
+			\def\anguno{70}
+			\def\angdue{110}
+			\def\Lasse{2.40}
+			\def\tw{0.22}
+			\def\thR{0.30}
+			\def\bw{0.16}
+			\def\rrota{2.4pt}
+			\def\gw{0.40}
+			\def\rn{0.10}
+			
+			\pgfmathsetmacro{\dxuno}{cos(\anguno)}
+			\pgfmathsetmacro{\dyuno}{sin(\anguno)}
+			\pgfmathsetmacro{\dxdue}{cos(\angdue)}
+			\pgfmathsetmacro{\dydue}{sin(\angdue)}
+			
+			%% ── Carrello 1 in A_1 ──
+			\begin{scope}[shift={(\xAuno, \yAuno)}, rotate=\anguno-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Carrello 2 in A_2 ──
+			\begin{scope}[shift={(\xAdue, \yAdue)}, rotate=\angdue-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Corpo C (blob smooth) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, -0.50) (0.90, -0.40) (1.40, 0.10) 
+				(1.20, 0.80) (0.30, 1.10) (-0.50, 1.00) 
+				(-1.20, 0.50) (-1.40, -0.10) (-0.90, -0.50)};
+			\node at (0.00, 0.40) {$\mathcal{C}$};
+			
+			%% ── Anellini in A_1, A_2 (tangenti al bordo) ──
+			\draw[line width=0.8pt, fill=white] (\xAuno, \yAuno) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xAdue, \yAdue) circle (\rn);
+			
+			%% ── Rette degli assi ──
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAuno, \yAuno) -- ({\xAuno+\Lasse*\dxuno}, {\yAuno+\Lasse*\dyuno});
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAdue, \yAdue) -- ({\xAdue+\Lasse*\dxdue}, {\yAdue+\Lasse*\dydue});
+			
+			%% ── Etichette A_1, A_2 ──
+			\node[anchor=east, font=\footnotesize] 
+			at ({\xAuno-0.10}, \yAuno) {$A_1$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAdue+0.10}, \yAdue) {$A_2$};
+			
+			%% ── Centro C ──
+			\fill (0.02, 1.61) circle (1.5pt);
+			\node[anchor=south, font=\small] at (0.02, 1.66) {$C$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (0, -2.10) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Glifo: rette parallele, C all'infinito
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=4.5cm]
+			
+			%% ── Parametri ──
+			\def\xAuno{-0.80}
+			\def\yAuno{-0.65}
+			\def\xAdue{ 0.80}
+			\def\yAdue{-0.55}
+			\def\anguno{90}      % verticali, paralleli
+			\def\angdue{90}
+			\def\Lasse{2.40}
+			\def\tw{0.22}
+			\def\thR{0.30}
+			\def\bw{0.16}
+			\def\rrota{2.4pt}
+			\def\gw{0.40}
+			\def\rn{0.10}
+			
+			\pgfmathsetmacro{\dxuno}{cos(\anguno)}
+			\pgfmathsetmacro{\dyuno}{sin(\anguno)}
+			\pgfmathsetmacro{\dxdue}{cos(\angdue)}
+			\pgfmathsetmacro{\dydue}{sin(\angdue)}
+			
+			%% ── Carrello 1 in A_1 ──
+			\begin{scope}[shift={(\xAuno, \yAuno)}, rotate=\anguno-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Carrello 2 in A_2 ──
+			\begin{scope}[shift={(\xAdue, \yAdue)}, rotate=\angdue-90]
+				\draw (0, 0) -- (-\tw, -\thR) -- (\tw, -\thR) -- cycle;
+				\draw (-\gw, -\thR) -- (\gw, -\thR);
+				\draw (-\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (\bw, {-\thR-0.13}) circle (\rrota);
+				\draw (-\gw, {-\thR-0.26}) -- (\gw, {-\thR-0.26});
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\x, {-\thR-0.26}) -- ++(-0.10, -0.13);
+			\end{scope}
+			
+			%% ── Corpo C (identico a (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, -0.50) (0.90, -0.40) (1.40, 0.10) 
+				(1.20, 0.80) (0.30, 1.10) (-0.50, 1.00) 
+				(-1.20, 0.50) (-1.40, -0.10) (-0.90, -0.50)};
+			\node at (0.00, 0.40) {$\mathcal{C}$};
+			
+			%% ── Anellini ──
+			\draw[line width=0.8pt, fill=white] (\xAuno, \yAuno) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xAdue, \yAdue) circle (\rn);
+			
+			%% ── Rette parallele degli assi ──
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAuno, \yAuno) -- ({\xAuno+\Lasse*\dxuno}, {\yAuno+\Lasse*\dyuno});
+			\draw[gray!60, line width=0.6pt, dashed] 
+			(\xAdue, \yAdue) -- ({\xAdue+\Lasse*\dxdue}, {\yAdue+\Lasse*\dydue});
+			
+			%% ── Etichette A_1, A_2 ──
+			\node[anchor=east, font=\footnotesize] 
+			at ({\xAuno-0.10}, \yAuno) {$A_1$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAdue+0.10}, \yAdue) {$A_2$};
+			
+			%% ── Etichetta del centro all'infinito ──
+			\node[font=\small] at (0, 2.10) {$C = \infty_\ab$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (0, -2.10) {$(b)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (c) — Incastro: cerniera + bipendolo (incompatibilità)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=9cm]
+			
+			%% ── Parametri ──
+			\def\xAuno{-1.45}
+			\def\yAuno{0.30}        % cerniera tangente al bordo sinistro
+			\def\tw{0.22}
+			\def\thR{0.30}
+			\def\gw{0.40}
+			\def\rn{0.10}
+			
+			%% ── Corpo C (identico ai pannelli a, b) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, -0.50) (0.90, -0.40) (1.40, 0.10) 
+				(1.20, 0.80) (0.30, 1.10) (-0.50, 1.00) 
+				(-1.20, 0.50) (-1.40, -0.10) (-0.90, -0.50)};
+			\node at (0.10, 0.30) {$\mathcal{C}$};
+			
+			
+			%% ── Cerniera in A_1 (sul bordo sinistro, geometria esplicita) ──
+			%% Triangolo: apice in A_1, base verticale a sinistra
+			\draw[line width=0.8pt] 
+			(-1.45, 0.30) -- (-1.75, 0.05) -- (-1.75, 0.55) -- cycle;
+			%% Barra di terra (verticale, sinistra del triangolo)
+			\draw[line width=0.8pt] (-1.75, -0.05) -- (-1.75, 0.65);
+			%% Tratteggio del suolo (a sinistra della barra)
+			\foreach \y in {-0.05, 0.05, 0.15, 0.25, 0.35, 0.45, 0.55, 0.65}
+			\draw[thin] (-1.75, \y) -- ++(-0.13, -0.10);
+			%% Anellino in A_1
+			\draw[line width=0.8pt, fill=white] (-1.45, 0.30) circle (\rn);
+			%% Etichetta A_1 (sotto)
+			\node[anchor=north, font=\footnotesize] at (-1.15, 0.30) {$A_1$};
+			
+			
+			%% ── Pantografo (compatto, a destra del corpo) ──
+			\def\xBuno{1.50}      % poco oltre il bordo destro del corpo
+			\def\yBuno{0.50}
+			\def\xBdue{1.50}
+			\def\yBdue{0.05}      % più ravvicinato in verticale
+			\def\Lbiella{0.35}    % bielle più corte
+			
+			\pgfmathsetmacro{\xMuno}{\xBuno+\Lbiella}
+			\pgfmathsetmacro{\yMuno}{\yBuno-0.18}
+			\pgfmathsetmacro{\xMdue}{\xBdue+\Lbiella}
+			\pgfmathsetmacro{\yMdue}{\yBdue-0.18}
+			\pgfmathsetmacro{\xGuno}{\xMuno+\Lbiella}
+			\pgfmathsetmacro{\yGuno}{\yMuno+0.18}
+			\pgfmathsetmacro{\xGdue}{\xMdue+\Lbiella}
+			\pgfmathsetmacro{\yGdue}{\yMdue+0.18}
+			
+			
+			%% ── Bielle del pantografo ──
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xMuno, \yMuno);
+			\draw[line width=0.8pt] (\xBdue, \yBdue) -- (\xMdue, \yMdue);
+			\draw[line width=0.8pt] (\xMuno, \yMuno) -- (\xMdue, \yMdue);
+			\draw[line width=0.8pt] (\xMuno, \yMuno) -- (\xGuno, \yGuno);
+			\draw[line width=0.8pt] (\xMdue, \yMdue) -- (\xGdue, \yGdue);
+			
+			%% ── Anellini ──
+			\draw[line width=0.8pt, fill=white] (\xBuno, \yBuno) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xBdue, \yBdue) circle (\rn);
+			\draw[line width=0.8pt, fill=white] (\xMuno, \yMuno) circle (3pt);
+			\draw[line width=0.8pt, fill=white] (\xMdue, \yMdue) circle (3pt);
+			\draw[line width=0.8pt, fill=white] (\xGuno, \yGuno) circle (3pt);
+			\draw[line width=0.8pt, fill=white] (\xGdue, \yGdue) circle (3pt);
+			
+			%% ── Parete del telaio (a destra) ──
+			\draw[line width=0.8pt] 
+			({\xGuno+0.10}, {\yGuno+0.15}) -- ({\xGdue+0.10}, {\yGdue-0.15});
+			\foreach \y in {-0.20,0,0.20,0.40,0.60}
+			\draw[thin] ({\xGdue+0.10}, \y) -- ++(0.13, -0.10);
+			
+			%% ── Annotazione su due righe (centrata, sotto il corpo) ──
+			\node[font=\footnotesize, anchor=north] at (0, -1.10) {cerniera: $C \in A_1$, \quad bipendolo: $C \in r_\infty$};
+			\node[font=\small, anchor=north] 	at (0, -1.45) {$\Rightarrow \quad \nexists\, C$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (0, -2.05) {$(c)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Teorema di intersezione.]{%
+		Il \CRa\ di un vincolo composto come intersezione dei luoghi 
+		del centro dei vincoli componenti: (a) cerniera, (b) glifo, 
+		(c) incastro.}
+	\label{fig:teorema_intersezione}
+\end{figure}

@@ -1,0 +1,64 @@
+\begin{figure}[htbp]
+		\centering
+		\subfloat[][\emph{sistema di partenza}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\fill (0,0) circle (1.5pt) node[below] {$Q$};
+				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
+				% vettore QP
+				\draw[->, thin, gray!60] (0,0) -- (1.0,2.0)
+				node[midway, left] {$\overrightarrow{QP}$};
+				% forza in P
+				\draw[->, thick] (1.0,2.0) -- (2.8,2.0)
+				node[above] {$\fb$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{aggiunta della coppia equilibrata in $Q$}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\fill (0,0) circle (1.5pt) node[below] {$Q$};
+				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
+				% vettore QP
+				\draw[->, thin, gray!60] (0,0) -- (1.0,2.0)
+				node[midway, left] {$\overrightarrow{QP}$};
+				% forza originale in P
+				\draw[->, thick] (1.0,2.0) -- (2.8,2.0)
+				node[above] {$\fb$};
+				% forza +f in Q
+				\draw[->, thick] (0,0) -- (1.8,0)
+				node[below] {$\fb$};
+				% forza -f in Q
+				\draw[->, thick] (0,0) -- (-1.8,0)
+				node[below] {$-\fb$};
+				% braccio b
+				\draw[<->, thin] (2.9,0) -- (2.9,2.0)
+				node[midway, right] {$b$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{sistema equivalente}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\fill (0,0) circle (1.5pt) node[below] {$Q$};
+				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
+				% forza risultante in Q
+				\draw[->, thick] (0,0) -- (1.8,0)
+				node[below] {$\fb$};
+				% coppia correttiva (freccia semicircolare oraria)
+				\draw[->, thick] (-0.6,0) arc[start angle=180,
+				end angle=90, radius=0.6]
+				node[above left] {$\mu(Q)$};
+				% braccio b
+				\draw[<->, thin] (2.9,0) -- (2.9,2.0)
+				node[midway, right] {$b$};
+		\end{tikzpicture}}
+		\caption{Trasporto di una forza in un punto non appartenente
+			alla linea d'azione.
+			\textbf{\textit{(a)}}~Sistema originale: forza $\fb$
+			applicata in $P$.
+			\textbf{\textit{(b)}}~Aggiunta in $Q$ della coppia
+			equilibrata $(\fb,\,-\fb)$: la forza $(P,\,\fb)$ e
+			$(Q,\,-\fb)$ formano una coppia di momento
+			$\bm{\upmu} = \protect\overrightarrow{QP}\times\fb$,
+			con braccio $b$.
+			\textbf{\textit{(c)}}~Sistema equivalente: forza $\fb$
+			applicata in $Q$ più la coppia correttiva oraria di intensità 
+			$\mu(Q) = |\fb|\,b$.}
+		\label{fig:trasporto_forza}
+	\end{figure}

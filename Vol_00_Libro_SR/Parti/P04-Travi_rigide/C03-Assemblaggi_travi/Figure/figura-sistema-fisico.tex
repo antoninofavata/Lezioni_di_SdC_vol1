@@ -1,0 +1,78 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		>=Stealth, scale=1.0,
+		trv/.style   ={line width=1.8pt},
+		car/.style   ={-{Stealth[length=2.0mm,width=1.2mm]},
+			line width=0.5pt},
+		carF/.style  ={-{Stealth[length=2.6mm,width=1.6mm]},
+			line width=0.8pt},
+		bordo/.style ={line width=0.5pt},
+		et/.style    ={font=\footnotesize},
+		etc/.style   ={font=\footnotesize},
+		ndc/.style   ={circle, fill=white, draw=black,
+			line width=0.7pt, inner sep=0pt, minimum size=5.5pt},
+		ndr/.style   ={rectangle, fill=black, draw=black,
+			inner sep=0pt, minimum size=5pt}]
+		
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (0,2.2);
+		\coordinate (C) at (3.4,2.2);
+		\coordinate (D) at (3.4,0);
+		
+		% ── le tre travi ─────────────────────────────────────
+		\draw[trv] (A)--(B);
+		\draw[trv] (B)--(C);
+		\draw[trv] (C)--(D);
+		\node[et] at (0.40,1.10) {$e_1$};
+		\node[et] at (1.70,1.90)  {$e_2$};
+		\node[et] at (3.00,1.10)  {$e_3$};
+		
+		% ── carico distribuito sulla traversa e_2 ────────────
+		\draw[bordo] (0,3.05)--(3.4,3.05);
+		\foreach \x in {0,0.283,...,3.401}
+		\draw[car] (\x,3.05)--(\x,2.30);
+		\node[etc, above] at (1.70,3.07) {$p$};
+		
+		% ── forza concentrata su un corpo (su e_1) ───────────
+		\draw[carF] (-1.05,1.10)--(-0.12,1.10);
+		\node[etc, above] at (-0.58,1.13) {$F$};
+		
+		% ── forza concentrata su un nodo (sul nodo 3) ────────
+		\draw[carF] (4.30,2.85)--(3.58,2.34);
+		\node[etc, right] at (4.32,2.88) {$P$};
+		
+		% ── vincolo esterno in A: cerniera ───────────────────
+		\draw[bordo] (A)--(-0.30,-0.52)--(0.30,-0.52)--cycle;
+		\draw[bordo] (-0.46,-0.52)--(0.46,-0.52);
+		\foreach \x in {-0.40,-0.24,...,0.41}
+		\draw[bordo] (\x,-0.52)--(\x-0.13,-0.70);
+		
+		% ── vincolo esterno in D: carrello ───────────────────
+		\draw[bordo] (D)--(3.10,-0.42)--(3.70,-0.42)--cycle;
+		\draw[bordo] (3.16,-0.53) circle (0.11);
+		\draw[bordo] (3.64,-0.53) circle (0.11);
+		\draw[bordo] (2.94,-0.66)--(3.86,-0.66);
+		\foreach \x in {3.00,3.16,...,3.81}
+		\draw[bordo] (\x,-0.66)--(\x-0.13,-0.84);
+		
+		% ── i nodi ───────────────────────────────────────────
+		\node[ndc] at (A) {};  \node[et, left=4pt]  at (A) {$1$};
+		\node[ndr] at (B) {};  \node[et,  left=4pt] at (B) {$2$};
+		\node[ndc] at (C) {};  \node[et,  right=4pt] at (C) {$3$};
+		\node[ndc] at (D) {};  \node[et, right=4pt] at (D) {$4$};
+		
+	\end{tikzpicture}
+	\caption{Il sistema fisico. I \emph{corpi} sono le tre
+		travi $e_1$, $e_2$, $e_3$; i \emph{nodi} $1,\dots,4$
+		sono i punti in cui i dispositivi di collegamento
+		uniscono le travi fra loro (nodi $2$ e $3$) o una trave
+		al suolo (nodi $1$ e $4$). Il nodo $2$ è rigido
+		(quadratino pieno), il nodo $3$ è una cerniera interna
+		(cerchietto vuoto). Le \emph{azioni} sono applicate ai
+		corpi --- il carico distribuito $p$ sulla trave $e_2$,
+		la forza concentrata $F$ sulla trave $e_1$ --- oppure
+		a un dispositivo di collegamento, come la forza $P$
+		applicata al nodo $3$.}
+	\label{fig:sistema_fisico}
+\end{figure}

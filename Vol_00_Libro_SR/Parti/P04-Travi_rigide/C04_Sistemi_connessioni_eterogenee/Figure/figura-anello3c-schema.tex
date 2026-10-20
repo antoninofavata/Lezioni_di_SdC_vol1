@@ -1,0 +1,66 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		x=2.6cm, y=2.6cm,
+		trave/.style={line width=2.0pt, line cap=round, line join=round, black},
+		carico/.style={-{Stealth[length=2mm]}, line width=0.8pt, black},
+		bordo/.style={line width=0.6pt, black},
+		terra/.style={line width=0.8pt, black},
+		nodoV/.style={circle, fill=white, draw=black, inner sep=0pt,
+		minimum size=6pt, line width=0.9pt},
+		quota/.style={gray!70, line width=0.5pt,{Bar[width=7pt] Stealth[length=1.8mm]}-{Stealth[length=1.8mm] Bar[width=7pt]}},
+		]
+		% --- nodi ---
+		\coordinate (A) at (0,0);   \coordinate (B) at (1,0);   \coordinate (C) at (2,0);
+		\coordinate (D) at (0,1);   \coordinate (E) at (0.5,1); \coordinate (F) at (1,1);
+		\coordinate (G) at (2,1);
+		% --- aste ---
+		\draw[trave] (A)--(D);  \draw[trave] (D)--(F);  \draw[trave] (A)--(B);
+		\draw[trave] (B)--(F);  \draw[trave] (F)--(G);  \draw[trave] (B)--(C);
+		\draw[trave] (C)--(G);
+		% --- carico p verso l'alto su DF ---
+		\draw[bordo] (0,0.80)--(1,0.80);  \draw[bordo] (0,1.00)--(1,1.00);
+		\foreach \x in {0,0.125,...,1.001} \draw[carico] (\x,0.80)--(\x,1.00);
+		\node[left] at (-0.04,0.85) {$p$};
+		% --- carico p verso il basso su BC ---
+		\draw[bordo] (1,0.20)--(2,0.20);  \draw[bordo] (1,0.00)--(2,0.00);
+		\foreach \x in {1,1.125,...,2.001} \draw[carico] (\x,0.20)--(\x,0.00);
+		\node[right] at (2.05,0.16) {$p$};
+		% --- coppia oraria p l^2 in mezzeria di AB ---
+		\draw[black,line width=1.0pt,-{Stealth[length=2.4mm]}]
+		(0.5,0) ++(215:0.18) arc[start angle=215,end angle=-35,radius=0.18];
+		\node at (0.5,0.30) {$p\,\ell^{2}$};
+		% --- vincolo B: cerniera a terra ---
+		\draw[terra] (B) -- ++(-0.10,-0.18) -- ++(0.20,0) -- cycle;
+		\draw[terra] ($(B)+(-0.16,-0.18)$) -- ($(B)+(0.16,-0.18)$);
+		\foreach \t in {-0.14,-0.07,0,0.07,0.14} \draw[terra] ($(B)+(\t,-0.18)$) -- ++(-0.05,-0.07);
+		% --- vincolo G: carrello, suolo in alto ---
+		\draw[terra] (G) -- ++(-0.10,0.18) -- ++(0.20,0) -- cycle;
+		\draw[terra, fill=white, line width=0.5pt] ($(G)+(-0.05,0.22)$) circle (0.032);
+		\draw[terra, fill=white, line width=0.5pt] ($(G)+( 0.05,0.22)$) circle (0.032);
+		\draw[terra] ($(G)+(-0.16,0.245)$) -- ($(G)+(0.16,0.245)$);
+		\foreach \t in {-0.14,-0.07,0,0.07,0.14} \draw[terra] ($(G)+(\t,0.245)$) -- ++(0.05,0.07);
+		% --- cerniere (cerchio bianco) ---
+		\foreach \n in {A,B,C,E,G} \node[nodoV] at (\n) {};
+		% --- etichette nodi ---
+		\node[left] at (A) {$A$};  \node[above left] at (B) {$B$};  \node[right] at (C) {$C$};
+		\node[above left] at (D) {$D$};  \node[above=2pt] at (E) {$E$};
+		\node[above=2pt] at (F) {$F$};   \node[right=2pt] at (G) {$G$};
+		% --- quote ---
+		\draw[quota] (0,-0.5)--(0.5,-0.5) node[midway,above,black,font=\small] {$\ell/2$};
+		\draw[quota] (0.5,-0.5)--(1,-0.5) node[midway,above,black,font=\small] {$\ell/2$};
+		\draw[quota] (1,-0.5)--(2,-0.5) node[midway,above,black,font=\small] {$\ell$};
+		\draw[quota] (-0.42,0)--(-0.42,1) node[midway,left,black,font=\small] {$\ell$};
+		
+		% tacca nella mezzeria asta AB
+		\draw[line width=0.7pt, black] (0.5,-0.06)--(0.5,0.06);
+	\end{tikzpicture}
+	\caption{Anelli a tre cerniere: struttura chiusa a due celle
+		quadrate $\ell\times\ell$ con montante centrale~$BF$ in
+		comune. Cerniere interne in~$A$, $E$, $B$, $C$, $G$;
+		nodi rigidi in~$D$ ed~$F$. Cerniera esterna in~$B$,
+		carrello verticale in~$G$. Carico uniforme~$p$ verso
+		l'alto su~$DF$ e verso il basso su~$BC$; coppia oraria~$p\ell^2$
+		su~$AB$.}
+	\label{fig:anello3c_schema}
+\end{figure}

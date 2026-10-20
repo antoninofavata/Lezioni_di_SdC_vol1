@@ -1,0 +1,146 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\L{2.0}
+			\def\F{0.5}  % lunghezza frecce forze
+			
+			% ============================================================
+			% PANNELLO SINISTRO — dati
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% corpo a L
+				
+				\draw[line width=1.5pt] (0,0) -- (\L,0) -- (\L,\L);
+				
+				
+				
+				% rette tratteggiate per C
+				\draw[gray!50, dashed, thin]
+				(0,-0.3) -- (0,\L+0.2);
+				\draw[gray!50, dashed, thin]
+				(-0.3,\L) -- (\L+0.2,\L);
+				
+				% carrello verticale in A
+				\draw[thick] (0,0) -- (-0.28,-0.48)
+				-- (0.28,-0.48) -- cycle;
+				\draw[thick] (-0.18,-0.55) circle (0.08);
+				\draw[thick] ( 0.18,-0.55) circle (0.08);
+				\draw[thick] (-0.38,-0.65) -- (0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\x,-0.65) -- (\x-0.12,-0.83);
+				}
+				
+				% carrello orizzontale in B
+				\draw[thick] (\L,\L) -- (\L+0.48,\L+0.28)
+				-- (\L+0.48,\L-0.28) -- cycle;
+				\draw[thick] (\L+0.55,\L+0.18) circle (0.08);
+				\draw[thick] (\L+0.55,\L-0.18) circle (0.08);
+				\draw[thick] (\L+0.65,\L+0.38) -- (\L+0.65,\L-0.38);
+				\foreach \y in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\L+0.65,\L+\y)
+					-- (\L+0.83,\L+\y-0.12);
+				}
+				
+				% punti
+				\draw[fill=white, thick] (0,0) circle (3pt)
+				node[above left, font=\scriptsize] {$A$};
+				\draw[fill=white, thick] (\L,\L) circle (3pt)
+				node[above left, font=\scriptsize] {$B$};
+				\fill (\L,0) %circle (2pt)
+				node[above left, font=\scriptsize] {$D$};
+				\node[left, font=\scriptsize] at (0,\L) {$C$};
+				
+				% forza F1 orizzontale in D
+				\draw[->, thick] (\L,0) -- ({\L+\F},0)
+				node[right, font=\scriptsize] {$F_x$};
+				
+				% forza F2 verticale in D
+				\draw[->, thick] (\L,0) -- (\L,-\F)
+				node[right, font=\scriptsize] {$F_y$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (-\L/2+0.2,-0.8) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO DESTRO — interpretazione compatibilità
+			% ============================================================
+			\begin{scope}[xshift=5.5cm]
+				
+				% corpo a L
+				\draw[line width=1.5pt] (0,0) -- (\L,0) -- (\L,\L);
+				
+				% rette tratteggiate per C
+				\draw[gray!50, dashed, thin]
+				(0,-0.3) -- (0,\L+0.2);
+				\draw[gray!50, dashed, thin]
+				(-0.3,\L) -- (\L+0.2,\L);
+				
+				% carrello verticale in A
+				\draw[thick] (0,0) -- (-0.28,-0.48)
+				-- (0.28,-0.48) -- cycle;
+				\draw[thick] (-0.18,-0.55) circle (0.08);
+				\draw[thick] ( 0.18,-0.55) circle (0.08);
+				\draw[thick] (-0.38,-0.65) -- (0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\x,-0.65) -- (\x-0.12,-0.83);
+				}
+				
+				% carrello orizzontale in B
+				\draw[thick] (\L,\L) -- (\L+0.48,\L+0.28)
+				-- (\L+0.48,\L-0.28) -- cycle;
+				\draw[thick] (\L+0.55,\L+0.18) circle (0.08);
+				\draw[thick] (\L+0.55,\L-0.18) circle (0.08);
+				\draw[thick] (\L+0.65,\L+0.38) -- (\L+0.65,\L-0.38);
+				\foreach \y in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\L+0.65,\L+\y)
+					-- (\L+0.83,\L+\y-0.12);
+				}
+				
+				% punti
+				\draw[fill=white, thick] (0,0) circle (3pt)
+				node[above left, font=\scriptsize] {$A$};
+				\draw[fill=white, thick] (\L,\L) circle (3pt)
+				node[above left, font=\scriptsize] {$B$};
+				\fill (\L,0) %circle (2pt)
+				node[above left, font=\scriptsize] {$D$};
+				\fill (0,\L) circle (2pt)
+				node[left, font=\scriptsize] {$C$};
+				
+				% forza F orizzontale in D
+				\draw[->, thick] (\L,0) -- ({\L+\F},0)
+				node[right, font=\scriptsize] {$F$};
+				
+				% forza F verticale in D
+				\draw[->, thick] (\L,0) -- (\L,-\F)
+				node[right, font=\scriptsize] {$F$};
+				
+				% bracci rispetto a C
+				% braccio di F1 rispetto a C: distanza verticale = ell
+				\draw[<->, gray!60, thin] ({\L+\F+0.6},0) -- ({\L+\F+0.6},\L) node[midway, left, font=\scriptsize] {$\ell$};
+				
+				% braccio di F2 rispetto a C: distanza orizzontale = ell
+				\draw[<->, gray!60, thin] (0,-\F-0.2) -- (\L,-\F-0.2) node[midway, above, font=\scriptsize] {$\ell$};
+				
+				% momento risultante nullo in C
+				\node[font=\scriptsize, align=center] at (0.6, 0.5)
+				{$\mu_C = 0$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (-\L/2+0.2,-0.8) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Corpo a L --- problema statico
+			(\ESEref{ex:labile_L_stat}):
+			dati \emph{(a)} e interpretazione della
+			condizione di compatibilità \emph{(b)}.
+			La condizione $F_x = F_y = F$ equivale
+			al momento risultante nullo rispetto a $C$:
+			$\mu_C = F\cdot\ell - F\cdot\ell = 0$.}
+		\label{fig:labile_L_stat}
+	\end{figure}

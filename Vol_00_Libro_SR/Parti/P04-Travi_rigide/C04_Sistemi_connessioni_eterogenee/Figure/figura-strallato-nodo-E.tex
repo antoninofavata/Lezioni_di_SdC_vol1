@@ -1,0 +1,92 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.25cm, y=1.25cm,
+		stub/.style  ={line width=1.0pt, gray!55},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		nota/.style  ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt, gray!70},
+		assiale/.style={-{Stealth[length=2.4mm]}, line width=1.3pt},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize},
+		etn/.style   ={font=\footnotesize, gray!70}]
+
+		% ═══════════ (a) prima dell'equilibrio ═══════════
+		\begin{scope}[xshift=0cm]
+			\draw[stub] (0,0)--(-1.90,0.95); \node[et] at (-2.14,0.95) {$CE$};
+			\draw[stub] (0,0)--(1.90,0.95);  \node[et] at (2.14,0.95)  {$GE$};
+			\draw[stub] (0,0)--(-1.70,0);    \node[et, below] at (-1.50,-0.05) {$ED$};
+			\draw[stub] (0,0)--(1.70,0);     \node[et, below] at (1.50,-0.05)  {$EF$};
+
+			\draw[gray!60, dashed, line width=0.35pt]
+				(-1.20,0)--(-1.20,0.60)--(0,0.60)
+				(0.72,0)--(0.72,0.36)--(0,0.36);
+
+			\draw[assiale] (0,0)--(-1.20,0.60);
+			\node[et] at (-1.22,0.80) {$N_{CE}$};
+			\draw[assiale] (0,0)--(0.72,0.36);
+			\node[et] at (0.70,0.58) {$N_{GE}$};
+
+			\draw[incog] (0,0)--(-1.20,0);
+			\node[et, below] at (-0.80,-0.05) {$X_{CE}$};
+			\draw[incog] (0,0)--(0.72,0);
+			\node[et, below] at (0.72,-0.06) {$X_{GE}$};
+			\draw[incog] (0,0)--(0,0.60);
+			\node[et, above] at (0.07,0.52) {$Y_{CE}$};
+			\draw[incog] (0,0)--(0,0.36);
+			\node[et, above left] at (0.04,0.16) {$Y_{GE}$};
+			\draw[nota] (0,0)--(0,-0.96);
+			\node[etn, left]  at (-0.06,-0.80) {$2p\ell$};
+			\draw[nota] (0,0)--(0.48,0);
+			\node[etn, below] at (0.30,-0.06) {$p\ell$};
+
+			\node[nodoV] at (0,0) {};
+			\node[et] at (-0.22,-0.28) {$E$};
+			\node[et] at (0,-1.55) {(a)};
+		\end{scope}
+
+		% ═══════════ (b) dopo l'equilibrio ═══════════
+		\begin{scope}[xshift=6.4cm]
+			\draw[stub] (0,0)--(-1.90,0.95); \node[et] at (-2.14,0.95) {$CE$};
+			\draw[stub] (0,0)--(1.90,0.95);  \node[et] at (2.14,0.95)  {$GE$};
+			\draw[stub] (0,0)--(-1.70,0);    \node[et, below] at (-1.50,-0.05) {$ED$};
+			\draw[stub] (0,0)--(1.70,0);     \node[et, below] at (1.50,-0.05)  {$EF$};
+
+			\draw[gray!60, dashed, line width=0.35pt]
+				(-1.20,0)--(-1.20,0.60)--(0,0.60)
+				(0.72,0)--(0.72,0.36)--(0,0.36);
+
+			\draw[assiale] (0,0)--(-1.20,0.60);
+			\node[et] at (-1.00,0.86) {$\tfrac{5\sqrt5}{4}p\ell$};
+			\draw[assiale] (0,0)--(0.72,0.36);
+			\node[et] at (0.68,0.62) {$\tfrac{3\sqrt5}{4}p\ell$};
+
+			\draw[nota] (0,0)--(-1.20,0);
+			\node[etn, below] at (-0.84,-0.05) {$\tfrac52 p\ell$};
+			\draw[nota] (0,0)--(0.72,0);
+			\node[etn, below] at (0.76,-0.06) {$\tfrac32 p\ell$};
+			\draw[nota] (0,0)--(0,0.60);
+			\node[etn, above] at (0.11,0.52) {$\tfrac54 p\ell$};
+			\draw[nota] (0,0)--(0,0.36);
+			\node[etn, above left] at (-0.00,0.14) {$\tfrac34 p\ell$};
+			\draw[nota] (0,0)--(0,-0.96);
+			\node[etn, left]  at (-0.06,-0.80) {$2p\ell$};
+			\draw[nota] (0,0)--(0.48,0);
+			\node[etn, below] at (0.26,-0.06) {$p\ell$};
+
+			\node[nodoV] at (0,0) {};
+			\node[et] at (-0.20,-0.28) {$E$};
+			\node[et] at (0,-1.55) {(b)};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Il nodo $E$ come corpo libero. \emph{(a)}~Le
+		incognite e, a tratto grigio, le azioni già note
+		trasmesse dai due semi-impalcati. \emph{(b)}~L'esito del
+		calcolo: le componenti verticali dei due stralli,
+		$\tfrac54 p\ell$ e $\tfrac34 p\ell$, bilanciano i
+		$2p\ell$ ricevuti dagli impalcati, e le orizzontali
+		bilanciano la spinta $p\ell$ dell'impalcato di sinistra.
+		La verifica si legge sulla figura.}
+	\label{fig:strallato_nodo_E}
+\end{figure}

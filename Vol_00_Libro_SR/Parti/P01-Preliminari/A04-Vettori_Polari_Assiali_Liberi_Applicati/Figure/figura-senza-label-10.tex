@@ -1,0 +1,121 @@
+\begin{figure}[!htbp]
+	\centering
+	\begin{minipage}[b]{0.44\linewidth}
+		\centering
+		\begin{tikzpicture}[>=Stealth,
+			x={(0.85cm,0cm)}, y={(0cm,0.85cm)}, z={(0.425cm,0.255cm)},% proiezione obliqua (ax=0.5, ay=0.30) a scala 0.85
+			vec/.style={->,thick},
+			edge/.style={gray!60,line width=0.6pt},
+			pt/.style={circle,fill,inner sep=1.1pt}]
+			% ---- vertici: parallelepipedo di spigoli OP, v, a_r (vertice in O) ----
+			\coordinate (O)   at (0, 0, 0);
+			\coordinate (Ar)  at (-0.5, 1.0, -0.4);   % O + a_r
+			\coordinate (P)   at (3.0, 0.2, 1.2);     % O + OP
+			\coordinate (V0)  at (1.0, 1.1, -0.8);    % O + v
+			\coordinate (PV)  at (4.0, 1.3, 0.4);     % P + v
+			\coordinate (PA)  at (2.5, 1.2, 0.8);     % P + a_r
+			\coordinate (PVA) at (3.5, 2.3, 0.0);     % P + v + a_r
+			\coordinate (VA0) at (0.5, 2.1, -1.2);    % O + v + a_r
+			% ---- retta r ----
+			\coordinate (Re) at (-1.2, 2.4, -0.96);       % estremo alto di r
+			\draw[line width=0.6pt] (0.45, -0.9, 0.36) -- (Re)
+			node[above=1pt] {$r$};
+			% ---- spigoli sottili del parallelepipedo ----
+			\draw[edge] (O) -- (V0) -- (PV);
+			\draw[edge] (Ar) -- (PA) -- (PVA) -- (VA0) -- cycle;
+			\draw[edge] (P) -- (PA);
+			\draw[edge] (PV) -- (PVA);
+			\draw[edge] (V0) -- (VA0);
+			% ---- momento polare mu(O) e sua proiezione mu_r su r ----
+			\coordinate (Mu) at (-1.07, 2.60, 2.24);      % O + mu(O), riscalato
+			\coordinate (Fr) at (-0.794, 1.589, -0.636);  % piede della proiezione su r
+			\draw[gray!55,thin,dashed] (Mu) -- (Fr);
+			\coordinate (ra1) at ($(Fr)!2.4mm!(Re)$);
+			\coordinate (ra3) at ($(Fr)!2.4mm!(Mu)$);
+			\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(Fr)$) -- (ra3);
+			% quota di mu_r lungo r (stanghette lunghe per scavalcare l'etichetta del versore)
+			\draw[gray!55,thin] (O)  -- ($(O)!1.05cm!90:(Fr)$);
+			\draw[gray!55,thin] (Fr) -- ($(Fr)!1.05cm!-90:(O)$);
+			\draw[<->,thin] ($(O)!0.88cm!90:(Fr)$) -- ($(Fr)!0.88cm!-90:(O)$)
+			node[midway,anchor=east,xshift=-2pt,font=\small] {$\mu_r$};
+			\draw[->>,thick] (O) -- (Mu)
+			node[pos=0.80,anchor=west,xshift=3pt] {$\bm{\upmu}(O)$};
+			% ---- vettori (spessi): a_r, OP, v ----
+			\draw[vec] (O) -- (Ar) node[midway,anchor=east,xshift=-2pt] {$\ab_r$};
+			\draw[vec] (O) -- (P)  node[midway,below=2pt] {$\overrightarrow{OP}$};
+			\draw[vec] (P) -- (PV) node[midway,anchor=west,xshift=3pt] {$\vb$};
+			% ---- punti ----
+			\node[pt] at (O) {};
+			\node[below=3pt] at (O) {$O$};
+			\node[pt] at (P) {};
+			\node[below right=1pt] at (P) {$P$};
+		\end{tikzpicture}\\[4pt]
+		{\small (a)}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.54\linewidth}
+		\centering
+		\begin{tikzpicture}[>=Stealth,
+			x={(0.85cm,0cm)}, y={(0cm,0.85cm)}, z={(0.425cm,0.255cm)},% proiezione obliqua (ax=0.5, ay=0.30) a scala 0.85
+			vec/.style={->,thick},
+			edge/.style={gray!60,line width=0.6pt},
+			edgeb/.style={gray!60,line width=0.6pt,dashed},
+			pt/.style={circle,fill,inner sep=1.1pt}]
+			% ---- vertici comuni (come nel pannello a) ----
+			\coordinate (O)   at (0, 0, 0);
+			\coordinate (Ar)  at (-0.5, 1.0, -0.4);   % O + a_r
+			\coordinate (P)   at (3.0, 0.2, 1.2);     % O + OP
+			\coordinate (V0)  at (1.0, 1.1, -0.8);    % O + v
+			\coordinate (PV)  at (4.0, 1.3, 0.4);     % P + v
+			\coordinate (PA)  at (2.5, 1.2, 0.8);     % P + a_r
+			\coordinate (PVA) at (3.5, 2.3, 0.0);     % P + v + a_r
+			\coordinate (VA0) at (0.5, 2.1, -1.2);    % O + v + a_r
+			% ---- vertici del secondo parallelepipedo: O' = O + 1.6 a_r ----
+			\coordinate (Op)   at (-0.8, 1.6, -0.64); % O'
+			\coordinate (OpV)  at (0.2, 2.7, -1.44);  % O' + v
+			\coordinate (OpA)  at (-1.3, 2.6, -1.04); % O' + a_r
+			\coordinate (OpVA) at (-0.3, 3.7, -1.84); % O' + v + a_r
+			% ---- retta r (prolungata oltre O') ----
+			\draw[line width=0.6pt] (0.45, -0.9, 0.36) -- (-1.5, 3.0, -1.2)
+			node[above=1pt] {$r$};
+			% ---- parallelepipedo 1 (vertice in O): spigoli sottili pieni ----
+			\draw[edge] (O) -- (V0) -- (PV);
+			\draw[edge] (Ar) -- (PA);
+			\draw[edge] (V0) -- (VA0);
+			\draw[edge] (Ar) -- (VA0);
+			\draw[edge] (VA0) -- (PVA);
+			% ---- faccia comune in P (condivisa dai due solidi) ----
+			\draw[edge] (PV) -- (PVA) -- (PA) -- (P);
+			% ---- parallelepipedo 2 (vertice in O'): spigoli tratteggiati ----
+			\draw[edgeb] (Op) -- (OpV) -- (OpVA) -- (OpA) -- cycle;
+			\draw[edgeb] (OpV) -- (PV);
+			\draw[edgeb] (OpA) -- (PA);
+			\draw[edgeb] (OpVA) -- (PVA);
+			% ---- vettori (spessi) ----
+			\draw[vec] (O) -- (Ar) node[midway,anchor=east,xshift=-2pt] {$\ab_r$};
+			\draw[vec] (O) -- (P)  node[midway,below=2pt] {$\overrightarrow{OP}$};
+			\draw[vec] (Op) -- (P) node[pos=0.45,below] {$\overrightarrow{O'P}$};
+			\draw[vec] (P) -- (PV) node[midway,anchor=west,xshift=3pt] {$\vb$};
+			% ---- punti ----
+			\node[pt] at (O) {};
+			\node[below=3pt] at (O) {$O$};
+			\node[pt] at (Op) {};
+			\node[anchor=east,xshift=-3pt] at (Op) {$O'$};
+			\node[pt] at (P) {};
+			\node[below right=1pt] at (P) {$P$};
+		\end{tikzpicture}\\[4pt]
+		{\small (b)}
+	\end{minipage}
+	\caption[Momento assiale di un vettore applicato]{Momento assiale
+		di un vettore applicato.
+		\textit{(a)}~Il momento assiale è la proiezione $\mu_r$ del momento
+		polare $\bm{\upmu}(O)$ sulla retta $r$ e coincide con il volume con
+		segno del parallelepipedo di spigoli $\protect\overrightarrow{OP}$,
+		$\vb$ e $\ab_r$.
+		\textit{(b)}~Invarianza rispetto al punto scelto sulla retta: i
+		parallelepipedi costruiti da $O$ e da $O'$ condividono la faccia
+		in $P$ generata da $\vb$ e $\ab_r$, e le facce opposte giacciono
+		entrambe nel piano per $r$ parallelo a $\vb$; i volumi coincidono
+		per scorrimento.}
+	\label{f:momento_assiale}
+\end{figure}

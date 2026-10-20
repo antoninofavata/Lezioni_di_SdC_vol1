@@ -1,0 +1,235 @@
+\begin{figure}[htbp!]
+			\centering
+			%% ── stili comuni ai quattro pannelli ────────────────────────────────
+			\tikzset{
+				frecc/.style  ={-{Stealth[length=1.5mm,width=0.9mm]}, line width=0.35pt, black},
+				trave/.style  ={line width=1.8pt, line cap=round, line join=round, black},
+				carico/.style ={-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt},
+				nota/.style   ={-{Stealth[length=2.0mm,width=1.3mm]}, line width=0.9pt, gray!70},
+				bordo/.style  ={line width=0.5pt},
+				fibra/.style  ={line width=0.4pt, black, dash pattern=on 3pt off 2pt},
+				proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+				terra/.style  ={line width=0.7pt},
+				dbordo/.style ={line width=0.7pt, black},
+				dtratt/.style ={line width=0.35pt, gray!55},
+				nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.0pt, line width=0.7pt},
+				segno/.style  ={circle, draw=black, fill=white, line width=0.4pt, inner sep=0pt, minimum size=5.2pt, font=\tiny},
+				dett/.style   ={gray!55, line width=0.35pt},
+				et/.style     ={font=\footnotesize},
+				ets/.style    ={font=\scriptsize}}
+			%% ── struttura nuda, comune ai quattro pannelli ──────────────────────
+			\newcommand{\anelloBase}{%
+				\coordinate (A) at (0,0);     \coordinate (B) at (2.5,0);
+				\coordinate (C) at (0.5,1);   \coordinate (D) at (1.5,1);
+				\coordinate (E) at (0.5,2);   \coordinate (G) at (1,1);
+				\pgfmathsetmacro{\rw}{0.0387}   \pgfmathsetmacro{\spess}{0.016}
+				\pgfmathsetmacro{\bw}{1.25*\rw} \pgfmathsetmacro{\ap}{0.15}
+				\pgfmathsetmacro{\ttx}{ 0.70711} \pgfmathsetmacro{\tty}{-0.70711}
+				\pgfmathsetmacro{\mmx}{-0.70711} \pgfmathsetmacro{\mmy}{-0.70711}
+				\pgfmathsetmacro{\offw}{\spess+\rw}  \pgfmathsetmacro{\offp}{\spess+2*\rw}
+				\pgfmathsetmacro{\Dgx}{1.5+\offp*\mmx}  \pgfmathsetmacro{\Dgy}{1+\offp*\mmy}
+				\pgfmathsetmacro{\sQ}{(1-\Dgy)/\tty}
+				\pgfmathsetmacro{\Qx}{\Dgx+\ttx*\sQ}
+				\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\ttx} \pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\tty}
+				\pgfmathsetmacro{\Wx}{1.5+\offw*\mmx}   \pgfmathsetmacro{\Wy}{1+\offw*\mmy}
+				\pgfmathsetmacro{\Pax}{\Pcx+\ap*\ttx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\tty}
+				\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\ttx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\tty}
+				\pgfmathsetmacro{\Wax}{\Wx+\bw*\ttx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\tty}
+				\pgfmathsetmacro{\Wbx}{\Wx-\bw*\ttx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\tty}
+				\draw[trave] (A)--(C);  \draw[trave] (C)--(E);
+				\draw[trave] (E)--(B);  \draw[trave] (C)--(\Qx,1);
+				\draw[line width=1.1pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+				\draw[line width=0.6pt, fill=white] (\Wax,\Way) circle (2.0pt);
+				\draw[line width=0.6pt, fill=white] (\Wbx,\Wby) circle (2.0pt);
+				\foreach \P in {A,B}{%
+					\draw[terra] (\P)--($(\P)+(-0.083,-0.143)$)--($(\P)+(0.083,-0.143)$)--cycle;
+					\draw[terra] ($(\P)+(-0.128,-0.143)$)--($(\P)+(0.128,-0.143)$);
+					\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+					\draw[terra, line width=0.4pt] ($(\P)+(\s,-0.143)$)--++(-0.038,-0.053);}
+				\foreach \P in {A,B,C,E} \node[nodoV] at (\P) {};
+				\node[et, left=3pt]  at (A) {$A$};   \node[et, right=3pt] at (B) {$B$};
+				\node[et, left=3pt]  at (C) {$C$};   \node[et, left=3pt]  at (E) {$E$};
+				\node[et] at (1.62,1.06) {$D$};}
+			%% ── ordinate di un tratto a variazione lineare ──────────────────────
+			%% #1,#2 estremi  #3,#4 valori  #5,#6 versore fibre inferiori  #7 scala
+			\newcommand{\ordLin}[7]{%
+				\foreach \t in {0,0.08333,...,1.0001}{%
+					\pgfmathsetmacro{\vv}{(#3+(#4-#3)*\t)*#7}
+					\draw[dtratt] ($(#1)!\t!(#2)$) -- ++({\vv*#5},{\vv*#6});}
+				\draw[dbordo] ($(#1)+({#3*#7*#5},{#3*#7*#6})$) -- ($(#2)+({#4*#7*#5},{#4*#7*#6})$);
+				\draw[dbordo] (#1) -- ++({#3*#7*#5},{#3*#7*#6});
+				\draw[dbordo] (#2) -- ++({#4*#7*#5},{#4*#7*#6});}
+			
+			\def\bbA{\path[use as bounding box] (-0.65,-0.45) rectangle (3.90,2.45);}
+			%% ── fattori di scala, autonomi ──────────────────────────────────────
+			\def\sN{1.45}  \def\sT{1.45}  \def\sM{0.70}
+			%% amplificazione locale del tratto positivo di N e T presso E
+			\def\amp{2}
+			%% altezza della gobba che ingrossa il lobo positivo di M presso E
+			\def\Bmp{0.12}
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (a) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\pgfmathsetmacro{\yp}{2.12}  \pgfmathsetmacro{\hp}{0.26}
+						\draw[proiez] (E) -- (0.5,\yp);  \draw[proiez] (1.5,1.6) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+						\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+						\foreach \x in {0.5,0.625,...,1.5} \draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+						\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+						\pgfmathsetmacro{\rc}{0.17}
+						\draw[line width=0.6pt] (G) -- (1,{1-\rc});
+						\draw[-{Stealth[length=1.8mm,width=1.1mm]}, line width=0.6pt]
+						(1,{1-\rc}) arc[start angle=270, end angle=90, radius=\rc];
+						\node[et] at (0.79,0.72) {$p\ell^2$};
+						\draw[nota] (A) -- ++(0.50,0);  \node[ets, above] at (0.50,-0.0) {$\tfrac{1}{10}p\ell$};
+						\draw[nota] (A) -- ++(0,0.50);  \node[ets, left]  at (-0.02,0.32) {$\tfrac{1}{5}p\ell$};
+						\draw[nota] (B) -- ++(-0.50,0); \node[ets, above] at (1.80,-0.0) {$\tfrac{1}{10}p\ell$};
+						\draw[nota] (B) -- ++(0,0.50);  \node[ets, right] at (2.53,0.32) {$\tfrac{4}{5}p\ell$};
+						\draw[fibra] (0.5,0.945) -- (1.5,0.945);
+						\draw[fibra] ($(E)+(-0.039,-0.039)$) -- ($(B)+(-0.039,-0.039)$);
+				\end{tikzpicture}}
+				\\[-12pt] $(a)$
+			\end{minipage}
+			\hfill
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (b)  T %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\coordinate (Dm) at (1.5,1);
+						%% CD
+						\ordLin{C}{D}{0.1}{0.1}{0}{-1}{\sT}
+						\node[segno] at (1.05,0.9275) {$+$};
+						\node[ets] at (0.84,0.7) {$\tfrac{1}{10}p\ell$};
+						%% ED : retta unica; l'ordinata in E e' fuori scala (x\amp)
+						\pgfmathsetmacro{\vE}{0.070711*\amp}
+						\ordLin{E}{Dm}{\vE}{-0.636396}{-0.70711}{-0.70711}{\sT}
+						\node[segno] at (1.417,1.517) {$-$};
+						\node[ets, right] at (2.21,1.70) {$\tfrac{9\sqrt2}{20}p\ell$};
+						\node[ets, left]  at (0.31,1.86) {$\tfrac{\sqrt2}{20}p\ell$};
+						%% DB
+						\ordLin{Dm}{B}{-0.494975}{-0.494975}{-0.70711}{-0.70711}{\sT}
+						\node[segno] at (2.254,0.754) {$-$};
+						\node[ets, right] at (3.06,0.46) {$\tfrac{7\sqrt2}{20}p\ell$};
+				\end{tikzpicture}}
+				\\[-12pt] $(b)$
+			\end{minipage}
+			
+			\vspace{6pt}
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (c)  N %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\coordinate (Dm) at (1.5,1);
+						%% AC
+						\ordLin{A}{C}{-0.223607}{-0.223607}{0.89443}{-0.44721}{\sN}
+						\node[segno] at (0.105,0.572) {$-$};
+						\node[ets, left] at (-0.05,0.90) {$\tfrac{\sqrt5}{10}p\ell$};
+						%% CE
+						\ordLin{C}{E}{-0.1}{-0.1}{1}{0}{\sN}
+						\node[segno] at (0.4275,1.72) {$-$};
+						\node[ets, left] at (0.28,1.42) {$\tfrac{1}{10}p\ell$};
+						%% CD : campitura riportata sotto l'asta
+						\ordLin{C}{D}{-0.1}{-0.1}{0}{1}{\sN}
+						\node[segno] at (1.05,0.9275) {$-$};
+						\node[ets] at (0.80,0.75) {$\tfrac{1}{10}p\ell$};
+						%% ED : retta unica; l'ordinata in E e' fuori scala (x\amp)
+						\pgfmathsetmacro{\vE}{0.070711*\amp}
+						\ordLin{E}{Dm}{\vE}{-0.636396}{-0.70711}{-0.70711}{\sN}
+						\node[segno] at (1.417,1.517) {$-$};
+						\node[ets, right] at (2.21,1.70) {$\tfrac{9\sqrt2}{20}p\ell$};
+						\node[ets, left]  at (0.31,1.86) {$\tfrac{\sqrt2}{20}p\ell$};
+						%% DB
+						\ordLin{Dm}{B}{-0.636396}{-0.636396}{-0.70711}{-0.70711}{\sN}
+						\node[segno] at (2.326,0.826) {$-$};
+						\node[ets, right] at (3.21,0.62) {$\tfrac{9\sqrt2}{20}p\ell$};
+				\end{tikzpicture}}
+				\\[-12pt] $(c)$
+			\end{minipage}
+			\hfill
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (d)  M %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\begin{minipage}[b]{0.49\textwidth}\centering
+				\resizebox{\linewidth}{!}{%
+					\begin{tikzpicture}[x=1.75cm, y=1.75cm]
+						\bbA
+						\anelloBase
+						\coordinate (Dm) at (1.5,1);
+						%% CD
+						\ordLin{C}{G}{0}{0.05}{0}{-1}{\sM}
+						\ordLin{G}{D}{1.05}{1.1}{0}{-1}{\sM}
+						\node[ets] (lMD) at (0.85,0.09) {$\tfrac{11}{10}p\ell^2$};
+						\draw[frecc] (lMD) -- (1.5,0.23);
+						\node[ets] (lMG) at (0.72,0.70) {$\tfrac{1}{20}p\ell^2$};
+						\draw[frecc] (lMG) -- (1.0,0.965);
+						%% ED : momento. E' la primitiva del taglio come lo si e' disegnato,
+						%%   cioe' della retta che va dall'ordinata amplificata in E a quella
+						%%   in D: una sola parabola, con il vertice esattamente dove il taglio
+						%%   disegnato si annulla, nulla in E e pari a -2/5 p l^2 in D.
+						\pgfmathsetmacro{\vEd}{0.070711*\amp}
+						\pgfmathsetmacro{\zv}{1.414214*\vEd/(\vEd+0.636396)}
+						\pgfmathsetmacro{\bq}{-0.4/(2-2.828427*\zv)}
+						\pgfmathsetmacro{\aq}{-2*\bq*\zv}
+						\foreach \t in {0,0.05,...,1.0001}{%
+							\pgfmathsetmacro{\zz}{\t*1.414214}
+							\pgfmathsetmacro{\vv}{(\aq*\zz+\bq*\zz*\zz)*\sM}
+							\draw[dtratt] ($(E)!\t!(Dm)$) -- ++({-\vv*0.70711},{-\vv*0.70711});}
+						\draw[dbordo] plot[domain=0:1.414214, samples=71, variable=\z]
+						({0.5+0.70711*\z-0.70711*(\aq*\z+\bq*\z*\z)*\sM},
+						{2-0.70711*\z-0.70711*(\aq*\z+\bq*\z*\z)*\sM});
+						\draw[dbordo] (Dm) -- ++({0.4*\sM*0.70711},{0.4*\sM*0.70711});
+						\node[ets] (lMx) at (0.81,1.38) {$\tfrac{1}{200}p\ell^2$};
+						\draw[frecc] (lMx) -- (0.542,1.842);
+						\node[ets, right] (lME) at (1.86,1.30) {$\tfrac{2}{5}p\ell^2$};
+						\draw[frecc] (lME) -- (1.698,1.198);
+						%% DB
+						\ordLin{Dm}{B}{0.7}{0}{-0.70711}{-0.70711}{\sM}
+						\node[ets] (lMB) at (1.80,0.10) {$\tfrac{7}{10}p\ell^2$};
+						\draw[frecc] (lMB) -- (1.153,0.653);
+						%% ── dettaglio presso E ──────────────────────────────────────────────
+						%%   Lunghezze ingrandite \kL volte, ordinate \kO volte: il lobo
+						%%   positivo e il suo massimo diventano leggibili.
+						\pgfmathsetmacro{\kL}{2}
+						\pgfmathsetmacro{\kO}{12}
+						\coordinate (O) at (2.72,2.05);
+						%% finestra sul diagramma
+						\draw[dett] (1.0020,1.6252) -- (0.8748,1.4980) -- (0.4010,1.9718) -- (0.5282,2.0990) -- cycle;
+						%% cornice del dettaglio
+						\draw[dett] (3.7524,1.3288) -- (3.4412,1.0176) -- (2.4936,1.9652) -- (2.8048,2.2764) -- cycle;
+						%% raccordi
+						\draw[dett] (0.5282,2.0990) -- (2.8048,2.2764);
+						\draw[dett] (1.0020,1.6252) -- (2.4936,1.9652);
+						%% asta
+						\draw[line width=1.4pt, line cap=round]
+						($(O)+(-0.05*\kL*0.70711,0.05*\kL*0.70711)$) --
+						($(O)+( 0.62*\kL*0.70711,-0.62*\kL*0.70711)$);
+						%% ordinate
+						\foreach \z in {0,0.04,...,0.6201}{%
+							\pgfmathsetmacro{\vv}{(\aq*\z+\bq*\z*\z)*\sM*\kO}
+							\draw[dtratt] ($(O)+(\z*\kL*0.70711,-\z*\kL*0.70711)$)
+							-- ++({-\vv*0.70711},{-\vv*0.70711});}
+						\draw[dbordo] plot[domain=0:0.62, samples=41, variable=\z]
+						({2.72+\z*\kL*0.70711-0.70711*(\aq*\z+\bq*\z*\z)*\sM*\kO},
+						{2.05-\z*\kL*0.70711-0.70711*(\aq*\z+\bq*\z*\z)*\sM*\kO});
+						\pgfmathsetmacro{\vend}{(\aq*0.62+\bq*0.62*0.62)*\sM*\kO}
+						\draw[dbordo] ($(O)+(0.62*\kL*0.70711,-0.62*\kL*0.70711)$)
+						-- ++({-\vend*0.70711},{-\vend*0.70711});
+						\node[nodoV, minimum size=3.4pt] at (O) {};
+						\node[ets, left=2pt] at (O) {$E$};
+				\end{tikzpicture}}
+				\\[-12pt] $(d)$
+			\end{minipage}
+		\caption{Diagrammi delle caratteristiche della sollecitazione:
+			\emph{(a)} schema di riferimento, con i carichi, le reazioni esterne
+			e le fibre inferiori assunte; \emph{(b)} taglio, \emph{(c)} forza
+			normale, \emph{(d)} momento flettente.
+			Presso~$E$, dove le ordinate sono di due ordini di grandezza minori
+			che altrove, l'inversione di segno è tracciata fuori scala.}
+			\label{fig:anelloTA_diagrammi}
+		\end{figure}

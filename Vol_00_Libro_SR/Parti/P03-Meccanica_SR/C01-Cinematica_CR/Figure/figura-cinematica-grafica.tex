@@ -1,0 +1,53 @@
+\begin{figure}[htbp]
+		\centering
+		\subfloat[][\emph{$C_{ij}$ interno: rotazioni discordi}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
+				\def\ang{22}
+				\def\tg{0.4040}
+				\coordinate (Ci)      at (0,0);
+				\coordinate (Cij)     at (2,0);
+				\coordinate (Cj)      at (3,0);
+				\coordinate (Cij_up)  at (2, {2*\tg});
+				\draw[dashed, gray!60] (-0.5,0) -- (4.2,0);
+				\draw[gray!50] (Ci) -- ({3.8*cos(\ang)}, {3.8*sin(\ang)});
+				\draw[->, thick] (0.9,0) arc[start angle=0, end angle=\ang, radius=0.9];
+				\node[right=1pt] at (0.85,0.20) {\small$\vartheta_i$};
+				\draw[<-, thick] ({3+0.7*cos(141)},{0.7*sin(141)}) arc[start angle=141, end angle=180, radius=0.7];
+				\node at ({4-1.42},{0.15}) {\small$\vartheta_j$};
+				\draw[->, dashed, thick] (Cij) -- (Cij_up);
+				\draw[thick, gray!60] (Cj) -- (Cij_up);
+				\fill (Ci)     circle (2pt) node[below=5pt] {$C_i$};
+				\fill (Cij)    circle (2pt) node[below=5pt] {$C_{ij}$};
+				\fill (Cj)     circle (2pt) node[below=5pt] {$C_j$};
+				\fill (Cij_up) circle (2pt);
+		\end{tikzpicture}}%
+		\hspace{0.03\textwidth}%
+		\subfloat[][\emph{$C_{ij}$ esterno: rotazioni concordi}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
+				\def\ang{22}
+				\def\tg{0.4040}
+				\coordinate (Ci)      at (0,0);
+				\coordinate (Cj)      at (2,0);
+				\coordinate (Cij)     at (4,0);
+				\coordinate (Cij_up)  at (4, {4*\tg});
+				\draw[dashed, gray!60] (-0.5,0) -- (5.2,0);
+				\draw[gray!50] (Ci) -- ({4.8*cos(\ang)}, {4.8*sin(\ang)});
+				\draw[->, thick] (0.9,0) arc[start angle=0, end angle=\ang, radius=0.9];
+				\node[right=1pt] at (0.85,0.20) {\small$\vartheta_i$};
+				\draw[->, thick] ({2+0.7},0) arc[start angle=0, end angle=39, radius=0.7];
+				\node at ({2+0.95},0.20) {\small$\vartheta_j$};
+				\draw[->, dashed, thick] (Cij) -- (Cij_up);
+				\draw[thick, gray!60] (Cj) -- (Cij_up);
+				\fill (Ci)     circle (2pt) node[below=5pt] {$C_i$};
+				\fill (Cj)     circle (2pt) node[below=5pt] {$C_j$};
+				\fill (Cij)    circle (2pt) node[below=5pt] {$C_{ij}$};
+				\fill (Cij_up) circle (2pt);
+		\end{tikzpicture}}
+		\caption{Cinematica grafica: determinazione di $\vartheta_j$ dalla posizione
+			dei centri e da $\vartheta_i$. La retta $C_iC_{ij}C_j$ ruota di $\vartheta_i$
+			attorno a $C_i$; lo spostamento verticale di $C_{ij}$ è proporzionale
+			alla sua distanza da $C_i$. La retta grigia da $C_j$ alla posizione ruotata
+			di $C_{ij}$ evidenzia per similitudine il rapporto
+			$|\vartheta_j|/|\vartheta_i| = |C_jC_{ij}|/|C_iC_{ij}|$.}
+		\label{fig:cinematica_grafica}
+	\end{figure}

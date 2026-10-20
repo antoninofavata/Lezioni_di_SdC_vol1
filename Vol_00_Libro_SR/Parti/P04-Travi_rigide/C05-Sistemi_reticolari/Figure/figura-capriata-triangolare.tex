@@ -1,0 +1,161 @@
+\begin{figure}[htbp]
+			\centering
+			%── pannello (a): schema strutturale ──────────────────────
+			\begin{minipage}[t]{0.48\textwidth}
+				\centering
+				\begin{tikzpicture}[
+					scale=0.62,
+					asta/.style={line width=1.5pt, line cap=round,
+						line join=round},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt,
+						line width=1.2pt},
+					quota/.style={very thin, gray, |<->|, >=stealth},
+					richiam/.style={thin, gray, dashed},
+					forza/.style={->, >=stealth, line width=1.5pt, black},
+					]
+					\useasboundingbox (-0.7,-1.6) rectangle (8.4,4.3);
+					
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (8,0);
+					\coordinate (C) at (4,3);
+					\coordinate (D) at (4,0);
+					
+					
+					\draw[asta](A)--(C);
+					\draw[asta](C)--(B);
+					\draw[asta](A)--(D);
+					\draw[asta](D)--(B);
+					\draw[asta](C)--(D);
+					
+%					\draw[asta](A)--(C)node[midway,above left, font=\small]{$AC$};
+%					\draw[asta](C)--(B)node[midway,above right,font=\small]{$CB$};
+%					\draw[asta](A)--(D)node[midway,below,      font=\small]{$AD$};
+%					\draw[asta](D)--(B)node[midway,below,      font=\small]{$DB$};
+%					\draw[asta](C)--(D)node[midway,right,      font=\small]{$CD$};
+					
+					%% cerniera A
+					\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin](\x,-0.65)--++(-.18,-.22);
+					
+					%% carrello B
+					\draw[line width=1.2pt](B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt]($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+					\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					
+					\draw[forza]($(C)+(0,1.60)$)--($(C)+(0,0.35)$);
+					\node[left,font=\normalsize]at($(C)+(0,1.60)$){$F$};
+					
+					\node[above left, font=\normalsize]at(A){$A$};
+					\node[above right,font=\normalsize]at(B){$B$};
+					\node[above right,font=\normalsize]at(C){$C$};
+					\node[below=2pt,font=\normalsize]at(D){$D$};
+					
+					\draw[richiam](A)--++(0,-1.3);
+					\draw[richiam](D)--++(0,-1.3);
+					\draw[richiam](B)--++(0,-1.3);
+					\draw[quota](0,-1.1)--node[below,font=\small]{$\ell$}(4,-1.1);
+					\draw[quota](4,-1.1)--node[below,font=\small]{$\ell$}(8,-1.1);
+					\draw[richiam](C)--++(-4.3,0);
+					\draw[richiam](A)--++(-0.8,0);
+					\draw[quota](-0.6,0)--node[left,font=\small]{$h$}(-0.6,3);
+				\end{tikzpicture}
+				\par\smallskip$(a)$
+			\end{minipage}
+			\hfill
+			%── pannello (b): stato di sollecitazione ─────────────────
+			\begin{minipage}[t]{0.48\textwidth}
+				\centering
+				\begin{tikzpicture}[
+					scale=0.62,
+					puntone/.style={line width=3.5pt, line cap=round,
+						line join=round, black},
+					tirante/.style={line width=1.0pt, line cap=round,
+						line join=round, black},
+					scarico/.style={line width=1.5pt, line cap=round,
+						line join=round, gray!60},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt,
+						line width=1.2pt},
+					forza/.style={->, >=stealth, line width=1.5pt, black},
+					fc/.style={->, >=stealth, line width=0.9pt, black},
+					ft/.style={->, >=stealth, line width=0.9pt, black},
+					]
+					\useasboundingbox (-1.0,-1.6) rectangle (8.8,4.3);
+					
+					\coordinate (A) at (0,0);
+					\coordinate (B) at (8,0);
+					\coordinate (C) at (4,3);
+					\coordinate (D) at (4,0);
+					
+					\draw[puntone](A)--(C);
+					\draw[puntone](C)--(B);
+					\draw[tirante](A)--(D);
+					\draw[tirante](D)--(B);
+					\draw[scarico](C)--(D);
+					
+					%% frecce compressione su AC
+					\draw[fc](1.35,0.70)--(0.75,0.25);
+					\draw[fc](2.95,1.90)--(3.55,2.35);
+					%% frecce compressione su CB
+					\draw[fc](5.05,1.90)--(4.45,2.35);
+					\draw[fc](6.65,0.70)--(7.25,0.25);
+					%% frecce trazione su AD
+					\draw[ft](0.60,-0.25)--(1.40,-0.25);
+					\draw[ft](3.40,-0.25)--(2.60,-0.25);
+					%% frecce trazione su DB
+					\draw[ft](4.60,-0.25)--(5.40,-0.25);
+					\draw[ft](7.40,-0.25)--(6.60,-0.25);
+					
+					%% cerniera A
+					\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin](\x,-0.65)--++(-.18,-.22);
+					
+					%% carrello B
+					\draw[line width=1.2pt](B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt]($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+					\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					
+					\draw[forza]($(C)+(0,1.60)$)--($(C)+(0,0.35)$);
+					\node[left,font=\normalsize]at($(C)+(0,1.60)$){$F$};
+					
+					\node[above left, font=\normalsize]at(A){$A$};
+					\node[above right,font=\normalsize]at(B){$B$};
+					\node[above right,font=\normalsize]at(C){$C$};
+					\node[below=2pt,font=\normalsize]at(D){$D$};
+				\end{tikzpicture}
+				\par\smallskip$(b)$
+			\end{minipage}
+			%
+			\caption{Capriata triangolare con carico al colmo.
+				\emph{(a)}: schema strutturale con denominazione
+				dei nodi.
+				\emph{(b)}: stato di sollecitazione qualitativo.
+				Tratto spesso: aste compresse $AC$ e $CB$ (puntoni);
+				le frecce mostrano la compressione interna,
+				con le estremità spinte verso l'esterno.
+				Tratto sottile: aste tese $AD$ e $DB$ (tiranti);
+				le frecce mostrano la trazione interna,
+				con le estremità tirate verso il centro.
+				In grigio il monaco $CD$: sforzo nullo per simmetria
+				con carico al colmo.}
+			\label{fig:capriata_triangolare}
+		\end{figure}

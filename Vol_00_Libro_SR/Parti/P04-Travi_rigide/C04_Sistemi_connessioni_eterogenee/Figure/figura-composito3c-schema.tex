@@ -1,0 +1,70 @@
+\begin{figure}[htbp]
+	\centering
+\begin{tikzpicture}[
+	x=2.4cm, y=2.4cm,
+	trave/.style={line width=2.0pt, line cap=round, line join=round, black},
+	carico/.style={-{Stealth[length=1.8mm]}, line width=0.6pt, black},
+	bordo/.style={line width=0.5pt, black},
+	terra/.style={line width=0.7pt, black},
+	nodoV/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=6pt, line width=0.9pt},
+	quota/.style={gray!70, line width=0.5pt,{Bar[width=7pt] Stealth[length=1.8mm]}-{Stealth[length=1.8mm] Bar[width=7pt]}},
+	]
+	\newcommand{\cerniera}[1]{%
+		\draw[terra] (#1)--++(-0.13,-0.22)--++(0.26,0)--cycle;
+		\draw[terra] ($(#1)+(-0.18,-0.22)$)--($(#1)+(0.18,-0.22)$);
+		\foreach \t in {-0.16,-0.08,0,0.08,0.16}\draw[terra] ($(#1)+(\t,-0.22)$)--++(-0.06,-0.09);}
+	\coordinate (A) at (0,0);    \coordinate (B) at (1.5,0);
+	\coordinate (C) at (0.5,1);  \coordinate (D) at (1.5,1);  \coordinate (E) at (0.5,2);
+	\coordinate (Mce) at (0.5,1.5);
+	\coordinate (Mcd) at (1.0,1);
+	% --- aste ---
+	\draw[trave] (A)--(C);  \draw[trave] (C)--(E);  \draw[trave] (E)--(D);
+	\draw[trave] (C)--(D)--(B);            % CDB continua (spigolo rigido in D)
+	% --- carico p su BD: orizzontale verso sinistra ---
+	\draw[bordo] (1.50,0)--(1.50,1);  \draw[bordo] (1.70,0)--(1.70,1);
+	\foreach \y in {0,0.125,...,1.001} \draw[carico] (1.70,\y)--(1.50,\y);
+	\node[right] at (1.72,0.5) {$p$};
+	% --- carico p/sqrt2 su ED (verticale, inviluppo parallelo a ED) ---
+	\draw[bordo] (0.5,2.30)--(1.5,1.30);
+	\foreach \x in {0.5,0.625,...,1.501}\draw[carico] (\x,{2.8-\x})--(\x,{2.5-\x});
+	\node[above] (plab) at (0.85,2.22) {$\tfrac{p}{\sqrt2}$};
+	\draw[gray!70,-{Stealth[length=1.2mm]},line width=0.4pt] (plab)--(0.5,2.20);
+	% --- due coppie orarie (mezzeria di CE e di CD) ---
+	\draw[black,line width=1.2pt,-{Stealth[length=2.4mm]}]
+	(0.5,1.5) ++(215:0.18) arc[start angle=215,end angle=-35,radius=0.18];
+	\node[left] at (0.30,1.55) {$p\,\ell^{2}$};
+	\draw[black,line width=1.2pt,-{Stealth[length=2.4mm]}]
+	(1.0,1.0) ++(215:0.18) arc[start angle=215,end angle=-35,radius=0.18];
+	\node[below] at (1.0,0.90) {$p\,\ell^{2}$};
+	% --- vincoli esterni ---
+	\cerniera{A}\cerniera{B}
+	% --- cerniere interne e nodi ---
+	\node[nodoV] at (C){};  \node[nodoV] at (E){};
+	\node[nodoV] at (A){};  \node[nodoV] at (B){};
+	\coordinate (Dh) at ($(D)!0.06!(E)$);  
+	\node[nodoV] at (Dh){};   % ED incernierato a CDB in D
+	% --- etichette nodi ---
+	\node[left] at (A){$A$};  \node[left] at (B){$B$};
+	\node[left=3pt] at (C){$C$};  \node[above right=1pt] at (D){$D$};  \node[above left] at (E){$E$};
+	% --- quote orizzontali: tre campi l/2 ---
+	\draw[quota] (0,-0.55)--(0.5,-0.55)   node[midway,above,black,font=\small]{$\ell/2$};
+	\draw[quota] (0.5,-0.55)--(1.0,-0.55) node[midway,above,black,font=\small]{$\ell/2$};
+	\draw[quota] (1.0,-0.55)--(1.5,-0.55) node[midway,above,black,font=\small]{$\ell/2$};
+	
+	% --- quote verticali: l (AC) + l/2 + l/2 (CE) ---
+	\draw[quota] (-0.45,0)--(-0.45,1)     node[midway,left,black,font=\small]{$\ell$};
+	\draw[quota] (-0.45,1)--(-0.45,1.5)   node[midway,left,black,font=\small]{$\ell/2$};
+	\draw[quota] (-0.45,1.5)--(-0.45,2)   node[midway,left,black,font=\small]{$\ell/2$};
+	
+	% --- tacche in mezzeria (punto d'applicazione delle coppie) ---
+	\draw[bordo] ($(Mce)+(-0.05,0)$)--($(Mce)+(0.05,0)$);   % CE
+	\draw[bordo] ($(Mcd)+(0,-0.05)$)--($(Mcd)+(0,0.05)$);   % CD
+\end{tikzpicture}
+	\caption{Sistemi compositi a tre cerniere: arco inferiore~$ACDB$
+		(portante) e arco superiore~$CED$ (portato), con montante
+		comune in chiave~$C$ e collegamento in~$D$. Cerniere interne
+		in~$C$, $E$, $D$; cerniere esterne in~$A$ e~$B$; nodo rigido
+		in~$D$. Coppie orarie~$p\ell^2$ su~$CE$ e~$CD$; carico
+		distribuito su~$ED$ (risultante~$p\ell$) e su~$DB$.}
+	\label{fig:composito3c_schema}
+\end{figure}

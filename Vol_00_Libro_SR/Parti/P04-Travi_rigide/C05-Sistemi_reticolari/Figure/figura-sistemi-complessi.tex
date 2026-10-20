@@ -1,0 +1,265 @@
+\begin{figure}[!htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			asta/.style={line width=0.9pt, line cap=round, line join=round, black},
+			cord/.style={line width=1.8pt, line cap=round, line join=round, black},
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=4.5pt, line width=0.9pt},
+			etich/.style={font=\small},
+			pan/.style={font=\small},
+			]
+			
+			%% comandi per i vincoli -----------------------------------
+			\newcommand{\cerniera}[1]{%
+				\draw[line width=1.0pt](#1)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt]($(#1)+(-0.34,-0.40)$)--($(#1)+(0.34,-0.40)$);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(#1)+(\x,-0.40)$)--++(-.10,-0.13);}
+			\newcommand{\carrello}[1]{%
+				\draw[line width=1.0pt](#1)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt]($(#1)+(-0.34,-0.40)$)--($(#1)+(0.34,-0.40)$);
+				\draw[line width=0.9pt]($(#1)+(-0.14,-0.49)$)circle(2.2pt);
+				\draw[line width=0.9pt]($(#1)+( 0.14,-0.49)$)circle(2.2pt);
+				\draw[line width=1.0pt]($(#1)+(-0.36,-0.58)$)--($(#1)+(0.36,-0.58)$);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(#1)+(\x,-0.58)$)--++(-.10,-0.13);}
+			\newcommand{\pareteSX}[1]{%
+				\draw[line width=1.0pt](#1)--++(-0.40,-0.24)--++(0,0.48)--cycle;
+				\draw[line width=1.0pt]($(#1)+(-0.40,-0.34)$)--($(#1)+(-0.40,0.34)$);
+				\foreach \yy in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(#1)+(-0.40,\yy)$)--++(-0.13,-0.10);}
+			\newcommand{\pareteDX}[1]{%
+				\draw[line width=1.0pt](#1)--++(0.40,-0.24)--++(0,0.48)--cycle;
+				\draw[line width=1.0pt]($(#1)+(0.40,-0.34)$)--($(#1)+(0.40,0.34)$);
+				\foreach \yy in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(#1)+(0.40,\yy)$)--++(0.13,0.10);}
+			
+			
+			%% =========================================================
+			%% (c) SCHEMA A TRE CERNIERE (cerniera in B, tolta l'asta CG)
+			%% =========================================================
+			\begin{scope}[xshift=0cm, yshift=-9.4cm]
+				\def\db{1.6}
+				\def\hb{1.1}
+				%% corrente inferiore privo del tratto CG
+				\draw[asta](0,0)--(2*\db,0);
+				\draw[asta](3*\db,0)--(5*\db,0);
+				%% corrente superiore completo
+				\draw[asta](0.5*\db,\hb)--(4.5*\db,\hb);
+				%% diagonali (Warren)
+				\foreach \i in {0,...,4}{
+					\draw[asta](\i*\db,0)--({(\i+0.5)*\db},\hb);
+					\draw[asta]({(\i+0.5)*\db},\hb)--({(\i+1)*\db},0);}
+				%% vincoli (in B cerniera al posto del carrello)
+				\cerniera{0,0}
+				\cerniera{5*\db,0}
+				%% nodi
+				\foreach \i in {0,...,5} \node[nodo]at(\i*\db,0){};
+				\foreach \i in {0,...,4} \node[nodo]at({(\i+0.5)*\db},\hb){};
+				%% etichette
+				\node[etich,left ]at(-0.10,0.16){$A$};
+				\node[etich,right]at(5*\db+0.10,0.16){$B$};
+				\node[etich,below]at(2*\db,-0.10){$C$};
+				\node[etich,below]at(3*\db,-0.10){$G$};
+				\node[etich,above]at(2.5*\db,\hb+0.08){$D$};
+			\end{scope}
+			\node[pan]at(4.0,-11.30){(c)};
+			
+			%% =========================================================
+			%% (d) TRAVATURA A MENSOLA CON TIRANTE
+			%% =========================================================
+			\begin{scope}[xshift=13.0cm, yshift=0cm]
+				\def\h{0.95}
+				%% correnti
+				\draw[asta](0,0)--(11,0);
+				\draw[asta](1,\h)--(12,\h);
+				%% montanti e diagonali
+				\foreach \i in {1,...,11} \draw[asta](\i,0)--(\i,\h);
+				\foreach \i in {0,...,11} \draw[asta](\i,0)--(\i+1,\h);
+				%% tirante a parete
+				\coordinate (W) at (-0.9,2.5);
+				\draw[asta](W)--(3,\h);
+				\pareteSX{W}
+				%% cerniera a terra
+				\cerniera{0,0}
+				%% nodi
+				\foreach \i in {0,...,11} \node[nodo]at(\i,0){};
+				\foreach \i in {1,...,12} \node[nodo]at(\i,\h){};
+				\node[nodo]at(W){};
+			\end{scope}
+			
+			\node[pan]at(19.5,-1.85){(d)};
+			
+			%% =========================================================
+			%% (a) TRAVATURA RETICOLARE SEMPLICE CON ASTA DE
+			%% =========================================================
+			\begin{scope}[xshift=0cm, yshift=-0.1cm]
+				\def\db{1.6}
+				\def\hb{1.1}
+				%% correnti
+				\draw[asta](0,0)--(5*\db,0);
+				\draw[asta](0.5*\db,\hb)--(4.5*\db,\hb);
+				%% diagonali (Warren)
+				\foreach \i in {0,...,4}{
+					\draw[asta](\i*\db,0)--({(\i+0.5)*\db},\hb);
+					\draw[asta]({(\i+0.5)*\db},\hb)--({(\i+1)*\db},0);}
+				%% vincoli
+				\cerniera{0,0}
+				\carrello{5*\db,0}
+				%% nodi
+				\foreach \i in {0,...,5} \node[nodo]at(\i*\db,0){};
+				\foreach \i in {0,...,4} \node[nodo]at({(\i+0.5)*\db},\hb){};
+				%% etichette
+				\node[etich,left ]at(-0.10,0.16){$A$};
+				\node[etich,right]at(5*\db+0.10,0.16){$B$};
+				\node[etich,below]at(2*\db,-0.10){$C$};
+				\node[etich,above]at(2.5*\db,\hb+0.08){$D$};
+				\node[etich,above]at(3.5*\db,\hb+0.08){$E$};
+			\end{scope}
+			\node[pan]at(4.0,-1.85){(a)};
+			
+			%% =========================================================
+			%% (e) STRUTTURA SOSPESA, PRIMA VARIANTE
+			%% =========================================================
+			\begin{scope}[xshift=13.0cm, yshift=-5.1cm]
+				\def\h{0.95}
+				%% corrente inferiore (continuo: il tratto KM e' la biella)
+				\draw[asta](0,0)--(12,0);
+				%% corrente superiore interrotto fra H ed L
+				\draw[asta](1,\h)--(6,\h);
+				\draw[asta](7,\h)--(11,\h);
+				%% montanti
+				\foreach \i in {1,...,11} \draw[asta](\i,0)--(\i,\h);
+				%% diagonali (soppressa quella della campata K-L)
+				\foreach \i in {0,...,5} \draw[asta](\i,0)--(\i+1,\h);
+				\foreach \i in {7,...,10} \draw[asta](\i,0)--(\i+1,\h);
+				\draw[asta](11,\h)--(12,0);
+				%% tiranti a parete
+				\coordinate (W) at (-0.9,2.5);
+				\draw[asta](W)--(3,\h);
+				\pareteSX{W}
+				\coordinate (V) at (13,2.5);
+				\draw[asta](V)--(9,\h);
+				\pareteDX{V}
+				%% vincoli a terra
+				\cerniera{0,0}
+				\carrello{12,0}
+				%% nodi
+				\foreach \i in {0,...,12} \node[nodo]at(\i,0){};
+				\foreach \i in {1,...,11} \node[nodo]at(\i,\h){};
+				\node[nodo]at(W){};
+				\node[nodo]at(V){};
+				%% etichette
+				\node[etich,above]at(6,\h+0.08){$H$};
+				\node[etich,below]at(6,-0.10){$K$};
+				\node[etich,above]at(7,\h+0.08){$L$};
+				\node[etich,below]at(7,-0.10){$M$};
+				\node[etich,above]at(8,\h+0.08){$N$};
+				\node[etich,above left]at(9,\h+0.06){$C$};
+				\node[etich,right]at(12.12,0.16){$B$};
+				\node[etich,above left]at($(V)+(-0.10,-0.06)$){$D$};
+			\end{scope}
+			
+			\node[pan]at(19.5,-6.85){(e)};
+			
+			%% =========================================================
+			%% (b) TRAVATURA DI GERBER RETICOLARE
+			%% =========================================================
+			\begin{scope}[xshift=0cm, yshift=-5.1cm]
+				\def\db{1.6}
+				\def\hb{1.1}
+				%% correnti (superiore privo del tratto DE)
+				\draw[asta](0,0)--(5*\db,0);
+				\draw[asta](0.5*\db,\hb)--(2.5*\db,\hb);
+				\draw[asta](3.5*\db,\hb)--(4.5*\db,\hb);
+				%% diagonali (Warren)
+				\foreach \i in {0,...,4}{
+					\draw[asta](\i*\db,0)--({(\i+0.5)*\db},\hb);
+					\draw[asta]({(\i+0.5)*\db},\hb)--({(\i+1)*\db},0);}
+				%% vincoli
+				\cerniera{0,0}
+				\carrello{2*\db,0}
+				\carrello{5*\db,0}
+				%% nodi
+				\foreach \i in {0,...,5} \node[nodo]at(\i*\db,0){};
+				\foreach \i in {0,...,4} \node[nodo]at({(\i+0.5)*\db},\hb){};
+				%% etichette
+				\node[etich,left ]at(-0.10,0.16){$A$};
+				\node[etich,right]at(5*\db+0.10,0.16){$B$};
+				\node[etich,right]at(2*\db+0.30,-0.18){$C$};
+				\node[etich,above]at(2.5*\db,\hb+0.08){$D$};
+				\node[etich,above]at(3.5*\db,\hb+0.08){$E$};
+			\end{scope}
+			\node[pan]at(4.0,-6.85){(b)};
+			
+			%% =========================================================
+			%% (f) STRUTTURA SOSPESA, SECONDA VARIANTE
+			%% =========================================================
+			\begin{scope}[xshift=13.0cm, yshift=-9.4cm]
+				\def\h{0.95}
+				%% corrente inferiore interrotto fra K ed M
+				\draw[asta](0,0)--(6,0);
+				\draw[asta](7,0)--(12,0);
+				%% corrente superiore interrotto fra E ed F e fra L ed N
+				\draw[asta](1,\h)--(3,\h);
+				\draw[asta](4,\h)--(7,\h);
+				\draw[asta](8,\h)--(11,\h);
+				%% montanti (L-M resta come pendolo di collegamento)
+				\foreach \i in {1,...,11} \draw[asta](\i,0)--(\i,\h);
+				%% diagonali (tutte presenti, stesso verso del pannello e)
+				\foreach \i in {0,...,10} \draw[asta](\i,0)--(\i+1,\h);
+				\draw[asta](11,\h)--(12,0);
+				%% tiranti a parete
+				\coordinate (W) at (-0.9,2.5);
+				\draw[asta](W)--(3,\h);
+				\pareteSX{W}
+				\coordinate (V) at (13,2.5);
+				\draw[asta](V)--(9,\h);
+				\pareteDX{V}
+				%% vincoli a terra (in B cerniera al posto del carrello)
+				\cerniera{0,0}
+				\cerniera{12,0}
+				%% nodi
+				\foreach \i in {0,...,12} \node[nodo]at(\i,0){};
+				\foreach \i in {1,...,11} \node[nodo]at(\i,\h){};
+				\node[nodo]at(W){};
+				\node[nodo]at(V){};
+				%% etichette
+				\node[etich,above right]at(3,\h+0.04){$E$};
+				\node[etich,above]at(4,\h+0.08){$F$};
+				\node[etich,below]at(4,-0.10){$G$};
+				\node[etich,above]at(6,\h+0.08){$H$};
+				\node[etich,below]at(6,-0.10){$K$};
+				\node[etich,above]at(7,\h+0.08){$L$};
+				\node[etich,below]at(7,-0.10){$M$};
+				\node[etich,above]at(8,\h+0.08){$N$};
+				\node[etich,above left]at(9,\h+0.06){$C$};
+				\node[etich,right]at(12.12,0.16){$B$};
+				\node[etich,above left]at($(V)+(-0.10,-0.06)$){$D$};
+			\end{scope}
+			
+			\node[pan]at(19.5,-11.30){(f)};
+			
+	\end{tikzpicture}}
+	\caption{Sistemi reticolari complessi.
+		\emph{(a)}: travatura reticolare semplicemente
+		appoggiata, internamente isostatica.
+		\emph{(b)}: travatura di Gerber reticolare,
+		ottenuta sostituendo l'asta $DE$ del corrente
+		superiore con un appoggio a carrello in $C$.
+		\emph{(c)}: schema a tre cerniere, ottenuto
+		sostituendo l'asta $CG$ del corrente inferiore
+		con la componente orizzontale di reazione
+		fornita dalla cerniera in $B$; il nodo $D$
+		funge da cerniera interna fra le due travature.
+		In entrambi i casi la classificazione cinematica
+		globale è preservata.
+		\emph{(d--f)}: strutture sospese ottenute
+		dalla travatura a mensola per soppressione
+		di aste interne e aggiunta di vincoli
+		semplici equivalenti; le due varianti
+		mostrano scelte diverse di aste soppresse
+		e connessioni introdotte.}
+	\label{fig:sistemi_complessi}
+\end{figure}

@@ -1,0 +1,97 @@
+\begin{figure}[htbp]
+	\centering
+	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\newcommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\tikzset{midarrow/.style={postaction={decorate},
+			decoration={markings, mark=at position #1 with {\arrow{Stealth}}}},
+		midarrow/.default=0.55}
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2]
+		\def\ax{0.5}\def\ay{0.30}
+		% piano pi
+		%\draw[gray!60] (\xyz{-1.2}{-2.4}{0}) -- (\xyz{-1.2}{4.8}{0}) -- (\xyz{3.8}{4.8}{0}) -- (\xyz{3.8}{-2.4}{0}) -- cycle;
+		\draw[gray!60] (\xyz{-1.60}{-2.4}{0}) -- (\xyz{-1.60}{3.8}{0})	-- (\xyz{4.8}{3.8}{0}) -- (\xyz{4.8}{-2.4}{0}) -- cycle;
+		%\node[gray!75] at (\xyz{-1.85}{-2.2}{0}) {$\pi$};   % sposta anche l'etichetta pi
+		\node[gray!75] at (\xyz{-1.2}{-2.0}{0}) {$\pi$};
+		
+		\def\Lf{1.3}
+		\coordinate (O)  at (\xyz{2.8}{0.9}{0});
+		\coordinate (P1) at (\xyz{2.0}{0.3}{0});
+		\coordinate (P2) at (\xyz{0.6}{2.0}{0});
+		\coordinate (F1) at (\xyz{2.0}{0.3-\Lf}{0});
+		\coordinate (F2) at (\xyz{0.6}{2.0+\Lf}{0});
+		
+		% rette d'azione (grigie, prolungate)
+		\draw[gray!55, thin] (\xyz{2.0}{-2.2}{0}) -- (\xyz{2.0}{1.0}{0});
+		\draw[gray!55, thin] (\xyz{0.6}{-2.2}{0}) -- (\xyz{0.6}{.5}{0});
+		% prolungamento grigio di P2P1 oltre P1
+		\coordinate (PPe) at ($(P1)!-0.6!(P2)$);
+		\draw[gray!55, thin] (P1) -- (PPe);
+		
+		% vettori posizione
+		%		\draw[thin, midarrow] (O) -- (P1);
+		%		\node[font=\small, above=1pt] at ($(O)!0.5!(P1)$) {$\overrightarrow{OP_1}$};
+		
+		\draw[thin, midarrow] (O) -- (P1) node[font=\small, midway, sloped, above] {$\overrightarrow{OP_1}$};
+		
+		\draw[thin, midarrow] (O) -- (P2);
+		\node[font=\small, above right=-2pt] at ($(O)!0.5!(P2)-(0,0.2)$) {$\overrightarrow{OP_2}$};
+		
+		
+		% P2P1
+		%		\draw[thin, midarrow] (P2) -- (P1);
+		%		\node[font=\small, below=1pt, xshift=-16pt, yshift=6pt] at ($(P2)!0.42!(P1)$) {$\overrightarrow{P_2P_1}$};
+		
+		\draw[thin, midarrow] (P2) -- (P1) node[font=\small, midway, sloped, below] {$\overrightarrow{P_2P_1}$};
+		
+		
+		% forze
+		\draw[->, line width=1.2pt] (P1) -- (F1) node[below left=-4pt] {$\fb_1$};
+		\draw[->, line width=1.2pt] (P2) -- (F2) node[below, xshift=-16pt] {$-\fb_1$};
+		
+		% angolo alpha fra il prolungamento grigio di P2P1 e f_1, in P1
+		\pic[draw, thick, angle radius=6mm, angle eccentricity=1.5,	"\small$\alpha$"] {angle = PPe--P1--F1};
+		
+		% braccio b sui prolungamenti grigi (perpendicolare fra le due rette)
+		\coordinate (B1) at (\xyz{2.0}{-1.9}{0});   % su retta d'azione di f_1
+		\coordinate (B2) at (\xyz{0.6}{-1.9}{0});   % su retta d'azione di -f_1
+		\draw[<->, thin] (B1) -- (B2);
+		\node[font=\small, above=1pt, xshift=-2pt, yshift=-5pt] at ($(B1)!0.5!(B2)$) {$b$};
+		
+		\begin{scope}[gray!55]
+			\rightangle{B2}{B1}{\xyz{2.0}{-1.4}{0}}
+			\rightangle{B1}{B2}{\xyz{0.6}{-1.4}{0}}
+		\end{scope}
+		
+		
+		
+		% ===== momento mu LIBERO, a destra del piano, con DUE angoli retti =====
+		\def\my{0.60}                      % <- alza/abbassa cambiando solo questo
+		\coordinate (Mb) at (3.6,\my);
+		\coordinate (Mt) at ($(Mb)+(0,1.4)$);
+		\coordinate (Mc) at ($(Mb)+(0,1.62)$);
+		\coordinate (pax) at ($(Mb)+(0.55,0.33)$);  % direzione tipo a_x
+		\coordinate (pay) at ($(Mb)+(0.95,0)$);     % direzione tipo a_y
+		\draw[gray!55, thin] (Mb) -- (pax) -- ($(pax)+(pay)-(Mb)$) -- (pay) -- cycle;
+		\draw[->>, thick] (Mb) -- (Mt) node[left=1pt] {$\bm{\upmu}$};
+		\draw[->, thin] ([shift={(0.18,0)}]Mc)	arc[x radius=0.18, y radius=0.07, start angle=0, end angle=305];
+		\begin{scope}[gray!55]
+			\rightangle{Mt}{Mb}{pax}
+			\rightangle{Mt}{Mb}{pay}
+		\end{scope}
+		
+		% punti
+		\fill (O)  circle (1.4pt) node[above=2pt] {$O$};
+		\fill (P1) circle (1.4pt) node[above left=-2pt] {$P_1$};
+		\fill (P2) circle (1.4pt) node[below] {$P_2$};
+	\end{tikzpicture}
+	\caption{Momento della coppia generata dalle forze $\fb_1$ e
+		$\fb_2=-\fb_1$ applicate in $P_1$ e $P_2$. Il momento
+		$\bm{\upmu}=\protect\overrightarrow{P_2P_1}\times\fb_1$ è perpendicolare
+		al piano delle forze, con modulo $|\fb_1|\,b$ e braccio
+		$b=|\protect\overrightarrow{P_2P_1}|\sin\alpha$, ed è indipendente dal
+		polo $O$.}
+	\label{fig:coppia}
+\end{figure}

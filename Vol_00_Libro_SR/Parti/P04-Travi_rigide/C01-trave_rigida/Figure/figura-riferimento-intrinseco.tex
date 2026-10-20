@@ -1,0 +1,48 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2]
+		
+		% Estremi A e B
+		\fill (0,0) circle (2pt) node[above=4pt] {$A$};
+		\fill (6,0) circle (2pt) node[above=4pt] {$B$};
+		
+		% Linea d'asse della trave (continua)
+		\draw[thick] (0,0) -- (6,0);
+		
+		% Tratteggio fibra inferiore
+		\draw[dashed, thick] (0,-0.18) -- (6,-0.18);
+		
+		% Origine O^e con asse x^e uscente (cerchio con punto)
+		\draw[thick] (1.5, 0) circle (0.15);
+		\fill (1.5, 0) circle (2pt);
+		\node[above=4pt] at (1.3, 0) {$O^e$};
+		\node[above=4pt] at (1.7, 0) {$x^e$};
+		
+		% Asse z^e (lungo la trave, verso destra)
+		\draw[->, thick] (1.5, 0) -- (3.2, 0)
+		node[above=2pt] {$z^e$};
+		
+		% Asse y^e (verso il basso, fibra inferiore)
+		\draw[->, thick] (1.5, 0) -- (1.5, -1.2)
+		node[right=2pt] {$y^e$};
+		
+		% Annotazione fibra inferiore
+		\node[below=6pt] at (3.0, -0.18)
+		{\footnotesize fibra inferiore ($y^e > 0$)};
+		
+		% Freccia verso di percorrenza
+		\draw[->, gray!60, thin] (4.2, 0.35) -- (5.5, 0.35)
+		node[midway, above=2pt]
+		{\footnotesize verso di percorrenza};
+		
+	\end{tikzpicture}
+	\caption{Riferimento intrinseco $(O^e;\, y^e,\, z^e)$
+		di una trave rettilinea piana con estremi $A$ e $B$.
+		L'asse $z^e$ è diretto nel verso di percorrenza
+		da $A$ a $B$; l'asse $y^e$ punta verso la fibra
+		inferiore, indicata dalla linea tratteggiata
+		parallela alla linea d'asse; l'asse $x^e$,
+		uscente dal piano del foglio, completa il
+		riferimento destrorso.}
+	\label{fig:riferimento_intrinseco}
+\end{figure}

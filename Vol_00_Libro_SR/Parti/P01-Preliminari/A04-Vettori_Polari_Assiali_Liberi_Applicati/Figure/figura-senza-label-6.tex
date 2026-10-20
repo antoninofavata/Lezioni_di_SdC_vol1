@@ -1,0 +1,56 @@
+\begin{figure}[!htbp]
+	\centering
+	% --- helper locali (blocco autonomo) ---
+	\def\ax{0.5}\def\ay{0.30}
+	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\providecommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+		\draw[gray!55, line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+		% ---- vertici del parallelepipedo (x=profondita', y=oriz, z=vert) ----
+		\coordinate (O)   at (\xyz{0}{0}{0});
+		\coordinate (A)   at (\xyz{-0.5}{3.2}{0});      % O+u
+		\coordinate (B)   at (\xyz{2.8}{0.6}{0});       % O+v
+		\coordinate (C)   at (\xyz{0.5}{0.7}{2.4});     % O+w
+		\coordinate (AB)  at (\xyz{2.3}{3.8}{0});       % u+v
+		\coordinate (AC)  at (\xyz{0.0}{3.9}{2.4});     % u+w
+		\coordinate (BC)  at (\xyz{3.3}{1.3}{2.4});     % v+w
+		\coordinate (ABC) at (\xyz{2.8}{4.5}{2.4});     % u+v+w
+		% asse di u x v (verticale) e piede H
+		\coordinate (X)   at (\xyz{0}{0}{2.95});        % punta di u x v
+		\coordinate (H)   at (\xyz{0}{0}{2.4});         % piede (quota di C)
+		
+		% ---- spigoli del parallelepipedo (sottili) ----
+		\begin{scope}[gray!60, line width=0.6pt]
+			% base
+			\draw (A) -- (AB) -- (B);
+			% faccia superiore
+			\draw (C) -- (AC) -- (ABC) -- (BC) -- cycle;
+			% spigoli laterali (lungo w)
+			\draw (A) -- (AC);
+			\draw (AB) -- (ABC);
+			\draw (B) -- (BC);
+		\end{scope}
+		
+		% ---- altezza: u x v, piede H, proiezione orizzontale H--C ----
+		\draw[gray!55, thin, dashed] (H) -- (C);
+		\draw[->, thick] (O) -- (X) node[above=1pt] {$\ub\times\vb$};
+		\node[left=1pt] at (H) {$H$};
+		\rightangle{O}{H}{C}
+		
+		% ---- i tre vettori u, v, w (spessi) ----
+		\draw[->, thick] (O) -- (A) node[midway, below=1pt, xshift=6pt] {$\ub$};
+		\draw[->, thick] (O) -- (B) node[midway, below, xshift=12pt, yshift=4pt] {$\vb$};
+		\draw[->, thick] (O) -- (C) node[midway, right=1pt] {$\wb$};
+		
+		% ---- punti ----
+		\fill (O) circle (1.4pt) node[left=2pt] {$O$};
+		\fill (A) circle (1.4pt) node[below right=-2pt] {$A$};
+		\fill (B) circle (1.4pt) node[above left=-1pt] {$B$};
+		\fill (C) circle (1.4pt) node[above left=-2pt] {$C$};
+	\end{tikzpicture}
+	\caption{Il valore assoluto del prodotto misto è il volume del
+		parallelepipedo costruito su $\ub$, $\vb$ e $\wb$.}
+	\label{f:prodotto_misto}
+\end{figure}

@@ -1,0 +1,160 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\L{4.0}
+			\def\a{1.5}
+			\def\F{0.6}
+			\def\yrea{0.55} % altezza frecce reazioni
+			
+			% ============================================================
+			% PANNELLO (a) — sistema originale con carico
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% trave
+				
+				\draw[line width=1.5pt] (0,0) -- (\L,0);
+				
+				% cerniera in A
+				\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+				\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+				}
+				
+				
+				% carrello verticale in C
+				\draw[thick] (\L/2,0) -- (\L/2-0.22,-0.38)
+				-- (\L/2+0.22,-0.38) -- cycle;
+				\draw[thick] (\L/2-0.15,-0.44) circle (0.07);
+				\draw[thick] (\L/2+0.15,-0.44) circle (0.07);
+				\draw[thick] (\L/2-0.32,-0.52) -- (\L/2+0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\L/2+\x,-0.52) -- (\L/2+\x-0.10,-0.66);
+				}
+				
+				% carrello verticale in B
+				\draw[thick] (\L,0) -- (\L-0.22,-0.38)
+				-- (\L+0.22,-0.38) -- cycle;
+				\draw[thick] (\L-0.15,-0.44) circle (0.07);
+				\draw[thick] (\L+0.15,-0.44) circle (0.07);
+				\draw[thick] (\L-0.32,-0.52) -- (\L+0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\L+\x,-0.52) -- (\L+\x-0.10,-0.66);
+				}
+				
+				% punti notevoli
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,0) {};
+				\node[above, font=\scriptsize] at (0,0) {$A$};
+				
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\L,0) {};
+				\node[above, font=\scriptsize] at (\L,0) {$B$};
+				
+				% mezzaluna in C (vincolo attivo)
+				\fill[white] (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[thick]  (\L/2-0.08,0) arc(180:360:0.08);
+				
+				
+				\node[above, font=\scriptsize] at (\L/2,0) {$C$};
+				\node[below, font=\scriptsize] at (\a,0)   {$P$};
+				
+				
+				% forza F in P
+				\draw[->, thick] (\a, \F) -- (\a, 0)
+				node[midway, left, font=\scriptsize] {$F$};
+				
+				% quota a
+				\draw[<->, thin] (0,-0.9) -- (\a,-0.9)
+				node[midway, above, font=\scriptsize] {$a$};
+				
+				% quota ell
+				\draw[<->, thin] (0,-1.3) -- (\L,-1.3)
+				node[midway, above, font=\scriptsize] {$\ell$};
+				
+				\node[font=\scriptsize] at (\L/2, -1.8) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — sistema principale e stato di autoequilibrio
+			% ============================================================
+			\begin{scope}[xshift=6.5cm]
+				
+				% trave
+				\draw[line width=1.5pt] (0,0) -- (\L,0);
+				
+				% cerniera in A
+				\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+				\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+				}
+				
+				% carrello verticale in C (grigio — ridondante)
+				\draw[gray!50, thick] (\L/2,0) -- (\L/2-0.22,-0.38)
+				-- (\L/2+0.22,-0.38) -- cycle;
+				\draw[gray!50, thick] (\L/2-0.15,-0.44) circle (0.07);
+				\draw[gray!50, thick] (\L/2+0.15,-0.44) circle (0.07);
+				\draw[gray!50, thick] (\L/2-0.32,-0.52)
+				-- (\L/2+0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[gray!50, thin] (\L/2+\x,-0.52)
+					-- (\L/2+\x-0.10,-0.66);
+				}
+				
+				
+				% carrello verticale in B
+				\draw[thick] (\L,0) -- (\L-0.22,-0.38)
+				-- (\L+0.22,-0.38) -- cycle;
+				\draw[thick] (\L-0.15,-0.44) circle (0.07);
+				\draw[thick] (\L+0.15,-0.44) circle (0.07);
+				\draw[thick] (\L-0.32,-0.52) -- (\L+0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\L+\x,-0.52) -- (\L+\x-0.10,-0.66);
+				}
+				
+				
+				% punti notevoli
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,0) {};
+				\node[above, font=\scriptsize] at (0,0) {$A$};
+				
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\L,0) {};
+				\node[above, font=\scriptsize] at (\L,0) {$B$};
+				
+				%				% mezzaluna in C (vincolo ridondante, semiluna grigia)
+				\fill[white]          (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[gray!50, thick] (\L/2-0.08,0) arc(180:360:0.08);
+				
+				
+				\node[above, font=\scriptsize] at (\L/2,0) {$C$};
+				
+				
+				% reazioni stato di autoequilibrio
+				% Y_A = -1/2 (verso il basso): freccia traslata sopra la trave
+				\draw[->, thick] (0, 2*\yrea) -- (0, \yrea)
+				node[midway, left, font=\scriptsize] {$\tfrac{1}{2}$};
+				% Y_C = 1 (verso l'alto): freccia traslata sopra la trave
+				\draw[->, thick] (\L/2, \yrea) -- (\L/2, 2*\yrea)
+				node[midway, right, font=\scriptsize] {$1$};
+				% Y_B = -1/2 (verso il basso): freccia traslata sopra la trave
+				\draw[->, thick] (\L, 2*\yrea) -- (\L, \yrea)
+				node[midway, right, font=\scriptsize] {$\tfrac{1}{2}$};
+				
+				\node[font=\scriptsize] at (\L/2, -1.8) {(b)};
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Trave iperstatica di grado 1
+			(\ESEref{ex:iper_stat_1}):
+			\emph{(a)}~sistema originale con carico $F$ in $P$;
+			\emph{(b)}~sistema principale (carrello in $C$ in grigio)
+			e stato di autoequilibrio $\bm{r}_1$: reazione unitaria
+			verso l'alto in $C$, reazioni $1/2$ verso il basso in $A$
+			e $B$.}
+		\label{fig:iper_stat_1_dati}
+	\end{figure}

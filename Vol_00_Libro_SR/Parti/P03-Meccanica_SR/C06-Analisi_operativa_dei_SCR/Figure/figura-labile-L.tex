@@ -1,0 +1,149 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\L{2.0}
+			\def\sA{0.3}
+			\def\sB{0.3}
+			\def\q{0.3}
+			
+			% ============================================================
+			% PANNELLO SINISTRO — dati del problema
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% corpo a L
+				\draw[line width=1.5pt] (0,0) -- (\L,0) -- (\L,\L);
+				
+				% rette tratteggiate per C
+				\draw[gray!50, dashed, thin]
+				(0,-0.3) -- (0,\L+0.2);
+				\draw[gray!50, dashed, thin]
+				(-0.3,\L) -- (\L+0.2,\L);
+				
+				% carrello verticale in A
+				\draw[thick] (0,0) -- (-0.28,-0.48)
+				-- (0.28,-0.48) -- cycle;
+				\draw[thick] (-0.18,-0.55) circle (0.08);
+				\draw[thick] ( 0.18,-0.55) circle (0.08);
+				\draw[thick] (-0.38,-0.65) -- (0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\x,-0.65) -- (\x-0.12,-0.83);
+				}
+				
+				% carrello orizzontale in B
+				\draw[thick] (\L,\L) -- (\L+0.48,\L+0.28)
+				-- (\L+0.48,\L-0.28) -- cycle;
+				\draw[thick] (\L+0.55,\L+0.18) circle (0.08);
+				\draw[thick] (\L+0.55,\L-0.18) circle (0.08);
+				\draw[thick] (\L+0.65,\L+0.38) -- (\L+0.65,\L-0.38);
+				\foreach \y in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\L+0.65,\L+\y)
+					-- (\L+0.83,\L+\y-0.12);
+				}
+				
+				
+				% punti
+				\draw[fill=white, thick] (0,0) circle (3pt)
+				node[above right, font=\scriptsize] {$A$};
+				\draw[fill=white, thick] (\L,\L) circle (3pt)
+				node[above left, font=\scriptsize] {$B$};
+				\node[left, font=\scriptsize] at (0,\L) {$C$};
+				
+				% cedimento s_A (verticale, a sinistra di A)
+				\draw[thick] (-0.35,0) -- (-0.15,0);
+				\draw[->, thick] (-0.25,0) -- (-0.25,\sA)
+				node[left, font=\scriptsize] {$s_A$};
+				
+				% cedimento s_B (orizzontale, sopra B)
+				\draw[thick] (\L,\L+0.15) -- (\L,\L+0.35);
+				\draw[->, thick] (\L,\L+0.25) -- ({\L+\sB},\L+0.25)
+				node[above, font=\scriptsize] {$s_B$};
+				
+				% quota tratto orizzontale (sotto)
+				\draw[<->, thin] (0,-1.0) -- (\L,-1.0)
+				node[midway, above=2pt, font=\scriptsize] {$\ell$};
+				
+				% quota tratto verticale (a destra)
+				\draw[<->, thin] (\L+1.2,0) -- (\L+1.2,\L)
+				node[midway, right=2pt, font=\scriptsize] {$\ell$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (\L/2,-1.4) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO DESTRO — sistema principale
+			% ============================================================
+			\begin{scope}[xshift=5.5cm]
+				
+				
+				% carrello verticale fittizio in D (grigio)
+				\draw[gray!50, thick] (\L,0) -- (\L-0.28,-0.48)
+				-- (\L+0.28,-0.48) -- cycle;
+				\draw[gray!50, thick] (\L-0.18,-0.55) circle (0.08);
+				\draw[gray!50, thick] (\L+0.18,-0.55) circle (0.08);
+				\draw[gray!50, thick] (\L-0.38,-0.65)
+				-- (\L+0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[gray!50, thin] (\L+\x,-0.65)
+					-- (\L+\x-0.12,-0.83);
+				}
+				
+				\fill[white]            (\L,0.10) arc(90:-180:0.10) -- cycle;
+				\draw[gray!50, thick]   (\L,0.10) arc(90:-180:0.10);
+				
+				% corpo a L
+				\draw[line width=1.5pt] (0,0) -- (\L,0) -- (\L,\L);
+				
+				
+				
+				% carrello verticale in A
+				\draw[thick] (0,0) -- (-0.28,-0.48)
+				-- (0.28,-0.48) -- cycle;
+				\draw[thick] (-0.18,-0.55) circle (0.08);
+				\draw[thick] ( 0.18,-0.55) circle (0.08);
+				\draw[thick] (-0.38,-0.65) -- (0.38,-0.65);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\x,-0.65) -- (\x-0.12,-0.83);
+				}
+				
+				% carrello orizzontale in B
+				\draw[thick] (\L,\L) -- (\L+0.48,\L+0.28)
+				-- (\L+0.48,\L-0.28) -- cycle;
+				\draw[thick] (\L+0.55,\L+0.18) circle (0.08);
+				\draw[thick] (\L+0.55,\L-0.18) circle (0.08);
+				\draw[thick] (\L+0.65,\L+0.38) -- (\L+0.65,\L-0.38);
+				\foreach \y in {-0.30,-0.15,0,0.15,0.30}{
+					\draw[thin] (\L+0.65,\L+\y)
+					-- (\L+0.83,\L+\y-0.12);
+				}
+				
+				% cedimento q al carrello fittizio in D
+				\draw[gray!60, thick] (\L+0.35,0) -- (\L+0.15,0);
+				\draw[->, gray!60, thick] (\L+0.25,0) -- (\L+0.25,\q)
+				node[right, font=\scriptsize] {$q$};
+				
+				% punti
+				\draw[fill=white, thick] (0,0) circle (3pt)
+				node[above right, font=\scriptsize] {$A$};
+				\draw[fill=white, thick] (\L,\L) circle (3pt)
+				node[above left, font=\scriptsize] {$B$};
+				\node[above left, font=\scriptsize] at (\L,0) {$D$};
+				
+				
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (\L/2,-1.4) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Corpo a L
+			(\ESEref{ex:labile_L}): dati del problema
+			cinematico \emph{(a)} e sistema principale con
+			carrello fittizio in $D$ (grigio) e cedimento
+			$q$ \emph{(b)}.}
+		\label{fig:labile_L}
+	\end{figure}

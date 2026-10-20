@@ -1,0 +1,1270 @@
+\begin{figure}[!ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\dx{4.2}  % distanza orizzontale tra pannelli
+			\def\dy{3.8}  % distanza verticale tra righe
+			
+			% ============================================================
+			% RIGA 1 — sistemi con vincoli fittizi
+			% ============================================================
+			\begin{scope}[yshift=0cm]
+				% pannello (a)
+				% ============================================================
+				% PANNELLO (a) — Scelta 1: pendoli orizzontali in B e in C
+				% ============================================================
+				\begin{scope}[xshift=0cm]
+					
+					%% --- Parametri ---
+					\def\ell{1.2}      % unità grafica (lunghezza dell'asta)
+					\def\xast{-0.7}    % ascissa dell'asta verticale
+					\def\Lpend{1.4}    % lunghezza orizzontale del pendolo
+					\def\Lq{0.55}      % lunghezza della freccia di cedimento
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					
+					%% --- Coordinate ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					\pgfmathsetmacro{\xPend}{\xast+\Lpend}
+					
+					%% --- Aste verticali (in nero, due segmenti distinti) ---
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);  % C_1
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);  % C_2
+					
+					%% --- Pendoli orizzontali in B e in C (vincoli fittizi, grigio) ---
+					\draw[gray!75, line width=0.8pt] (\xast,\yB) -- (\xPend,\yB);
+					\draw[gray!75, line width=0.8pt] (\xast,\yC) -- (\xPend,\yC);
+					
+					%% --- Cerniera al suolo in A (nera, pavimento sotto) ---
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					%% --- Anellino in A (perno della cerniera al suolo) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					
+					
+					%% --- Cerniera interna in B (nera, sopra l'asta) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%% --- Anellini di estremità dei pendoli ---
+					\draw[gray!75, fill=white, line width=0.6pt] (\xast,\yC)  circle (1.6pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xPend,\yB) circle (1.6pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xPend,\yC) circle (1.6pt);
+					
+					%% --- Cerniera a muro per il pendolo in B (grigia, muro a destra) ---
+					\draw[gray!75, thick]
+					(\xPend,\yB) -- (\xPend+\hsuolo,\yB+\dsuolo)
+					-- (\xPend+\hsuolo,\yB-\dsuolo) -- cycle;
+					\draw[gray!75, thick] (\xPend+\hsuolo,\yB-0.28)
+					-- (\xPend+\hsuolo,\yB+0.28);
+					\foreach \y in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[gray!75, thin] (\xPend+\hsuolo,\yB+\y)
+						-- (\xPend+\hsuolo+\hatch,\yB+\y-0.09);
+					}
+					
+					%% --- Cerniera a muro per il pendolo in C (grigia, muro a destra) ---
+					\draw[gray!75, thick]
+					(\xPend,\yC) -- (\xPend+\hsuolo,\yC+\dsuolo)
+					-- (\xPend+\hsuolo,\yC-\dsuolo) -- cycle;
+					\draw[gray!75, thick] (\xPend+\hsuolo,\yC-0.28)
+					-- (\xPend+\hsuolo,\yC+0.28);
+					\foreach \y in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[gray!75, thin] (\xPend+\hsuolo,\yC+\y)
+						-- (\xPend+\hsuolo+\hatch,\yC+\y-0.09);
+					}
+					
+					%% --- Frecce di cedimento q_1 (in B) e q_2 (in C), in nero ---
+					\draw[->, thick] (\xast,\yB) -- (\xast+\Lq,\yB);
+					\draw[->, thick] (\xast,\yC) -- (\xast+\Lq,\yC);
+					\node[font=\scriptsize, anchor=south]
+					at ({\xast+\Lq/2}, \yB+0.05) {$q_1$};
+					\node[font=\scriptsize, anchor=south]
+					at ({\xast+\Lq/2}, \yC+0.05) {$q_2$};
+					
+					%% --- Etichette dei punti notevoli (a sinistra dell'asta) ---
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yC) {$C$};
+					
+					%% --- Etichette dei corpi (a sinistra, mid-asta) ---
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yA+\yB)/2}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yB+\yC)/2}) {$\mathcal{C}_2$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(a)};
+					
+				\end{scope}
+				% ============================================================
+				% PANNELLO (b) — Scelta 2: bipendolo su C_1 e bipendolo su C_2,
+				% ============================================================
+				\begin{scope}[xshift=\dx cm]
+					
+					%% --- Parametri ---
+					\def\ell{1.2}
+					\def\xast{-0.7}
+					\def\Lb{0.55}        % lunghezza delle bielle (corte)
+					\def\angBip{30}      % inclinazione delle bielle interne/esterne
+					\def\dAtt{0.20}      % distanza tra i due anellini sull'asta
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					\def\rn{0.06}        % raggio degli anellini semicircolari
+					\def\rArc{0.13}      % raggio degli archi di rotazione q_i
+					
+					%% --- Coordinate di riferimento ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					\pgfmathsetmacro{\ymidUno}{(\yA+\yB)/2}
+					\pgfmathsetmacro{\ymidDue}{(\yB+\yC)/2}
+					
+					%% --- Costanti geometriche del pantografo ---
+					\pgfmathsetmacro{\dxBie}{\Lb*cos(\angBip)}
+					\pgfmathsetmacro{\dyBie}{\Lb*sin(\angBip)}
+					\pgfmathsetmacro{\xMuro}{\xast+2*\dxBie}
+					
+					%				%% --- Aste verticali (in nero) ---
+					%				\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					%				\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					%% =========================================================
+					%% Bipendolo su C_1
+					%% =========================================================
+					\pgfmathsetmacro{\yAiU}{\ymidUno+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidUno-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					% bielle interne (parallelogramma 1)
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiU) -- ({\xast+\dxBie},\yBiU);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiD) -- ({\xast+\dxBie},\yBiD);
+					% traversa
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- ({\xast+\dxBie},\yBiD);
+					% bielle esterne (parallelogramma 2)
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- (\xMuro,\yAiU);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiD) -- (\xMuro,\yAiD);
+					% cerniere intermedie
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiU) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiD) circle (1.5pt);
+					% anellini sul corpo C_1 (semicerchi sporgenti a destra)
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiU-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiD-\rn) arc(-90:90:\rn) -- cycle;
+					% anellini sul muro (semicerchi sporgenti a sinistra)
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiU+\rn) arc(90:270:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiD+\rn) arc(90:270:\rn) -- cycle;
+					% muro verticale con hatching
+					\pgfmathsetmacro{\yMurMin}{\yAiD-0.12}
+					\pgfmathsetmacro{\yMurMax}{\yAiU+0.12}
+					\draw[gray!75, thick] (\xMuro,\yMurMin) -- (\xMuro,\yMurMax);
+					\foreach \k in {0,1,2,3,4,5}{
+						\pgfmathsetmacro{\yh}{\yMurMin+\k*(\yMurMax-\yMurMin)/5}
+						\draw[gray!75, thin] (\xMuro,\yh) -- ({\xMuro+\hatch},\yh-0.09);
+					}
+					
+					%% =========================================================
+					%% Bipendolo su C_2  (variabili \yAiU, \yAiD, \yBiU, \yBiD ridefinite)
+					%% =========================================================
+					\pgfmathsetmacro{\yAiU}{\ymidDue+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidDue-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiU) -- ({\xast+\dxBie},\yBiU);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiD) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- (\xMuro,\yAiU);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiD) -- (\xMuro,\yAiD);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiU) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiD) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiU-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiD-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiU+\rn) arc(90:270:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiD+\rn) arc(90:270:\rn) -- cycle;
+					\pgfmathsetmacro{\yMurMin}{\yAiD-0.12}
+					\pgfmathsetmacro{\yMurMax}{\yAiU+0.12}
+					\draw[gray!75, thick] (\xMuro,\yMurMin) -- (\xMuro,\yMurMax);
+					\foreach \k in {0,1,2,3,4,5}{
+						\pgfmathsetmacro{\yh}{\yMurMin+\k*(\yMurMax-\yMurMin)/5}
+						\draw[gray!75, thin] (\xMuro,\yh) -- ({\xMuro+\hatch},\yh-0.09);
+					}
+					
+					%% --- Aste verticali (in nero) ---
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					
+					%% --- Cerniera al suolo in A (nero) ---
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					
+					%% --- Anellini in A e B (nero) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%				%% --- Frecce di rotazione q_1 e q_2 (nero), centrate sull'asta ---
+					
+					\def\qDeg{20}       % apertura grafica della rotazione
+					\def\Lref{0.90}     % lunghezza dei due segmenti
+					\def\rArcQ{0.70}    % raggio dell'archetto (minore di \Lref)
+					\pgfmathsetmacro{\xRot}{\xMuro+0.55}   % a destra del muro
+					
+					% --- q_1: a fianco del bipendolo su C_1 ---
+					\draw[thin] (\xRot,\ymidUno) -- (\xRot,{\ymidUno+\Lref});
+					\draw[thin] (\xRot,\ymidUno) -- 
+					({\xRot-\Lref*sin(\qDeg)},{\ymidUno+\Lref*cos(\qDeg)});
+					\draw[->, thin] 
+					(\xRot,{\ymidUno+\rArcQ}) 
+					arc[start angle=90, end angle={90+\qDeg}, radius=\rArcQ];
+					\node[font=\scriptsize] at ({\xRot+(\rArcQ+0.12)*cos(90+2*\qDeg)+0.1},{\ymidUno+(\rArcQ+0.12)*sin(90+\qDeg/2)-0.2}) {$q_1$};
+					
+					% --- q_2: a fianco del bipendolo su C_2 ---
+					\draw[thin] (\xRot,\ymidDue) -- (\xRot,{\ymidDue+\Lref});
+					\draw[thin] (\xRot,\ymidDue) -- 
+					({\xRot-\Lref*sin(\qDeg)},{\ymidDue+\Lref*cos(\qDeg)});
+					\draw[->, thin] 
+					(\xRot,{\ymidDue+\rArcQ}) 
+					arc[start angle=90, end angle={90+\qDeg}, radius=\rArcQ];
+					\node[font=\scriptsize] at ({\xRot+(\rArcQ+0.12)*cos(90+2*\qDeg)+0.1},{\ymidDue+(\rArcQ+0.12)*sin(90+\qDeg/2)-0.2}) {$q_2$};
+					
+					%% --- Etichette ---
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yC) {$C$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, \ymidUno) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, \ymidDue) {$\mathcal{C}_2$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(b)};
+				\end{scope}
+				% ============================================================
+				% PANNELLO (c) — Scelta 3: bipendolo su C_1 al suolo
+				%                          + bipendolo interno tra C_1 e C_2
+				%                          (scavalca B, traversa orizzontale)
+				% ============================================================
+				\begin{scope}[xshift=2*\dx cm]
+					
+					%% --- Parametri comuni ---
+					\def\ell{1.2}
+					\def\xast{-0.7}
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					\def\rn{0.06}
+					
+					%% --- Coordinate dei punti notevoli ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					
+					%% =========================================================
+					%% Bipendolo su C_1 al suolo (traslato verso il basso di Dymid)
+					%% =========================================================
+					\def\Lb{0.55}
+					\def\angBip{30}
+					\def\dAtt{0.20}
+					\def\Dymid{-0.20}    % traslazione verticale rispetto al pannello (b)
+					\pgfmathsetmacro{\ymidUno}{(\yA+\yB)/2 + \Dymid}
+					\pgfmathsetmacro{\dxBie}{\Lb*cos(\angBip)}
+					\pgfmathsetmacro{\dyBie}{\Lb*sin(\angBip)}
+					\pgfmathsetmacro{\xMuro}{\xast+2*\dxBie}
+					
+					\pgfmathsetmacro{\yAiU}{\ymidUno+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidUno-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiU) -- ({\xast+\dxBie},\yBiU);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiD) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- (\xMuro,\yAiU);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiD) -- (\xMuro,\yAiD);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiU) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiD) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiU-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiD-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiU+\rn) arc(90:270:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiD+\rn) arc(90:270:\rn) -- cycle;
+					\pgfmathsetmacro{\yMurMin}{\yAiD-0.12}
+					\pgfmathsetmacro{\yMurMax}{\yAiU+0.12}
+					\draw[gray!75, thick] (\xMuro,\yMurMin) -- (\xMuro,\yMurMax);
+					\foreach \k in {0,1,2,3,4,5}{
+						\pgfmathsetmacro{\yh}{\yMurMin+\k*(\yMurMax-\yMurMin)/5}
+						\draw[gray!75, thin] (\xMuro,\yh) -- ({\xMuro+\hatch},\yh-0.09);
+					}
+					
+					%					%% =========================================================
+					%					%% Bipendolo interno tra C_1 e C_2 
+					%					%% =========================================================
+					\def\dIn{0.25}         % distanza degli anellini interni da B (sull'asta)
+					\def\dOut{0.40}        % distanza degli anellini esterni da B
+					\def\angInt{30}        % inclinazione delle bielle dal positivo x (CCW)
+					\pgfmathsetmacro{\cotInt}{cos(\angInt)/sin(\angInt)}
+					
+					% Quote dei 4 anellini, tutti a x = \xast
+					\pgfmathsetmacro{\yAlowIn} {\yB-\dIn}     % su C_1, vicino a B
+					\pgfmathsetmacro{\yAlowOut}{\yB-\dOut}    % su C_1, lontano da B
+					\pgfmathsetmacro{\yAupIn}  {\yB+\dIn}     % su C_2, vicino a B
+					\pgfmathsetmacro{\yAupOut} {\yB+\dOut}    % su C_2, lontano da B
+					
+					% Perni della traversa orizzontale (a y = yB)
+					\pgfmathsetmacro{\xTin} {\xast+\dIn *\cotInt}
+					\pgfmathsetmacro{\xTout}{\xast+\dOut*\cotInt}
+					
+					% Bielle interne (parallele, dirette in alto-destra) — corta + lunga
+					\draw[gray!75, line width=0.8pt] (\xast,\yAlowIn)  -- (\xTin, \yB);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAlowOut) -- (\xTout,\yB);
+					% Traversa orizzontale a y = yB
+					\draw[gray!75, line width=0.8pt] (\xTin,\yB) -- (\xTout,\yB);
+					% Bielle esterne (parallele, dirette in alto-sinistra) — corta + lunga
+					\draw[gray!75, line width=0.8pt] (\xTin, \yB) -- (\xast,\yAupIn);
+					\draw[gray!75, line width=0.8pt] (\xTout,\yB) -- (\xast,\yAupOut);
+					% Cerniere sulla traversa
+					\draw[gray!75, fill=white, line width=0.6pt] (\xTin, \yB) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xTout,\yB) circle (1.5pt);
+					
+					% 4 anellini sulle aste AB e BC: semicerchi sporgenti a destra,
+					% parte piatta appoggiata sull'asta verticale
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAlowIn -\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAlowOut-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAupIn  -\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAupOut -\rn) arc(-90:90:\rn) -- cycle;
+					
+					%% =========================================================
+					%% Aste verticali, cerniere, anellini reali (in nero, sopra)
+					%% =========================================================
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%% =========================================================
+					%% Indicazione di q_1 (traslata insieme al bipendolo su C_1)
+					%% =========================================================
+					\def\qDeg{20}
+					\def\Lref{0.90}
+					\def\rArcQ{0.70}
+					\def\Dyq{-0.30}        % traslazione verticale di q_1 (negativa = verso il basso)
+					\pgfmathsetmacro{\xRot}{\xMuro+0.55}
+					\pgfmathsetmacro{\yq}{\ymidUno+\Dyq}
+					
+					\draw[thin] (\xRot,\yq) -- (\xRot,{\yq+\Lref});
+					\draw[thin] (\xRot,\yq) --
+					({\xRot-\Lref*sin(\qDeg)},{\yq+\Lref*cos(\qDeg)});
+					\draw[->, thin]
+					(\xRot,{\yq+\rArcQ})
+					arc[start angle=90, end angle={90+\qDeg}, radius=\rArcQ];
+					\node[font=\scriptsize]
+					at ({\xRot+(\rArcQ+0.12)*cos(90+2*\qDeg)+0.1},
+					{\yq+(\rArcQ+0.12)*sin(90+\qDeg/2)-0.2}) {$q_1$};
+					
+					%% =========================================================
+					%% Indicazione di q_2 (rotazione relativa C_2/C_1)
+					%% =========================================================
+					\def\xq{0.40}              % ascissa comune dei due semicerchi
+					\def\dq{0.07}              % semi-distanza verticale fra le due frecce
+					\def\rq{0.18}              % raggio dei semicerchi
+					\pgfmathsetmacro{\yqup}{\yB+\dq}
+					\pgfmathsetmacro{\yqdn}{\yB-\dq}
+					
+					% Semicerchio superiore: antiorario, convessità verso l'alto
+					% (da destra, sopra il vertice, fino a sinistra — la freccia punta in basso)
+					\draw[->, thin]
+					({\xq+\rq},\yqup)
+					arc[start angle=0, end angle=180, radius=\rq];
+					
+					% Semicerchio inferiore: orario, convessità verso il basso
+					% (da destra, sotto il vertice, fino a sinistra — la freccia punta in alto)
+					\draw[->, thin]
+					({\xq+\rq},\yqdn)
+					arc[start angle=0, end angle=-180, radius=\rq];
+					
+					% Etichetta q_2 a destra delle due frecce
+					\node[font=\scriptsize] at ({\xq+\rq+0.20},\yB) {$q_2$};
+					
+					%% =========================================================
+					%% Etichette
+					%% =========================================================
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yC) {$C$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yA+\yB)/2}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yB+\yC)/2}) {$\mathcal{C}_2$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\small] at (0.8,-1.4) {(c)};
+					
+				\end{scope}
+			\end{scope}
+			
+			% ============================================================
+			% RIGA 2 — meccanismi q_1
+			% ============================================================
+			\begin{scope}[yshift=-\dy cm]
+				% pannello (d)
+				\begin{scope}[xshift=0cm]
+					
+					%% --- Parametri ---
+					\def\ell{1.2}      % unità grafica (lunghezza dell'asta)
+					\def\xast{-0.7}    % ascissa dell'asta verticale
+					\def\Lpend{1.4}    % lunghezza orizzontale del pendolo
+					\def\Lq{0.55}      % lunghezza della freccia di cedimento
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					
+					%% --- Coordinate ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					\pgfmathsetmacro{\xPend}{\xast+\Lpend}
+					
+					%% --- Aste verticali (in nero, due segmenti distinti) ---
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);  % C_1
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);  % C_2
+					
+					%% --- Pendoli orizzontali in B e in C (vincoli fittizi, grigio) ---
+					%\draw[gray!75, line width=0.8pt] (\xast,\yB) -- (\xPend,\yB);
+					\draw[gray!75, line width=0.8pt] (\xast,\yC) -- (\xPend,\yC);
+					
+					%% --- Cerniera al suolo in A (nera, pavimento sotto) ---
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					%% --- Anellino in A (perno della cerniera al suolo) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					
+					
+					%% --- Cerniera interna in B (nera, sopra l'asta) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%% --- Anellini di estremità dei pendoli ---
+					\draw[gray!75, fill=white, line width=0.6pt] (\xast,\yC)  circle (1.6pt);
+					%\draw[gray!75, fill=white, line width=0.6pt] (\xPend,\yB) circle (1.6pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xPend,\yC) circle (1.6pt);
+					
+					%% --- Cerniera a muro per il pendolo in C (grigia, muro a destra) ---
+					\draw[gray!75, thick]
+					(\xPend,\yC) -- (\xPend+\hsuolo,\yC+\dsuolo)
+					-- (\xPend+\hsuolo,\yC-\dsuolo) -- cycle;
+					\draw[gray!75, thick] (\xPend+\hsuolo,\yC-0.28)
+					-- (\xPend+\hsuolo,\yC+0.28);
+					\foreach \y in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[gray!75, thin] (\xPend+\hsuolo,\yC+\y)
+						-- (\xPend+\hsuolo+\hatch,\yC+\y-0.09);
+					}
+					
+					%% --- Frecce di cedimento q_1 (in B) e q_2 (in C), in nero ---
+					\draw[->, thick] (\xast,\yB) -- (\xast+\Lq,\yB);
+					%\draw[->, thick] (\xast,\yC) -- (\xast+\Lq,\yC);
+					\node[font=\scriptsize, anchor=south]	at ({\xast+\Lq/2}, \yB+0.05) {$q_1$};
+					%\node[font=\scriptsize, anchor=south]	at ({\xast+\Lq/2}, \yC+0.05) {$q_2$};
+					
+					%% --- Etichette dei punti notevoli (a sinistra dell'asta) ---
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yC) {$C$};
+					
+					%% --- Etichette dei corpi (a sinistra, mid-asta) ---
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yA+\yB)/2}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yB+\yC)/2}) {$\mathcal{C}_2$};
+					
+					%% --- Deformata in grigio: A--B' e C--B' ---
+					%% B' è l'estremo della freccia q_1 in B
+					\pgfmathsetmacro{\xBp}{\xast+\Lq}
+					\pgfmathsetmacro{\yBp}{\yB}
+					
+					% Segmento A -- B' (deformata di C_1)
+					\draw[gray!75, line width=1.0pt] (\xast,\yA) -- (\xBp,\yBp);
+					
+					% Segmento C -- B' (deformata di C_2)
+					\draw[gray!75, line width=1.0pt] (\xast,\yC) -- (\xBp,\yBp);
+					
+					% Etichetta B' a destra del punto
+					\node[gray!75, font=\scriptsize, anchor=west] at (\xBp+0.05,\yBp) {$B'$};
+					
+					%% --- Anellino grigio in B' ---
+					\draw[gray!75, fill=white, line width=0.6pt] (\xBp,\yBp) circle (1.6pt);
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(d)};
+					
+				\end{scope}
+				% pannello (e)
+				\begin{scope}[xshift=\dx cm]
+					
+					%% --- Parametri ---
+					\def\ell{1.2}
+					\def\xast{-0.7}
+					\def\Lb{0.55}        % lunghezza delle bielle (corte)
+					\def\angBip{30}      % inclinazione delle bielle interne/esterne
+					\def\dAtt{0.20}      % distanza tra i due anellini sull'asta
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					\def\rn{0.06}        % raggio degli anellini semicircolari
+					\def\rArc{0.13}      % raggio degli archi di rotazione q_i
+					
+					%% --- Coordinate di riferimento ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					\pgfmathsetmacro{\ymidUno}{(\yA+\yB)/2}
+					\pgfmathsetmacro{\ymidDue}{(\yB+\yC)/2}
+					
+					%% --- Costanti geometriche del pantografo ---
+					\pgfmathsetmacro{\dxBie}{\Lb*cos(\angBip)}
+					\pgfmathsetmacro{\dyBie}{\Lb*sin(\angBip)}
+					\pgfmathsetmacro{\xMuro}{\xast+2*\dxBie}
+					
+					
+					%% =========================================================
+					%% Bipendolo su C_2  (variabili \yAiU, \yAiD, \yBiU, \yBiD ridefinite)
+					%% =========================================================
+					\pgfmathsetmacro{\yAiU}{\ymidDue+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidDue-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiU) -- ({\xast+\dxBie},\yBiU);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiD) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- (\xMuro,\yAiU);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiD) -- (\xMuro,\yAiD);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiU) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiD) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiU-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiD-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiU+\rn) arc(90:270:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiD+\rn) arc(90:270:\rn) -- cycle;
+					\pgfmathsetmacro{\yMurMin}{\yAiD-0.12}
+					\pgfmathsetmacro{\yMurMax}{\yAiU+0.12}
+					\draw[gray!75, thick] (\xMuro,\yMurMin) -- (\xMuro,\yMurMax);
+					\foreach \k in {0,1,2,3,4,5}{
+						\pgfmathsetmacro{\yh}{\yMurMin+\k*(\yMurMax-\yMurMin)/5}
+						\draw[gray!75, thin] (\xMuro,\yh) -- ({\xMuro+\hatch},\yh-0.09);
+					}
+					
+					%% --- Aste verticali (in nero) ---
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					
+					%% --- Cerniera al suolo in A (nero) ---
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					
+					%% --- Anellini in A e B (nero) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%				%% --- Frecce di rotazione q_1 e q_2 (nero), centrate sull'asta ---
+					
+					\def\qDeg{20}       % apertura grafica della rotazione
+					\def\Lref{0.90}     % lunghezza dei due segmenti
+					\def\rArcQ{0.70}    % raggio dell'archetto (minore di \Lref)
+					\pgfmathsetmacro{\xRot}{\xMuro+0.55}   % a destra del muro
+					
+					% --- q_1: a fianco del bipendolo su C_1 ---
+					\draw[thin] (\xRot,\ymidUno) -- (\xRot,{\ymidUno+\Lref});
+					\draw[thin] (\xRot,\ymidUno) -- 
+					({\xRot-\Lref*sin(\qDeg)},{\ymidUno+\Lref*cos(\qDeg)});
+					\draw[->, thin] 
+					(\xRot,{\ymidUno+\rArcQ}) 
+					arc[start angle=90, end angle={90+\qDeg}, radius=\rArcQ];
+					\node[font=\scriptsize] at ({\xRot+(\rArcQ+0.12)*cos(90+2*\qDeg)+0.1},{\ymidUno+(\rArcQ+0.12)*sin(90+\qDeg/2)-0.2}) {$q_1$};
+					
+					%% --- Etichette ---
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.01,\yC) {$C$};
+					%\node[font=\scriptsize, anchor=south] at (\xast+0.06,\yC) {$C$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, \ymidUno) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, \ymidDue) {$\mathcal{C}_2$};
+					
+					%% --- Deformata in grigio: A -- B' (rotazione di C_1) e B' -- C' (traslazione di C_2) ---
+					\def\Lq{0.55}
+					\pgfmathsetmacro{\xBp}{\xast-\Lq}
+					\pgfmathsetmacro{\yBp}{\yB}
+					\pgfmathsetmacro{\xCp}{\xast-\Lq}
+					\pgfmathsetmacro{\yCp}{\yC}
+					
+					% Segmento A -- B' (deformata di C_1)
+					\draw[gray!75, line width=1.0pt] (\xast,\yA) -- (\xBp,\yBp);
+					
+					% Segmento B' -- C' (deformata di C_2, verticale traslata)
+					\draw[gray!75, line width=1.0pt] (\xBp,\yBp) -- (\xCp,\yCp);
+					
+					% Anellini grigi in B' e C'
+					\draw[gray!75, fill=white, line width=0.6pt] (\xBp,\yBp) circle (1.6pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xCp,\yCp) circle (1.6pt);
+					
+					% Etichette B' e C'
+					\node[gray!75, font=\scriptsize, anchor=east] at (\xBp-0.05,\yBp) {$B'$};
+					\node[gray!75, font=\scriptsize, anchor=east] at (\xCp-0.05,\yCp) {$C'$};
+					
+					%% --- Archetto della rotazione q_1 (antioraria, attorno ad A) ---
+					\def\qDegI{22}        % apertura grafica della rotazione
+					\def\rArcI{0.85}      % raggio dell'archetto (< ell)
+					
+					\draw[->, gray!75, thin]
+					(\xast,{\yA+\rArcI})
+					arc[start angle=90, end angle={90+\qDegI}, radius=\rArcI];
+					
+					% Etichetta q_1 al punto medio dell'arco, sul lato esterno
+					\node[gray!75, font=\scriptsize, anchor=east] at ({\xast+\rArcI*cos(90+\qDegI/2)-0.03},	{\yA+\rArcI*sin(90+\qDegI/2)})
+					{$q_1$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(e)};
+				\end{scope}
+				% pannello (f)
+				\begin{scope}[xshift=2*\dx cm]
+					
+					%% --- Parametri comuni ---
+					\def\ell{1.2}
+					\def\xast{-0.7}
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					\def\rn{0.06}
+					
+					%% --- Coordinate dei punti notevoli ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					
+					%% =========================================================
+					%% Bipendolo su C_1 al suolo (traslato verso il basso di Dymid)
+					%% =========================================================
+					\def\Lb{0.55}
+					\def\angBip{30}
+					\def\dAtt{0.20}
+					\def\Dymid{-0.20}    % traslazione verticale rispetto al pannello (b)
+					\pgfmathsetmacro{\ymidUno}{(\yA+\yB)/2 + \Dymid}
+					\pgfmathsetmacro{\dxBie}{\Lb*cos(\angBip)}
+					\pgfmathsetmacro{\dyBie}{\Lb*sin(\angBip)}
+					\pgfmathsetmacro{\xMuro}{\xast+2*\dxBie}
+					
+					\pgfmathsetmacro{\yAiU}{\ymidUno+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidUno-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					
+					%					%% =========================================================
+					%					%% Bipendolo interno tra C_1 e C_2 
+					%					%% =========================================================
+					\def\dIn{0.25}         % distanza degli anellini interni da B (sull'asta)
+					\def\dOut{0.40}        % distanza degli anellini esterni da B
+					\def\angInt{30}        % inclinazione delle bielle dal positivo x (CCW)
+					\pgfmathsetmacro{\cotInt}{cos(\angInt)/sin(\angInt)}
+					
+					% Quote dei 4 anellini, tutti a x = \xast
+					\pgfmathsetmacro{\yAlowIn} {\yB-\dIn}     % su C_1, vicino a B
+					\pgfmathsetmacro{\yAlowOut}{\yB-\dOut}    % su C_1, lontano da B
+					\pgfmathsetmacro{\yAupIn}  {\yB+\dIn}     % su C_2, vicino a B
+					\pgfmathsetmacro{\yAupOut} {\yB+\dOut}    % su C_2, lontano da B
+					
+					% Perni della traversa orizzontale (a y = yB)
+					\pgfmathsetmacro{\xTin} {\xast+\dIn *\cotInt}
+					\pgfmathsetmacro{\xTout}{\xast+\dOut*\cotInt}
+					
+					% Bielle interne (parallele, dirette in alto-destra) — corta + lunga
+					\draw[gray!75, line width=0.8pt] (\xast,\yAlowIn)  -- (\xTin, \yB);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAlowOut) -- (\xTout,\yB);
+					% Traversa orizzontale a y = yB
+					\draw[gray!75, line width=0.8pt] (\xTin,\yB) -- (\xTout,\yB);
+					% Bielle esterne (parallele, dirette in alto-sinistra) — corta + lunga
+					\draw[gray!75, line width=0.8pt] (\xTin, \yB) -- (\xast,\yAupIn);
+					\draw[gray!75, line width=0.8pt] (\xTout,\yB) -- (\xast,\yAupOut);
+					% Cerniere sulla traversa
+					\draw[gray!75, fill=white, line width=0.6pt] (\xTin, \yB) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xTout,\yB) circle (1.5pt);
+					
+					% 4 anellini sulle aste AB e BC: semicerchi sporgenti a destra,
+					% parte piatta appoggiata sull'asta verticale
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAlowIn -\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAlowOut-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAupIn  -\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAupOut -\rn) arc(-90:90:\rn) -- cycle;
+					
+					%% =========================================================
+					%% Aste verticali, cerniere, anellini reali (in nero, sopra)
+					%% =========================================================
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%% =========================================================
+					%% Indicazione di q_1 (traslata insieme al bipendolo su C_1)
+					%% =========================================================
+					\def\qDeg{20}
+					\def\Lref{0.90}
+					\def\rArcQ{0.70}
+					\def\Dyq{-0.30}        % traslazione verticale di q_1 (negativa = verso il basso)
+					\pgfmathsetmacro{\xRot}{\xMuro+0.55}
+					\pgfmathsetmacro{\yq}{\ymidUno+\Dyq}
+					
+					\draw[thin] (\xRot,\yq) -- (\xRot,{\yq+\Lref});
+					\draw[thin] (\xRot,\yq) --
+					({\xRot-\Lref*sin(\qDeg)},{\yq+\Lref*cos(\qDeg)});
+					\draw[->, thin]
+					(\xRot,{\yq+\rArcQ})
+					arc[start angle=90, end angle={90+\qDeg}, radius=\rArcQ];
+					\node[font=\scriptsize]
+					at ({\xRot+(\rArcQ+0.12)*cos(90+2*\qDeg)+0.1},
+					{\yq+(\rArcQ+0.12)*sin(90+\qDeg/2)-0.2}) {$q_1$};
+					
+					
+					%% =========================================================
+					%% Etichette
+					%% =========================================================
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.01,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.01,\yC) {$C$};
+					\node[font=\scriptsize, anchor=west] at (\xast-0.10, {(\yA+\yB)/2}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=west] at (\xast-0.10, {(\yB+\yC)/2}) {$\mathcal{C}_2$};
+					
+					%% --- Deformata in grigio: A -- B' -- C' (rotazione rigida attorno ad A) ---
+					\def\Lq{0.55}
+					\pgfmathsetmacro{\xBp}{\xast-\Lq}
+					\pgfmathsetmacro{\yBp}{\yB}
+					\pgfmathsetmacro{\xCp}{\xast-2*\Lq}
+					\pgfmathsetmacro{\yCp}{\yC}
+					
+					% Segmento A -- B' -- C' (deformata di C_1 e C_2 allineate)
+					\draw[gray!75, line width=1.0pt] (\xast,\yA) -- (\xBp,\yBp) -- (\xCp,\yCp);
+					
+					% Anellini grigi in B' e C'
+					\draw[gray!75, fill=white, line width=0.6pt] (\xBp,\yBp) circle (1.6pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xCp,\yCp) circle (1.6pt);
+					
+					% Etichette B' e C'
+					\node[gray!75, font=\scriptsize, anchor=east] at (\xBp-0.0,\yBp) {$B'$};
+					\node[gray!75, font=\scriptsize, anchor=east] at (\xCp-0.0,\yCp) {$C'$};
+					
+					%% --- Archetto della rotazione q_1 (antioraria, attorno ad A) ---
+					\def\qDegI{22}        % apertura grafica della rotazione
+					\def\rArcI{0.85}      % raggio dell'archetto (< ell)
+					
+					\draw[->, gray!75, thin]
+					(\xast,{\yA+\rArcI})
+					arc[start angle=90, end angle={90+\qDegI}, radius=\rArcI];
+					
+					% Etichetta q_1 al punto medio dell'arco, sul lato esterno
+					\node[gray!75, font=\scriptsize, anchor=east]	at ({\xast+\rArcI*cos(90+\qDegI/2)-0.03}, {\yA-0.1+\rArcI*sin(90+\qDegI/2)})
+					{$q_1$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(f)};
+					
+				\end{scope}
+			\end{scope}
+			
+			% ============================================================
+			% RIGA 3 — meccanismi q_2
+			% ============================================================
+			\begin{scope}[yshift=-2*\dy cm]
+				% pannello (g)
+				\begin{scope}[xshift=0cm]
+					
+					%% --- Parametri ---
+					\def\ell{1.2}      % unità grafica (lunghezza dell'asta)
+					\def\xast{-0.7}    % ascissa dell'asta verticale
+					\def\Lpend{1.4}    % lunghezza orizzontale del pendolo
+					\def\Lq{0.55}      % lunghezza della freccia di cedimento
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					
+					%% --- Coordinate ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					\pgfmathsetmacro{\xPend}{\xast+\Lpend}
+					
+					%% --- Aste verticali (in nero, due segmenti distinti) ---
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);  % C_1
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);  % C_2
+					
+					%% --- Pendoli orizzontali in B e in C (vincoli fittizi, grigio) ---
+					\draw[gray!75, line width=0.8pt] (\xast,\yB) -- (\xPend,\yB);
+					%\draw[gray!75, line width=0.8pt] (\xast,\yC) -- (\xPend,\yC);
+					
+					%% --- Cerniera al suolo in A (nera, pavimento sotto) ---
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					%% --- Anellino in A (perno della cerniera al suolo) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					
+					
+					%% --- Cerniera interna in B (nera, sopra l'asta) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%% --- Anellini di estremità dei pendoli ---
+					\draw[gray!75, fill=white, line width=0.6pt] (\xast,\yC)  circle (1.6pt);
+					\draw[gray!75, fill=white, line width=0.6pt] (\xPend,\yB) circle (1.6pt);
+					%\draw[gray!75, fill=white, line width=0.6pt] (\xPend,\yC) circle (1.6pt);
+					
+					%% --- Cerniera a muro per il pendolo in B (grigia, muro a destra) ---
+					\draw[gray!75, thick]
+					(\xPend,\yB) -- (\xPend+\hsuolo,\yB+\dsuolo)
+					-- (\xPend+\hsuolo,\yB-\dsuolo) -- cycle;
+					\draw[gray!75, thick] (\xPend+\hsuolo,\yB-0.28)
+					-- (\xPend+\hsuolo,\yB+0.28);
+					\foreach \y in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[gray!75, thin] (\xPend+\hsuolo,\yB+\y)
+						-- (\xPend+\hsuolo+\hatch,\yB+\y-0.09);
+					}
+					
+					%% --- Frecce di cedimento q_1 (in B) e q_2 (in C), in nero ---
+					%\draw[->, thick] (\xast,\yB) -- (\xast+\Lq,\yB);
+					\draw[->, thick] (\xast,\yC) -- (\xast+\Lq,\yC);
+					%\node[font=\scriptsize, anchor=south]	at ({\xast+\Lq/2}, \yB+0.05) {$q_1$};
+					\node[font=\scriptsize, anchor=south]	at ({\xast+\Lq/2}, \yC+0.05) {$q_2$};
+					
+					%% --- Etichette dei punti notevoli (a sinistra dell'asta) ---
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yC) {$C$};
+					
+					%% --- Etichette dei corpi (a sinistra, mid-asta) ---
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yA+\yB)/2}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yB+\yC)/2}) {$\mathcal{C}_2$};
+					
+					
+					%% --- Deformata in grigio: B -- C' ---
+					%% C' è l'estremo della freccia q_2 in C
+					\pgfmathsetmacro{\xCp}{\xast+\Lq}
+					\pgfmathsetmacro{\yCp}{\yC}
+					
+					% Segmento B -- C' (deformata di C_2)
+					\draw[gray!75, line width=1.0pt] (\xast,\yB) -- (\xCp,\yCp);
+					
+					% Anellino grigio in C'
+					\draw[gray!75, fill=white, line width=0.6pt] (\xCp,\yCp) circle (1.6pt);
+					
+					% Etichetta C'
+					\node[gray!75, font=\scriptsize, anchor=west] at (\xCp+0.05,\yCp) {$C'$};
+					
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(g)};
+					
+				\end{scope}
+				% pannello (h)
+				\begin{scope}[xshift=\dx cm]
+					
+					%% --- Parametri ---
+					\def\ell{1.2}
+					\def\xast{-0.7}
+					\def\Lb{0.55}        % lunghezza delle bielle (corte)
+					\def\angBip{30}      % inclinazione delle bielle interne/esterne
+					\def\dAtt{0.20}      % distanza tra i due anellini sull'asta
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					\def\rn{0.06}        % raggio degli anellini semicircolari
+					\def\rArc{0.13}      % raggio degli archi di rotazione q_i
+					
+					%% --- Coordinate di riferimento ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					\pgfmathsetmacro{\ymidUno}{(\yA+\yB)/2}
+					\pgfmathsetmacro{\ymidDue}{(\yB+\yC)/2}
+					
+					%% --- Costanti geometriche del pantografo ---
+					\pgfmathsetmacro{\dxBie}{\Lb*cos(\angBip)}
+					\pgfmathsetmacro{\dyBie}{\Lb*sin(\angBip)}
+					\pgfmathsetmacro{\xMuro}{\xast+2*\dxBie}
+					
+					%				%% --- Aste verticali (in nero) ---
+					%				\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					%				\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					%% =========================================================
+					%% Bipendolo su C_1
+					%% =========================================================
+					\pgfmathsetmacro{\yAiU}{\ymidUno+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidUno-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					% bielle interne (parallelogramma 1)
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiU) -- ({\xast+\dxBie},\yBiU);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiD) -- ({\xast+\dxBie},\yBiD);
+					% traversa
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- ({\xast+\dxBie},\yBiD);
+					% bielle esterne (parallelogramma 2)
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- (\xMuro,\yAiU);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiD) -- (\xMuro,\yAiD);
+					% cerniere intermedie
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiU) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiD) circle (1.5pt);
+					% anellini sul corpo C_1 (semicerchi sporgenti a destra)
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiU-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiD-\rn) arc(-90:90:\rn) -- cycle;
+					% anellini sul muro (semicerchi sporgenti a sinistra)
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiU+\rn) arc(90:270:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiD+\rn) arc(90:270:\rn) -- cycle;
+					% muro verticale con hatching
+					\pgfmathsetmacro{\yMurMin}{\yAiD-0.12}
+					\pgfmathsetmacro{\yMurMax}{\yAiU+0.12}
+					\draw[gray!75, thick] (\xMuro,\yMurMin) -- (\xMuro,\yMurMax);
+					\foreach \k in {0,1,2,3,4,5}{
+						\pgfmathsetmacro{\yh}{\yMurMin+\k*(\yMurMax-\yMurMin)/5}
+						\draw[gray!75, thin] (\xMuro,\yh) -- ({\xMuro+\hatch},\yh-0.09);
+					}
+					
+					
+					%% --- Aste verticali (in nero) ---
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					
+					%% --- Cerniera al suolo in A (nero) ---
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					
+					%% --- Anellini in A e B (nero) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					%				%% --- Frecce di rotazione q_1 e q_2 (nero), centrate sull'asta ---
+					
+					\def\qDeg{20}       % apertura grafica della rotazione
+					\def\Lref{0.90}     % lunghezza dei due segmenti
+					\def\rArcQ{0.70}    % raggio dell'archetto (minore di \Lref)
+					\pgfmathsetmacro{\xRot}{\xMuro+0.55}   % a destra del muro
+					
+					% --- q_2: a fianco del bipendolo su C_2 ---
+					\draw[thin] (\xRot,\ymidDue) -- (\xRot,{\ymidDue+\Lref});
+					\draw[thin] (\xRot,\ymidDue) -- 
+					({\xRot-\Lref*sin(\qDeg)},{\ymidDue+\Lref*cos(\qDeg)});
+					\draw[->, thin] 
+					(\xRot,{\ymidDue+\rArcQ}) 
+					arc[start angle=90, end angle={90+\qDeg}, radius=\rArcQ];
+					\node[font=\scriptsize] at ({\xRot+(\rArcQ+0.12)*cos(90+2*\qDeg)+0.1},{\ymidDue+(\rArcQ+0.12)*sin(90+\qDeg/2)-0.2}) {$q_2$};
+					
+					%% --- Etichette ---
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					%\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yC) {$C$};
+					\node[font=\scriptsize, anchor=south] at (\xast+0.06,\yC) {$C$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, \ymidUno) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10, \ymidDue) {$\mathcal{C}_2$};
+					
+					%% --- Deformata in grigio: B -- C' (rotazione antioraria di C_2 attorno a B) ---
+					%% C' è a sinistra di C di una quantità grafica pari a \Lq (= ell*q_2)
+					\def\Lq{0.55}
+					\pgfmathsetmacro{\xCp}{\xast-\Lq}
+					\pgfmathsetmacro{\yCp}{\yC}
+					
+					% Segmento B -- C' (deformata di C_2)
+					\draw[gray!75, line width=1.0pt] (\xast,\yB) -- (\xCp,\yCp);
+					
+					% Anellino grigio in C'
+					\draw[gray!75, fill=white, line width=0.6pt] (\xCp,\yCp) circle (1.6pt);
+					
+					% Etichetta C' (a sinistra, per non sovrapporsi con C)
+					\node[gray!75, font=\scriptsize, anchor=east] at (\xCp-0.05,\yCp) {$C'$};
+					
+					%% --- Archetto della rotazione q_2 (antioraria, attorno a B) ---
+					\def\qDegII{22}        % apertura grafica della rotazione
+					\def\rArcII{0.85}      % raggio dell'archetto (< ell)
+					
+					\draw[->, gray!75, thin]
+					(\xast,{\yB+\rArcII})
+					arc[start angle=90, end angle={90+\qDegII}, radius=\rArcII];
+					
+					% Etichetta q_2 al punto medio dell'arco, sul lato esterno
+					\node[gray!75, font=\scriptsize, anchor=east]	at ({0.6*\xast+\rArcII*cos(90+\qDegII/2)}, {\yB+\rArcII*sin(90+\qDegII/2)+0.2})
+					{$q_2$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\scriptsize] at (0.8,-1.4) {(h)};
+				\end{scope}
+				% pannello (i)
+				\begin{scope}[xshift=2*\dx cm]
+					
+					%% --- Parametri comuni ---
+					\def\ell{1.2}
+					\def\xast{-0.7}
+					\def\dsuolo{0.18}
+					\def\hsuolo{0.30}
+					\def\hatch{0.13}
+					\def\rn{0.06}
+					
+					%% --- Coordinate dei punti notevoli ---
+					\pgfmathsetmacro{\yA}{-\ell}
+					\pgfmathsetmacro{\yB}{0}
+					\pgfmathsetmacro{\yC}{\ell}
+					
+					%% =========================================================
+					%% Bipendolo su C_1 al suolo (traslato verso il basso di Dymid)
+					%% =========================================================
+					\def\Lb{0.55}
+					\def\angBip{30}
+					\def\dAtt{0.20}
+					\def\Dymid{-0.20}    % traslazione verticale rispetto al pannello (b)
+					\pgfmathsetmacro{\ymidUno}{(\yA+\yB)/2 + \Dymid}
+					\pgfmathsetmacro{\dxBie}{\Lb*cos(\angBip)}
+					\pgfmathsetmacro{\dyBie}{\Lb*sin(\angBip)}
+					\pgfmathsetmacro{\xMuro}{\xast+2*\dxBie}
+					
+					\pgfmathsetmacro{\yAiU}{\ymidUno+\dAtt/2}
+					\pgfmathsetmacro{\yAiD}{\ymidUno-\dAtt/2}
+					\pgfmathsetmacro{\yBiU}{\yAiU-\dyBie}
+					\pgfmathsetmacro{\yBiD}{\yAiD-\dyBie}
+					
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiU) -- ({\xast+\dxBie},\yBiU);
+					\draw[gray!75, line width=0.8pt] (\xast,\yAiD) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- ({\xast+\dxBie},\yBiD);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiU) -- (\xMuro,\yAiU);
+					\draw[gray!75, line width=0.8pt] ({\xast+\dxBie},\yBiD) -- (\xMuro,\yAiD);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiU) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt] ({\xast+\dxBie},\yBiD) circle (1.5pt);
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiU-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xast,\yAiD-\rn) arc(-90:90:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiU+\rn) arc(90:270:\rn) -- cycle;
+					\draw[gray!75, fill=white, line width=0.6pt]
+					(\xMuro,\yAiD+\rn) arc(90:270:\rn) -- cycle;
+					\pgfmathsetmacro{\yMurMin}{\yAiD-0.12}
+					\pgfmathsetmacro{\yMurMax}{\yAiU+0.12}
+					\draw[gray!75, thick] (\xMuro,\yMurMin) -- (\xMuro,\yMurMax);
+					\foreach \k in {0,1,2,3,4,5}{
+						\pgfmathsetmacro{\yh}{\yMurMin+\k*(\yMurMax-\yMurMin)/5}
+						\draw[gray!75, thin] (\xMuro,\yh) -- ({\xMuro+\hatch},\yh-0.09);
+					}
+					
+					%% =========================================================
+					%% Aste verticali, cerniere, anellini reali (in nero, sopra)
+					%% =========================================================
+					\draw[line width=1.2pt] (\xast,\yA) -- (\xast,\yB);
+					\draw[line width=1.2pt] (\xast,\yB) -- (\xast,\yC);
+					
+					\draw[thick]
+					(\xast,\yA) -- (\xast-\dsuolo,\yA-\hsuolo)
+					-- (\xast+\dsuolo,\yA-\hsuolo) -- cycle;
+					\draw[thick] (\xast-0.28,\yA-\hsuolo) -- (\xast+0.28,\yA-\hsuolo);
+					\foreach \x in {-0.20,-0.10,0,0.10,0.20}{
+						\draw[thin] (\xast+\x,\yA-\hsuolo)
+						-- (\xast+\x-0.09,\yA-\hsuolo-\hatch);
+					}
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yA) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=4pt, line width=0.7pt] at (\xast,\yB) {};
+					
+					
+					%% =========================================================
+					%% Indicazione di q_2 (rotazione relativa C_2/C_1)
+					%% =========================================================
+					\def\xq{0.40}              % ascissa comune dei due semicerchi
+					\def\dq{0.07}              % semi-distanza verticale fra le due frecce
+					\def\rq{0.18}              % raggio dei semicerchi
+					\pgfmathsetmacro{\yqup}{\yB+\dq}
+					\pgfmathsetmacro{\yqdn}{\yB-\dq}
+					
+					% Semicerchio superiore: antiorario, convessità verso l'alto
+					% (da destra, sopra il vertice, fino a sinistra — la freccia punta in basso)
+					\draw[->, thin]
+					({\xq+\rq},\yqup)
+					arc[start angle=0, end angle=180, radius=\rq];
+					
+					% Semicerchio inferiore: orario, convessità verso il basso
+					% (da destra, sotto il vertice, fino a sinistra — la freccia punta in alto)
+					\draw[->, thin]
+					({\xq+\rq},\yqdn)
+					arc[start angle=0, end angle=-180, radius=\rq];
+					
+					% Etichetta q_2 a destra delle due frecce
+					\node[font=\scriptsize] at ({\xq+\rq+0.20},\yB) {$q_2$};
+					
+					%% =========================================================
+					%% Etichette
+					%% =========================================================
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yA) {$A$};
+					\node[font=\scriptsize, anchor=east] at (\xast-0.10,\yB) {$B$};
+					\node[font=\scriptsize, anchor=south] at (\xast+0.06,\yC) {$C$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yA+\yB)/2}) {$\mathcal{C}_1$};
+					\node[font=\scriptsize, anchor=east]
+					at (\xast-0.10, {(\yB+\yC)/2}) {$\mathcal{C}_2$};
+					
+					%% --- Deformata in grigio: B -- C' (rotazione antioraria di C_2 attorno a B) ---
+					%% C' è a sinistra di C di una quantità grafica pari a \Lq (= ell*q_2)
+					\def\Lq{0.55}
+					\pgfmathsetmacro{\xCp}{\xast-\Lq}
+					\pgfmathsetmacro{\yCp}{\yC}
+					
+					% Segmento B -- C' (deformata di C_2)
+					\draw[gray!75, line width=1.0pt] (\xast,\yB) -- (\xCp,\yCp);
+					
+					% Anellino grigio in C'
+					\draw[gray!75, fill=white, line width=0.6pt] (\xCp,\yCp) circle (1.6pt);
+					
+					% Etichetta C' (a sinistra, per non sovrapporsi con C)
+					\node[gray!75, font=\scriptsize, anchor=east] at (\xCp-0.05,\yCp) {$C'$};
+					
+					%% --- Archetto della rotazione q_2 (antioraria, attorno a B) ---
+					\def\qDegII{22}        % apertura grafica della rotazione
+					\def\rArcII{0.85}      % raggio dell'archetto (< ell)
+					
+					\draw[->, gray!75, thin]
+					(\xast,{\yB+\rArcII})
+					arc[start angle=90, end angle={90+\qDegII}, radius=\rArcII];
+					
+					% Etichetta q_2 al punto medio dell'arco, sul lato esterno
+					\node[gray!75, font=\scriptsize, anchor=east]	at ({0.6*\xast+\rArcII*cos(90+\qDegII/2)}, {\yB+\rArcII*sin(90+\qDegII/2)+0.2})
+					{$q_2$};
+					
+					%% --- Etichetta del pannello ---
+					\node[font=\small] at (0.8,-1.4) {(i)};
+					
+				\end{scope}
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Due aste verticali collegate in serie
+			(\ESEref{ex:scelte_fittizi}): tre scelte di
+			vincoli fittizi e i corrispondenti meccanismi.
+			\emph{Riga 1} --- sistemi principali:
+			\emph{(a)}~scelta~1, pendolo orizzontale in $B$
+			e pendolo orizzontale in $C$ (in grigio);
+			\emph{(b)}~scelta~2, bipendolo su $\mathcal{C}_1$
+			e bipendolo su $\mathcal{C}_2$ al suolo (in grigio);
+			\emph{(c)}~scelta~3, bipendolo su $\mathcal{C}_1$
+			al suolo e bipendolo interno tra $\mathcal{C}_2$
+			e $\mathcal{C}_1$ (in grigio).
+			\emph{Riga 2} --- meccanismi $q_1 \neq 0$:
+			\emph{(d)}~$\mathcal{C}_1$ ruota attorno ad $A$,
+			$\mathcal{C}_2$ ruota attorno a $C$;
+			\emph{(e)}~$\mathcal{C}_1$ ruota attorno ad $A$,
+			$\mathcal{C}_2$ trasla orizzontalmente di
+			$q_1\ell$;
+			\emph{(f)}~le due aste ruotano rigidamente
+			attorno ad $A$.
+			\emph{Riga 3} --- meccanismi $q_2 \neq 0$:
+			\emph{(g)}, \emph{(h)}, \emph{(i)}~in tutti
+			e tre i casi $\mathcal{C}_1$ è ferma e
+			$\mathcal{C}_2$ ruota attorno a $B$.}
+		\label{fig:scelte_fittizi}
+	\end{figure}

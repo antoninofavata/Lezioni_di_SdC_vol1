@@ -1,0 +1,23 @@
+% ================================================================
+%  Preambolo/tikz-sgr.tex
+%  Stili aggiuntivi per le figure dell'appendice «Elementi di statica
+%  grafica» (Volume I). Le figure usano gli stili pol di
+%  Preambolo/tikz-pol.tex (poligono delle forze e poligono funicolare),
+%  che va richiamato PRIMA di questo file; qui stanno soltanto gli stili
+%  per le strutture (travi, aste, nodi) e per il parallelo cinematico.
+% ================================================================
+\tikzset{
+	sgrtrave/.style={line width=1.6pt,line cap=round,line join=round},            % travi
+	sgrbiella/.style={line width=.9pt,line cap=round},                             % bielle (aste scariche)
+	sgrasta/.style={line width=1.0pt,line cap=round},                              % aste di una travatura
+	sgrpuntone/.style={line width=2.2pt,line cap=butt},                            % aste compresse
+	sgrtirante/.style={line width=.7pt,line cap=butt},                             % aste tese
+	sgrasse/.style={-{Stealth[length=1.7mm,width=1.2mm]},line width=.4pt},         % assi di riferimento
+	sgrrot/.style={-{Stealth[length=1.3mm,width=1.0mm]},line width=.5pt},          % archi delle rotazioni e delle coppie
+	sgrcorpo/.style={line width=1.1pt,line cap=round,line join=round},             % corpi nel diagramma degli spostamenti
+	sgrnota/.style={font=\scriptsize,inner sep=1.5pt},
+}
+\tikzset{
+	pics/sgrnodo/.style={code={\draw[fill=white,line width=.6pt] (0,0) circle (1.7pt);}},  % cerniera, nodo di travatura
+	pics/sgrcentro/.style={code={\draw[fill=white,line width=.6pt] (0,0) circle (1.4pt);}}, % centro di rotazione relativo
+}

@@ -1,0 +1,156 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			asta/.style={line width=1.5pt, line cap=round,
+				line join=round},
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=6pt,
+				line width=1.2pt},
+			forza/.style={->, >=stealth, line width=1.0pt,
+				gray!60!black},
+			]
+			
+			%============================================================
+			% PANNELLO A — schema di carico (sinistra)
+			%============================================================
+			\begin{scope}[shift={(0,0)}, scale=0.62]
+				
+				\coordinate (A) at (0,0);
+				\coordinate (B) at (8,0);
+				\coordinate (C) at (4,3);
+				\coordinate (D) at (4,0);
+				
+				%% carico trasversale p (perpendicolare ad AC, sopra)
+				\draw[gray!60!black, thin]
+				($(A)+0.9*(-0.6,0.8)$)--($(C)+0.9*(-0.6,0.8)$);
+				\draw[gray!60!black, thin]
+				($(A)+0.25*(-0.6,0.8)$)--($(C)+0.25*(-0.6,0.8)$);
+				\foreach \t in {0.0, 0.2, 0.4, 0.6, 0.8, 1.0}{
+					\draw[forza]
+					($(A)!{\t}!(C)+0.9*(-0.6,0.8)$)
+					--($(A)!{\t}!(C)+0.25*(-0.6,0.8)$);
+				}
+				\node[above left, font=\small, gray!60!black]
+				at ($(A)!0.5!(C)+1.0*(-0.6,0.8)$){$p$};
+				
+				%% carico longitudinale q (radente sotto AC, da A verso C)
+				\foreach \t in {0.05, 0.28, 0.51, 0.74}{
+					\draw[forza]
+					($(A)!{\t}!(C)+0.3*(0.6,-0.8)$)
+					--($(A)!{\t+0.18}!(C)+0.3*(0.6,-0.8)$);
+				}
+				\node[below right, font=\small, gray!60!black]
+				at ($(A)!0.5!(C)+0.4*(0.6,-0.8)$){$q$};
+				
+				%% aste
+				\draw[asta] (A)--(C);
+				\draw[asta] (C)--(B);
+				\draw[asta] (A)--(D);
+				\draw[asta] (D)--(B);
+				\draw[asta] (C)--(D);
+				
+				%% cerniera A
+				\draw[line width=1.2pt]
+				(A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+				\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+				\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+				\draw[thin](\x,-0.65)--++(-.18,-.22);
+				
+				%% carrello B
+				\draw[line width=1.2pt]
+				(B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+				\draw[line width=1.2pt]
+				($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+				\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$) circle(3.5pt);
+				\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$) circle(3.5pt);
+				\draw[line width=1.2pt]
+				($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+				\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+				\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+				
+				%% nodi
+				\node[nodo] at (A){};  \node[nodo] at (B){};
+				\node[nodo] at (C){};  \node[nodo] at (D){};
+				
+				%% etichette nodi
+				\node[left,  font=\normalsize] at (A){$A$};
+				\node[right, font=\normalsize] at (B){$B$};
+				\node[right, font=\normalsize] at (C){$C$};
+				\node[below, font=\normalsize] at (D){$D$};
+				
+				%% etichetta pannello
+				\node[font=\small] at (4,-1.5) {$(a)$};
+				
+			\end{scope}
+			
+			%============================================================
+			% PANNELLO B — asta isolata (destra)
+			%============================================================
+			\begin{scope}[shift={(7,0)}, scale=0.62]
+				
+				%% asta isolata orizzontale nel rif. locale
+				\draw[asta] (0,0)--(8,0);
+				
+				%% tratteggio sotto l'asta (riferimento locale)
+				\draw[thin, dashed] (0,-0.3)--(8,-0.3);
+				
+				%% carico trasversale p
+				\draw[gray!60!black, thin] (0,2.5)--(8,2.5);
+				\draw[black, thin] (0,1.85)--(8,1.85);
+				\foreach \x in {0,1,2,3,4,5,6,7,8}{
+					\draw[forza] (\x,2.5)--(\x,1.85);
+				}
+				\node[above, font=\small, gray!60!black] at (4,2.5){$p$};
+				
+				%% carico longitudinale q (radente, da A verso C)
+				\foreach \t in {0.5, 2.0, 3.5, 5.0, 6.5}{
+					\draw[forza] (\t,0.4)--(\t+0.8,0.4);
+				}
+				\node[above, font=\small, gray!60!black] at (4,0.4){$q$};
+				
+				%% sforzo normale Ne (esce da C verso destra)
+				\draw[->, >=stealth, line width=1.5pt, black]
+				(8,0)--(9.5,0);
+				\node[above, font=\normalsize] at (9.5,0){$N^e$};
+				
+				%% sforzo normale N(0) (esce da A verso sinistra)
+				\draw[->, >=stealth, line width=1.5pt, black]
+				(0,0)--(-1.5,0);
+				\node[above, font=\normalsize] at (-1.5,0){$N(0)$};
+				
+				%% reazioni trasversali (coda in A e C, verso l'alto)
+				\draw[->, >=stealth, gray!60!black, line width=1.0pt]
+				(0,0)--(0,1.35);
+				\node[left, font=\small] at (0,1.2){$R_A^\perp$};
+				\draw[->, >=stealth, gray!60!black, line width=1.0pt]
+				(8,0)--(8,1.35);
+				\node[right, font=\small] at (8,1.2){$R_C^\perp$};
+				
+				%% nodi
+				\node[nodo] at (0,0){};
+				\node[nodo] at (8,0){};
+				
+				%% etichette nodi
+				\node[below left,  font=\normalsize] at (0,0){$A$};
+				\node[below right, font=\normalsize] at (8,0){$C$};
+				
+				%% etichetta pannello
+				\node[font=\small] at (4,-1.5) {$(b)$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+	}% fine resizebox
+	\caption{Asta reticolare $AC$ soggetta a carichi generici.
+		\emph{(a)}: schema strutturale della capriata con
+		carico trasversale $p$ (perpendicolare ad $AC$,
+		sopra l'asta) e carico longitudinale $q$
+		(radente ad $AC$ da $A$ verso $C$).
+		\emph{(b)}: asta $AC$ isolata nel riferimento locale
+		con $z^e$ diretto da $A$ verso $C$;
+		$N^e$ e $N(0)$ sono gli sforzi normali uscenti
+		dalle due estremità; $R_A^\perp$ e $R_C^\perp$
+		sono le reazioni trasversali alle cerniere.}
+	\label{fig:asta_caricata}
+\end{figure}

@@ -1,0 +1,70 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=0.8pt},
+			tacca/.style={thin, gray!70}]
+			
+			\def\a{2.0}     % unità di lunghezza (= a)
+			\def\tw{0.22}
+			\def\thA{0.38}
+			\def\thR{0.32}
+			\def\bw{0.16}
+			\def\gw{0.30}
+			\def\sr{0.08}
+			
+			%% trave
+			\draw[line width=2.2pt] (0,0) -- ({2*\a},0);
+			
+			%% etichette nodi
+			\node[above=2pt] at (0,0)      {$A$};
+			\node[above=2pt] at (\a,0)     {$B$};
+			\node[above=2pt] at ({2*\a},0) {$C$};
+			
+			%% cerniera in A
+			\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+			\draw (-\gw,-\thA) -- (\gw,-\thA);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+			\node[nodo] at (0,0) {};
+			
+			%% carrello intermedio in B
+			\draw (\a,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+			\draw (\a-\gw,-\thR) -- (\a+\gw,-\thR);
+			\draw (\a-\bw,-\thR-0.12) circle (2.4pt);
+			\draw (\a+\bw,-\thR-0.12) circle (2.4pt);
+			\draw (\a-\gw,-\thR-0.24) -- (\a+\gw,-\thR-0.24);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] (\a+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+			\fill[white] (\a-\sr,0) arc(180:360:\sr) -- cycle;
+			\draw (\a-\sr,0) arc(180:360:\sr);
+			
+			%% carrello terminale in C
+			\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+			\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+			\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+			\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+			\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+			\node[nodo] at ({2*\a},0) {};
+			
+			%% quotatura
+			\draw[tacca] (0,-0.90) -- (0,-1.10);
+			\draw[tacca] (\a,-0.90) -- (\a,-1.10);
+			\draw[tacca] ({2*\a},-0.90) -- ({2*\a},-1.10);
+			
+			\draw[<->, thin, gray] (0,-1.00) -- (\a,-1.00);
+			\node[above=0.04] at ({0.5*\a},-1.00) {$a$};
+			\draw[<->, thin, gray] (\a,-1.00) -- ({2*\a},-1.00);
+			\node[above=0.04] at ({1.5*\a},-1.00) {$a$};
+			
+		\end{tikzpicture}
+		\caption{Trave su tre appoggi (\ESEref{ex:trave_tre_appoggi}):
+			cerniera in $A=(0,0)$, carrello verticale intermedio in
+			$B=(a,0)$, carrello verticale terminale in $C=(2a,0)$;
+			polo $O\equiv A$. Il vincolo ridondante --- uno dei tre
+			è in eccesso rispetto al minimo necessario per un unico
+			corpo rigido --- rende il sistema iperstatico di grado 1.}
+		\label{fig:trave_tre_appoggi}
+	\end{figure}

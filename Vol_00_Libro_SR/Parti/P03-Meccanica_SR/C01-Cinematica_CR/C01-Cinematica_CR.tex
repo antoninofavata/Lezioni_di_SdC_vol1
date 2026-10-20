@@ -37,12 +37,9 @@ Assumiamo  che i corpi possano avere diverse configurazioni, occupando diverse r
 
 Il corpo $\Cc$ può subire una certa trasformazione, andando ad occupare una differente regione $\Cc_*$ dello spazio; indichiamo con $P_*$ l'immagine del punto $P$ sotto la trasformazione che manda $\Cc$ in $\Cc_*$ (v. Fig. \ref{fig:displ}). Fissata una volta per tutte un'origine $O$ dello spazio Euclideo, se il punto $P$ aveva inizialmente posizione $\overrightarrow{OP}=:\xb(P)$, dopo la trasformazione avrà posizione $\overrightarrow{OP_*}=:\xb(P_*)$. 
 
-\begin{figure}
-	\centering
-	\includegraphics[scale=1]{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/displ}
-	\caption{Due differenti configurazioni del corpo $\Cc$. }
-	\label{fig:displ}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-displ}
+
 
 Lo \textit{spostamento} del punto $P$ è definito come
 \begin{equation}\label{displ}
@@ -132,120 +129,9 @@ Concludiamo che, in teoria infinitesima, la conseguenza della condizione di rigi
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!htbp]
-	\centering
-	\usetikzlibrary{arrows.meta,calc,decorations.markings}
-	
-	% --- helper per le figure ---
-	\tikzset{midarrow/.style={postaction={decorate},
-			decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
-	
-	\newcommand{\rightangle}[3]{%
-		\coordinate (ra1) at ($(#2)!2mm!(#1)$);
-		\coordinate (ra3) at ($(#2)!2mm!(#3)$);
-		\draw[line width=0.4pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
-	\resizebox{0.9\textwidth}{!}{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
-			pt/.style={circle,fill,inner sep=1.3pt},
-			open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
-			\coordinate (O)  at (1.8,-0.5);
-			\coordinate (P)  at (0,0.5);
-			\coordinate (Q)  at (3.4,1.2);
-			\coordinate (aA) at (3.645,1.250);
-			\coordinate (aB) at (4.477,1.422);
-			\coordinate (Ps) at (0.770,1.221);
-			\coordinate (Qs) at (3.938,3.047);
-			\coordinate (QuP) at (4.170,1.921);
-			
-			\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
-			\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
-			
-			\draw[thick, midarrow] (P) -- (Q) node[pos=0.6,below=2pt] {$\overrightarrow{PQ}$};
-			%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-			
-			% retta d'azione di PQ (grigia) da Q verso destra
-			\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
-			
-			% versore a_PQ (nero) disegnato su quella retta
-			\coordinate (aA) at ($(P)!1.28!(Q)$);
-			\coordinate (aB) at ($(P)!1.52!(Q)$);
-			\draw[->, thick] (aA) -- (aB) node[pos=0.97,below=1pt] {$\ab_{PQ}$};
-			
-			\draw[thin, midarrow] (Ps) -- (QuP);   % chiude il parallelogramma P Q (Q+u_P) P*
-			
-			\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
-			\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
-			\draw[thick, midarrow] (Q) -- (QuP) node[pos=0.55,below right=-6pt] {$\ub_P$};
-			\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
-			
-			\draw[thick, midarrow] (Ps) -- (Qs) node[pos=0.5,above left=-2pt] {$\overrightarrow{P_*Q_*}$};
-			
-			\node[open,label={below:$O$}] at (O) {};
-			\node[pt,label={left:$P$}]  at (P) {};
-			\node[pt,label={[xshift=2pt]below right:$Q$}] at (Q) {};
-			\node[pt,label={[yshift=1pt]above :$P_*$}]  at (Ps) {};
-			\node[pt,label={ above:$Q_*$}] at (Qs) {};
-			
-			\node at (3.6,-1.0) {(a)};
-		\end{tikzpicture}
-		\quad
-		% ---- pannello (b) ----
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95,
-			pt/.style={circle,fill,inner sep=1.3pt},
-			open/.style={circle,draw,line width=0.6pt,inner sep=1.1pt}]
-			\coordinate (O)  at (1.8,-0.5);
-			\coordinate (P)  at (0,0.5);
-			\coordinate (Q)  at (3.4,1.2);
-			\coordinate (aA) at (3.645,1.250);
-			\coordinate (aB) at (4.477,1.422);
-			\coordinate (Ps) at (0.770,1.221);
-			\coordinate (Qs) at (3.938,3.047);
-			\coordinate (QuP) at (4.170,1.921);
-			\coordinate (FP) at (0.881,0.682);
-			\coordinate (FQ) at (4.281,1.382);
-			
-			\draw[->, thin] (O) -- (P) node[pos=0.5,below left=-3pt] {$\xb_P$};
-			\draw[->, thin] (O) -- (Q) node[pos=0.5,below right=-3pt] {$\xb_Q$};
-			
-			\draw[thick, midarrow] (P) -- (Q) node[pos=0.42,above=1pt] {$\overrightarrow{PQ}$};
-			%\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-			% retta d'azione di PQ (grigia) da Q verso destra
-			\draw[gray!60] (Q) -- ($(P)!1.62!(Q)$);
-			
-			% versore a_PQ (nero) disegnato su quella retta
-			\coordinate (aA) at ($(P)!1.28!(Q)$);
-			\coordinate (aB) at ($(P)!1.52!(Q)$);
-			\draw[->, thick] (aA) -- (aB) node[pos=0.97,above=1pt] {$\ab_{PQ}$};
-			
-			% proiezioni grigie tratteggiate (PRIMA di u_Q-u_P) + angoli retti
-			\draw[dashed, gray!60] (Ps) -- (FP);
-			\draw[dashed, gray!60] (Qs) -- (FQ);
-			\rightangle{P}{FP}{Ps}
-			\rightangle{aB}{FQ}{Qs}
-			
-			% spostamenti (DOPO: sovrascrivono il grigio)
-			\draw[->, thick] (P) -- (Ps) node[pos=0.5,above left=-3pt] {$\ub_P$};
-			\draw[thick, midarrow] (Q) -- (Qs) node[pos=0.5,left=1pt] {$\ub_Q$};
-			\draw[->, thick] (Q) -- (QuP);
-			\draw[thick, midarrow] (QuP) -- (Qs) node[pos=0.5,right=1pt] {$\ub_Q-\ub_P$};
-			
-			% etichette delle proiezioni collegate con una freccia di richiamo
-			%\node (lpP) at (1.85,0.02) {$\ub_P\!\cdot\ab_{PQ}$};
-			%\draw[gray!60] (P) -- (FP);
-			\node (lpP) at (1.80,0.45) {$\ub_P\!\cdot\ab_{PQ}$};
-			\draw[->, thin] (lpP) -- ($(P)!0.45!(FP)$);
-			\node (lpQ) at (4.75,0.72) {$\ub_Q\!\cdot\ab_{PQ}$};
-			\draw[->, thin] (lpQ) -- ($(Q)!0.5!(FQ)$);
-			
-			\node[open,label={below:$O$}] at (O) {};
-			\node[pt,label={left:$P$}]  at (P) {};
-			\node[pt,label={[xshift=2pt]above left:$Q$}] at (Q) {};
-			\node at (3.6,-1.0) {(b)};
-		\end{tikzpicture}
-	}
-	\caption{(a)~Spostamenti rigidi e (b)~interpretazione geometrica della condizione di ortogonalità fra il vettore posizione relativo $\protect\overrightarrow{PQ}$ e il vettore relativo degli spostamenti infinitesimi $\ub_Q - \ub_P$.}
-	\label{fig:orto_PQ_spost_relat}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-orto-PQ-spost-relat}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Questa condizione di \textit{ortogonalità} fra il vettore congiungente e 
 lo spostamento relativo ha un significato geometrico limpido: le proiezioni 
@@ -421,103 +307,9 @@ I due termini hanno un'interpretazione immediata (cfr.~\FIGref{fig:spostamenti_f
 	di modulo $|\overrightarrow{OP}|\,(1-\cos\vartheta)$.
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!ht]
-	\centering
-	\tikzset{midarrow/.style={postaction={decorate},
-			decoration={markings, mark=at position 0.55 with {\arrow{Stealth}}}}}
-	\resizebox{0.90\textwidth}{!}{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2,
-			pt/.style={circle,fill,inner sep=1.3pt}]
-			
-			%==================== PANNELLO (a) ====================
-			\begin{scope}
-				\coordinate (Om) at (1.6,-0.1);
-				\coordinate (O)  at (0.6,1.0);
-				\coordinate (P)  at (2.8,1.0);
-				\coordinate (Os) at (0.9,2.2);
-				\coordinate (M)  at (3.1,2.2);
-				\coordinate (Ps) at (2.0,4.105);
-				
-				\draw[->, thin] (Om) -- (O) node[pos=0.5,below left=-2pt] {$\xb_O$};
-				\draw[->, thin] (Om) -- (P) node[pos=0.5,below right=-2pt] {$\xb_P$};
-				
-				\draw[thick, midarrow] (O) -- (P) node[midway,below=2pt] {$\overrightarrow{OP}$};
-				\draw[->, thick] (O) -- (Os) node[midway,left=1pt] {$\ub_O$};
-				\draw[->, thick] (P) -- (M)  node[midway,right=1pt] {$\ub_O$};
-				
-				\draw[->, gray!70] (Os) -- (M) node[pos=0.42,below=1pt,gray!70] {$\overrightarrow{OP}$};
-				\draw[->, gray!70] (Os) -- (Ps);
-				\draw[->, thin] ($(Os)+(0:0.85)$) arc[start angle=0, end angle=60, radius=0.85];
-				\node at ($(Os)+(30:0.5)$) {$\vartheta$};
-				
-				\draw[gray!65] ($(Os)+(0:2.2)$) arc[start angle=0, end angle=60, radius=2.2];
-				
-				\draw[thick, midarrow] (M) -- (Ps) node[pos=0.55,right=2pt] {$\Rbb\,\overrightarrow{OP}$};
-				\draw[thick, midarrow] (P) -- (Ps) node[pos=0.5,left=1pt] {$\ub_P$};
-				
-				\node[pt,label={below left:$O$}]   at (O)  {};
-				\node[pt,label={above left:$O_*$}] at (Os) {};
-				\node[pt,label={below right:$P$}]  at (P)  {};
-				\node[pt,label={above:$P_*$}]      at (Ps) {};
-				\node[below=1pt] at (Om) {$\Omega$};
-				
-				\node at (2.7,-0.50) {(a)};
-			\end{scope}
-			
-			%==================== PANNELLO (b) ====================
-			\begin{scope}[xshift=5.0cm]
-				\coordinate (O)  at (0.6,1.0);
-				\coordinate (P)  at (2.8,1.0);
-				\coordinate (Os) at (0.9,2.2);
-				\coordinate (M)  at (3.1,2.2);
-				\coordinate (Ps) at (2.0,4.105);
-				\coordinate (Q)  at (3.1,4.105);     % spigolo: M + tangenziale
-				
-				\draw[thick, midarrow] (O) -- (P) node[midway,below=2pt] {$\overrightarrow{OP}$};
-				\draw[->, thick] (O) -- (Os) node[midway,left=1pt] {$\ub_O$};
-				\draw[->, thick] (P) -- (M)  node[midway,right=1pt] {$\ub_O$};
-				
-				\draw[->, gray!70] (Os) -- (M) node[pos=0.42,below=1pt,gray!70] {$\overrightarrow{OP}$};
-				\draw[->, gray!70] (Os) -- (Ps);
-				\draw[->, thin] ($(Os)+(0:0.85)$) arc[start angle=0, end angle=60, radius=0.85];
-				\node at ($(Os)+(30:0.5)$) {$\vartheta$};
-				
-				\draw[gray!65] ($(Os)+(0:2.2)$) arc[start angle=0, end angle=60, radius=2.2];
-				
-				% corda (spostamento rotazionale) e u_P
-				\draw[thick, midarrow] (M) -- (Ps);
-				\draw[thick, midarrow] (P) -- (Ps) node[pos=0.5,left=1pt] {$\ub_P$};
-				
-				% triangolo rettangolo della decomposizione + angolo retto in Q
-				\draw[thin] (M) -- (Q);
-				\draw[thin] (Q) -- (Ps);
-				\draw[line width=0.5pt] ($(Q)+(-0.16,0)$) -- ($(Q)+(-0.16,-0.16)$) -- ($(Q)+(0,-0.16)$);
-				
-				% quota verticale |OP| sin theta (trattini + frecce terminali)
-				\draw[dashed, gray!55] (M) -- ++(0.6,0);
-				\draw[dashed, gray!55] (Q) -- ++(0.6,0);
-				\draw[<->, thin] ($(M)+(0.48,0)$) -- ($(Q)+(0.48,0)$)
-				node[midway,right=1pt] {$|\overrightarrow{OP}|\sin\vartheta$};
-				
-				% quota orizzontale |OP|(1-cos theta)
-				\draw[dashed, gray!55] (Q)  -- ++(0,0.5);
-				\draw[dashed, gray!55] (Ps) -- ++(0,0.5);
-				\draw[<->, thin] ($(Ps)+(0,0.4)$) -- ($(Q)+(0,0.4)$)
-				node[midway,above=0pt] {$|\overrightarrow{OP}|(1-\cos\vartheta)$};
-				
-				\node[pt,label={left:$O$}]   at (O)  {};
-				\node[pt,label={left:$O_*$}] at (Os) {};
-				\node[pt,label={right:$P$}]  at (P)  {};
-				\node[pt,label={[xshift=-3pt] left:$P_*$}] at (Ps) {};
-				
-				\node at (2.7,-0.50) {(b)};
-			\end{scope}
-			
-		\end{tikzpicture}
-	}
-	\caption{\textbf{\textit{(a)}}~Rappresentazione geometrica di una traslazione e di una rotazione finita nel piano, dove il punto $O$ si sposta in $O_*$ e il punto $P$ si sposta in $P_*$, con origine del sistema di riferimento in $\Omega$. Il vettore $\ub(O)$ rappresenta la traslazione di $O$, mentre $\ub(P)$ è lo spostamento totale di $P$, e $\Rbb \protect\overrightarrow{OP}$ è il vettore $\protect\overrightarrow{OP}$ ruotato di $\vartheta$. \textbf{\textit{(b)}}~Scomposizione dello spostamento del punto $P$ in $P_*$ come somma della traslazione $\ub(O)$ e della rotazione, con la componente rotazionale decomposta nelle direzioni ortogonale ($|\protect\overrightarrow{OP}|\sin\vartheta$) e parallela ($|\protect\overrightarrow{OP}|(1-\cos\vartheta)$) rispetto al vettore posizione $\protect\overrightarrow{OP}$.}
-	\label{fig:spostamenti_finiti}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-spostamenti-finiti}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Restringiamoci ora al caso di una rotazione piccola, con $\vartheta$ dello stesso ordine di $\delta$ — l'unico parametro di piccolezza in gioco in tutta la teoria infinitesima. In questo regime $\sin\vartheta \approx \vartheta$ e $\cos\vartheta - 1 \approx -\vartheta^2/2 \approx 0$, trascurando come sempre i termini $O(\delta^2)$: la componente tangenziale è del primo ordine in $\vartheta$ (cioè in $\delta$), la componente radiale è del secondo ordine e scompare. Lo spostamento rigido infinitesimo nel piano è dunque
 \begin{equation}\label{eq:FFCI_piano_deriv}
@@ -636,62 +428,9 @@ fra due punti è tangenziale.
 	$\overrightarrow{OP}$; per i punti sull'asse ($d=0$) il contributo
 	rotazionale è nullo (\FIGref{fig:termine_rotazionale}).
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\begin{figure}[H]
-		\centering
-		\tikzset{midarrow/.style={postaction={decorate},
-				decoration={markings, mark=at position 0.58 with {\arrow{Stealth}}}}}
-		\resizebox{0.66\textwidth}{!}{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.25,
-				pt/.style={circle,fill,inner sep=1.3pt}]
-				
-				% proiezione obliqua:  (x,y,z) -> (x + 0.45 y , 0.26 y + z)
-				\coordinate (O)    at (0,0);
-				\coordinate (Ppi)  at (2.54,0.312);   % P_pi = proiezione di P nel piano
-				\coordinate (P)    at (2.54,1.612);   % P sopra il piano
-				\coordinate (Ad)   at (0,1.30);       % piede di d sull'asse (quota di P)
-				\coordinate (C1) at (-1.95,-0.26);    % piano pi
-				\coordinate (C2) at ( 3.55,-0.26);
-				\coordinate (C3) at ( 4.90, 0.52);
-				\coordinate (C4) at (-0.60, 0.52);
-				
-				% piano pi
-				\draw[thin] (C1) -- (C2) -- (C3) -- (C4) -- cycle;
-				\node at (-1.2,-0.06) {$\pi$};
-				
-				% asse per O parallelo a theta (tratteggiato) + theta assiale (doppia freccia)
-				\draw[dashed, gray!60] (0,-0.7) -- (0,1.75);
-				\draw[->>, thick] (0,1.75) -- (0,2.55) node[pos=0.6,left=2pt] {$\bm{\upvartheta}$};
-				
-				% componenti
-				\draw[->, thick] (O) -- (Ppi) node[pos=0.80,below] {$\overrightarrow{OP}_{\!\perp}$};
-				\draw[->, thick] (Ppi) -- (P) node[pos=0.5,right=1pt] {$\overrightarrow{OP}_{\!\parallel}$};
-				
-				% OP totale (freccia a meta', per non affollare P)
-				\draw[thick, midarrow] (O) -- (P) node[pos=0.52,above left=-2pt] {$\overrightarrow{OP}$};
-				
-				% distanza d dall'asse (alla quota di P, parallela a OP_perp)
-				\draw[thin] (Ad) -- (P) node[pos=0.5,above=1pt] {$d$};
-				
-				% angolo alpha in O fra OP e OP_perp
-				\draw[->, thin] ($(O)+(7:0.7)$) arc[start angle=7, end angle=32.4, radius=0.7];
-				\node at ($(O)+(19:0.92)$) {$\alpha$};
-				
-				% punti
-				\node[pt,label={left:$O$}]           at (O)   {};
-				\node[pt,label={right:$P$}]     at (P)   {};
-				\node[pt,label={right:$P_\pi$}] at (Ppi) {};
-				
-			\end{tikzpicture}
-		}
-		\caption{Interpretazione geometrica del termine rotazionale
-			$\bm{\upvartheta} \times \protect\overrightarrow{OP}$:
-			la componente $\protect\overrightarrow{OP}_{\!\perp}$, ortogonale
-			all'asse di rotazione, determina la distanza $d$ del punto $P$
-			dall'asse; lo spostamento rotazionale ha modulo
-			$|\bm{\upvartheta}|\,d$ ed è tangente alla circonferenza
-			di raggio $d$.}
-		\label{fig:termine_rotazionale}
-	\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-termine-rotazionale}
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{oss}
 
@@ -753,111 +492,9 @@ le coordinate di $O$ si annullano e la formula si semplifica in
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-\begin{figure}[htbp]
-	\centering
-	\subfloat[][\emph{caso tridimensionale}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-			
-			\def\ax{-0.650}\def\ay{-0.500}
-			
-			\coordinate (O) at (0,0);
-			\coordinate (A) at (-0.975, -0.750);
-			\coordinate (B) at ( 2.000,  0.000);
-			\coordinate (C) at ( 0.000,  1.800);
-			\coordinate (D) at ( 1.025, -0.750);
-			\coordinate (E) at ( 2.000,  1.800);
-			\coordinate (F) at (-0.975,  1.050);
-			\coordinate (P) at ( 1.025,  1.050);
-			
-			\draw[dashed, gray!45] (O) -- (A);
-			\draw[dashed, gray!45] (O) -- (B);
-			\draw[dashed, gray!45] (O) -- (C);
-			\draw[dashed, gray!45] (A) -- (D);
-			\draw[dashed, gray!45] (A) -- (F);
-			\draw[dashed, gray!45] (B) -- (D);
-			\draw[dashed, gray!45] (B) -- (E);
-			\draw[dashed, gray!45] (C) -- (E);
-			\draw[dashed, gray!45] (C) -- (F);
-			\draw[dashed, gray!45] (D) -- (P);
-			\draw[dashed, gray!45] (E) -- (P);
-			\draw[dashed, gray!45] (F) -- (P);
-			
-			\draw[->, thin] (0,0) -- ({\ax*3.2},{\ay*3.2}) node[below left] {$x$};
-			\draw[->, thin] (0,0) -- (3.2,0)  node[right] {$y$};
-			\draw[->, thin] (0,0) -- (0,3.2)  node[above] {$z$};
-			\node[below=1pt] at (O) {$O$};
-			
-			\draw[->, thick] (O) -- (0, 0.6)
-			node[left=1pt] {$w_O$};
-			\draw[->, thick] (O) -- (0.6, 0)
-			node[below=1pt] {$v_O$};
-			\draw[->, thick] (O) -- ({\ax*0.6},{\ay*0.6})
-			node[left=1pt] {$u_O$};
-			
-			\draw[->>, thick] (0,1.8) -- (0, 2.5)
-			node[right=2pt] {$\vartheta_z$};
-			\draw[->>, thick] (2.0,0) -- (2.7, 0)
-			node[above=2pt] {$\vartheta_y$};
-			\draw[->>, thick] ({\ax*1.8},{\ay*1.8}) -- ({\ax*2.5},{\ay*2.5})
-			node[left=1pt] {$\vartheta_x$};
-			
-			\fill (P) circle (2pt) node[above right=2pt] {$P$};
-			
-			\draw[->, thick] (P) -- ++(0, 0.55)
-			node[above=1pt] {$w_P$};
-			\draw[->, thick] (P) -- ++(0.55, 0)
-			node[below right=-4pt] {$v_P$};
-			\draw[->, thick] (P) -- ++({\ax*0.55},{\ay*0.55})
-			node[below left=6pt]  at (P) {$u_P$};
-			
-			\node[below=3pt, xshift=-2pt, yshift=-6pt]       at (B) {\small$x_P$};
-			\node[right=2pt, yshift=-20pt]        at (P) {\small$z_P$};
-			\node[below right=5pt, xshift=10pt] at (A) {\small$y_P$};
-			
-	\end{tikzpicture}}%
-	\hspace{0.04\textwidth}%
-	\subfloat[][\emph{caso piano}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-			
-			\coordinate (O) at (0,0);
-			
-			\draw[->, thin] (-0.4,0) -- (3.5,0) node[right] {$x$};
-			\draw[->, thin] (0,-0.4) -- (0,3.2) node[above] {$y$};
-			\node[below left=2pt] at (O) {$O$};
-			
-			\draw[->, thick] (O) -- (0.65, 0)
-			node[below=2pt] {$u_O$};
-			\draw[->, thick] (O) -- (0, 0.65)
-			node[left=2pt] {$v_O$};
-			
-			\draw[->, thick] (0.55, 0) arc[start angle=0, end angle=75, radius=0.55];
-			\node at (0.60, 0.52) {$\vartheta$};
-			
-			\coordinate (P) at (2.5, 2.2);
-			\fill (P) circle (2pt) node[above right=2pt] {$P$};
-			
-			\draw[->, thick] (P) -- ++(0.60, 0)
-			node[below=2pt] {$u_P$};
-			\draw[->, thick] (P) -- ++(0, 0.60)
-			node[left=2pt] {$v_P$};
-			
-			\draw[dashed, gray!50] (P) -- (2.5, 0)
-			node[midway, right=1pt, text=black] {\small$y_P$};
-			\draw[dashed, gray!50] (P) -- (0, 2.2)
-			node[midway, above=1pt, text=black] {\small$x_P$};
-			
-			\draw[thin] (2.5, 0.06) -- (2.5,-0.06);
-			\draw[thin] (0.06, 2.2) -- (-0.06, 2.2);
-			
-	\end{tikzpicture}}
-	\caption{Parametri cinematici del corpo rigido e componenti dello
-		spostamento di un punto generico $P$ nel caso
-		\textbf{\textit{(a)}}~tridimensionale (sei gradi di libertà:
-		$u_O$, $v_O$, $w_O$, $\vartheta_x$, $\vartheta_y$, $\vartheta_z$)
-		e \textbf{\textit{(b)}}~piano (tre gradi di libertà:
-		$u_O$, $v_O$, $\vartheta$).}
-	\label{fig:GDL_3D_piano}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-GDL-3D-piano}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 
 \paragraph{Restrizione al caso piano.}
@@ -1053,115 +690,9 @@ spostamenti (\FIGref{fig:asse_centrale_spostamenti}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-\begin{figure}[htbp]
-	\centering
-	\usetikzlibrary{arrows.meta,calc,decorations.markings,angles,quotes}
-	% --- proiezione obliqua: (x=profondita', y=oriz, z=vert) -> schermo ---
-	\def\ax{0.5}\def\ay{0.30}
-	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
-	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
-	\begin{tikzpicture}[scale=1.4, >=Stealth, line width=0.8pt]
-		
-		%==== coordinate 3D (x=profondita', y=oriz, z=vert) ====
-		\coordinate (Pi1) at (\xyz{-1.3}{-1.0}{0});   % era {-1.3}{-0.7}
-		\coordinate (Pi2) at (\xyz{-1.3}{ 4.5}{0});   % era {-1.3}{ 3.5}
-		\coordinate (Pi3) at (\xyz{ 2.7}{ 4.5}{0});   % era { 2.7}{ 3.5}
-		\coordinate (Pi4) at (\xyz{ 2.7}{-1.0}{0});   % era { 2.7}{ 3.5}→ refuso: era { 2.7}{ 3.5}
-		
-		% O e suo asse
-		\coordinate (O)     at (\xyz{1.6}{0.5}{0});
-		\coordinate (Otop)  at (\xyz{1.6}{0.5}{2.7});
-		\coordinate (Obot)  at (\xyz{1.6}{0.5}{-0.8});
-		\coordinate (ThOa)  at (\xyz{1.6}{0.5}{1.10});
-		\coordinate (ThOb)  at (\xyz{1.6}{0.5}{1.90});
-		\coordinate (curlO) at (\xyz{1.6}{0.5}{2.12});
-		\coordinate (uparO) at (\xyz{1.6}{0.5}{0.90});
-		
-		% u_perp(O): ora verso il BASSO-SINISTRA
-		\coordinate (uperpO) at (\xyz{0.76}{0.26}{0});  % era {0.2}{0.1}
-		
-		% P_pi davanti-destra (OP_pi va in basso-destra): base 0.2,2.3 (era 1.886,2.5)
-		\coordinate (Ppi)   at (\xyz{0.2}{2.3}{0});
-		\coordinate (Ctop)  at (\xyz{0.2}{2.3}{2.7});
-		\coordinate (Cbot)  at (\xyz{0.2}{2.3}{-0.8});
-		\coordinate (ThCa)  at (\xyz{0.2}{2.3}{1.10});
-		\coordinate (ThCb)  at (\xyz{0.2}{2.3}{1.90});
-		\coordinate (curlC) at (\xyz{0.2}{2.3}{2.12});
-		\coordinate (uparC) at (\xyz{0.2}{2.3}{0.90});
-		
-		% prodotto vettoriale = -u_perp(O): ora verso l'ALTO-DESTRA
-		\coordinate (cross)  at (\xyz{1.04}{2.54}{0});  % era {1.6}{2.7}
-		\coordinate (Bpar) at (\xyz{-0.64}{2.06}{0});
-		
-		
-		%==== piano pi ====
-		\draw[gray!60] (Pi1) -- (Pi2) -- (Pi3) -- (Pi4) -- cycle;
-		\node[gray!75] at ($(Pi1)+(0.58,0.14)$) {$\pi$};
-		
-		%==== assi verticali ====
-		\draw[gray!55, thin] (Obot) -- (Otop);
-		\draw[gray!55, thin] (Cbot) -- (Ctop);
-		
-		%==== parallelogramma di lati u_perp(O) e OP_pi (evidenziato) ====
-		\filldraw[gray!10, draw=gray!55, thin]	(O) -- (uperpO) -- (Bpar) -- (Ppi) -- cycle;
-		
-		%==== triangolo O--C_perp--(f x OC_perp) ====
-		\fill[gray!10] (O) -- (Ppi) -- (cross) -- cycle;
-		
-		% u_perp(O) traslato in P_pi: opposto e collineare al prodotto vettoriale
-		\draw[->,  thin] (Ppi) -- (Bpar);
-		%\node[font=\small, below=4pt, right] at (Bpar) {$\ub_{\perp}(O)$};
-		
-		%==== segmento O--(punta di vartheta x OP_pi) e ampiezza di rotazione vartheta ====
-		\draw[draw=gray!75, thin] (O) -- (cross);
-		\pic[draw=black, ->, thin, angle radius=10mm, angle eccentricity=1.25,	"$\vartheta$"{font=\small, inner sep=1pt}] {angle = Ppi--O--cross};
-		
-		%==== vettori rotazione assiali + riccioli (sopra la doppia freccia) ====
-		\draw[->>, thick] (ThOa) -- (ThOb) node[right=1pt] {$\bm{\upvartheta}$};
-		\draw[->>, thick] (ThCa) -- (ThCb) node[right=1pt] {$\bm{\upvartheta}$};
-		\draw[->, thin] ([shift={(0.22,0)}]curlO)
-		arc[x radius=0.22, y radius=0.085, start angle=0, end angle=305];
-		\draw[->, thin] ([shift={(0.22,0)}]curlC)
-		arc[x radius=0.22, y radius=0.085, start angle=0, end angle=305];
-		
-		%==== costruzione nel piano ====
-		
-		\draw[midarrow,thin] (O) -- (Ppi) node[font=\small, midway, sloped, below,xshift=-12pt] {$\overrightarrow{OC_\perp}$};
-		
-		\draw[->, thick] (O) -- (uperpO);
-		\node[above=1pt] at (uperpO) {$\ub_{\perp}(O)$};
-		\draw[->, thick] (O) -- (uparO);
-		\node[right=1pt] at ($(O)!0.6!(uparO)$) {$\ub_{\parallel}$};
-		
-		%==== a P_pi ====
-		\draw[->, thick] (Ppi) -- (uparC);
-		\node[right=1pt] at ($(Ppi)!0.6!(uparC)$) {$\ub_{\parallel}$};
-		\draw[->, thick] (Ppi) -- (cross);
-		\node[below right=-6pt] at (cross) {$\bm{\upvartheta}\times\overrightarrow{OC_\perp}$};
-		
-		%==== punti ====
-		\fill (O)   circle (1.5pt) node[above right=-1pt] {$O$};
-		\fill (Ppi) circle (1.5pt) node[below right=-4pt] {$C_\perp$};
-		
-		%==== annotazione asse centrale ====
-		\node[align=left, font=\footnotesize] (lab) at ($(Ctop)+(1.8,-0.3)$)	{asse centrale degli\\spostamenti infinitesimi};
-		\draw[->, thin] ($(lab.north west)+(0,-0.18)$) -- ($(Ctop)!0.18!(ThCb)$);
-		
-		
-	\end{tikzpicture}%
-	\caption{Costruzione geometrica dell'asse centrale degli
-		spostamenti rigidi infinitesimi. Lo spostamento di $O$
-		si decompone nella componente $\ub_{\parallel}$,
-		parallela a $\bm{\upvartheta}$ e invariante per tutti
-		i punti del corpo, e nella componente $\ub_{\perp}(O)$,
-		giacente nel piano $\pi$ ortogonale a $\bm{\upvartheta}$.
-		Il punto $C_\perp$, intersezione dell'asse centrale con
-		$\pi$, è determinato dalla condizione
-		$\bm{\upvartheta} \times \protect\overrightarrow{OC_\perp}
-		= -\ub_{\perp}(O)$; l'asse centrale è la retta per
-		$C_\perp$ parallela a $\bm{\upvartheta}$.}
-	\label{fig:asse_centrale_spostamenti}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-asse-centrale-spostamenti}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 
 
@@ -1417,132 +948,9 @@ di $O$ dà direttamente
 dove $(x^*, y^*)$ sono le coordinate di $P$ in un riferimento
 con origine in $C$ ed assi equiorientati a $(x, y)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
-\begin{figure}[htbp]
-	\centering
-	\subfloat[][\emph{$|\vartheta_2|=\tfrac{1}{3}|\vartheta_1|$,
-		$|OC_2|=3|OC_1|$: al tendere di $|\vartheta|\to 0$
-		il centro si allontana all'infinito lungo la normale a $\ub_O$}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-			
-			\coordinate (O)  at (0,0);
-			\coordinate (uO) at ({1.5*cos(30)},{1.5*sin(30)});
-			\coordinate (C1) at (-0.500, 0.866);
-			\coordinate (C2) at (-1.500, 2.598);
-			
-			% Retta normale tratteggiata con freccia verso infinito
-			\draw[dashed, gray!60]
-			({-0.3*cos(120)},{-0.3*sin(120)}) --
-			({3.0*cos(120)}, {3.0*sin(120)});
-			\draw[->, dashed, gray!60]
-			({3.0*cos(120)},{3.0*sin(120)}) --
-			({3.6*cos(120)},{3.6*sin(120)})
-			node[above left=1pt] {\small$\vartheta\to 0$};
-			
-			% Vettore u(O)
-			\draw[->, thick] (O) -- (uO) node[right=2pt] {$\ub_O$};
-			
-			% Angolo retto
-			\draw[thin]
-			({0.18*cos(30)},{0.18*sin(30)}) --
-			({0.18*cos(30)+0.18*cos(120)},{0.18*sin(30)+0.18*sin(120)}) --
-			({0.18*cos(120)},{0.18*sin(120)});
-			
-			% Rette da C1 e C2 verso estremo di u(O)
-			\draw[gray!50, thin] (C1) -- (uO);
-			\draw[gray!50, thin] (C2) -- (uO);
-			
-			% Arco vartheta1 in C1
-			\draw[-{Stealth[bend]}, thick]
-			({-0.5+0.45*cos(300)},{0.866+0.45*sin(300)})
-			arc[start angle=300, end angle=356, radius=0.45];
-			
-			\node at ({-0.4+0.62*cos(328)},{0.786+0.62*sin(328)})
-			{\small$\vartheta_1$};
-			
-			% Arco vartheta2 in C2
-			\draw[->, thick] ({-1.5+0.7*cos(300)},{2.598+0.7*sin(300)})
-			arc[start angle=300, end angle=327, radius=0.7];
-			\node at ({-1.4+0.88*cos(313)},{2.598+0.98*sin(313)})
-			{\small$\vartheta_2$};
-			
-			% Quote a sinistra
-			\draw[<->, thin]
-			({-0.55*cos(30)},  {-0.55*sin(30)}) --
-			({-0.55*cos(30)-0.5},  {-0.55*sin(30)+0.866})
-			node[midway, left=3pt] {\small$\dfrac{|\ub_O|}{|\vartheta_1|}$};
-			\draw[<->, thin]
-			({-1.6*cos(30)},  {-1.6*sin(30)}) --
-			({-1.6*cos(30)-1.5},  {-1.6*sin(30)+2.598})
-			node[midway, left=3pt] {\small$\dfrac{|\ub_O|}{|\vartheta_2|}$};
-			
-			% Punti
-			\fill (O)  circle (2pt)   node[below right=2pt] {$O$};
-			\fill (C1) circle (2.5pt) node[left=3pt] {$C_1$};
-			\fill (C2) circle (2.5pt) node[left=3pt] {$C_2$};
-			
-	\end{tikzpicture}}%
-	\hspace{0.04\textwidth}%
-	\subfloat[][\emph{le coordinate $(x^*,y^*)$ di un punto $P$
-		rispetto al riferimento locale in $C$ entrano direttamente
-		nella formula degli spostamenti rigidi}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-			
-			\coordinate (O) at (0,0);
-			\coordinate (C) at (-0.500, 0.866);
-			
-			% Assi x, y
-			\draw[->, thin] (-1.5,0) -- (2.2,0) node[right] {$x$};
-			\draw[->, thin] (0,-0.4) -- (0,2.5) node[above] {$y$};
-			\node[below left=0.1pt] at (O) {$O$};
-			
-			% Vettore u(O)
-			\draw[->, thick] (O) -- ({1.5*cos(30)},{1.5*sin(30)})
-			node[right=2pt] {$\ub_O$};
-			
-			% Componenti tratteggiate
-			\draw[dashed, gray!60]
-			({1.5*cos(30)},0) -- ({1.5*cos(30)},{1.5*sin(30)});
-			\draw[dashed, gray!60]
-			(0,{1.5*sin(30)}) -- ({1.5*cos(30)},{1.5*sin(30)});
-			\node[below=0.1pt] at ({1.5*cos(30)/2}, 0) {\small$u_O$};
-			\node[left=0.1pt] at (0, {1.5*sin(30)/2}) {\small$v_O$};
-			
-			% Centro C nel secondo quadrante
-			\fill[white] (C) circle (3pt);
-			\draw[thick] (C) circle (3pt);
-			\node[above left=2pt] at (C) {$C$};
-			
-			% Assi x*, y* da C (prolungati)
-			\draw[->, thin, gray!50] (-1.4, 0.866) -- (0.3, 0.866)
-			node[right] {\small$x^*$};
-			\draw[->, thin, gray!50] (-0.5, 0.1) -- (-0.5, 2.0)
-			node[above] {\small$y^*$};
-			
-			% Linee tratteggiate proiezioni di C
-			\draw[dashed, gray!60] (-0.5, 0) -- (C);
-			\draw[dashed, gray!60] (0, 0.866) -- (C);
-			
-			% Quote
-			\draw[<->, thin] (0,-0.6) -- (-0.5,-0.6)
-			node[midway, below] {\small$x_C{=}{-}\dfrac{v_O}{\vartheta}$};
-			\draw[<->, thin] (-1.3,0) -- (-1.3,0.866)
-			node[midway, left=2pt] {\small$y_C{=}\dfrac{u_O}{\vartheta}$};
-			
-			% Tacche sugli assi
-			\draw[thin] (-0.5, 0.05) -- (-0.5,-0.05);
-			\draw[thin] (0.05, 0.866) -- (-0.05, 0.866);
-			
-	\end{tikzpicture}}
-	\caption{Centro di rotazione nel caso piano.
-		\textbf{\textit{(a)}}~Costruzione geometrica:
-		$C$ si ottiene ruotando $\ub_O$ di $90^\circ$ nel verso
-		di $\vartheta$ e riscalando di $1/|\vartheta|$.
-		\textbf{\textit{(b)}}~Riferimento locale con origine in $C$
-		e assi $x^*$, $y^*$ paralleli a $x$, $y$: le coordinate
-		$(x^*, y^*)$ di un punto $P$ entrano direttamente
-		nella~\eqref{eq:spost_da_CR}.}
-	\label{fig:centro_rotazione}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-centro-rotazione}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 
 
@@ -1556,7 +964,7 @@ con origine in $C$ ed assi equiorientati a $(x, y)$.
 	spostamento.
 \end{oss}
 
-\subsection{Costruzione grafica del centro di rotazione}
+\subsection{Costruzione grafica del centro di rotazione}\label{CR_graf}
 Dalla \eqref{eq:vettore_OC} segue una proprietà utile: poiché
 \begin{equation}
 \overrightarrow{OC}	\cdot\ub(O)=(\ab_z\times\ub(O))\cdot\ub(O) = 0,
@@ -1575,13 +983,9 @@ perpendicolari, rispettivamente, a $\ub(P_1)$ e a $\ub(P_2)$: non essendo
 parallele le direzioni cui sono perpendicolari, le due rette si incontrano
 in un solo punto.
 
-\begin{figure}
-	\centering
-	\includegraphics[scale=1.1]{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/chasles}
-	\caption{Costruzioni grafica del centro di rotazione. Noti gli spostamenti di due punti $P_1$ e $P_2$ (sinistra) non paralleli, il centro di rotazione è univocamente determinato.
-	Nel caso di traslazione pura (destra) il centro è improprio.}
-	\label{fig:chasles}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-chasles}
+
 
 
 Se invece $\ub(P_1)\parallel\ub(P_2)$, si distinguono due casi: se ciò
@@ -1662,83 +1066,9 @@ rispettive ampiezze $\vartheta_i$ (\FIGref{fig:composizione_rot}). La
 \eqref{eq:comp_rot_baricentro} è indipendente dalla scelta del punto $O$, come si
 verifica immediatamente sostituendo un diverso punto di riferimento.
 
-\begin{figure}[!htbp]
-	\centering
-	\def\ax{0.5}\def\ay{0.30}
-	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
-	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
-	\resizebox{\textwidth}{!}{%
-		\begin{tikzpicture}[baseline=(current bounding box.center),>=Stealth, line width=0.8pt, scale=1.1]
-			\def\ax{0.5}\def\ay{-0.30}
-			\begin{scope}[local bounding box=panA]
-				\draw[gray!60] (\xyz{-1.5}{-0.9}{0}) -- (\xyz{-1.5}{4.7}{0})-- (\xyz{4.5}{4.7}{0}) -- (\xyz{4.5}{-0.9}{0}) -- cycle;
-				\node[gray!75] at (\xyz{4.35}{4.5}{0}) {$\pi$};
-				\coordinate (O) at (\xyz{0}{0}{0});
-				\draw[->, thin] (O) -- (\xyz{0.9}{0}{0})  node[below right=-2pt] {$\ab_x$};
-				\draw[->, thin] (O) -- (\xyz{0}{0.9}{0})  node[above=0pt]       {$\ab_y$};
-				\draw[->, thin] (O) -- (\xyz{0}{0}{1.05}) node[left=-1pt]       {$\ab_z$};
-				\newcommand{\axvec}[8]{%
-					\coordinate (#1)  at (\xyz{#2}{#3}{0});
-					\coordinate (#1t) at (\xyz{#2}{#3}{#4});
-					\draw[->>, #8] (#1) -- (#1t) node[right=0pt, inner sep=1pt] {#6};
-					\fill (#1) circle (1.4pt) node[#7, inner sep=1pt] {#5};
-				}
-				\axvec{C1}{2.6}{-0.02}{0.7}{$C_1$}{$\bm{\upvartheta}_1$}{below=2pt}{thick}
-				\axvec{Ci}{0.9}{3.6}{0.7}{$C_i$}{$\bm{\upvartheta}_i$}{below right=-2pt}{thick}
-				\axvec{Cn}{2.8}{3.9}{0.7}{$C_n$}{$\bm{\upvartheta}_n$}{below=2pt}{thick}
-				\axvec{CC}{1.8}{2.3}{1.5}{}{$\bm{\upvartheta}=\textstyle\sum_i\bm{\upvartheta}_i$}{below=2pt}{line width=1.3pt}
-				\fill (CC) circle (1.9pt) node[below=2pt, inner sep=1pt] {$C$};
-				\draw[gray!75, thin, midarrow] (O) -- (Ci);
-				\node[gray!75, font=\small, above] at ($(O)!0.86!(Ci)+(-0.75,0)$) {$\overrightarrow{OC_i}$};
-				\draw[->, gray!30!black, thin] (O) -- (CC);
-				\node[font=\small, below=1.5pt] at ($(O)!0.58!(CC)+(0.35,0)$) {$\overrightarrow{OC}$};
-				\fill (O) circle (1.5pt) node[above left=-2pt] {$O$};
-			\end{scope}
-			\begin{scope}[xshift=8.6cm, yshift=-1.05cm, local bounding box=panB]
-				\draw[->, thin] (-0.3,0) -- (5.4,0) node[right] {$x$};
-				\draw[->, thin] (0,-0.3) -- (0,3.4) node[above] {$y$};
-				\coordinate (C1) at (2.10,0.4);
-				\coordinate (Ci) at (1.8,2.6);
-				\coordinate (Cn) at (4.6,1.7);
-				\coordinate (CC) at (2.4667,1.8667);
-				\draw[->,gray!60, thin, midarrow] (CC)--(C1);
-				\draw[->,gray!60, thin] (CC)--(Ci);
-				\draw[->,gray!60, thin, midarrow] (CC)--(Cn);
-				\newcommand{\rotc}[4]{%
-					\draw[->, thick] ([shift={(-30:#2)}]#1)
-					arc[start angle=-30, end angle=210, radius=#2];
-					\node[inner sep=1pt] at ([shift={(#4:#2+0.20)}]#1) {#3};
-				}
-				\rotc{C1}{0.30}{$\vartheta_1$}{150}
-				\rotc{Ci}{0.30}{$\vartheta_i$}{95}
-				\rotc{Cn}{0.30}{$\vartheta_n$}{95}
-				\rotc{CC}{0.42}{}{0}
-				\node[inner sep=1pt] at ([shift={(0.6,0.60)}]CC) {$\vartheta=\textstyle\sum_i\vartheta_i$};
-				\fill (C1) circle (1.5pt) node[below] {$C_1$};
-				\fill (Ci) circle (1.5pt) node[left=10pt]       {$C_i$};
-				\fill (Cn) circle (1.5pt) node[below]      {$C_n$};
-				\fill (CC) circle (1.9pt) node[below=4pt]      {$C$};
-				\draw[->, gray!30!black, thin] (0,0) -- (CC);
-				\node[font=\small, above=1.5pt] at ($(0,0)!0.55!(CC)$) {$\overrightarrow{OC}$};
-				\fill (0,0) circle (1.3pt) node[below left=-2pt] {$O$};
-			\end{scope}
-			\path let \p1=(panA.south), \p2=(panB.south) in	coordinate (ybase) at (0,{min(\y1,\y2)-12pt});
-			\node[anchor=north] at (panA.south |- ybase) {(a)};
-			\node[anchor=north] at (panB.south |- ybase) {(b)};
-		\end{tikzpicture}
-	}
-	\caption{Composizione di $n$ rotazioni infinitesime nel piano.
-		(a)~Vista tridimensionale: le rotazioni sono vettori assiali
-		$\bm{\upvartheta}_i$ ortogonali al piano $\pi$, che si sommano nella
-		risultante $\bm{\upvartheta}=\protect\sum_i\bm{\upvartheta}_i$ in $C$.
-		(b)~Vista nel piano $(x,y)$: ampiezze $\vartheta_i$ come archi orientati
-		(positivi se antiorari) e centro risultante $C$ nel baricentro dei $C_i$.
-		Il centro $C$ è individuato da $\protect\overrightarrow{OC}=\protect\bigl(
-		\protect\sum_i\vartheta_i\,\protect\overrightarrow{OC_i}\protect\bigr)/\vartheta$
-		o, in forma equivalente, da $\protect\sum_i\vartheta_i\,
-		\protect\overrightarrow{CC_i}=\zerovb$ (frecce grigie in~(b)).}
-	\label{fig:composizione_rot}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-composizione-rot}
+
 
 Se la somma delle ampiezze è nulla ($\vartheta = 0$), il baricentro
 \eqref{eq:comp_rot_baricentro} non è definito: lo spostamento risultante è una
@@ -1864,46 +1194,9 @@ tre punti $C_i$, $C_j$ e $C_{ij}$ sono \textit{allineati}
 	$-\vartheta_j$ si ritrova immediatamente la~\eqref{eq:CR_relativo_pos}.
 \end{oss}
 
-\begin{figure}[htbp]
-	\centering
-	\subfloat[]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-			\draw[dashed, gray!50] (-0.8,0) -- (4.5,0);
-			\fill (0,0)  circle (2pt) node[below=5pt] {$C_i$};
-			\fill (3,0)  circle (2pt) node[below=5pt] {$C_j$};
-			\fill (2,0)  circle (2pt) node[below=5pt] {$C_{ij}$};
-			\draw[<->, thin] (0,-1.0) -- (2,-1.0) node[midway, below] {\small$\tfrac{2}{3}|C_iC_j|$};
-			\draw[<->, thin] (2,-1.0) -- (3,-1.0) node[midway, below] {\small$\tfrac{1}{3}|C_iC_j|$};
-			\draw[->, thick] (-0.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
-			\node[above] at (0,0.65) {\small$\vartheta_i$};
-			\draw[->, thick] (3.5,0.1) arc[start angle=20, end angle=160, radius=0.55];
-			\node[above] at (3,0.65) {\small$\vartheta_j{=}{-}2\vartheta_i$};
-	\end{tikzpicture}}%
-	\hspace{0.06\textwidth}%
-	\subfloat[]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-			\draw[dashed, gray!50] (-0.8,0) -- (5.5,0);
-			\fill (0,0)  circle (2pt) node[below=5pt] {$C_i$};
-			\fill (2,0)  circle (2pt) node[below=5pt] {$C_j$};
-			\fill (4,0)  circle (2pt) node[below=5pt] {$C_{ij}$};
-			\draw[thick] (0,0) -- (2,0);
-			\draw[<->, thin] (0,-1.0) -- (2,-1.0) node[midway, below] {\small$|C_iC_j|$};
-			\draw[<->, thin] (0,-1.6) -- (4,-1.6) node[midway, below] {\small$2|C_iC_j|$};
-			\draw[->, thick] (-0.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
-			\node[above] at (0,0.65) {\small$\vartheta_i$};
-			\draw[->, thick] (1.5,0.1) arc[start angle=160, end angle=20, radius=0.55];
-			\node[above] at (2,0.65) {\small$\vartheta_j{=}2\vartheta_i$};
-	\end{tikzpicture}}
-	\caption{Allineamento dei centri di rotazione $C_i$, $C_j$ e $C_{ij}$
-		con $|\vartheta_j| = 2|\vartheta_i|$.
-		\textbf{\textit{(a)}}~Rotazioni discordi ($\vartheta_i > 0$,
-		$\vartheta_j = -2\vartheta_i$): $C_{ij}$ cade all'interno del segmento
-		$C_iC_j$, a distanza $\tfrac{2}{3}|C_iC_j|$ da $C_i$.
-		\textbf{\textit{(b)}}~Rotazioni concordi ($\vartheta_i > 0$,
-		$\vartheta_j = 2\vartheta_i$): $C_{ij}$ cade all'esterno, oltre $C_j$,
-		a distanza $2|C_iC_j|$ da $C_i$.}
-	\label{fig:allineamento_CR}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-allineamento-CR}
+
 
 \begin{oss}[\textbf{Posizione del centro relativo}]
 	Il segno del coefficiente $-\vartheta_j/(\vartheta_i-\vartheta_j)$ nella
@@ -1940,59 +1233,9 @@ tre punti $C_i$, $C_j$ e $C_{ij}$ sono \textit{allineati}
 	concordi), negativo se interno (rotazioni discordi). L'allineamento dei centri
 	fornisce dunque sia la geometria che l'ampiezza degli spostamenti rigidi. 
 	
-	\begin{figure}[htbp]
-		\centering
-		\subfloat[][\emph{$C_{ij}$ interno: rotazioni discordi}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
-				\def\ang{22}
-				\def\tg{0.4040}
-				\coordinate (Ci)      at (0,0);
-				\coordinate (Cij)     at (2,0);
-				\coordinate (Cj)      at (3,0);
-				\coordinate (Cij_up)  at (2, {2*\tg});
-				\draw[dashed, gray!60] (-0.5,0) -- (4.2,0);
-				\draw[gray!50] (Ci) -- ({3.8*cos(\ang)}, {3.8*sin(\ang)});
-				\draw[->, thick] (0.9,0) arc[start angle=0, end angle=\ang, radius=0.9];
-				\node[right=1pt] at (0.85,0.20) {\small$\vartheta_i$};
-				\draw[<-, thick] ({3+0.7*cos(141)},{0.7*sin(141)}) arc[start angle=141, end angle=180, radius=0.7];
-				\node at ({4-1.42},{0.15}) {\small$\vartheta_j$};
-				\draw[->, dashed, thick] (Cij) -- (Cij_up);
-				\draw[thick, gray!60] (Cj) -- (Cij_up);
-				\fill (Ci)     circle (2pt) node[below=5pt] {$C_i$};
-				\fill (Cij)    circle (2pt) node[below=5pt] {$C_{ij}$};
-				\fill (Cj)     circle (2pt) node[below=5pt] {$C_j$};
-				\fill (Cij_up) circle (2pt);
-		\end{tikzpicture}}%
-		\hspace{0.03\textwidth}%
-		\subfloat[][\emph{$C_{ij}$ esterno: rotazioni concordi}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
-				\def\ang{22}
-				\def\tg{0.4040}
-				\coordinate (Ci)      at (0,0);
-				\coordinate (Cj)      at (2,0);
-				\coordinate (Cij)     at (4,0);
-				\coordinate (Cij_up)  at (4, {4*\tg});
-				\draw[dashed, gray!60] (-0.5,0) -- (5.2,0);
-				\draw[gray!50] (Ci) -- ({4.8*cos(\ang)}, {4.8*sin(\ang)});
-				\draw[->, thick] (0.9,0) arc[start angle=0, end angle=\ang, radius=0.9];
-				\node[right=1pt] at (0.85,0.20) {\small$\vartheta_i$};
-				\draw[->, thick] ({2+0.7},0) arc[start angle=0, end angle=39, radius=0.7];
-				\node at ({2+0.95},0.20) {\small$\vartheta_j$};
-				\draw[->, dashed, thick] (Cij) -- (Cij_up);
-				\draw[thick, gray!60] (Cj) -- (Cij_up);
-				\fill (Ci)     circle (2pt) node[below=5pt] {$C_i$};
-				\fill (Cj)     circle (2pt) node[below=5pt] {$C_j$};
-				\fill (Cij)    circle (2pt) node[below=5pt] {$C_{ij}$};
-				\fill (Cij_up) circle (2pt);
-		\end{tikzpicture}}
-		\caption{Cinematica grafica: determinazione di $\vartheta_j$ dalla posizione
-			dei centri e da $\vartheta_i$. La retta $C_iC_{ij}C_j$ ruota di $\vartheta_i$
-			attorno a $C_i$; lo spostamento verticale di $C_{ij}$ è proporzionale
-			alla sua distanza da $C_i$. La retta grigia da $C_j$ alla posizione ruotata
-			di $C_{ij}$ evidenzia per similitudine il rapporto
-			$|\vartheta_j|/|\vartheta_i| = |C_jC_{ij}|/|C_iC_{ij}|$.}
-		\label{fig:cinematica_grafica}
-	\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-cinematica-grafica}
+
 \end{oss}
 
 
@@ -2057,46 +1300,9 @@ cioè
 	C_{ij},\; C_{ik},\; C_{jk} \quad \text{sono allineati.}
 \end{equation}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.1]
-		\coordinate (Ci)  at (1.000, 0.500);
-		\coordinate (Cj)  at (4.500, 0.000);
-		\coordinate (Ck)  at (1.500, 3.500);
-		\coordinate (Cij) at (5.550, -0.150);
-		\coordinate (Cik) at (1.350,  2.600);
-		\coordinate (Cjk) at (3.450,  1.225);
-		\coordinate (ext1) at (0.090,  3.425);
-		\coordinate (ext2) at (4.710,  0.400);
-		\draw[gray!40, dashed] (-0.050, 0.650) -- (Ci) -- (Cj) -- (Cij) -- (6.100, -0.300);
-		\draw[gray!40, dashed] (0.850, -0.500) -- (Ci) -- (Ck) -- (1.650, 4.400);
-		\draw[gray!40, dashed] (5.400, -1.050) -- (Cj) -- (Ck) -- (0.600, 4.550);
-		\draw[thick, gray!60] (ext1) -- (Cik) -- (Cjk) -- (Cij) -- (6.600, -0.838);
-		\fill (Ci) circle (2.5pt);
-		\fill (Cj) circle (2.5pt);
-		\fill (Ck) circle (2.5pt);
-		\node[below left=3pt] at (Ci) {$C_i$};
-		\node[below=4pt]       at (Cj) {$C_j$};
-		\node[right=4pt]       at (Ck) {$C_k$};
-		\fill[white] (Cij) circle (3pt);
-		\draw[thick]  (Cij) circle (3pt);
-		\fill[white] (Cik) circle (3pt);
-		\draw[thick]  (Cik) circle (3pt);
-		\fill[white] (Cjk) circle (3pt);
-		\draw[thick]  (Cjk) circle (3pt);
-		\node[above=4pt] at (Cij) {$C_{ij}$};
-		\node[left=4pt]        at (Cik) {$C_{ik}$};
-		\node[above right=2pt] at (Cjk) {$C_{jk}$};
-	\end{tikzpicture}
-	\caption{Teorema di allineamento dei centri di rotazione relativi.
-		I tre corpi $\mathcal{C}_i$, $\mathcal{C}_j$, $\mathcal{C}_k$ hanno centri
-		assoluti $C_i$, $C_j$, $C_k$ (cerchi pieni). I centri di rotazione relativi
-		$C_{ij}$, $C_{ik}$, $C_{jk}$ --- ciascuno punto di uguale spostamento per la
-		coppia di corpi corrispondente --- sono allineati (cerchi vuoti, retta
-		grigia). Il centro $C_{ij}$ cade all'esterno del segmento $C_iC_j$,
-		coerentemente con il teorema di Menelao.}
-	\label{fig:allineamento_relativi}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/Figure/figura-allineamento-relativi}
+
 
 \begin{oss}
 	Il risultato è del tutto generale: vale per qualsiasi terna di corpi rigidi nel

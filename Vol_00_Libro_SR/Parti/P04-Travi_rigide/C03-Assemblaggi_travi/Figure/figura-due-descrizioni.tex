@@ -1,0 +1,108 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		>=Stealth, scale=0.90,
+		trv/.style    ={line width=1.8pt},
+		trvs/.style   ={line width=1.0pt, gray!60},
+		bordo/.style  ={line width=0.5pt},
+		bordos/.style ={line width=0.5pt, gray!60},
+		et/.style     ={font=\footnotesize},
+		ets/.style    ={font=\scriptsize, gray!60},
+		% simboli in grigio (pannello a): il nodo porta equazioni
+		ndcs/.style   ={circle, fill=white, draw=gray!60,
+			line width=0.7pt, inner sep=0pt, minimum size=5.5pt},
+		ndrs/.style   ={rectangle, fill=gray!60, draw=gray!60,
+			inner sep=0pt, minimum size=5pt},
+		% simboli in nero e maggiorati (pannello b): il nodo porta parametri
+		ndc/.style    ={circle, fill=white, draw=black,
+			line width=0.8pt, inner sep=0pt, minimum size=7pt},
+		ndr/.style    ={rectangle, fill=black, draw=black,
+			inner sep=0pt, minimum size=6.5pt}]
+		
+		% ═══════════════════════════════════════════════════════
+		%  PANNELLO (a) — descrizione per corpi
+		% ═══════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			\coordinate (A) at (0,0);     \coordinate (B) at (0,2.2);
+			\coordinate (C) at (3.0,2.2); \coordinate (D) at (3.0,0);
+			
+			% travi: portano i parametri
+			\draw[trv] (A)--(B);  \draw[trv] (B)--(C);  \draw[trv] (C)--(D);
+			\node[et] at (0.62,1.10) {$\bm{u}^{e_1}$};
+			\node[et] at (1.50,1.86) {$\bm{u}^{e_2}$};
+			\node[et] at (2.38,1.10) {$\bm{u}^{e_3}$};
+			
+			% vincoli al suolo (prima dei marcatori di nodo)
+			\draw[bordos] (A)--(-0.26,-0.45)--(0.26,-0.45)--cycle;
+			\draw[bordos] (-0.40,-0.45)--(0.40,-0.45);
+			\foreach \x in {-0.34,-0.20,...,0.41}
+			\draw[bordos] (\x,-0.45)--(\x-0.11,-0.61);
+			\draw[bordos] (D)--(2.74,-0.36)--(3.26,-0.36)--cycle;
+			\draw[bordos] (2.80,-0.46) circle (0.09);
+			\draw[bordos] (3.20,-0.46) circle (0.09);
+			\draw[bordos] (2.60,-0.57)--(3.40,-0.57);
+			\foreach \x in {2.66,2.80,...,3.41}
+			\draw[bordos] (\x,-0.57)--(\x-0.11,-0.73);
+			
+			% nodi: portano le equazioni
+			\node[ndrs] at (B) {};  \node[ets, above left=0pt]  at (B) {eq.};
+			\node[ndrs] at (C) {};  \node[ets, above right=0pt] at (C) {eq.};
+			\node[ndcs] at (A) {};  \node[ets, left=5pt]  at (A) {eq.};
+			\node[ndcs] at (D) {};  \node[ets, right=5pt] at (D) {eq.};
+			
+			\node[et] at (1.50,-1.15) {(a) descrizione per corpi};
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════
+		%  PANNELLO (b) — descrizione per nodi
+		% ═══════════════════════════════════════════════════════
+		\begin{scope}[xshift=7.2cm]
+			\coordinate (A) at (0,0);     \coordinate (B) at (0,2.2);
+			\coordinate (C) at (3.0,2.2); \coordinate (D) at (3.0,0);
+			
+			% travi: portano le equazioni
+			\draw[trvs] (A)--(B);  \draw[trvs] (B)--(C);  \draw[trvs] (C)--(D);
+			\node[ets] at (0.46,1.10) {eq.};
+			\node[ets] at (1.50,1.92) {eq.};
+			\node[ets] at (2.54,1.10) {eq.};
+			
+			% vincoli al suolo (prima dei marcatori di nodo)
+			\draw[bordo] (A)--(-0.26,-0.45)--(0.26,-0.45)--cycle;
+			\draw[bordo] (-0.40,-0.45)--(0.40,-0.45);
+			\foreach \x in {-0.34,-0.20,...,0.41}
+			\draw[bordo] (\x,-0.45)--(\x-0.11,-0.61);
+			\draw[bordo] (D)--(2.74,-0.36)--(3.26,-0.36)--cycle;
+			\draw[bordo] (2.80,-0.46) circle (0.09);
+			\draw[bordo] (3.20,-0.46) circle (0.09);
+			\draw[bordo] (2.60,-0.57)--(3.40,-0.57);
+			\foreach \x in {2.66,2.80,...,3.41}
+			\draw[bordo] (\x,-0.57)--(\x-0.11,-0.73);
+			
+			% nodi: portano i parametri
+			\node[ndr] at (B) {};  \node[et, above left=1pt]  at (B) {$\bm{u}_2$};
+			\node[ndr] at (C) {};  \node[et, above right=1pt] at (C) {$\bm{u}_3$};
+			\node[ndc] at (A) {};  \node[et, left=6pt]  at (A) {$\bm{u}_1$};
+			\node[ndc] at (D) {};  \node[et, right=6pt] at (D) {$\bm{u}_4$};
+			
+			\node[et] at (1.50,-1.15) {(b) descrizione per nodi};
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Le due descrizioni dello stesso assemblaggio, qui
+		con entrambe le connessioni interne rigide: è
+		l'uniformità delle connessioni a rendere disponibile la
+		descrizione~(b). In nero ciò che porta i
+		\emph{parametri}, in grigio ciò che porta le
+		\emph{equazioni}; i simboli dei dispositivi non cambiano,
+		perché non cambia il sistema fisico. Nella descrizione
+		per corpi~(a) i parametri $\bm{u}^{e}$ sono quelli delle
+		tre travi e i nodi impongono le condizioni di congruenza;
+		nella descrizione per nodi~(b) i parametri $\bm{u}_{i}$
+		sono quelli dei quattro nodi --- anche in $1$ e in $4$,
+		dove la rotazione del nodo è quella dell'unica trave che
+		vi si attesta --- e sono le travi, essendo rigide, a
+		imporre equazioni ai parametri dei nodi cui si attestano.
+		I vincoli al suolo portano equazioni in entrambe le
+		descrizioni.}
+	\label{fig:due_descrizioni}
+\end{figure}

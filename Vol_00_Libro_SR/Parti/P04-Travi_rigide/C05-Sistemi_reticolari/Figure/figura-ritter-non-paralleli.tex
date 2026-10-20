@@ -1,0 +1,108 @@
+\begin{figure}[htbp]
+			\centering
+			\begin{tikzpicture}[
+				scale=0.95,
+				asta/.style={line width=1.5pt, line cap=round, line join=round, black},
+				prolunga/.style={line width=0.8pt, line cap=round, gray!50},
+				nodo/.style={circle, fill=white, draw=black,
+					inner sep=0pt, minimum size=6pt, line width=1.2pt},
+				polo/.style={circle, fill=white, draw=gray!60,
+					inner sep=0pt, minimum size=5pt, line width=1.0pt},
+				quota/.style={very thin, gray, |<->|, >=stealth},
+				richiam/.style={thin, gray, dashed},
+				forza/.style={->, >=stealth, line width=1.5pt, black},
+				sez/.style={black, thick, dashed},
+				]
+				
+				\coordinate (A)   at (0,   0  );
+				\coordinate (B)   at (8,   0  );
+				\coordinate (C)   at (2,   1.5);
+				\coordinate (D)   at (6,   3  );
+				\coordinate (E)   at (4,   0  );
+				\coordinate (PCE) at (-2,  0  );
+				
+				%% prolungamenti grigi
+				\draw[prolunga](D)--(PCE);
+				\draw[prolunga](E)--(PCE);
+				
+				%% aste non tagliate
+				\draw[asta](A)--(C)node[midway,below=-1pt, right,font=\small]{$AC$};
+				\draw[asta](D)--(B)node[midway,above right,font=\small]{$DB$};
+				\draw[asta](E)--(B)node[midway,below,font=\small]{$EB$};
+				\draw[asta](E)--(D)node[midway,right,font=\small]{$ED$};
+				
+				%% aste tagliate (nero come le altre)
+				\draw[asta](C)--(D)node[midway,above left,font=\small]{$CD$};
+				\draw[asta](A)--(E)node[midway,below,font=\small]{$AE$};
+				\draw[asta](C)--(E)node[midway,right,font=\small]{$CE$};
+				
+				%% sezione di Ritter
+				\draw[sez](3,-0.7)--(3,3.7)
+				node[above,font=\small]{sezione};
+				
+				%% cerniera A
+				\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+				\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+				\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+				\draw[thin](\x,-0.65)--++(-.18,-.22);
+				
+				%% carrello B
+				\draw[line width=1.2pt](B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+				\draw[line width=1.2pt]($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+				\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$)circle(3.5pt);
+				\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$)circle(3.5pt);
+				\draw[line width=1.2pt]($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+				\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+				\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+				
+				%% nodi
+				\node[nodo]at(A){}; \node[nodo]at(B){};
+				\node[nodo]at(C){}; \node[nodo]at(D){};
+				\node[nodo]at(E){};
+				
+				%% polo P_CE
+				\node[polo]at(PCE){};
+				\node[below,font=\small,gray!70]at(PCE){$P_{CE}$};
+				
+				%% forze (traslate più in alto)
+				\draw[forza](C)++(0,1.30)--($(C)+(0,0.15)$);
+				\node[above,font=\normalsize]at($(C)+(0,1.30)$){$F$};
+				\draw[forza](D)++(0,1.30)--($(D)+(0,0.15)$);
+				\node[above,font=\normalsize]at($(D)+(0,1.30)$){$F$};
+				
+				%% etichette nodi
+				\node[above=2pt,       font=\normalsize]at(A){$A$};
+				\node[above right,      font=\normalsize]at(B){$B$};
+				\node[above left, font=\normalsize]at(C){$C$};
+				\node[above right,font=\normalsize]at(D){$D$};
+				\node[below right,font=\normalsize]at(E){$E$};
+				
+				%% quote d
+				\draw[richiam](A)--++(0,-1.1);
+				\draw[richiam](E)--++(0,-1.1);
+				\draw[richiam](D)--++(0,-1.1);
+				\draw[richiam](B)--++(0,-1.1);
+				\draw[quota](0,-0.9)--node[below,font=\small]{$d$}(2,-0.9);
+				\draw[quota](2,-0.9)--node[below,font=\small]{$d$}(4,-0.9);
+				\draw[quota](4,-0.9)--node[below,font=\small]{$d$}(6,-0.9);
+				\draw[quota](6,-0.9)--node[below,font=\small]{$d$}(8,-0.9);
+				
+				%% quote h
+				\draw[richiam](A)--++(-0.8,0);
+				\draw[richiam](C)--++(-0.8,0);
+				\draw[richiam](D)--++(-2.8,0);
+				\draw[quota](-0.6,0)--node[left,font=\small]{$h$}(-0.6,1.5);
+				\draw[quota](-0.6,1.5)--node[left,font=\small]{$h$}(-0.6,3.0);
+				
+			\end{tikzpicture}
+			\caption{Capriata a correnti non paralleli.
+				Schema strutturale con la sezione canonica di
+				Ritter (linea tratteggiata verticale) che taglia
+				le aste $CD$, $AE$ e $CE$.
+				I prolungamenti in grigio delle rette d'azione
+				di $CD$ e $AE$ si incontrano nel polo
+				$P_{CE} = (-d,\,0)$, esterno alla struttura.
+				I poli $P_{CD} \equiv E$ e $P_{AE} \equiv C$
+				coincidono con nodi della travatura.}
+			\label{fig:ritter_non_paralleli}
+		\end{figure}

@@ -5,27 +5,30 @@
 
 \begin{sommario}
 	Si sviluppano gli strumenti per riconoscere e classificare 
-	i sistemi di corpi rigidi piani vincolati. Il conteggio 
-	dei gradi di libertà nominali $\nu = 3n_c - m$ costituisce 
-	un criterio necessario ma non sufficiente: esso fissa le 
-	dimensioni della matrice di congruenza $\bm{A}$ senza 
-	determinarne il rango, sicché a parità di $\nu$ la 
-	disposizione geometrica dei vincoli può produrre 
-	classificazioni diverse. Si richiama il calcolo di $m$ 
-	dalle molteplicità dei vincoli elementari, con il vincolo 
-	di rigidità come caso limite che consente di fondere 
-	corpi collegati rigidamente in un unico corpo equivalente, 
-	e si introduce la distinzione fra isostaticità globale 
-	e locale. Il nucleo del capitolo è il catalogo delle 
-	sottostrutture elementari più frequenti --- da un singolo 
-	corpo fino a tre corpi --- nel quale i casi regolari e 
-	degeneri sono affiancati e le cause geometriche della 
-	degenerazione --- parallelismo o concorrenza degli assi 
-	di vincolo, allineamento dei centri di rotazione --- 
-	sono identificate e interpretate. Il catalogo abilita 
-	la classificazione per decomposizione gerarchica e per 
-	riduzione a schema noto, e si raccorda con le strategie 
-	di soluzione del \CAPref{cap:classificazione_sol_SCR}.
+	i sistemi di corpi rigidi piani vincolati.
+	Il conteggio dei gradi di libertà nominali $\nu = 3n_c - m$ 
+	costituisce un criterio necessario ma non sufficiente: 
+	esso registra il numero dei vincoli scalari, non la loro 
+	indipendenza geometrica.
+	La distinzione fra conteggio e indipendenza è il tema della 
+	sezione sulle degenerazioni geometriche, che introduce il 
+	sistema labile-iperstatico come configurazione al confine 
+	tra classi e ne identifica le cause --- parallelismo o 
+	concorrenza degli assi di vincolo, collinearità dei centri 
+	di rotazione.
+	Segue la decomposizione di $\nu$ in contributi globale 
+	e locale, che rivela la struttura del sistema prima ancora 
+	di costruire esempi, e la tecnica di riduzione tramite vincoli di rigidità e svincoli,
+	che semplifica sistemi complessi 
+	riconducendoli a schemi noti.
+	Il nucleo del capitolo è il catalogo delle sottostrutture 
+	elementari --- da un singolo corpo fino a tre corpi --- 
+	nel quale i casi regolari e degeneri sono affiancati 
+	con la causa geometrica della degenerazione identificata 
+	in ciascun caso. Il catalogo abilita la classificazione 
+	per decomposizione gerarchica e per riduzione a schema 
+	noto, e si raccorda con le strategie di soluzione 
+	del~\CAPref{cap:classificazione_sol_SCR}.
 \end{sommario}
 
 
@@ -99,16 +102,11 @@ caso \emph{degenere}\index{degenerazione geometrica}, già classificato nella
 \end{oss}
 
 \begin{oss}[Casi $\nu \neq 0$ e degenerazione]
-	Anche nei casi $\nu > 0$ e $\nu < 0$ è possibile una
-	degenerazione geometrica: il rango di $\bm{A}$ può essere
-	inferiore al suo minimo teorico $\min(m,n)$, producendo
-	valori di $g_\ell$ e $g_{\mathscr{i}}$ entrambi superiori
-	ai minimi $\nu$ e $0$ (rispettivamente). Tuttavia, poiché
-	questi casi presentano già una labilità o un'iperstaticità
-	strutturale garantita dal conteggio, la degenerazione
-	aggiuntiva ha in pratica minor rilevanza progettuale. Il
-	caso più delicato --- e il più frequente nella pratica ---
-	rimane $\nu = 0$ con degenerazione geometrica.
+	La degenerazione geometrica è possibile anche quando $\nu > 0$
+	o $\nu < 0$, riducendo rispettivamente il numero di moti o il
+	grado di iperstaticità al di sotto di quanto il conteggio indichi.
+	Il caso più rilevante rimane $\nu = 0$ con degenerazione
+	(\PARref{sec:degenerazioni}).
 \end{oss}
 
 Il programma di questo capitolo è di sviluppare strumenti
@@ -237,25 +235,27 @@ limite per la riduzione del sistema sono discusse nel
 La procedura operativa per calcolare $m$ a partire dalla
 geometria di un sistema si articola in tre passi.
 
-\begin{enumerate}[label=\textbf{(\arabic*)}, leftmargin=*, itemsep=4pt]
-	\item \textbf{Elencare tutti i vincoli.} Per ciascun
+\begin{enumerate}[label=(\arabic*), leftmargin=*, itemsep=4pt]
+	\item \emph{Elencare tutti i vincoli.} Per ciascun
 	vincolo identificare: il tipo (carrello, bipendolo,
 	cerniera, glifo, incastro), il numero $k$ di corpi che
 	collega, e se è esterno (corpo--suolo) o interno
 	(corpo--corpo).
 	
-	\item \textbf{Attribuire la molteplicità.} Per i vincoli
+	\item \emph{Attribuire la molteplicità.} Per i vincoli
 	binari ($k = 2$) leggere $m_j$ dalla
 	\TABref{tab:vincoli_esterni}. Per i vincoli multipli
 	($k \geq 3$) applicare la formula corrispondente dalla
 	\TABref{tab:vincoli_multipli}.
 	
-	\item \textbf{Sommare e calcolare $\nu$.}
+	\item \emph{Sommare e calcolare $\nu$.}
 	$m = \sum_j m_j$, poi $\nu = 3n_c - m$.
 \end{enumerate}
 
 
 %--------------------------------------------------------------
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-struttura-connessioni-eterogenee}
+
 \begin{esempio}[Struttura mista: due conteggi equivalenti]
 	\label{ex:struttura_mista}
 	Si consideri la struttura della \FIGref{fig:struttura_mista},
@@ -265,91 +265,8 @@ geometria di un sistema si articola in tre passi.
 	al suolo, $F$ è un carrello, i restanti sono nodi
 	interni.
 	
-	\begin{figure}[ht]
-		\centering
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-			
-			% --- coordinate dei nodi ---
-			\coordinate (A) at (0,0);
-			\coordinate (B) at (3,0);
-			\coordinate (C) at (0,2);
-			\coordinate (D) at (1.5,2);
-			\coordinate (E) at (3,2);
-			\coordinate (F) at (5,2);
-			\coordinate (G) at (0,4);
-			\coordinate (H) at (3,4);
-			
-			% --- tratti di trave (linee continue, attraversate ai nodi rigidi C ed E) ---
-			\draw[line width=1.5pt] (A) -- (G);   % colonna sinistra A-C-G
-			\draw[line width=1.5pt] (B) -- (H);   % colonna destra B-E-H
-			\draw[line width=1.5pt] (C) -- (F);   % traversa intermedia C-D-E-F
-			\draw[line width=1.5pt] (G) -- (H);   % traversa superiore G-H
-			%\draw[line width=1.5pt] (D) -- (H);   % diagonale D-H
-			% --- diagonale D-H, con cerniera all'estremità lato H ---
-			\coordinate (Hd) at ($(H)!0.056!(D)$);
-			%\coordinate (Hd) at ($(H)!0.10!(D)$);   % punto lungo DH, vicino a H
-			\draw[line width=1.5pt] (D) -- (Hd);    % asta DH fino al cerchio
-			\draw[fill=white, thick] (Hd) circle (2.5pt);   % perno della cerniera
-			
-			% --- cerniera al suolo in A ---
-			\draw[thick] (A) -- ($(A)+(-0.22,-0.38)$)
-			-- ($(A)+(0.22,-0.38)$) -- cycle;
-			\draw[thick] ($(A)+(-0.32,-0.38)$) -- ($(A)+(0.32,-0.38)$);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] ($(A)+(\x,-0.38)$) -- ($(A)+(\x-0.10,-0.52)$);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (A) {};
-			
-			% --- cerniera al suolo in B ---
-			\draw[thick] (B) -- ($(B)+(-0.22,-0.38)$)
-			-- ($(B)+(0.22,-0.38)$) -- cycle;
-			\draw[thick] ($(B)+(-0.32,-0.38)$) -- ($(B)+(0.32,-0.38)$);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] ($(B)+(\x,-0.38)$) -- ($(B)+(\x-0.10,-0.52)$);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (B) {};
-			
-			% --- carrello in F (asse verticale, vincolo sotto la trave) ---
-			\draw[thick] (F) -- ($(F)+(-0.22,-0.38)$)
-			-- ($(F)+(0.22,-0.38)$) -- cycle;
-			\draw[thick] ($(F)+(-0.15,-0.44)$) circle (0.07);
-			\draw[thick] ($(F)+(0.15,-0.44)$) circle (0.07);
-			\draw[thick] ($(F)+(-0.32,-0.52)$) -- ($(F)+(0.32,-0.52)$);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] ($(F)+(\x,-0.52)$) -- ($(F)+(\x-0.10,-0.66)$);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (F) {};
-			
-			% --- cerniere interne (cerchi bianchi) in D, G, H ---
-			\draw[fill=white, thick] (D) circle (2.5pt);
-			\draw[fill=white, thick] (G) circle (2.5pt);
-			%\draw[fill=white, thick] (H) circle (2.5pt);
-			
-			% --- etichette dei nodi ---
-			\node[font=\scriptsize] at ($(A)+(-0.22,0)$) {$A$};
-			\node[font=\scriptsize] at ($(B)+(0.22,0)$) {$B$};
-			\node[font=\scriptsize] at ($(C)+(-0.20,0)$)  {$C$};
-			\node[font=\scriptsize] at ($(D)+(0,-0.22)$)  {$D$};
-			\node[font=\scriptsize] at ($(E)+(0.22,-0.18)$) {$E$};
-			\node[font=\scriptsize] at ($(F)+(0,0.22)$)   {$F$};
-			\node[font=\scriptsize] at ($(G)+(-0.20,0.18)$) {$G$};
-			\node[font=\scriptsize] at ($(H)+(0.22,0.18)$)  {$H$};
-			
-		\end{tikzpicture}
-		\caption{Esempio di struttura a connessioni eterogenee.
-			Vincoli esterni: cerniere al suolo in $A$ e $B$,
-			carrello verticale in $F$. La traversa intermedia
-			$C$--$D$--$E$--$F$ è continua attraverso $C$ ed $E$
-			ed è sconnessa in $D$ con cerniera interna. La
-			traversa $G$--$H$ termina in $G$ con cerniera
-			d'estremità. In $H$ la traversa $G$--$H$ e il tratto
-			$E$--$H$ sono continui, mentre la diagonale $D$--$H$
-			vi si connette con cerniera d'estremità.}
-		\label{fig:struttura_connessioni_eterogenee}
-	\end{figure}
+
+
 	
 	La struttura è composta da nove aste: $AC$, $BE$, $CD$,
 	$DE$, $EF$, $CG$, $DH$, $EH$, $GH$. Le connessioni
@@ -467,274 +384,84 @@ geometria di un sistema si articola in tre passi.
 
 
 %----------------------------------------------------------------------------------------------------------------------------
-\section{Riduzione tramite vincolo di rigidità}
-\label{sec:rigidita_interna}
+\section{Degenerazioni geometriche}
+\label{sec:degenerazioni}
 %----------------------------------------------------------------------------------------------------------------------------
 
-Il vincolo di rigidità è l'incastro interno binario ($k = 2$,
-$m = 3$): impone $\llbracket\ub(A)\rrbracket(A) = \zerovb$ e
-$\llbracket\vartheta \rrbracket= 0$, ossia che i due corpi collegati abbiano
-lo stesso spostamento e la stessa rotazione.
-Non esiste alcun grado di libertà relativo: i due corpi si
-muovono come se fossero un unico corpo rigido.
-Dal lato statico, il vincolo di rigidità trasmette tra
-i due corpi una forza risultante arbitraria e una coppia
-arbitraria --- le stesse tre incognite dell'incastro
-interno, in accordo con la molteplicità $m = 3$.
-In un sistema isostatico queste tre reazioni interne
-sono univocamente determinate dall'equilibrio del corpo
-libero ottenuto con un taglio ideale nella sezione
-di connessione; la loro determinazione sistematica
-è sviluppata nel \CAPref{cap:Trave_Rigida}.
+La formula $\nu = 3n_c - m$ è un criterio di conteggio: confronta il numero di
+gradi di libertà cinematici dei corpi con il numero di condizioni scalari
+imposte dai vincoli.
+La condizione $\nu = 0$ significa che i conti tornano, non che il sistema
+sia isostatico.
 
-\paragraph{Invarianza di $\nu$ per fusione.}\index{fusione di corpi rigidi|textbf}
-Siano $\mathcal{C}_i$ e $\mathcal{C}_j$ due corpi collegati
-da un vincolo di rigidità. Sostituiamo la coppia
-$(\mathcal{C}_i, \mathcal{C}_j)$ con il corpo equivalente
-$\mathcal{C}_{ij}$: il numero di corpi si riduce da $n_c$
-a $n_c - 1$ e il numero di equazioni scalari si riduce da
-$m$ a $m - 3$. Il numero nominale di gradi di libertà vale
-quindi
-\begin{equation}\label{eq:nu_fusione}
-	\nu' = 3(n_c - 1) - (m - 3) = 3n_c - m = \nu.
-\end{equation}
-La fusione lascia $\nu$ invariato: non altera
-né il grado di labilità né quello di iperstaticità del sistema,
-a condizione che il vincolo di rigidità non fosse geometricamente
-degenere rispetto agli altri vincoli già presenti.
+La distinzione è sostanziale.
+I vincoli scalari che compongono $m$ sono \emph{indipendenti} se ciascuno
+elimina un grado di libertà non già eliminato dagli altri; sono
+\emph{dipendenti} se uno o più di essi ripetono, in tutto o in parte,
+una restrizione cinematica già garantita dagli altri.
+Il conteggio non distingue i due casi: registra quanti vincoli ci sono,
+non se sono tra loro indipendenti.
 
-\begin{oss}[Significato geometrico]
-	L'invarianza~\eqref{eq:nu_fusione} ha un'interpretazione
-	immediata: il vincolo di rigidità ``consuma'' esattamente
-	i tre gradi di libertà relativi che i due corpi avrebbero
-	l'uno rispetto all'altro. Rimuoverlo dal conteggio insieme
-	ai tre gradi di libertà che elimina lascia il bilancio
-	$\nu$ invariato. In altri termini, la matrice $\bm{A}$
-	del sistema ridotto ha le stesse proprietà di rango di
-	quella del sistema originale, ristretta al sottospazio
-	ortogonale ai meccanismi rigidi relativi fra
-	$\mathcal{C}_i$ e $\mathcal{C}_j$.
+\paragraph{Labilità e iperstaticità simultanee.}
+Supponiamo che il sistema abbia $\nu = 0$ ma che $d$ delle $m$ condizioni
+scalari di vincolo siano dipendenti dalle rimanenti.
+Il sistema mantiene allora $g_\ell = d$ moti rigidi compatibili con tutti
+i vincoli, e al tempo stesso le $d$ condizioni ridondanti generano
+$g_{\mathscr{i}} = d$ reazioni indeterminate prive di un meccanismo
+corrispondente.
+Poiché $g_\ell = g_{\mathscr{i}} = d$, si ha ancora $\nu = 0$, e il sistema
+viene detto \emph{labile-iperstatico}\index{sistema labile-iperstatico}
+di grado~$d$, o semplicemente \emph{degenere}\index{degenerazione geometrica}
+di grado~$d$.
+
+La degenerazione non è una configurazione stabile: il sistema si trova al
+confine tra classi diverse.
+Una piccola variazione nella geometria dei vincoli può spostarlo verso
+l'isostaticità, verso la labilità di grado~$d$ o verso l'iperstaticità
+di grado~$d$, a seconda della direzione della perturbazione.
+
+\paragraph{Causa geometrica.}
+La dipendenza tra condizioni di vincolo ha sempre un'origine geometrica
+identificabile.
+Per i vincoli monolatteri (carrelli), la condizione critica è
+l'\emph{intersezione degli assi}: se gli assi di due o più carrelli
+concorrono in uno stesso punto $P$, il corpo può ruotare intorno a~$P$
+soddisfacendo tutti quei vincoli senza impedimento; se gli assi sono
+tra loro paralleli, il punto di concorrenza è all'infinito e il moto
+ammissibile diventa una traslazione nella direzione comune.
+Per i vincoli di posizione (cerniere), la condizione critica è la
+\emph{collinearità dei centri}: cerniere il cui centro giace su una
+retta comune non impediscono il moto relativo attorno a quella retta
+--- caso dell'arco a tre cerniere con centri $A$, $C$, $B$ allineati
+(\PARref{sec:catalogo_2corpi}).
+
+Un esempio elementare: un corpo singolo con tre carrelli dagli assi
+tutti paralleli ha $n_c = 1$, $m = 3$, $\nu = 0$.
+Nessuno dei tre vincoli contrasta la traslazione nella direzione degli
+assi né la rotazione attorno a un centro all'infinito nella stessa
+direzione: $g_\ell = 2$.
+Un caso meno evidente è quello della trave appoggiata in cui l'asse
+del carrello passa per la cerniera: ancora $m = 3$, $\nu = 0$, ma
+la rotazione attorno alla cerniera soddisfa automaticamente anche il
+carrello, e si ha $g_\ell = 1$.
+Entrambi i casi sono illustrati nel catalogo (\PARref{sec:catalogo}).
+
+\begin{oss}[Degenerazione con $\nu \neq 0$]
+	La degenerazione geometrica non è esclusiva del caso $\nu = 0$:
+	può presentarsi anche quando $\nu > 0$ o $\nu < 0$.
+	In questi casi la classificazione rimane quella indicata dal segno
+	di~$\nu$ --- labile o iperstatico --- ma i gradi effettivi $g_\ell$
+	e $g_{\mathscr{i}}$ differiscono da quelli che il solo conteggio
+	suggerirebbe.
 \end{oss}
 
-\paragraph{Applicazione iterata.}
-La fusione può essere applicata iterativamente: se un insieme
-di $p$ corpi sono collegati a coppie da vincoli di rigidità
-in modo da formare una sottostruttura connessa, l'intera
-sottostruttura si riduce a un unico corpo equivalente. Ogni
-fusione riduce $n_c$ di $1$ e $m$ di $3$, preservando $\nu$.
-La procedura si arresta quando nessuna coppia di corpi
-residua è più collegata da un vincolo di rigidità.
-
-\begin{oss}[Utilità pratica]
-	Riconoscere che due o più corpi sono collegati 
-	da vincoli di rigidità consente di ridurre il sistema 
-	prima di procedere all'analisi, sostituendo la 
-	sottostruttura con un unico corpo equivalente. 
-	Questa riduzione semplifica la lettura della geometria 
-	e rende più agevole l'applicazione dei criteri di 
-	ispezione sviluppati nelle sezioni successive.
-\end{oss}
-
-
-
-\paragraph{Fusione aperta e fusione chiusa.}
-La fusione descritta finora è una \emph{fusione aperta}\index{fusione di corpi rigidi!aperta}: il
-vincolo di rigidità connette due corpi distinti senza creare
-anelli, e il corpo risultante ha linea d'asse aperta con $\nu$
-invariato. Esiste un secondo caso, la \emph{fusione chiusa}\index{fusione di corpi rigidi!chiusa},
-che si verifica quando il vincolo di rigidità chiude un percorso
-già aperto tra corpi precedentemente fusi, creando una maglia
-chiusa nell'asse strutturale.
-
-In questo caso il vincolo introduce 3 equazioni aggiuntive
-senza eliminare un corpo: $n_c$ resta invariato mentre $m$
-aumenta di 3, e quindi $\nu$ diminuisce di 3:
-\begin{equation}\label{eq:nu_chiusura}
-	\nu' = \nu - 3.
-\end{equation}
-Il corpo risultante ha una linea d'asse chiusa e si dice
-\emph{biconnesso}\index{corpo!biconnesso|textbf}\index{maglia chiusa} ($p = 2$). Applicando $p-1$ fusioni chiuse
-successive si ottiene un corpo \emph{pluriconnesso di grado
-	$p$}\index{corpo!pluriconnesso|textbf}, con:
-\begin{equation}\label{eq:nu_pluriconnesso}
-	\nu = \nu_{\rm aperto} - 3(p-1),
-\end{equation}
-dove $\nu_{\rm aperto}$ è il numero nominale di gradi di
-libertà del corpo con linea d'asse aperta e gli stessi vincoli
-esterni.
-
-\paragraph{Svincoli interni.}\index{svincolo!interno}
-L'operazione inversa della fusione chiusa è l'introduzione di
-uno \emph{svincolo} in una sezione della maglia: si rilascia
-parzialmente il vincolo di rigidità, riaprendo parzialmente
-la maglia. Ogni svincolo rimuove una delle 3 condizioni
-cinematiche imposte dalla chiusura e aumenta $\nu$ di 1.
-I tre tipi di svincolo sono:
-\begin{itemize}[nosep]
-	\item \textbf{svincolo rotazionale}: rilascia la 
-	condizione di uguale rotazione tra i due tratti; 
-	il dispositivo meccanico corrispondente è la 
-	\emph{cerniera interna};
-	\item \textbf{svincolo traslazionale trasversale}: 
-	rilascia la condizione di uguale spostamento nella 
-	direzione perpendicolare all'asse della trave; 
-	corrisponde al \emph{glifo interno} con asse 
-	longitudinale;
-	\item \textbf{svincolo traslazionale longitudinale}: 
-	rilascia la condizione di uguale spostamento nella 
-	direzione dell'asse della trave; corrisponde al 
-	\emph{glifo interno} con asse trasversale.
-\end{itemize}
-Tre svincoli distinti nella stessa maglia la riaprono
-completamente e aumentano $\nu$ di 3, riportandolo al valore
-della trave aperta.
-
-I concetti di fusione chiusa e svincolo sono illustrati nei
-due esempi seguenti.
-
-%--------------------------------------------------------------
-\begin{esempio}[Portale rettangolare: biconnesso e taglio]
-	\label{ex:portale_biconnesso}\index{maglia chiusa!taglio}
-	Si consideri il portale rettangolare della
-	\FIGref{fig:portale_biconnesso}: quattro elementi
-	(colonna sinistra $AC$, traversa superiore $CD$,
-	colonna destra $BD$, traversa inferiore $AB$)
-	collegati da nodi rigidi agli angoli; cerniera
-	esterna in $A$ e carrello verticale in $B$, senza
-	interruzione della continuità tra gli elementi.
-	Il pannello destro mostra la stessa struttura con
-	l'introduzione di un taglio completo al centro
-	della traversa superiore.
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[scale=0.75]{cin_apertifinti.pdf}
-		\caption{Portale rettangolare (schema ripreso nel
-			Vol.~II per il caso deformabile): maglia chiusa
-			(sinistra, $\nu = -3$) e maglia aperta con
-			taglio completo nella traversa superiore
-			(destra, $\nu = 0$). Il taglio rimuove
-			esattamente $3(p-1) = 3$ gradi di iperstaticità.}
-		\label{fig:portale_biconnesso}
-	\end{figure}
-	
-	\textbf{Pannello sinistro: maglia chiusa.}
-	\begin{svolgimento}
-		La struttura è composta da quattro elementi (due
-		colonne e due traversi) con nodi rigidi ai quattro
-		angoli. Ciascun nodo collega due elementi con
-		un incastro interno: molteplicità $3(2-1) = 3$
-		per nodo, quattro nodi, $4 \times 3 = 12$ equazioni
-		di vincolo interne. I vincoli al suolo aggiungono
-		$2 + 1 = 3$ equazioni scalari (cerniera in $A$
-		e carrello in $B$). In totale:
-		\[
-		n_e = 4,\quad n = 12,\quad m = 12 + 3 = 15,
-		\quad \nu = 12 - 15 = -3.
-		\]
-		Il sistema è \textit{iperstatico} di grado~3.
-		Tre equazioni in eccesso corrispondono alle tre
-		condizioni di chiusura geometrica della maglia:
-		non è possibile assegnare liberamente gli
-		spostamenti relativi nella sezione di taglio
-		senza violare la continuità dell'anello.
-	\end{svolgimento}
-	
-	\textbf{Pannello destro: taglio completo.}
-	\begin{svolgimento}
-		Il taglio introduce tre svincoli simultanei nella
-		traversa superiore, rilasciando tutte le condizioni
-		di continuità in quella sezione: la maglia si apre
-		completamente e $\nu$ aumenta di~3.
-		\[
-		\nu = -3 + 3 = 0.
-		\]
-		La struttura aperta risultante è un unico corpo
-		rigido equivalente --- le due colonne e i due
-		semitravetti sono tutti collegati da nodi rigidi
-		--- vincolato al suolo da cerniera in $A$ e
-		carrello in $B$. Il sistema	è \textit{isostatico}.
-	\end{svolgimento}
-\end{esempio}
-
-%--------------------------------------------------------------
-\begin{esempio}[Telaio a tre piani: pluriconnesso e tagli
-	progressivi]
-	\label{ex:telaio_pluriconnesso}
-	Si consideri il telaio della
-	\FIGref{fig:telaio_pluriconnesso}: due colonne
-	incastrate alla base, tre traversi con nodi rigidi
-	ai sei angoli. La struttura presenta tre maglie
-	chiuse, una per piano, formate ciascuna dai due
-	tratti di colonna e dal traverso corrispondente.
-	I pannelli centrale e destro mostrano la progressiva
-	apertura delle maglie con tagli completi nei traversi.
-	
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[scale=0.75]{cin_multipiano.pdf}
-		\caption{Telaio a tre piani (schema ripreso nel
-			Vol.~II per il caso deformabile): tre
-			configurazioni con gradi di iperstaticità
-			decrescenti. Da sinistra: tre maglie chiuse
-			($\nu = -9$); taglio completo nella traversa
-			superiore, due maglie chiuse ($\nu = -6$);
-			tagli nelle traversi superiore e intermedia,
-			una maglia chiusa ($\nu = -3$). Un terzo
-			taglio aprirebbe l'ultima maglia ($\nu = 0$).}
-		\label{fig:telaio_pluriconnesso}
-	\end{figure}
-	
-	\textbf{Pannello sinistro: tre maglie chiuse.}
-	\begin{svolgimento}
-		La struttura ha nove elementi: sei tratti di
-		colonna ($AC$, $CE$, $EG$, $BD$, $DF$, $FH$)
-		e tre traversi ($CD$, $EF$, $GH$), con $n = 27$.
-		I nodi ai quattro angoli di piano ($C$, $D$,
-		$E$, $F$) collegano tre elementi con incastro
-		interno: molteplicità $3(3-1) = 6$ per nodo.
-		I nodi in sommità ($G$, $H$) collegano due
-		elementi: molteplicità $3(2-1) = 3$ per nodo.
-		I due incastri alla base aggiungono $2 \times 3 = 6$
-		equazioni scalari. In totale:
-		\[
-		n = 27, \quad
-		m = 4 \times 6 + 2 \times 3 + 6 = 36,
-		\quad \nu = 27 - 36 = -9.
-		\]
-		Il sistema è \textbf{iperstatico di grado~9}:
-		le nove equazioni in eccesso corrispondono alle
-		tre condizioni di chiusura geometrica di ciascuna
-		delle tre maglie.
-	\end{svolgimento}
-	
-	\textbf{Pannelli centrale e destro: tagli progressivi.}
-	\begin{svolgimento}
-		Ogni taglio completo in un traverso apre la
-		maglia corrispondente e aumenta $\nu$ di~3:
-		\begin{itemize}[nosep]
-			\item taglio nella traversa superiore:
-			$\nu = -9 + 3 = -6$, due maglie chiuse;
-			\item taglio anche nella traversa intermedia:
-			$\nu = -6 + 3 = -3$, una maglia chiusa;
-			\item un terzo taglio nella traversa inferiore:
-			$\nu = -3 + 3 = 0$, nessuna maglia chiusa;
-			il sistema è \textit{isostatico}.
-		\end{itemize}
-	\end{svolgimento}
-	
-	\begin{oss}
-		La progressione mostra come interventi topologici
-		mirati --- i tagli completi --- controllino
-		sistematicamente l'iperstaticità del telaio.
-		Un telaio rettangolare a $n_p$ piani e $n_c$
-		campate ha $n_p \times n_c$ maglie chiuse e
-		iperstaticità $3\,n_p\,n_c$, prima di considerare
-		i vincoli esterni.
-	\end{oss}
-\end{esempio}
-
-
+\noindent
+La degenerazione di un sistema con $\nu = 0$ si rileva tracciando i
+\emph{centri istantanei di rotazione}\index{centro istantaneo di rotazione}:
+poiché la degenerazione implica $g_\ell = 1$, i centri sono univocamente
+determinati, e un centro che coincide con un vincolo, o che risulta
+collineare con altri centri, segnala che esiste un moto rigido non bloccato.
+La procedura sistematica è descritta nel~\PARref{sec:ispezione}.
 
 %----------------------------------------------------------------------------------------------------------------------------
 \section{Isostaticità globale e locale}
@@ -910,7 +637,7 @@ significativi, illustrati nella \TABref{tab:globale_locale}.
 \end{esempio}
 
 \begin{esempio}[Sistema globalmente isostatico e localmente labile]
-	\label{ex:glob_iso_loc_iper}
+	\label{ex:glob_iso_loc_lab2}
 	Si modifichi l'esempio precedente sostituendo il pendolo
 	interno con una cerniera interna in $C$
 	($m_{\rm int} = 2$), mantenendo invariati i vincoli
@@ -1005,6 +732,245 @@ significativi, illustrati nella \TABref{tab:globale_locale}.
 
 
 %----------------------------------------------------------------------------------------------------------------------------
+\section{Riduzione tramite vincolo di rigidità}
+\label{sec:rigidita_interna}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Il vincolo di rigidità è l'incastro interno binario ($k = 2$,
+$m = 3$): impone $\llbracket\ub(A)\rrbracket(A) = \zerovb$ e
+$\llbracket\vartheta \rrbracket= 0$, ossia che i due corpi collegati abbiano
+lo stesso spostamento e la stessa rotazione.
+Non esiste alcun grado di libertà relativo: i due corpi si
+muovono come se fossero un unico corpo rigido.
+Dal lato statico, il vincolo di rigidità trasmette tra
+i due corpi una forza risultante arbitraria e una coppia
+arbitraria --- le stesse tre incognite dell'incastro
+interno, in accordo con la molteplicità $m = 3$.
+In un sistema isostatico queste tre reazioni interne
+sono univocamente determinate dall'equilibrio del corpo
+libero ottenuto con un taglio ideale nella sezione
+di connessione; la loro determinazione sistematica
+è sviluppata nel \CAPref{cap:Trave_Rigida}.
+
+\paragraph{Invarianza di $\nu$ per riduzione.}\index{riduzione di corpi rigidi|textbf}
+Siano $\mathcal{C}_i$ e $\mathcal{C}_j$ due corpi collegati
+da un vincolo di rigidità. Sostituiamo la coppia
+$(\mathcal{C}_i, \mathcal{C}_j)$ con il corpo equivalente
+$\mathcal{C}_{ij}$: il numero di corpi si riduce da $n_c$
+a $n_c - 1$ e il numero di equazioni scalari si riduce da
+$m$ a $m - 3$. Il numero nominale di gradi di libertà vale
+quindi
+\begin{equation}\label{eq:nu_fusione}
+	\nu' = 3(n_c - 1) - (m - 3) = 3n_c - m = \nu.
+\end{equation}
+La riduzione lascia $\nu$ invariato: non altera
+né il grado di labilità né quello di iperstaticità del sistema,
+a condizione che il vincolo di rigidità non fosse geometricamente
+degenere rispetto agli altri vincoli già presenti.
+
+
+\paragraph{Applicazione iterata.}
+La riduzione può essere applicata iterativamente: se un insieme
+di $p$ corpi sono collegati a coppie da vincoli di rigidità
+in modo da formare una sottostruttura connessa, l'intera
+sottostruttura si riduce a un unico corpo equivalente. Ogni
+riduzione abbassa $n_c$ di $1$ e $m$ di $3$, preservando $\nu$.
+La procedura si arresta quando nessuna coppia di corpi
+residua è più collegata da un vincolo di rigidità.
+
+	Riconoscere che due o più corpi sono collegati 
+	da vincoli di rigidità consente di ridurre il sistema 
+	prima di procedere all'analisi, sostituendo la 
+	sottostruttura con un unico corpo equivalente. 
+	Questa riduzione semplifica la lettura della geometria 
+	e rende più agevole l'applicazione dei criteri di 
+	ispezione sviluppati nelle sezioni successive.
+
+
+
+\paragraph{Riduzione aperta e riduzione chiusa.}
+La riduzione descritta finora è una \emph{riduzione aperta}\index{riduzione di corpi rigidi!aperta}: il
+vincolo di rigidità connette due corpi distinti senza creare
+anelli, e il corpo risultante ha linea d'asse aperta con $\nu$
+invariato. Esiste un secondo caso, la \emph{riduzione chiusa}\index{riduzione di corpi rigidi!chiusa},
+che si verifica quando il vincolo di rigidità chiude un percorso
+già aperto tra corpi precedentemente fusi, creando una maglia
+chiusa nell'asse strutturale.
+
+In questo caso il vincolo introduce 3 equazioni aggiuntive
+senza eliminare un corpo: $n_c$ resta invariato mentre $m$
+aumenta di 3, e quindi $\nu$ diminuisce di 3:
+\begin{equation}\label{eq:nu_chiusura}
+	\nu' = \nu - 3.
+\end{equation}
+Il corpo risultante ha una linea d'asse chiusa e si dice
+\emph{biconnesso}\index{corpo!biconnesso|textbf}\index{maglia chiusa} ($p = 2$). Applicando $p-1$ fusioni chiuse
+successive si ottiene un corpo \emph{pluriconnesso di grado
+	$p$}\index{corpo!pluriconnesso|textbf}, con:
+\begin{equation}\label{eq:nu_pluriconnesso}
+	\nu = \nu_{\rm aperto} - 3(p-1),
+\end{equation}
+dove $\nu_{\rm aperto}$ è il numero nominale di gradi di
+libertà del corpo con linea d'asse aperta e gli stessi vincoli
+esterni.
+
+\paragraph{Svincoli interni.}\index{svincolo!interno}
+L'operazione inversa della riduzione chiusa è l'introduzione di
+uno \emph{svincolo} in una sezione della maglia: si rilascia
+parzialmente il vincolo di rigidità, riaprendo parzialmente
+la maglia. Ogni svincolo rimuove una delle 3 condizioni
+cinematiche imposte dalla chiusura e aumenta $\nu$ di 1.
+I tre tipi di svincolo sono:
+\begin{itemize}[nosep]
+	\item \textbf{svincolo rotazionale}: rilascia la 
+	condizione di uguale rotazione tra i due tratti; 
+	il dispositivo meccanico corrispondente è la 
+	\emph{cerniera interna};
+	\item \textbf{svincolo traslazionale trasversale}: 
+	rilascia la condizione di uguale spostamento nella 
+	direzione perpendicolare all'asse della trave; 
+	corrisponde al \emph{glifo interno} con asse 
+	longitudinale;
+	\item \textbf{svincolo traslazionale longitudinale}: 
+	rilascia la condizione di uguale spostamento nella 
+	direzione dell'asse della trave; corrisponde al 
+	\emph{glifo interno} con asse trasversale.
+\end{itemize}
+Tre svincoli distinti nella stessa maglia la riaprono
+completamente e aumentano $\nu$ di 3, riportandolo al valore
+della trave aperta.
+
+I concetti di riduzione chiusa e svincolo sono illustrati nei
+due esempi seguenti.
+
+%--------------------------------------------------------------
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-portale-biconnesso}
+
+\begin{esempio}[Portale rettangolare: biconnesso e taglio]
+	\label{ex:portale_biconnesso}\index{maglia chiusa!taglio}
+	Si consideri il portale rettangolare della
+	\FIGref{fig:portale_biconnesso}: quattro elementi
+	(colonna sinistra $AC$, traversa superiore $CD$,
+	colonna destra $BD$, traversa inferiore $AB$)
+	collegati da nodi rigidi agli angoli; cerniera
+	esterna in $A$ e carrello verticale in $B$, senza
+	interruzione della continuità tra gli elementi.
+	Il pannello destro mostra la stessa struttura con
+	l'introduzione di un taglio completo al centro
+	della traversa superiore.
+	
+
+
+	
+	\textbf{Pannello sinistro: maglia chiusa.}
+	\begin{svolgimento}
+		La struttura è composta da quattro elementi (due
+		colonne e due traversi) con nodi rigidi ai quattro
+		angoli. Ciascun nodo collega due elementi con
+		un incastro interno: molteplicità $3(2-1) = 3$
+		per nodo, quattro nodi, $4 \times 3 = 12$ equazioni
+		di vincolo interne. I vincoli al suolo aggiungono
+		$2 + 1 = 3$ equazioni scalari (cerniera in $A$
+		e carrello in $B$). In totale:
+		\[
+		n_e = 4,\quad n = 12,\quad m = 12 + 3 = 15,
+		\quad \nu = 12 - 15 = -3.
+		\]
+		Il sistema è \textit{iperstatico} di grado~3.
+		Tre equazioni in eccesso corrispondono alle tre
+		condizioni di chiusura geometrica della maglia:
+		non è possibile assegnare liberamente gli
+		spostamenti relativi nella sezione di taglio
+		senza violare la continuità dell'anello.
+	\end{svolgimento}
+	
+	\textbf{Pannello destro: taglio completo.}
+	\begin{svolgimento}
+		Il taglio introduce tre svincoli simultanei nella
+		traversa superiore, rilasciando tutte le condizioni
+		di continuità in quella sezione: la maglia si apre
+		completamente e $\nu$ aumenta di~3.
+		\[
+		\nu = -3 + 3 = 0.
+		\]
+		La struttura aperta risultante è un unico corpo
+		rigido equivalente --- le due colonne e i due
+		semitravetti sono tutti collegati da nodi rigidi
+		--- vincolato al suolo da cerniera in $A$ e
+		carrello in $B$. Il sistema è \textit{isostatico}.
+	\end{svolgimento}
+\end{esempio}
+
+%--------------------------------------------------------------
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-telaio-pluriconnesso}
+
+\begin{esempio}[Telaio a tre piani: pluriconnesso e tagli
+	progressivi]
+	\label{ex:telaio_pluriconnesso}
+	Si consideri il telaio della
+	\FIGref{fig:telaio_pluriconnesso}: due colonne
+	incastrate alla base, tre traversi con nodi rigidi
+	ai sei angoli. La struttura presenta tre maglie
+	chiuse, una per piano, formate ciascuna dai due
+	tratti di colonna e dal traverso corrispondente.
+	I pannelli centrale e destro mostrano la progressiva
+	apertura delle maglie con tagli completi nei traversi.
+	
+
+
+	
+	\textbf{Pannello sinistro: tre maglie chiuse.}
+	\begin{svolgimento}
+		La struttura ha nove elementi: sei tratti di
+		colonna ($AC$, $CE$, $EG$, $BD$, $DF$, $FH$)
+		e tre traversi ($CD$, $EF$, $GH$), con $n = 27$.
+		I nodi ai quattro angoli di piano ($C$, $D$,
+		$E$, $F$) collegano tre elementi con incastro
+		interno: molteplicità $3(3-1) = 6$ per nodo.
+		I nodi in sommità ($G$, $H$) collegano due
+		elementi: molteplicità $3(2-1) = 3$ per nodo.
+		I due incastri alla base aggiungono $2 \times 3 = 6$
+		equazioni scalari. In totale:
+		\[
+		n = 27, \quad
+		m = 4 \times 6 + 2 \times 3 + 6 = 36,
+		\quad \nu = 27 - 36 = -9.
+		\]
+		Il sistema è \textbf{iperstatico di grado~9}:
+		le nove equazioni in eccesso corrispondono alle
+		tre condizioni di chiusura geometrica di ciascuna
+		delle tre maglie.
+	\end{svolgimento}
+	
+	\textbf{Pannelli centrale e destro: tagli progressivi.}
+	\begin{svolgimento}
+		Ogni taglio completo in un traverso apre la
+		maglia corrispondente e aumenta $\nu$ di~3:
+		\begin{itemize}[nosep]
+			\item taglio nella traversa superiore:
+			$\nu = -9 + 3 = -6$, due maglie chiuse;
+			\item taglio anche nella traversa intermedia:
+			$\nu = -6 + 3 = -3$, una maglia chiusa;
+			\item un terzo taglio nella traversa inferiore:
+			$\nu = -3 + 3 = 0$, nessuna maglia chiusa;
+			il sistema è \textit{isostatico}.
+		\end{itemize}
+	\end{svolgimento}
+	
+	\begin{oss}
+		La progressione mostra come interventi topologici
+		mirati --- i tagli completi --- controllino
+		sistematicamente l'iperstaticità del telaio.
+		Un telaio rettangolare a $n_p$ piani e $n_c$
+		campate ha $n_p \times n_c$ maglie chiuse e
+		iperstaticità $3\,n_p\,n_c$, prima di considerare
+		i vincoli esterni.
+	\end{oss}
+\end{esempio}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
 \section{Catalogo delle sottostrutture elementari}
 \label{sec:catalogo}
 %----------------------------------------------------------------------------------------------------------------------------
@@ -1041,15 +1007,9 @@ $\bm{A}$ è l'identità $3 \times 3$: il sistema è
 indipendenti e sufficienti a garantire l'equilibrio 
 per qualsiasi sistema di forze applicato.
 
-\begin{figure}[ht]
-	\centering
-	%\includegraphics[width=0.5\textwidth]{fig_catalogo_mensola}
-	\caption{Mensola: incastro in $A$, $m=3$, $\nu=0$, isostatica.
-		Le tre reazioni $X_A$, $Y_A$, $\mu_A$ sono indipendenti
-		e sufficienti a equilibrare qualsiasi sistema di forze
-		applicato.}
-	\label{fig:catalogo_mensola}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-catalogo-mensola}
+
 
 \paragraph{Trave semplicemente appoggiata.}\index{trave!semplicemente appoggiata|textbf}
 Una cerniera in $A$ (2 vincoli) e un carrello in $B$ (1 vincolo)
@@ -1097,118 +1057,9 @@ senza produrre momento risultante, poiché entrambe
 le linee d'azione passano per $A$.
 
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-		
-		\def\L{4.0}
-		
-		% ============================================================
-		% PANNELLO (a) — caso regolare
-		% ============================================================
-		\begin{scope}[xshift=0cm]
-			
-			% trave
-			\draw[line width=1.5pt] (0,0) -- (\L,0);
-			
-			% --- cerniera in A (cerniera al suolo) ---
-			\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
-			\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (0,0) {};
-			
-			% --- carrello in B (asse verticale, sotto la trave) ---
-			\draw[thick] (\L,0) -- (\L-0.22,-0.38)
-			-- (\L+0.22,-0.38) -- cycle;
-			\draw[thick] (\L-0.15,-0.44) circle (0.07);
-			\draw[thick] (\L+0.15,-0.44) circle (0.07);
-			\draw[thick] (\L-0.32,-0.54) -- (\L+0.32,-0.54);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] (\L+\x,-0.54) -- (\L+\x-0.10,-0.68);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (\L,0) {};
-			
-			% --- etichette dei nodi ---
-			\node[above left,  font=\scriptsize] at (0,0)  {$A$};
-			\node[above right, font=\scriptsize] at (\L,0) {$B$};
-			
-			% --- didascalia del pannello ---
-			\node[font=\scriptsize] at (\L/2,-1.20)
-			{(a) caso regolare, $\rg(\bm{A})=3$};
-			
-		\end{scope}
-		
-		
-		% ============================================================
-		% PANNELLO (b) — caso degenere (carrello con asse orizzontale)
-		% ============================================================
-		\begin{scope}[xshift=6.5cm]
-			
-			\def\thetadeg{15}   % ampiezza dell'angolo di rotazione, in gradi
-			
-			
-			% --- meccanismo (cinematica infinitesima): rotazione theta attorno ad A ---
-			% B' è sotto B alla distanza theta*L (linearizzato), sulla verticale di B
-			\def\dB{1.0}   % ampiezza grafica del cedimento verticale di B (= theta*L)
-			
-			% trave deformata: A fisso, B' = B - dB * \ab_y
-			\draw[gray!55, line width=1.2pt] (0,0) -- (\L,-\dB);
-			
-			% etichetta B'
-			\node[gray!70,  right, font=\scriptsize] at (\L,-\dB) {$B'$};
-			
-			% freccia dello spostamento u(B), dal B originale verso B' (verticale)
-			\draw[->, gray!70, thick] (\L,0) -- (\L,-\dB);
-			\node[gray!70, right, font=\scriptsize] at (\L,-\dB/2) {$q$};
-			
-			% --- trave (configurazione iniziale) ---
-			\draw[line width=1.5pt] (0,0) -- (\L,0);
-			
-			% --- cerniera in A (cerniera al suolo) ---
-			\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
-			\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (0,0) {};
-			
-			% --- carrello in B con asse ORIZZONTALE (a muro, a destra) ---
-			\draw[thick] (\L,0) -- (\L+0.38,-0.22)
-			-- (\L+0.38, 0.22) -- cycle;
-			\draw[thick] (\L+0.44,-0.15) circle (0.07);
-			\draw[thick] (\L+0.44, 0.15) circle (0.07);
-			\draw[thick] (\L+0.54,-0.32) -- (\L+0.54, 0.32);
-			\foreach \y in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] (\L+0.54,\y) -- (\L+0.68,\y-0.10);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (\L,0) {};
-			
-			% --- linea d'azione di R_B (tratteggiata lungo AB) ---
-			\draw[dashed, thin, gray!70] (-0.5,0) -- (\L+0.5,0);
-			\node[font=\scriptsize, gray!80] at (\L/2,0.30)
-			{linea d'azione di $R_B$};
-			
-			% --- etichette dei nodi (in primo piano) ---
-			\node[above left,  font=\scriptsize] at (0,0)   {$A$};
-			\node[above,       font=\scriptsize] at (\L,0.05) {$B$};
-			
-			% --- didascalia del pannello ---
-			\node[font=\scriptsize] at (\L/2,-1.20)
-			{(b) caso degenere, $g_\ell = g_{\mathscr{i}} = 1$};
-			
-		\end{scope}
-		
-	\end{tikzpicture}
-	\caption{Trave appoggiata: \emph{(a)}~caso regolare, $\rg(\bm{A})=3$ (isostatico); \emph{(b)}~caso	degenere, $g_\ell = g_{\mathscr{i}} = 1$. In (b) la	linea d'azione del carrello (tratteggio grigio)	coincide con la retta $AB$; il meccanismo è	rappresentato dalla configurazione deformata	(grigio) e dal parametro lagrangiano $q$.}
-	\label{fig:catalogo_trave_carrello}
-	\label{fig:catalogo_trave_carrello}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-catalogo-trave-carrello}
+
 
 
 \paragraph{Trave con glifo.}\index{trave!con glifo|textbf}
@@ -1249,140 +1100,9 @@ entrambi i vincoli possono sviluppare reazioni in quella
 direzione.
 
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-		
-		\def\L{4.0}
-		
-		% ============================================================
-		% PANNELLO (a) — caso regolare (assi non paralleli)
-		% ============================================================
-		\begin{scope}[xshift=0cm]
-			
-			% --- trave (orizzontale, in y=0, parte dall'origine) ---
-			\draw[line width=1.5pt] (0,0) -- (\L,0);
-			
-			% --- GLIFO in A: piatti a -45° (orario), agganciato alla
-			\begin{scope}[shift={({-0.12*sin(45)}, {-0.12*cos(45)})},
-				rotate=-45]
-				% piatto inferiore
-				\draw[thick] (-0.45,-0.12) -- (0.45,-0.12);
-				% piatto superiore
-				\draw[thick] (-0.45, 0.12) -- (0.45, 0.12);
-				% rotelle (cerchietti tra i piatti)
-				\draw[thick] (-0.15, 0) circle (0.10);
-				\draw[thick] ( 0.15, 0) circle (0.10);
-				% hatching sotto il piatto inferiore (a indicare il suolo)
-				\foreach \x in {-0.36,-0.18,0,0.18,0.36}{
-					\draw[thin] (\x,-0.12) -- (\x-0.10,-0.26);
-				}
-			\end{scope}
-			
-			% --- freccia ed etichetta asse del glifo a_g a +45° ---
-			\draw[->, thin, gray!70] (0,0) -- ({0.55*cos(45)}, {0.55*sin(45)});
-			\node[gray!80, font=\scriptsize, right] at	({0.55*cos(45)+0.05}, {0.55*sin(45)+0.02}) {$\ab_g$};
-			
-			% --- CARRELLO in B: asse verticale ---
-			\draw[thick] (\L,0) -- (\L-0.22,-0.38)
-			-- (\L+0.22,-0.38) -- cycle;
-			\draw[thick] (\L-0.15,-0.44) circle (0.07);
-			\draw[thick] (\L+0.15,-0.44) circle (0.07);
-			\draw[thick] (\L-0.32,-0.54) -- (\L+0.32,-0.54);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-				\draw[thin] (\L+\x,-0.54) -- (\L+\x-0.10,-0.68);
-			}
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (\L,0) {};
-			
-			% --- freccia ed etichetta asse del carrello a_c verticale ---
-			\draw[->, thin, gray!70] (\L,0) -- (\L,0.55);
-			\node[gray!80, font=\scriptsize, right] at (\L,0.45) {$\ab_c$};
-			
-			% --- etichette dei nodi ---
-			\node[above ,  font=\scriptsize] at (0,0)  {$A$};
-			\node[above right, font=\scriptsize] at (\L,0) {$B$};
-			
-			% --- didascalia del pannello ---
-			\node[font=\scriptsize] at (\L/2,-1.30)
-			{(a) caso regolare, $\rg(\bm{A})=3$};
-			
-		\end{scope}
-		
-		% ============================================================
-		% PANNELLO (b) — caso degenere (assi collineari, opposti)
-		% ============================================================
-		\begin{scope}[xshift=7.0cm]
-			
-			\def\q{1.0}
-			
-			% --- meccanismo: trave traslata di q lungo (-45°) [grigia] ---
-			\draw[gray!55, line width=1.2pt] ({\q*cos(45)},{-\q*sin(45)}) -- ({\L+\q*cos(45)},{-\q*sin(45)});
-			\node[gray!70, below left,  font=\scriptsize] at({\q*cos(45)},{-\q*sin(45)})  {$A'$};
-			\node[gray!70, below right, font=\scriptsize] at ({\L+\q*cos(45)},{-\q*sin(45)}) {$B'$};
-			
-			% frecce del parametro lagrangiano q in A e in B, lungo -45°
-			\draw[->, gray!70, thick] (0,0) --	({\q*cos(45)},{-\q*sin(45)});
-			\draw[->, gray!70, thick] (\L,0) --		({\L+\q*cos(45)},{-\q*sin(45)});
-			\node[gray!70, font=\scriptsize] at	({0.5*\q*cos(45)+0.10},{-0.5*\q*sin(45)+0.05}) {$q$};
-			\node[gray!70, font=\scriptsize] at	({\L+0.5*\q*cos(45)+0.10},{-0.5*\q*sin(45)+0.05}) {$q$};
-			
-			% --- trave (configurazione iniziale) ---
-			\draw[line width=1.5pt] (0,0) -- (\L,0);
-			
-			% --- GLIFO in A: piatti a -45° (invariato) ---
-			\begin{scope}[shift={({-0.12*sin(45)},{-0.12*cos(45)})},
-				rotate=-45]
-				\draw[thick] (-0.45,-0.12) -- (0.45,-0.12);
-				\draw[thick] (-0.45, 0.12) -- (0.45, 0.12);
-				\draw[thick] (-0.15, 0) circle (0.10);
-				\draw[thick] ( 0.15, 0) circle (0.10);
-				\foreach \x in {-0.36,-0.18,0,0.18,0.36}{
-					\draw[thin] (\x,-0.12) -- (\x-0.10,-0.26);
-				}
-			\end{scope}
-			% freccia ed etichetta a_g a +45°
-			\draw[->, thin, gray!70] (0,0)	-- ({0.55*cos(45)},{0.55*sin(45)});
-			\node[gray!80, font=\scriptsize, right] at	({0.55*cos(45)+0.05},{0.55*sin(45)+0.02}) {$\ab_g$};
-			
-			% --- CARRELLO in B: ruotato così che a_c = -a_g (a +45° + 180° = -135°) ---
-			\begin{scope}[shift={(\L,0)}, rotate=135]
-				\draw[thick] (0,0) -- (-0.22,-0.38)	-- (0.22,-0.38) -- cycle;
-				\draw[thick] (-0.15,-0.44) circle (0.07);
-				\draw[thick] ( 0.15,-0.44) circle (0.07);
-				\draw[thick] (-0.32,-0.54) -- (0.32,-0.54);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-					\draw[thin] (\x,-0.54) -- (\x-0.10,-0.68);
-				}
-			\end{scope}
-			% perno bianco in B (centro del carrello = punto di attacco)
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=5pt, line width=0.8pt] at (\L,0) {};
-			% freccia ed etichetta a_c a -135° (cioè -a_g, verso basso-sinistra)
-			\draw[->, thin, gray!70] (\L,0)
-			-- ({\L-0.55*cos(45)},{-0.55*sin(45)});
-			\node[gray!80, font=\scriptsize, left] at
-			({\L-0.55*cos(45)-0.05},{-0.55*sin(45)-0.02}) {$\ab_c$};
-			
-			% --- etichette dei nodi ---
-			\node[above,  font=\scriptsize] at (0,0)  {$A$};
-			\node[above left, font=\scriptsize] at (\L,0) {$B$};
-			
-			% --- didascalia del pannello ---
-			\node[font=\scriptsize] at (\L/2,-1.55)
-			{(b) caso degenere, $g_\ell = g_{\mathscr{i}} = 1$};
-			
-		\end{scope}
-	\end{tikzpicture}
-	\caption{Trave con glifo in $A$ e carrello in $B$:
-		\emph{(a)}~caso regolare con assi $\ab_g$ e $\ab_c$
-		non paralleli ($\rg(\bm{A})=3$, isostatico);
-		\emph{(b)}~caso degenere con assi $\ab_g$ e $\ab_c$
-		collineari ($g_\ell = g_{\mathscr{i}} = 1$). In (b)
-		il meccanismo è la traslazione del corpo nella
-		direzione ortogonale agli assi, parametrizzata da $q$.}
-	\label{fig:catalogo_trave_glifo}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-catalogo-trave-glifo}
+
 
 
 
@@ -1414,6 +1134,8 @@ dipende interamente dalla disposizione geometrica degli assi.
 Le due degenerazioni tipiche --- assi tutti paralleli e assi
 tutti concorrenti in un punto --- sono illustrate
 nell'esempio seguente.
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-degen-singolo}
 
 \begin{esempio}[Trave con tre carrelli degeneri ---
 	assi paralleli e assi concorrenti]
@@ -1492,224 +1214,8 @@ nell'esempio seguente.
 		delle altre due, quindi $\rg(\bm{A}) = 2$ e
 		$g_\ell = g_{\mathscr{i}} = 1$.
 		
-		\begin{figure}[ht]
-			\centering
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-				
-				\def\L{4.0}
-				\def\h{1.8}
-				\def\Fr{0.35}  % lunghezza frecce reazioni
-				\def\yR{0.12}  % quota base frecce reazioni (sopra la trave)
-				
-				% ============================================================
-				% PANNELLO (a) — tre carrelli verticali
-				% ============================================================
-				\begin{scope}[xshift=0cm]
-					
-					% trave
-					\draw[thick] (0,0) -- (\L,0);
-					
-					% punti
-					\fill (0,0)    %circle (2pt)
-					node[above right,  font=\scriptsize] {$A$};
-					\fill (\L/2,0) %circle (2pt)
-					node[above left, font=\scriptsize] {$B$};
-					\fill (\L,0)   %circle (2pt)
-					node[above left, font=\scriptsize] {$C$};
-					
-					% carrello verticale in A
-					\draw[thick] (0,0) -- (-0.20,-0.34)
-					-- (0.20,-0.34) -- cycle;
-					\draw[thick] (-0.14,-0.40) circle (0.07);
-					\draw[thick] ( 0.14,-0.40) circle (0.07);
-					\draw[thick] (-0.30,-0.50) -- (0.30,-0.50);
-					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
-						\draw[thin] (\x,-0.50) -- (\x-0.10,-0.64);
-					}
-					
-					% carrello verticale in B
-					\draw[thick] (\L/2,0) -- (\L/2-0.20,-0.34)
-					-- (\L/2+0.20,-0.34) -- cycle;
-					\draw[thick] (\L/2-0.14,-0.40) circle (0.07);
-					\draw[thick] (\L/2+0.14,-0.40) circle (0.07);
-					\draw[thick] (\L/2-0.30,-0.50) -- (\L/2+0.30,-0.50);
-					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
-						\draw[thin] (\L/2+\x,-0.50)
-						-- (\L/2+\x-0.10,-0.64);
-					}
-					
-					% carrello verticale in C
-					\draw[thick] (\L,0) -- (\L-0.20,-0.34)
-					-- (\L+0.20,-0.34) -- cycle;
-					\draw[thick] (\L-0.14,-0.40) circle (0.07);
-					\draw[thick] (\L+0.14,-0.40) circle (0.07);
-					\draw[thick] (\L-0.30,-0.50) -- (\L+0.30,-0.50);
-					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
-						\draw[thin] (\L+\x,-0.50)
-						-- (\L+\x-0.10,-0.64);
-					}
-					
-					% --- perni vuoti in A e C (estremità) ---
-					\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=5pt, line width=0.8pt] at (0,0) {};
-					\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=5pt, line width=0.8pt] at (\L,0) {};
-					
-					% --- mezzaluna in B (carrello a mezzeria della trave continua) ---
-					\fill[white] (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
-					\draw[thick] (\L/2-0.08,0) arc(180:360:0.08);
-					
-					
-					% stato di autoequilibrio (frecce sopra la trave)
-					% R_A = +1 verso l'alto
-					\draw[->, thick, gray!60]
-					(0, \yR) -- (0, \yR+\Fr)
-					node[left, font=\scriptsize, gray!70] {$1$};
-					% R_B = -2 verso il basso (freccia dall'alto verso trave)
-					\draw[->, thick, gray!60]
-					(\L/2, \yR+2*\Fr) -- (\L/2, \yR)
-					node[right, font=\scriptsize, gray!70] {$2$};
-					% R_C = +1 verso l'alto
-					\draw[->, thick, gray!60]
-					(\L, \yR) -- (\L, \yR+\Fr)
-					node[right, font=\scriptsize, gray!70] {$1$};
-					
-					% meccanismo: freccia orizzontale
-					\draw[->, thick, gray!70]
-					(\L/2-0.55, \yR+2*\Fr+0.25)
-					-- (\L/2+0.55, \yR+2*\Fr+0.25)
-					node[above, font=\small, gray!70] {$\bm{u}_1$};
-					
-					% punto improprio
-					\draw[->, dashed, gray!40, thin]
-					(\L/2, \yR+2*\Fr+0.55)
-					-- (\L/2, \yR+2*\Fr+0.95)
-					node[right, font=\scriptsize, gray!50]
-					{$P_\infty$};
-					
-					\node[font=\scriptsize] at (\L/4, -0.80) {(a)};
-					
-				\end{scope}
-				
-				% ============================================================
-				% PANNELLO (b) — tre carrelli convergenti in P
-				% ============================================================
-				\begin{scope}[xshift=6.8cm]
-					
-					% trave (continua, nessun punto in B)
-					\draw[thick] (0,0) -- (\L,0);
-					
-					
-					% A: solo etichetta
-					\node[above left, font=\scriptsize] at (0,0) {$A$};
-					% B: solo etichetta
-					\node[above, font=\scriptsize] at (\L/2, 0) {$B$};
-					% C: solo etichetta
-					\node[above right=-0.05, font=\scriptsize] at (\L,0.0) {$C$};
-					
-					% punto P
-					\fill (\L/2,\h) circle (2pt)
-					node[above, font=\small] {$P$};
-					
-					% linee d'azione tratteggiate
-					\draw[dashed, gray!50, thin] (0,0)    -- (\L/2,\h);
-					\draw[dashed, gray!50, thin] (\L/2,0) -- (\L/2,\h);
-					\draw[dashed, gray!50, thin] (\L,0)   -- (\L/2,\h);
-					
-					% angolo asse AP rispetto all'orizzontale
-					\pgfmathsetmacro{\angA}{atan2(\h,\L/2)}
-					
-					% carrello in A: asse nella direzione A->P
-					
-					\begin{scope}[shift={(0,0)}, rotate={-\angA}]
-						\draw[thick] (0,0) -- (-0.20,-0.34)
-						-- (0.20,-0.34) -- cycle;
-						\draw[thick] (-0.14,-0.40) circle (0.07);
-						\draw[thick] ( 0.14,-0.40) circle (0.07);
-						\draw[thick] (-0.30,-0.50) -- (0.30,-0.50);
-						\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
-							\draw[thin] (\x,-0.50) -- (\x-0.10,-0.64);
-						}
-					\end{scope}
-					
-					% carrello in B: verticale (P è esattamente sopra B)
-					\draw[thick] (\L/2,0) -- (\L/2-0.20,-0.34)	-- (\L/2+0.20,-0.34) -- cycle;
-					\draw[thick] (\L/2-0.14,-0.40) circle (0.07);
-					\draw[thick] (\L/2+0.14,-0.40) circle (0.07);
-					\draw[thick] (\L/2-0.30,-0.50) -- (\L/2+0.30,-0.50);
-					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{\draw[thin] (\L/2+\x,-0.50) -- (\L/2+\x-0.10,-0.64);
-					}
-					
-					% --- perno vuoto in A (estremità) ---
-					\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=5pt, line width=0.8pt] at (0,0) {};
-					%\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (\L,0) {};
-					
-					% --- mezzaluna in B (carrello a mezzeria della trave continua) ---
-					\fill[white] (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
-					\draw[thick] (\L/2-0.08,0) arc(180:360:0.08);
-					
-					% carrello in C: simmetrico ad A rispetto alla verticale per P
-					\begin{scope}[shift={(\L,0)}, rotate={\angA}]
-						\draw[thick] (0,0) -- (-0.20,-0.34) -- (0.20,-0.34) -- cycle;
-						\draw[thick] (-0.14,-0.40) circle (0.07);
-						\draw[thick] ( 0.14,-0.40) circle (0.07);
-						\draw[thick] (-0.30,-0.50) -- (0.30,-0.50);
-						\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
-							\draw[thin] (\x,-0.50) -- (\x-0.10,-0.64);
-						}
-					\end{scope}     % <-- chiusura QUI
-					
-					% --- perno vuoto in C (estremità) ---
-					\node[circle, fill=white, draw=black, inner sep=0pt,minimum size=5pt, line width=0.8pt] at (\L,0) {};
-					
-					
-					% =====================================================
-					% AUTOSOLUZIONE CINEMATICA: rotazione q di C attorno a P
-					% =====================================================
-					\def\qrot{10}    % ampiezza dell'angolo q (in gradi, antioraria)
-					
-					% Coordinate dei punti ruotati: P_punto = P + R_q(P_origine - P)
-					% A_x' = P_x + (A_x - P_x)*cos(q) - (A_y - P_y)*sin(q)
-					% A_y' = P_y + (A_x - P_x)*sin(q) + (A_y - P_y)*cos(q)
-					\pgfmathsetmacro{\Axp}{\L/2 + (0 - \L/2)*cos(\qrot) - (0 - \h)*sin(\qrot)}
-					\pgfmathsetmacro{\Ayp}{\h   + (0 - \L/2)*sin(\qrot) + (0 - \h)*cos(\qrot)}
-					\pgfmathsetmacro{\Bxp}{\L/2 + 0*cos(\qrot) - (0 - \h)*sin(\qrot)}
-					\pgfmathsetmacro{\Byp}{\h   + 0*sin(\qrot) + (0 - \h)*cos(\qrot)}
-					\pgfmathsetmacro{\Cxp}{\L/2 + (\L - \L/2)*cos(\qrot) - (0 - \h)*sin(\qrot)}
-					\pgfmathsetmacro{\Cyp}{\h   + (\L - \L/2)*sin(\qrot) + (0 - \h)*cos(\qrot)}
-					
-					% trave ruotata (configurazione variata, grigia)
-					\draw[gray!55, line width=1.2pt]
-					(\Axp,\Ayp) -- (\Cxp,\Cyp);
-					
-					% linee tratteggiate dalla P ai punti ruotati A', B', C'
-					\draw[dashed, gray!50, thin] (\L/2,\h) -- (\Axp,\Ayp);
-					\draw[dashed, gray!50, thin] (\L/2,\h) -- (\Bxp,\Byp);
-					\draw[dashed, gray!50, thin] (\L/2,\h) -- (\Cxp,\Cyp);
-					
-					% etichette dei punti ruotati
-					\node[gray!70, below,  font=\scriptsize] at (\Axp,\Ayp) {$A'$};
-					\node[gray!70, above,       font=\scriptsize] at (\Bxp,\Byp) {$B'$};
-					\node[gray!70, above , font=\scriptsize] at (\Cxp,\Cyp) {$C'$};
-					
-					% archetto dell'angolo q (vicino a P, sull'asse PB)
-					\def\rArc{1.0}
-					\draw[->, gray!70, thin]	(\L/2,\h) ++(-90:\rArc)	arc[start angle=-90, end angle={-90+\qrot}, radius=\rArc];
-					\node[gray!70, font=\scriptsize, right=2pt] at	({\L/2 + \rArc*sin(\qrot/2)*0.5}, {\h - \rArc*0.95}) {$q$};
-					
-					\node[font=\scriptsize] at (\L/4, -0.80) {(b)};
-				\end{scope}
-			\end{tikzpicture}
-			\caption{Degenerazione geometrica per un singolo corpo
-				($\nu = 0$, $g_\ell = g_{\mathscr{i}} = 1$):
-				(a)~tre carrelli verticali paralleli ---
-				stato di autoequilibrio con reazioni $(1,-2,1)$
-				(frecce grigie) e meccanismo di traslazione
-				orizzontale $\bm{u}_1$;
-				(b)~tre carrelli con assi convergenti nel
-				punto proprio $P$ --- meccanismo di rotazione
-				attorno a $P$ e linee d'azione dei vincoli
-				(tratteggiate).}
-			\label{fig:degen_singolo}
-		\end{figure}
+
+
 		
 		\smallskip
 		\noindent\textit{Meccanismo.}
@@ -1768,12 +1274,6 @@ Per due corpi rigidi ($n_c = 2$, $n = 6$), la sottostruttura
 di riferimento è l'\emph{arco a tre cerniere}: due corpi
 collegati da una cerniera interna in $C$ e vincolati al suolo
 da due cerniere esterne in $A$ e $B$.
-I vincoli scalari sono $m = 2 + 2 + 2 = 6$, $\nu = 0$.
-
-Per due corpi rigidi ($n_c = 2$, $n = 6$), la sottostruttura
-di riferimento è l'\emph{arco a tre cerniere}: due corpi
-collegati da una cerniera interna in $C$ e vincolati al suolo
-da due cerniere esterne in $A$ e $B$.
 I vincoli scalari sono $m = 2 + 2 + 2 = 6$, $\nu = 0$
 (\FIGref{fig:catalogo_2corpi}).
 
@@ -1811,263 +1311,9 @@ reazioni delle cerniere esterne --- le cui linee d'azione
 passano per $A$ e $B$ --- non riescono a bilanciare.
 
 
-\begin{figure}[!ht]
-	\centering
-	\resizebox{\textwidth}{!}{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-			
-			
-			\def\Lel{1.0}    % unità geometrica
-			
-			% ============================================================
-			% PANNELLO (a) — caso regolare: portale a tre cerniere
-			% ============================================================
-			\begin{scope}[xshift=0cm]
-				
-				% --- corpi: due aste rettilinee AC e CB ---
-				\draw[line width=1.5pt] (0,0) -- ({2*\Lel},{2*\Lel});      % asta AC = C_1
-				\draw[line width=1.5pt] ({2*\Lel},{2*\Lel}) -- ({4*\Lel},0);  % asta CB = C_2
-				
-				% --- cerniera esterna in A (al suolo) ---
-				\begin{scope}[shift={(0,0)}]
-					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
-					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
-					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-						\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
-					}
-				\end{scope}
-				\node[circle, fill=white, draw=black, inner sep=0pt,
-				minimum size=5pt, line width=0.8pt] at (0,0) {};
-				
-				% --- cerniera esterna in B (al suolo) ---
-				\begin{scope}[shift={({4*\Lel},0)}]
-					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
-					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
-					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-						\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
-					}
-				\end{scope}
-				\node[circle, fill=white, draw=black, inner sep=0pt,
-				minimum size=5pt, line width=0.8pt] at ({4*\Lel},0) {};
-				
-				% --- cerniera interna in C (cerchio bianco sulla congiunzione) ---
-				\draw[fill=white, thick] ({2*\Lel},{2*\Lel}) circle (2.5pt);
-				
-				% --- etichette dei nodi ---
-				\node[ left,  font=\scriptsize] at (0,0)             {$A$};
-				\node[above,       font=\scriptsize] at ({2*\Lel},{2*\Lel+0.10}) {$C$};
-				\node[ right, font=\scriptsize] at ({4*\Lel},0)      {$B$};
-				
-				% --- etichette dei corpi ---
-				\node[font=\small] at ({\Lel-0.30},{\Lel+0.15}) {$\mathcal{C}_1$};
-				\node[font=\small] at ({3*\Lel+0.20},{\Lel+0.15}) {$\mathcal{C}_2$};
-				
-				% --- didascalia del pannello ---
-				\node[font=\scriptsize] at ({2*\Lel},-1.30)
-				{(a) caso regolare, $\rg(\bm{A})=6$};
-				
-			\end{scope}
-			
-			% ============================================================
-			% PANNELLO (b) — caso degenere: poligonale spezzata
-			%                A=(0,0), D=(l,l), C=(2l,0), E=(3l,-l), B=(4l,0)
-			%                con rette di proiezione r_H, r_V e meccanismo q
-			% ============================================================
-			\begin{scope}[xshift=6.0cm]
-				
-				\def\qa{0.30}    % ampiezza del parametro |q|
-				
-				% linea ausiliaria di allineamento di A, C, B (collinearità)
-				\draw[gray!50, thin, dashed]	(-0.3,0) -- ({4*\Lel+0.3},0);
-				
-				
-				% ============================================================
-				% RETTE DI PROIEZIONE (grigio chiaro, sotto e a destra)
-				% ============================================================
-				% retta di proiezione orizzontale r_H (sopra la struttura)
-				\draw[gray!50, thin] (-0.5,{2*\Lel}) -- ({4.5*\Lel},{2*\Lel});
-				\node[gray!70, font=\scriptsize, right] at ({4.5*\Lel},{2*\Lel}) {$r_H$};
-				
-				% etichette dei centri di rotazione, proiettate su r_H
-				\fill[gray!60] (0,{2*\Lel})         circle (1.2pt);
-				\fill[gray!60] ({2*\Lel},{2*\Lel})  circle (1.2pt);
-				\fill[gray!60] ({4*\Lel},{2*\Lel})  circle (1.2pt);
-				
-				\node[gray!70, font=\scriptsize, above] at (0,{2*\Lel})        {$C_1$};
-				\node[gray!70, font=\scriptsize, above] at ({2*\Lel},{2*\Lel}) {$C_{12}$};
-				\node[gray!70, font=\scriptsize, above] at ({4*\Lel},{2*\Lel}) {$C_2$};
-				
-				% linee di proiezione dai punti A, C, B verso i rispettivi centri su r_H
-				\draw[gray!40, thin, dotted] (0,0)        -- (0,{2*\Lel});
-				\draw[gray!40, thin, dotted] ({2*\Lel},0) -- ({2*\Lel},{2*\Lel});
-				\draw[gray!40, thin, dotted] ({4*\Lel},0) -- ({4*\Lel},{2*\Lel});
-				
-				% ============================================================
-				% CAMPI v_1 e v_2 sulla retta r_H
-				% Convenzione: v < 0 (spostamento verso il basso) -> linea sotto r_H
-				% ============================================================
-				\def\qa{0.30}    % modulo del parametro |q|
-				
-				
-				
-				% frecce dei campi v_1 e v_2 nei punti notevoli D, C, E
-				% (in A e B il campo è nullo, niente freccia)
-				\draw[->, gray!70, thin] ({\Lel},{2*\Lel})	-- ({\Lel},{2*\Lel-\Lel*\qa});
-				\draw[->, gray!70, thick] ({2*\Lel},{2*\Lel})	-- ({2*\Lel},{2*\Lel-2*\Lel*\qa});
-				\draw[->, gray!70, thin] ({3*\Lel},{2*\Lel})	-- ({3*\Lel},{2*\Lel-\Lel*\qa});
-				
-				% frecce intermedie su v_1 (a x = L/2 e x = 3L/2)
-				\draw[->, gray!70, thin] ({0.5*\Lel},{2*\Lel})	-- ({0.5*\Lel},{2*\Lel-0.5*\Lel*\qa});
-				\draw[->, gray!70, thick] ({1.5*\Lel},{2*\Lel})	-- ({1.5*\Lel},{2*\Lel-1.5*\Lel*\qa});
-				
-				% frecce intermedie su v_2 (a x = 5L/2 e x = 7L/2)
-				\draw[->, gray!70, thick] ({2.5*\Lel},{2*\Lel})	-- ({2.5*\Lel},{2*\Lel-1.5*\Lel*\qa});
-				\draw[->, gray!70, thin] ({3.5*\Lel},{2*\Lel}) -- ({3.5*\Lel},{2*\Lel-0.5*\Lel*\qa});
-				
-				% --- campo v_1 su C_1: A, D, C ---
-				\draw[gray!70, line width=1.0pt]	(0,{2*\Lel})	-- ({\Lel},{2*\Lel-\Lel*\qa})	-- ({2*\Lel},{2*\Lel-2*\Lel*\qa});
-				
-				
-				% --- campo v_2 su C_2: C, E, B ---
-				\draw[gray!70, line width=1.0pt]	({2*\Lel},{2*\Lel-2*\Lel*\qa})	-- ({3*\Lel},{2*\Lel-\Lel*\qa})	-- ({4*\Lel},{2*\Lel});
-				
-				% pallini sui punti notevoli del campo v_2
-				%\fill[gray!70] ({3*\Lel},{2*\Lel-\Lel*\qa})  circle (1.0pt);
-				
-				% --- linee di proiezione tratteggiate da D, E verso il rispettivo punto sul campo ---
-				\draw[gray!50, thin, dotted] ({\Lel},\Lel)	-- ({\Lel},{2*\Lel-\Lel*\qa});
-				\draw[gray!50, thin, dotted] ({3*\Lel},{-\Lel})		-- ({3*\Lel},{2*\Lel-\Lel*\qa});
-				
-				% --- etichette dei campi ---
-				\node[gray!70, font=\scriptsize, above] at	({\Lel},{2*\Lel-0.5*\Lel*\qa+0.05}) {$v_1$};
-				\node[gray!70, font=\scriptsize, above] at	({3.0*\Lel},{2*\Lel-0.5*\Lel*\qa+0.05}) {$v_2$};
-				
-				
-				% ============================================================
-				% RETTA DI PROIEZIONE r_V (verticale, a destra) e campi u_1, u_2
-				% Convenzione: u > 0 (spostamento verso destra) -> punto a destra di r_V
-				% ============================================================
-				
-				% retta r_V
-				\draw[gray!50, thin]({5*\Lel},{-\Lel-0.3}) -- ({5*\Lel},{\Lel+0.3});
-				\node[gray!70, font=\scriptsize, above] at ({5*\Lel},{\Lel+0.3}) {$r_V$};
-				
-				% campo u_1 su C_1: lineare tra (r_V, 0) e (r_V + |q|*L, L)
-				\draw[gray!70, line width=1.0pt] ({5*\Lel},0) -- ({5*\Lel+\Lel*\qa},\Lel);
-				
-				% campo u_2 su C_2: lineare tra (r_V + |q|*L, -L) e (r_V, 0)
-				\draw[gray!70, line width=1.0pt] ({5*\Lel+\Lel*\qa},{-\Lel}) -- ({5*\Lel},0);
-				
-				% frecce intermedie su u_1 (a y = L/2 e y = L = D)
-				\draw[->, gray!70, thin] ({5*\Lel},{0.5*\Lel})	-- ({5*\Lel+0.5*\Lel*\qa},{0.5*\Lel});
-				\draw[->, gray!70, thin] ({5*\Lel},\Lel)	-- ({5*\Lel+\Lel*\qa},\Lel);
-				
-				% frecce intermedie su u_2 (a y = -L/2 e y = -L = E)
-				\draw[->, gray!70, thin] ({5*\Lel},{-0.5*\Lel}) -- ({5*\Lel+0.5*\Lel*\qa},{-0.5*\Lel});
-				\draw[->, gray!70, thin] ({5*\Lel},{-\Lel}) -- ({5*\Lel+\Lel*\qa},{-\Lel});
-				
-				% linee di proiezione tratteggiate da D e E verso il rispettivo punto su r_V
-				\draw[gray!50, thin, dotted] (\Lel,\Lel) -- ({5*\Lel+\Lel*\qa},\Lel);
-				\draw[gray!50, thin, dotted] ({3*\Lel},{-\Lel})	-- ({5*\Lel+\Lel*\qa},{-\Lel});
-				
-				% etichette dei campi
-				\node[gray!70, font=\scriptsize, right] at	({5*\Lel+0.5*\Lel*\qa+0.05},{0.5*\Lel+0.10}) {$u_1$};
-				\node[gray!70, font=\scriptsize, right] at	({5*\Lel+0.5*\Lel*\qa+0.05},{-0.5*\Lel-0.10}) {$u_2$};
-				
-				% ============================================================
-				% CONFIGURAZIONE DEFORMATA (in grigio)
-				% ============================================================
-				% C_1' deformato: A -> D' -> C'
-				\draw[gray!55, line width=1.2pt](0,0) -- ({\Lel+\Lel*\qa},{\Lel-\Lel*\qa})	-- ({2*\Lel},{-2*\Lel*\qa}); % C_2' deformato: C' -> E' -> B
-				\draw[gray!55, line width=1.2pt] ({2*\Lel},{-2*\Lel*\qa}) -- ({3*\Lel+\Lel*\qa},{-\Lel-\Lel*\qa})-- ({4*\Lel},0);
-				
-				% etichette dei punti spostati
-				\node[gray!70, font=\scriptsize] at	({\Lel+\Lel*\qa+0.20},{\Lel-\Lel*\qa+0.10}) {$D'$};
-				\node[gray!70, font=\scriptsize, right] at	({2*\Lel+0.10},{-2*\Lel*\qa}) {$C'$};
-				\node[gray!70, font=\scriptsize] at	({3*\Lel+\Lel*\qa+0.25},{-\Lel-\Lel*\qa-0.04}) {$E'$};
-				
-				% archetto del parametro lagrangiano q sul corpo C_1
-				% tra la direzione AD (iniziale) e AD' (deformata)
-				\draw[->, gray!70, thin](0,0) ++(45:0.8*\Lel) arc[start angle=45, end angle=27.8, radius=0.8*\Lel];
-				\node[gray!70, font=\scriptsize, right] at	({0.8*\Lel*cos(36.4)},{0.8*\Lel*sin(36.4)-0.2})			{$q$};
-				
-				
-				
-				% ============================================================
-				% FRECCE DEGLI SPOSTAMENTI in D, C, E
-				% ============================================================
-				% u(D) verso (+1,-1)*|q|*l
-				\draw[->, gray!70, thick] (\Lel,\Lel)	-- ({\Lel+\Lel*\qa},{\Lel-\Lel*\qa});	% u(C) verso il basso di 2*l*|q|
-				\draw[->, gray!70, thick] ({2*\Lel},0)	-- ({2*\Lel},{-2*\Lel*\qa});	% u(E) verso (+1,-1)*|q|*l
-				\draw[->, gray!70, thick] ({3*\Lel},{-\Lel})	-- ({3*\Lel+\Lel*\qa},{-\Lel-\Lel*\qa});
-				
-				% ============================================================
-				% CONFIGURAZIONE INIZIALE (in nero)
-				% ============================================================
-				% C_1: A -> D -> C
-				\draw[line width=1.5pt] (0,0) -- (\Lel,\Lel) -- ({2*\Lel},0);
-				% C_2: C -> E -> B
-				\draw[line width=1.5pt] ({2*\Lel},0)-- ({3*\Lel},{-\Lel}) -- ({4*\Lel},0);
-				
-				% ============================================================
-				% CERNIERE
-				% ============================================================
-				% cerniera esterna in A
-				\begin{scope}[shift={(0,0)}]
-					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
-					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
-					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
-						\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
-					}
-				\end{scope}
-				\node[circle, fill=white, draw=black, inner sep=0pt,
-				minimum size=5pt, line width=0.8pt] at (0,0) {};
-				
-				% cerniera esterna in B
-				\begin{scope}[shift={({4*\Lel},0)}]
-					\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
-					\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
-					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);	}
-				\end{scope}
-				\node[circle, fill=white, draw=black, inner sep=0pt,
-				minimum size=5pt, line width=0.8pt] at ({4*\Lel},0) {};
-				
-				% cerniera interna in C
-				\draw[fill=white, thick] ({2*\Lel},0) circle (2.5pt);
-				
-				% ============================================================
-				% ETICHETTE DEI NODI (in primo piano)
-				% ============================================================
-				\node[above left,  font=\scriptsize] at (0,0)             {$A\equiv C_1$};
-				\node[above,       font=\scriptsize] at (\Lel,{\Lel+0.0}) {$D$};
-				\node[above right,       font=\scriptsize] at ({2*\Lel},0.)   {$C\equiv C_{12}$};
-				\node[above,       font=\scriptsize] at ({3*\Lel},{-\Lel+0.04}) {$E$};
-				\node[above, font=\scriptsize] at ({4*\Lel},0)      {$B\equiv C_2$};
-				
-				% ============================================================
-				% ETICHETTE DEI CORPI (in primo piano)
-				% ============================================================
-				\node[font=\scriptsize] at ({0.5*\Lel-0.20},{0.5*\Lel+0.10}) {$\mathcal{C}_1$};
-				\node[font=\scriptsize] at ({3.5*\Lel-0.20},{-0.5*\Lel+0.20}) {$\mathcal{C}_2$};
-				
-				% ============================================================
-				% DIDASCALIA DEL PANNELLO
-				% ============================================================
-				\node[font=\scriptsize] at ({2*\Lel},{-1.5*\Lel-0.40})	{(b) caso degenere, $g_{\ell} = g_{i} = 1$};
-				
-			\end{scope}
-			
-		\end{tikzpicture}
-	}
-	\caption{Arco a tre cerniere: \emph{(a)}~caso regolare,
-		portale con $A$, $C$, $B$ non collineari
-		($\rg(\bm{A})=6$, isostatico); \emph{(b)}~caso
-		degenere, struttura poligonale con $A$, $C$, $B$
-		collineari ($g_\ell = g_{\mathscr{i}} = 1$),
-		meccanismo parametrizzato da $q$ e rette di
-		proiezione $r_H$, $r_V$.}
-	\label{fig:catalogo_2corpi}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-catalogo-2corpi}
+
 
 
 
@@ -2156,11 +1402,70 @@ passano per $A$ e $B$ --- non riescono a bilanciare.
 	glifi, la condizione di non collinearità va
 	verificata tenendo conto che i centri
 	corrispondenti sono punti impropri; questi casi
-	sono approfonditi nella 	\PARref{sec:ispezione}.
+	sono approfonditi nella \PARref{sec:ispezione}.
 \end{oss}
 
 
 
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Due corpi: trave Gerber elementare}
+\label{sec:catalogo_gerber}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Una seconda sottostruttura di riferimento per $n_c = 2$ è la
+\emph{trave Gerber elementare}\index{trave!Gerber elementare|textbf}:
+un corpo \emph{portante}~$\mathcal{C}_1$, vincolato al suolo da una
+cerniera in $A$ e un carrello in $B$, al quale si collega tramite
+cerniera interna in $C$ un corpo \emph{appendice}~$\mathcal{C}_2$,
+vincolato al suolo da un carrello in $D$
+(\FIGref{fig:catalogo_gerber}).
+I vincoli scalari sono $m = 2+1+2+1 = 6$, $\nu = 0$.
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-catalogo-gerber}
+
+\paragraph{Struttura portante e appendice.}
+Il corpo portante $\mathcal{C}_1$ ha tre vincoli esterni
+($m_1 = 3$, $\nu_1 = 0$): è localmente isostatico e stabile
+\emph{indipendentemente} da $\mathcal{C}_2$.
+Il corpo appendice $\mathcal{C}_2$, una volta che $\mathcal{C}_1$
+è classificato e considerato fisso, dispone anch'esso di tre vincoli
+--- i due forniti dalla cerniera interna~$C$ più il carrello~$D$ ---
+ed è a sua volta localmente isostatico.
+Il sistema globale è pertanto \textit{isostatico}
+nella configurazione regolare.
+
+\paragraph{Condizione di non degenerazione.}
+A differenza dell'arco (\PARref{sec:catalogo_2corpi}), la collinearità
+di $A$, $B$, $C$, $D$ lungo la stessa retta \emph{non} costituisce
+una degenerazione: la dipendenza tra i corpi è \emph{sequenziale}
+anziché mutua, e la stabilità di $\mathcal{C}_1$ non richiede la
+non collinearità con $\mathcal{C}_2$.
+Le degenerazioni specifiche della trave Gerber sono invece legate
+alla coincidenza di punti di vincolo sullo stesso corpo (ad esempio
+$C \equiv B$ su $\mathcal{C}_1$, che riduce la cerniera interna a un
+vincolo di corpo rigido già vincolato) o alla parallelità degli assi
+dei carrelli con la retta di azione della cerniera.
+
+\begin{oss}[Arco e trave Gerber: dipendenza reciproca e sequenziale]
+    Arco a tre cerniere e trave Gerber elementare condividono
+    $n_c = 2$, $m = 6$ e $\nu = 0$, ma differiscono per la struttura
+    della dipendenza tra i corpi.
+    Nell'arco, $\mathcal{C}_1$ e $\mathcal{C}_2$ si sostengono
+    \emph{reciprocamente}: nessuno dei due è stabile da solo
+    (ciascuno possiede solo due vincoli esterni), ed entrambi
+    dipendono dalla presenza dell'altro per formare un sistema isostatico.
+    Nella trave Gerber, la dipendenza è \emph{sequenziale}:
+    $\mathcal{C}_1$ è localmente isostatico ($\nu_1 = 0$) e
+    costituisce un appoggio rigido equivalente al suolo per~$\mathcal{C}_2$;
+    quest'ultimo si appoggia quindi a due vincoli distinti e
+    risulta a sua volta isostatico.
+    Questa gerarchia rende la trave Gerber analizzabile per
+    \emph{decomposizione sequenziale} (\PARref{sec:ispezione}),
+    procedendo da~$\mathcal{C}_1$ verso~$\mathcal{C}_2$ senza
+    risolvere il sistema globalmente.
+\end{oss}
 
 
 %----------------------------------------------------------------------------------------------------------------------------
@@ -2196,138 +1501,9 @@ collineari, vincoli esterni non degeneri --- il sistema
 
 
 
-\begin{figure}[!ht]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-		
-		\def\Lel{1.0}
-		\def\base{3.0}   % dimensione orizzontale del rettangolo
-		\def\altezza{2.0} % dimensione verticale del rettangolo
-		\def\dglifo{0.24}
-		\def\Wpiatto{0.40}
-		
-		
-		% ============================================================
-		% PANNELLO (a) — anello libero (sottostruttura interna)
-		% ============================================================
-		
-		\begin{scope}[xshift=0cm]
-			
-			\def\dglifo{0.24}    % spessore verticale del glifo (gap tra i piatti)
-			\def\Wpiatto{0.40}   % semi-larghezza dei piatti del glifo
-			
-			% --- C_1: lato sinistro + lato superiore (L rovesciata) ---
-			\draw[line width=1.5pt] (0,0) -- (0,\altezza) -- (\base,\altezza);
-			
-			% --- C_3: lato inferiore = piatto inferiore del glifo
-			%          si estende da (0,0) a (\base + Wpiatto, 0) ---
-			\draw[line width=1.5pt] (0,0) -- ({\base+\Wpiatto},0);
-			
-			% --- C_2: piatto superiore del glifo + asta verticale
-			\draw[line width=1.5pt] ({\base-\Wpiatto},\dglifo)
-			-- ({\base+\Wpiatto},\dglifo);
-			\draw[line width=1.5pt] (\base,\dglifo) -- (\base,\altezza);
-			
-			% --- rotelle del glifo (tra i piatti, a quota dglifo/2) ---
-			\draw[thick] ({\base-0.15},{\dglifo/2}) circle (0.08);
-			\draw[thick] ({\base+0.15},{\dglifo/2}) circle (0.08);
-			
-			% --- cerniera interna C_31 in (0,0): cerchio bianco ---
-			\draw[fill=white, thick] (0,0) circle (2.5pt);
-			
-			% --- cerniera interna C_12 in (\base, \altezza): cerchio bianco ---
-			\draw[fill=white, thick] (\base,\altezza) circle (2.5pt);
-			
-			% --- etichette dei corpi ---
-			\node[font=\scriptsize] at (-0.30,{\altezza/2})        {$\mathcal{C}_1$};
-			\node[font=\scriptsize] at ({\base+0.30},{\altezza/2}) {$\mathcal{C}_2$};
-			\node[font=\scriptsize] at ({\base/2},-0.30)           {$\mathcal{C}_3$};
-			
-			% --- etichette dei centri di rotazione relativi ---
-			\node[font=\scriptsize, below]  at (0,0)             {$C_{31}$};
-			\node[font=\scriptsize, above] at (\base,\altezza)  {$C_{12}$};
-			
-			% --- C_{23}: punto improprio in direzione verticale ---
-			\draw[->, gray!60, thin] ({\base+\Wpiatto+0.30},{\dglifo/2})-- ({\base+\Wpiatto+0.30},{\altezza+0.30});
-			\node[font=\scriptsize,  above]	at ({\base+\Wpiatto+0.30},{\altezza+0.30})	{$C_{23}^{\infty}$};
-			
-			% --- didascalia del pannello ---
-			\node[font=\scriptsize] at ({\base/2},-1.00)
-			{(a) anello libero, $\nu_{\rm loc}=0$};
-			
-		\end{scope}
-		
-		% ============================================================
-		% PANNELLO (b) — anello vincolato al suolo
-		% ============================================================
-		\begin{scope}[xshift={5cm}]
-			
-			% --- C_1: lato sinistro + lato superiore ---
-			\draw[line width=1.5pt] (0,0) -- (0,\altezza) -- (\base,\altezza);
-			
-			% --- C_3: lato inferiore = piatto inferiore del glifo ---
-			\draw[line width=1.5pt] (0,0) -- ({\base+\Wpiatto},0);
-			
-			% --- C_2: piatto superiore del glifo + asta verticale ---
-			\draw[line width=1.5pt] ({\base-\Wpiatto},\dglifo)
-			-- ({\base+\Wpiatto},\dglifo);
-			\draw[line width=1.5pt] (\base,\dglifo) -- (\base,\altezza);
-			
-			% --- rotelle del glifo ---
-			\draw[thick] ({\base-0.15},{\dglifo/2}) circle (0.08);
-			\draw[thick] ({\base+0.15},{\dglifo/2}) circle (0.08);
-			
-			% --- cerniere interne C_31 e C_12 ---
-			\draw[fill=white, thick] (0,0) circle (2.5pt);
-			\draw[fill=white, thick] (\base,\altezza) circle (2.5pt);
-			
-			% ============================================================
-			% --- CERNIERA ESTERNA in A (sul lato sinistro di C_1, a y=altezza/2) ---
-			% ============================================================
-			% triangolo della cerniera (vertice in A, base più a sinistra)
-			\draw[thick] (0,{\altezza/2}) -- (-0.38,{\altezza/2-0.22})	-- (-0.38,{\altezza/2+0.22}) -- cycle;
-			% suolo verticale (linea verticale a sinistra del triangolo)
-			\draw[thick] (-0.38,{\altezza/2-0.32}) -- (-0.38,{\altezza/2+0.32});
-			% hatching verticale (segmentini obliqui sulla linea del suolo)
-			\foreach \y in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (-0.38,{\altezza/2+\y}) -- (-0.52,{\altezza/2+\y-0.10});			}
-			
-			% mezzaluna in A: si apre verso sinistra (verso il vincolo)
-			\fill[white] (0,{\altezza/2+0.08}) arc(90:270:0.08) -- cycle;
-			\draw[thick] (0,{\altezza/2+0.08}) arc(90:270:0.08);
-			
-			% ============================================================
-			% --- CARRELLO in B (sul lato inferiore di C_3, in x=base/2), asse verticale ---
-			% Triangolo rivolto in BASSO (fuori da C_3), base in basso, hatching sotto
-			% ============================================================
-			\draw[thick] ({\base/2},0) -- ({\base/2-0.22},-0.38) -- ({\base/2+0.22},-0.38) -- cycle;
-			\draw[thick] ({\base/2-0.15},-0.44) circle (0.07);
-			\draw[thick] ({\base/2+0.15},-0.44) circle (0.07);
-			\draw[thick] ({\base/2-0.32},-0.54) -- ({\base/2+0.32},-0.54);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] ({\base/2+\x},-0.54) -- ({\base/2+\x-0.10},-0.68);			}
-			% mezzaluna in B: la trave C_3 continua attraverso B
-			\fill[white] ({\base/2-0.08},0) arc(180:360:0.08) -- cycle;
-			\draw[thick] ({\base/2-0.08},0) arc(180:360:0.08);
-			
-			
-			% --- etichette dei corpi ---
-			\node[font=\scriptsize] at (0.30,{\altezza/4})         {$\mathcal{C}_1$};
-			\node[font=\scriptsize] at ({\base+0.30},{\altezza/2}) {$\mathcal{C}_2$};
-			\node[font=\scriptsize] at ({\base/2+0.70},-0.20)       {$\mathcal{C}_3$};
-			
-			% --- etichette dei vincoli esterni ---
-			\node[font=\scriptsize, right] at (0.02,{\altezza/2}) {$A$};
-			\node[font=\scriptsize, above] at ({\base/2},-0.)  {$B$};
-			
-			% --- didascalia del pannello ---
-			\node[font=\scriptsize] at ({\base/2},-1.30)
-			{(b) anello vincolato, $\nu=0$};
-			
-		\end{scope}
-		
-	\end{tikzpicture}
-	\caption{Anello a tre cerniere realizzato come rettangolo	a tre corpi con due cerniere interne proprie	($C_{31}$, $C_{12}$) e un glifo orizzontale di centro	improprio $C_{23}^{\infty}$. (a)~Sottostruttura	libera ($\nu=3$, anello internamente determinato);	(b)~vincolata al suolo da cerniera in $A$ e	carrello verticale in $B$ ($\nu=0$, isostatico).}
-	\label{fig:catalogo_3corpi}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-catalogo-3corpi}
+
 
 
 
@@ -2404,15 +1580,12 @@ La classificazione procede in cascata: si individua la
 sottostruttura più semplice, la si classifica, poi si
 aggiungono le altre verificando come si connettono alla prima.
 
-\begin{definizione}[Sottostruttura portante e portata]
-	Una sottostruttura $\mathcal{S}_1$ si dice
-	\emph{portante}\index{gerarchia strutturale!portante} rispetto a $\mathcal{S}_2$ quando
-	$\mathcal{S}_2$ è vincolata a $\mathcal{S}_1$ tramite
-	vincoli che, dal punto di vista cinematico e statico di
-	$\mathcal{S}_2$, si comportano esattamente come se
-	$\mathcal{S}_1$ fosse il suolo. La sottostruttura
-	$\mathcal{S}_2$ si dice \emph{portata}\index{gerarchia strutturale!portato} da $\mathcal{S}_1$.
-\end{definizione}
+Si dice che $\mathcal{S}_1$ è
+\emph{portante}\index{gerarchia strutturale!portante} rispetto a $\mathcal{S}_2$
+quando i vincoli che collegano $\mathcal{S}_2$ a $\mathcal{S}_1$ si comportano,
+dal punto di vista cinematico e statico di $\mathcal{S}_2$, come se
+$\mathcal{S}_1$ fosse il suolo; in questo caso $\mathcal{S}_2$ si dice
+\emph{portata}\index{gerarchia strutturale!portato} da $\mathcal{S}_1$.
 
 La relazione portante/portata è transitiva: se $\mathcal{S}_1$
 porta $\mathcal{S}_2$ e $\mathcal{S}_2$ porta $\mathcal{S}_3$,
@@ -2473,7 +1646,7 @@ Ogni operazione modifica $\nu$ di una quantità nota:
 	uno svincolo completo (tre condizioni rilasciate):
 	aumenta $\nu$ di~3.
 \end{itemize}
-Le operazioni inverse --- aggiunta di un vincolo, fusione
+Le operazioni inverse --- aggiunta di un vincolo, riduzione
 di due corpi --- diminuiscono $\nu$ delle stesse quantità.
 
 \paragraph{Procedura.}
@@ -2491,7 +1664,6 @@ Dato un sistema di classificazione ignota:
 	di operazioni effettuate.
 \end{enumerate}
 
-\begin{oss}[Scelta dello schema di riferimento]
 	Lo schema di riferimento più comodo dipende dalla
 	struttura in esame. Per una trave con molti vincoli
 	esterni conviene partire dalla mensola o dalla trave
@@ -2501,9 +1673,7 @@ Dato un sistema di classificazione ignota:
 	tre cerniere e contare le differenze. Non esiste
 	una scelta unica: la libertà di scelta è il punto
 	di forza del metodo.
-\end{oss}
 
-\begin{oss}[Complementarità delle due letture]
 	Le due letture --- decomposizione gerarchica e
 	riduzione a schema noto --- sono complementari e
 	si rafforzano a vicenda. La decomposizione gerarchica
@@ -2514,9 +1684,10 @@ Dato un sistema di classificazione ignota:
 	insoliti. Nei casi dubbi, applicare entrambe e
 	verificare che il $\nu$ risultante coincida è un
 	efficace controllo di coerenza.
-\end{oss}
 
 %--------------------------------------------------------------
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-decomposizione-riduzione}
+
 \begin{esempio}[Classificazione per decomposizione e per riduzione]
 	\label{ex:decomposizione_riduzione}
 	Si consideri la struttura della
@@ -2529,138 +1700,8 @@ Dato un sistema di classificazione ignota:
 	suolo è in $A$ (in alto a sinistra) e in $H$
 	(in basso a destra).
 	
-	\begin{figure}[!ht]
-		\centering
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
-			
-			% --- coordinate dei nodi ---
-			\coordinate (A) at (0,4);
-			\coordinate (B) at (3,4);
-			\coordinate (C) at (5,4);
-			\coordinate (D) at (3,2);
-			\coordinate (E) at (5,2);
-			\coordinate (F) at (3,0);
-			\coordinate (G) at (5,0);
-			\coordinate (H) at (8,0);
-			
-			% --- C_1 = ABCE: traversa superiore A-B-C + asta verticale C-E ---
-			\draw[line width=1.5pt] (A) -- (C);
-			\draw[line width=1.5pt] (C) -- ($(E)+(0,0.50)$);
-			
-			% --- C_2 = HGED: H-G + G-E + E-D ---
-			\draw[line width=1.5pt] (H) -- (G);
-			\draw[line width=1.5pt] (E) -- (G);
-			\draw[line width=1.5pt] (E) -- ($(D)+(0.50,0)$);
-			
-			
-			% --- C_3 = BDFG: B-D + D-F + F-G ---
-			\draw[line width=1.5pt] (B) -- (D);
-			\draw[line width=1.5pt] (D) -- (F);
-			\draw[line width=1.5pt] (F) -- ($(G)+(-0.50,0)$);
-			
-			% =====================================================
-			% VINCOLI ESTERNI
-			% =====================================================
-			
-			% --- incastro in A (in alto a sinistra, parete a sinistra) ---
-			\draw[thick] (0,3.62) -- (0,4.38);
-			\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30}{\draw[thin] (0,4+\y) -- (-0.12,4+\y-0.10);}
-			
-			% --- incastro in H (in basso a destra, parete a destra) ---
-			\draw[thick] (8,-0.38) -- (8,0.38);
-			\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30}{\draw[thin] (8,\y) -- (8.12,\y-0.10);	}
-			
-			% =====================================================
-			% CONNESSIONI INTERNE
-			% =====================================================
-			
-			% --- cerniera interna in B ---
-			\fill[white] ($(B)+(-0.08,0)$) arc(180:360:0.08) -- cycle;
-			\draw[thick] ($(B)+(-0.08,0)$) arc(180:360:0.08);
-			
-			%\draw[fill=white, thick] (B) circle (3pt);
-			
-			% =====================================================
-			% CARRELLO INTERNO in D (asse orizzontale)
-			% =====================================================
-			
-			% rotelle: più piccole (raggio 0.06), tangenti all'asta verticale di C_3
-			\draw[thick] ($(D)+(0.09,-0.10)$) circle (0.08);
-			\draw[thick] ($(D)+(0.09, 0.10)$) circle (0.08);
-			
-			% triangolo: base verticale a x = D_x + 0.20 (vertici interni a y = ±0.25),
-			%            base prolungata fino a y = ±0.35
-			\draw[thick] ($(D)+(0.20,-0.35)$) -- ($(D)+(0.20,0.35)$);
-			\draw[thick] ($(D)+(0.20,-0.25)$) -- ($(D)+(0.50,0)$);
-			\draw[thick] ($(D)+(0.20, 0.25)$) -- ($(D)+(0.50,0)$);
-			
-			% pallino bianco al vertice del triangolo (perno della connessione con C_2)
-			\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=4pt, line width=0.7pt] at ($(D)+(0.50,0)$) {};
-			
-			
-			% =====================================================
-			% CARRELLO INTERNO in E (asse verticale)
-			% =====================================================
-			
-			% prolungamento del tratto D-E di C_2 oltre E, per accogliere la base del carrello
-			\draw[line width=1.5pt] (E) -- ($(E)+(0.20,0)$);
-			
-			% rotelle: tangenti al tratto orizzontale di C_2 a y = E_y, centri a y = E_y + 0.09
-			\draw[thick] ($(E)+(-0.10,0.09)$) circle (0.08);
-			\draw[thick] ($(E)+( 0.10,0.09)$) circle (0.08);
-			
-			% triangolo del carrello: base orizzontale a y = E_y + 0.20, vertice in alto a y = E_y + 0.50
-			\draw[thick] ($(E)+(-0.35,0.20)$) -- ($(E)+(0.35,0.20)$);
-			\draw[thick] ($(E)+(-0.25,0.20)$) -- ($(E)+(0,0.50)$);
-			\draw[thick] ($(E)+( 0.25,0.20)$) -- ($(E)+(0,0.50)$);
-			
-			% pallino bianco al vertice del triangolo
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=4pt, line width=0.7pt] at ($(E)+(0,0.50)$) {};
-			
-			% =====================================================
-			% CARRELLO INTERNO in G (asse orizzontale)
-			% =====================================================
-			
-			% prolungamento del tratto E-G di C_2 oltre G, per accogliere la base del carrello
-			\draw[line width=1.5pt] (E) -- ($(G)+(0,-0.20)$);
-			
-			% rotelle: tangenti all'asta verticale di C_2 (E-G), a sinistra
-			\draw[thick] ($(G)+(-0.09,-0.10)$) circle (0.08);
-			\draw[thick] ($(G)+(-0.09, 0.10)$) circle (0.08);
-			
-			% triangolo: base verticale a x = G_x - 0.20, vertice a x = G_x - 0.50
-			\draw[thick] ($(G)+(-0.20,-0.35)$) -- ($(G)+(-0.20,0.35)$);
-			\draw[thick] ($(G)+(-0.20,-0.25)$) -- ($(G)+(-0.50,0)$);
-			\draw[thick] ($(G)+(-0.20, 0.25)$) -- ($(G)+(-0.50,0)$);
-			
-			% pallino bianco al vertice del triangolo (perno della connessione con C_3)
-			\node[circle, fill=white, draw=black, inner sep=0pt,
-			minimum size=4pt, line width=0.7pt] at ($(G)+(-0.50,0)$) {};
-			
-			% =====================================================
-			% ETICHETTE DEI NODI
-			% =====================================================
-			\node[font=\scriptsize, above right]       at (A) {$A$};
-			\node[font=\scriptsize, above]       at (B) {$B$};
-			\node[font=\scriptsize, above]       at (C) {$C$};
-			\node[font=\scriptsize, left]        at ($(D)+(-0.12,0)$) {$D$};
-			\node[font=\scriptsize, right]       at ($(E)+(0.12,0)$)  {$E$};
-			\node[font=\scriptsize, left] at (F) {$F$};
-			\node[font=\scriptsize, above right] at (G) {$G$};
-			\node[font=\scriptsize, above left]       at (H) {$H$};
-			
-		\end{tikzpicture}
-		\caption{Struttura mista: due mensole ad asse spezzato
-			$\mathcal{S}_1 = ABCE$ (incastrata in $A$) e
-			$\mathcal{S}_2 = HGED$ (incastrata in $H$),
-			collegate da una trave appoggiata $\mathcal{S}_3 = BDFG$
-			(cerniera in $B$, carrello in $G$). I carrelli in
-			$D$ ed $E$ aggiungono due vincoli semplici allo
-			schema isostatico di riferimento: $\nu = -2$,
-			iperstatica di grado~2.}
-		\label{fig:decomposizione_riduzione}
-	\end{figure}
+
+
 	
 	
 	
@@ -2793,36 +1834,36 @@ operativa e ne illustra l'applicazione su casi scelti.
 \label{sec:passi_ispezione}
 %----------------------------------------------------------------------------------------------------------------------------
 
-\begin{enumerate}[label=\textbf{Passo \arabic*.},
-	leftmargin=*, itemsep=6pt]
+\begin{enumerate}[label=(\arabic*), leftmargin=*, itemsep=4pt]
 	
-	\item \textbf{Riduzione.}
-	Fondere i corpi collegati da vincoli di rigidità in
+	\item \emph{Riduzione.}
+	Ridurre i corpi collegati da vincoli di rigidità in
 	corpi equivalenti (\PARref{sec:rigidita_interna});
 	verificare l'invarianza di $\nu$.
 	
-	\item \textbf{Conteggio.}
+	\item \emph{Conteggio.}
 	Calcolare $m = \sum_j m_j$ e $\nu = 3n_c - m$.
 	Se $\nu \neq 0$ la classificazione è conclusa:
 	labile ($\nu > 0$) o iperstatico ($\nu < 0$).
 	Se $\nu = 0$ procedere.
 	
-	\item \textbf{Decomposizione globale/locale.}
+	\item \emph{Decomposizione globale/locale.}
 	Calcolare $\nu_{\rm glob} = 3 - m_{\rm est}$
 	e $\nu_{\rm loc} = 3(n_c-1) - m_{\rm int}$;
 	verificare $\nu_{\rm glob} + \nu_{\rm loc} = \nu$
 	(\PARref{sec:globale_locale}).
 	La decomposizione rivela la struttura del sistema
-	anche quando il conteggio è già conclusivo.
+	anche quando $\nu \neq 0$: non è obbligatoria in quel caso,
+	ma può essere istruttiva.
 	
-	\item \textbf{Mappa dei centri assoluti.}
+	\item \emph{Mappa dei centri assoluti.}
 	Per ciascun corpo determinare il luogo del centro
 	di rotazione assoluto $C_i$ imposto dai vincoli
 	esterni: cerniera $\to$ punto fisso; carrello $\to$
 	retta; glifo o bipendolo $\to$ punto improprio;
 	incastro $\to$ nessun centro.
 	
-	\item \textbf{Verifica con il teorema di allineamento.}
+	\item \emph{Verifica con il teorema di allineamento.}
 	Per ogni coppia $(\mathcal{C}_i, \mathcal{C}_j)$
 	connessa da un vincolo interno, determinare $C_{ij}$
 	e verificare se giace sulla retta $C_i C_j$
@@ -2839,7 +1880,7 @@ operativa e ne illustra l'applicazione su casi scelti.
 	qualche terna, il sistema è
 	\textit{labile-iperstatico}.
 	
-	\item \textbf{Tipo di degenerazione.}
+	\item \emph{Tipo di degenerazione.}
 	Identificare il meccanismo: traslazione (vincoli
 	paralleli), rotazione attorno a un punto fisso
 	(vincoli concorrenti), rotazione coordinata di più
@@ -2858,6 +1899,8 @@ operativa e ne illustra l'applicazione su casi scelti.
 
 
 %--------------------------------------------------------------
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-trave-continua-gerber}
+
 \begin{esempio}[Trave continua e trave Gerber]
 	\label{ex:trave_gerber}
 	Si confrontano due travi di uguale luce con la stessa
@@ -2867,185 +1910,8 @@ operativa e ne illustra l'applicazione su casi scelti.
 	cerniere interne in $E$ ed $F$ nella variante Gerber (\FIGref{fig:trave_continua_gerber}).
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\begin{figure}[!htbp]
-		\centering
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-			nodo/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=5pt, line width=0.8pt},
-			cint/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=6pt, line width=0.8pt}]
-			
-			\def\Lc{1.5}     % unità di lunghezza (= ell)
-			\def\tw{0.22}    % semi-larghezza triangolo
-			\def\thA{0.38}   % altezza triangolo cerniera (A)
-			\def\thR{0.32}   % altezza triangolo carrello
-			\def\sr{0.08}    % raggio mezzaluna
-			\def\bw{0.16}    % semi-distanza cerchietti carrello
-			\def\gw{0.30}    % semi-larghezza barra di terreno
-			\def\dy{2.5}     % offset verticale tra i due pannelli
-			
-			%%═══════════════════════════════════════════════════════════════
-			%% PANNELLO SUPERIORE — TRAVE CONTINUA
-			%% Nodi: A=(0,0), B=(2L,0), C=(4L,0), D=(6L,0)
-			%%═══════════════════════════════════════════════════════════════
-			\begin{scope}[yshift=\dy cm]
-				
-				% Trave
-				\draw[line width=2.2pt] (0,0) -- ({6*\Lc},0);
-				
-				% Etichette nodi
-				\node[above=0.05] at (0,0)        {$A$};
-				\node[above=0.05] at ({2*\Lc},0)  {$B$};
-				\node[above=0.05] at ({4*\Lc},0)  {$C$};
-				\node[above=0.05] at ({6*\Lc},0)  {$D$};
-				
-				% --- CERNIERA in A ---
-				\draw[line width=0.8pt]
-				(0,0)--++(-\tw,-\thA)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]({-\gw},{-\thA})--({\gw},{-\thA});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({\x},{-\thA})--++(-.09,-.11);
-				\node[nodo] at (0,0){};
-				
-				% --- APPOGGIO INTERMEDIO in B ---
-				\draw[line width=0.8pt]
-				({2*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]
-				({2*\Lc-\gw},{-\thR})--({2*\Lc+\gw},{-\thR});
-				\draw[line width=0.8pt]({2*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]({2*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]
-				({2*\Lc-\gw},{-\thR-0.24})--({2*\Lc+\gw},{-\thR-0.24});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({2*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
-				\fill[white] ({2*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
-				\draw[line width=0.8pt] ({2*\Lc-\sr},0) arc(180:360:\sr);
-				
-				% --- APPOGGIO INTERMEDIO in C ---
-				\draw[line width=0.8pt]
-				({4*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]
-				({4*\Lc-\gw},{-\thR})--({4*\Lc+\gw},{-\thR});
-				\draw[line width=0.8pt]({4*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]({4*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]
-				({4*\Lc-\gw},{-\thR-0.24})--({4*\Lc+\gw},{-\thR-0.24});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({4*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
-				\fill[white] ({4*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
-				\draw[line width=0.8pt] ({4*\Lc-\sr},0) arc(180:360:\sr);
-				
-				% --- CARRELLO in D ---
-				\draw[line width=0.8pt]
-				({6*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]
-				({6*\Lc-\gw},{-\thR})--({6*\Lc+\gw},{-\thR});
-				\draw[line width=0.8pt]({6*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]({6*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]
-				({6*\Lc-\gw},{-\thR-0.24})--({6*\Lc+\gw},{-\thR-0.24});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({6*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
-				\node[nodo] at ({6*\Lc},0){};
-				
-				% etichetta pannello
-				\node[font=\small] at ({3*\Lc}, -1.0) {(a) trave continua};
-				
-			\end{scope}
-			
-			%%═══════════════════════════════════════════════════════════════
-			%% PANNELLO INFERIORE — TRAVE GERBER
-			%% Nodi: A=(0,0), B=(2L,0), E=(2.5L,0), F=(3.5L,0), C=(4L,0), D=(6L,0)
-			%%═══════════════════════════════════════════════════════════════
-			\begin{scope}[yshift=0cm]
-				
-				% Trave
-				\draw[line width=2.2pt] (0,0) -- ({6*\Lc},0);
-				
-				% Etichette nodi (sopra la trave)
-				\node[above=0.05] at (0,0)         {$A$};
-				\node[above=0.05] at ({2*\Lc},0)   {$B$};
-				\node[above=0.10] at ({2.5*\Lc},0) {$E$};
-				\node[above=0.10] at ({3.5*\Lc},0) {$F$};
-				\node[above=0.05] at ({4*\Lc},0)   {$C$};
-				\node[above=0.05] at ({6*\Lc},0)   {$D$};
-				
-				% Etichette corpi (sotto la trave, al centro di ciascuno)
-				\node[above, font=\small] at ({1.25*\Lc},0) {$\mathcal{C}_1$};
-				\node[above, font=\small] at ({3*\Lc},0)   {$\mathcal{C}_2$};
-				\node[above, font=\small] at ({4.75*\Lc},0){$\mathcal{C}_3$};
-				
-				% --- CERNIERA in A ---
-				\draw[line width=0.8pt]
-				(0,0)--++(-\tw,-\thA)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]({-\gw},{-\thA})--({\gw},{-\thA});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({\x},{-\thA})--++(-.09,-.11);
-				\node[nodo] at (0,0){};
-				
-				% --- APPOGGIO INTERMEDIO in B ---
-				\draw[line width=0.8pt]
-				({2*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]
-				({2*\Lc-\gw},{-\thR})--({2*\Lc+\gw},{-\thR});
-				\draw[line width=0.8pt]({2*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]({2*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]
-				({2*\Lc-\gw},{-\thR-0.24})--({2*\Lc+\gw},{-\thR-0.24});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({2*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
-				\fill[white] ({2*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
-				\draw[line width=0.8pt] ({2*\Lc-\sr},0) arc(180:360:\sr);
-				
-				% --- APPOGGIO INTERMEDIO in C ---
-				\draw[line width=0.8pt]
-				({4*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]
-				({4*\Lc-\gw},{-\thR})--({4*\Lc+\gw},{-\thR});
-				\draw[line width=0.8pt]({4*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]({4*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]
-				({4*\Lc-\gw},{-\thR-0.24})--({4*\Lc+\gw},{-\thR-0.24});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({4*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
-				\fill[white] ({4*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
-				\draw[line width=0.8pt] ({4*\Lc-\sr},0) arc(180:360:\sr);
-				
-				% --- CARRELLO in D ---
-				\draw[line width=0.8pt]
-				({6*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
-				\draw[line width=0.8pt]
-				({6*\Lc-\gw},{-\thR})--({6*\Lc+\gw},{-\thR});
-				\draw[line width=0.8pt]({6*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]({6*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
-				\draw[line width=0.8pt]
-				({6*\Lc-\gw},{-\thR-0.24})--({6*\Lc+\gw},{-\thR-0.24});
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin]({6*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
-				\node[nodo] at ({6*\Lc},0){};
-				
-				% --- CERNIERE INTERNE in E e F ---
-				\node[cint] at ({2.5*\Lc},0){};
-				\node[cint] at ({3.5*\Lc},0){};
-				
-				% etichetta pannello
-				\node[font=\small] at ({3*\Lc}, -1.0) {(b) trave Gerber};
-				
-			\end{scope}
-			
-		\end{tikzpicture}
-		\caption{Trave continua e trave Gerber a confronto:
-			(a)~trave continua, un solo corpo,
-			$m = 2+1+1+1 = 5$, $\nu = -2$ (iperstatica di
-			grado~2); (b)~trave Gerber, tre corpi
-			separati dalle cerniere interne in $E$ ed $F$,
-			$m = 9$, $\nu = 0$ (isostatica). Le due travi
-			condividono la configurazione di appoggi esterni
-			(cerniera in $A$, carrelli in $B$, $C$, $D$);
-			differiscono per la presenza dei due svincoli
-			rotazionali interni.}
-		\label{fig:trave_continua_gerber}
-	\end{figure}
+
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	
@@ -3127,6 +1993,8 @@ operativa e ne illustra l'applicazione su casi scelti.
 
 
 %--------------------------------------------------------------
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/Figure/figura-portali-confronto}
+
 \begin{esempio}[Portale a tre cerniere e portale incastrato]
 	\label{ex:portali_confronto}
 	Si considerano due portali piani di identica geometria:
@@ -3145,113 +2013,8 @@ operativa e ne illustra l'applicazione su casi scelti.
 	\end{itemize}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\begin{figure}[!htbp]
-		\centering
-		\begin{tikzpicture}[
-			trave/.style={line width=2.0pt, line cap=round,
-				line join=round, black},
-			terra/.style={line width=0.8pt, black},
-			nodoV/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=6pt, line width=0.9pt},
-			]
-			
-			\def\Lp{2.4}   % unità di lunghezza (= ell): altezza = luce/2
-			\def\dx{6.5}   % offset orizzontale tra i due pannelli
-			
-			%%═══════════════════════════════════════════════════════════════
-			%% PANNELLO (a) — PORTALE A TRE CERNIERE
-			%% A=(0,0), B=(0,L), C=(L,L), D=(2L,L), E=(2L,0)
-			%%═══════════════════════════════════════════════════════════════
-			\begin{scope}[xshift=0cm]
-				
-				%% ── Coordinate ─────────────────────────────────────────
-				\coordinate (A) at (0,       0   );
-				\coordinate (B) at (0,       \Lp );
-				\coordinate (C) at (\Lp,     \Lp );
-				\coordinate (D) at (2*\Lp,   \Lp );
-				\coordinate (E) at (2*\Lp,   0   );
-				
-				%% ── Corpi: A-B-C e C-D-E ──────────────────────────────
-				\draw[trave] (A) -- (B) -- (C);
-				\draw[trave] (C) -- (D) -- (E);
-				
-				%% ── Cerniera esterna in A ──────────────────────────────
-				\draw[terra] (A) -- ++(-0.25,-0.42) -- ++(0.50,0) -- cycle;
-				\draw[terra] ($(A)+(-0.34,-0.42)$) -- ($(A)+(0.34,-0.42)$);	\foreach \x in {-0.28,-0.14,0,0.14,0.28}
-				\draw[very thin,black] ($(A)+(\x,-0.42)$) -- ++(-0.10,-0.13);
-				\node[nodoV] at (A) {};
-				
-				%% ── Cerniera esterna in E ──────────────────────────────
-				\draw[terra] (E) -- ++(-0.25,-0.42) -- ++(0.50,0) -- cycle;
-				\draw[terra] ($(E)+(-0.34,-0.42)$) -- ($(E)+(0.34,-0.42)$);	\foreach \x in {-0.28,-0.14,0,0.14,0.28}
-				\draw[very thin,black] ($(E)+(\x,-0.42)$) -- ++(-0.10,-0.13);
-				\node[nodoV] at (E) {};
-				
-				%% ── Cerniera interna in C (chiave) ─────────────────────
-				\node[nodoV] at (C) {};
-				
-				%% ── Etichette dei nodi ─────────────────────────────────
-				\node[left,  font=\small] at (A) {$A$};
-				\node[above left,  font=\small] at (B) {$B$};
-				\node[above,       font=\small] at ($(C)+(0,0.14)$) {$C$};
-				\node[above right, font=\small] at (D) {$D$};
-				\node[right, font=\small] at (E) {$E$};
-				
-				%% ── Etichette dei corpi ────────────────────────────────
-				\node[font=\small] at ({0.60},{0.55*\Lp}) {$\mathcal{C}_1$};
-				\node[font=\small] at ({2.0*\Lp-0.60},{0.55*\Lp}) {$\mathcal{C}_2$};
-				
-				%% ── Didascalia del pannello ────────────────────────────
-				\node[font=\small] at (\Lp,0)
-				{(a)};
-				
-			\end{scope}
-			
-			%%═══════════════════════════════════════════════════════════════
-			%% PANNELLO (b) — PORTALE DOPPIAMENTE INCASTRATO
-			%%═══════════════════════════════════════════════════════════════
-			\begin{scope}[xshift=\dx cm]
-				
-				%% ── Coordinate ─────────────────────────────────────────
-				\coordinate (A2) at (0,       0   );
-				\coordinate (B2) at (0,       \Lp );
-				\coordinate (C2) at (\Lp,     \Lp );
-				\coordinate (D2) at (2*\Lp,   \Lp );
-				\coordinate (E2) at (2*\Lp,   0   );
-				
-				%% ── Corpo unico: A-B-C-D-E (traversa continua) ────────
-				\draw[trave] (A2) -- (B2) -- (D2) -- (E2);
-				
-				%% ── Incastro in A: parete orizzontale a y=0 sotto, hatching giù
-				\draw[terra] ($(A2)+(-0.40, 0)$) -- ($(A2)+(0.40, 0)$);
-				\foreach \x in {-0.34,-0.20,-0.06,0.08,0.22,0.36}
-				\draw[very thin,black] ($(A2)+(\x,0)$) -- ++(-0.10,-0.13);
-				
-				%% ── Incastro in E: parete orizzontale a y=0 sotto, hatching giù
-				\draw[terra] ($(E2)+(-0.40, 0)$) -- ($(E2)+(0.40, 0)$);
-				\foreach \x in {-0.34,-0.20,-0.06,0.08,0.22,0.36}
-				\draw[very thin,black] ($(E2)+(\x,0)$) -- ++(-0.10,-0.13);
-				
-				%% ── Etichette dei nodi ─────────────────────────────────
-				\node[above left,  font=\small] at (A2) {$A$};
-				\node[above left,  font=\small] at (B2) {$B$};
-				%\node[above,       font=\small] at ($(C2)+(0,0.14)$) {$C$};
-				\node[above right, font=\small] at (D2) {$D$};
-				\node[above right, font=\small] at (E2) {$E$};
-				
-				%% ── Etichetta del corpo unico ──────────────────────────
-				\node[font=\small] at (\Lp,{\Lp+0.3}) {$\mathcal{C}$};
-				
-				%% ── Didascalia del pannello ────────────────────────────
-				\node[font=\small] at (\Lp,0)
-				{(b)};
-				
-			\end{scope}
-			
-		\end{tikzpicture}
-		\caption{(a) Portale a tre cerniere e (b) e portale	incastrato.}
-		\label{fig:portali_confronto}
-	\end{figure}
+
+
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	
 	
@@ -3275,7 +2038,7 @@ operativa e ne illustra l'applicazione su casi scelti.
 	
 	\esottotit{Portale incastrato.}
 	\begin{svolgimento}
-		I nodi rigidi in $B$ e $D$ fondono i tre	elementi in un unico corpo equivalente	$\mathcal{C}$; $n_c = 1$. I due incastri alla base danno $m = 3+3 = 6$,	$\nu = 3 - 6 = -3$: sistema		\textit{iperstatico di grado~3}, per conteggio
+		I nodi rigidi in $B$ e $D$ fondono i tre elementi in un unico corpo equivalente $\mathcal{C}$; $n_c = 1$. I due incastri alla base danno $m = 3+3 = 6$, $\nu = 3 - 6 = -3$: sistema \textit{iperstatico di grado~3}, per conteggio
 		diretto.
 		
 		\begin{oss}

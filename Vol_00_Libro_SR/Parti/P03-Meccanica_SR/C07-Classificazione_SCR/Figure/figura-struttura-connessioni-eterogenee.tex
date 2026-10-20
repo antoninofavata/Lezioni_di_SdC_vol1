@@ -1,0 +1,85 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			% --- coordinate dei nodi ---
+			\coordinate (A) at (0,0);
+			\coordinate (B) at (3,0);
+			\coordinate (C) at (0,2);
+			\coordinate (D) at (1.5,2);
+			\coordinate (E) at (3,2);
+			\coordinate (F) at (5,2);
+			\coordinate (G) at (0,4);
+			\coordinate (H) at (3,4);
+			
+			% --- tratti di trave (linee continue, attraversate ai nodi rigidi C ed E) ---
+			\draw[line width=1.5pt] (A) -- (G);   % colonna sinistra A-C-G
+			\draw[line width=1.5pt] (B) -- (H);   % colonna destra B-E-H
+			\draw[line width=1.5pt] (C) -- (F);   % traversa intermedia C-D-E-F
+			\draw[line width=1.5pt] (G) -- (H);   % traversa superiore G-H
+			%\draw[line width=1.5pt] (D) -- (H);   % diagonale D-H
+			% --- diagonale D-H, con cerniera all'estremità lato H ---
+			\coordinate (Hd) at ($(H)!0.056!(D)$);
+			%\coordinate (Hd) at ($(H)!0.10!(D)$);   % punto lungo DH, vicino a H
+			\draw[line width=1.5pt] (D) -- (Hd);    % asta DH fino al cerchio
+			\draw[fill=white, thick] (Hd) circle (2.5pt);   % perno della cerniera
+			
+			% --- cerniera al suolo in A ---
+			\draw[thick] (A) -- ($(A)+(-0.22,-0.38)$)
+			-- ($(A)+(0.22,-0.38)$) -- cycle;
+			\draw[thick] ($(A)+(-0.32,-0.38)$) -- ($(A)+(0.32,-0.38)$);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] ($(A)+(\x,-0.38)$) -- ($(A)+(\x-0.10,-0.52)$);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (A) {};
+			
+			% --- cerniera al suolo in B ---
+			\draw[thick] (B) -- ($(B)+(-0.22,-0.38)$)
+			-- ($(B)+(0.22,-0.38)$) -- cycle;
+			\draw[thick] ($(B)+(-0.32,-0.38)$) -- ($(B)+(0.32,-0.38)$);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] ($(B)+(\x,-0.38)$) -- ($(B)+(\x-0.10,-0.52)$);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (B) {};
+			
+			% --- carrello in F (asse verticale, vincolo sotto la trave) ---
+			\draw[thick] (F) -- ($(F)+(-0.22,-0.38)$)
+			-- ($(F)+(0.22,-0.38)$) -- cycle;
+			\draw[thick] ($(F)+(-0.15,-0.44)$) circle (0.07);
+			\draw[thick] ($(F)+(0.15,-0.44)$) circle (0.07);
+			\draw[thick] ($(F)+(-0.32,-0.52)$) -- ($(F)+(0.32,-0.52)$);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] ($(F)+(\x,-0.52)$) -- ($(F)+(\x-0.10,-0.66)$);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (F) {};
+			
+			% --- cerniere interne (cerchi bianchi) in D, G, H ---
+			\draw[fill=white, thick] (D) circle (2.5pt);
+			\draw[fill=white, thick] (G) circle (2.5pt);
+			%\draw[fill=white, thick] (H) circle (2.5pt);
+			
+			% --- etichette dei nodi ---
+			\node[font=\scriptsize] at ($(A)+(-0.22,0)$) {$A$};
+			\node[font=\scriptsize] at ($(B)+(0.22,0)$) {$B$};
+			\node[font=\scriptsize] at ($(C)+(-0.20,0)$)  {$C$};
+			\node[font=\scriptsize] at ($(D)+(0,-0.22)$)  {$D$};
+			\node[font=\scriptsize] at ($(E)+(0.22,-0.18)$) {$E$};
+			\node[font=\scriptsize] at ($(F)+(0,0.22)$)   {$F$};
+			\node[font=\scriptsize] at ($(G)+(-0.20,0.18)$) {$G$};
+			\node[font=\scriptsize] at ($(H)+(0.22,0.18)$)  {$H$};
+			
+		\end{tikzpicture}
+		\caption{Esempio di struttura a connessioni eterogenee.
+			Vincoli esterni: cerniere al suolo in $A$ e $B$,
+			carrello verticale in $F$. La traversa intermedia
+			$C$--$D$--$E$--$F$ è continua attraverso $C$ ed $E$
+			ed è sconnessa in $D$ con cerniera interna. La
+			traversa $G$--$H$ termina in $G$ con cerniera
+			d'estremità. In $H$ la traversa $G$--$H$ e il tratto
+			$E$--$H$ sono continui, mentre la diagonale $D$--$H$
+			vi si connette con cerniera d'estremità.}
+		\label{fig:struttura_mista}
+	\end{figure}

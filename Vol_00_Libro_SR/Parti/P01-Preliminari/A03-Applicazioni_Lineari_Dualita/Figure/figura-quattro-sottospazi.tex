@@ -1,0 +1,39 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.8]
+		\draw[thick] (-3.5, 0) ellipse [x radius=2.2, y radius=2.8];
+		\node at (-3.5, 3.2) {$\mathbb{R}^n$};
+		\draw[thick] (-5.69, 0.3)
+		.. controls (-4.5, 0.6) and (-2.5, -0.6) ..
+		(-1.31, -0.3);
+		\node at (-4.3,  1.6) {$\Nc(\Abb)$};
+		\fill (-4.0,  0.9) circle (1.5pt) node[right=2pt] {$\xb_n$};
+		\node at (-2.7, -1.6) {$\Ic(\Abb^\top)$};
+		\fill (-3.0, -0.9) circle (1.5pt) node[right=2pt] {$\xb_c$};
+		\draw[thick] (3.5, 0) ellipse [x radius=2.2, y radius=2.8];
+		\node at (3.5, 3.2) {$\mathbb{R}^m$};
+		\draw[thick] (1.31, 0.3)
+		.. controls (2.5, 0.6) and (4.5, -0.6) ..
+		(5.69, -0.3);
+		\node at (2.7,  1.6) {$\Ic(\Abb)$};
+		\fill (3.0,  0.9) circle (1.5pt) node[right=2pt] {$\yb_c$};
+		\node at (4.3, -1.6) {$\Nc(\Abb^\top)$};
+		\fill (4.0, -0.9) circle (1.5pt) node[right=2pt] {$\yb_n$};
+		\draw[->, thick] (-1.0, 1.5) to[bend left=20]
+		node[midway, above=4pt] {$\Abb_{m\times n}$}
+		(1.0, 1.5);
+		\draw[->, thick] (1.0, -1.5) to[bend left=20]
+		node[midway, below=4pt] {$\Abb^\top_{n\times m}$}
+		(-1.0, -1.5);
+	\end{tikzpicture}
+	\caption{I quattro sottospazi fondamentali di $\Abb_{m\times n}$.
+		Ogni $\xb \in \mathbb{R}^n$ si decompone in modo unico come
+		$\xb = \xb_n + \xb_c$ con $\xb_n \in \Nc(\Abb)$ (componente
+		nel \emph{nucleo}) e $\xb_c \in \Ic(\Abb^\top)$ (componente
+		\emph{complementare} al nucleo); analogamente ogni
+		$\yb \in \mathbb{R}^m$ si decompone come $\yb = \yb_c + \yb_n$
+		con $\yb_c \in \Ic(\Abb)$ e $\yb_n \in \Nc(\Abb^\top)$.
+		L'operatore $\Abb$ mappa $\xb_c$ in $\yb_c$ e annulla $\xb_n$;
+		l'operatore $\Abb^\top$ mappa $\yb_c$ in $\xb_c$ e annulla $\yb_n$.}
+	\label{fig:quattro_sottospazi}
+\end{figure}

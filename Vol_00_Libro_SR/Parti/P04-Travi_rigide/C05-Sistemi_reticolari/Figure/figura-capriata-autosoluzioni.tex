@@ -1,0 +1,138 @@
+\begin{figure}
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.62,
+					asta/.style={line width=1.5pt, line cap=round, line join=round, black},
+					astaG/.style={line width=1.5pt, line cap=round, line join=round, gray!60},
+					nodo/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt, line width=1.2pt},
+					nodoA/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=6pt, line width=1.2pt,
+						dashed},
+					forza/.style={-{Stealth[length=5pt,width=4pt]},
+						line width=1.2pt, black},
+					lab/.style={font=\normalsize},
+					]
+					
+					\def\SEP{13.0}
+					
+					%%── PANNELLO SINISTRO: Caso 1, H_B=1 ────────────────────────────
+					\begin{scope}[xshift=0cm]
+						\coordinate (A) at (0,0);
+						\coordinate (B) at (8,0);
+						\coordinate (C) at (4,3);
+						\coordinate (D) at (4,0);
+						
+						\draw[asta](A)--(C);
+						\draw[asta](C)--(B);
+						\draw[asta](A)--(D);
+						\draw[asta](D)--(B);
+						\draw[asta](C)--(D);
+						
+						%% cerniera A
+						\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+						\draw[thin](\x,-0.65)--++(-.18,-.22);
+						
+						%% carrello B
+						\draw[line width=1.2pt](B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt]($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+						\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+						\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+						
+						\node[nodo]at(A){}; \node[nodo]at(B){};
+						\node[nodo]at(C){}; \node[nodo]at(D){};
+						
+						%% H_B=1 verso destra in B
+						\draw[forza](B)--++(1.20,0);
+						\node[right,lab]at($(B)+(1.20,0)$){$H_B=1$};
+						
+						%% H_A=-1 verso sinistra in A (reazione)
+						\draw[forza](A)--++(-1.20,0);
+						\node[below,lab]at($(A)+(-1.20,0)$){$1$};
+						
+						\node[above left,lab]at(A){$A$};
+						\node[above right,lab]at(B){$B$};
+						\node[above right,lab]at(C){$C$};
+						\node[above left,lab]at(D){$D$};
+						
+						\node[font=\normalsize]at(4,-1.60){$(a)$};
+					\end{scope}
+					
+					%%── PANNELLO DESTRO: Caso 2, N_AB=1 ────────────────────────────
+					\begin{scope}[xshift=\SEP cm]
+						\coordinate (A) at (0,0);
+						\coordinate (B) at (8,0);
+						\coordinate (C) at (4,3);
+						\coordinate (D) at (4,0);
+						%% asta AB traslata verso il basso
+						\coordinate (Aab) at (0,-0.30);
+						\coordinate (Bab) at (8,-0.30);
+						
+						%% struttura senza AB (completamente scarica)
+						\draw[asta](A)--(C);
+						\draw[asta](C)--(B);
+						\draw[asta](A)--(D);
+						\draw[asta](D)--(B);
+						\draw[asta](C)--(D);
+						
+						%% asta AB traslata verso il basso (grigia)
+						\draw[astaG](Aab)--(Bab);
+						
+						%% cerniera A
+						\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+						\draw[thin](\x,-0.65)--++(-.18,-.22);
+						
+						%% carrello B
+						\draw[line width=1.2pt](B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+						\draw[line width=1.2pt]($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+						\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$)circle(3.5pt);
+						\draw[line width=1.2pt]($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+						\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+						\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+						
+						%% cerchi aperti agli estremi dell'asta AB (sconnessa)
+						\draw[dashed, line width=0.8pt](Aab)circle(4pt);
+						\draw[dashed, line width=0.8pt](Bab)circle(4pt);
+						
+						\node[nodo]at(A){}; \node[nodo]at(B){};
+						\node[nodo]at(C){}; \node[nodo]at(D){};
+						
+						%% forza unitaria verso destra all'estremo destro (sconnesso)
+						\draw[forza](Bab)--++(1.20,0);
+						\node[right,lab]at($(Bab)+(1.20,0)$){$N_{AB}=1$};
+						
+						%% reazione del vincolo in A sull'asta AB: coda in Aab, punta a sinistra
+						\draw[forza](Aab)--++(-1.20,0);
+						\node[below,lab]at($(Aab)+(-1.20,0)$){$1$};
+						
+						\node[above left,lab]at(A){$A$};
+						\node[above right,lab]at(B){$B$};
+						\node[above right,lab]at(C){$C$};
+						\node[above left,lab]at(D){$D$};
+						
+						\node[font=\normalsize]at(4,-1.60){$(b)$};
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Autosoluzioni delle due varianti iperstatiche.
+				$(a)$~Caso~1 (iperstaticità esterna): forza unitaria
+				$H_B = 1$ applicata in~$B$ sul sistema principale;
+				la reazione del vincolo in~$A$ equilibra la forza
+				unitaria direttamente.
+				$(b)$~Caso~2 (iperstaticità interna): l'asta~$AB$
+				(in grigio) è sconnessa in~$B$ e soggetta allo
+				sforzo unitario $N_{AB} = 1$; la reazione del
+				vincolo in~$A$ si applica alla sola asta~$AB$,
+				lasciando la struttura rimanente completamente
+				scarica.}
+			\label{fig:capriata_autosoluzioni}
+		\end{figure}

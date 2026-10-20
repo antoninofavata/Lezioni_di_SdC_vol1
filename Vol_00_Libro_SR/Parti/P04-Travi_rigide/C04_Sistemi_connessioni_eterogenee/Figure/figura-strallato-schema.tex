@@ -1,0 +1,120 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.5cm, y=1.5cm,
+		trave/.style  ={line width=2.0pt, line cap=round,
+			line join=round, black},
+		carico/.style ={-{Stealth[length=2.0mm,width=1.2mm]},
+			line width=0.7pt},
+		caricoS/.style={-{Stealth[length=1.5mm]}, line width=0.7pt},
+		bordo/.style  ={line width=0.5pt},
+		terra/.style  ={line width=0.7pt},
+		quota/.style  ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+		simm/.style   ={gray!55, line width=0.4pt,
+			dash pattern=on 6pt off 2pt on 1pt off 2pt},
+		nodoV/.style  ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style     ={font=\footnotesize}]
+
+		%% ── coordinate (unità = ell, origine in A) ──────────────
+		\coordinate (A) at (0,0);  \coordinate (B) at (1,-1);
+		\coordinate (C) at (1,1);  \coordinate (D) at (1,0);
+		\coordinate (E) at (3,0);  \coordinate (F) at (5,0);
+		\coordinate (G) at (5,1);  \coordinate (H) at (5,-1);
+		\coordinate (L) at (6,0);
+
+		%% ── asse di simmetria ───────────────────────────────────
+		\draw[simm] (3,-1.15)--(3,1.15);
+
+		%% ── carichi ─────────────────────────────────────────────
+		% carico p sull'impalcato, ordinate al di sotto della linea d'asse
+		\draw[bordo] (1,-0.34)--(5,-0.34);
+		\foreach \x in {1.10,1.30,...,4.90} \draw[carico] (\x,0)--(\x,-0.34);
+		\node[et, below] at (2.0,-0.36) {$p$};
+		\node[et, below] at (4.0,-0.36) {$p$};
+		% peso proprio delle antenne, p/4
+		\foreach \y in {0.58,0.28,-0.02,-0.32,-0.62}{%
+			\draw[caricoS] (0.85,\y)--(0.85,{\y-0.18});
+			\draw[caricoS] (5.15,\y)--(5.15,{\y-0.18});}
+		\node[et, left]  at (0.80,-0.70) {$p/4$};
+		\node[et, right] at (5.20,-0.70) {$p/4$};
+		% carico orizzontale p/2 sulla sola antenna BC
+		\draw[bordo] (1.17,-1)--(1.17,1);
+		\foreach \y in {1,0.70,0.40,-0.48,-0.74,-1}
+			\draw[carico] (1,\y)--(1.17,\y);
+		\node[et, right] at (1.22,-0.95) {$p/2$};
+
+		%% ── le otto travi ───────────────────────────────────────
+		\draw[trave] (B)--(C);          \draw[trave] (H)--(G);
+		\draw[trave] (A)--(C);          \draw[trave] (L)--(G);
+		\draw[trave] (C)--(E);          \draw[trave] (G)--(E);
+		\draw[trave] (1.07,0)--(E);     \draw[trave] (4.93,0)--(E);
+
+		%% ── vincoli esterni ─────────────────────────────────────
+		% cerniere di ancoraggio in A e in L
+		\foreach \P in {A,L}{%
+			\draw[terra] (\P)--($(\P)+(-0.11,-0.19)$)--($(\P)+(0.11,-0.19)$)--cycle;
+			\draw[terra] ($(\P)+(-0.17,-0.19)$)--($(\P)+(0.17,-0.19)$);
+			\foreach \t in {-0.15,-0.075,0,0.075,0.15}
+				\draw[terra, line width=0.4pt]
+					($(\P)+(\t,-0.19)$)--++(-0.05,-0.07);}
+		% carrelli ad asse verticale ai piedi delle antenne, in B e in H
+		\foreach \P in {B,H}{%
+			\draw[terra] (\P)--($(\P)+(-0.10,-0.18)$)--($(\P)+(0.10,-0.18)$)--cycle;
+			\draw[terra, fill=white, line width=0.5pt]
+				($(\P)+(-0.055,-0.215)$) circle(0.035);
+			\draw[terra, fill=white, line width=0.5pt]
+				($(\P)+( 0.055,-0.215)$) circle(0.035);
+			\draw[terra] ($(\P)+(-0.16,-0.25)$)--($(\P)+(0.16,-0.25)$);
+			\foreach \t in {-0.14,-0.07,0,0.07,0.14}
+				\draw[terra, line width=0.4pt]
+					($(\P)+(\t,-0.25)$)--++(-0.05,-0.07);}
+
+		%% ── cerniere interne in D e in F: l'impalcato si incerniera
+		%%    all'antenna, che prosegue continua ───────────────────
+		\draw[black, fill=white, line width=0.9pt]
+			($(D)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+		\draw[black, fill=white, line width=0.9pt]
+			($(F)+(0,-0.07)$) arc[start angle=-90,end angle=-270,radius=0.07]--cycle;
+
+		%% ── nodi ────────────────────────────────────────────────
+		\foreach \P in {A,B,C,E,G,H,L} \node[nodoV] at (\P) {};
+
+		%% ── etichette ───────────────────────────────────────────
+		\node[et, left=4pt]        at (A) {$A$};
+		\node[et, left=5pt]        at (B) {$B$};
+		\node[et, above left=0pt]  at (C) {$C$};
+		\node[et, left]            at (0.84,0.) {$D$};
+		\node[et, above=4pt]       at (E) {$E$};
+		\node[et, right]           at (5.16,0.) {$F$};
+		\node[et, above right=0pt] at (G) {$G$};
+		\node[et, right=5pt]       at (H) {$H$};
+		\node[et, right=4pt]       at (L) {$L$};
+
+		%% ── quote ───────────────────────────────────────────────
+		\draw[quota] (0,-1.45)--(1,-1.45)
+			node[midway,below,black,et]{$\ell$};
+		\draw[quota] (1,-1.45)--(3,-1.45)
+			node[midway,below,black,et]{$2\ell$};
+		\draw[quota] (3,-1.45)--(5,-1.45)
+			node[midway,below,black,et]{$2\ell$};
+		\draw[quota] (5,-1.45)--(6,-1.45)
+			node[midway,below,black,et]{$\ell$};
+		\draw[quota] (-0.55,0)--(-0.55,1)
+			node[midway,left,black,et]{$\ell$};
+		\draw[quota] (-0.55,-1)--(-0.55,0)
+			node[midway,left,black,et]{$\ell$};
+
+	\end{tikzpicture}
+	\caption{Ponte strallato: schema strutturale, simmetrico
+		rispetto alla verticale per~$E$. Le antenne $BC$ e $HG$
+		sono continue attraverso $D$ ed $F$: la mezzaluna indica
+		che a incernierarsi all'antenna è l'impalcato, mentre il
+		montante prosegue senza interruzione. Le ritenute $AC$ ed
+		$LG$ e gli stralli $CE$ e $GE$ convergono con l'antenna
+		nelle cerniere triple $C$ e $G$; in $E$ si incontrano i
+		due stralli e i due semi-impalcati in una cerniera
+		quadrupla. I vincoli esterni sono le cerniere di
+		ancoraggio in $A$ e in $L$ e due carrelli ad asse
+		verticale in $B$ e in $H$.}
+	\label{fig:strallato_schema}
+\end{figure}

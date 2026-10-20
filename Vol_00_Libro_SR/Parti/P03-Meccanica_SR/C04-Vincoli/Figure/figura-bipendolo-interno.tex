@@ -1,0 +1,222 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica del bipendolo interno
+		% (realizzazione: pantografo a doppio parallelogramma)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xAi{ 0.00}
+			\def\yAuno{ 0.35}
+			\def\yAdue{-0.35}
+			\def\Lbiella{0.65}
+			\def\angInt{-25}
+			\def\angExt{ 25}
+			\def\rn{0.10}
+			
+			% Coordinate calcolate
+			\pgfmathsetmacro{\dxInt}{\Lbiella*cos(\angInt)}
+			\pgfmathsetmacro{\dyInt}{\Lbiella*sin(\angInt)}
+			\pgfmathsetmacro{\dxExt}{\Lbiella*cos(\angExt)}
+			\pgfmathsetmacro{\dyExt}{\Lbiella*sin(\angExt)}
+			\pgfmathsetmacro{\xBuno}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBuno}{\yAuno+\dyInt}
+			\pgfmathsetmacro{\xBdue}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBdue}{\yAdue+\dyInt}
+			\pgfmathsetmacro{\xAj}{\xBuno+\dxExt}
+			\pgfmathsetmacro{\yAjuno}{\yBuno+\dyExt}
+			\pgfmathsetmacro{\yAjdue}{\yBdue+\dyExt}
+			
+			%% ── Corpo C_i (a sinistra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, 0.35) (-0.35, 1.10) (-1.00, 1.55) 
+				(-1.95, 1.35) (-2.40, 0.55) (-2.40, -0.55)
+				(-1.95, -1.35) (-1.00, -1.55) (-0.35, -1.10) 
+				(0.00, -0.35)};
+			\node at (-1.25, 0.80) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (a destra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(\xAj, 0.35) ({\xAj+0.35}, 1.10) ({\xAj+1.00}, 1.55) 
+				({\xAj+1.95}, 1.35) ({\xAj+2.40}, 0.55) 
+				({\xAj+2.40}, -0.55) ({\xAj+1.95}, -1.35) 
+				({\xAj+1.00}, -1.55) ({\xAj+0.35}, -1.10) 
+				(\xAj, -0.35)};
+			\node at ({\xAj+1.25}, 0.80) {$\mathcal{C}_j$};
+			
+			
+			%% ── Bielle interne (parallelogramma 1) ──
+			\draw[line width=0.8pt] (\xAi, \yAuno) -- (\xBuno, \yBuno);
+			\draw[line width=0.8pt] (\xAi, \yAdue) -- (\xBdue, \yBdue);
+			
+			%% ── Traversa B_1 B_2 (verticale) ──
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xBdue, \yBdue);
+			
+			%% ── Bielle esterne (parallelogramma 2) ──
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xAj, \yAjuno);
+			\draw[line width=0.8pt] (\xBdue, \yBdue) -- (\xAj, \yAjdue);
+			
+			%% ── Anellini ──
+			\draw[fill=white] (\xBuno, \yBuno) circle (3pt);
+			\draw[fill=white] (\xBdue, \yBdue) circle (3pt);
+			
+			
+			%% ── Anellini terminali ──
+			% A^i (bordo destro di C_i, semicerchio sporge a destra verso pantografo)
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAuno-\rn) arc(-90:90:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAdue-\rn) arc(-90:90:\rn) -- cycle;
+			% A^j (bordo sinistro di C_j, semicerchio sporge a sinistra verso pantografo)
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjuno+\rn) arc(90:270:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjdue+\rn) arc(90:270:\rn) -- cycle;
+			% B_1, B_2: cerchi pieni
+			\draw[fill=white] (\xBuno, \yBuno) circle (3pt);
+			\draw[fill=white] (\xBdue, \yBdue) circle (3pt);
+			
+			
+			%% ── Archi delle rotazioni ϑ_i e ϑ_j (semicerchio, 180°) ──
+			\def\rrot{0.30}
+			% In C_i
+			\draw[->, line width=1pt] 
+			(-1.25+\rrot, -0.20) arc(0:180:\rrot);
+			\node[font=\footnotesize, anchor=west] 	at (-2.0+\rrot+0.05, -0.40) {$\vartheta_i$};
+			% In C_j
+			\draw[->, line width=1pt] ({\xAj+1.25+\rrot}, -0.20) arc(0:180:\rrot);
+			\node[font=\footnotesize, anchor=west] 	at (+1.80+\rrot+0.05, -0.40) {$\vartheta_j$};
+			
+			%% ── Equazione di vincolo (in basso al centro) ──
+			\node[font=\small] 
+			at ({(\xAi+\xAj)/2}, 1.80) 
+			{$\vartheta_j - \vartheta_i = 0$};
+			
+			%% ── Retta impropria r_∞ (in alto a sinistra) ──
+			\def\xRinf{-1.80}
+			\def\yRinf{ 2.20}
+			\def\angRinf{15}
+			\def\Lrinf{1.20}
+			\pgfmathsetmacro{\dxR}{\Lrinf*cos(\angRinf)}
+			\pgfmathsetmacro{\dyR}{\Lrinf*sin(\angRinf)}
+			\draw[gray!60, line width=0.6pt] 
+			({\xRinf-\dxR}, {\yRinf-\dyR}) 
+			-- ({\xRinf+\dxR}, {\yRinf+\dyR});
+			\node[gray, font=\footnotesize, anchor=south west] 
+			at ({\xRinf+\dxR+0.05}, {\yRinf+\dyR+0.05}) {$r_\infty$};
+			\node[gray, font=\footnotesize, rotate=\angRinf, 
+			anchor=south, inner sep=2pt] 
+			at (\xRinf, \yRinf) {$C_{ij} \in r_\infty$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at ({(\xAi+\xAj)/2}, -1.50) {$(a)$};
+			
+		\end{scope}
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica del bipendolo interno
+		% (realizzazione: pantografo a doppio parallelogramma)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=7cm]
+			
+			%% ── Parametri ──
+			\def\xAi{ 0.00}
+			\def\yAuno{ 0.35}
+			\def\yAdue{-0.35}
+			\def\Lbiella{0.65}
+			\def\angInt{-25}
+			\def\angExt{ 25}
+			\def\rn{0.10}
+			
+			% Coordinate calcolate
+			\pgfmathsetmacro{\dxInt}{\Lbiella*cos(\angInt)}
+			\pgfmathsetmacro{\dyInt}{\Lbiella*sin(\angInt)}
+			\pgfmathsetmacro{\dxExt}{\Lbiella*cos(\angExt)}
+			\pgfmathsetmacro{\dyExt}{\Lbiella*sin(\angExt)}
+			\pgfmathsetmacro{\xBuno}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBuno}{\yAuno+\dyInt}
+			\pgfmathsetmacro{\xBdue}{\xAi+\dxInt}
+			\pgfmathsetmacro{\yBdue}{\yAdue+\dyInt}
+			\pgfmathsetmacro{\xAj}{\xBuno+\dxExt}
+			\pgfmathsetmacro{\yAjuno}{\yBuno+\dyExt}
+			\pgfmathsetmacro{\yAjdue}{\yBdue+\dyExt}
+			
+			%% ── Corpo C_i (a sinistra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.00, 0.35) (-0.35, 1.10) (-1.00, 1.55) 
+				(-1.95, 1.35) (-2.40, 0.55) (-2.40, -0.55)
+				(-1.95, -1.35) (-1.00, -1.55) (-0.35, -1.10) 
+				(0.00, -0.35)};
+			\node at (-1.25, 0.80) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (a destra, ingrandito, attaccato in y=±0.35) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(\xAj, 0.35) ({\xAj+0.35}, 1.10) ({\xAj+1.00}, 1.55) 
+				({\xAj+1.95}, 1.35) ({\xAj+2.40}, 0.55) 
+				({\xAj+2.40}, -0.55) ({\xAj+1.95}, -1.35) 
+				({\xAj+1.00}, -1.55) ({\xAj+0.35}, -1.10) 
+				(\xAj, -0.35)};
+			\node at ({\xAj+1.25}, 0.80) {$\mathcal{C}_j$};
+			
+			%% ── Bielle interne, traversa, bielle esterne ──
+			\draw[line width=0.8pt] (\xAi, \yAuno) -- (\xBuno, \yBuno);
+			\draw[line width=0.8pt] (\xAi, \yAdue) -- (\xBdue, \yBdue);
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xBdue, \yBdue);
+			\draw[line width=0.8pt] (\xBuno, \yBuno) -- (\xAj, \yAjuno);
+			\draw[line width=0.8pt] (\xBdue, \yBdue) -- (\xAj, \yAjdue);
+			
+			%% ── Anellini terminali (identici ad (a)) ──
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAuno-\rn) arc(-90:90:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAi, \yAdue-\rn) arc(-90:90:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjuno+\rn) arc(90:270:\rn) -- cycle;
+			\draw[line width=0.8pt, fill=white] 
+			(\xAj, \yAjdue+\rn) arc(90:270:\rn) -- cycle;
+			\draw[fill=white] (\xBuno, \yBuno) circle (3pt);
+			\draw[fill=white] (\xBdue, \yBdue) circle (3pt);
+			
+			%% ──────────────────────────────────────────────────
+			%% COPPIE REATTIVE μ (uguali e opposte)
+			%% ──────────────────────────────────────────────────
+			\def\rmu{0.40}
+			\def\yMu{-0.20}
+			\def\xMuI{-1.25}        % era -1.10
+			\def\xMuJ{\xAj+1.25}    % era \xAj+1.10
+			
+			% Coppia in C_i: semicerchio antiorario
+			\draw[<-, line width=1.4pt] (\xMuI+\rmu, \yMu) arc(0:180:\rmu);
+			\node[font=\small] 	at (\xMuI, \yMu) {$\mu$};
+			
+			% Coppia in C_j: semicerchio orario
+			\draw[->, line width=1.4pt] (\xMuJ+\rmu, \yMu) arc(0:180:\rmu);
+			\node[font=\small] 	at (\xMuJ, \yMu) {$\mu$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at ({(\xAi+\xAj)/2}, -1.50) {$(b)$};
+			
+		\end{scope}
+	\end{tikzpicture}
+	\caption[Bipendolo interno fra due corpi: prestazioni cinematica e statica.]{%
+		Bipendolo interno fra i corpi $\mathcal{C}_i$ e
+		$\mathcal{C}_j$, realizzato come pantografo a doppio
+		parallelogramma. Prestazione cinematica (a): l'equazione
+		di vincolo $\vartheta_j - \vartheta_i = 0$ impone l'uguaglianza
+		delle rotazioni dei due corpi; le componenti di traslazione
+		relativa restano libere e non sono rappresentate. Il \CRr\
+		$C_{ij}$ giace sulla retta impropria $r_\infty$.
+		Prestazione statica (b): i due corpi si scambiano
+		una coppia pura di intensità $\mu$, in dualità con la
+		rotazione relativa bloccata; la forza scambiata è
+		identicamente nulla, in accordo con la molteplicità uno.}
+	\label{fig:bipendolo_interno}
+\end{figure}

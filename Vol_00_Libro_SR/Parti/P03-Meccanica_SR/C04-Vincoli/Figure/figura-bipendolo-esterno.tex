@@ -1,0 +1,211 @@
+\begin{figure}[htbp]
+	\centering
+	%\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (a) — Prestazione cinematica del bipendolo
+			% (realizzazione: pantografo a parallelogramma)
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm]
+				
+				%% ── Parametri ──
+				\def\xAuno{-0.40}
+				\def\xAdue{ 0.40}
+				\def\yA{ 0.00}
+				\def\Lbiella{0.70}      % era 0.90
+				\def\angSup{-110}
+				\def\angInf{-70}
+				\def\rn{0.10}
+				\def\tw{0.22}
+				\def\thA{0.32}
+				\def\gw{0.40}
+				
+				% Coordinate calcolate
+				\pgfmathsetmacro{\dxSup}{\Lbiella*cos(\angSup)}
+				\pgfmathsetmacro{\dySup}{\Lbiella*sin(\angSup)}
+				\pgfmathsetmacro{\dxInf}{\Lbiella*cos(\angInf)}
+				\pgfmathsetmacro{\dyInf}{\Lbiella*sin(\angInf)}
+				% B_1, B_2 (nodi traversa)
+				\pgfmathsetmacro{\xBuno}{\xAuno+\dxSup}
+				\pgfmathsetmacro{\yB}{\yA+\dySup}
+				\pgfmathsetmacro{\xBdue}{\xAdue+\dxSup}
+				% G_1, G_2 (cerniere a terra)
+				\pgfmathsetmacro{\xGuno}{\xBuno+\dxInf}
+				\pgfmathsetmacro{\yG}{\yB+\dyInf}
+				\pgfmathsetmacro{\xGdue}{\xBdue+\dxInf}
+				
+				
+				%% ── Corpo C (più grande, agganciato a A_1=-0.40 e A_2=+0.40) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.40, 0.00) (-1.30, 0.35) (-1.80, 1.15) 
+					(-1.45, 2.05) (-0.55, 2.40) (0.55, 2.40) 
+					(1.45, 2.05) (1.80, 1.15) (1.30, 0.35) (0.40, 0.00)};
+				\node at (-0.65, 1.65) {$\mathcal{C}$};
+				\node[font=\footnotesize] at (0.00, 0.75) {$\vartheta = 0$};
+				
+				%% ── Bielle superiori (parallelogramma 1) ──
+				\draw[line width=0.8pt] (\xAuno, \yA) -- (\xBuno, \yB);
+				\draw[line width=0.8pt] (\xAdue, \yA) -- (\xBdue, \yB);
+				
+				%% ── Traversa B_1 B_2 ──
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xBdue, \yB);
+				
+				%% ── Bielle inferiori (parallelogramma 2) ──
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xGuno, \yG);
+				\draw[line width=0.8pt] (\xBdue, \yB) -- (\xGdue, \yG);
+				
+				%% ── Cerniere al suolo G_1, G_2 ──
+				\draw (\xGuno, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGuno-\gw, \yG-\thA) -- (\xGuno+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGuno+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				
+				\draw (\xGdue, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGdue-\gw, \yG-\thA) -- (\xGdue+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGdue+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				
+				%% ── Anellini ──
+				% A_1, A_2: semicerchi (corpo C ruota libero rispetto alla biella)
+				\draw[fill=white] 
+				(\xAuno-\rn, \yA) arc(180:360:\rn) -- cycle;
+				\draw[fill=white] 
+				(\xAdue-\rn, \yA) arc(180:360:\rn) -- cycle;
+				% B_1, B_2: cerchi pieni (nodi del parallelogramma)
+				\draw[fill=white] (\xBuno, \yB) circle (3pt);
+				\draw[fill=white] (\xBdue, \yB) circle (3pt);
+				% G_1, G_2: cerchi pieni (perni al suolo)
+				\draw[fill=white] (\xGuno, \yG) circle (3pt);
+				\draw[fill=white] (\xGdue, \yG) circle (3pt);
+				
+				%				
+				%% ── Retta impropria r_∞ (luogo del CR all'infinito) ──
+				\def\xRinf{-2.40}
+				\def\yRinf{ 1.20}
+				\def\angRinf{60}
+				\def\Lrinf{1.20}
+				\pgfmathsetmacro{\dxR}{\Lrinf*cos(\angRinf)}
+				\pgfmathsetmacro{\dyR}{\Lrinf*sin(\angRinf)}
+				\draw[gray!60, line width=0.6pt] 
+				({\xRinf-\dxR}, {\yRinf-\dyR}) -- ({\xRinf+\dxR}, {\yRinf+\dyR});
+				
+				%% Etichetta "r_∞" all'estremità superiore della retta
+				\node[gray, font=\footnotesize, anchor=south west] 
+				at ({\xRinf+\dxR+0.05}, {\yRinf+\dyR+0.05}) {$r_\infty$};
+				
+				%% Etichetta "C ∈ r_∞" sopra la retta a metà, ruotata
+				\node[gray, font=\footnotesize, rotate=\angRinf, anchor=south, 
+				inner sep=2pt] 
+				at (\xRinf, \yRinf) {$C \in r_\infty$};
+				
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] 
+				at (-0.25, \yG-\thA-0.50) {$(a)$};
+				
+			\end{scope}
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (b) — Prestazione statica del bipendolo
+			% (realizzazione: pantografo a parallelogramma)
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=5cm]
+				
+				%% ── Parametri (identici ad (a)) ──
+				%% ── Parametri ──
+				\def\xAuno{-0.40}
+				\def\xAdue{ 0.40}
+				\def\yA{ 0.00}
+				\def\Lbiella{0.70}      % era 0.90
+				\def\angSup{-110}
+				\def\angInf{-70}
+				\def\rn{0.10}
+				\def\tw{0.22}
+				\def\thA{0.32}
+				\def\gw{0.40}
+				
+				% Coordinate calcolate
+				\pgfmathsetmacro{\dxSup}{\Lbiella*cos(\angSup)}
+				\pgfmathsetmacro{\dySup}{\Lbiella*sin(\angSup)}
+				\pgfmathsetmacro{\dxInf}{\Lbiella*cos(\angInf)}
+				\pgfmathsetmacro{\dyInf}{\Lbiella*sin(\angInf)}
+				\pgfmathsetmacro{\xBuno}{\xAuno+\dxSup}
+				\pgfmathsetmacro{\yB}{\yA+\dySup}
+				\pgfmathsetmacro{\xBdue}{\xAdue+\dxSup}
+				\pgfmathsetmacro{\xGuno}{\xBuno+\dxInf}
+				\pgfmathsetmacro{\yG}{\yB+\dyInf}
+				\pgfmathsetmacro{\xGdue}{\xBdue+\dxInf}
+				
+				%% ── Corpo C (identico ad (a)) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.40, 0.00) (-1.30, 0.35) (-1.80, 1.15) 
+					(-1.45, 2.05) (-0.55, 2.40) (0.55, 2.40) 
+					(1.45, 2.05) (1.80, 1.15) (1.30, 0.35) (0.40, 0.00)};
+				\node at (-0.65, 1.65) {$\mathcal{C}$};
+				
+				
+				
+				%% ── Bielle superiori, traversa, bielle inferiori (identici ad (a)) ──
+				\draw[line width=0.8pt] (\xAuno, \yA) -- (\xBuno, \yB);
+				\draw[line width=0.8pt] (\xAdue, \yA) -- (\xBdue, \yB);
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xBdue, \yB);
+				\draw[line width=0.8pt] (\xBuno, \yB) -- (\xGuno, \yG);
+				\draw[line width=0.8pt] (\xBdue, \yB) -- (\xGdue, \yG);
+				
+				%% ── Cerniere al suolo G_1, G_2 (identiche ad (a)) ──
+				\draw (\xGuno, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGuno-\gw, \yG-\thA) -- (\xGuno+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGuno+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				\draw (\xGdue, \yG) 
+				-- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+				\draw (\xGdue-\gw, \yG-\thA) -- (\xGdue+\gw, \yG-\thA);
+				\foreach \x in {-0.30,-0.15,0,0.15,0.30}
+				\draw[thin] (\xGdue+\x, \yG-\thA) -- ++(-0.10, -0.13);
+				
+				%% ── Anellini (identici ad (a)) ──
+				\draw[fill=white] 
+				(\xAuno-\rn, \yA) arc(180:360:\rn) -- cycle;
+				\draw[fill=white] 
+				(\xAdue-\rn, \yA) arc(180:360:\rn) -- cycle;
+				\draw[fill=white] (\xBuno, \yB) circle (3pt);
+				\draw[fill=white] (\xBdue, \yB) circle (3pt);
+				\draw[fill=white] (\xGuno, \yG) circle (3pt);
+				\draw[fill=white] (\xGdue, \yG) circle (3pt);
+				
+				%% ──────────────────────────────────────────────────
+				%% COPPIA REATTIVA mu — arco con freccia sopra C
+				%% ──────────────────────────────────────────────────
+				\def\xMu{0.00}
+				\def\yMu{0.50}
+				\def\rMu{0.40}
+				\draw[->, line width=1.4pt] ({\xMu+\rMu}, \yMu) arc[start angle=0, end angle=180, radius=\rMu];
+				\node[font=\footnotesize] at (0.00, 0.5) {$\mu$};
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] at (-0.25, \yG-\thA-0.50) {$(b)$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		%	}
+	
+	\caption[Bipendolo esterno: prestazioni cinematica e statica.]{%
+		Bipendolo esterno applicato al corpo $\mathcal{C}$,
+		realizzato meccanicamente come pantografo a doppio
+		parallelogramma. Prestazione cinematica (a): l'equazione
+		di vincolo $\vartheta = 0$ annulla la rotazione del
+		corpo, lasciando libere le due componenti di traslazione,
+		non rappresentate; il \CRa\ giace sulla retta impropria
+		$r_\infty$. Prestazione statica (b): la reazione vincolare
+		si riduce alla sola coppia $\mu$, in dualità con la
+		rotazione bloccata; la forza risultante è identicamente
+		nulla, in accordo con la molteplicità uno.}
+	\label{fig:bipendolo_esterno}
+\end{figure}

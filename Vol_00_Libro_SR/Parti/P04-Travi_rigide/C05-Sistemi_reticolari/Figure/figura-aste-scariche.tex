@@ -1,0 +1,129 @@
+\begin{figure}[htbp]
+	\centering
+	%── pannello (a): primo criterio ──────────────────────────
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\begin{tikzpicture}[
+			scale=0.80,
+			asta/.style={line width=1.5pt, line cap=round, black},
+			astazero/.style={line width=1.2pt, line cap=round,
+				gray!70},
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt,
+				line width=1.0pt},
+			nodop/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=7pt,
+				line width=1.5pt},
+			stub/.style={circle, fill=gray!30, draw=gray!50,
+				inner sep=0pt, minimum size=5pt},
+			]
+			%\useasboundingbox (-1.0,-1.2) rectangle (8.0,5.5);
+			%% pannello (a)
+			\useasboundingbox (0.0, 1.2) rectangle (7.5, 5.2);
+			
+			\coordinate (P)  at (3.0, 2.5);
+			\coordinate (E1) at (0.5, 4.8); % estremo membro 1
+			\coordinate (E2) at (7.0, 2.5); % estremo membro 2
+			
+			% nodi stub (connessione al resto della travatura)
+			\node[stub] at (E1){};
+			\node[stub] at (E2){};
+			
+			% aste scariche
+			\draw[astazero] (E1)--(P)
+			node[midway, above right, font=\small, gray!80]{$N_1=0$};
+			\draw[astazero] (P)--(E2)
+			node[midway, above,      font=\small, gray!80]{$N_2=0$};
+			
+			% nodo chiave
+			\node[nodop] at (P){};
+			\node[below right, font=\normalsize] at (P){$P$};
+			
+			
+		\end{tikzpicture}
+		\par\smallskip$(a)$
+	\end{minipage}
+	\hfill
+	%── pannello (b): secondo criterio ────────────────────────
+	\begin{minipage}[t]{0.48\textwidth}
+		\centering
+		\begin{tikzpicture}[
+			scale=0.90,
+			asta/.style={line width=1.5pt, line cap=round, black},
+			astazero/.style={line width=1.2pt, line cap=round,
+				gray!70},
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt,
+				line width=1.0pt},
+			nodop/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=7pt,
+				line width=1.5pt},
+			stub/.style={circle, fill=gray!30, draw=gray!50,
+				inner sep=0pt, minimum size=5pt},
+			freccia/.style={->, >=stealth, line width=0.8pt, black},
+			]
+			%\useasboundingbox (-1.0,-1.2) rectangle (8.0,5.5);
+			%% pannello (b)
+			\useasboundingbox (0.0, 1.2) rectangle (7.0, 5.2);
+			
+			\coordinate (P) at (3.5, 2.5);
+			\coordinate (L) at (0.5, 2.5); % estremo sinistro (allineato)
+			\coordinate (R) at (6.5, 2.5); % estremo destro  (allineato)
+			\coordinate (U) at (3.5, 5.0); % estremo superiore (trasversale)
+			
+			% nodi stub
+			\node[stub] at (L){};
+			\node[stub] at (R){};
+			\node[stub] at (U){};
+			
+			% aste allineate (non scariche)
+			\draw[asta] (L)--(P);
+			\draw[asta] (P)--(R);
+			
+			% frecce che indicano N_1 = N_2 = N sotto le aste
+			\draw[freccia](0.90,2.10)--(1.70,2.10);
+			\draw[freccia](2.30,2.10)--(1.70,2.10);
+			\node[font=\small, below] at (1.30,2.05){$N$};
+			\draw[freccia](4.30,2.10)--(5.10,2.10);
+			\draw[freccia](6.10,2.10)--(5.10,2.10);  
+			\node[font=\small, below] at (5.50,2.05){$N$};
+			
+			% linea punteggiata di allineamento
+			\draw[gray!35, very thin, loosely dotted]
+			($(L)-(0.2,0)$)--($(R)+(0.2,0)$);
+			
+			% asta trasversale (scarica)
+			\draw[astazero] (U)--(P)
+			node[midway, right, font=\small, gray!80]{$N_3=0$};
+			
+			% nodo chiave
+			\node[nodop] at (P){};
+			\node[below right, font=\normalsize] at (P){$P$};
+			
+			% etichette forze sulle aste allineate
+			\node[font=\small, above] at (1.5, 2.5){$N_1$};
+			\node[font=\small, above] at (5.5, 2.5){$N_2$};
+			
+			% uguaglianza
+			\node[font=\small] at (3.5, 1.5){$N_1 = N_2 = N$};
+			
+			
+		\end{tikzpicture}
+		\par\smallskip$(b)$
+	\end{minipage}
+	%
+	\caption{Criteri di riconoscimento delle aste scariche.
+		\emph{(a)}: primo criterio --- nel nodo $P$ convergono
+		esattamente due aste con direzioni non parallele e non
+		è applicato alcun carico esterno; entrambe le aste
+		sono scariche ($N_1 = N_2 = 0$).
+		\emph{(b)}: secondo criterio --- nel nodo $P$
+		convergono tre aste, di cui le aste~1 e~2 sono
+		allineate (tratto continuo) e l'asta~3 è trasversale
+		(tratto tratteggiato), senza carico esterno; l'asta
+		trasversale è scarica ($N_3 = 0$) e le aste allineate
+		trasmettono lo stesso sforzo ($N_1 = N_2 = N$).
+		I cerchi grigi indicano la connessione al resto
+		della travatura.}
+	\label{fig:aste_scariche}
+\end{figure}

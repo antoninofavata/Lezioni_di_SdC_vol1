@@ -1,0 +1,221 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (a) — Prestazione cinematica della biella interno
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm]
+				
+				% ── Parametri (carrello ruotato di 90° CCW) ──
+				\def\xAi{-0.30}     % ascissa di A_i (bordo destro di C_i)
+				\def\xAj{ 1.20}     % ascissa di A_j (apice triangolo)
+				\def\yAx{ 0.00}     % asse a coincide con y=0
+				\def\tw{0.30}       % semi-altezza triangolo (era larghezza)
+				\def\thR{0.40}      % "altezza" triangolo = base - apice
+				\def\rn{0.10}       % raggio semicerchio
+				\def\bw{0.18}       % semi-distanza ruote (verticale)
+				\def\gw{0.45}       % semi-altezza barre laterali
+				
+				%% ── Asse a (retta grigia continua) ──
+				\draw[gray!60, line width=0.6pt] 
+				(-2.5, \yAx) -- (3.40, \yAx);
+				
+				%% ── Corpo C_i a sinistra ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.30,  0.00) (-0.50,  0.80) (-1.40,  1.10) 
+					(-2.40,  0.95) (-2.80,  0.20) (-2.60, -0.70) 
+					(-1.70, -1.05) (-0.70, -0.80) (-0.45, -0.45)};
+				\node at (-1.60, 0.30) {$\mathcal{C}_i$};
+				
+				%% ── Corpo C_j a destra ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(1.20,  0.00) (1.40,  0.80) (2.20,  1.10) 
+					(3.20,  0.95) (3.60,  0.20) (3.40, -0.70) 
+					(2.50, -1.05) (1.60, -0.85) (1.35, -0.45)};
+				\node at (2.40, 0.30) {$\mathcal{C}_j$};
+				
+				
+				%% ── biella: asta orizzontale + semicerchi terminali ──
+				\draw[line width=0.8pt] (\xAi, \yAx) -- (\xAj, \yAx);
+				
+				%% Semicerchio in A_i (concavità a sinistra, verso C_i)
+				\draw[fill=white] 
+				(\xAi, \yAx-\rn) arc(-90:90:\rn) -- cycle;
+				
+				%% Semicerchio in A_j (concavità a destra, verso C_j)
+				\draw[fill=white] 
+				(\xAj, \yAx+\rn) arc(90:270:\rn) -- cycle;
+				
+				%% ── Semicerchio in A_j (apice del triangolo) ──
+				\draw[fill=white] 
+				(\xAj, \yAx+\rn) arc(90:270:\rn) -- cycle;
+				
+				%% ── Etichette A_i e A_j ──
+				\node[anchor=south east, font=\small] 
+				at (\xAi-0.05, \yAx+0.05) {$A_i$};
+				\node[anchor=south west, font=\small] 
+				at (\xAj+0.10, \yAx+0.05) {$A_j$};
+				
+				
+				%% ── Versore a, allineato con l'asse della biella ──
+				\draw[->, line width=1pt] 
+				(\xAj+1.40, \yAx) -- (\xAj+2.20, \yAx);
+				\node[anchor=north, font=\small] 
+				at (\xAj+1.70, \yAx-0.05) {$\ab$};
+				
+				%% ──────────────────────────────────────────────────
+				%% VETTORI SPOSTAMENTO (linee spesse)
+				%% ──────────────────────────────────────────────────
+				
+				% u(A_i): da A_i, direzione 70°, modulo |u_i|
+				\def\uimx{ 0.41}    % cos(70°) * |u_i|
+				\def\uimy{ 1.13}    % sin(70°) * |u_i|, scelti per ottenere d=0.41
+				\draw[->, line width=1.4pt] 
+				(\xAi, \yAx) -- ++(\uimx, \uimy);
+				\node[anchor=south, font=\small] 
+				at (\xAi+\uimx, \yAx+\uimy-0.05) {$\ub(A_i)$};
+				
+				% Linea tratteggiata di proiezione di u(A_i) sull'asse
+				\draw[dashed, gray!70, line width=0.5pt] 
+				(\xAi+\uimx, \yAx+\uimy) -- (\xAi+\uimx, \yAx);
+				
+				% u(A_j): da A_j, direzione -50°, modulo |u_j|
+				\def\ujmx{ 0.41}    % cos(-50°) * |u_j| (stesso d!)
+				\def\ujmy{-0.49}    % sin(-50°) * |u_j|
+				\draw[->, line width=1.4pt] 
+				(\xAj, \yAx) -- ++(\ujmx, \ujmy);
+				\node[anchor=north west, font=\small] 
+				at (\xAj+\ujmx-0.05, \yAx+\ujmy+0.2) {$\ub(A_j)$};
+				
+				% Linea tratteggiata di proiezione di u(A_j) sull'asse
+				\draw[dashed, gray!70, line width=0.5pt] 
+				(\xAj+\ujmx, \yAx+\ujmy) -- (\xAj+\ujmx, \yAx);
+				
+				%% ── Etichetta del luogo del CR relativo (sopra C_j) ──
+				\node[font=\footnotesize, anchor=south] 
+				at (2.50, 1.20) 
+				{$C_{ij} \in$ asse della biella};
+				
+				
+				%% ──────────────────────────────────────────────────
+				%% TACCHE DI UGUAGLIANZA (doppia barretta)
+				%% sui due segmenti di proiezione, sull'asse
+				%% ──────────────────────────────────────────────────
+				% Proiezione di u(A_i): segmento da (xAi, 0) a (xAi+uimx, 0)
+				% Punto medio: (xAi + uimx/2, 0)
+				% Proiezione di u(A_j): segmento da (xAj, 0) a (xAj+ujmx, 0)
+				% Punto medio: (xAj + ujmx/2, 0)
+				
+				% Tacche su proiezione i (due barrette verticali)
+				\draw[line width=0.7pt] 
+				(\xAi+\uimx/2-0.04, -0.08) -- (\xAi+\uimx/2-0.04, 0.08);
+				\draw[line width=0.7pt] 
+				(\xAi+\uimx/2+0.04, -0.08) -- (\xAi+\uimx/2+0.04, 0.08);
+				
+				% Tacche su proiezione j
+				\draw[line width=0.7pt] 
+				(\xAj+\ujmx/2-0.04, -0.08) -- (\xAj+\ujmx/2-0.04, 0.08);
+				\draw[line width=0.7pt] 
+				(\xAj+\ujmx/2+0.04, -0.08) -- (\xAj+\ujmx/2+0.04, 0.08);
+				
+				%% ── Equazione in alto al centro ──
+				\node[font=\small] at (0.45, 2.05) 
+				{$\ub(A_i)\cdot\ab \;=\; \ub(A_j)\cdot\ab$};
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] at (0.45, -1.0) {$(a)$};
+				
+			\end{scope}
+			
+			% ═══════════════════════════════════════════════════════════
+			% PANNELLO (b) — Prestazione statica della biella interno
+			% ═══════════════════════════════════════════════════════════
+			\begin{scope}[xshift=8cm]   % o yshift=-3.5cm, a tua scelta
+				
+				% ── Parametri (identici a (a)) ──
+				\def\xAi{-0.50}
+				\def\xAj{ 1.40}
+				\def\yAx{ 0.00}
+				\def\rn{0.10}
+				
+				%% ── Asse a (retta grigia continua) ──
+				\draw[gray!60, line width=0.6pt] 
+				(-3.80, \yAx) -- (3.65, \yAx);
+				
+				%% ── Corpo C_i (identico ad (a)) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(-0.50,  0.00) (-0.70,  0.80) (-1.60,  1.10) 
+					(-2.60,  0.95) (-3.00,  0.20) (-2.80, -0.70) 
+					(-1.90, -1.05) (-0.90, -0.80) (-0.65, -0.45)};
+				\node at (-1.80, 0.30) {$\mathcal{C}_i$};
+				
+				%% ── Corpo C_j (identico ad (a)) ──
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(1.40,  0.00) (1.60,  0.80) (2.40,  1.10) 
+					(3.40,  0.95) (3.80,  0.20) (3.60, -0.70) 
+					(2.70, -1.05) (1.80, -0.85) (1.55, -0.45)};
+				\node at (2.60, 0.30) {$\mathcal{C}_j$};
+				
+				%% ── biella: asta + semicerchi terminali ──
+				\draw[line width=0.8pt] (\xAi, \yAx) -- (\xAj, \yAx);
+				\draw[fill=white] 
+				(\xAi, \yAx-\rn) arc(-90:90:\rn) -- cycle;
+				\draw[fill=white] 
+				(\xAj, \yAx+\rn) arc(90:270:\rn) -- cycle;
+				
+				%% ── Etichette A_i e A_j ──
+				\node[anchor=south east, font=\small] 
+				at (\xAi-0.05, \yAx+0.05) {$A_i$};
+				\node[anchor=south west, font=\small] 
+				at (\xAj+0.10, \yAx+0.05) {$A_j$};
+				
+				%% ── Versore a, allineato con l'asse della biella ──
+				\draw[->, line width=1pt] 
+				(\xAj+1.50, \yAx) -- (\xAj+2.10, \yAx);
+				\node[anchor=north, font=\small] 
+				at (\xAj+1.70, \yAx-0.05) {$\ab$};
+				
+				%% ──────────────────────────────────────────────────
+				%% REAZIONI (linee spesse, entranti nei corpi)
+				%% ──────────────────────────────────────────────────
+				
+				%% Reazione in A_i: -R a, da A_i verso sinistra (entra in C_i)
+				\draw[->, line width=1.4pt] 
+				(\xAi, \yAx) -- ++(-1.00, 0);
+				\node[anchor=north, font=\small] 
+				at (\xAi-0.80, \yAx-0.06) {$-R\,\ab$};
+				
+				%% Reazione in A_j: +R a, da A_j verso destra (entra in C_j)
+				\draw[->, line width=1.4pt] 
+				(\xAj, \yAx) -- ++(1.00, 0);
+				\node[anchor=north, font=\small] 
+				at (\xAj+0.50, \yAx-0.06) {$R\,\ab$};
+				
+				%% ── Etichetta pannello ──
+				\node[anchor=north, font=\small] at (0.45, -1.0) {$(b)$};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+	}
+	\caption[Biella interna fra due corpi: prestazioni cinematica e statica.]{%
+		Biella interna fra i corpi $\mathcal{C}_i$ e $\mathcal{C}_j$,
+		con punti di applicazione $A_i$ e $A_j$ e versore d'asse
+		$\ab = \overrightarrow{A_iA_j}/|\overrightarrow{A_iA_j}|$.
+		Prestazione cinematica (a): l'equazione di vincolo
+		$\ub(A_i)\cdot\ab = \ub(A_j)\cdot\ab$ impone l'uguaglianza
+		delle componenti degli spostamenti di $A_i$ e $A_j$ lungo
+		l'asse $\ab$; la componente trasversale e la rotazione
+		relativa restano libere e non sono rappresentate.
+		Prestazione statica (b): le reazioni scambiate fra i due
+		corpi sono una coppia di forze uguali e opposte
+		$\pm R\,\ab$ applicate in $A_i$ e $A_j$, in accordo con la
+		molteplicità uno.}
+	\label{fig:pendolo_interno}
+\end{figure}

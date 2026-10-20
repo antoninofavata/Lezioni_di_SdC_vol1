@@ -1,0 +1,124 @@
+\begin{figure}[htbp]
+			\centering
+			\begin{tikzpicture}[
+				scale=0.62,
+				asta/.style={line width=1.5pt, line cap=round, line join=round, black},
+				ridond/.style={line width=1.5pt, line cap=round, line join=round,
+					gray!60},
+				nodo/.style={circle, fill=white, draw=black,
+					inner sep=0pt, minimum size=6pt, line width=1.2pt},
+				quota/.style={thin, gray,  |<->|},
+				richiam/.style={thin, gray, dashed},
+				forza/.style={->, >=stealth, line width=1.5pt, black},
+				]
+				
+				\def\SEP{11.0}
+				
+				%%── Pannello (a): cerniera in B ──────────────────────────────
+				\begin{scope}[xshift=0cm]
+					\coordinate (A) at (0,0); \coordinate (B) at (8,0);
+					\coordinate (C) at (4,3); \coordinate (D) at (4,0);
+					
+					\draw[asta](A)--(C)node[midway,above left, font=\small]{$AC$};
+					\draw[asta](C)--(B)node[midway,above right,font=\small]{$CB$};
+					\draw[asta](A)--(D)node[midway,below,      font=\small]{$AD$};
+					\draw[asta](D)--(B)node[midway,below,      font=\small]{$DB$};
+					\draw[asta](C)--(D)node[midway,right,      font=\small]{$CD$};
+					
+					%% cerniera A
+					\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin](\x,-0.65)--++(-.18,-.22);
+					
+					%% cerniera B
+					\draw[line width=1.2pt](B)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt]($(B)+(-0.55,-0.65)$)--($(B)+(0.55,-0.65)$);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin]($(B)+(\x,-0.65)$)--++(-.18,-.22);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					
+					\draw[forza]($(C)+(0,1.60)$)--($(C)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(C)+(0,1.60)$){$F$};
+					
+					\node[above left, font=\normalsize]at(A){$A$};
+					\node[above right,font=\normalsize]at(B){$B$};
+					\node[above right,font=\normalsize]at(C){$C$};
+					\node[below=2pt,      font=\normalsize]at(D){$D$};
+					
+					\draw[richiam](A)--++(0,-1.3);
+					\draw[richiam](D)--++(0,-1.3);
+					\draw[richiam](B)--++(0,-1.3);
+					\draw[quota](0,-1.1)--node[below,font=\small]{$\ell$}(4,-1.1);
+					\draw[quota](4,-1.1)--node[below,font=\small]{$\ell$}(8,-1.1);
+					\draw[richiam](C)--++(-4.3,0);
+					\draw[richiam](A)--++(-0.8,0);
+					\draw[quota](-0.6,0)--node[left,font=\small]{$h$}(-0.6,3);
+					\node[font=\normalsize]at(4,-1.90){$(a)$};
+				\end{scope}
+				
+				%%── Pannello (b): asta ridondante AB ─────────────────────────
+				\begin{scope}[xshift=\SEP cm]
+					\coordinate (A) at (0,0); \coordinate (B) at (8,0);
+					\coordinate (C) at (4,3); \coordinate (D) at (4,0);
+					
+					\draw[asta](A)--(C)node[midway,above left, font=\small]{$AC$};
+					\draw[asta](C)--(B)node[midway,above right,font=\small]{$CB$};
+					\draw[asta](A)--(D)node[midway,above,      font=\small]{$AD$};
+					\draw[asta](D)--(B)node[midway,above,      font=\small]{$DB$};
+					\draw[asta](C)--(D)node[midway,right,      font=\small]{$CD$};
+					
+					%% asta ridondante AB (tratteggiata, leggermente sotto)
+					\draw[ridond](A)--++(0,-0.28)--($(B)+(0,-0.28)$)--(B);
+					\node[below,font=\small]at(4,-0.28){$AB$};
+					
+					
+					%% cerniera A
+					\draw[line width=1.2pt](A)--++(-0.4,-0.65)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt](-0.55,-0.65)--(0.55,-0.65);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin](\x,-0.65)--++(-.18,-.22);
+					
+					
+					%% carrello B
+					\draw[line width=1.2pt](B)--++(-0.4,-0.50)--++(0.8,0)--cycle;
+					\draw[line width=1.2pt]($(B)+(-0.50,-0.50)$)--($(B)+(0.50,-0.50)$);
+					\draw[line width=1.2pt]($(B)+(-0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(B)+( 0.25,-0.65)$)circle(3.5pt);
+					\draw[line width=1.2pt]($(B)+(-0.55,-0.82)$)--($(B)+(0.55,-0.82)$);
+					\foreach \x in {-0.45,-0.25,-0.05,0.15,0.35}
+					\draw[thin]($(B)+(\x,-0.82)$)--++(-.18,-.22);
+					
+					\node[nodo]at(A){}; \node[nodo]at(B){};
+					\node[nodo]at(C){}; \node[nodo]at(D){};
+					
+					\draw[forza]($(C)+(0,1.60)$)--($(C)+(0,0.35)$);
+					\node[above,font=\normalsize]at($(C)+(0,1.60)$){$F$};
+					
+					\node[above left, font=\normalsize]at(A){$A$};
+					\node[above right,font=\normalsize]at(B){$B$};
+					\node[above right,font=\normalsize]at(C){$C$};
+					\node[above left,      font=\normalsize]at(D){$D$};
+					
+					\draw[richiam](A)--++(0,-1.3);
+					\draw[richiam](D)--++(0,-1.3);
+					\draw[richiam](B)--++(0,-1.3);
+					\draw[quota](0,-1.1)--node[below,font=\small]{$\ell$}(4,-1.1);
+					\draw[quota](4,-1.1)--node[below,font=\small]{$\ell$}(8,-1.1);
+					\node[font=\normalsize]at(4,-1.90){$(b)$};
+				\end{scope}
+				
+			\end{tikzpicture}
+			\caption{Varianti iperstatiche della capriata triangolare.
+				$(a)$~Iperstaticità esterna ($g_i^{\text{est}} = 1$):
+				il carrello in~$B$ è sostituito da una cerniera;
+				il sistema principale si ottiene ripristinando
+				il carrello.
+				$(b)$~Iperstaticità interna ($g_i^{\text{int}} = 1$):
+				l'asta ridondante~$AB$ (in grigio) è aggiunta
+				alla capriata isostatica; il sistema principale
+				si ottiene sopprimendo~$AB$.}
+			\label{fig:capriata_iperstatica}
+		\end{figure}

@@ -1,0 +1,63 @@
+\begin{figure}[!htbp]
+		\centering
+		\def\ax{0.5}\def\ay{0.30}
+		\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+		\providecommand{\rightangle}[3]{%
+			\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+			\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+			\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.15]
+			\draw[gray!60] (\xyz{-1.7}{-1.2}{0}) -- (\xyz{-1.7}{3.90}{0})-- (\xyz{4.7}{3.90}{0}) -- (\xyz{4.7}{-1.2}{0}) -- cycle;
+			\node[gray!75] at (\xyz{-1.2}{-1.0}{0}) {$\pi$};
+			
+			\coordinate (O)   at (\xyz{0}{0}{0});
+			\coordinate (Of)  at (\xyz{1.2}{0.3}{0});      % O + v   (base comune)
+			\coordinate (Pk)  at (\xyz{0.5}{2.0}{0});      % P            (lambda = 0)
+			\coordinate (Ff)  at (\xyz{1.7}{2.3}{0});      % P + v
+			\coordinate (Pp)  at (\xyz{2.54}{2.51}{0});    % P'           (lambda = 1.7)
+			\coordinate (Ffp) at (\xyz{3.74}{2.81}{0});    % P' + v
+			\coordinate (La)  at (\xyz{0.14}{1.91}{0});    % retta d'azione, estremo a
+			\coordinate (Lb)  at (\xyz{4.04}{2.89}{0});    % estremo b
+			\coordinate (LOa) at (\xyz{-0.48}{-0.12}{0});  % retta per O // v, estremo a
+			\coordinate (LOb) at (\xyz{1.92}{0.48}{0});    % estremo b
+			\coordinate (MuB) at (\xyz{0}{0}{1.25});
+			\coordinate (MuC) at (\xyz{0}{0}{1.47});
+			
+			% --- le due rette parallele della striscia (tratteggiate, dietro) ---
+			%		\draw[gray!55, thin, dashed] (La) -- (Lb);    % retta d'azione di v
+			%		\draw[gray!55, thin, dashed] (LOa) -- (LOb);  % retta per O parallela a v
+			\draw[gray!55, thin, dashed] ($(O)!-0.6!(Of)$) -- ($(Of)!-1.0!(O)$);
+			
+			% --- i due parallelogrammi (entrambi grigi): base comune O-Of,
+			%     lato opposto sulla stessa retta d'azione => stessa area ---
+			\filldraw[gray!9, draw=gray!55, thin] (O) -- (Of) -- (Ffp) -- (Pp) -- cycle; % su OP'
+			\filldraw[gray!9, draw=gray!55, thin] (O) -- (Of) -- (Ff)  -- (Pk) -- cycle; % su OP
+			
+			
+			% --- OP e OP' ---
+			\draw[->, thin] (O) -- (Pk);
+			\node[font=\small, below right] at ($(O)!0.55!(Pk)$) {$\overrightarrow{OP}$};
+			\draw[->, thin] (O) -- (Pp);
+			\node[font=\small, above left=-4pt] at ($(O)!0.70!(Pp)$) {$\overrightarrow{OP'}$};
+			
+			% --- v applicato in P e in P' ---
+			\draw[->, thick] (Pk) -- (Ff)  node[below right=-3pt] {$\vb$};
+			\draw[->, thick] (Pp) -- (Ffp) node[right=-2pt] {$\vb$};
+			
+			% --- momento mu(O) ---
+			\draw[->>, thick] (O) -- (MuB) node[left=1pt, yshift=-10pt] {$\bm{\upmu}(O)$};
+			
+			\begin{scope}[gray!55]
+				\rightangle{MuB}{O}{Of}
+				\rightangle{MuB}{O}{Pk}
+			\end{scope}
+			
+			% --- punti ---
+			\fill (O)  circle (1.5pt) node[left=2pt] {$O$};
+			\fill (Pk) circle (1.5pt) node[below=2pt] {$P$};
+			\fill (Pp) circle (1.5pt) node[below right=-2pt] {$P'$};
+		\end{tikzpicture}
+		\caption{Invarianza del momento polare per traslazione del punto
+			di applicazione lungo la linea d'azione.}
+		\label{f:invarianza_retta_azione}
+	\end{figure}

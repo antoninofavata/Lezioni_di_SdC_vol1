@@ -1,0 +1,97 @@
+\begin{figure}[htbp]
+		\centering
+		\begin{tikzpicture}[x=2.0cm, y=2.0cm,
+			trave/.style  ={line width=2.0pt, line cap=round, line join=round, black},
+			carico/.style ={-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt},
+			bordo/.style  ={line width=0.5pt},
+			proiez/.style ={gray!55, line width=0.35pt, dash pattern=on 2pt off 1.6pt},
+			terra/.style  ={line width=0.7pt},
+			quota/.style  ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+			nodoV/.style  ={circle, fill=white, draw=black, inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+			et/.style     ={font=\footnotesize}]
+			
+			%% ── coordinate (unita = ell, origine in A) ──────────────
+			\coordinate (A) at (0,0);     \coordinate (B) at (2.5,0);
+			\coordinate (C) at (0.5,1);   \coordinate (D) at (1.5,1);
+			\coordinate (E) at (0.5,2);   \coordinate (G) at (1,1);
+			
+			%% ── glifo in D: geometria (t = versore di EB, m = normale
+			%%    rivolta verso C) ────────────────────────────────────
+			\pgfmathsetmacro{\rw}{0.0387}   % raggio ruote = raggio dei pallini
+			%   delle cerniere (2.2pt con x=2.0cm)
+			\pgfmathsetmacro{\spess}{0.016} % semispessore della trave
+			\pgfmathsetmacro{\bw}{1.25*\rw} % semipasso ruote: luce fra i due
+			%   circoli pari a mezzo raggio
+			\pgfmathsetmacro{\ap}{0.15}     % semilunghezza del piatto
+			\pgfmathsetmacro{\tx}{ 0.70711} \pgfmathsetmacro{\ty}{-0.70711}
+			\pgfmathsetmacro{\mx}{-0.70711} \pgfmathsetmacro{\my}{-0.70711}
+			\pgfmathsetmacro{\offw}{\spess+\rw}
+			\pgfmathsetmacro{\offp}{\spess+2*\rw}
+			\pgfmathsetmacro{\Dgx}{1.5+\offp*\mx}  \pgfmathsetmacro{\Dgy}{1+\offp*\my}
+			\pgfmathsetmacro{\sQ}{(1-\Dgy)/\ty}   % ascissa di Q sull'asse del piatto
+			\pgfmathsetmacro{\Qx}{\Dgx+\tx*\sQ}
+			\pgfmathsetmacro{\Pcx}{\Dgx+0.5*\sQ*\tx} % centro del piatto: a meta'
+			\pgfmathsetmacro{\Pcy}{\Dgy+0.5*\sQ*\ty} %   fra le ruote e l'asta CD
+			\pgfmathsetmacro{\Wx}{1.5+\offw*\mx}   \pgfmathsetmacro{\Wy}{1+\offw*\my}
+			\pgfmathsetmacro{\Pax}{\Pcx+\ap*\tx}   \pgfmathsetmacro{\Pay}{\Pcy+\ap*\ty}
+			\pgfmathsetmacro{\Pbx}{\Pcx-\ap*\tx}   \pgfmathsetmacro{\Pby}{\Pcy-\ap*\ty}
+			\pgfmathsetmacro{\Wax}{\Wx+\bw*\tx}    \pgfmathsetmacro{\Way}{\Wy+\bw*\ty}
+			\pgfmathsetmacro{\Wbx}{\Wx-\bw*\tx}    \pgfmathsetmacro{\Wby}{\Wy-\bw*\ty}
+			
+			%% ── carico p in proiezione orizzontale su ED ────────────
+			\pgfmathsetmacro{\yp}{2.12}     % retta delle punte, poco sopra E
+			\pgfmathsetmacro{\hp}{0.30}     % ordinata del carico
+			\draw[proiez] (E) -- (0.5,\yp);
+			\draw[proiez] (D) -- (1.5,\yp);
+			\draw[bordo] (0.5,\yp) -- (1.5,\yp);
+			\draw[bordo] (0.5,\yp+\hp) -- (1.5,\yp+\hp);
+			\foreach \x in {0.5,0.625,...,1.5}
+			\draw[carico] (\x,\yp+\hp) -- (\x,\yp);
+			\node[et, right] at (1.54,\yp+0.5*\hp) {$p$};
+			
+			%% ── le quattro aste ─────────────────────────────────────
+			\draw[trave] (A)--(C);
+			\draw[trave] (C)--(E);
+			\draw[trave] (E)--(B);
+			\draw[trave] (C)--(\Qx,1);
+			
+			%% ── glifo in D ──────────────────────────────────────────
+			\draw[line width=1.2pt] (\Pax,\Pay) -- (\Pbx,\Pby);
+			\draw[line width=0.7pt, fill=white] (\Wax,\Way) circle (2.2pt);
+			\draw[line width=0.7pt, fill=white] (\Wbx,\Wby) circle (2.2pt);
+			
+			%% ── coppia oraria in G, con trattino radiale ────────────
+			\pgfmathsetmacro{\rc}{0.18}
+			\draw[line width=0.7pt] (G) -- (1,{1-\rc});
+			\draw[-{Stealth[length=2.0mm,width=1.2mm]}, line width=0.7pt]
+			(1,{1-\rc}) arc[start angle=270, end angle=90, radius=\rc];
+			\node[et] at (0.80,0.70) {$p\ell^2$};
+			
+			%% ── cerniere esterne in A e in B ────────────────────────
+			\foreach \P in {A,B}{%
+				\draw[terra] (\P)--($(\P)+(-0.083,-0.143)$)--($(\P)+(0.083,-0.143)$)--cycle;
+				\draw[terra] ($(\P)+(-0.128,-0.143)$)--($(\P)+(0.128,-0.143)$);
+				\foreach \s in {-0.113,-0.056,0,0.056,0.113}
+				\draw[terra, line width=0.4pt] ($(\P)+(\s,-0.143)$)--++(-0.038,-0.053);}
+			
+			\foreach \P in {A,B,C,E} \node[nodoV] at (\P) {};
+			
+			%% ── etichette ───────────────────────────────────────────
+			\node[et, left=5pt]  at (A) {$A$};
+			\node[et, right=5pt] at (B) {$B$};
+			\node[et, left=4pt]  at (C) {$C$};
+			\node[et, left=4pt]  at (E) {$E$};
+			\node[et] at (1.61,1.07) {$D$};
+			\node[et] at (1.07,1.09) {$G$};
+			
+			%% ── quote ───────────────────────────────────────────────
+			\draw[quota] (0,-0.42)--(0.5,-0.42)  node[midway,above,black,et]{$\ell/2$};
+			\draw[quota] (0.5,-0.42)--(1.5,-0.42) node[midway,above,black,et]{$\ell$};
+			\draw[quota] (1.5,-0.42)--(2.5,-0.42) node[midway,above,black,et]{$\ell$};
+			\draw[quota] (-0.34,0)--(-0.34,1) node[midway,left,black,et]{$\ell$};
+			\draw[quota] (-0.34,1)--(-0.34,2) node[midway,left,black,et]{$\ell$};
+		\end{tikzpicture}
+	\caption{Anello a tre cerniere vincolato a trave appoggiata: schema
+		strutturale e di carico.}
+		\label{fig:anelloTA_schema}
+	\end{figure}

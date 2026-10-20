@@ -1,0 +1,185 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.95,
+					>=latex,
+					trave/.style={line width=1.2pt},
+					carico/.style={black, line width=0.4pt},
+					forza/.style={black, line width=1pt},
+					diagT/.style={black, line width=0.8pt},
+					diagM/.style={black, line width=0.8pt},
+					hatch/.style={gray!50, line width=0.3pt},
+					quota/.style={black, line width=0.4pt},
+					fibre/.style={gray!70, line width=0.3pt},
+					]
+					
+					% ── Parametri dei vincoli (convenzione C06/C07) ──
+					\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.06}
+					\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+					\def\hh{0.10}
+					
+					% ── Parametri dell'incastro (muro verticale + campitura terra) ──
+					\def\twall{0.18}    % larghezza della campitura del muro a sinistra di A
+					\def\hwall{0.36}    % semi-altezza del muro
+					
+					% ── Geometria del problema ──
+					\def\Lell{4}                            % lunghezza trave ℓ
+					\pgfmathsetmacro{\xA}{0}
+					\pgfmathsetmacro{\xMid}{0.5*\Lell}      % mezzeria (per posizionare l'etichetta della quota)
+					\def\yqi{-0.80}                         % y delle quote sotto la trave
+					\def\ylab{-3.30}                        % y delle etichette di pannello
+					
+					% ── Parametri del carico distribuito ──
+					\def\pgap{0.05}                         % gap fra trave e base del riquadro
+					\def\php{0.40}                          % altezza del riquadro
+					\pgfmathsetmacro{\pBase}{\pgap}         % base del riquadro: y = 0.05
+					\pgfmathsetmacro{\pTop}{\pgap+\php}     % cima del riquadro: y = 0.45
+					
+					% =========================================================
+					% PANNELLO (a) — Schema statico
+					% =========================================================
+					\begin{scope}[xshift=0cm]
+						
+						% ── Trave ──
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						% ── Fibra inferiore (tratteggio sotto la trave) ──
+						\draw[fibre, dashed] (0, -0.1) -- (\Lell, -0.1);
+						
+						% ── Incastro in A: muro verticale + campitura "terra" a 45° ──
+						% Linea verticale del muro
+						\draw[thick] (0,-\hwall) -- (0,\hwall);
+						% Tratti obliqui (campitura), equispaziati lungo y
+						\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30} {
+							\draw[thin] (0,\y) -- ++(-\twall,-\twall);
+						}
+						
+						% ── Etichette A, B ──
+						\node[below right=-2pt, font=\small] at (0,0)      {$A$};
+						\node[below right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						% ── Carico distribuito p̄ sopra la trave ──
+						\draw[carico] (0,\pBase) -- (\Lell,\pBase);
+						\draw[carico] (0,\pTop)  -- (\Lell,\pTop);
+						\foreach \x in {0, 0.50, 1.00, ..., 4.00} {
+							\draw[->, carico, >={Latex[length=2pt, width=1.5pt]}]
+							(\x, \pTop) -- (\x, \pBase);
+						}
+						\node[above, font=\small] at (\Lell/2, \pTop) {$\bar{p}$};
+						
+						% ── Quota ℓ sotto la trave ──
+						\draw[<->, quota] (0,\yqi) -- (\Lell,\yqi);
+						\draw[quota] (0,\yqi+0.07)     -- (0,\yqi-0.07);
+						\draw[quota] (\Lell,\yqi+0.07) -- (\Lell,\yqi-0.07);
+						\node[above, font=\small] at (\xMid, \yqi-0.04) {$\ell$};
+						
+						% Etichetta pannello (a)
+						\node[font=\small] at (0.5*\Lell, 0.4*\ylab) {(a)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (b) — Diagramma di T(z)
+					% =========================================================
+					\begin{scope}[xshift=5.5cm]
+						
+						% ── Trave (clone) ──
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						% ── Incastro in A (clone) ──
+						\draw[thick] (0,-\hwall) -- (0,\hwall);
+						\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30} {
+							\draw[thin] (0,\y) -- ++(-\twall,-\twall);
+						}
+						
+						% ── Etichette A, B ──
+						\node[below right=-2pt, font=\small] at (0,0)      {$A$};
+						\node[below right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						% ── Diagramma T(z) ──
+						\def\sT{0.25}
+						\pgfmathsetmacro{\TA}{\Lell*\sT}        % T(A) = +p̄ℓ → +0.80
+						
+						% Hatching verticale dall'asse al diagramma
+						\foreach \x in {0.20, 0.40, ..., 3.80} {
+							\pgfmathsetmacro{\h}{\sT*(\Lell-\x)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Bordo del diagramma — triangolo: verticale in A, retta fino a B
+						\draw[diagT]
+						(0, 0) -- (0, \TA)              % verticale di chiusura in A
+						-- (\Lell, 0);                  % lineare da +T_A in A a 0 in B
+						
+						% Segno cerchiato nel triangolo positivo
+						\node[font=\small] at ({\Lell/3}, {\TA/3}) {$\boldsymbol{\oplus}$};
+						
+						% Valore notevole — etichetta sopra il vertice in A
+						\node[left, font=\small] at (0, \TA) {$\bar{p}\ell$};
+						
+						% Etichetta pannello (b)
+						\node[font=\small] at (0.5*\Lell, 0.4*\ylab) {(b)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (c) — Diagramma di M(z)
+					% =========================================================
+					\begin{scope}[xshift=11.0cm]
+						
+						% ── Trave (clone) ──
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						% ── Incastro in A (clone) ──
+						\draw[thick] (0,-\hwall) -- (0,\hwall);
+						\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30} {
+							\draw[thin] (0,\y) -- ++(-\twall,-\twall);
+						}
+						
+						% ── Etichette A, B ──
+						\node[above right=-2pt, font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						% ── Diagramma M(z) ──
+						\def\sM{0.15}
+						
+						% Hatching verticale: dall'asse al diagramma (sopra l'asse)
+						\foreach \x in {0.20, 0.40, ..., 3.80} {
+							\pgfmathsetmacro{\h}{\sM*(\Lell-\x)*(\Lell-\x)/2}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Bordo del diagramma — parabola campionata a passo 0.20
+						\pgfmathsetmacro{\MA}{\sM*\Lell*\Lell/2}    % |M(A)| in figura = sM·ℓ²/2 = 0.80
+						\draw[diagM]
+						(0, 0) -- (0, \MA)
+						\foreach \x in {0.20, 0.40, ..., 3.80} {
+							-- ({\x}, {\sM*(\Lell-\x)*(\Lell-\x)/2})
+						}
+						-- (\Lell, 0);
+						
+						% Valore notevole — etichetta sopra il vertice in A
+						\node[left, font=\small] at (0, \MA) {$\tfrac{\bar{p}\ell^2}{2}$};
+						
+						% Etichetta pannello (c)
+						\node[font=\small] at (0.5*\Lell, 0.4*\ylab) {(c)};
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Mensola con carico uniformemente distribuito
+				$p(z) = \bar{p}$ (verso il basso), incastrata in $A$ e
+				libera in $B$:
+				(a)~schema strutturale;
+				(b)~diagramma del taglio $T(z)$, lineare decrescente, con
+				valore $\bar{p}\ell$ all'incastro e annullamento
+				all'estremità libera;
+				(c)~diagramma del momento flettente $M(z)$, parabolico
+				con concavità verso l'alto, sempre negativo, con valore
+				minimo $-\bar{p}\ell^2/2$ all'incastro e annullamento
+				all'estremità libera, dove il diagramma arriva con
+				tangente orizzontale.}
+			\label{fig:stat_trasv_iso_03}
+		\end{figure}

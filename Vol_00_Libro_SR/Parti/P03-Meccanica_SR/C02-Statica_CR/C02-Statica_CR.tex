@@ -200,133 +200,9 @@ applicati.
 %rispetto a $O$.
 
 %
-%\begin{figure}[!htbp]
-%	\centering
-%	\def\ax{0.5}\def\ay{0.30}
-%	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
-%	\providecommand{\rightangle}[3]{%
-%		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
-%		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
-%		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
-%	\begin{minipage}[b]{0.46\textwidth}\centering
-%		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-%			% ===== PANNELLO (a) =====
-%			\draw[gray!60] (\xyz{-1.7}{-1.2}{0}) -- (\xyz{-1.7}{3.50}{0})-- (\xyz{3.0}{3.50}{0}) -- (\xyz{3.0}{-1.2}{0}) -- cycle;
-%			\node[gray!75] at (\xyz{-1.2}{-1.0}{0}) {$\pi$};
-%			\coordinate (O)  at (\xyz{0}{0}{0});
-%			\coordinate (Pk) at (\xyz{0.5}{2.0}{0});
-%			\coordinate (Ff) at (\xyz{1.7}{2.3}{0});
-%			\coordinate (Of) at (\xyz{1.2}{0.3}{0});
-%			\coordinate (MuB) at (\xyz{0}{0}{1.25});
-%			\coordinate (MuC) at (\xyz{0}{0}{1.47});
-%			\draw[gray!55, thin] (O) -- (Of) -- (Ff) -- (Pk) -- cycle;
-%			
-%			%				\draw[->, thin] (O) -- (Pk);
-%			%				\node[font=\small, below] at ($(O)!0.5!(Pk)$) {$\overrightarrow{OP_k}$};
-%			
-%			\draw[->,thick] (O) -- (Pk) node[font=\small, midway, sloped, below] {$\overrightarrow{OP_k}$};
-%			
-%			\draw[->, thick] (Pk) -- (Ff) node[right=-2pt] {$\fb_k$};
-%			\draw[->>, thick] (O) -- (MuB) node[left=1pt, yshift=-10pt] {$\bm{\upmu}_k(O)$};
-%			%\draw[->, thin] ([shift={(0.18,0)}]MuC)arc[x radius=0.18, y radius=0.07, start angle=0, end angle=305];
-%			\begin{scope}[gray!55]
-%				\rightangle{MuB}{O}{Of}   % angolo retto fra mu e la retta // f_k
-%				\rightangle{MuB}{O}{Pk}
-%			\end{scope}
-%			\fill (O)  circle (1.5pt) node[left=2pt] {$O$};
-%			\fill (Pk) circle (1.5pt) node[below right=-1pt] {$P_k$};
-%		\end{tikzpicture}\\[0.8ex]
-%		(a)
-%	\end{minipage}\hfill
-%	\begin{minipage}[b]{0.50\textwidth}\centering
-%		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-%			% proiezione: x in avanti (basso-sinistra), y destra, z su
-%			\def\ax{-0.65}\def\ay{-0.48}
-%			
-%			\def\az{0.7}                            % <1 = comprime in altezza
-%			\renewcommand{\xyz}[3]{{#2 + (#1)*\ax},{(#3)*\az + (#1)*\ay}}
-%			% componenti di P_k
-%			\def\xk{1.4}\def\yk{2.6}\def\zk{2.0}
-%			\coordinate (O)   at (\xyz{0}{0}{0});
-%			\coordinate (Px)  at (\xyz{\xk}{0}{0});
-%			\coordinate (Py)  at (\xyz{0}{\yk}{0});
-%			\coordinate (Pxy) at (\xyz{\xk}{\yk}{0});
-%			\coordinate (Pk)  at (\xyz{\xk}{\yk}{\zk});
-%			
-%			% --- scatola di decomposizione (base + verticale) ---
-%			\draw[gray!55, thin] (O) -- (Px) -- (Pxy) -- (Py) -- cycle;
-%			\draw[gray!55, thin] (Pxy) -- (Pk);
-%			
-%			% --- assi x,y,z ---
-%			\draw[->, thin] (O) -- (\xyz{2.6}{0}{0}) node[below left=-2pt] {$x$};
-%			\draw[->, thin] (O) -- (\xyz{0}{3.4}{0}) node[right]          {$y$};
-%			\draw[->, thin] (O) -- (\xyz{0}{0}{2.9}) node[above]          {$z$};
-%			
-%			% --- vettore posizione OP_k ---
-%			%				\draw[->, thin] (O) -- (Pk);
-%			%				\node[font=\small, above left=-8pt, yshift=6pt] at ($(O)!0.42!(Pk)$) {$\overrightarrow{OP_k}$};
-%			
-%			% --- terna delle componenti di forza in P_k ---
-%			\coordinate (Xt) at (\xyz{\xk+0.85}{\yk}{\zk});
-%			\coordinate (Yt) at (\xyz{\xk}{\yk+0.85}{\zk});
-%			\coordinate (Zt) at (\xyz{\xk}{\yk}{\zk+0.85});
-%			\draw[->, thick] (Pk) -- (Xt) node[above=4pt] {$X_k$};
-%			\draw[->, thick] (Pk) -- (Yt) node[right=-1pt] {$Y_k$};
-%			\draw[->, thick] (Pk) -- (Zt) node[above=-1pt] {$Z_k$};
-%			
-%			% --- etichette componenti (spigoli O->Py->Pxy->Pk) ---
-%			\node[font=\small, below=20pt, xshift=-20pt]      at ($(O)!0.5!(Py)$)   {$y_k$};
-%			\node[font=\small,  right=1pt, yshift=-6pt] at ($(Py)!0.5!(Pxy)$) {$x_k$};
-%			\node[font=\small, right, yshift=6pt]      at ($(Pxy)!0.5!(Pk)$) {$z_k$};
-%			
-%			% --- punti ---
-%			\fill (O)  circle (1.5pt) node[above left=-1pt]  {$O$};
-%			\fill (Pk) circle (1.5pt) node[above right=-1pt] {$P_k$};
-%			
-%			% ===== MOMENTI in O (interni, assiali ->> + ricciolo) =====
-%			\coordinate (Mx) at (\xyz{1.2}{0}{0});
-%			\coordinate (My) at (\xyz{0}{1.2}{0});
-%			\coordinate (Mz) at (\xyz{0}{0}{1.4});
-%			\draw[->>, thick] (O) -- (Mx);
-%			%\draw[->, thin, rotate around={126:(Mx)}]([shift={(0.16,0)}]Mx) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
-%			\node[font=\small, above,  xshift=-4pt, yshift=6pt] at (Mx) {$\bm{\upmu}_{xk}(O)$};
-%			\draw[->>, thick] (O) -- (My);
-%			%\draw[->, thin, rotate around={-90:(My)}] ([shift={(0.16,0)}]My) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
-%			\node[font=\small, below=-1pt, xshift=-6pt] at (My) {$\bm{\upmu}_{yk}(O)$};
-%			\draw[->>, thick] (O) -- (Mz);
-%			%\draw[->, thin, rotate around={0:(Mz)}]	([shift={(0.16,0)}]Mz) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
-%			\node[font=\small, left=1pt] at (Mz) {$\bm{\upmu}_{zk}(O)$};
-%			
-%			% ===== FORZE lungo gli assi (esterne, -> ; traslabili con \sx,\sy,\sz) =====
-%			\def\Lm{0.9}
-%			\def\sx{1.2}
-%			\coordinate (Xa) at (\xyz{\sx}{0}{0});
-%			\coordinate (Xb) at (\xyz{\sx+\Lm}{0}{0});
-%			\draw[->, thick] (Xa) -- (Xb);
-%			\node[font=\small, below=3pt] at (\xyz{\sx+\Lm/2}{0}{0}) {$X_k$};
-%			\def\sy{2.1}
-%			\coordinate (Ya) at (\xyz{0}{\sy}{0});
-%			\coordinate (Yb) at (\xyz{0}{\sy+\Lm}{0});
-%			\draw[->, thick] (Ya) -- (Yb);
-%			\node[font=\small, above] at (Yb) {$Y_k$};
-%			\def\sz{1.5}
-%			\coordinate (Za) at (\xyz{0}{0}{\sz});
-%			\coordinate (Zb) at (\xyz{0}{0}{\sz+\Lm});
-%			\draw[->, thick] (Za) -- (Zb);
-%			\node[font=\small, left=2pt] at (Zb) {$Z_k$};
-%			
-%		\end{tikzpicture}
-%		\\[0.8ex]
-%		(b)
-%	\end{minipage}
-%	\caption{(a)~Momento $\bm{\upmu}_k(O)$ rispetto al polo
-%		$O$ della forza $(P_k,\fb_k)$, definito come
-%		$\bm{\upmu}^O_k = \protect\overrightarrow{OP_k}\times\fb_k$.
-%		(b)~Componenti cartesiane $x_k,y_k,z_k$ del vettore
-%		posizione $\protect\overrightarrow{OP_k}$ e componenti
-%		$X_k,Y_k,Z_k$ della forza $\fb_k$.}
-%	\label{fig:momento_forza}
-%\end{figure}
+%
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-momento-forza}
+
 
 Il risultante e il momento risultante $(\fb,\,\bm{\upmu}(O))$ costituiscono gli
 \textit{elementi caratteristici} del sistema $\Sc$ rispetto al
@@ -373,103 +249,9 @@ ai fini dell'equilibrio del corpo $\Cc$, indistinguibili.
 
 
 
-\begin{figure}[htbp]
-	\centering
-	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
-	\newcommand{\rightangle}[3]{%
-		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
-		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
-		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
-	\tikzset{midarrow/.style={postaction={decorate},
-			decoration={markings, mark=at position #1 with {\arrow{Stealth}}}},
-		midarrow/.default=0.55}
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2]
-		\def\ax{0.5}\def\ay{0.30}
-		% piano pi
-		%\draw[gray!60] (\xyz{-1.2}{-2.4}{0}) -- (\xyz{-1.2}{4.8}{0}) -- (\xyz{3.8}{4.8}{0}) -- (\xyz{3.8}{-2.4}{0}) -- cycle;
-		\draw[gray!60] (\xyz{-1.60}{-2.4}{0}) -- (\xyz{-1.60}{3.8}{0})	-- (\xyz{4.8}{3.8}{0}) -- (\xyz{4.8}{-2.4}{0}) -- cycle;
-		%\node[gray!75] at (\xyz{-1.85}{-2.2}{0}) {$\pi$};   % sposta anche l'etichetta pi
-		\node[gray!75] at (\xyz{-1.2}{-2.0}{0}) {$\pi$};
-		
-		\def\Lf{1.3}
-		\coordinate (O)  at (\xyz{2.8}{0.9}{0});
-		\coordinate (P1) at (\xyz{2.0}{0.3}{0});
-		\coordinate (P2) at (\xyz{0.6}{2.0}{0});
-		\coordinate (F1) at (\xyz{2.0}{0.3-\Lf}{0});
-		\coordinate (F2) at (\xyz{0.6}{2.0+\Lf}{0});
-		
-		% rette d'azione (grigie, prolungate)
-		\draw[gray!55, thin] (\xyz{2.0}{-2.2}{0}) -- (\xyz{2.0}{1.0}{0});
-		\draw[gray!55, thin] (\xyz{0.6}{-2.2}{0}) -- (\xyz{0.6}{.5}{0});
-		% prolungamento grigio di P2P1 oltre P1
-		\coordinate (PPe) at ($(P1)!-0.6!(P2)$);
-		\draw[gray!55, thin] (P1) -- (PPe);
-		
-		% vettori posizione
-		%		\draw[thin, midarrow] (O) -- (P1);
-		%		\node[font=\small, above=1pt] at ($(O)!0.5!(P1)$) {$\overrightarrow{OP_1}$};
-		
-		\draw[thin, midarrow] (O) -- (P1) node[font=\small, midway, sloped, above] {$\overrightarrow{OP_1}$};
-		
-		\draw[thin, midarrow] (O) -- (P2);
-		\node[font=\small, above right=-2pt] at ($(O)!0.5!(P2)-(0,0.2)$) {$\overrightarrow{OP_2}$};
-		
-		
-		% P2P1
-		%		\draw[thin, midarrow] (P2) -- (P1);
-		%		\node[font=\small, below=1pt, xshift=-16pt, yshift=6pt] at ($(P2)!0.42!(P1)$) {$\overrightarrow{P_2P_1}$};
-		
-		\draw[thin, midarrow] (P2) -- (P1) node[font=\small, midway, sloped, below] {$\overrightarrow{P_2P_1}$};
-		
-		
-		% forze
-		\draw[->, line width=1.2pt] (P1) -- (F1) node[below left=-4pt] {$\fb_1$};
-		\draw[->, line width=1.2pt] (P2) -- (F2) node[below, xshift=-16pt] {$-\fb_1$};
-		
-		% angolo alpha fra il prolungamento grigio di P2P1 e f_1, in P1
-		\pic[draw, thick, angle radius=6mm, angle eccentricity=1.5,	"\small$\alpha$"] {angle = PPe--P1--F1};
-		
-		% braccio b sui prolungamenti grigi (perpendicolare fra le due rette)
-		\coordinate (B1) at (\xyz{2.0}{-1.9}{0});   % su retta d'azione di f_1
-		\coordinate (B2) at (\xyz{0.6}{-1.9}{0});   % su retta d'azione di -f_1
-		\draw[<->, thin] (B1) -- (B2);
-		\node[font=\small, above=1pt, xshift=-2pt, yshift=-5pt] at ($(B1)!0.5!(B2)$) {$b$};
-		
-		\begin{scope}[gray!55]
-			\rightangle{B2}{B1}{\xyz{2.0}{-1.4}{0}}
-			\rightangle{B1}{B2}{\xyz{0.6}{-1.4}{0}}
-		\end{scope}
-		
-		
-		
-		% ===== momento mu LIBERO, a destra del piano, con DUE angoli retti =====
-		\def\my{0.60}                      % <- alza/abbassa cambiando solo questo
-		\coordinate (Mb) at (3.6,\my);
-		\coordinate (Mt) at ($(Mb)+(0,1.4)$);
-		\coordinate (Mc) at ($(Mb)+(0,1.62)$);
-		\coordinate (pax) at ($(Mb)+(0.55,0.33)$);  % direzione tipo a_x
-		\coordinate (pay) at ($(Mb)+(0.95,0)$);     % direzione tipo a_y
-		\draw[gray!55, thin] (Mb) -- (pax) -- ($(pax)+(pay)-(Mb)$) -- (pay) -- cycle;
-		\draw[->>, thick] (Mb) -- (Mt) node[left=1pt] {$\bm{\upmu}$};
-		\draw[->, thin] ([shift={(0.18,0)}]Mc)	arc[x radius=0.18, y radius=0.07, start angle=0, end angle=305];
-		\begin{scope}[gray!55]
-			\rightangle{Mt}{Mb}{pax}
-			\rightangle{Mt}{Mb}{pay}
-		\end{scope}
-		
-		% punti
-		\fill (O)  circle (1.4pt) node[above=2pt] {$O$};
-		\fill (P1) circle (1.4pt) node[above left=-2pt] {$P_1$};
-		\fill (P2) circle (1.4pt) node[below] {$P_2$};
-	\end{tikzpicture}
-	\caption{Momento della coppia generata dalle forze $\fb_1$ e
-		$\fb_2=-\fb_1$ applicate in $P_1$ e $P_2$. Il momento
-		$\bm{\upmu}=\protect\overrightarrow{P_2P_1}\times\fb_1$ è perpendicolare
-		al piano delle forze, con modulo $|\fb_1|\,b$ e braccio
-		$b=|\protect\overrightarrow{P_2P_1}|\sin\alpha$, ed è indipendente dal
-		polo $O$.}
-	\label{fig:coppia}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-coppia}
+
 
 
 \paragraph{Sistemi di forze e coppie.}
@@ -831,115 +613,9 @@ polo $O$ è $|\bm\upmu_\perp(O)|/|\rb|$; nel caso di forza unica
 nullo, cioè la retta d'azione della risultante
 (\FIGref{f:asse_centrale_forze}).
 
-\begin{figure}[htbp]
-	\centering
-	\usetikzlibrary{arrows.meta,calc,decorations.markings,angles,quotes}
-	% --- proiezione obliqua: (x=profondita', y=oriz, z=vert) -> schermo ---
-	\def\ax{0.5}\def\ay{0.30}
-	\newcommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
-	\tikzset{midarrow/.style={postaction={decorate},decoration={markings, mark=at position 0.56 with {\arrow{Stealth}}}}}
-	\begin{tikzpicture}[scale=1.4, >=Stealth, line width=0.8pt]
-		
-		%==== coordinate 3D (x=profondita', y=oriz, z=vert) ====
-		\coordinate (Pi1) at (\xyz{-1.3}{-1.0}{0});   % era {-1.3}{-0.7}
-		\coordinate (Pi2) at (\xyz{-1.3}{ 4.5}{0});   % era {-1.3}{ 3.5}
-		\coordinate (Pi3) at (\xyz{ 2.7}{ 4.5}{0});   % era { 2.7}{ 3.5}
-		\coordinate (Pi4) at (\xyz{ 2.7}{-1.0}{0});   % era { 2.7}{ 3.5}→ refuso: era { 2.7}{ 3.5}
-		
-		% O e suo asse
-		\coordinate (O)     at (\xyz{1.6}{0.5}{0});
-		\coordinate (Otop)  at (\xyz{1.6}{0.5}{2.7});
-		\coordinate (Obot)  at (\xyz{1.6}{0.5}{-0.8});
-		\coordinate (ThOa)  at (\xyz{1.6}{0.5}{1.10});
-		\coordinate (ThOb)  at (\xyz{1.6}{0.5}{1.90});
-		\coordinate (curlO) at (\xyz{1.6}{0.5}{2.12});
-		\coordinate (uparO) at (\xyz{1.6}{0.5}{0.90});
-		
-		% u_perp(O): ora verso il BASSO-SINISTRA
-		\coordinate (uperpO) at (\xyz{0.76}{0.26}{0});  % era {0.2}{0.1}
-		
-		% P_pi davanti-destra (OP_pi va in basso-destra): base 0.2,2.3 (era 1.886,2.5)
-		\coordinate (Ppi)   at (\xyz{0.2}{2.3}{0});
-		\coordinate (Ctop)  at (\xyz{0.2}{2.3}{2.7});
-		\coordinate (Cbot)  at (\xyz{0.2}{2.3}{-0.8});
-		\coordinate (ThCa)  at (\xyz{0.2}{2.3}{1.10});
-		\coordinate (ThCb)  at (\xyz{0.2}{2.3}{1.90});
-		\coordinate (curlC) at (\xyz{0.2}{2.3}{2.12});
-		\coordinate (uparC) at (\xyz{0.2}{2.3}{0.90});
-		
-		% prodotto vettoriale = -u_perp(O): ora verso l'ALTO-DESTRA
-		\coordinate (cross)  at (\xyz{1.04}{2.54}{0});  % era {1.6}{2.7}
-		\coordinate (Bpar) at (\xyz{-0.64}{2.06}{0});
-		
-		
-		%==== piano pi ====
-		\draw[gray!60] (Pi1) -- (Pi2) -- (Pi3) -- (Pi4) -- cycle;
-		\node[gray!75] at ($(Pi1)+(0.58,0.14)$) {$\pi$};
-		
-		%==== assi verticali ====
-		\draw[gray!55, thin] (Obot) -- (Otop);
-		\draw[gray!55, thin] (Cbot) -- (Ctop);
-		
-		%==== parallelogramma di lati u_perp(O) e OP_pi (evidenziato) ====
-		\filldraw[gray!10, draw=gray!55, thin]	(O) -- (uperpO) -- (Bpar) -- (Ppi) -- cycle;
-		
-		%==== triangolo O--C_perp--(f x OC_perp) ====
-		\fill[gray!10] (O) -- (Ppi) -- (cross) -- cycle;
-		
-		% u_perp(O) traslato in P_pi: opposto e collineare al prodotto vettoriale
-		\draw[->>,  thin] (Ppi) -- (Bpar);
-		%\node[font=\small, below=4pt, right] at (Bpar) {$\ub_{\perp}(O)$};
-		
-		%==== segmento O--(punta di vartheta x OP_pi) e ampiezza di rotazione vartheta ====
-		\draw[draw=gray!75, thin] (O) -- (cross);
-		%\pic[draw=black, ->, thin, angle radius=10mm, angle eccentricity=1.25,	"$\vartheta$"{font=\small, inner sep=1pt}] {angle = Ppi--O--cross};
-		
-		%==== vettori rotazione assiali + riccioli (sopra la doppia freccia) ====
-		\draw[->, thick] (ThOa) -- (ThOb) node[right=1pt] {$\rb$};
-		\draw[->, thick] (ThCa) -- (ThCb) node[right=1pt] {$\rb$};
-		
-		%==== costruzione nel piano ====
-		%\draw[->, thin] (O) -- (Ppi);
-		%\draw[midarrow, thin] (O) -- (Ppi);   % era  \draw[->, thin] (O) -- (Ppi);
-		%\node[font=\small, below=1pt] at ($(O)!0.30!(Ppi)$) {$\overrightarrow{OC_\perp}$};   % era 0.55, below=2pt
-		
-		\draw[midarrow,thin] (O) -- (Ppi) node[midway, sloped, below,xshift=-12pt] {$\overrightarrow{OC_\perp}$};
-		
-		
-		\draw[->>, thick] (O) -- (uperpO);
-		\node[above=1pt] at (uperpO) {$\bm{\upmu}_{\perp}(O)$};
-		\draw[->>, thick] (O) -- (uparO);
-		\node[right=1pt] at ($(O)!0.6!(uparO)$) {$\bm{\upmu}_{\parallel}$};
-		
-		%==== a P_pi ====
-		\draw[->>, thick] (Ppi) -- (uparC);
-		\node[right=1pt] at ($(Ppi)!0.6!(uparC)$) {$\bm{\upmu}_{\parallel}$};
-		\draw[->>, thick] (Ppi) -- (cross);
-		\node[below right=-6pt] at (cross) {$\rb\times\overrightarrow{OC_\perp}$};
-		
-		
-		
-		%==== punti ====
-		\fill (O)   circle (1.5pt) node[above right=-1pt] {$O$};
-		\fill (Ppi) circle (1.5pt) node[below right=-4pt] {$C_\perp$};
-		
-		%==== annotazione asse centrale ====
-		\node[align=left, font=\footnotesize] (lab) at ($(Ctop)+(1.8,-0.3)$)	{asse centrale della\\ sollecitazione};
-		\draw[->, thin] ($(lab.north west)+(0,-0.18)$) -- ($(Ctop)!0.18!(ThCb)$);
-		
-	\end{tikzpicture}%
-	\caption{Costruzione geometrica dell'asse centrale del
-		sistema di forze. Il momento rispetto a $O$ si decompone
-		nella componente $\bm{\upmu}^O_{\parallel}$, parallela a
-		$\rb$ e invariante per tutti i poli, e nella componente
-		$\bm{\upmu}^O_{\perp}$, giacente nel piano $\pi$
-		ortogonale a $\rb$. Il punto $C_\perp$, intersezione
-		dell'asse centrale con $\pi$, è determinato dalla
-		condizione $\rb \times \protect\overrightarrow{OC_\perp}
-		= -\bm{\upmu}^O_{\perp}$; l'asse centrale è la retta
-		per $C_\perp$ parallela a $\rb$.}
-	\label{f:asse_centrale_forze}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-senza-label-3}
+
 
 
 L'asse centrale del sistema di forze gode delle seguenti
@@ -1098,72 +774,9 @@ sollecitazione  (\FIGref{fig:asse_sollecitazione}\,a) è
 	(\ab_z \times \fb).
 \end{equation}
 
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
-		
-		\coordinate (O) at (0,0);
-		\coordinate (f) at ({1.5*cos(30)},{1.5*sin(30)});
-		% C: mu_z=1.5, |f|=1.5 -> |OC|=1.0
-		% C = (mu_z/|f|^2)*(fy,-fx) = (0.5, -0.866)
-		\coordinate (C) at (0.500, -0.866);
-		
-		% Retta perpendicolare a f tratteggiata con freccia verso infinito
-		\draw[dashed, gray!60]
-		({-0.3*cos(-60)},{-0.3*sin(-60)}) --
-		({2.2*cos(-60)}, {2.2*sin(-60)});
-		\draw[->, dashed, gray!60]
-		({2.2*cos(-60)},{2.2*sin(-60)}) --
-		({2.7*cos(-60)},{2.7*sin(-60)})
-		node[right=1pt] {\small$\fb\to \mathbf{0}$};
-		
-		% --- Sistema in O: forza + coppia ---
-		% Vettore f in O
-		\draw[->, thick] (O) -- (f) node[above right=1pt] {$\fb$};
-		% Coppia mu_z in O (freccia semicircolare antioraria)
-		\draw[<-, thick] (-0.55, 0) arc[start angle=180, end angle=60, radius=0.55];
-		\node[left=2pt] at (-0.55, 0.3) {$\mu_z(O)$};
-		
-		% Angolo retto
-		\draw[thin]
-		({0.15*cos(30)},{0.15*sin(30)}) --
-		({0.15*cos(30)+0.15*cos(-60)},{0.15*sin(30)+0.15*sin(-60)}) --
-		({0.15*cos(-60)},{0.15*sin(-60)});
-		
-		% Quota |OC| = mu_z/|f| (traslata a sinistra oltre la tratteggiata)
-		\draw[<->, thin]
-		(-0.433, -0.250) --
-		(0.067, -1.116)
-		node[midway, left=3pt] {\small$\dfrac{|\mu_z(O)|}{|\fb|}$};
-		
-		% Punto O e punto C
-		\fill (O) circle (2pt) node[below left=-4pt] {$O$};
-		\fill[white] (C) circle (3pt);
-		\draw[thick] (C) circle (3pt);
-		\node[below right=2pt] at (C) {$C$};
-		
-		% --- Sistema equivalente in C: solo forza ---
-		% Vettore f in C (traslato)
-		\draw[->, thick] (C) -- ++({1.5*cos(30)},{1.5*sin(30)})
-		node[above right=1pt] {$\fb$};
-		% Nessuna coppia (mu_z(C)=0)
-		%				\node[below left=2pt] at ({0.5+1.5*cos(30)/2},{-0.866+1.5*sin(30)/2})
-		%				{\small$\mu_z(C){=}0$};
-		
-		% Freccia tratteggiata che collega i due sistemi
-		\draw[dashed, gray!40] (O) -- (C);
-		
-	\end{tikzpicture}
-	\caption{Centro di riduzione\index{centro di riduzione|seealso{asse di sollecitazione}} nel caso piano. Il sistema equivalente
-		a una forza $\fb$ applicata in $O$ con momento risultante $\mu_z(O)$
-		si riduce alla sola forza $\fb$ applicata nel punto $C$ della
-		perpendicolare a $\fb$ passante per $O$, a distanza
-		$|\protect\overrightarrow{OC}| = |\mu_z(O)|/|\fb|$.
-		Al tendere di $|\fb|\to 0$ a parità di $\mu_z(O)$ il centro
-		si allontana all'infinito: una coppia pura non ammette centro
-		di riduzione.}
-	\label{fig:asse_sollecitazione}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-asse-sollecitazione}
+
 
 
 
@@ -1300,71 +913,9 @@ L'operazione inversa è la \textit{decomposizione}: una forza
 può essere sostituita da due o più forze applicate nello stesso
 punto la cui somma vettoriale sia uguale alla forza originale (\FIGref{fig:operazioni_elementari_1}\,c).
 
-\begin{figure}[htbp]
-	\centering
-	\subfloat[][\emph{traslazione lungo la linea d'azione}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-			% linea d'azione (direzione di fb_k)
-			\draw[dashed] (0,0) -- (4.5,2.25);
-			% punto Pk
-			\fill (1,0.5) circle (1.5pt) node[below right] {$P_k$};
-			% forza in Pk
-			\draw[->, thick] (1,0.5) -- (2.6,1.3)
-			node[above left] {$\fb_k$};
-			% punto Pk' più avanti sulla stessa retta
-			\fill (3,1.5) circle (1.5pt) node[below right] {$P_k'$};
-			% forza in Pk'
-			\draw[->, thick] (3,1.5) -- (4.6,2.3)
-			node[above left] {$\fb_k$};
-	\end{tikzpicture}}
-	\qquad
-	\subfloat[][\emph{composizione di forze concorrenti}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-			% punto di concorrenza P
-			\fill (2,1.5) circle (1.5pt) node[above right] {$P$};
-			% linee d'azione
-			\draw[dashed] (0,0) -- (2,1.5);
-			\draw[dashed] (4,0) -- (2,1.5);
-			% forze f1 e f2 dirette verso P
-			\draw[->, thick] (0.6,0.45) -- (2,1.5)
-			node[midway, left] {$\fb_1$};
-			\draw[->, thick] (3.4,0.45) -- (2,1.5)
-			node[midway, right] {$\fb_2$};
-			% risultante in P
-			\draw[->, thick] (2,1.5) -- (2,3.0)
-			node[right] {$\fb_1+\fb_2$};
-	\end{tikzpicture}}
-	\qquad
-	\subfloat[][\emph{decomposizione di una forza}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-			% punto P
-			\fill (1.5,1.0) circle (1.5pt) node[below right] {$P$};
-			% forza risultante f
-			\draw[->, thick] (1.5,1.0) -- (3.3,2.5)
-			node[above right] {$\fb$};
-			% componente f1 (orizzontale)
-			\draw[->, thick] (1.5,1.0) -- (3.3,1.0)
-			node[below] {$\fb_1$};
-			% componente f2 (verticale)
-			\draw[->, thick] (1.5,1.0) -- (1.5,2.5)
-			node[left] {$\fb_2$};
-			% parallelogramma tratteggiato
-			\draw[dashed] (3.3,1.0) -- (3.3,2.5);
-			\draw[dashed] (1.5,2.5) -- (3.3,2.5);
-	\end{tikzpicture}}
-	\caption{Operazioni elementari di equivalenza (I).
-		\textbf{\textit{(a)}}~Traslazione della forza $\fb_k$
-		lungo la propria linea d'azione da $P_k$ a $P_k'$:
-		risultante e momento risultante restano invariati.
-		\textbf{\textit{(b)}}~Composizione di due forze
-		concorrenti in $P$: il sistema è equivalente alla
-		risultante $\fb_1+\fb_2$ applicata in $P$.
-		\textbf{\textit{(c)}}~Decomposizione della forza $\fb$
-		applicata in $P$ nelle componenti $\fb_1$ e $\fb_2$
-		secondo due direzioni indipendenti: operazione inversa
-		alla composizione.}
-	\label{fig:operazioni_elementari_1}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-operazioni-elementari-1}
+
 
 \paragraph{Aggiunta o rimozione di un sistema equilibrato.}
 In un punto qualsiasi $P$ si possono aggiungere (o rimuovere)
@@ -1389,70 +940,9 @@ alla risultante e al momento risultante è identicamente nullo.
 	risultante è la forza $(Q,\,\fb)$ più la coppia
 	$\bm{\upmu}$: la forza è stata ``trasportata'' in $Q$ al
 	prezzo di una coppia correttiva (\FIGref{fig:trasporto_forza})
-	\begin{figure}[htbp]
-		\centering
-		\subfloat[][\emph{sistema di partenza}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-				\fill (0,0) circle (1.5pt) node[below] {$Q$};
-				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
-				% vettore QP
-				\draw[->, thin, gray!60] (0,0) -- (1.0,2.0)
-				node[midway, left] {$\overrightarrow{QP}$};
-				% forza in P
-				\draw[->, thick] (1.0,2.0) -- (2.8,2.0)
-				node[above] {$\fb$};
-		\end{tikzpicture}}
-		\qquad
-		\subfloat[][\emph{aggiunta della coppia equilibrata in $Q$}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-				\fill (0,0) circle (1.5pt) node[below] {$Q$};
-				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
-				% vettore QP
-				\draw[->, thin, gray!60] (0,0) -- (1.0,2.0)
-				node[midway, left] {$\overrightarrow{QP}$};
-				% forza originale in P
-				\draw[->, thick] (1.0,2.0) -- (2.8,2.0)
-				node[above] {$\fb$};
-				% forza +f in Q
-				\draw[->, thick] (0,0) -- (1.8,0)
-				node[below] {$\fb$};
-				% forza -f in Q
-				\draw[->, thick] (0,0) -- (-1.8,0)
-				node[below] {$-\fb$};
-				% braccio b
-				\draw[<->, thin] (2.9,0) -- (2.9,2.0)
-				node[midway, right] {$b$};
-		\end{tikzpicture}}
-		\qquad
-		\subfloat[][\emph{sistema equivalente}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-				\fill (0,0) circle (1.5pt) node[below] {$Q$};
-				\fill (1.0,2.0) circle (1.5pt) node[above right] {$P$};
-				% forza risultante in Q
-				\draw[->, thick] (0,0) -- (1.8,0)
-				node[below] {$\fb$};
-				% coppia correttiva (freccia semicircolare oraria)
-				\draw[->, thick] (-0.6,0) arc[start angle=180,
-				end angle=90, radius=0.6]
-				node[above left] {$\mu(Q)$};
-				% braccio b
-				\draw[<->, thin] (2.9,0) -- (2.9,2.0)
-				node[midway, right] {$b$};
-		\end{tikzpicture}}
-		\caption{Trasporto di una forza in un punto non appartenente
-			alla linea d'azione.
-			\textbf{\textit{(a)}}~Sistema originale: forza $\fb$
-			applicata in $P$.
-			\textbf{\textit{(b)}}~Aggiunta in $Q$ della coppia
-			equilibrata $(\fb,\,-\fb)$: la forza $(P,\,\fb)$ e
-			$(Q,\,-\fb)$ formano una coppia di momento
-			$\bm{\upmu} = \protect\overrightarrow{QP}\times\fb$,
-			con braccio $b$.
-			\textbf{\textit{(c)}}~Sistema equivalente: forza $\fb$
-			applicata in $Q$ più la coppia correttiva oraria di intensità 
-			$\mu(Q) = |\fb|\,b$.}
-		\label{fig:trasporto_forza}
-	\end{figure}.
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-trasporto-forza}
+.
 \end{oss}
 
 \begin{oss}[\textbf{Riduzione di un sistema al polo}]
@@ -1523,70 +1013,9 @@ $C_k \leftrightarrow P_k$.
 		$z_3 = \ell$): risultante $|\fb| = 3F$, punto di
 		applicazione $d = \ell/2$ (per simmetria).
 	\end{enumerate}
-	\begin{figure}[htbp]
-		\centering
-		\subfloat[][\emph{due forze uguali ai terzi medi}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-				\draw[thick] (0,0) -- (3,0);
-				\fill (0,0) circle (1.5pt) node[above] {$0$};
-				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
-				% forze verso il basso
-				\fill (1,0) circle (1.5pt) node[above] {$\frac{\ell}{3}$};
-				\draw[->, thick] (1,0) -- (1,-1.2) node[left] {$F$};
-				\fill (2,0) circle (1.5pt) node[above] {$\frac{2\ell}{3}$};
-				\draw[->, thick] (2,0) -- (2,-1.2) node[right] {$F$};
-				% risultante verso il basso
-				\fill (1.5,0) circle (1.5pt);
-				\draw[->, thick, gray!50] (1.5,0) -- (1.5,-2.4)
-				node[left] {$2F$};
-				\draw[<->, thin] (0,1) -- (1.5,1)
-				node[midway, above] {$d=\frac{\ell}{2}$};
-		\end{tikzpicture}}
-		\qquad
-		\subfloat[][\emph{due forze diverse ai terzi medi}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-				\draw[thick] (0,0) -- (3,0);
-				\fill (0,0) circle (1.5pt) node[above] {$0$};
-				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
-				% forze verso il basso
-				\fill (1,0) circle (1.5pt) node[above] {$\frac{\ell}{3}$};
-				\draw[->, thick] (1,0) -- (1,-0.8) node[left] {$F$};
-				\fill (2,0) circle (1.5pt) node[above] {$\frac{2\ell}{3}$};
-				\draw[->, thick] (2,0) -- (2,-1.6) node[right] {$2F$};
-				% risultante verso il basso
-				\fill (1.667,0) circle (1.5pt);
-				\draw[->, thick, gray!50] (1.667,0) -- (1.667,-2.4)
-				node[left] {$3F$};
-				\draw[<->, thin] (0,1) -- (1.667,1)
-				node[midway, above] {$d=\frac{5\ell}{9}$};
-		\end{tikzpicture}}
-		\qquad
-		\subfloat[][\emph{tre forze uguali agli estremi e al centro}]{%
-			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-				\draw[thick] (0,0) -- (3,0);
-				\fill (0,0) circle (1.5pt) node[above] {$0$};
-				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
-				% forze verso il basso
-				\draw[->, thick] (0,0) -- (0,-1.2) node[left] {$F$};
-				\fill (1.5,0) circle (1.5pt) node[above] {$\frac{\ell}{2}$};
-				\draw[->, thick] (1.5,0) -- (1.5,-1.2) node[left] {$F$};
-				\draw[->, thick] (3,0) -- (3,-1.2) node[left] {$F$};
-				% risultante verso il basso
-				\draw[->, thick, gray!50] (1.5,0) -- (1.5,-2.4)
-				node[left] {$3F$};
-				\draw[<->, thin] (0,1) -- (1.5,1)
-				node[midway, above] {$d=\frac{\ell}{2}$};
-		\end{tikzpicture}}
-		\caption{Sistemi di forze concentrate $-F_k\,\ab_y$
-			equiorientate su un intervallo di lunghezza $\ell$:
-			la risultante (in grigio) è applicata nel baricentro
-			dei punti di applicazione pesati con le rispettive
-			intensità.
-			\textbf{\textit{(a)}}~$|\fb|=2F$, $d=\ell/2$.
-			\textbf{\textit{(b)}}~$|\fb|=3F$, $d=5\ell/9$.
-			\textbf{\textit{(c)}}~$|\fb|=3F$, $d=\ell/2$.}
-		\label{fig:forze_concentrate_intervallo}
-	\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-forze-concentrate-intervallo}
+
 \end{esempio}
 
 
@@ -1629,111 +1058,9 @@ maggiore, e la sua posizione coincide con il baricentro della
 figura geometrica corrispondente --- rettangolo, triangolo e
 parabola.
 
-\begin{figure}[htbp]
-	\centering
-	\subfloat[][\emph{carico generico $p(x)$}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
-			% asse x
-			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
-			\node[below] at (0,0) {$0$};
-			\node[below] at (3,0) {$\ell$};
-			\draw[thick] (0,-0.1) -- (0,0.1);
-			\draw[thick] (3,-0.1) -- (3,0.1);
-			% curva generica: stessa funzione usata per le frecce
-			\draw[thick, domain=0:3, samples=100]
-			plot (\x, {1.0 + 0.6*sin(\x*120)});
-			\node[right] at (3, {1.0 + 0.6*sin(360)}) {$p(x)$};
-			% frecce che partono esattamente dalla curva
-			\foreach \x in {0.0, 0.2, 0.5, 0.8, 1.1, 1.4,
-				1.7, 2.0, 2.3, 2.55, 2.8, 3.0}{
-				\pgfmathsetmacro{\h}{1.0 + 0.6*sin(\x*120)}
-				\draw[->, thin] (\x, \h) -- (\x, 0);
-			}
-			% punto baricentro (calcolato numericamente ~1.5)
-			\fill (1.5,0) circle (1.5pt);
-			% risultante
-			\draw[->, thick] (1.5,0) -- (1.5,-1.2)
-			node[right] {$|\fb|$};
-			% quota d dal bordo sinistro al baricentro
-			\draw[<->, thin] (0,-0.5) -- (1.5,-0.5)
-			node[midway, below] {$d$};
-	\end{tikzpicture}}
-	\qquad
-	\subfloat[][\emph{carico uniforme}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
-			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
-			\node[below] at (0,0) {$0$};
-			\node[below] at (3,0) {$\ell$};
-			\draw[thick] (0,-0.1) -- (0,0.1);
-			\draw[thick] (3,-0.1) -- (3,0.1);
-			\foreach \x in {0, 0.375, 0.75, 1.125, 1.5,
-				1.875, 2.25, 2.625, 3.0}{
-				\draw[->, thin] (\x, 1.5) -- (\x, 0);
-			}
-			\draw[thick] (0,1.5) -- (3,1.5);
-			\node[left] at (0,1.5) {$p$};
-			\fill (1.5,0) circle (1.5pt);
-			\draw[->, thick] (1.5,0) -- (1.5,-1.2)
-			node[right] {$p\ell$};
-			\draw[<->, thin] (0,-0.5) -- (1.5,-0.5)
-			node[midway, below] {$\frac{\ell}{2}$};
-	\end{tikzpicture}}
-	\\[1em]
-	\subfloat[][\emph{carico lineare}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
-			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
-			\node[below] at (0,0) {$0$};
-			\node[below] at (3,0) {$\ell$};
-			\draw[thick] (0,-0.1) -- (0,0.1);
-			\draw[thick] (3,-0.1) -- (3,0.1);
-			\foreach \x in {0.375, 0.75, 1.125, 1.5,
-				1.875, 2.25, 2.625, 3.0}{
-				\draw[->, thin] (\x, {1.5*\x/3}) -- (\x, 0);
-			}
-			\draw[thick] (0,0) -- (3,1.5);
-			\node[right] at (3,1.5) {$p$};
-			\fill (2.0,0) circle (1.5pt);
-			\draw[->, thick] (2.0,0) -- (2.0,-1.2)
-			node[right] {$\frac{p\ell}{2}$};
-			\draw[<->, thin] (0,-0.5) -- (2.0,-0.5)
-			node[midway, below] {$\frac{2\ell}{3}$};
-	\end{tikzpicture}}
-	\qquad
-	\subfloat[][\emph{carico parabolico}]{%
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.90]
-			\draw[->] (0,0) -- (3.5,0) node[right] {$x$};
-			\node[below] at (0,0) {$0$};
-			\node[below] at (3,0) {$\ell$};
-			\draw[thick] (0,-0.1) -- (0,0.1);
-			\draw[thick] (3,-0.1) -- (3,0.1);
-			\foreach \x in {0.375, 0.75, 1.125, 1.5,
-				1.875, 2.25, 2.625, 3.0}{
-				\draw[->, thin] (\x, {1.5*\x*\x/9}) -- (\x, 0);
-			}
-			\draw[thick, domain=0:3, samples=50]
-			plot (\x, {1.5*\x*\x/9});
-			\node[right] at (3,1.5) {$p$};
-			\fill (2.25,0) circle (1.5pt);
-			\draw[->, thick] (2.25,0) -- (2.25,-1.2)
-			node[right] {$\frac{p\ell}{3}$};
-			\draw[<->, thin] (0,-0.5) -- (2.25,-0.5)
-			node[midway, below] {$\frac{3\ell}{4}$};
-	\end{tikzpicture}}
-	\caption{Riduzione di carichi distribuiti
-		$\fb_L(x) = -p(x)\,\ab_y$ con $p(x) \geq 0$
-		su un intervallo di lunghezza $\ell$: la risultante
-		(freccia spessa) è applicata nel baricentro del
-		diagramma di carico.
-		\textbf{\textit{(a)}}~Caso generico $p(x)$:
-		risultante $|\fb|$ applicata a distanza $d$.
-		\textbf{\textit{(b)}}~Carico uniforme:
-		$|\fb|=p\ell$, $d=\ell/2$.
-		\textbf{\textit{(c)}}~Carico lineare:
-		$|\fb|=p\ell/2$, $d=2\ell/3$.
-		\textbf{\textit{(d)}}~Carico parabolico:
-		$|\fb|=p\ell/3$, $d=3\ell/4$.}
-	\label{fig:carichi_distribuiti}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C02-Statica_CR/Figure/figura-carichi-distribuiti}
+
 
 
 

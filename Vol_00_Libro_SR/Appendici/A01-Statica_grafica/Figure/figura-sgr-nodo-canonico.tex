@@ -1,0 +1,50 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:nodo_canonico_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-nodo-canonico}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Equilibrio grafico di un nodo canonico: il nodo D della capriata palladiana (ese:capriata_palladiana).
+% Attorno a D, in senso orario, si incontrano i campi 0, 1, II, I. Sono note la forza F (segmento 0 1) e la
+% forza dell'asta DA (segmento I 0); sono incognite le forze delle aste DF e DB. Il vertice II e'
+% l'intersezione della parallela a DF per 1 con la parallela a DB per I.
+% Vertici (F = 1): 0 = (0.000,0.000), 1 = (0.000,-1.000), b = (-1.000,-2.000), a = (-1.500,-1.500).
+% Forze sul nodo: asta DF = 1 II (compressione, sqrt 2), asta DB = II I (compressione, sqrt 2 / 2).
+% (a) il nodo con i campi e le forze che agiscono su di esso; (b) il poligono di equilibrio.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+\begin{scope}
+\draw[sgrasta] (0,0) -- (-1.025,-1.025);
+\node at (-1.200,-1.200) {$A$};
+\draw[sgrasta] (0,0) -- (1.025,1.025);
+\node at (1.200,1.200) {$F$};
+\draw[sgrasta] (0,0) -- (1.025,-1.025);
+\node at (1.200,-1.200) {$B$};
+\draw[polforza] (0,1.45) -- (0,0.1) node[pos=0.15,anchor=east,inner sep=3pt] {$\fb_1$};
+\draw[polverso] (-0.679,-0.877) -- (-0.255,-0.453);
+\draw[polverso] (0.679,0.877) -- (0.255,0.453);
+\draw[polverso] (0.877,-0.679) -- (0.453,-0.255);
+\pic at (0,0) {sgrnodo};
+\node[anchor=east,inner sep=5pt] at (0,0) {$D$};
+\node[polcampo,minimum size=4.3mm] at (-0.921,0.391) {$0$};
+\node[polcampo,minimum size=4.3mm] at (0.429,1.035) {$1$};
+\node[polcampo,minimum size=4.3mm] at (1.000,0.000) {$b$};
+\node[polcampo,minimum size=4.3mm] at (-0.000,-0.950) {$a$};
+\draw[sgrrot] ([shift={(140:0.3)}]1.95,1.15) arc (140:-130:0.3);
+\node at (0,-2.45) {(a)};
+\end{scope}
+\begin{scope}[shift={(5.6,1.75)},x=1.6cm,y=1.6cm]
+\draw[polcostruzione] (0.000,-1.000) -- (-1.318,-2.318);
+\draw[polcostruzione] (-1.500,-1.500) -- (-0.682,-2.318);
+\draw[polforza] (0.000,0.000) -- (0.000,-1.000) node[pos=0.5,anchor=west,inner sep=3pt] {$\fb_1$};
+\draw[polforza] (-1.500,-1.500) -- (0.000,0.000) node[pos=0.5,anchor=south east,inner sep=1.5pt] {$DA$};
+\draw[polestremo] (0.000,-1.000) -- (-1.000,-2.000) node[pos=0.5,anchor=north west,inner sep=1.5pt] {$DF$};
+\draw[polestremo] (-1.000,-2.000) -- (-1.500,-1.500) node[pos=0.5,anchor=north east,inner sep=1.5pt] {$DB$};
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.000,-1.000) {polpunto};
+\pic at (-1.500,-1.500) {polpunto};
+\draw[fill=white,line width=.6pt] (-1.000,-2.000) circle (1.5pt);
+\node[anchor=south,inner sep=3.5pt] at (0.000,0.000) {$0$};
+\node[anchor=west,inner sep=3.5pt] at (0.000,-1.000) {$1$};
+\node[anchor=east,inner sep=3.5pt] at (-1.500,-1.500) {$a$};
+\node[anchor=west,inner sep=4.5pt] at (-1.000,-2.060) {$b$};
+\node at (-0.75,-2.625) {(b)};
+\end{scope}
+\end{tikzpicture}%

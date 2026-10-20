@@ -1,0 +1,254 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			trave/.style={line width=2.2pt, line cap=round,
+				line join=round, black},
+			terra/.style={line width=0.7pt, black},
+			nodoP/.style={rectangle, fill=black, draw=black, inner sep=0pt, minimum size=4.5pt},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=0.8pt},
+			carico/.style={->, >=stealth, line width=0.9pt, black},
+			reaz/.style={->, >=stealth, line width=1.0pt, gray!60},
+			forza/.style={->, >=stealth, line width=1.0pt, black},
+			blob/.style={draw=gray!45, fill=gray!10, line width=0.7pt,
+				rounded corners=12pt},
+			]
+			
+			\def\L{2.20}
+			\def\sc{0.68}
+			\def\hLoad{0.60}
+			\def\hTri{0.76}
+			\def\rm{0.30}   % raggio archi di momento
+			
+			%% ── Macro archi di momento ─────────────────────────────
+			\newcommand{\arcORA}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-100)},{\rm*sin(-100)})$)
+				arc(-100:100:\rm);}
+			\newcommand{\arcANTI}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(80)},{\rm*sin(80)})$)
+				arc(80:280:\rm);}
+			\newcommand{\arcORAV}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-10)},{\rm*sin(-10)})$)
+				arc(-10:190:\rm);}
+			\newcommand{\arcANTIV}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(170)},{\rm*sin(170)})$)
+				arc(170:370:\rm);}
+			\newcommand{\arcORAAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(80)},{\rm*sin(80)})$)
+				arc(80:280:\rm);}
+			\newcommand{\arcANTIAP}[1]{%
+				\draw[->,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-100)},{\rm*sin(-100)})$)
+				arc(-100:100:\rm);}
+			\newcommand{\arcORAVAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(170)},{\rm*sin(170)})$)
+				arc(170:370:\rm);}
+			\newcommand{\arcANTIVAP}[1]{%
+				\draw[<-,>=stealth,line width=0.9pt]
+				($(#1)+({\rm*cos(-10)},{\rm*sin(-10)})$)
+				arc(-10:190:\rm);}
+			
+			%% ════════════════════════════════════════════════════════
+			%% TRATTO  AC  (verticale)
+			%% blob: larghezza 2.32, altezza \L+2.00
+			%% bordo sinistro globale: -1.12
+			%% ════════════════════════════════════════════════════════
+			\begin{scope}[xshift=0cm, yshift=0cm]
+				\coordinate (A) at (0, 0);
+				\coordinate (C) at (0, \L);
+				
+				\draw[blob] (-1.12,-0.85) rectangle (1.20, \L+1.15);
+				\draw[trave] (A) -- (C);
+				
+				\draw[terra] (A)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra] (-0.30,-0.38)--(0.30,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black](\x,-0.38)--++(-0.09,-0.11);
+				\node[nodoV] at (A) {};
+				\node[nodoP] at (C) {};
+				
+				\draw[reaz] (A) -- ++(\sc, 0)
+				node[below,font=\small,gray!70]{$\tfrac{2}{3}p\ell$};
+				\draw[reaz] (A) -- ++(0, \sc)
+				node[right,font=\small,gray!70,yshift=-6pt]{$\tfrac{4}{3}p\ell$};
+				
+				\draw[black, line width=0.6pt] (A) -- ($(C)+(-\hTri,0)$);
+				\foreach \t in {0.15,0.30,0.45,0.60,0.75,0.90,1.00}{
+					\pgfmathsetmacro{\lungh}{\t*\hTri}
+					\draw[carico]
+					($(A)!\t!(C)+(-\lungh,0)$) -- ($(A)!\t!(C)$);
+				}
+				\node[left,font=\small] at ($(C)+(-\hTri+0.20,0.2)$) {$p$};
+				
+				\draw[forza] ($(C)+(\sc+0.20,0)$) -- ($(C)+(0.20,0)$)
+				node[midway,above,font=\small]{$\tfrac{7}{6}p\ell$};
+				\draw[forza] ($(C)+(0,\sc+0.20)$) -- ($(C)+(0,0.20)$)
+				node[midway,left,font=\small,yshift=8pt]{$\tfrac{4}{3}p\ell$};
+				\arcORAVAP{C}
+				\node[below right,font=\small] at ($(C)+(0.10,-0.10)$)
+				{$\tfrac{5}{6}p\ell^2$};
+				
+				\node[left,font=\small] at (A) {$A$};
+				\node[above left,font=\small] at ($(C)+(-0.06,0.06)$) {$C$};
+			\end{scope}
+			
+			
+			%% ════════════════════════════════════════════════════════
+			%% TRATTO  CD  (orizzontale)
+			%% blob: larghezza \L+2.04, altezza \hLoad+1.60
+			%% bordo sinistro globale: -1.12
+			%% ════════════════════════════════════════════════════════
+			\pgfmathsetmacro{\XCD}{0.0}
+			\pgfmathsetmacro{\YCD}{\L+2.50}
+			\begin{scope}[xshift=\XCD cm, yshift=\YCD cm]
+				\coordinate (Ccd) at (0,  0);
+				\coordinate (Dcd) at (\L, 0);
+				
+				\draw[blob] (-1.12,-1.10) rectangle (\L+0.92, \hLoad+0.50);
+				\draw[trave] (Ccd) -- (Dcd);
+				\node[nodoP] at (Ccd) {};
+				\node[nodoV] at (Dcd) {};
+				
+				\draw[black,line width=0.6pt]
+				($(Ccd)+(0,\hLoad)$) -- ($(Dcd)+(0,\hLoad)$);
+				\draw[black,line width=0.4pt]
+				($(Ccd)+(0,0.07)$)   -- ($(Dcd)+(0,0.07)$);
+				\foreach \t in {0.00,0.17,0.33,0.50,0.67,0.83,1.00}{
+					\draw[carico,line width=0.8pt]
+					($(Ccd)!\t!(Dcd)+(0,\hLoad)$)
+					-- ($(Ccd)!\t!(Dcd)+(0,0.07)$);
+				}
+				\node[above,font=\small]
+				at ($(Ccd)!0.5!(Dcd)+(0,\hLoad)$) {$p$};
+				
+				\draw[forza] ($(Ccd)+(-\sc-0.20,0)$) -- ($(Ccd)+(-0.20,0)$)
+				node[midway,above,font=\small]{$\tfrac{7}{6}p\ell$};
+				\draw[forza] ($(Ccd)+(0,-\sc-0.20)$) -- ++(0,\sc)
+				node[midway,left,font=\small]{$\tfrac{4}{3}p\ell$};
+				\arcANTIAP{Ccd}
+				\node[below right,font=\small] at ($(Ccd)+(0.10,-0.10)$)
+				{$\tfrac{5}{6}p\ell^2$};
+				
+				\draw[forza] ($(Dcd)+(\sc+0.20,0)$) -- ($(Dcd)+(0.20,0)$)
+				node[midway,above,font=\small]{$\tfrac{7}{6}p\ell$};
+				\draw[forza] ($(Dcd)+(0,-0.20)$) -- ++(0,-\sc)
+				node[midway,left,font=\small]{$\tfrac{1}{3}p\ell$};
+				
+				\node[below left,font=\small]  at (Ccd) {$C$};
+				\node[below right,font=\small] at (Dcd) {$D$};
+			\end{scope}
+			
+			
+			%% ════════════════════════════════════════════════════════
+			%% TRATTO  DE  (orizzontale)
+			%% blob: larghezza \L+2.04, altezza \hLoad+1.60
+			%% bordo destro globale: \XDE+\L+1.10
+			%% ════════════════════════════════════════════════════════
+			\pgfmathsetmacro{\XDE}{\L+2.20}
+			\pgfmathsetmacro{\YDE}{\L+2.50}
+			\begin{scope}[xshift=\XDE cm, yshift=\YDE cm]
+				\coordinate (Dde) at (0,  0);
+				\coordinate (Ede) at (\L, 0);
+				
+				\draw[blob] (-0.94,-1.10) rectangle (\L+1.10, \hLoad+0.50);
+				\draw[trave] (Dde) -- (Ede);
+				\node[nodoV] at (Dde) {};
+				\node[nodoP] at (Ede) {};
+				
+				\draw[black,line width=0.6pt]
+				($(Dde)+(0,\hLoad)$) -- ($(Ede)+(0,\hLoad)$);
+				\draw[black,line width=0.4pt]
+				($(Dde)+(0,0.07)$)   -- ($(Ede)+(0,0.07)$);
+				\foreach \t in {0.00,0.17,0.33,0.50,0.67,0.83,1.00}{
+					\draw[carico,line width=0.8pt]
+					($(Dde)!\t!(Ede)+(0,\hLoad)$)
+					-- ($(Dde)!\t!(Ede)+(0,0.07)$);
+				}
+				\node[above,font=\small]
+				at ($(Dde)!0.5!(Ede)+(0,\hLoad)$) {$p$};
+				
+				\draw[forza] ($(Dde)+(-\sc-0.20,0)$) -- ($(Dde)+(-0.20,0)$)
+				node[midway,above,font=\small]{$\tfrac{7}{6}p\ell$};
+				\draw[forza] ($(Dde)+(0,-\sc-0.30)$) -- ++(0,\sc)
+				node[midway,right,font=\small]{$\tfrac{1}{3}p\ell$};
+				
+				\draw[forza] ($(Ede)+(\sc+0.20,0)$) -- ($(Ede)+(0.20,0)$)
+				node[midway,above,font=\small]{$\tfrac{7}{6}p\ell$};
+				\draw[forza] ($(Ede)+(0,-\sc-0.30)$) -- ++(0,\sc)
+				node[pos=0.3,right,font=\small]{$\tfrac{2}{3}p\ell$};
+				\arcORAAP{Ede}
+				\node[below left,font=\small] at ($(Ede)+(-0.10,-0.10)$)
+				{$\tfrac{1}{6}p\ell^2$};
+				
+				\node[below left,font=\small]  at (Dde) {$D$};
+				\node[below right,font=\small] at ($(Ede)+(0.10,0)$) {$E$};
+			\end{scope}
+			
+			
+			%% ════════════════════════════════════════════════════════
+			%% TRATTO  EB  (verticale)
+			%% blob: larghezza 2.32, altezza \L+2.00
+			%% bordo destro globale: \XEB+1.10 = \XDE+\L+1.10
+			%% ════════════════════════════════════════════════════════
+			\pgfmathsetmacro{\XEB}{\XDE+\L}
+			\pgfmathsetmacro{\YEB}{0.0}
+			\begin{scope}[xshift=\XEB cm, yshift=\YEB cm]
+				\coordinate (Eeb) at (0, \L);
+				\coordinate (Feb) at (0, 0.5*\L);
+				\coordinate (Beb) at (0, 0);
+				
+				\draw[blob] (-1.22,-0.85) rectangle (1.10, \L+1.15);
+				\draw[trave] (Eeb) -- (Beb);
+				\node[nodoP] at (Eeb) {};
+				
+				\draw[terra] (Beb)--++(-0.22,-0.38)--++(0.44,0)--cycle;
+				\draw[terra] ($(Beb)+(-0.30,-0.38)$)
+				-- ($(Beb)+(0.30,-0.38)$);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin,black]
+				($(Beb)+(\x,-0.38)$)--++(-0.09,-0.11);
+				\node[nodoV] at (Beb) {};
+				
+				\draw[gray!60,line width=0.8pt]
+				($(Feb)+(-0.14,0)$) -- ($(Feb)+(0.14,0)$);
+				
+				\draw[forza] ($(Eeb)+(-\sc-0.20,0)$) -- ($(Eeb)+(-0.20,0)$)
+				node[midway,below,font=\small]{$\tfrac{7}{6}p\ell$};
+				\draw[forza] ($(Eeb)+(0,\sc+0.20)$) -- ($(Eeb)+(0,0.20)$)
+				node[right,font=\small,yshift=12pt]{$\tfrac{2}{3}p\ell$};
+				\arcANTIV{Eeb}
+				\node[right,font=\small] at ($(Eeb)+(0.42,0.08)$)
+				{$\tfrac{1}{6}p\ell^2$};
+				
+				\draw[->,>=stealth,line width=0.9pt]
+				($(Feb)+(\rm,0)$) arc(0:270:\rm);
+				\node[right,font=\small]
+				at ($(Feb)+(\rm+0.06,0.08)$) {$p\ell^2$};
+				
+				\draw[reaz] ($(Beb)+(0,0)$) -- ($(Beb)+(-\sc,0)$)
+				node[above,font=\small,gray!70]{$\tfrac{7}{6}p\ell$};
+				\draw[reaz] (Beb) -- ++(0,\sc)
+				node[midway,right,font=\small,gray!70,yshift=4pt]{$\tfrac{2}{3}p\ell$};
+				
+				\node[above left,font=\small]  at (Eeb) {$E$};
+				\node[left,font=\small]        at ($(Feb)+(-0.20,0)$) {$F$};
+				\node[right,font=\small]       at (Beb) {$B$};
+			\end{scope}
+			
+		\end{tikzpicture}%
+	}%
+	\caption{Portale a tre cerniere: isolamento dei quattro tratti
+		rettilinei come corpi liberi.
+		Frecce grigie: reazioni vincolari esterne.
+		Frecce nere: azioni trasmesse alle connessioni interne.
+		Ai nodi rigidi $C$ ed $E$ si trasmettono forza e momento;
+		alla cerniera $D$ la sola forza.}
+	\label{fig:arco3c_4tratti}
+\end{figure}

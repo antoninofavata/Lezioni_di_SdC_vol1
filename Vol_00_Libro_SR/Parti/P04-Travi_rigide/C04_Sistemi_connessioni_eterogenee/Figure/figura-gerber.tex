@@ -1,0 +1,127 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+	nodo/.style={circle, fill=white, draw=black,
+		inner sep=0pt, minimum size=5pt, line width=0.8pt},
+	cint/.style={circle, fill=white, draw=black,
+		inner sep=0pt, minimum size=6pt, line width=0.8pt},
+	etasta/.style={circle, draw=black, fill=white,
+		inner sep=1pt, font=\scriptsize, line width=0.6pt},
+	richiam/.style={thin, gray, dashed}]
+	
+	\def\L{1.7}    % unità di lunghezza (= ell)
+	\def\tw{0.22}  % semi-larghezza triangolo
+	\def\thA{0.38} % altezza triangolo cerniera (A)
+	\def\thR{0.32} % altezza triangolo carrello
+	\def\sr{0.08}  % raggio semicerchio (B e C)
+	\def\bw{0.16}  % semi-distanza cerchietti carrello
+	\def\gw{0.30}  % semi-larghezza barra di terreno
+	\def\yd{-1.10} % quota linee di misura
+	
+	%% ── Trave ────────────────────────────────────────────────────
+	\draw[line width=2.2pt] (0,0) -- ({5*\L},0);
+	
+	%% ── Etichette nodi ───────────────────────────────────────────
+	\node[above=0.05] at (0,0)      {$A$};
+	\node[above=0.05] at ({\L},0)   {$B$};
+	\node[above=0.10] at ({2*\L},0) {$E$};
+	\node[above=0.10] at ({3*\L},0) {$F$};
+	\node[above=0.05] at ({4*\L},0) {$C$};
+	\node[above=0.05] at ({5*\L},0) {$D$};
+	
+	%% ── Numerazione elementi ─────────────────────────────────────
+	\node[etasta] at ({0.5*\L},  0.38) {$1$};
+	\node[etasta] at ({1.5*\L},  0.38) {$2$};
+	\node[etasta] at ({2.5*\L},  0.38) {$3$};
+	\node[etasta] at ({3.5*\L},  0.38) {$4$};
+	\node[etasta] at ({4.5*\L},  0.38) {$5$};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% CERNIERA in A
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	(0,0)--++(-\tw,-\thA)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]({-\gw},{-\thA})--({\gw},{-\thA});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({\x},{-\thA})--++(-.09,-.11);
+	\node[nodo] at (0,0){};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% APPOGGIO INTERMEDIO in B
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	({\L},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]
+	({\L-\gw},{-\thR})--({\L+\gw},{-\thR});
+	\draw[line width=0.8pt]({\L-\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]({\L+\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]
+	({\L-\gw},{-\thR-0.24})--({\L+\gw},{-\thR-0.24});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({\L+\x},{-\thR-0.24})--++(-.09,-.11);
+	\fill[white] ({\L-\sr},0) arc(180:360:\sr) -- cycle;
+	\draw[line width=0.8pt] ({\L-\sr},0) arc(180:360:\sr);
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% APPOGGIO INTERMEDIO in C
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	({4*\L},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]
+	({4*\L-\gw},{-\thR})--({4*\L+\gw},{-\thR});
+	\draw[line width=0.8pt]({4*\L-\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]({4*\L+\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]
+	({4*\L-\gw},{-\thR-0.24})--({4*\L+\gw},{-\thR-0.24});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({4*\L+\x},{-\thR-0.24})--++(-.09,-.11);
+	\fill[white] ({4*\L-\sr},0) arc(180:360:\sr) -- cycle;
+	\draw[line width=0.8pt] ({4*\L-\sr},0) arc(180:360:\sr);
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% CARRELLO in D
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	({5*\L},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]
+	({5*\L-\gw},{-\thR})--({5*\L+\gw},{-\thR});
+	\draw[line width=0.8pt]({5*\L-\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]({5*\L+\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]
+	({5*\L-\gw},{-\thR-0.24})--({5*\L+\gw},{-\thR-0.24});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({5*\L+\x},{-\thR-0.24})--++(-.09,-.11);
+	\node[nodo] at ({5*\L},0){};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% CERNIERE INTERNE in E e F
+	%%═══════════════════════════════════════════════════════════════
+	\node[cint] at ({2*\L},0){};
+	\node[cint] at ({3*\L},0){};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% QUOTATURA
+	%%═══════════════════════════════════════════════════════════════
+	\draw[richiam](0,      {-\thA-0.15})  -- (0,      {\yd+0.08});
+	\draw[richiam]({\L},   {-\thR-0.40})  -- ({\L},   {\yd+0.08});
+	\draw[richiam]({2*\L}, {-0.12})       -- ({2*\L}, {\yd+0.08});
+	\draw[richiam]({3*\L}, {-0.12})       -- ({3*\L}, {\yd+0.08});
+	\draw[richiam]({4*\L}, {-\thR-0.40})  -- ({4*\L}, {\yd+0.08});
+	\draw[richiam]({5*\L}, {-\thR-0.40})  -- ({5*\L}, {\yd+0.08});
+	
+	\draw[thin,gray,|<->|] (0,{\yd})      -- ({\L},{\yd});
+	\node[above=0.04,font=\small] at ({0.5*\L},{\yd})  {$\ell$};
+	\draw[thin,gray,|<->|] ({\L},{\yd})   -- ({2*\L},{\yd});
+	\node[above=0.04,font=\small] at ({1.5*\L},{\yd}) {$\ell$};
+	\draw[thin,gray,|<->|] ({2*\L},{\yd}) -- ({3*\L},{\yd});
+	\node[above=0.04,font=\small] at ({2.5*\L},{\yd}) {$\ell$};
+	\draw[thin,gray,|<->|] ({3*\L},{\yd}) -- ({4*\L},{\yd});
+	\node[above=0.04,font=\small] at ({3.5*\L},{\yd}) {$\ell$};
+	\draw[thin,gray,|<->|] ({4*\L},{\yd}) -- ({5*\L},{\yd});
+	\node[above=0.04,font=\small] at ({4.5*\L},{\yd}) {$\ell$};
+	
+\end{tikzpicture}
+\caption{Trave di Gerber su quattro appoggi ($n_a = 4$,	$n_e = 5$) con due cerniere interne ($n_c = 2$)
+	in $E$ e $F$, collocate a $\ell$ dagli appoggi	$B$ e $C$.  Gradi di libertà $n = 15$, vincoli $m = 15$, sistema isostatico	($\nu = 0$).}
+\label{fig:gerber}
+\end{figure}

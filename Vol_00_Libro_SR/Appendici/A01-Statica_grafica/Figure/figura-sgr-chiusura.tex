@@ -1,0 +1,97 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:chiusura_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-chiusura}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Trave appoggiata di luce 6.0; forze verticali f_1 = 1.0, f_2 = 1.5, f_3 = 0.8 alle ascisse [1.4, 3.2, 4.7];
+% reazioni R_A = 1.6400, R_B = 1.6600. Polo di componenti H = 2.1, V_0 = 2.15.
+% Nodi (Z, Y): (0.000, 0.000), (1.400, 1.433), (3.200, 2.419), (4.700, 2.169), (6.000, 1.457).
+% Il raggio condotto dal polo parallelamente al lato di chiusura c = A_0 A_4 incontra la linea dei
+% carichi nel punto m, di ordinata 1.6400: r_A = m0, r_B = 3m. Nei nodi H eta = M (verificato):
+% eta = 1.0933, 1.6419, 1.0276; M = 2.2960, 3.4480, 2.1580.
+% Nel piano di posizione le forze sono disegnate in scala 0.5.
+% (a) trave, forze, rette d'azione delle forze e delle reazioni; poligono funicolare con gli estremi
+%     sulle rette d'azione delle reazioni, lato di chiusura c, distanza eta del poligono da c;
+%     forze e reazioni riportate anche nei nodi del poligono chiuso, tutte all'esterno, e campi
+%     (numeri cerchiati): P all'interno, 0 ... 3 dalla parte dei lati b_0 ... b_3, m dalla parte del
+%     lato di chiusura, fra le reazioni. Il lato c separa m da P (raggio mP), r_A separa m da 0,
+%     r_B separa 3 da m;
+% (b) linea dei carichi con i vertici 0 ... 3 e il punto m, polo, raggio mP parallelo a c,
+%     reazioni r_A e r_B, distanza polare H.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+\begin{scope}
+\draw[polretta] (0.000,1.000) -- (0.000,-3.469) node[anchor=north,inner sep=1.5pt,black] {$a_A$};
+\draw[polretta] (6.000,1.000) -- (6.000,-3.469) node[anchor=north,inner sep=1.5pt,black] {$a_B$};
+\draw[polretta] (1.400,1.750) -- (1.400,-3.469) node[anchor=north,inner sep=1.5pt,black] {$a_1$};
+\draw[polforza] (1.400,2.330) -- (1.400,1.830) node[pos=0.25,anchor=west,inner sep=3pt] {$\fb_1$};
+\draw[polretta] (3.200,1.750) -- (3.200,-3.469) node[anchor=north,inner sep=1.5pt,black] {$a_2$};
+\draw[polforza] (3.200,2.580) -- (3.200,1.830) node[pos=0.25,anchor=west,inner sep=3pt] {$\fb_2$};
+\draw[polretta] (4.700,1.750) -- (4.700,-3.469) node[anchor=north,inner sep=1.5pt,black] {$a_3$};
+\draw[polforza] (4.700,2.230) -- (4.700,1.830) node[pos=0.25,anchor=west,inner sep=3pt] {$\fb_3$};
+\draw[line width=1.6pt] (0.000,1.750) -- (6.000,1.750);
+\pic at (0.000,1.750) {polcerniera};
+\pic at (6.000,1.750) {polcarrello};
+\node[anchor=south east,inner sep=3pt] at (0.000,1.750) {$A$};
+\node[anchor=south west,inner sep=3pt] at (6.000,1.750) {$B$};
+\draw[polchiusura] (0.000,-0.000) -- (6.000,-1.457) node[pos=0.24,anchor=south west,inner sep=1.5pt] {$c$};
+\draw[pollato] (0.000,-0.000) -- (1.400,-1.433) -- (3.200,-2.419) -- (4.700,-2.169) -- (6.000,-1.457);
+\pic at (0.000,-0.000) {polpunto};
+\pic at (1.400,-1.433) {polpunto};
+\pic at (3.200,-2.419) {polpunto};
+\pic at (4.700,-2.169) {polpunto};
+\pic at (6.000,-1.457) {polpunto};
+\node[anchor=east,inner sep=3.5pt] at (0.000,-0.000) {$A_0$};
+\node[anchor=west,inner sep=3.5pt] at (6.000,-1.457) {$A_4$};
+\node[anchor=north east,inner sep=2.5pt] at (1.370,-1.463) {$A_1$};
+\node[anchor=north west,inner sep=2.5pt] at (3.250,-2.469) {$A_2$};
+\node[anchor=north west,inner sep=2.5pt] at (4.740,-2.199) {$A_3$};
+\draw[polquota] (2.920,-0.777) -- (2.920,-2.419) node[midway,anchor=east,inner sep=2.5pt] {$\eta$};
+\draw[polforza] (1.400,-1.433) -- (1.400,-1.933);
+\draw[polforza] (3.200,-2.419) -- (3.200,-3.169);
+\draw[polforza] (4.700,-2.169) -- (4.700,-2.569);
+\draw[polestremo] (0.000,-0.000) -- (0.000,0.820) node[pos=0.6,anchor=east,inner sep=3pt] {$\rb_A$};
+\draw[polestremo] (6.000,-1.457) -- (6.000,-0.627) node[pos=0.6,anchor=west,inner sep=3pt] {$\rb_B$};
+\pic at (0.000,-0.000) {polpunto};
+\pic at (1.400,-1.433) {polpunto};
+\pic at (3.200,-2.419) {polpunto};
+\pic at (4.700,-2.169) {polpunto};
+\pic at (6.000,-1.457) {polpunto};
+\node[polcampo] at (0.500,-1.312) {$0$};
+\node[polcampo] at (2.250,-2.619) {$1$};
+\node[polcampo] at (4.150,-2.881) {$2$};
+\node[polcampo] at (5.500,-2.351) {$3$};
+\node[polcampo] at (4.050,-1.630) {$P$};
+\node[polcampo] at (2.300,0.291) {$m$};
+\node at (3.000,-4.419) {(a)};
+\end{scope}
+\begin{scope}[shift={(9.6,0.85)}]
+\draw[polraggio] (0.000,0.000) -- (2.100,-2.150);
+\draw[polraggio] (0.000,-1.000) -- (2.100,-2.150);
+\draw[polraggio] (0.000,-2.500) -- (2.100,-2.150);
+\draw[polraggio] (0.000,-3.300) -- (2.100,-2.150);
+\draw[polchiusura] (0.000,-1.640) -- (2.100,-2.150);
+\draw[polforza] (0.000,0.000) -- (0.000,-1.000);
+\draw[polforza] (0.000,-1.000) -- (0.000,-2.500);
+\draw[polforza] (0.000,-2.500) -- (0.000,-3.300);
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.000,-1.000) {polpunto};
+\pic at (0.000,-2.500) {polpunto};
+\pic at (0.000,-3.300) {polpunto};
+\node[anchor=west,inner sep=0pt,font=\scriptsize] at (0.090,-0.300) {$\fb_1$};
+\node[anchor=west,inner sep=0pt,font=\scriptsize] at (0.090,-1.375) {$\fb_2$};
+\node[anchor=west,inner sep=0pt,font=\scriptsize] at (0.090,-2.900) {$\fb_3$};
+\pic at (2.100,-2.150) {polpolo};
+\draw[fill=white,line width=.6pt] (0.000,-1.640) circle (1.5pt);
+\draw[polcostruzione] (0.000,0.000) -- (-0.870,0.000) (0.000,-1.640) -- (-0.870,-1.640) (0.000,-3.300) -- (-0.870,-3.300);
+\draw[polestremo] (-0.750,-1.640) -- (-0.750,0.000) node[midway,anchor=east,inner sep=3pt] {$\rb_A$};
+\draw[polestremo] (-0.750,-3.300) -- (-0.750,-1.640) node[midway,anchor=east,inner sep=3pt] {$\rb_B$};
+\node[anchor=south west,inner sep=2pt] at (0.000,0.030) {$0$};
+\node[anchor=north west,inner sep=2pt] at (0.000,-3.330) {$3$};
+\node[anchor=south east,inner sep=1.5pt] at (-0.020,-1.610) {$m$};
+\node[anchor=east,inner sep=3pt] at (0.000,-1.000) {$1$};
+\node[anchor=east,inner sep=3pt] at (0.000,-2.500) {$2$};
+\node[anchor=west,inner sep=3.5pt] at (2.100,-2.150) {$P$};
+\draw[polcostruzione] (0.000,-3.300) -- (0.000,-4.250) (2.100,-2.150) -- (2.100,-4.250);
+\draw[polquota] (0.000,-4.100) -- (2.100,-4.100) node[midway,anchor=north,inner sep=2.5pt] {$H$};
+\node at (0.700,-5.269) {(b)};
+\end{scope}
+\end{tikzpicture}%

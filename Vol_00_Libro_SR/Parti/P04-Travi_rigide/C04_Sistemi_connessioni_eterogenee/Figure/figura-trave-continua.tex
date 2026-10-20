@@ -1,0 +1,117 @@
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+	nodo/.style={circle, fill=white, draw=black,
+		inner sep=0pt, minimum size=5pt, line width=0.8pt},
+	etasta/.style={circle, draw=black, fill=white,
+		inner sep=1pt, font=\scriptsize, line width=0.6pt},
+	richiam/.style={thin, gray, dashed}]
+	
+	\def\L{2.8}    % lunghezza campata
+	\def\tw{0.22}  % semi-larghezza triangolo
+	\def\thA{0.38} % altezza triangolo cerniera (A)
+	\def\thR{0.32} % altezza triangolo carrello
+	\def\rn{0.08}  % raggio semicerchio al vertice
+	\def\bw{0.16}  % semi-distanza cerchietti carrello
+	\def\gw{0.30}  % semi-larghezza barra di terreno
+	\def\yd{-1.10} % quota linee di misura
+	
+	%% ── Trave ────────────────────────────────────────────────────
+	\draw[line width=2.2pt] (0,0) -- ({3*\L},0);
+	
+	%% ── Etichette nodi ───────────────────────────────────────────
+	\node[above=0.05] at (0,0)      {$A$};
+	\node[above=0.05] at ({\L},0)   {$B$};
+	\node[above=0.05] at ({2*\L},0) {$C$};
+	\node[above=0.05] at ({3*\L},0) {$D$};
+	
+	%% ── Numerazione campate ───────────────────────────────────────
+	\node[etasta] at ({0.5*\L},  0.38) {$1$};
+	\node[etasta] at ({1.5*\L},  0.38) {$2$};
+	\node[etasta] at ({2.5*\L},  0.38) {$3$};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% CERNIERA in A
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	(0,0)--++(-\tw,-\thA)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]({-\gw},{-\thA})--({\gw},{-\thA});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({\x},{-\thA})--++(-.09,-.11);
+	\node[nodo] at (0,0){};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% APPOGGIO INTERMEDIO in B
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	({\L},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]
+	({\L-\gw},{-\thR})--({\L+\gw},{-\thR});
+	\draw[line width=0.8pt]({\L-\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]({\L+\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]
+	({\L-\gw},{-\thR-0.24})--({\L+\gw},{-\thR-0.24});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({\L+\x},{-\thR-0.24})--++(-.09,-.11);
+	\draw[line width=0.8pt, fill=white]
+	({\L-\rn},0) arc(180:360:\rn) -- cycle;
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% APPOGGIO INTERMEDIO in C
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	({2*\L},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]
+	({2*\L-\gw},{-\thR})--({2*\L+\gw},{-\thR});
+	\draw[line width=0.8pt]({2*\L-\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]({2*\L+\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]
+	({2*\L-\gw},{-\thR-0.24})--({2*\L+\gw},{-\thR-0.24});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({2*\L+\x},{-\thR-0.24})--++(-.09,-.11);
+	\draw[line width=0.8pt, fill=white]
+	({2*\L-\rn},0) arc(180:360:\rn) -- cycle;
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% CARRELLO in D
+	%%═══════════════════════════════════════════════════════════════
+	\draw[line width=0.8pt]
+	({3*\L},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+	\draw[line width=0.8pt]
+	({3*\L-\gw},{-\thR})--({3*\L+\gw},{-\thR});
+	\draw[line width=0.8pt]({3*\L-\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]({3*\L+\bw},{-\thR-0.12}) circle(2.4pt);
+	\draw[line width=0.8pt]
+	({3*\L-\gw},{-\thR-0.24})--({3*\L+\gw},{-\thR-0.24});
+	\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+	\draw[thin]({3*\L+\x},{-\thR-0.24})--++(-.09,-.11);
+	\node[nodo] at ({3*\L},0){};
+	
+	%%═══════════════════════════════════════════════════════════════
+	%% QUOTATURA
+	%%═══════════════════════════════════════════════════════════════
+	\draw[richiam](0,      {-\thA-0.15})  -- (0,      {\yd+0.08});
+	\draw[richiam]({\L},   {-\thR-0.40})  -- ({\L},   {\yd+0.08});
+	\draw[richiam]({2*\L}, {-\thR-0.40})  -- ({2*\L}, {\yd+0.08});
+	\draw[richiam]({3*\L}, {-\thR-0.40})  -- ({3*\L}, {\yd+0.08});
+	
+	\draw[thin, gray, |<->|] (0,{\yd}) -- ({\L},{\yd});
+	\node[above=0.04, font=\small] at ({0.5*\L},{\yd}) {$\ell_1$};
+	\draw[thin, gray, |<->|] ({\L},{\yd}) -- ({2*\L},{\yd});
+	\node[above=0.04, font=\small] at ({1.5*\L},{\yd}) {$\ell_2$};
+	\draw[thin, gray, |<->|] ({2*\L},{\yd}) -- ({3*\L},{\yd});
+	\node[above=0.04, font=\small] at ({2.5*\L},{\yd}) {$\ell_3$};
+	
+\end{tikzpicture}
+\caption{Trave continua a tre campate di luci $\ell_1$, $\ell_2$,
+	$\ell_3$ ($n_e = 3$, $n_a = 4$): cerniera in $A$,
+	appoggi intermedi in $B$ e $C$, carrello in $D$.
+	Il cerchio in $A$ e $D$ indica il perno della
+	connessione; il semicerchio in $B$ e $C$ indica
+	che la trave scorre sull'appoggio senza interruzione
+	della continuità rotazionale.
+	Gradi di libertà $n = 9$, vincoli $m = 11$,
+	grado di iperstaticità $g_{\mathscr{i}} = 2$
+	pari al numero di appoggi intermedi.}
+\label{fig:trave_continua}
+\end{figure}

@@ -1,12 +1,10 @@
-\documentclass[10pt,twoside]{book}
+\documentclass[11pt,a4paper]{book}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[polutonikogreek, italian]{babel}
 \usepackage{lmodern}
 \usepackage[dvipsnames,svgnames,x11names]{xcolor}  % <-- aggiunto qui
 \usepackage{hyperref}
-\usepackage{todonotes}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -53,6 +51,8 @@
 % TIKZ
 % --------------------------------
 \input{Preambolo/tikz}
+\input{Preambolo/tikz-pol}
+\input{Preambolo/tikz-sgr}
 
 % --------------------------------
 % ALTRI PACCHETTI
@@ -140,18 +140,18 @@
 %\input{Parti/P01-Preliminari/A00-Introduzione/A00-Introduzione_Parte_I}
 %%% % -------------------------------------------------------------------------------------------------------------------
 %%%%%% ------- 1 - Notazioni 
-\input{Parti/P01-Preliminari/A01-Notazioni-Convenzioni/A01-Notazioni_Convenzioni}
-%%%%%% -------------------------------------------------------------------------------------------------------------------
-%%%%%%%
-%%%%%%%%%% ------- 4 - Vettori geometrici: liberi, applicati, polari e assiali
-\input{Parti/P01-Preliminari/A04-Vettori_Polari_Assiali_Liberi_Applicati/A04-Vettori_Polari_Assiali_Liberi_Applicati}
-%%%%%%%% -------------------------------------------------------------------------------------------------------------------
-%%%%%%%%%%% ------- 2 - Applicazioni lineari e dualità lineari
-\input{Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/A03-Applicazioni_Lineari_Dualita}
-%%%%%%%%% ------------------------------------------------------------------------------------------------------------------
-%%%% % -------------------------------------------------------------------------------------------------------------------
-%%%%%%%%% ------- 1 - Algebra delle matrici e sistemi lineari
-\input{Parti/P01-Preliminari/A02-Algebra_Matrici_Sistemi_Lineari/A02-Algebra_Matrici_Sistemi_Lineari}
+%\input{Parti/P01-Preliminari/A01-Notazioni-Convenzioni/A01-Notazioni_Convenzioni}
+%%%%%%% -------------------------------------------------------------------------------------------------------------------
+%%%%%%%%
+%%%%%%%%%%% ------- 4 - Vettori geometrici: liberi, applicati, polari e assiali
+%\input{Parti/P01-Preliminari/A04-Vettori_Polari_Assiali_Liberi_Applicati/A04-Vettori_Polari_Assiali_Liberi_Applicati}
+%%%%%%%%% -------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%% ------- 2 - Applicazioni lineari e dualità lineari
+%\input{Parti/P01-Preliminari/A03-Applicazioni_Lineari_Dualita/A03-Applicazioni_Lineari_Dualita}
+%%%%%%%%%% ------------------------------------------------------------------------------------------------------------------
+%%%%% % -------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%% ------- 1 - Algebra delle matrici e sistemi lineari
+%\input{Parti/P01-Preliminari/A02-Algebra_Matrici_Sistemi_Lineari/A02-Algebra_Matrici_Sistemi_Lineari}
 %%%%%%%% -------------------------------------------------------------------------------------------------------------------
 %%%%%%%%%
 
@@ -170,12 +170,12 @@
 %\input{Parti/P03-Meccanica_SR/C00-Introduzione/C00-Introduzione_Parte_II}
 %%% %%% -------------------------------------------------------------------------------------------------------------------
 %%%%% ------- 1 - Cinematica infinitesima del corpo rigido
-\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/C01-Cinematica_CR}
+%\input{Parti/P03-Meccanica_SR/C01-Cinematica_CR/C01-Cinematica_CR}
 %%%%% % -------------------------------------------------------------------------------------------------------------------
 %%%%%%
 %%%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%%% ------- 2 - Statica del corpo rigido
-\input{Parti/P03-Meccanica_SR/C02-Statica_CR/C02-Statica_CR}
+%\input{Parti/P03-Meccanica_SR/C02-Statica_CR/C02-Statica_CR}
 %%%%%%%%  ------------------------------------------------------------------------------------------------
 %%%%%%%
 %%%%%%% ------------------------------------------------------------------------------------------------
@@ -201,7 +201,7 @@
 %%%%%%%%%
 %%%%%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%%% ------- 7 - Classificazione cinematica e statica dei SCR
-%\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/C07-Classificazione_SCR}
+\input{Parti/P03-Meccanica_SR/C07-Classificazione_SCR/C07-Classificazione_SCR}
 %%%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%%%
 %%%%%%%%%
@@ -232,27 +232,27 @@
 %%%%%%%
 %%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%% ------- 10 - Assemblaggi di travi
-\input{Parti/P04-Travi_rigide/C03-Assemblaggi_travi/C03-Assemblaggi_travi}
+%\input{Parti/P04-Travi_rigide/C03-Assemblaggi_travi/C03-Assemblaggi_travi}
 %%%%% ------------------------------------------------------------------------------------------------
 %%%%%%
 %%
 %%%% ------------------------------------------------------------------------------------------------
 %%%%%% ------- 11 - Sistemi di travi con connessioni eterogenee
-\input{Parti/P04-Travi_rigide/C04_Sistemi_connessioni_eterogenee/C04_Sistemi_connessioni_eterogenee}
+%\input{Parti/P04-Travi_rigide/C04_Sistemi_connessioni_eterogenee/C04_Sistemi_connessioni_eterogenee}
 %%%%% ------------------------------------------------------------------------------------------------
 %%%%%%
 %%%% ------------------------------------------------------------------------------------------------
-%%%%%%% ------- 12 - Sistemi reticolari
-\input{Parti/P04-Travi_rigide/C05-Sistemi_reticolari/C05-Sistemi_reticolari}
-%%%%% ------------------------------------------------------------------------------------------------
-%%%%%%%
+%%%%%%%% ------- 12 - Sistemi reticolari
+%\input{Parti/P04-Travi_rigide/C05-Sistemi_reticolari/C05-Sistemi_reticolari}
 %%%%%% ------------------------------------------------------------------------------------------------
-%%%%%%%% ------- 13 - Telai piani
-\input{Parti/P04-Travi_rigide/C06-Telai_piani/C06-Telai_piani}
-%%%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%%%
-%%%%%%%
-%%%%%% ------------------------------------------------------------------------------------------------
+%%%%%%% ------------------------------------------------------------------------------------------------
+%%%%%%%%% ------- 13 - Telai piani
+%\input{Parti/P04-Travi_rigide/C06-Telai_piani/C06-Telai_piani}
+%%%%%%%% ------------------------------------------------------------------------------------------------
+%%%%%%%%%
+%%%%%%%%
+%%%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%% ------- 14 - TLV e Linee di Influenza per sistemi isostatici
 %\input{Parti/P04-Travi_rigide/C07-TLV_travi/C07-TLV_travi}
 %%%%% ------------------------------------------------------------------------------------------------
@@ -276,6 +276,18 @@
 %%%%%% ------------------------------------------------------------------------------------------------
 %%%%%%%%%
 %%
+
+
+%% ------------------------------------------------------------------------------------------------
+%%% APPENDICI
+%%% ------------------------------------------------------------------------------------------------
+%\appendix
+%%% ------------------------------------------------------------------------------------------------
+%%%
+%%% ------- 1 - Elementi di Statica Grafica
+%\input{Appendici/A01-statica_grafica/A01-statica_grafica}
+%
+
 %%
 %%% RIFERIMENTI BIBLIOGRAFICI
 %\include{Parti/P07_Bibliografia/t_bibliografia}

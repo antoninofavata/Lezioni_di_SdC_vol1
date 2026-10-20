@@ -1,0 +1,171 @@
+\begin{figure}[htbp]
+	\centering		
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Simbolo del carrello
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			% ── Parametri del simbolo (convenzioni del libro) ──
+			\def\xA{0.8}     % ascissa di A
+			\def\yA{0.0}     % ordinata di A
+			\def\tw{0.30}    % semi-larghezza triangolo
+			\def\thR{0.40}   % altezza triangolo carrello
+			\def\rn{0.10}    % raggio semicerchio (anellino a metà)
+			\def\bw{0.18}    % semi-distanza ruote
+			\def\gw{0.45}    % semi-larghezza barre di terra
+			
+			% ── Asse del carrello: retta verticale grigia continua ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, \yA-\thR-0.5) -- (\xA, 3.85);
+			
+			% ── Etichetta del luogo del CR ──
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (\xA+0.08, 2.50) {$C \in$ asse del carrello};
+			
+			
+			% ── Retta-luogo del CR: due tratti, sopra il corpo e sotto il suolo ──
+			\draw[dashed, gray!60, line width=0.6pt] 
+			(\xA, 2.05) -- (\xA, 2.85);
+			\draw[ gray!60, line width=0.6pt] 
+			(\xA, \yA-\thR) -- (\xA, \yA-\thR-0.15);
+			
+			% ── Corpo di fantasia (linea, senza fill) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.8, 0.0) (1.6, 0.15) (2.2, 0.7) (2.0, 1.7) 
+				(1.0, 2.0) (-0.1, 1.7) (-0.6, 1.0) (-0.3, 0.3)};
+			\node at (1.5, 1.1) {$\mathcal{C}$};
+			
+			% ── Spostamento ammesso: freccia grigia perpendicolare ad a ──
+			%\draw[->, gray, line width=0.9pt] 	(\xA+0.20, \yA) -- (\xA+1.60, \yA);
+			\node[above=5pt] at (\xA+2.50, \yA+0.5) 	{\footnotesize $\ub(A) \cdot \ab = 0$};
+			
+			% ── Simbolo del carrello: apice del triangolo IN A ──
+			
+			% Triangolo (apice in A, base in basso)
+			\draw (\xA, \yA) -- ++(-\tw, -\thR) -- ++(2*\tw, 0) -- cycle;
+			
+			% Prima barra (alla base del triangolo)
+			\draw (\xA-\gw, \yA-\thR) -- (\xA+\gw, \yA-\thR);
+			
+			% Due ruote (cerchietti vuoti)
+			\draw (\xA-\bw, \yA-\thR-0.13) circle (3pt);
+			\draw (\xA+\bw, \yA-\thR-0.13) circle (3pt);
+			
+			% Seconda barra (suolo)
+			\draw (\xA-\gw, \yA-\thR-0.26) -- (\xA+\gw, \yA-\thR-0.26);
+			
+			% Tratteggio del suolo
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yA-\thR-0.26) -- ++(-0.10, -0.13);
+			
+			% Semicerchio (anellino a metà) in A: rotazione consentita
+			\draw[fill=white] 
+			(\xA-\rn, \yA) arc(180:360:\rn) -- cycle;
+			
+			% Punto A (ridisegnato dopo il semicerchio così resta visibile)
+			%\fill (\xA, \yA) circle (1.5pt);
+			\node[above left=-1pt] at (\xA-0.02, \yA+0.05) {$A$};
+			
+			% ── Asse a sopra il corpo ──
+			\draw[->, thick] (\xA, 2.10) -- (\xA, 2.85);
+			\node[right=2pt] at (\xA, 2.85) {$\ab$};
+			
+			% ── Etichetta verticale "asse del carrello" ──
+			\node[gray, rotate=90, anchor=south, font=\footnotesize] 
+			at (\xA-0.12, 2.45) {asse del carrello};
+			
+			% ── Etichetta pannello ──
+			\node[anchor=north] at (\xA+2, \yA-\thR) {$(a)$};
+			
+		\end{scope}
+		
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — biella (realizzazione meccanica)
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5.5cm]
+			
+			% ── Parametri ──
+			\def\xA{0.8}     % ascissa di A (e del perno al suolo)
+			\def\yA{1.5}     % ordinata di A
+			\def\yG{0.0}     % ordinata del perno al suolo
+			\def\tw{0.30}    % semi-larghezza triangolo
+			\def\thA{0.40}   % altezza triangolo cerniera al suolo
+			\def\rn{0.10}    % raggio semicerchio in A
+			\def\gw{0.50}    % semi-larghezza barra di terra
+			
+			% ── Asse della biella: retta verticale dashed continua ──
+			%    (verrà parzialmente coperta da asta e triangolo)
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, \yG-\thA-0.5) -- (\xA, 4.50);
+			
+			% ── Corpo di fantasia (alzato, senza fill) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.8, 1.5) (1.6, 1.65) (2.2, 2.2) (2.0, 3.2) 
+				(1.0, 3.5) (-0.1, 3.2) (-0.6, 2.5) (-0.3, 1.8)};
+			\node at (0.95, 2.6) {$\mathcal{C}$};
+			
+			% ── Cinematica finita: arco ──
+			\draw[gray, line width=0.9pt] 
+			(\xA, \yG) ++(60:1.5) 
+			arc[start angle=60, end angle=120, radius=1.5];
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (1.6, 0.85) {cinematica finita};
+			
+			% ── Cinematica infinitesima: tangente ──
+			\draw[gray, dashed, line width=0.9pt] 
+			(-0.7, \yA) -- (2.4, \yA);
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (2.2, \yA+0.35) {cinematica infinitesima};
+			
+			% ── Asta della biella (copre il tratto centrale dell'asse) ──
+			\draw[line width=0.8pt] (\xA, \yA) -- (\xA, \yG);
+			
+			% ── Cerniera al suolo: triangolo + barra + tratteggio ──
+			\draw (\xA, \yG) -- ++(-\tw, -\thA) -- ++(2*\tw, 0) -- cycle;
+			\draw (\xA-\gw, \yG-\thA) -- (\xA+\gw, \yG-\thA);
+			\foreach \x in {-0.36,-0.18,0,0.18,0.36}
+			\draw[thin] (\xA+\x, \yG-\thA) -- ++(-0.10, -0.13);
+			
+			% ── Anellini (in quest'ordine, dopo asta e triangolo) ──
+			% Sommità della biella (in A): semicerchio bianco, concavità in basso
+			\draw[fill=white] 
+			(\xA-\rn, \yA) arc(180:360:\rn) -- cycle;
+			% Cerniera al suolo: perno pieno
+			\draw[fill=white] (\xA, \yG) circle (3.5pt);
+			
+			% ── Punto A (ridisegnato dopo il semicerchio) ──
+			%\fill (\xA, \yA) circle (1.5pt);
+			\node[above left=-1pt] at (\xA-0.02, \yA+0.05) {$A$};
+			
+			% ── Asse a sopra il corpo ──
+			\draw[->, thick] (\xA, 3.60) -- (\xA, 4.30);
+			\node[right=2pt] at (\xA, 4.30) {$\ab$};
+			
+			% ── Etichetta del luogo del CR ──
+			\node[gray, anchor=west, font=\footnotesize] 
+			at (\xA+0.08, 4.00) {$C \in$ asse della biella};
+			
+			% ── Etichetta pannello ──
+			\node[anchor=north] at (\xA+2, \yG-\thA) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption{Vincolo semplice di carrello: simbolo convenzionale (a)
+		e realizzazione meccanica tramite biella (b). L'equazione
+		di vincolo $\ub(A)\cdot\ab = 0$ annulla la componente di
+		spostamento di $A$ lungo l'asse $\ab$; le componenti libere
+		--- traslazione lungo $\ab^\perp$ e rotazione --- non sono
+		rappresentate. Per la biella, la cinematica finita è un
+		arco di circonferenza centrato nel perno al suolo;
+		nell'ipotesi di spostamenti infinitesimi essa coincide con
+		la tangente in $A$, e le prestazioni cinematiche della
+		biella si riducono a quelle del carrello. In entrambi i
+		casi il \CRa\ giace sulla retta per $A$ in direzione $\ab$.}
+	\label{fig:carrello}
+\end{figure}

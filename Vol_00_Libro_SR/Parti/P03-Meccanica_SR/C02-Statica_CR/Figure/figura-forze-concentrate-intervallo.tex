@@ -1,0 +1,64 @@
+\begin{figure}[htbp]
+		\centering
+		\subfloat[][\emph{due forze uguali ai terzi medi}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\draw[thick] (0,0) -- (3,0);
+				\fill (0,0) circle (1.5pt) node[above] {$0$};
+				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
+				% forze verso il basso
+				\fill (1,0) circle (1.5pt) node[above] {$\frac{\ell}{3}$};
+				\draw[->, thick] (1,0) -- (1,-1.2) node[left] {$F$};
+				\fill (2,0) circle (1.5pt) node[above] {$\frac{2\ell}{3}$};
+				\draw[->, thick] (2,0) -- (2,-1.2) node[right] {$F$};
+				% risultante verso il basso
+				\fill (1.5,0) circle (1.5pt);
+				\draw[->, thick, gray!50] (1.5,0) -- (1.5,-2.4)
+				node[left] {$2F$};
+				\draw[<->, thin] (0,1) -- (1.5,1)
+				node[midway, above] {$d=\frac{\ell}{2}$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{due forze diverse ai terzi medi}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\draw[thick] (0,0) -- (3,0);
+				\fill (0,0) circle (1.5pt) node[above] {$0$};
+				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
+				% forze verso il basso
+				\fill (1,0) circle (1.5pt) node[above] {$\frac{\ell}{3}$};
+				\draw[->, thick] (1,0) -- (1,-0.8) node[left] {$F$};
+				\fill (2,0) circle (1.5pt) node[above] {$\frac{2\ell}{3}$};
+				\draw[->, thick] (2,0) -- (2,-1.6) node[right] {$2F$};
+				% risultante verso il basso
+				\fill (1.667,0) circle (1.5pt);
+				\draw[->, thick, gray!50] (1.667,0) -- (1.667,-2.4)
+				node[left] {$3F$};
+				\draw[<->, thin] (0,1) -- (1.667,1)
+				node[midway, above] {$d=\frac{5\ell}{9}$};
+		\end{tikzpicture}}
+		\qquad
+		\subfloat[][\emph{tre forze uguali agli estremi e al centro}]{%
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+				\draw[thick] (0,0) -- (3,0);
+				\fill (0,0) circle (1.5pt) node[above] {$0$};
+				\fill (3,0) circle (1.5pt) node[above] {$\ell$};
+				% forze verso il basso
+				\draw[->, thick] (0,0) -- (0,-1.2) node[left] {$F$};
+				\fill (1.5,0) circle (1.5pt) node[above] {$\frac{\ell}{2}$};
+				\draw[->, thick] (1.5,0) -- (1.5,-1.2) node[left] {$F$};
+				\draw[->, thick] (3,0) -- (3,-1.2) node[left] {$F$};
+				% risultante verso il basso
+				\draw[->, thick, gray!50] (1.5,0) -- (1.5,-2.4)
+				node[left] {$3F$};
+				\draw[<->, thin] (0,1) -- (1.5,1)
+				node[midway, above] {$d=\frac{\ell}{2}$};
+		\end{tikzpicture}}
+		\caption{Sistemi di forze concentrate $-F_k\,\ab_y$
+			equiorientate su un intervallo di lunghezza $\ell$:
+			la risultante (in grigio) è applicata nel baricentro
+			dei punti di applicazione pesati con le rispettive
+			intensità.
+			\textbf{\textit{(a)}}~$|\fb|=2F$, $d=\ell/2$.
+			\textbf{\textit{(b)}}~$|\fb|=3F$, $d=5\ell/9$.
+			\textbf{\textit{(c)}}~$|\fb|=3F$, $d=\ell/2$.}
+		\label{fig:forze_concentrate_intervallo}
+	\end{figure}

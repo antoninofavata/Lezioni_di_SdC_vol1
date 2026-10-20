@@ -1,0 +1,248 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.95,
+					trave/.style={line width=1pt},
+					carico/.style={black, line width=0.6pt, >={Latex[length=2pt, width=1.5pt]}},
+					carRis/.style={gray!55!black, line width=0.9pt, >={Latex[length=3pt, width=2.5pt]}},
+					forza/.style={black, line width=1pt, >={Latex[length=3pt, width=2.5pt]}},
+					diagT/.style={black, line width=0.8pt},
+					diagTb/.style={gray!55!black, line width=0.6pt},
+					diagM/.style={black, line width=0.8pt},
+					diagMb/.style={gray!55!black, line width=0.6pt},
+					hatch/.style={gray!50, line width=0.3pt},
+					quota/.style={black, line width=0.4pt},
+					fibre/.style={gray!70, line width=0.3pt},
+					corda/.style={gray, line width=0.45pt},
+					coppia/.style={black, line width=0.7pt}
+					]
+					
+					% ----- parametri geometrici -----
+					\def\Lell{4}
+					\def\xMid{2}
+					\def\xZero{3}         % z_0 = 3l/4
+					\def\tw{0.15}
+					\def\thR{0.28}
+					\def\rn{0.06}
+					\def\rw{0.05}
+					\def\rCoppia{0.25}
+					\def\Lwing{0.12}
+					\def\AoffX{0.30}
+					\def\BoffX{0.30}
+					\def\yqi{-0.95}
+					\def\ylab{-3.40}
+					\def\gw{0.22}    % mezza larghezza della base (più larga del triangolo)
+					\def\bw{0.09}    % offset orizzontale delle due rotelle del carrello
+					\def\hh{0.10}    % altezza del tratteggio terra
+					
+					% ----- fattori di scala -----
+					\def\sT{1.8}
+					\def\sM{6.50}
+					
+					% ----- macro vincoli (riuso nei tre pannelli) -----
+					\def\cerniera#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\gw,-\thR) -- (#1+\gw,-\thR);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1,0) circle (\rn);}
+					\def\carrello#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (#1+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (#1-\gw,-\thR-2*\rw-0.04) -- (#1+\gw,-\thR-2*\rw-0.04);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1,0) circle (\rn);}
+					
+					
+					% =========================================================
+					% PANNELLO (a) — SCHEMA STRUTTURALE
+					% =========================================================
+					\begin{scope}[xshift=0cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						\draw[fibre, dashed] (0,-0.10) -- (\Lell,-0.10);
+						
+						
+						\cerniera{0}
+						\carrello{\Lell}
+						
+						\node[above left=-2pt, font=\small] at (-0.05,0) {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell+0.05,0) {$B$};
+						
+						% carico distribuito uniforme (nero)
+						% - linea superiore di raccordo (sopra le code)
+						% - linea inferiore di raccordo (sulle punte)
+						% - frecce a passo 0.4, incluse le estremità, escluso x=2 (risultante R)
+						\draw[carico] (0, 0.85) -- (\Lell, 0.85);
+						\draw[carico] (0, 0.08) -- (\Lell, 0.08);
+						\foreach \x in {0, 0.4, 0.8, 1.2, 1.6, 2.4, 2.8, 3.2, 3.6, 4.0} {
+							\draw[carico, ->] (\x, 0.85) -- (\x, 0.08);
+						}
+						\node[above, font=\small] at (\Lell-0.10, 0.85) {$\bar p$};
+						
+						
+						% risultante R = pl in mezzeria (grigio)
+						\draw[carRis, ->] (\xMid, 1.30) -- (\xMid, 0.06);
+						\node[above, font=\small, gray!55!black] at (\xMid+0.10, 1.30) {$R = \bar p \ell$};
+						
+						% coppia mu_A antioraria, semicerchio a destra di A
+						% freccia al vertice nord, punta verso ovest, ali divergono verso est
+						\def\xCA{\AoffX}
+						\draw[coppia] (\xCA, -\rCoppia)
+						arc[start angle=-90, end angle=90, radius=\rCoppia];
+						\pgfmathsetmacro{\tipxA}{\xCA}
+						\pgfmathsetmacro{\tipyA}{\rCoppia}
+						\draw[coppia] (\tipxA, \tipyA)
+						-- ({\tipxA + \Lwing*cos(25)},  {\tipyA + \Lwing*sin(25)});
+						\draw[coppia] (\tipxA, \tipyA)
+						-- ({\tipxA + \Lwing*cos(-25)}, {\tipyA + \Lwing*sin(-25)});
+						\node[below right, font=\small] at (\xCA+\rCoppia-0.08, \rCoppia*0.5-0.2) {$\mu(A)$};
+						
+						% coppia mu_B antioraria, semicerchio a sinistra di B
+						\def\xCB{\Lell - \BoffX}
+						\draw[coppia] (\xCB, \rCoppia)
+						arc[start angle=90, end angle=270, radius=\rCoppia];
+						\pgfmathsetmacro{\tipxB}{\xCB}
+						\pgfmathsetmacro{\tipyB}{-\rCoppia}
+						\draw[coppia] (\tipxB, \tipyB)
+						-- ({\tipxB + \Lwing*cos(155)}, {\tipyB + \Lwing*sin(155)});
+						\draw[coppia] (\tipxB, \tipyB)
+						-- ({\tipxB + \Lwing*cos(205)}, {\tipyB + \Lwing*sin(205)});
+						\node[below left, font=\small] at (\xCB-\rCoppia+0.08, \rCoppia*0.5-0.2) {$\mu(B)$};
+						
+						% quote
+						\draw[quota] (0, \yqi+0.10) -- (0, \yqi-0.10);
+						\draw[quota] (\xMid, \yqi+0.10) -- (\xMid, \yqi-0.10);
+						\draw[quota] (\Lell, \yqi+0.10) -- (\Lell, \yqi-0.10);
+						\draw[quota, <->, >={Latex[length=2pt, width=1.5pt]}] (0, \yqi) -- (\xMid, \yqi);
+						\draw[quota, <->, >={Latex[length=2pt, width=1.5pt]}] (\xMid, \yqi) -- (\Lell, \yqi);
+						\node[below, font=\small] at (\xMid/2, \yqi-0.05) {$\ell/2$};
+						\node[below, font=\small] at (\xMid + \xMid/2, \yqi-0.05) {$\ell/2$};
+						
+						\node[font=\small] at (\xMid, -2.00) {(a)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (b) — DIAGRAMMA DEL TAGLIO
+					% =========================================================
+					\begin{scope}[xshift=5.5cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						\draw[fibre, dashed] (0,-0.10) -- (\Lell,-0.10);
+						\cerniera{0}
+						\carrello{\Lell}
+						\node[above left=-2pt, font=\small] at (-0.05,0) {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell+0.05,0) {$B$};
+						
+						% T agli estremi in unità di disegno
+						\pgfmathsetmacro{\TAz}{0.75*\sT}    % T(0) = +3/4 pl
+						\pgfmathsetmacro{\TBz}{-0.25*\sT}   % T(l) = -1/4 pl
+						
+						% CASO (b) GRIGIO — costante a tratti
+						\draw[diagTb] (0, \TAz) -- (\xMid, \TAz)
+						-- (\xMid, \TBz) -- (\Lell, \TBz);
+						
+						% hatching del caso (a)
+						\foreach \x in {0.10, 0.30, ..., 3.90} {
+							\pgfmathsetmacro{\Tval}{(0.75 - 0.25*\x)*\sT}
+							\draw[hatch] (\x, 0) -- (\x, \Tval);
+						}
+						
+						% CASO (a) NERO — lineare
+						\draw[diagT] (0, \TAz) -- (\Lell, \TBz);
+						\draw[diagT] (0, 0) -- (0, \TAz);
+						\draw[diagT] (\Lell, 0) -- (\Lell, \TBz);
+						
+						% segni
+						\node[font=\small] at (0.50, 0.55) {$\oplus$};
+						\node[font=\small] at (3.6, -0.15) {$\ominus$};
+						
+						% valori notevoli
+						\node[left, font=\small] at (-0.05, \TAz) {$\tfrac{3}{4}\bar p \ell$};
+						\node[right, font=\small] at (\Lell+0.05, \TBz) {$\tfrac{1}{4}\bar p \ell$};
+						\node[right, font=\footnotesize, gray!55!black]
+						at (\xMid+0.05, 0.45*\sT) {$R$};
+						\node[above, font=\footnotesize] at (\xZero, 0.05) {$z_0$};
+						
+						\node[font=\small] at (\xMid, -2.00) {(b)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (c) — DIAGRAMMA DEL MOMENTO
+					% =========================================================
+					\begin{scope}[xshift=11.0cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						\draw[fibre, dashed] (0,-0.10) -- (\Lell,-0.10);
+						\cerniera{0}
+						\carrello{\Lell}
+						\node[above left=-2pt, font=\small] at (-0.05,0) {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell+0.05,0) {$B$};
+						
+						% valori notevoli del momento (y_dis = -M*sM; conv. italiana: M+ sotto)
+						\pgfmathsetmacro{\MAdis}{0.125*\sM}     % M(A) = -1/8 -> y=+5/8
+						\pgfmathsetmacro{\MBdis}{-0.125*\sM}    % M(B) = +1/8 -> y=-5/8
+						\pgfmathsetmacro{\MmidAdis}{-0.125*\sM} % M_a(l/2) = +1/8 -> y=-5/8
+						\pgfmathsetmacro{\MmidBdis}{-0.25*\sM}  % M_b(l/2) = +1/4 -> y=-5/4
+						\pgfmathsetmacro{\MmaxDis}{-0.15625*\sM}% M_max = 5/32 -> y=-25/32
+						
+						% CASO (b) GRIGIO — spezzata
+						\draw[diagMb] (0, \MAdis) -- (\xMid, \MmidBdis) -- (\Lell, \MBdis);
+						\draw[diagMb] (0, 0) -- (0, \MAdis);
+						\draw[diagMb] (\Lell, 0) -- (\Lell, \MBdis);
+						
+						% CORDA: linea grigia sottile da M(A) a M(B)
+						\draw[corda] (0, \MAdis) -- (\Lell, \MBdis);
+						
+						% TANGENTE alla parabola in mezzeria, parallela alla corda
+						\pgfmathsetmacro{\slopeC}{(\MBdis - \MAdis)/\Lell}
+						\pgfmathsetmacro{\tgL}{0.75}
+						\pgfmathsetmacro{\tgXa}{\xMid - \tgL}
+						\pgfmathsetmacro{\tgXb}{\xMid + \tgL}
+						\pgfmathsetmacro{\tgYa}{\MmidAdis - \slopeC*\tgL}
+						\pgfmathsetmacro{\tgYb}{\MmidAdis + \slopeC*\tgL}
+						\draw[corda] (\tgXa, \tgYa) -- (\tgXb, \tgYb);
+						
+						% hatching della parabola
+						\foreach \x in {0.10, 0.30, ..., 3.90} {
+							\pgfmathsetmacro{\xn}{\x/\Lell}
+							\pgfmathsetmacro{\Mval}{(0.125 - 0.75*\xn + 0.5*\xn*\xn)*\sM}
+							\draw[hatch] (\x, 0) -- (\x, \Mval);
+						}
+						
+						% CASO (a) NERO — parabola
+						\draw[diagM] (0, \MAdis)
+						\foreach \x in {0.2, 0.4, ..., 3.8} {
+							-- ({\x}, {(0.125 - 0.75*\x/\Lell + 0.5*(\x/\Lell)*(\x/\Lell))*\sM})
+						}
+						-- (\Lell, \MBdis);
+						\draw[diagM] (0, 0) -- (0, \MAdis);
+						\draw[diagM] (\Lell, 0) -- (\Lell, \MBdis);
+						
+						% etichette valori notevoli
+						\node[left, font=\small]  at (-0.05, \MAdis) {$\tfrac{\bar p \ell^2}{8}$};
+						\node[right, font=\small] at (\Lell+0.05, \MBdis) {$\tfrac{\bar p \ell^2}{8}$};
+						\node[below, font=\footnotesize] at (\xZero+0.2, \MmaxDis-0.06)	{$\tfrac{5\,\bar p\ell^2}{32}$};
+						\node[ above, font=\small, gray!55!black] at (\xMid+0.05, \MmidBdis-0.02)	{$\tfrac{\bar p\ell^2}{4}$};
+						
+						\node[font=\small] at (\xMid, -2.00) {(c)};
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Trave appoggiata con carico uniforme $\bar p$ e coppie
+				antiorarie $\mu(A) = \mu(B) = \bar p \ell^2/8$ agli estremi
+				(caso~a, tratto nero) confrontata con la stessa trave in cui
+				il carico è sostituito dalla risultante $R = \bar p \ell$
+				in mezzeria (caso~b, tratto grigio): (a)~schema strutturale;
+				(b)~diagrammi del taglio; (c)~diagrammi del momento, con la
+				corda $M(A)$--$M(B)$ e la tangente alla parabola in $\ell/2$
+				(linee grigie sottili) parallele tra loro.}
+			\label{fig:stat_sovrapposizione_01}
+		\end{figure}

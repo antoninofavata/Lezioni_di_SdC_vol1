@@ -1,0 +1,74 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:dualita_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-dualita}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Parallelo fra statica grafica e cinematica grafica.
+% (a) forze F in l/3 e 2F in 2l/3 (l = 4.5); polo sulla retta per il vertice 0 ortogonale alle forze, H = 2.0:
+%     il primo lato b_0 e' ortogonale alle forze, e l'ultimo lo incontra in R, sulla retta d'azione della
+%     risultante 3F, a d = 5 l/9 = 2.500;
+% (b) catena di tre corpi: il corpo 0 e' fermo, il corpo 1 ruota di theta_1 attorno al centro assoluto C_1
+%     (in l/3), il corpo 2 ruota rispetto a 1 di 2 theta_1 attorno al centro relativo C_12 (in 2l/3): la
+%     spezzata degli spostamenti trasversali ha le stesse pendenze del poligono funicolare (theta_1 = F/H),
+%     e la retta del corpo 2 incontra la configurazione iniziale nel centro assoluto C_2, in 5 l/9; i tre
+%     centri sono allineati e theta_2/theta_1 = |C_1 C_12|/|C_2 C_12| = 3 (verificato).
+\begin{tikzpicture}[x=1.6cm,y=1.0cm,font=\footnotesize]
+\begin{scope}
+\draw[polretta] (1.500,0.950) -- (1.500,-2.250) node[anchor=north,inner sep=1.5pt,black] {$a_1$};
+\draw[polretta] (3.000,0.950) -- (3.000,-2.250) node[anchor=north,inner sep=1.5pt,black] {$a_2$};
+\draw[polretta] (2.500,0.950) -- (2.500,-2.250) node[anchor=north,inner sep=1.5pt,black] {$a$};
+\draw[polforza] (1.500,1.370) -- (1.500,0.950) node[pos=0.3,anchor=east,inner sep=3pt] {$F$};
+\draw[polforza] (3.000,1.790) -- (3.000,0.950) node[pos=0.3,anchor=west,inner sep=3pt] {$2F$};
+\draw[polrisultante] (2.500,2.210) -- (2.500,0.950) node[pos=0.25,anchor=east,inner sep=3pt,black] {$3F$};
+\draw[polcostruzione] (1.500,0.000) -- (2.850,0.000);
+\draw[polcostruzione] (3.000,-0.750) -- (2.350,0.225);
+\draw[pollato] (0,0) -- (1.500,0.000) -- (3.000,-0.750) -- (3.750,-1.875);
+\pic at (1.500,0.000) {polpunto};
+\pic at (3.000,-0.750) {polpunto};
+\pic at (2.500,0.000) {polpunto};
+\node[anchor=south east,inner sep=2.5pt] at (1.500,0.000) {$A_1$};
+\node[anchor=north east,inner sep=2.5pt] at (3.000,-0.750) {$A_2$};
+\node[anchor=south west,inner sep=2.5pt] at (2.500,0.000) {$R$};
+\node[anchor=south,inner sep=2.5pt] at (0.600,0.000) {$b_0$};
+\node[anchor=north east,inner sep=1.5pt] at (2.175,-0.338) {$b_1$};
+\node[anchor=south west,inner sep=2pt] at (3.413,-1.369) {$b_2$};
+\node[anchor=east] at (-0.200,-0.800) {(a)};
+\begin{scope}[shift={(5.0,0.75)},x=0.75cm,y=0.75cm]
+\draw[polraggio] (0.000,0.000) -- (2.000,0.000);
+\draw[polraggio] (0.000,-1.000) -- (2.000,0.000);
+\draw[polraggio] (0.000,-3.000) -- (2.000,0.000);
+\draw[polforza] (0,0) -- (0,-1);
+\draw[polforza] (0,-1) -- (0,-3);
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.000,-1.000) {polpunto};
+\pic at (0.000,-3.000) {polpunto};
+\pic at (2.000,0.000) {polpolo};
+\node[anchor=east,inner sep=3pt] at (0,0) {$0$};
+\node[anchor=east,inner sep=3pt] at (0,-1) {$1$};
+\node[anchor=east,inner sep=3pt] at (0,-3) {$2$};
+\node[anchor=west,inner sep=3.5pt] at (2.000,0.000) {$P$};
+\draw[polcostruzione] (0,-3) -- (0,-3.75) (2,0) -- (2,-3.75);
+\draw[polquota] (0,-3.6) -- (2,-3.6) node[midway,anchor=north,inner sep=2.5pt] {$H$};
+\end{scope}
+\end{scope}
+\begin{scope}[shift={(0,-5.0)}]
+\draw[polsuolo] (0,0) -- (4.500,0.000);
+\draw[polcostruzione] (3.000,0.750) -- (2.350,-0.225);
+\draw[polcostruzione] (3.000,0.000) -- (3.000,0.750);
+\draw[sgrcorpo] (0,0) -- (1.500,0.000) -- (3.000,0.750) -- (3.750,1.875);
+\fill (1.500,0.000) circle (1.5pt);
+\fill (2.500,0.000) circle (1.5pt);
+\pic at (3.000,0.000) {sgrcentro};
+\pic at (3.000,0.750) {polpunto};
+\node[anchor=north,inner sep=3.5pt] at (1.500,0.000) {$C_1$};
+\node[anchor=north,inner sep=3.5pt] at (2.500,0.000) {$C_2$};
+\node[anchor=north,inner sep=3.5pt] at (3.000,0.000) {$C_{12}$};
+\node[anchor=south,inner sep=2.5pt] at (0.600,0.000) {corpo $0$};
+\node[anchor=south east,inner sep=1.5pt] at (2.400,0.450) {corpo $1$};
+\node[anchor=west,inner sep=3.5pt] at (3.450,1.425) {corpo $2$};
+\draw[sgrrot] (1.500,0.000) ++(1.0cm,0) arc (0:17.35:1.0cm);
+\node[anchor=west,inner sep=1.5pt] at ([shift={(1.03cm,0.14cm)}]1.5,0) {$\vartheta_1$};
+\draw[sgrrot] (2.500,0.000) ++(1.3cm,0) arc (0:43.15:1.3cm);
+\node[anchor=west,inner sep=1.5pt] at ([shift={(1.3cm,0.42cm)}]2.500,0) {$\vartheta_2$};
+\node[anchor=east] at (-0.200,0.800) {(b)};
+\end{scope}
+\end{tikzpicture}%

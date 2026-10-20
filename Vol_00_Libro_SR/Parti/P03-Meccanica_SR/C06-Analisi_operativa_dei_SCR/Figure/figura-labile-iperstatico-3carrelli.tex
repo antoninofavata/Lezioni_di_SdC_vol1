@@ -1,0 +1,155 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			
+			\def\L{4.0}
+			\def\F{0.9}     % ← era 0.6 (forze allungate)
+			\def\sv{0.30}
+			\def\rea{0.55}
+			\def\ced{0.55}  % ← nuovo: lunghezza frecce cedimenti
+			
+		
+			% ============================================================
+			% PANNELLO (a) — dati: vincoli, cedimenti, carichi
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% trave
+				\draw[line width=1.5pt] (0,0) -- (\L,0);
+				
+				% --- carrello verticale in A ---
+				\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+				\draw[thick] (-0.15,-0.44) circle (0.07);
+				\draw[thick] ( 0.15,-0.44) circle (0.07);
+				\draw[thick] (-0.32,-0.52) -- (0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (\x,-0.52) -- (\x-0.10,-0.66);
+				}
+				
+				% --- carrello verticale in C ---
+				\draw[thick] (\L/2,0) -- (\L/2-0.22,-0.38)	-- (\L/2+0.22,-0.38) -- cycle;
+				\draw[thick] (\L/2-0.15,-0.44) circle (0.07);
+				\draw[thick] (\L/2+0.15,-0.44) circle (0.07);
+				\draw[thick] (\L/2-0.32,-0.52) -- (\L/2+0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (\L/2+\x,-0.52) -- (\L/2+\x-0.10,-0.66);
+				}
+				
+				% --- carrello verticale in B ---
+				\draw[thick] (\L,0) -- (\L-0.22,-0.38)	-- (\L+0.22,-0.38) -- cycle;
+				\draw[thick] (\L-0.15,-0.44) circle (0.07);
+				\draw[thick] (\L+0.15,-0.44) circle (0.07);
+				\draw[thick] (\L-0.32,-0.52) -- (\L+0.32,-0.52);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[thin] (\L+\x,-0.52) -- (\L+\x-0.10,-0.66);
+				}
+				
+				% --- perni/mezzaluna ed etichette dei punti ---
+				% anellino in A (estremità)
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,0) {};
+				\node[above left, font=\scriptsize] at (0,0) {$A$};
+				
+				% mezzaluna in C (carrello a mezzeria, non interrompe la continuità rotazionale)
+				\fill[white] (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[thick] (\L/2-0.08,0) arc(180:360:0.08);
+				\node[above left, font=\scriptsize] at (\L/2,0.10) {$C$};
+				
+				% anellino in B (estremità)
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\L,0) {};
+				\node[above right, font=\scriptsize] at (\L,0) {$B$};
+				
+				% --- cedimenti: frecce in asse ai vincoli, verso l'alto ---
+				\draw[->, thick] (0,0)    -- (0,\ced)	node[right, font=\scriptsize] {$\bar{v}_A$};
+				\draw[->, thick] (\L/2,0) -- (\L/2,\ced)	node[right, font=\scriptsize] {$\bar{v}_C$};
+				\draw[->, thick] (\L,0)   -- (\L,\ced)	node[right, font=\scriptsize] {$\bar{v}_B$};
+				
+				% --- forze attive in C ---
+				\draw[->, line width=1.2pt] (\L/2,0) -- ({\L/2+\F},0)	node[above, font=\scriptsize] {$F_x$};
+				\draw[->, line width=1.2pt] (\L/2,0) -- (\L/2,-\F)
+				node[right, font=\scriptsize] {$F_y$};
+				
+				% --- quote sotto i carrelli (immutate) ---
+				\draw[<->, thin] (0,-1.05) -- (\L/2,-1.05)	node[midway, above=1pt, font=\scriptsize] {$\ell/2$};
+				\draw[<->, thin] (\L/2,-1.05) -- (\L,-1.05)	node[midway, above=1pt, font=\scriptsize] {$\ell/2$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (\L/2,-1.55) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — meccanismo u_1 e autoequilibrio r_1
+			% ============================================================
+			\begin{scope}[xshift={\L+6.0cm}]
+				
+				% trave traslata orizzontalmente (meccanismo)
+				\draw[gray!50, line width=1.0pt] (0,0) -- (\L,0);
+				\draw[line width=1.5pt] (\sv,0) -- ({\L+\sv},0);
+				
+				% carrelli (grigi, in posizione originale)
+				\foreach \xp in {0,\L/2,\L}{
+					\draw[gray!50, thick] (\xp,0) -- (\xp-0.22,-0.38)
+					-- (\xp+0.22,-0.38) -- cycle;
+					\draw[gray!50, thick] (\xp-0.15,-0.44) circle (0.07);
+					\draw[gray!50, thick] (\xp+0.15,-0.44) circle (0.07);
+					\draw[gray!50, thick] (\xp-0.32,-0.52)
+					-- (\xp+0.32,-0.52);
+					\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+						\draw[gray!50, thin] (\xp+\x,-0.52)
+						-- (\xp+\x-0.10,-0.66);
+					}
+				}
+				
+				% perni vuoti grigi in A e B (estremità) e mezzaluna grigia in C (mezzeria),
+				% sulla configurazione di riferimento
+				\draw[gray!60, fill=white, thick] (0,0)  circle (2.5pt);
+				\draw[gray!60, fill=white, thick] (\L,0) circle (2.5pt);
+				
+				\fill[white]          (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[gray!60, thick] (\L/2-0.08,0) arc(180:360:0.08);
+				
+				% etichette
+				\node[gray!70, above,  font=\scriptsize] at (0,0)        {$A$};
+				\node[gray!70, above left,       font=\scriptsize] at (\L/2,0.0)  {$C$};
+				\node[gray!70, above, font=\scriptsize] at (\L,0)       {$B$};
+				
+				
+				% anellini e mezzaluna sulla configurazione traslata
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\sv,0) {};
+				\fill[white] ({\L/2+\sv-0.08},0) arc(180:360:0.08) -- cycle;
+				\draw[thick] ({\L/2+\sv-0.08},0) arc(180:360:0.08);
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at ({\L+\sv},0) {};
+				
+				% freccia traslazione (meccanismo u_1): coda in A, punta in A'
+				\draw[->, thick] (0,-1.05) -- (\sv,-1.05)
+				node[right, font=\scriptsize] {$\bm{u}_1$: traslazione $\ab_x$};
+				
+				
+				
+				% reazioni di autoequilibrio r_1: -1/2 in A, +1 in C, -1/2 in B
+				\draw[<-, thick] (0,-\rea) -- (0,0)
+				node[below=12pt, font=\scriptsize] {$\tfrac{1}{2}$};
+				\draw[<-, thick] (\L/2,\rea) -- (\L/2,0)
+				node[above=12pt, font=\scriptsize] {$1$};
+				\draw[<-, thick] (\L,-\rea) -- (\L,0)
+				node[below=12pt, font=\scriptsize] {$\tfrac{1}{2}$};
+				
+				% etichette punti
+				\fill (\sv+0.1,0)        node[below,  font=\scriptsize] {$A'$};
+				\fill ({\L/2+\sv+0.1},0) node[below,       font=\scriptsize] {$C'$};
+				\fill ({\L+\sv+0.1},0)   node[below, font=\scriptsize] {$B'$};
+				
+				\node[font=\scriptsize] at (\L/2,-1.55) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Trave con tre carrelli verticali paralleli: {(a)}
+			dati del problema ; {(b)}
+			meccanismo $\bm{u}_1$ (traslazione orizzontale) e
+			stato di autoequilibrio $\bm{r}_1$
+			(reazioni verticali a risultante e momento nulli)				.}
+		\label{fig:labile_iperstatico_3carrelli}
+	\end{figure}

@@ -1,0 +1,58 @@
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt, line width=0.8pt},
+		tacca/.style={thin, gray!70}]
+		
+		\def\L{6.0}
+		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+		
+		\draw[line width=2.2pt] (0,0) -- (\L,0);
+		\node[above=2pt] at (0,0)    {$A$};
+		\node[above=2pt] at (\L/2,0) {$C$};
+		\node[above=2pt] at (\L,0)   {$B$};
+		
+		%% cerniera in A
+		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+		\draw (-\gw,-\thA) -- (\gw,-\thA);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+		\node[nodo] at (0,0) {};
+		
+		%% carrello intermedio in C (mezzaluna)
+		\draw (\L/2,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw (\L/2-\gw,-\thR) -- (\L/2+\gw,-\thR);
+		\draw (\L/2-\bw,-\thR-0.12) circle (2.4pt);
+		\draw (\L/2+\bw,-\thR-0.12) circle (2.4pt);
+		\draw (\L/2-\gw,-\thR-0.24) -- (\L/2+\gw,-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\L/2+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+		\fill[white] (\L/2-\sr,0) arc(180:360:\sr) -- cycle;
+		\draw (\L/2-\sr,0) arc(180:360:\sr);
+		
+		%% carrello terminale in B (perno)
+		\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
+		\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
+		\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
+		\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+		\node[nodo] at (\L,0) {};
+		
+		\draw[tacca] (0,    -1.05) -- (0,    -0.85);
+		\draw[tacca] (\L/2, -1.05) -- (\L/2, -0.85);
+		\draw[tacca] (\L,   -1.05) -- (\L,   -0.85);
+		\draw[<->, thin] (0,-0.95)    -- (\L/2,-0.95)
+		node[midway, above=2pt] {$\ell$};
+		\draw[<->, thin] (\L/2,-0.95) -- (\L,-0.95)
+		node[midway, above=2pt] {$\ell$};
+		
+	\end{tikzpicture}
+	\caption{Trave continua su tre appoggi
+		(\ESEref{ex:C05_trave_continua}): cerniera in $A$, carrelli
+		verticali in $C$ e $B$. Sistema iperstatico di grado uno.}
+	\label{fig:C05_trave_continua}
+\end{figure}

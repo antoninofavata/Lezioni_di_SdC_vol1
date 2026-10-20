@@ -1,0 +1,64 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:sbalzo_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-sbalzo}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Campata con sbalzo ABE della trave di Gerber (par:esempio_gerber del capitolo Sistemi a connessioni
+% eterogenee): cerniera in A (x = 0), carrello in B (x = l), forza p l/2 verso il basso in E (x = 3 l/2);
+% l = 3.0 unita' di disegno; la forza p l/2 vale 1 unita' nel poligono delle forze.
+% Polo di componenti H = 2.0, V_0 = 0.6; A_0 = (0.000,-0.000), A_1 = (4.500,-1.350), A_2 = (3.000,-1.650) (sul prolungamento
+% all'indietro dell'ultimo lato). Il raggio per il polo parallelo al lato di chiusura c = A_0 A_2 incontra la
+% linea dei carichi in m, FUORI dal segmento 0 1: r_B = 1m = 1.5 (verso l'alto), r_A = m0 = -0.5 (verso il basso),
+% cioe' V_B = 3 p l/4, V_A = - p l/4 (verificato).
+% (a) trave, rette d'azione, poligono funicolare e lato di chiusura; (b) linea dei carichi, polo, punto m, reazioni.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+\begin{scope}
+\draw[polretta] (0.000,0.800) -- (0.000,-2.100) node[anchor=north,inner sep=1.5pt,black] {$a_A$};
+\draw[polretta] (3.000,0.800) -- (3.000,-2.100) node[anchor=north,inner sep=1.5pt,black] {$a_B$};
+\draw[polretta] (4.500,1.550) -- (4.500,-2.100) node[anchor=north,inner sep=1.5pt,black] {$a_1$};
+\draw[polforza] (4.500,2.250) -- (4.500,1.580) node[pos=0.3,anchor=west,inner sep=3pt] {$\tfrac{1}{2}\,p\ell$};
+\begin{scope}[shift={(3.000,1.550)}]
+\draw[polvincolo] (0,0) -- (-0.20,-0.30) -- (0.20,-0.30) -- cycle;
+\draw[line width=.5pt] (-0.10,-0.36) circle (0.06) (0.10,-0.36) circle (0.06);
+\draw[polvincolo] (-0.36,-0.42) -- (0.36,-0.42);
+\foreach \k in {0,...,5}{\draw[line width=.35pt] ({-0.30+0.12*\k},-0.42) -- ++(-0.10,-0.12);}
+% mezzaluna: semicerchio con il diametro sul lembo inferiore della trave (rotazione consentita)
+\draw[fill=white,line width=.5pt] (-0.085,-0.8pt) arc[start angle=180,end angle=360,radius=0.085] -- cycle;
+\end{scope}
+\draw[sgrtrave] (0.000,1.550) -- (4.500,1.550);
+\pic at (0.000,1.550) {polcerniera};
+\node[anchor=south east,inner sep=3pt] at (0.000,1.550) {$A$};
+\node[anchor=south,inner sep=4pt] at (3.000,1.550) {$B$};
+\node[anchor=south east,inner sep=3pt] at (4.500,1.550) {$E$};
+\draw[polquota] (0.000,2.800) -- (3.000,2.800) node[midway,anchor=south,inner sep=2.5pt] {$\ell$};
+\draw[polquota] (3.000,2.800) -- (4.500,2.800) node[midway,anchor=south,inner sep=2.5pt] {$\ell/2$};
+\draw[polchiusura] (0.000,-0.000) -- (3.000,-1.650) node[pos=0.5,anchor=north east,inner sep=1.5pt] {$c$};
+\draw[pollato] (0.000,-0.000) -- (4.500,-1.350) -- (3.000,-1.650);
+\pic at (0.000,-0.000) {polpunto};
+\pic at (4.500,-1.350) {polpunto};
+\pic at (3.000,-1.650) {polpunto};
+\node[anchor=east,inner sep=3.5pt] at (0.000,-0.000) {$A_0$};
+\node[anchor=west,inner sep=3.5pt] at (4.500,-1.350) {$A_1$};
+\node[anchor=north east,inner sep=2.5pt] at (3.000,-1.650) {$A_2$};
+\node[anchor=south,inner sep=2.5pt] at (2.475,-0.742) {$b_0$};
+\node[anchor=north,inner sep=2.5pt] at (3.825,-1.485) {$b_1$};
+\node at (2.250,-3.050) {(a)};
+\end{scope}
+\begin{scope}[shift={(7.4,0.35)}]
+\draw[polraggio] (0.000,0.000) -- (2.000,-0.600);
+\draw[polraggio] (0.000,-1.000) -- (2.000,-0.600);
+\draw[polchiusura] (0.000,0.500) -- (2.000,-0.600);
+\draw[polforza] (0.000,0.000) -- (0.000,-1.000) node[pos=0.5,anchor=west,inner sep=2.5pt,font=\scriptsize] {$\tfrac{1}{2}\,p\ell$};
+\pic at (0.000,0.000) {polpunto};
+\pic at (0.000,-1.000) {polpunto};
+\pic at (2.000,-0.600) {polpolo};
+\draw[fill=white,line width=.6pt] (0.000,0.500) circle (1.5pt);
+\draw[polcostruzione] (0.000,0.500) -- (-1.370,0.500) (0.000,0.000) -- (-1.370,0.000) (0.000,-1.000) -- (-0.620,-1.000);
+\draw[polestremo] (-0.500,-1.000) -- (-0.500,0.500) node[pos=0.4,anchor=east,inner sep=3pt] {$\rb_B$};
+\draw[polestremo] (-1.250,0.500) -- (-1.250,0.000) node[midway,anchor=east,inner sep=3pt] {$\rb_A$};
+\node[anchor=west,inner sep=3pt] at (0.000,0.120) {$0$};
+\node[anchor=north,inner sep=3.5pt] at (0.000,-1.000) {$1$};
+\node[anchor=south west,inner sep=2pt] at (0.000,0.500) {$m$};
+\node[anchor=west,inner sep=3.5pt] at (2.000,-0.600) {$P$};
+\node at (0.500,-3.400) {(b)};
+\end{scope}
+\end{tikzpicture}%

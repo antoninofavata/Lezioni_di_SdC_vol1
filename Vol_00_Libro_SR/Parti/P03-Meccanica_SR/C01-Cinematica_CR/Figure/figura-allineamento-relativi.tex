@@ -1,0 +1,40 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.1]
+		\coordinate (Ci)  at (1.000, 0.500);
+		\coordinate (Cj)  at (4.500, 0.000);
+		\coordinate (Ck)  at (1.500, 3.500);
+		\coordinate (Cij) at (5.550, -0.150);
+		\coordinate (Cik) at (1.350,  2.600);
+		\coordinate (Cjk) at (3.450,  1.225);
+		\coordinate (ext1) at (0.090,  3.425);
+		\coordinate (ext2) at (4.710,  0.400);
+		\draw[gray!40, dashed] (-0.050, 0.650) -- (Ci) -- (Cj) -- (Cij) -- (6.100, -0.300);
+		\draw[gray!40, dashed] (0.850, -0.500) -- (Ci) -- (Ck) -- (1.650, 4.400);
+		\draw[gray!40, dashed] (5.400, -1.050) -- (Cj) -- (Ck) -- (0.600, 4.550);
+		\draw[thick, gray!60] (ext1) -- (Cik) -- (Cjk) -- (Cij) -- (6.600, -0.838);
+		\fill (Ci) circle (2.5pt);
+		\fill (Cj) circle (2.5pt);
+		\fill (Ck) circle (2.5pt);
+		\node[below left=3pt] at (Ci) {$C_i$};
+		\node[below=4pt]       at (Cj) {$C_j$};
+		\node[right=4pt]       at (Ck) {$C_k$};
+		\fill[white] (Cij) circle (3pt);
+		\draw[thick]  (Cij) circle (3pt);
+		\fill[white] (Cik) circle (3pt);
+		\draw[thick]  (Cik) circle (3pt);
+		\fill[white] (Cjk) circle (3pt);
+		\draw[thick]  (Cjk) circle (3pt);
+		\node[above=4pt] at (Cij) {$C_{ij}$};
+		\node[left=4pt]        at (Cik) {$C_{ik}$};
+		\node[above right=2pt] at (Cjk) {$C_{jk}$};
+	\end{tikzpicture}
+	\caption{Teorema di allineamento dei centri di rotazione relativi.
+		I tre corpi $\mathcal{C}_i$, $\mathcal{C}_j$, $\mathcal{C}_k$ hanno centri
+		assoluti $C_i$, $C_j$, $C_k$ (cerchi pieni). I centri di rotazione relativi
+		$C_{ij}$, $C_{ik}$, $C_{jk}$ --- ciascuno punto di uguale spostamento per la
+		coppia di corpi corrispondente --- sono allineati (cerchi vuoti, retta
+		grigia). Il centro $C_{ij}$ cade all'esterno del segmento $C_iC_j$,
+		coerentemente con il teorema di Menelao.}
+	\label{fig:allineamento_relativi}
+\end{figure}

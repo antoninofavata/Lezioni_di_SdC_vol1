@@ -1,0 +1,218 @@
+\begin{figure}[ht]
+			\centering
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+				
+				\def\L{4.0}
+				\def\h{1.8}
+				\def\Fr{0.35}  % lunghezza frecce reazioni
+				\def\yR{0.12}  % quota base frecce reazioni (sopra la trave)
+				
+				% ============================================================
+				% PANNELLO (a) — tre carrelli verticali
+				% ============================================================
+				\begin{scope}[xshift=0cm]
+					
+					% trave
+					\draw[thick] (0,0) -- (\L,0);
+					
+					% punti
+					\fill (0,0)    %circle (2pt)
+					node[above right,  font=\scriptsize] {$A$};
+					\fill (\L/2,0) %circle (2pt)
+					node[above left, font=\scriptsize] {$B$};
+					\fill (\L,0)   %circle (2pt)
+					node[above left, font=\scriptsize] {$C$};
+					
+					% carrello verticale in A
+					\draw[thick] (0,0) -- (-0.20,-0.34)
+					-- (0.20,-0.34) -- cycle;
+					\draw[thick] (-0.14,-0.40) circle (0.07);
+					\draw[thick] ( 0.14,-0.40) circle (0.07);
+					\draw[thick] (-0.30,-0.50) -- (0.30,-0.50);
+					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+						\draw[thin] (\x,-0.50) -- (\x-0.10,-0.64);
+					}
+					
+					% carrello verticale in B
+					\draw[thick] (\L/2,0) -- (\L/2-0.20,-0.34)
+					-- (\L/2+0.20,-0.34) -- cycle;
+					\draw[thick] (\L/2-0.14,-0.40) circle (0.07);
+					\draw[thick] (\L/2+0.14,-0.40) circle (0.07);
+					\draw[thick] (\L/2-0.30,-0.50) -- (\L/2+0.30,-0.50);
+					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+						\draw[thin] (\L/2+\x,-0.50)
+						-- (\L/2+\x-0.10,-0.64);
+					}
+					
+					% carrello verticale in C
+					\draw[thick] (\L,0) -- (\L-0.20,-0.34)
+					-- (\L+0.20,-0.34) -- cycle;
+					\draw[thick] (\L-0.14,-0.40) circle (0.07);
+					\draw[thick] (\L+0.14,-0.40) circle (0.07);
+					\draw[thick] (\L-0.30,-0.50) -- (\L+0.30,-0.50);
+					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+						\draw[thin] (\L+\x,-0.50)
+						-- (\L+\x-0.10,-0.64);
+					}
+					
+					% --- perni vuoti in A e C (estremità) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=5pt, line width=0.8pt] at (0,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=5pt, line width=0.8pt] at (\L,0) {};
+					
+					% --- mezzaluna in B (carrello a mezzeria della trave continua) ---
+					\fill[white] (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+					\draw[thick] (\L/2-0.08,0) arc(180:360:0.08);
+					
+					
+					% stato di autoequilibrio (frecce sopra la trave)
+					% R_A = +1 verso l'alto
+					\draw[->, thick, gray!60]
+					(0, \yR) -- (0, \yR+\Fr)
+					node[left, font=\scriptsize, gray!70] {$1$};
+					% R_B = -2 verso il basso (freccia dall'alto verso trave)
+					\draw[->, thick, gray!60]
+					(\L/2, \yR+2*\Fr) -- (\L/2, \yR)
+					node[right, font=\scriptsize, gray!70] {$2$};
+					% R_C = +1 verso l'alto
+					\draw[->, thick, gray!60]
+					(\L, \yR) -- (\L, \yR+\Fr)
+					node[right, font=\scriptsize, gray!70] {$1$};
+					
+					% meccanismo: freccia orizzontale
+					\draw[->, thick, gray!70]
+					(\L/2-0.55, \yR+2*\Fr+0.25)
+					-- (\L/2+0.55, \yR+2*\Fr+0.25)
+					node[above, font=\small, gray!70] {$\bm{u}_1$};
+					
+					% punto improprio
+					\draw[->, dashed, gray!40, thin]
+					(\L/2, \yR+2*\Fr+0.55)
+					-- (\L/2, \yR+2*\Fr+0.95)
+					node[right, font=\scriptsize, gray!50]
+					{$P_\infty$};
+					
+					\node[font=\scriptsize] at (\L/4, -0.80) {(a)};
+					
+				\end{scope}
+				
+				% ============================================================
+				% PANNELLO (b) — tre carrelli convergenti in P
+				% ============================================================
+				\begin{scope}[xshift=6.8cm]
+					
+					% trave (continua, nessun punto in B)
+					\draw[thick] (0,0) -- (\L,0);
+					
+					
+					% A: solo etichetta
+					\node[above left, font=\scriptsize] at (0,0) {$A$};
+					% B: solo etichetta
+					\node[above, font=\scriptsize] at (\L/2, 0) {$B$};
+					% C: solo etichetta
+					\node[above right=-0.05, font=\scriptsize] at (\L,0.0) {$C$};
+					
+					% punto P
+					\fill (\L/2,\h) circle (2pt)
+					node[above, font=\small] {$P$};
+					
+					% linee d'azione tratteggiate
+					\draw[dashed, gray!50, thin] (0,0)    -- (\L/2,\h);
+					\draw[dashed, gray!50, thin] (\L/2,0) -- (\L/2,\h);
+					\draw[dashed, gray!50, thin] (\L,0)   -- (\L/2,\h);
+					
+					% angolo asse AP rispetto all'orizzontale
+					\pgfmathsetmacro{\angA}{atan2(\h,\L/2)}
+					
+					% carrello in A: asse nella direzione A->P
+					
+					\begin{scope}[shift={(0,0)}, rotate={-\angA}]
+						\draw[thick] (0,0) -- (-0.20,-0.34)
+						-- (0.20,-0.34) -- cycle;
+						\draw[thick] (-0.14,-0.40) circle (0.07);
+						\draw[thick] ( 0.14,-0.40) circle (0.07);
+						\draw[thick] (-0.30,-0.50) -- (0.30,-0.50);
+						\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+							\draw[thin] (\x,-0.50) -- (\x-0.10,-0.64);
+						}
+					\end{scope}
+					
+					% carrello in B: verticale (P è esattamente sopra B)
+					\draw[thick] (\L/2,0) -- (\L/2-0.20,-0.34)	-- (\L/2+0.20,-0.34) -- cycle;
+					\draw[thick] (\L/2-0.14,-0.40) circle (0.07);
+					\draw[thick] (\L/2+0.14,-0.40) circle (0.07);
+					\draw[thick] (\L/2-0.30,-0.50) -- (\L/2+0.30,-0.50);
+					\foreach \x in {-0.22,-0.11,0,0.11,0.22}{\draw[thin] (\L/2+\x,-0.50) -- (\L/2+\x-0.10,-0.64);
+					}
+					
+					% --- perno vuoto in A (estremità) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=5pt, line width=0.8pt] at (0,0) {};
+					%\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (\L,0) {};
+					
+					% --- mezzaluna in B (carrello a mezzeria della trave continua) ---
+					\fill[white] (\L/2-0.08,0) arc(180:360:0.08) -- cycle;
+					\draw[thick] (\L/2-0.08,0) arc(180:360:0.08);
+					
+					% carrello in C: simmetrico ad A rispetto alla verticale per P
+					\begin{scope}[shift={(\L,0)}, rotate={\angA}]
+						\draw[thick] (0,0) -- (-0.20,-0.34) -- (0.20,-0.34) -- cycle;
+						\draw[thick] (-0.14,-0.40) circle (0.07);
+						\draw[thick] ( 0.14,-0.40) circle (0.07);
+						\draw[thick] (-0.30,-0.50) -- (0.30,-0.50);
+						\foreach \x in {-0.22,-0.11,0,0.11,0.22}{
+							\draw[thin] (\x,-0.50) -- (\x-0.10,-0.64);
+						}
+					\end{scope}     % <-- chiusura QUI
+					
+					% --- perno vuoto in C (estremità) ---
+					\node[circle, fill=white, draw=black, inner sep=0pt,minimum size=5pt, line width=0.8pt] at (\L,0) {};
+					
+					
+					% =====================================================
+					% AUTOSOLUZIONE CINEMATICA: rotazione q di C attorno a P
+					% =====================================================
+					\def\qrot{10}    % ampiezza dell'angolo q (in gradi, antioraria)
+					
+					% Coordinate dei punti ruotati: P_punto = P + R_q(P_origine - P)
+					% A_x' = P_x + (A_x - P_x)*cos(q) - (A_y - P_y)*sin(q)
+					% A_y' = P_y + (A_x - P_x)*sin(q) + (A_y - P_y)*cos(q)
+					\pgfmathsetmacro{\Axp}{\L/2 + (0 - \L/2)*cos(\qrot) - (0 - \h)*sin(\qrot)}
+					\pgfmathsetmacro{\Ayp}{\h   + (0 - \L/2)*sin(\qrot) + (0 - \h)*cos(\qrot)}
+					\pgfmathsetmacro{\Bxp}{\L/2 + 0*cos(\qrot) - (0 - \h)*sin(\qrot)}
+					\pgfmathsetmacro{\Byp}{\h   + 0*sin(\qrot) + (0 - \h)*cos(\qrot)}
+					\pgfmathsetmacro{\Cxp}{\L/2 + (\L - \L/2)*cos(\qrot) - (0 - \h)*sin(\qrot)}
+					\pgfmathsetmacro{\Cyp}{\h   + (\L - \L/2)*sin(\qrot) + (0 - \h)*cos(\qrot)}
+					
+					% trave ruotata (configurazione variata, grigia)
+					\draw[gray!55, line width=1.2pt]
+					(\Axp,\Ayp) -- (\Cxp,\Cyp);
+					
+					% linee tratteggiate dalla P ai punti ruotati A', B', C'
+					\draw[dashed, gray!50, thin] (\L/2,\h) -- (\Axp,\Ayp);
+					\draw[dashed, gray!50, thin] (\L/2,\h) -- (\Bxp,\Byp);
+					\draw[dashed, gray!50, thin] (\L/2,\h) -- (\Cxp,\Cyp);
+					
+					% etichette dei punti ruotati
+					\node[gray!70, below,  font=\scriptsize] at (\Axp,\Ayp) {$A'$};
+					\node[gray!70, above,       font=\scriptsize] at (\Bxp,\Byp) {$B'$};
+					\node[gray!70, above , font=\scriptsize] at (\Cxp,\Cyp) {$C'$};
+					
+					% archetto dell'angolo q (vicino a P, sull'asse PB)
+					\def\rArc{1.0}
+					\draw[->, gray!70, thin]	(\L/2,\h) ++(-90:\rArc)	arc[start angle=-90, end angle={-90+\qrot}, radius=\rArc];
+					\node[gray!70, font=\scriptsize, right=2pt] at	({\L/2 + \rArc*sin(\qrot/2)*0.5}, {\h - \rArc*0.95}) {$q$};
+					
+					\node[font=\scriptsize] at (\L/4, -0.80) {(b)};
+				\end{scope}
+			\end{tikzpicture}
+			\caption{Degenerazione geometrica per un singolo corpo
+				($\nu = 0$, $g_\ell = g_{\mathscr{i}} = 1$):
+				(a)~tre carrelli verticali paralleli ---
+				stato di autoequilibrio con reazioni $(1,-2,1)$
+				(frecce grigie) e meccanismo di traslazione
+				orizzontale $\bm{u}_1$;
+				(b)~tre carrelli con assi convergenti nel
+				punto proprio $P$ --- meccanismo di rotazione
+				attorno a $P$ e linee d'azione dei vincoli
+				(tratteggiate).}
+			\label{fig:degen_singolo}
+		\end{figure}

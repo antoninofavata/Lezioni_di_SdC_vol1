@@ -1,0 +1,179 @@
+\begin{figure}[!htbp]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=0.8pt},
+			cint/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=6pt, line width=0.8pt}]
+			
+			\def\Lc{1.5}     % unità di lunghezza (= ell)
+			\def\tw{0.22}    % semi-larghezza triangolo
+			\def\thA{0.38}   % altezza triangolo cerniera (A)
+			\def\thR{0.32}   % altezza triangolo carrello
+			\def\sr{0.08}    % raggio mezzaluna
+			\def\bw{0.16}    % semi-distanza cerchietti carrello
+			\def\gw{0.30}    % semi-larghezza barra di terreno
+			\def\dy{2.5}     % offset verticale tra i due pannelli
+			
+			%%═══════════════════════════════════════════════════════════════
+			%% PANNELLO SUPERIORE — TRAVE CONTINUA
+			%% Nodi: A=(0,0), B=(2L,0), C=(4L,0), D=(6L,0)
+			%%═══════════════════════════════════════════════════════════════
+			\begin{scope}[yshift=\dy cm]
+				
+				% Trave
+				\draw[line width=2.2pt] (0,0) -- ({6*\Lc},0);
+				
+				% Etichette nodi
+				\node[above=0.05] at (0,0)        {$A$};
+				\node[above=0.05] at ({2*\Lc},0)  {$B$};
+				\node[above=0.05] at ({4*\Lc},0)  {$C$};
+				\node[above=0.05] at ({6*\Lc},0)  {$D$};
+				
+				% --- CERNIERA in A ---
+				\draw[line width=0.8pt]
+				(0,0)--++(-\tw,-\thA)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]({-\gw},{-\thA})--({\gw},{-\thA});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({\x},{-\thA})--++(-.09,-.11);
+				\node[nodo] at (0,0){};
+				
+				% --- APPOGGIO INTERMEDIO in B ---
+				\draw[line width=0.8pt]
+				({2*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]
+				({2*\Lc-\gw},{-\thR})--({2*\Lc+\gw},{-\thR});
+				\draw[line width=0.8pt]({2*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]({2*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]
+				({2*\Lc-\gw},{-\thR-0.24})--({2*\Lc+\gw},{-\thR-0.24});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({2*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
+				\fill[white] ({2*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
+				\draw[line width=0.8pt] ({2*\Lc-\sr},0) arc(180:360:\sr);
+				
+				% --- APPOGGIO INTERMEDIO in C ---
+				\draw[line width=0.8pt]
+				({4*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]
+				({4*\Lc-\gw},{-\thR})--({4*\Lc+\gw},{-\thR});
+				\draw[line width=0.8pt]({4*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]({4*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]
+				({4*\Lc-\gw},{-\thR-0.24})--({4*\Lc+\gw},{-\thR-0.24});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({4*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
+				\fill[white] ({4*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
+				\draw[line width=0.8pt] ({4*\Lc-\sr},0) arc(180:360:\sr);
+				
+				% --- CARRELLO in D ---
+				\draw[line width=0.8pt]
+				({6*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]
+				({6*\Lc-\gw},{-\thR})--({6*\Lc+\gw},{-\thR});
+				\draw[line width=0.8pt]({6*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]({6*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]
+				({6*\Lc-\gw},{-\thR-0.24})--({6*\Lc+\gw},{-\thR-0.24});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({6*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
+				\node[nodo] at ({6*\Lc},0){};
+				
+				% etichetta pannello
+				\node[font=\small] at ({3*\Lc}, -1.0) {(a) trave continua};
+				
+			\end{scope}
+			
+			%%═══════════════════════════════════════════════════════════════
+			%% PANNELLO INFERIORE — TRAVE GERBER
+			%% Nodi: A=(0,0), B=(2L,0), E=(2.5L,0), F=(3.5L,0), C=(4L,0), D=(6L,0)
+			%%═══════════════════════════════════════════════════════════════
+			\begin{scope}[yshift=0cm]
+				
+				% Trave
+				\draw[line width=2.2pt] (0,0) -- ({6*\Lc},0);
+				
+				% Etichette nodi (sopra la trave)
+				\node[above=0.05] at (0,0)         {$A$};
+				\node[above=0.05] at ({2*\Lc},0)   {$B$};
+				\node[above=0.10] at ({2.5*\Lc},0) {$E$};
+				\node[above=0.10] at ({3.5*\Lc},0) {$F$};
+				\node[above=0.05] at ({4*\Lc},0)   {$C$};
+				\node[above=0.05] at ({6*\Lc},0)   {$D$};
+				
+				% Etichette corpi (sotto la trave, al centro di ciascuno)
+				\node[above, font=\small] at ({1.25*\Lc},0) {$\mathcal{C}_1$};
+				\node[above, font=\small] at ({3*\Lc},0)   {$\mathcal{C}_2$};
+				\node[above, font=\small] at ({4.75*\Lc},0){$\mathcal{C}_3$};
+				
+				% --- CERNIERA in A ---
+				\draw[line width=0.8pt]
+				(0,0)--++(-\tw,-\thA)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]({-\gw},{-\thA})--({\gw},{-\thA});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({\x},{-\thA})--++(-.09,-.11);
+				\node[nodo] at (0,0){};
+				
+				% --- APPOGGIO INTERMEDIO in B ---
+				\draw[line width=0.8pt]
+				({2*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]
+				({2*\Lc-\gw},{-\thR})--({2*\Lc+\gw},{-\thR});
+				\draw[line width=0.8pt]({2*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]({2*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]
+				({2*\Lc-\gw},{-\thR-0.24})--({2*\Lc+\gw},{-\thR-0.24});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({2*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
+				\fill[white] ({2*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
+				\draw[line width=0.8pt] ({2*\Lc-\sr},0) arc(180:360:\sr);
+				
+				% --- APPOGGIO INTERMEDIO in C ---
+				\draw[line width=0.8pt]
+				({4*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]
+				({4*\Lc-\gw},{-\thR})--({4*\Lc+\gw},{-\thR});
+				\draw[line width=0.8pt]({4*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]({4*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]
+				({4*\Lc-\gw},{-\thR-0.24})--({4*\Lc+\gw},{-\thR-0.24});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({4*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
+				\fill[white] ({4*\Lc-\sr},0) arc(180:360:\sr) -- cycle;
+				\draw[line width=0.8pt] ({4*\Lc-\sr},0) arc(180:360:\sr);
+				
+				% --- CARRELLO in D ---
+				\draw[line width=0.8pt]
+				({6*\Lc},0)--++(-\tw,-\thR)--++(2*\tw,0)--cycle;
+				\draw[line width=0.8pt]
+				({6*\Lc-\gw},{-\thR})--({6*\Lc+\gw},{-\thR});
+				\draw[line width=0.8pt]({6*\Lc-\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]({6*\Lc+\bw},{-\thR-0.12}) circle(2.4pt);
+				\draw[line width=0.8pt]
+				({6*\Lc-\gw},{-\thR-0.24})--({6*\Lc+\gw},{-\thR-0.24});
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[thin]({6*\Lc+\x},{-\thR-0.24})--++(-.09,-.11);
+				\node[nodo] at ({6*\Lc},0){};
+				
+				% --- CERNIERE INTERNE in E e F ---
+				\node[cint] at ({2.5*\Lc},0){};
+				\node[cint] at ({3.5*\Lc},0){};
+				
+				% etichetta pannello
+				\node[font=\small] at ({3*\Lc}, -1.0) {(b) trave Gerber};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Trave continua e trave Gerber a confronto:
+			(a)~trave continua, un solo corpo,
+			$m = 2+1+1+1 = 5$, $\nu = -2$ (iperstatica di
+			grado~2); (b)~trave Gerber, tre corpi
+			separati dalle cerniere interne in $E$ ed $F$,
+			$m = 9$, $\nu = 0$ (isostatica). Le due travi
+			condividono la configurazione di appoggi esterni
+			(cerniera in $A$, carrelli in $B$, $C$, $D$);
+			differiscono per la presenza dei due svincoli
+			rotazionali interni.}
+		\label{fig:trave_continua_gerber}
+	\end{figure}

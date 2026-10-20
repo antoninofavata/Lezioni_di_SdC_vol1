@@ -1,0 +1,105 @@
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][\emph{caso tridimensionale}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			
+			\def\ax{-0.650}\def\ay{-0.500}
+			
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (-0.975, -0.750);
+			\coordinate (B) at ( 2.000,  0.000);
+			\coordinate (C) at ( 0.000,  1.800);
+			\coordinate (D) at ( 1.025, -0.750);
+			\coordinate (E) at ( 2.000,  1.800);
+			\coordinate (F) at (-0.975,  1.050);
+			\coordinate (P) at ( 1.025,  1.050);
+			
+			\draw[dashed, gray!45] (O) -- (A);
+			\draw[dashed, gray!45] (O) -- (B);
+			\draw[dashed, gray!45] (O) -- (C);
+			\draw[dashed, gray!45] (A) -- (D);
+			\draw[dashed, gray!45] (A) -- (F);
+			\draw[dashed, gray!45] (B) -- (D);
+			\draw[dashed, gray!45] (B) -- (E);
+			\draw[dashed, gray!45] (C) -- (E);
+			\draw[dashed, gray!45] (C) -- (F);
+			\draw[dashed, gray!45] (D) -- (P);
+			\draw[dashed, gray!45] (E) -- (P);
+			\draw[dashed, gray!45] (F) -- (P);
+			
+			\draw[->, thin] (0,0) -- ({\ax*3.2},{\ay*3.2}) node[below left] {$x$};
+			\draw[->, thin] (0,0) -- (3.2,0)  node[right] {$y$};
+			\draw[->, thin] (0,0) -- (0,3.2)  node[above] {$z$};
+			\node[below=1pt] at (O) {$O$};
+			
+			\draw[->, thick] (O) -- (0, 0.6)
+			node[left=1pt] {$w_O$};
+			\draw[->, thick] (O) -- (0.6, 0)
+			node[below=1pt] {$v_O$};
+			\draw[->, thick] (O) -- ({\ax*0.6},{\ay*0.6})
+			node[left=1pt] {$u_O$};
+			
+			\draw[->>, thick] (0,1.8) -- (0, 2.5)
+			node[right=2pt] {$\vartheta_z$};
+			\draw[->>, thick] (2.0,0) -- (2.7, 0)
+			node[above=2pt] {$\vartheta_y$};
+			\draw[->>, thick] ({\ax*1.8},{\ay*1.8}) -- ({\ax*2.5},{\ay*2.5})
+			node[left=1pt] {$\vartheta_x$};
+			
+			\fill (P) circle (2pt) node[above right=2pt] {$P$};
+			
+			\draw[->, thick] (P) -- ++(0, 0.55)
+			node[above=1pt] {$w_P$};
+			\draw[->, thick] (P) -- ++(0.55, 0)
+			node[below right=-4pt] {$v_P$};
+			\draw[->, thick] (P) -- ++({\ax*0.55},{\ay*0.55})
+			node[below left=6pt]  at (P) {$u_P$};
+			
+			\node[below=3pt, xshift=-2pt, yshift=-6pt]       at (B) {\small$x_P$};
+			\node[right=2pt, yshift=-20pt]        at (P) {\small$z_P$};
+			\node[below right=5pt, xshift=10pt] at (A) {\small$y_P$};
+			
+	\end{tikzpicture}}%
+	\hspace{0.04\textwidth}%
+	\subfloat[][\emph{caso piano}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			
+			\coordinate (O) at (0,0);
+			
+			\draw[->, thin] (-0.4,0) -- (3.5,0) node[right] {$x$};
+			\draw[->, thin] (0,-0.4) -- (0,3.2) node[above] {$y$};
+			\node[below left=2pt] at (O) {$O$};
+			
+			\draw[->, thick] (O) -- (0.65, 0)
+			node[below=2pt] {$u_O$};
+			\draw[->, thick] (O) -- (0, 0.65)
+			node[left=2pt] {$v_O$};
+			
+			\draw[->, thick] (0.55, 0) arc[start angle=0, end angle=75, radius=0.55];
+			\node at (0.60, 0.52) {$\vartheta$};
+			
+			\coordinate (P) at (2.5, 2.2);
+			\fill (P) circle (2pt) node[above right=2pt] {$P$};
+			
+			\draw[->, thick] (P) -- ++(0.60, 0)
+			node[below=2pt] {$u_P$};
+			\draw[->, thick] (P) -- ++(0, 0.60)
+			node[left=2pt] {$v_P$};
+			
+			\draw[dashed, gray!50] (P) -- (2.5, 0)
+			node[midway, right=1pt, text=black] {\small$y_P$};
+			\draw[dashed, gray!50] (P) -- (0, 2.2)
+			node[midway, above=1pt, text=black] {\small$x_P$};
+			
+			\draw[thin] (2.5, 0.06) -- (2.5,-0.06);
+			\draw[thin] (0.06, 2.2) -- (-0.06, 2.2);
+			
+	\end{tikzpicture}}
+	\caption{Parametri cinematici del corpo rigido e componenti dello
+		spostamento di un punto generico $P$ nel caso
+		\textbf{\textit{(a)}}~tridimensionale (sei gradi di libertà:
+		$u_O$, $v_O$, $w_O$, $\vartheta_x$, $\vartheta_y$, $\vartheta_z$)
+		e \textbf{\textit{(b)}}~piano (tre gradi di libertà:
+		$u_O$, $v_O$, $\vartheta$).}
+	\label{fig:GDL_3D_piano}
+\end{figure}

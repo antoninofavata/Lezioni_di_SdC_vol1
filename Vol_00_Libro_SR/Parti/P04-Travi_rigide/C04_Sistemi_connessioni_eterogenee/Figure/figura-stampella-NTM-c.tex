@@ -1,0 +1,139 @@
+\begin{figure}[htbp!]\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[x=1.5cm,y=1.5cm,font=\scriptsize,
+				trave/.style={line width=1.7pt,line cap=round,line join=round,black},
+				biella/.style={line width=1.0pt,black},
+				carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+				reaz/.style={-{Stealth[length=2mm]},line width=0.9pt,gray!70},
+				bordo/.style={line width=0.5pt,black!70},
+				terra/.style={line width=0.6pt,black},
+				diagbordo/.style={draw=black,line width=0.7pt},
+				diagtratt/.style={gray!55,line width=0.35pt},
+				nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=3.6pt,line width=0.6pt},
+				segno/.style={circle,draw=black,fill=white,line width=0.3pt,inner sep=0pt,
+					minimum size=2.8pt,font=\fontsize{4}{4}\selectfont},
+				]
+				\def\sM{1.3}\def\sT{0.42}\def\sN{0.10}\def\sNc{0.14}\def\sNf{0.30}
+				\newcommand{\nodi}{%
+					\coordinate (C) at (-0.5,0);\coordinate (D) at (1,0);\coordinate (E) at (2,0);
+					\coordinate (F) at (3,0);\coordinate (G) at (4.5,0);
+					\coordinate (A) at (0,-0.25);\coordinate (B) at (4,-0.25);}
+				\newcommand{\gnd}[1]{%
+					\draw[terra] ($(#1)+(-0.12,-0.18)$)--(#1)--($(#1)+(0.12,-0.18)$)--cycle;
+					\draw[terra] ($(#1)+(-0.18,-0.18)$)--($(#1)+(0.18,-0.18)$);
+					\foreach \t in {-0.14,-0.07,0,0.07,0.14}\draw[terra,line width=0.4pt] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+				\newcommand{\semic}[1]{\draw[black,fill=white,line width=0.7pt] ($(#1)+(0.055,0)$) arc[start angle=0,end angle=-180,radius=0.055]--cycle;}
+				\newcommand{\diagLin}[7]{%
+					\pgfmathsetmacro{\ax}{#5*#7*#3}\pgfmathsetmacro{\ay}{#5*#7*#4}%
+					\pgfmathsetmacro{\bx}{#6*#7*#3}\pgfmathsetmacro{\by}{#6*#7*#4}%
+					\foreach \tt in {0,0.1,...,1.0001}{%
+						\pgfmathsetmacro{\mv}{(#5+(#6-#5)*\tt)*#7}%
+						\draw[diagtratt] ($(#1)!\tt!(#2)$) -- ++({\mv*#3},{\mv*#4});}%
+					\draw[diagbordo] (#1)--($(#1)+(\ax,\ay)$)--($(#2)+(\bx,\by)$)--(#2)--cycle;}
+				\newcommand{\diagPar}[8]{%
+					\pgfmathsetmacro{\ca}{2*(#5-2*#6+#7)}\pgfmathsetmacro{\cb}{-3*#5+4*#6-#7}\pgfmathsetmacro{\cc}{#5}%
+					\foreach \k in {0,1,...,20}{%
+						\pgfmathsetmacro{\tt}{\k/20}%
+						\pgfmathsetmacro{\mv}{(\ca*\tt*\tt+\cb*\tt+\cc)*#8}%
+						\pgfmathsetmacro{\ox}{\mv*#3}\pgfmathsetmacro{\oy}{\mv*#4}%
+						\coordinate (pp\k) at ($(#1)!\tt!(#2)+(\ox,\oy)$);}%
+					\foreach \k in {0,2,...,20}{%
+						\pgfmathsetmacro{\tt}{\k/20}%
+						\draw[diagtratt] ($(#1)!\tt!(#2)$) -- (pp\k);}%
+					\draw[diagbordo] (#1) \foreach \k in {0,1,...,20}{ -- (pp\k)} -- (#2) -- cycle;}
+				\newcommand{\assi}{%
+					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+					\draw[trave] (C)--(G);
+					\gnd{A}\gnd{B}
+					\node[nodoV] at (C){};\node[nodoV] at (E){};\node[nodoV] at (G){};
+					\node[nodoV] at (A){};\node[nodoV] at (B){};
+					\semic{D}\semic{F}}
+				\newcommand{\etich}{%
+					\node[above=1pt] at (C){$C$};\node[below=2pt] at (D){$D$};\node[above=1pt] at (E){$E$};
+					\node[below=2pt] at (F){$F$};\node[above=1pt] at (G){$G$};}
+				
+				%==================== (a) STRUTTURA ====================
+				\begin{scope}[shift={(0,5.2)}]
+					\nodi
+					\draw[biella] (A)--(C);\draw[biella] (A)--(D);\draw[biella] (B)--(F);\draw[biella] (B)--(G);
+					\draw[trave] (C)--(G);
+					\draw[bordo] (-0.5,0.225)--(1,0.225);
+					\foreach \x in {-0.5,-0.25,...,1.001}\draw[carico] (\x,0.225)--(\x,0);
+					\node[above] at (0.25,0.265){$p$};
+					\draw[bordo] (2,0.225)--(3,0.225);
+					\foreach \x in {2,2.25,...,3.001}\draw[carico] (\x,0.225)--(\x,0);
+					\node[above] at (2.5,0.265){$p$};
+					\gnd{A}\gnd{B}
+					\draw[reaz] (A)--($(A)+(0.55,0)$);\node[gray!70,below,font=\tiny]at($(A)+(0.33,-0.04)$){$\tfrac{15}{4}p\ell$};
+					\draw[reaz] ($(A)+(0,-0.80)$)--($(A)+(0,-0.27)$);\node[gray!70,left,font=\tiny]at($(A)+(0.02,-0.62)$){$\tfrac{57}{32}p\ell$};
+					\draw[reaz] (B)--($(B)+(-0.55,0)$);\node[gray!70,below,font=\tiny]at($(B)+(-0.33,-0.04)$){$\tfrac{15}{4}p\ell$};
+					\draw[reaz] ($(B)+(0,-0.80)$)--($(B)+(0,-0.27)$);\node[gray!70,right,font=\tiny]at($(B)+(-0.02,-0.62)$){$\tfrac{23}{32}p\ell$};
+					\node[nodoV] at (C){};\node[nodoV] at (E){};\node[nodoV] at (G){};
+					\node[nodoV] at (A){};\node[nodoV] at (B){};
+					\semic{D}\semic{F}
+					\node[below=1pt] at (C){$C$};\node[below=1pt]at(D){$D$};\node[below=1pt] at (E){$E$};
+					\node[below=1pt]at(F){$F$};\node[below=1pt] at (G){$G$};
+					\node[left=1pt] at (A){$A$};\node[right=1pt] at (B){$B$};
+					\node[font=\tiny] at (2,-1.05){(a) schema, carichi e reazioni};
+				\end{scope}
+				
+				%==================== (b) NORMALE N ====================
+				\begin{scope}[shift={(0,3.4)}]
+					\nodi
+					\diagLin{C}{D}{0}{1}{1.125}{1.125}{\sNc}
+					\diagLin{D}{E}{0}{1}{-3.75}{-3.75}{\sN}
+					\diagLin{E}{F}{0}{1}{-3.75}{-3.75}{\sN}
+					\diagLin{F}{G}{0}{1}{-0.29167}{-0.29167}{\sNf}
+					\assi
+					\node[segno] at ($(C)!0.5!(D)+(0,0.55*1.125*\sNc)$){$+$};
+					\node[segno] at ($(D)!0.5!(F)+(0,-0.5*3.75*\sN)$){$-$};
+					\node[segno] at ($(F)!0.5!(G)+(0,-0.55*0.29167*\sNf)$){$-$};
+					\node[above,font=\tiny] at ($(C)!0.5!(D)+(0,1.125*\sNc)$){$\tfrac{9}{8}$};
+					\node[below,font=\tiny] at ($(D)!0.5!(E)+(0,-3.75*\sN)$){$\tfrac{15}{4}$};
+					\node[below,font=\tiny] at ($(F)!0.5!(G)+(0,-0.29167*\sNf)$){$\tfrac{7}{24}$};
+					\node[font=\tiny] at (2,-0.92){(b) sforzo normale $N$ \ ($\times\,p\ell$;\ su $CD$ e $FG$ ordinate amplificate)};
+				\end{scope}
+				
+				%==================== (c) TAGLIO T ====================
+				\begin{scope}[shift={(0,1.7)}]
+					\nodi
+					\diagLin{C}{D}{0}{1}{0.5625}{-0.9375}{\sT}
+					\diagLin{D}{E}{0}{1}{0.28125}{0.28125}{\sT}
+					\diagLin{E}{F}{0}{1}{0.28125}{-0.71875}{\sT}
+					\diagLin{F}{G}{0}{1}{0.14583}{0.14583}{\sT}
+					\assi
+					\node[segno] at ($(C)+(0.10,0.08)$){$+$};
+					\node[segno] at ($(C)!0.90!(D)+(0,-0.42*\sT)$){$-$};
+					\node[segno] at ($(D)!0.5!(E)+(0,0.5*0.28125*\sT)$){$+$};
+					%\node[segno] at ($(E)+(0.06,0.06)$){$+$};
+					\node[segno] at ($(E)!0.84!(F)+(0,-0.30*\sT)$){$-$};
+					\node[segno] at ($(F)!0.5!(G)+(0,0.5*0.14583*\sT)$){$+$};
+					\node[above,font=\tiny] at ($(C)+(0.09,0.5625*\sT)$){$\tfrac{9}{16}$};
+					\node[below,font=\tiny] at ($(D)+(0,-0.9375*\sT)$){$\tfrac{15}{16}$};
+					\node[above,font=\tiny] at ($(D)!0.62!(E)+(0,0.28125*\sT)$){$\tfrac{9}{32}$};
+					\node[below,font=\tiny] at ($(F)+(0,-0.71875*\sT)$){$\tfrac{23}{32}$};
+					\node[above,font=\tiny] at ($(F)!0.5!(G)+(0,0.14583*\sT)$){$\tfrac{7}{48}$};
+					\node[font=\tiny] at (2,-0.92){(c) taglio $T$ \ ($\times\,p\ell$)};
+				\end{scope}
+				
+				%==================== (d) MOMENTO M ====================
+				\begin{scope}[shift={(0,0)}]
+					\nodi
+					\diagPar{C}{D}{0}{-1}{0}{0.140625}{-0.28125}{\sM}
+					\diagLin{D}{E}{0}{-1}{-0.28125}{0}{\sM}
+					\diagPar{E}{F}{0}{-1}{0}{0.015625}{-0.21875}{\sM}
+					\diagLin{F}{G}{0}{-1}{-0.21875}{0}{\sM}
+					\assi
+					\node[above, xshift=16pt, yshift=8pt,font=\tiny] at ($(C)+(0.15,-0.16*\sM)$){$\tfrac{81}{512}$};
+					\node[above,font=\tiny] at ($(D)+(0,0.28125*\sM)$){$\tfrac{9}{32}$};
+					\node[above,font=\tiny] at ($(F)+(0,0.21875*\sM)$){$\tfrac{7}{32}$};
+					\node[font=\tiny] at (2,-0.92){(d) momento flettente $M$ \ ($\times\,p\ell^2$)};
+				\end{scope}
+		\end{tikzpicture}}
+		\caption{Caso (c), carico asimmetrico ($p$ su $CD$ ed $EF$) --- (a) schema con carichi e reazioni; (b) sforzo normale $N$ sulle travi
+			(le bielle, scariche, portano $N$ costante: $N_{AC}=-\tfrac{9\sqrt5}{16}$,
+			$N_{AD}=-\tfrac{39\sqrt{17}}{32}$, $N_{BF}=-\tfrac{83\sqrt{17}}{96}$, $N_{BG}=+\tfrac{7\sqrt5}{48}$,
+			in $p\ell$); (c) taglio $T$; (d) momento flettente $M$, dal lato delle fibre tese. Scale indipendenti;
+			$M=0$ alle cerniere $C$, $E$, $G$.}
+		\label{fig:stampella_NTM_c}
+	\end{figure}

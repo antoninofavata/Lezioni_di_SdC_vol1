@@ -1,0 +1,61 @@
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt, line width=0.8pt},
+		tacca/.style={thin, gray!70}]
+		
+		\def\L{5.0}
+		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+		\def\bw{0.16}\def\gw{0.30}
+		
+		%% trave
+		\draw[line width=2.2pt] (0,0) -- (\L,0);
+		\node[above=2pt] at (0,0)  {$A$};
+		\node[above=2pt] at (\L,0) {$B$};
+		\node[above=2pt] at (\L/2,0) {$C$};
+		
+		%% cerniera in A
+		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+		\draw (-\gw,-\thA) -- (\gw,-\thA);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+		\node[nodo] at (0,0) {};
+		
+		%% carrello terminale in B, ruotato di -45° (asse a 45° dalla verticale)
+		\begin{scope}[rotate around={-45:(\L,0)}]
+			\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+			\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
+			\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
+			\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
+			\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+			\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
+		\end{scope}
+		\node[nodo] at (\L,0) {};
+		
+		%% asse del carrello (versore a)
+		\draw[->, thick, gray!50] (\L,0) -- ++(0.50, 0.50)
+		node[right=2pt, black] {$\ab$};
+		
+		%% forza F a 45° in C (verso il basso a destra)
+		\draw[thin] (\L/2,0.05) -- (\L/2,-0.05);
+		\draw[->, thick] (\L/2-0.55, 0.55) -- (\L/2-0.06, 0.06)
+		node[above left=2pt, pos=0] {$F$};
+		
+		%% quota
+		\draw[tacca] (0, -1.05) -- (0, -0.85);
+		\draw[tacca] (\L,-1.05) -- (\L,-0.85);
+		\draw[<->, thin] (0,-0.95) -- (\L,-0.95)
+		node[midway, above=2pt] {$\ell$};
+		
+	\end{tikzpicture}
+	\caption{Trave appoggiata con carrello inclinato
+		(\ESEref{ex:C05_trave_inclinata_stat} e
+		\ESEref{ex:C05_trave_inclinata_cin}): cerniera in $A$,
+		carrello in $B$ con asse $\ab$ a $45^\circ$ rispetto alla
+		verticale, polo $O\equiv A$. Nel dato statico è applicata
+		in $C=(\ell/2,0)$ una forza $F$ inclinata di $45^\circ$
+		sull'orizzontale.}
+	\label{fig:C05_trave_inclinata}
+\end{figure}

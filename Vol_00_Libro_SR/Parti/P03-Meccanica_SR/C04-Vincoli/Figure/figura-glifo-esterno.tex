@@ -1,0 +1,164 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica del glifo esterno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}    % semi-lunghezza piatto
+			\def\bw{0.20}         % semi-distanza ruote
+			\def\rrota{0.05}      % raggio ruote
+			\def\gw{0.65}         % semi-larghezza barra di terra (un po' più del piatto)
+			\def\rrota{0.10}     % raggio ruote (tangenti ai due piatti)
+			
+			%% ── Asse a (retta verticale grigia continua) ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, -0.55) -- (\xA, 2.85);
+			
+			%% ── Etichetta del CR all'infinito ──
+			\node[gray, font=\footnotesize, anchor=south west] 
+			at (\xA+0.30, 2.20) {$C = \infty_\ab$};
+			
+			%% ── Versore a in alto ──
+			\draw[->, line width=1pt] 	(\xA, 2.10) -- (\xA, 2.85);
+			\node[anchor=west, font=\small] 
+			at (\xA+0.05, 2.85) {$\ab$};
+			
+			%% ── Corpo C (con piatto orizzontale inferiore) ──
+			\draw[line width=1pt] 
+			(-\Lpiatto, 0.00) 
+			.. controls (-1.55, 0.10) and (-1.80, 0.95) 
+			.. (-1.70, 1.55)
+			.. controls (-0.85, 2.40) and ( 0.35, 2.50) 
+			.. ( 0.85, 2.15)
+			.. controls ( 1.65, 1.70) and ( 1.80, 0.60) 
+			.. (\Lpiatto, 0.00)
+			-- cycle;
+			\node at (0.50, 1.60) {$\mathcal{C}$};
+			
+			%% ── Equazioni di vincolo (in alto, accanto all'asse) ──
+			\node[anchor=west, font=\small] at (\xA-2.40, 2.55) {$\ub(A)\cdot\ab = 0$};
+			\node[anchor=west, font=\small] at (\xA-2.40, 2.10) {$\vartheta = 0$};
+			
+			
+			%% ── Glifo: prima barra (sotto il piatto del corpo) ──
+			%\draw (-\gw, -0.05) -- (\gw, -0.05);
+			
+			%% ── Glifo: due ruote ──
+			\draw (-\bw, -0.13) circle (\rrota);
+			\draw (\bw, -0.13) circle (\rrota);
+			
+			%% ── Glifo: due ruote (tangenti ai due piatti) ──
+			\draw (-\bw, -0.155) circle (\rrota);
+			\draw (\bw, -0.155) circle (\rrota);
+			
+			%% ── Glifo: seconda barra (al telaio) ──
+			\draw (-\gw, -0.26) -- (\gw, -0.26);
+			
+			%% ── Glifo: tratteggio del suolo ──
+			\foreach \x in {-0.50,-0.25,0,0.25,0.50}
+			\draw[thin] (\x, -0.26) -- ++(-0.10, -0.13);
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south west, font=\small] at (\xA, \yA+0.05) {$A$};
+			
+			
+			%% ── Etichetta verticale "asse del glifo" ──
+			\node[gray, rotate=90, anchor=south, font=\footnotesize] at (\xA, 1.20) {asse del glifo};
+			
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 	at (\xA-1.95, -0.25) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica del glifo esterno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=5cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\xA{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}
+			\def\bw{0.20}
+			\def\rrota{0.10}
+			\def\gw{0.65}
+			
+			%% ── Asse a (retta verticale grigia continua) ──
+			\draw[gray!60, line width=0.6pt] 
+			(\xA, -0.55) -- (\xA, 2.85);
+			
+			%% ── Versore a in alto ──
+			\draw[->, line width=1pt] 
+			(\xA, 2.10) -- (\xA, 2.85);
+			\node[anchor=west, font=\small] 
+			at (\xA+0.05, 2.85) {$\ab$};
+			
+			%% ── Corpo C (identico ad (a)) ──
+			\draw[line width=1pt] 
+			(-\Lpiatto, 0.00) 
+			.. controls (-1.55, 0.10) and (-1.80, 0.95) 
+			.. (-1.70, 1.55)
+			.. controls (-0.85, 2.40) and ( 0.35, 2.50) 
+			.. ( 0.85, 2.15)
+			.. controls ( 1.65, 1.70) and ( 1.80, 0.60) 
+			.. (\Lpiatto, 0.00)
+			-- cycle;
+			\node at (0.50, 1.60) {$\mathcal{C}$};
+			
+			%% ── Glifo: due ruote tangenti ──
+			\draw (-\bw, -0.155) circle (\rrota);
+			\draw (\bw, -0.155) circle (\rrota);
+			
+			%% ── Glifo: seconda barra (al telaio) ──
+			\draw (-\gw, -0.26) -- (\gw, -0.26);
+			
+			%% ── Glifo: tratteggio del suolo ──
+			\foreach \x in {-0.50,-0.25,0,0.25,0.50}
+			\draw[thin] (\x, -0.26) -- ++(-0.10, -0.13);
+			
+			%% ── Punto A e label ──
+			\fill (\xA, \yA) circle (1.5pt);
+			\node[anchor=south west, font=\small] 	at (\xA+0.1, \yA-0.04) {$A$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONE: forza R(A) a + coppia μ
+			%% ──────────────────────────────────────────────────
+			
+			%% Forza R(A) a: freccia verticale lungo l'asse, da A verso l'alto
+			\draw[->, line width=1.4pt] 
+			(\xA, \yA+0.05) -- (\xA, \yA+1.20);
+			\node[anchor=west, font=\small] at (\xA+0.08, \yA+1.0) {$R(A)\,\ab$};
+			
+			%% Coppia reattiva μ(A): semicerchio centrato in A, sopra il punto
+			\def\rmu{0.30}
+			\draw[->, line width=1.4pt] ({\xA+\rmu}, {\yA+0.30}) arc(0:180:\rmu);
+			\node[anchor=west, font=\small] at (\xA-1.30, {\yA+\rmu+0.5}) {$\mu(A)$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] at (\xA-1.95, -0.25) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Glifo esterno con asse $\ab$: prestazioni cinematica e statica.]{%
+		Glifo esterno applicato al corpo $\mathcal{C}$ in $A$,
+		con asse $\ab$. Prestazione cinematica (a): le equazioni
+		di vincolo $\ub(A)\cdot\ab = 0$ e $\vartheta = 0$
+		impediscono la traslazione di $A$ lungo $\ab$ e la
+		rotazione del corpo; il \CRa\ è all'infinito sulla retta
+		dell'asse, $C = \infty_\ab$. Prestazione statica (b):
+		la reazione vincolare consta di una forza $R(A)\,\ab$
+		diretta lungo l'asse e di una coppia $\mu(A)$, in
+		dualità rispettivamente con la traslazione lungo $\ab$
+		e con la rotazione bloccate, in accordo con la
+		molteplicità due.}
+	\label{fig:glifo_esterno}
+\end{figure}

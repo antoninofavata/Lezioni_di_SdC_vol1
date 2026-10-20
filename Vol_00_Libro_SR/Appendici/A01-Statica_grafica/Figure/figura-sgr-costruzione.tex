@@ -1,0 +1,69 @@
+% Volume I, appendice «Elementi di statica grafica»: figura fig:costruzione_sgr.
+% Richiamata con \FiguraSGR{figura-sgr-costruzione}; didascalia e label nell'appendice.
+% Generata con gen_sgr.py (coordinate numeriche; stili di Preambolo/tikz-pol e tikz-sgr).
+%
+% Forze (unita' di disegno del poligono delle forze): f_1 = (-0.6, -1.2), f_2 = (0.1, -1.0), f_3 = (1.4, -1.0);
+% vertici 0 = (0, 0), 1 = (-0.600,-1.200), 2 = (-0.500,-2.200), 3 = (0.900,-3.200); polo P = (2.200,-1.500).
+% Nodi: A_1 = (1.864,-1.271), A_2 = (3.848,-1.484), A_3 = (6.672,-0.752); lato b_i parallelo al raggio iP.
+% Forze nei lati N_i = |iP|: 2.663, 2.816, 2.789, 2.140.
+% Nel piano di posizione le forze sono disegnate in scala 0.5 rispetto al poligono delle forze.
+% R = (4.763,-3.248), intersezione del primo e dell'ultimo lato: punto dell'asse di sollecitazione a.
+% (a) piano di posizione: rette d'azione a_i, forze (applicate a monte dei nodi), poligono funicolare
+%     A_0 ... A_4, lati b_0 ... b_3, prolungamenti di b_0 e b_3 fino a R, risultante f sulla retta a;
+% (b) poligono delle forze 0 1 2 3, polo P, raggi polari, risultante 03.
+\begin{tikzpicture}[x=1cm,y=1cm,font=\footnotesize]
+\begin{scope}
+\draw[polretta] (2.558,0.115) -- (1.618,-1.763);
+\node[anchor=south,inner sep=1.5pt] at (2.558,0.115) {$a_1$};
+\draw[polforza] (2.343,-0.313) -- (2.043,-0.913) node[pos=0.3,anchor=east,inner sep=3pt] {$\fb_1$};
+\draw[polretta] (3.704,-0.041) -- (3.903,-2.031);
+\node[anchor=south,inner sep=1.5pt] at (3.704,-0.041) {$a_2$};
+\draw[polforza] (3.759,-0.586) -- (3.809,-1.086) node[pos=0.3,anchor=west,inner sep=3pt] {$\fb_2$};
+\draw[polretta] (5.411,0.149) -- (7.120,-1.071);
+\node[anchor=south,inner sep=1.5pt] at (5.411,0.149) {$a_3$};
+\draw[polforza] (5.647,-0.019) -- (6.347,-0.519) node[pos=0.3,anchor=south west,inner sep=3pt] {$\fb_3$};
+\draw[polcostruzione] (1.864,-1.271) -- (5.135,-3.501);
+\draw[polcostruzione] (6.672,-0.752) -- (4.490,-3.605);
+\draw[polretta] (4.219,-1.311) -- (4.967,-3.970) node[anchor=north,inner sep=1.5pt] {$a$};
+\draw[polrisultante] (4.313,-1.648) -- (4.763,-3.248) node[pos=0.45,anchor=west,inner sep=3pt,black] {$\fb$};
+\draw[pollato] (0.666,-0.454) -- (1.864,-1.271) -- (3.848,-1.484) -- (6.672,-0.752) -- (7.371,0.162);
+\pic at (0.666,-0.454) {polpunto};
+\pic at (1.864,-1.271) {polpunto};
+\pic at (3.848,-1.484) {polpunto};
+\pic at (6.672,-0.752) {polpunto};
+\pic at (7.371,0.162) {polpunto};
+\node[anchor=south east,inner sep=2pt] at (0.666,-0.454) {$A_0$};
+\node[anchor=north east,inner sep=2.5pt] at (1.834,-1.291) {$A_1$};
+\node[anchor=north east,inner sep=2.5pt] at (3.828,-1.514) {$A_2$};
+\node[anchor=west,inner sep=2pt] at (6.832,-0.732) {$A_3$};
+\node[anchor=south west,inner sep=2pt] at (7.371,0.162) {$A_4$};
+\node[inner sep=0pt] at (1.293,-0.616) {$b_0$};
+\node[inner sep=0pt] at (2.880,-1.159) {$b_1$};
+\node[inner sep=0pt] at (5.205,-0.905) {$b_2$};
+\node[inner sep=0pt] at (6.847,-0.161) {$b_3$};
+\pic at (4.763,-3.248) {polpunto};
+\node[anchor=east,inner sep=3.5pt] at (4.763,-3.248) {$R$};
+\node at (4.000,-4.698) {(a)};
+\end{scope}
+\begin{scope}[shift={(9.55,0.35)}]
+\draw[polraggio] (0.000,0.000) -- (2.200,-1.500);
+\draw[polraggio] (-0.600,-1.200) -- (2.200,-1.500);
+\draw[polraggio] (-0.500,-2.200) -- (2.200,-1.500);
+\draw[polraggio] (0.900,-3.200) -- (2.200,-1.500);
+\draw[polrisultante] (0.000,0.000) -- (0.900,-3.200) node[pos=0.83,anchor=west,inner sep=3pt,black] {$\fb$};
+\draw[polforza] (0.000,0.000) -- (-0.600,-1.200) node[midway,anchor=east,inner sep=2.5pt] {$\fb_1$};
+\draw[polforza] (-0.600,-1.200) -- (-0.500,-2.200) node[midway,anchor=east,inner sep=2.5pt] {$\fb_2$};
+\draw[polforza] (-0.500,-2.200) -- (0.900,-3.200) node[midway,anchor=north east,inner sep=2.5pt] {$\fb_3$};
+\pic at (0.000,0.000) {polpunto};
+\pic at (-0.600,-1.200) {polpunto};
+\pic at (-0.500,-2.200) {polpunto};
+\pic at (0.900,-3.200) {polpunto};
+\pic at (2.200,-1.500) {polpolo};
+\node[anchor=south,inner sep=3.5pt] at (0.000,0.000) {$0$};
+\node[anchor=east,inner sep=3.5pt] at (-0.600,-1.200) {$1$};
+\node[anchor=east,inner sep=3.5pt] at (-0.500,-2.200) {$2$};
+\node[anchor=north,inner sep=3.5pt] at (0.900,-3.200) {$3$};
+\node[anchor=west,inner sep=3.5pt] at (2.200,-1.500) {$P$};
+\node at (0.900,-5.048) {(b)};
+\end{scope}
+\end{tikzpicture}%

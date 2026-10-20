@@ -1,0 +1,204 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.95,
+					>=latex,
+					trave/.style={line width=1.2pt},
+					carico/.style={black, line width=0.4pt},
+					forza/.style={black, line width=1pt},
+					risultante/.style={gray!65, line width=1.8pt},
+					diagT/.style={black, line width=0.8pt},
+					diagM/.style={black, line width=0.8pt},
+					diagTb/.style={gray!65, line width=1.0pt},
+					diagMb/.style={gray!65, line width=1.0pt},
+					hatch/.style={gray!40, line width=0.3pt},
+					quota/.style={black, line width=0.4pt},
+					fibre/.style={gray!70, line width=0.3pt},
+					segno/.style={circle, draw=black, line width=0.4pt,
+						minimum size=10pt, inner sep=0pt, font=\small\bfseries},
+					]
+					
+					% ── Parametri dei vincoli (convenzione C06/C07) ──
+					\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.06}
+					\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+					\def\hh{0.10}
+					
+					% ── Parametri dell'incastro ──
+					\def\twall{0.18}
+					\def\hwall{0.36}
+					
+					% ── Geometria del problema ──
+					\def\Lell{4}
+					\pgfmathsetmacro{\xA}{0}
+					\pgfmathsetmacro{\xMid}{0.5*\Lell}      % mezzeria C = ℓ/2 = 2
+					\def\yqi{-0.80}
+					\def\ylab{-3.70}
+					
+					% ── Centri utili per le etichette ──
+					\pgfmathsetmacro{\xMidAC}{0.5*\xMid}
+					\pgfmathsetmacro{\xMidCB}{0.5*(\xMid+\Lell)}
+					\pgfmathsetmacro{\xLabel}{0.5*\Lell}
+					\pgfmathsetmacro{\yLabel}{0.4*\ylab}
+					
+					% ── Parametri del carico distribuito ──
+					\def\pgap{0.10}
+					\def\php{0.40}
+					\pgfmathsetmacro{\pBase}{\pgap}
+					\pgfmathsetmacro{\pTop}{\pgap+\php}
+					
+					% =========================================================
+					% PANNELLO (a) — Schema statico: distribuito + risultante
+					% =========================================================
+					\begin{scope}[xshift=0cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						\draw[fibre, dashed] (0, -0.1) -- (\Lell, -0.1);
+						
+						% Incastro in A: muro verticale + campitura terra
+						\draw[thick] (0,-\hwall) -- (0,\hwall);
+						\foreach \i in {-2.5,-1.5,-0.5,0.5,1.5,2.5}
+						\draw[thin] (0, {\i*\hwall/3}) -- ++(-\twall,-\twall);
+						
+						% Riquadro del carico distribuito p̄
+						\draw[carico] (0,\pBase) rectangle (\Lell,\pTop);
+						\foreach \x in {0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75} {
+							\draw[carico, -{Latex[length=2pt, width=1.5pt]}]
+							(\x, \pTop) -- (\x, \pBase);
+						}
+						\node[above, font=\small] at (0.5, \pTop+0.02) {$\bar{p}$};
+						
+						% Risultante R = p̄ℓ in mezzeria
+						\def\Rstart{1.5}
+						\draw[risultante, -{Latex[length=5pt, width=4pt]}]
+						(\xMid, \Rstart) -- (\xMid, 0);
+						\node[right, font=\small, gray!50!black] at (\xMid+0.08, \Rstart-0.18) 
+						{$R = \bar{p}\,\ell$};
+						
+						\node[above left=1pt, font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						\node[below=2pt, font=\small] at (\xMid, 0) {$C$};
+						
+						% Quote ℓ/2 - ℓ/2
+						\draw[<->, quota] (0,\yqi)   -- (\xMid,\yqi);
+						\draw[<->, quota] (\xMid,\yqi) -- (\Lell,\yqi);
+						\draw[quota] (0,\yqi+0.07)     -- (0,\yqi-0.07);
+						\draw[quota] (\xMid,\yqi+0.07) -- (\xMid,\yqi-0.07);
+						\draw[quota] (\Lell,\yqi+0.07) -- (\Lell,\yqi-0.07);
+						\node[above, font=\footnotesize] at (\xMidAC, \yqi-0.08) {$\ell/2$};
+						\node[above, font=\footnotesize] at (\xMidCB, \yqi-0.08) {$\ell/2$};
+						
+						\node[font=\small] at (\xLabel, \yLabel) {(a)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (b) — Diagramma del taglio T(z)
+					% =========================================================
+					\begin{scope}[xshift=5.5cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						\draw[thick] (0,-\hwall) -- (0,\hwall);
+						\foreach \i in {-2.5,-1.5,-0.5,0.5,1.5,2.5}
+						\draw[thin] (0, {\i*\hwall/3}) -- ++(-\twall,-\twall);
+						
+						\node[above left=2pt, font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						\def\sT{0.30}
+						\pgfmathsetmacro{\Tmax}{\Lell*\sT}    % T(A) = p̄ℓ → 1.2
+						
+						% Caso (b) GRIGIO: rettangolo costante in AC, nullo in CB
+						\draw[diagTb]
+						(0, 0) -- (0, \Tmax)
+						-- (\xMid, \Tmax)
+						-- (\xMid, 0);
+						
+						% Hatching del caso (a) — triangolo lineare T_a(z) = p̄(ℓ-z)
+						\foreach \x in {0.10, 0.30, ..., 3.90} {
+							\pgfmathsetmacro{\h}{(\Lell - \x)*\sT}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Caso (a) NERO: triangolo lineare
+						\draw[diagT]
+						(0, 0) -- (0, \Tmax) -- (\Lell, 0);
+						
+						% Simbolo ⊕ nella zona positiva
+						\node[segno] at (\xMidAC, {0.5*\Tmax}) {$+$};
+						
+						% Etichetta del valore notevole
+						\node[left, font=\small] at (0, \Tmax-0.02) {$\bar{p}\ell$};
+						
+						\node[font=\small] at (\xLabel, \yLabel) {(b)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (c) — Diagramma del momento M(z)
+					% =========================================================
+					\begin{scope}[xshift=11.0cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						\draw[thick] (0,-\hwall) -- (0,\hwall);
+						\foreach \i in {-2.5,-1.5,-0.5,0.5,1.5,2.5}
+						\draw[thin] (0, {\i*\hwall/3}) -- ++(-\twall,-\twall);
+						
+						\node[above left=2pt, font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						\def\sM{0.16}
+						\pgfmathsetmacro{\MA}{(\Lell*\Lell/2)*\sM}    % |M(A)| = p̄ℓ²/2 → 1.28
+						
+						% Hatching del caso (a) — parabola 
+						\foreach \x in {0.10, 0.30, ..., 3.90} {
+							\pgfmathsetmacro{\h}{\MA*((\Lell-\x)/\Lell)*((\Lell-\x)/\Lell)}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Caso (b) GRIGIO: triangolo (retta) in AC, nullo in CB
+						\draw[diagMb]
+						(0, 0) -- (0, \MA) -- (\xMid, 0);
+						
+						% Corda del diagramma — da (0, M_A) a (Lell, 0)
+						% Visualizza P1: la tangente alla parabola in mezzeria è parallela a questa corda
+						\draw[diagMb, dashed] (0, \MA) -- (\Lell, 0);
+						
+						% Tangente parallela alla corda passante per il vertice (L/2, M_A/4)
+						% Punto di tangenza: vertice della parabola in mezzeria
+						\draw[diagMb, dashed] (0, {3*\MA/4}) -- (\Lell, {-\MA/4});
+						
+						% Caso (a) NERO: parabola sopra l'asse, vertice in B con tangente orizz.
+						\draw[diagM]
+						(0, 0) -- (0, \MA)
+						\foreach \x in {0.20, 0.40, ..., 3.80} {
+							-- ({\x}, {\MA*((\Lell-\x)/\Lell)*((\Lell-\x)/\Lell)})
+						}
+						-- (\Lell, 0);
+						
+						% Etichetta del valore notevole
+						\node[left, font=\small] at (0, \MA-0.04) {$\dfrac{\bar{p}\ell^2}{2}$};
+						
+						
+						\node[font=\small] at (\xLabel, \yLabel) {(c)};
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Mensola, confronto fra carico distribuito uniforme $\bar{p}$
+				(caso~a, tratto nero) e risultante concentrata $R = \bar{p}\ell$ applicata
+				in mezzeria (caso~b, tratto grigio):
+				(a)~schema strutturale con i due sistemi di carico sovrapposti;
+				(b)~diagrammi del taglio $T(z)$;
+				(c)~diagrammi del momento $M(z)$. I due diagrammi del momento sono
+				tangenti agli estremi della mensola ($A$ e $B$); la corda del
+				diagramma che congiunge $M(A) = -\bar p\ell^2/2$ a $M(B) = 0$
+				(tratto grigio tratteggiato superiore) è parallela alla tangente
+				al vertice della parabola in mezzeria (tratto grigio tratteggiato
+				inferiore), in accordo con la proprietà di tangenza in mezzeria
+				delle parabole da carico uniforme.}
+			\label{fig:stat_confronto_02}
+		\end{figure}

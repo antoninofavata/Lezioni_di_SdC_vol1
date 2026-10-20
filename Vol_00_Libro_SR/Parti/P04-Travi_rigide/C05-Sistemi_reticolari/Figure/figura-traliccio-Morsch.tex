@@ -1,0 +1,245 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		corrente/.style={line width=2.0pt, line cap=round, line join=round, black},
+		puntone/.style={line width=1.8pt, line cap=round, line join=round, black},
+		staffa/.style={line width=0.8pt,  line cap=round, line join=round, black},
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5.5pt, line width=1.0pt},
+		forza/.style={-{Stealth[length=5pt,width=4pt]}, line width=0.9pt, black},
+		quota/.style={ |<->|, >=stealth, very thin, gray!70},
+		sez/.style={very thin, gray!40, dashed},
+		Tfill/.style={fill=gray!25, draw=gray!55, line width=0.5pt},
+		Mfill/.style={fill=gray!15, draw=gray!55, line width=0.5pt},
+		lab/.style={font=\small},
+		labs/.style={font=\scriptsize},
+		]
+		
+		%% alpha=60: a=cot60=0.5774,  theta=45: b=cot45=1.0,  h=1.40
+		\def\h{1.40}
+		\pgfmathsetmacro{\ah}{0.5774*\h}
+		\pgfmathsetmacro{\bh}{1.0000*\h}
+		\pgfmathsetmacro{\abh}{\ah+\bh}
+		
+		%% ── Nodi ────────────────────────────────────────────────────────
+		\coordinate (A) at (0,0);
+		\coordinate (B) at (\abh,0);
+		\coordinate (C) at (2*\abh,0);
+		\coordinate (D) at (3*\abh,0);
+		\coordinate (E) at (4*\abh,0);
+		\coordinate (F) at (\bh,\h);
+		\coordinate (G) at (\ah+2*\bh,\h);
+		\coordinate (H) at (3*\ah+2*\bh,\h);
+		\coordinate (I) at (4*\ah+3*\bh,\h);
+		
+		%% ── Correnti ────────────────────────────────────────────────────
+		\draw[staffa](A)--(B)--(C)--(D)--(E);
+		\draw[corrente](F)--(G)--(H)--(I);
+		
+		%% ── Puntoni (theta=45, spessi) ──────────────────────────────────
+		\draw[puntone](A)--(F);
+		\draw[puntone](B)--(G);
+		\draw[puntone](H)--(D);
+		\draw[puntone](I)--(E);
+		
+		%% ── Staffe (alpha=60, sottili) ──────────────────────────────────
+		\draw[staffa](F)--(B);
+		\draw[staffa](G)--(C);
+		\draw[staffa](C)--(H);
+		\draw[staffa](D)--(I);
+		
+		%% ── Carichi F (più in alto) ─────────────────────────────────────
+		\foreach \nd in {F,G,H,I}{
+			\draw[forza]($(\nd)+(0,1.40)$)--($(\nd)+(0,0.70)$);
+			\node[above,lab]at($(\nd)+(0,1.50)$){$P$};}
+		
+		%% ── Cerniera A ──────────────────────────────────────────────────
+		\draw[line width=0.9pt](A)--++(-0.26,-0.42)--++(0.52,0)--cycle;
+		\draw[line width=0.9pt](-0.36,-0.42)--(0.36,-0.42);
+		\foreach \x in {-0.30,-0.15,0.00,0.15,0.30}
+		\draw[very thin](\x,-0.42)--++(-.10,-0.13);
+		\node[nodo]at(A){};
+		
+		%% ── Carrello E ──────────────────────────────────────────────────
+		\draw[line width=0.9pt](E)--++(-0.26,-0.36)--++(0.52,0)--cycle;
+		\draw[line width=0.9pt]($(E)+(-0.36,-0.36)$)--($(E)+(0.36,-0.36)$);
+		\draw[line width=0.9pt]($(E)+(-0.18,-0.50)$)circle(2.2pt);
+		\draw[line width=0.9pt]($(E)+( 0.18,-0.50)$)circle(2.2pt);
+		\draw[line width=0.9pt]($(E)+(-0.36,-0.62)$)--($(E)+(0.36,-0.62)$);
+		\foreach \x in {-0.30,-0.15,0.00,0.15,0.30}
+		\draw[very thin]($(E)+(\x,-0.62)$)--++(-.10,-0.13);
+		\node[nodo]at(E){};
+		
+		%% ── Nodi interni ────────────────────────────────────────────────
+		\foreach \nd in {B,C,D,F,G,H,I}{\node[nodo]at(\nd){};}
+		
+		%% ── Etichette nodi ──────────────────────────────────────────────
+		\node[left,lab]at(A){$A$};
+		\node[below,lab]at(B){$B$};
+		\node[below,lab]at(C){$C$};
+		\node[below,lab]at(D){$D$};
+		\node[right,lab]at(E){$E$};
+		\node[above,lab]at(F){$F$};
+		\node[above,lab]at(G){$G$};
+		\node[above,lab]at(H){$H$};
+		\node[above,lab]at(I){$I$};
+		
+		
+		%% ── Reazioni 2P in A e E (grigie, coda al nodo, verso l'alto) ──
+		\draw[-{Stealth[length=5pt,width=4pt]},gray!60,line width=0.9pt]
+		(A)--($(A)+(0,1.40)$);
+		\node[above,font=\small,gray!60]at($(A)+(0,1.40)$){$2P$};
+		\draw[-{Stealth[length=5pt,width=4pt]},gray!60,line width=0.9pt]
+		(E)--($(E)+(0,1.40)$);
+		\node[above,font=\small,gray!60]at($(E)+(0,1.40)$){$2P$};
+		%% ── Quota h verticale ───────────────────────────────────────────
+		\draw[quota](-0.80,0)--(-0.80,\h)node[midway,left,lab]{$h$};
+		
+		%% ── Angoli theta e alpha ────────────────────────────────────────
+		\draw[very thin,gray!60](A)--++(0.55,0);
+		\draw[thin,gray!60]($(A)+(0.40,0)$) arc(0:{atan(\h/\bh)}:0.40);
+		\node[labs]at($(A)+(0.52,0.16)$){$\vartheta$};
+		\draw[very thin,gray!60](F)--++(0.55,0);
+		\draw[thin,gray!60]($(F)+(0.40,0)$) arc(0:{-atan(\h/\ah)}:0.40);
+		\node[labs]at($(F)+(0.52,-0.22)$){$\alpha$};
+		
+		%% ── Quote orizzontali (sotto il corrente inferiore) ─────────────
+		\def\yq{-0.95}
+		%% distanze tra nodi in ordine di ascissa: A,F,B,G,C,H,D,I,E
+		%% A->F: bh (=cot theta), F->B: ah (=cot alpha), etc.
+		\draw[quota](0,\yq)--(\bh,\yq)
+		node[midway,above,labs]{$b$};
+		\draw[quota](\bh,\yq)--(\abh,\yq)
+		node[midway,above,labs]{$a$};
+		\draw[quota](\abh,\yq)--(\ah+2*\bh,\yq)
+		node[midway,above,labs]{$b$};
+		\draw[quota](\ah+2*\bh,\yq)--(2*\abh,\yq)
+		node[midway,above,labs]{$a$};
+		\draw[quota](2*\abh,\yq)--(3*\ah+2*\bh,\yq)
+		node[midway,above,labs]{$a$};
+		\draw[quota](3*\ah+2*\bh,\yq)--(3*\abh,\yq)
+		node[midway,above,labs]{$b$};
+		\draw[quota](3*\abh,\yq)--(4*\ah+3*\bh,\yq)
+		node[midway,above,labs]{$a$};
+		\draw[quota](4*\ah+3*\bh,\yq)--(4*\abh,\yq)
+		node[midway,above,labs]{$b$};
+		
+		%% ── Linee di sezione (verticali tratteggiate) ───────────────────
+		\foreach \xs in {\bh/2, \bh+\ah/2, \abh+\bh/2,
+			\ah+2*\bh+\ah/2, 2*\abh+\ah/2,
+			3*\ah+2*\bh+\bh/2, 3*\abh+\ah/2,
+			4*\ah+3*\bh+\bh/2}{
+			\draw[sez](\xs,1.9)--(\xs,-4.20);}
+		
+		%% ════════════════════════════════════════════════════════════════
+		%% DIAGRAMMA DEL TAGLIO
+		%% Shear values: 2F (0 to xF), F (xF to xG), 0 (xG to xH),
+		%%               -F (xH to xI), -2F (xI to xE)
+		%% Scale: kT=0.50 cm per F
+		%% ════════════════════════════════════════════════════════════════
+		\def\yT{-2.40}   % zero line del taglio
+		\def\kT{0.50}    % cm per unità F
+		
+		%% zero line
+		\draw[line width=1.2pt,black](-0.2,\yT)--(4*\abh+0.2,\yT);
+		\node[left,labs]at(-0.2,{\yT+0.25}){$+$};
+		\node[left,labs]at(-0.2,{\yT-0.25}){$-$};
+		
+		%% Pannello 1 (0 a xF): T=+2P (positivo, sopra)
+		\fill[Tfill](0,\yT)rectangle(\bh,{\yT+2*\kT});
+		%% Pannello 2 (xF a xG): T=+P
+		\fill[Tfill](\bh,\yT)rectangle(\ah+2*\bh,{\yT+\kT});
+		%% Pannello 3 (xG a xH): T=0
+		%% Pannello 4 (xH a xI): T=-P (negativo, sotto)
+		\fill[Tfill](3*\ah+2*\bh,{\yT-\kT})rectangle(4*\ah+3*\bh,\yT);
+		%% Pannello 5 (xI a xE): T=-2P
+		\fill[Tfill](4*\ah+3*\bh,{\yT-2*\kT})rectangle(4*\abh,\yT);
+		
+		%% profilo a gradini
+		\draw[black,line width=0.7pt]
+		(0,{\yT+2*\kT})--(\bh,{\yT+2*\kT})--
+		(\bh,{\yT+\kT})--(\ah+2*\bh,{\yT+\kT})--
+		(\ah+2*\bh,\yT)--(3*\ah+2*\bh,\yT)--
+		(3*\ah+2*\bh,{\yT-\kT})--(4*\ah+3*\bh,{\yT-\kT})--
+		(4*\ah+3*\bh,{\yT-2*\kT})--(4*\abh,{\yT-2*\kT});
+		\draw[black,line width=0.7pt](0,\yT)--(0,{\yT+2*\kT});
+		\draw[black,line width=0.7pt](4*\abh,\yT)--(4*\abh,{\yT-2*\kT});
+		
+		%% etichette
+		\node[labs]at({\bh/2},{\yT+\kT}){$2P$};
+		\node[labs]at({\bh+\ah/2},{\yT+\kT/2}){$P$};
+		\node[labs]at({2*\abh},{\yT+0.15}){$0$};
+		\node[labs]at({3*\abh+\ah/2},{\yT-\kT/2}){$P$};
+		\node[labs]at({4*\ah+3*\bh+\bh/2},{\yT-\kT}){$2P$};
+		
+		%% ════════════════════════════════════════════════════════════════
+		%% DIAGRAMMA DEL MOMENTO
+		%% M values: M_A=0, M_F=2Fbh, M_G=Fh(a+3b), M_H=Fh(a+3b),
+		%%           M_I=2Fbh, M_E=0
+		%% At B,D: Fh(a+2b)
+		%% Scale: kM=0.22 cm per Fh
+		%% ════════════════════════════════════════════════════════════════
+		\def\yM{-3.80}   % zero line del momento
+		\def\kM{0.220}   % cm per Fh
+		
+		%% valori in cm (moltiplicati per kM, con Fh=1):
+		%% M_F = 2bh * kM/h = 2*b*kM = 2*1.0*0.22 = 0.44
+		%% M_B = (a+2b)*kM = 2.5774*0.22 = 0.567
+		%% M_G = M_H = (a+3b)*kM = 3.5774*0.22 = 0.787
+		\pgfmathsetmacro{\mF}{2*1.0*\kM}
+		\pgfmathsetmacro{\mB}{(0.5774+2*1.0)*\kM}
+		\pgfmathsetmacro{\mG}{(0.5774+3*1.0)*\kM}
+		
+		%% zero line
+		\draw[line width=1.2pt,black](-0.2,\yM)--(4*\abh+0.2,\yM);
+		
+		%% poligono del momento (positivo verso il basso)
+		\fill[Mfill]
+		(0,\yM)--
+		(\bh,{\yM-\mF})--
+		(\abh,{\yM-\mB})--
+		(\ah+2*\bh,{\yM-\mG})--
+		(3*\ah+2*\bh,{\yM-\mG})--
+		(3*\abh,{\yM-\mB})--
+		(4*\ah+3*\bh,{\yM-\mF})--
+		(4*\abh,\yM)--cycle;
+		\draw[black,line width=0.7pt]
+		(0,\yM)--
+		(\bh,{\yM-\mF})--
+		(\abh,{\yM-\mB})--
+		(\ah+2*\bh,{\yM-\mG})--
+		(3*\ah+2*\bh,{\yM-\mG})--
+		(3*\abh,{\yM-\mB})--
+		(4*\ah+3*\bh,{\yM-\mF})--
+		(4*\abh,\yM);
+		
+		%% trattini nodali e label
+		\draw[gray!50,line width=0.5pt](\bh,\yM)--(\bh,{\yM-\mF});
+		\node[labs,below]at(\bh,{\yM-\mF}){$2Pb$};
+		\draw[gray!50,line width=0.5pt](\abh,\yM)--(\abh,{\yM-\mB});
+		\node[labs,below]at(\abh,{\yM-\mB}){$(a{+}2b)P$};
+		\draw[gray!50,line width=0.5pt](\ah+2*\bh,\yM)--(\ah+2*\bh,{\yM-\mG});
+		\node[labs,below]at(\ah+2*\bh,{\yM-\mG}){$(a{+}3b)P$};
+		%% tetto piatto (da G a H)
+		\draw[gray!50,line width=0.5pt](3*\ah+2*\bh,\yM)--(3*\ah+2*\bh,{\yM-\mG});
+		\draw[gray!50,line width=0.5pt](3*\abh,\yM)--(3*\abh,{\yM-\mB});
+		\draw[gray!50,line width=0.5pt](4*\ah+3*\bh,\yM)--(4*\ah+3*\bh,{\yM-\mF});
+		
+	\end{tikzpicture}
+	\caption{Traliccio di Ritter-M\"{o}rsch con carichi $P$ applicati
+		ai nodi del corrente superiore ($F$, $G$, $H$, $I$)
+		e reazioni $2P$ agli appoggi $A$ ed $E$.
+		Le quote orizzontali indicano le proiezioni delle
+		diagonali: $b = \cot\vartheta$ per i puntoni
+		(tratto spesso, compressi) e $a = \cot\alpha$
+		per le staffe (tratto sottile, tese).
+		Il diagramma del taglio è positivo nella metà
+		sinistra ($2P$ nel primo pannello, $P$ nel secondo)
+		e nullo tra i nodi $G$ e $H$; per antisimmetria
+		è negativo nella metà destra.
+		Il poligono del momento ha tetto piatto di valore
+		$(a+3b)P$ tra $G$ e $H$, dove il taglio è nullo,
+		e valori nodali $(a+2b)P$ in $B$ e $D$, $2bP$
+		in $F$ e $I$.}
+	\label{fig:traliccio_Morsch}
+\end{figure}

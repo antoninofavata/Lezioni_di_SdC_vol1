@@ -1,0 +1,213 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[>=stealth, line width=0.8pt, font=\small]
+			
+			%% ── Parametri geometrici globali ─────────────────────────────────
+			\def\Lc{1.40}    % lunghezza del concio (cm)
+			\def\Hc{0.60}    % altezza del concio (cm)
+			\def\gap{0.50}   % gap tra i due lembi (cm) — distorsione longitudinale
+			\def\Wp{4.5}     % larghezza nominale di ciascun pannello (cm)
+			\def\Hp{2.5}     % altezza nominale di ciascun pannello (cm)
+			\def\GapP{0.4}   % spazio orizzontale tra i pannelli
+			
+			%% offset per scope
+			\def\XPa{0}
+			\pgfmathsetmacro{\XPb}{\Wp + \GapP}
+			\pgfmathsetmacro{\XPc}{2*(\Wp + \GapP)}
+			
+			%% =================================================================
+			%% PANNELLO (a) — DISTORSIONE LONGITUDINALE varrho_w e forza N
+			%% =================================================================
+			\begin{scope}[xshift=\XPa cm, yshift=0cm]
+				
+				%% Coordinate locali del concio
+				\pgfmathsetmacro{\xCm}{0.5*\Wp - 0.5*\Lc - 0.5*\gap}
+				\pgfmathsetmacro{\xCp}{0.5*\Wp + 0.5*\gap + 0.5*\Lc}
+				\pgfmathsetmacro{\xLm}{\xCm - 0.5*\Lc}
+				\pgfmathsetmacro{\xRm}{\xCm + 0.5*\Lc}
+				\pgfmathsetmacro{\xLp}{\xCp - 0.5*\Lc}
+				\pgfmathsetmacro{\xRp}{\xCp + 0.5*\Lc}
+				\pgfmathsetmacro{\xMid}{0.5*(\xRm + \xLp)}
+				\pgfmathsetmacro{\yQ}{-0.5*\Hc - 0.20}
+				
+				%% Lembo C^-
+				\draw[line width=1.0pt, fill=black!5]
+				(\xLm, -0.5*\Hc) rectangle (\xRm, 0.5*\Hc);
+				\node[font=\footnotesize, above] at (\xCm, 0.5*\Hc + 0.05) {$\mathcal{C}^{-}$};
+				
+				%% Lembo C^+
+				\draw[line width=1.0pt, fill=black!5]
+				(\xLp, -0.5*\Hc) rectangle (\xRp, 0.5*\Hc);
+				\node[font=\footnotesize, above] at (\xCp, 0.5*\Hc + 0.05) {$\mathcal{C}^{+}$};
+				
+				%% Forze N sulle facce interne, sull'asse del concio
+				\def\Lf{0.45}
+				\pgfmathsetmacro{\xNm}{\xRm - \Lf}
+				\pgfmathsetmacro{\xNmlab}{\xRm - 0.5*\Lf}
+				\pgfmathsetmacro{\xNp}{\xLp + \Lf}
+				\pgfmathsetmacro{\xNplab}{\xLp + 0.5*\Lf}
+				
+				\draw[->, line width=1.0pt] (\xNm, 0) -- (\xRm, 0);
+				\node[font=\footnotesize, left] at (\xNmlab-0.1, 0.05) {$N$};
+				
+				\draw[->, line width=1.0pt] (\xNp, 0) -- (\xLp, 0);
+				\node[font=\footnotesize, right] at (\xNplab+0.1, 0.05) {$N$};
+				
+				%% Distorsione varrho_w come doppia freccia che apre il gap
+				\draw[<->, line width=0.7pt, gray]
+				(\xRm + 0.05, \yQ) -- (\xLp - 0.05, \yQ);
+				\node[font=\footnotesize, below, color=black!60]
+				at (\xMid, \yQ) {$\varrho_w$};
+				
+				%% Etichetta pannello
+				\node[font=\small, below=0.05] at (0.5*\Wp, -1.3)
+				{(a) Distorsione longitudinale};
+				
+			\end{scope}
+			
+			%% =================================================================
+			%% PANNELLO (b) — DISTORSIONE TRASVERSALE varrho_v e taglio T
+			%% =================================================================
+			\begin{scope}[xshift=\XPb cm, yshift=0cm]
+				
+				%% Coordinate locali
+				\pgfmathsetmacro{\xCm}{0.5*\Wp - 0.5*\Lc - 0.5*\gap}
+				\pgfmathsetmacro{\xCp}{0.5*\Wp + 0.5*\gap + 0.5*\Lc}
+				\pgfmathsetmacro{\xLm}{\xCm - 0.5*\Lc}
+				\pgfmathsetmacro{\xRm}{\xCm + 0.5*\Lc}
+				\pgfmathsetmacro{\xLp}{\xCp - 0.5*\Lc}
+				\pgfmathsetmacro{\xRp}{\xCp + 0.5*\Lc}
+				\pgfmathsetmacro{\xMid}{0.5*(\xRm + \xLp)}
+				
+				%% Quote verticali: C^- in posizione, C^+ abbassato di gap
+				\pgfmathsetmacro{\yCm}{0}
+				\pgfmathsetmacro{\yCp}{-\gap}
+				\pgfmathsetmacro{\yMtop}{\yCm + 0.5*\Hc}
+				\pgfmathsetmacro{\yMbot}{\yCm - 0.5*\Hc}
+				\pgfmathsetmacro{\yPtop}{\yCp + 0.5*\Hc}
+				\pgfmathsetmacro{\yPbot}{\yCp - 0.5*\Hc}
+				\pgfmathsetmacro{\yMidVar}{0.5*(\yMtop + \yPtop)}    % quota etichetta varrho_v
+				
+				%% Lembo C^- (in posizione)
+				\draw[line width=1.0pt, fill=black!5]
+				(\xLm, \yMbot) rectangle (\xRm, \yMtop);
+				\node[font=\footnotesize, above] at (\xCm, \yMtop + 0.05) {$\mathcal{C}^{-}$};
+				
+				%% Lembo C^+ (abbassato di gap)
+				\draw[line width=1.0pt, fill=black!5]
+				(\xLp, \yPbot) rectangle (\xRp, \yPtop);
+				\node[font=\footnotesize, below] at (\xCp, \yPbot - 0.05) {$\mathcal{C}^{+}$};
+				
+				%% Linea tratteggiata di riferimento: prolungamento della cima di C^-
+				\draw[dashed, thin, gray]
+				(\xRm, \yMtop) -- (\xLp, \yMtop);
+				
+				%% Doppia freccia verticale per varrho_v: dalla cima di C^- alla cima di C^+
+				\draw[<->, line width=0.7pt, gray]
+				(\xMid, \yMtop) -- (\xMid, \yPtop);
+				%				
+				\node[font=\footnotesize, right]
+				at (\xMid, \yMidVar) {\textcolor{black!60}{$\varrho_v$}};
+				
+				%% Frecce T sulle facce interne, verticali
+				\def\Lt{0.40}
+				%% T su C^- (faccia destra): freccia che parte dall'asse del lembo verso il basso
+				\draw[->, line width=1.0pt]
+				(\xRm - 0.05, \yCm + 0.5*\Lt) -- (\xRm - 0.05, \yCm - 0.5*\Lt);
+				\node[font=\footnotesize, left] at (\xRm - 0.10, \yCm) {$T$};
+				
+				%% T su C^+ (faccia sinistra): freccia verso l'alto
+				\draw[->, line width=1.0pt]
+				(\xLp + 0.05, \yCp - 0.5*\Lt) -- (\xLp + 0.05, \yCp + 0.5*\Lt);
+				\node[font=\footnotesize, right] at (\xLp + 0.10, \yCp) {$T$};
+				
+				%% Etichetta pannello
+				\node[font=\small, below=0.05] at (0.5*\Wp, -1.3)
+				{(b) Distorsione trasversale};
+				
+			\end{scope}
+			
+			%% =================================================================
+			%% PANNELLO (c) — DISTORSIONE ROTAZIONALE varrho_vartheta e momento M
+			%% =================================================================
+			\begin{scope}[xshift=\XPc cm, yshift=0cm]
+				
+				%% Coordinate locali del concio
+				\pgfmathsetmacro{\xCm}{0.5*\Wp - 0.5*\Lc - 0.5*\gap}
+				\pgfmathsetmacro{\xCp}{0.5*\Wp + 0.5*\gap + 0.5*\Lc}
+				\pgfmathsetmacro{\xLm}{\xCm - 0.5*\Lc}
+				\pgfmathsetmacro{\xRm}{\xCm + 0.5*\Lc}
+				\pgfmathsetmacro{\xLp}{\xCp - 0.5*\Lc}
+				\pgfmathsetmacro{\xRp}{\xCp + 0.5*\Lc}
+				\pgfmathsetmacro{\xMid}{0.5*(\xRm + \xLp)}
+				
+				%% Angolo di rotazione di C^+ (in gradi, per visualizzazione)
+				\def\angR{15}
+				
+				%% Lembo C^- (in posizione, orizzontale)
+				\draw[line width=1.0pt, fill=black!5]
+				(\xLm, -0.5*\Hc) rectangle (\xRm, 0.5*\Hc);
+				\node[font=\footnotesize, above] at (\xCm, 0.5*\Hc + 0.05) {$\mathcal{C}^{-}$};
+				
+				%% Lembo C^+ (ruotato di angR attorno al suo bordo sinistro xLp)
+				\begin{scope}[rotate around={\angR:(\xLp,0)}]
+					\draw[line width=1.0pt, fill=black!5]
+					(\xLp, -0.5*\Hc) rectangle (\xRp, 0.5*\Hc);
+				\end{scope}
+				%% Etichetta C^+ posizionata fuori dal lembo ruotato
+				\node[font=\footnotesize, above]
+				at (\xCp + 0.10, 0.5*\Hc + 0.05) {$\mathcal{C}^{+}$};
+				
+				%% Asse del lembo C^- prolungato a destra (orizzontale)
+				\draw[line width=0.6pt, gray]
+				(\xLm - 0.10, 0) -- (\xLp + 1.20, 0);
+				
+				
+				
+				%% Asse del lembo C^+ prolungato a sinistra (ruotato di angR antioraria)
+				\begin{scope}[rotate around={\angR:(\xLp,0)}]
+					\draw[line width=0.6pt, gray]
+					(\xLp - 0.40, 0) -- (\xRp + 0.10, 0);
+				\end{scope}
+				
+				
+				%% Doppia freccia per varrho_vartheta: arco fra i due assi grigi
+				\def\rArc{1.10}    % raggio aumentato per spostare l'arco verso destra
+				\draw[<->, line width=0.7pt, gray]
+				(\xLp + \rArc, 0) arc (0:\angR:\rArc);
+				\pgfmathsetmacro{\xLabArc}{\xLp + \rArc + 0.10}
+				\pgfmathsetmacro{\yLabArc}{0.5*\rArc*sin(\angR)}
+				\node[font=\footnotesize, right] at (\xLabArc-0.1, \yLabArc-0.3) {\textcolor{black!60}{$\varrho_\vartheta$}};
+				
+				
+				
+				%% Coppie M sulle facce interne
+				\def\rM{0.18}
+				\draw[<-, line width=1.0pt]
+				([shift={(\xRm - 0.05, 0)}] 90:\rM)
+				arc (90:-90:\rM);
+				\node[font=\footnotesize, left] at (\xRm +0.8 - \rM, -0.4) {$M$};
+				
+				%% Su C^+ (faccia sinistra): coppia antioraria  
+				\begin{scope}[rotate around={\angR:(\xLp,0)}]
+					\draw[<-, line width=1.0pt]
+					([shift={(\xLp + 0.05, 0)}] 90:\rM)
+					arc (90:270:\rM);
+					%\node[font=\footnotesize, right] at (\xLp - 0.40 + \rM, -0.4) {$M$};
+				\end{scope}
+				
+				
+				%% Etichetta pannello
+				\node[font=\small, below=0.05] at (0.5*\Wp, -1.3)
+				{(c) Distorsione rotazionale};
+				
+			\end{scope}
+			
+		\end{tikzpicture}%
+	}
+	\caption{Distorsioni di concio e caratteristiche della 
+		sollecitazione duali: la coppia $(\bm{\sigma},\,\bm{\varrho})$ entra 
+		nell'identità bilineare con segno discorde.}
+	\label{fig:distorsioni_concio}
+\end{figure}

@@ -1,0 +1,289 @@
+\begin{figure}[!htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			scale=0.95,
+			>=latex,
+			trave/.style={line width=1.2pt},
+			carico/.style={black, line width=0.4pt},
+			forza/.style={black, line width=1pt},
+			risultante/.style={gray!65, line width=1.8pt},
+			diagonale/.style={gray!50, line width=0.3pt},
+			diagT/.style={black, line width=0.8pt},
+			diagTb/.style={gray!75, line width=1.0pt},
+			diagM/.style={black, line width=0.8pt},
+			diagMb/.style={gray!75, line width=1.0pt},
+			hatch/.style={gray!40, line width=0.3pt},
+			quota/.style={black, line width=0.4pt},
+			fibre/.style={gray!70, line width=0.3pt},
+			]
+			
+			% ── Parametri dei vincoli ──
+			\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.06}
+			\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+			\def\hh{0.10}
+			
+			% ── Geometria ──
+			\def\Lell{4}
+			\def\yqi{-0.80}
+			
+			% ── Parametri del carico distribuito ──
+			\def\pgap{0.10}
+			\def\php{0.40}
+			\pgfmathsetmacro{\pBase}{\pgap}
+			\pgfmathsetmacro{\pTop}{\pgap+\php}
+			
+			% ── Scale dei diagrammi ──
+			\def\sT{0.30}
+			\pgfmathsetmacro{\Tmax}{(\Lell/2)*\sT}
+			\def\sM{0.45}
+			\pgfmathsetmacro{\Mmax}{(\Lell*\Lell/8)*\sM}
+			
+			% =========================================================
+			% MACRO RIGA (a): schema strutturale per il pannello N
+			% =========================================================
+			\newcommand{\PannelloSchemaPartizione}[2]{
+				\def\Npart{#1}
+				\pgfmathsetmacro{\Lpart}{\Lell/\Npart}
+				\pgfmathsetmacro{\Lfreccia}{1.0/\Npart}
+				\pgfmathsetmacro{\Rstart}{\pTop+\Lfreccia}
+				
+				\draw[trave] (0,0) -- (\Lell,0);
+				\draw[fibre, dashed] (0, -0.1) -- (\Lell, -0.1);
+				
+				\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+				\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+				\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+				\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+				
+				\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+				\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+				\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+				\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+				\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+				\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+				
+				\draw[thick, fill=white] (0,0) circle (\rn);
+				\draw[thick, fill=white] (\Lell,0) circle (\rn);
+				
+				\draw[carico] (0,\pBase) rectangle (\Lell,\pTop);
+				
+				\foreach \kk in {1,...,\numexpr\Npart-1\relax} {
+					\pgfmathsetmacro{\xk}{\kk*\Lpart}
+					\draw[carico] (\xk, \pBase) -- (\xk, \pTop);
+				}
+				
+				\foreach \kk in {0,...,\numexpr\Npart-1\relax} {
+					\pgfmathsetmacro{\xL}{\kk*\Lpart}
+					\pgfmathsetmacro{\xR}{(\kk+1)*\Lpart}
+					\draw[diagonale] (\xL, \pBase) -- (\xR, \pTop);
+					\draw[diagonale] (\xL, \pTop) -- (\xR, \pBase);
+				}
+				
+				\foreach \kk in {0,...,\numexpr\Npart-1\relax} {
+					\pgfmathsetmacro{\xb}{(\kk+0.5)*\Lpart}
+					\draw[risultante, -{Latex[length=5pt, width=4pt]}]
+					(\xb, \Rstart) -- (\xb, 0);
+				}
+				
+				\pgfmathsetmacro{\xbZero}{0.5*\Lpart}
+				\node[above, font=\small, gray!50!black] at (\xbZero, \Rstart+0.02) {#2};
+				
+				\node[above left=-2pt,  font=\small] at (0,0)     {$A$};
+				\node[above right=-2pt, font=\small] at (\Lell,0) {$B$};
+				
+				\foreach \kk in {0,...,\Npart} {
+					\pgfmathsetmacro{\xk}{\kk*\Lpart}
+					\draw[quota] (\xk,\yqi+0.07) -- (\xk,\yqi-0.07);
+				}
+				\foreach \kk in {1,...,\Npart} {
+					\pgfmathsetmacro{\xL}{(\kk-1)*\Lpart}
+					\pgfmathsetmacro{\xR}{\kk*\Lpart}
+					\draw[<->, quota] (\xL,\yqi) -- (\xR,\yqi);
+				}
+				\foreach \kk in {1,...,\Npart} {
+					\pgfmathsetmacro{\xMidPart}{(\kk-0.5)*\Lpart}
+					\node[above, font=\footnotesize] at (\xMidPart, \yqi-0.08) {$\ell/\Npart$};
+				}
+			}
+			
+			% =========================================================
+			% MACRO RIGHE (b) e (c): trave appoggiata semplificata
+			% =========================================================
+			\newcommand{\TraveAppoggiata}{
+				\draw[trave] (0,0) -- (\Lell,0);
+				\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+				\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+				\draw[thick, fill=white] (0,0) circle (\rn);
+				\draw[thick, fill=white] (\Lell,0) circle (\rn);
+				\node[above left=-2pt,  font=\small] at (0,0)     {$A$};
+				\node[above right=-2pt, font=\small] at (\Lell,0) {$B$};
+			}
+			
+			% Hatching parabolico (per riga c)
+			\newcommand{\HatchingParabola}{
+				\foreach \x in {0.10, 0.30, ..., 3.90} {
+					\pgfmathsetmacro{\h}{-(\sM/2)*\x*(\Lell-\x)}
+					\draw[hatch] (\x, 0) -- (\x, \h);
+				}
+			}
+			
+			% Parabola del caso continuo (per riga c)
+			\newcommand{\ParabolaNera}{
+				\draw[diagM]
+				(0, 0)
+				\foreach \x in {0.20, 0.40, ..., 3.80} {
+					-- ({\x}, {-(\sM/2)*\x*(\Lell-\x)})
+				}
+				-- (\Lell, 0);
+			}
+			
+			% Hatching triangolare (per riga b)
+			\newcommand{\HatchingTriangolo}{
+				\foreach \x in {0.10, 0.30, ..., 3.90} {
+					\pgfmathsetmacro{\h}{(\Lell/2 - \x)*\sT}
+					\draw[hatch] (\x, 0) -- (\x, \h);
+				}
+			}
+			
+			% Triangolo lineare del caso continuo (per riga b)
+			\newcommand{\TriangoloNero}{
+				\draw[diagT] (0,0) -- (0,\Tmax) -- (\Lell,-\Tmax) -- (\Lell,0);
+			}
+			
+			% =========================================================
+			% RIGA (a) — Schemi strutturali con partizione (yshift=0)
+			% =========================================================
+			\begin{scope}[xshift=0cm, yshift=0cm]
+				\PannelloSchemaPartizione{2}{$\dfrac{\bar{p}\,\ell}{2}$}
+			\end{scope}
+			\begin{scope}[xshift=5cm, yshift=0cm]
+				\PannelloSchemaPartizione{3}{$\dfrac{\bar{p}\,\ell}{3}$}
+			\end{scope}
+			\begin{scope}[xshift=10cm, yshift=0cm]
+				\PannelloSchemaPartizione{4}{$\dfrac{\bar{p}\,\ell}{4}$}
+			\end{scope}
+			
+			% =========================================================
+			% RIGA (b) — Diagrammi del taglio T(z) (yshift=-3.5cm)
+			% =========================================================
+			% Pannello (b,2)
+			\begin{scope}[xshift=0cm, yshift=-2.0cm]
+				\TraveAppoggiata
+				\HatchingTriangolo
+				\draw[diagTb]
+				(0,0) -- (0,\Tmax)
+				-- (1.0,\Tmax) -- (1.0,0)
+				-- (3.0,0) -- (3.0,-\Tmax)
+				-- (\Lell,-\Tmax) -- (\Lell,0);
+				\TriangoloNero
+			\end{scope}
+			% Pannello (b,3)
+			\begin{scope}[xshift=5cm, yshift=-2.0cm]
+				\TraveAppoggiata
+				\HatchingTriangolo
+				\pgfmathsetmacro{\TII}{\Tmax/3}
+				\pgfmathsetmacro{\zbI}{\Lell/6}
+				\pgfmathsetmacro{\zbII}{\Lell/2}
+				\pgfmathsetmacro{\zbIII}{5*\Lell/6}
+				\draw[diagTb]
+				(0,0) -- (0,\Tmax)
+				-- (\zbI,\Tmax)   -- (\zbI,\TII)
+				-- (\zbII,\TII)   -- (\zbII,-\TII)
+				-- (\zbIII,-\TII) -- (\zbIII,-\Tmax)
+				-- (\Lell,-\Tmax) -- (\Lell,0);
+				\TriangoloNero
+			\end{scope}
+			% Pannello (b,4)
+			\begin{scope}[xshift=10cm, yshift=-2.0cm]
+				\TraveAppoggiata
+				\HatchingTriangolo
+				\pgfmathsetmacro{\TII}{\Tmax/2}
+				\pgfmathsetmacro{\zbI}{\Lell/8}
+				\pgfmathsetmacro{\zbII}{3*\Lell/8}
+				\pgfmathsetmacro{\zbIII}{5*\Lell/8}
+				\pgfmathsetmacro{\zbIV}{7*\Lell/8}
+				\draw[diagTb]
+				(0,0) -- (0,\Tmax)
+				-- (\zbI,\Tmax)   -- (\zbI,\TII)
+				-- (\zbII,\TII)   -- (\zbII,0)
+				-- (\zbIII,0)     -- (\zbIII,-\TII)
+				-- (\zbIV,-\TII)  -- (\zbIV,-\Tmax)
+				-- (\Lell,-\Tmax) -- (\Lell,0);
+				\TriangoloNero
+			\end{scope}
+			
+			% =========================================================
+			% RIGA (c) — Diagrammi del momento M(z) (yshift=-6.5cm)
+			% =========================================================
+			% Pannello (c,2)
+			\begin{scope}[xshift=0cm, yshift=-3.5cm]
+				\TraveAppoggiata
+				\HatchingParabola
+				\ParabolaNera
+				\draw[diagMb]
+				(0,0) -- (1.0,-\Mmax) -- (3.0,-\Mmax) -- (\Lell,0);
+				\node[above, font=\small] at (0.5*\Lell, -\Mmax+0.02) {$\tfrac{\bar{p}\ell^2}{8}$};
+			\end{scope}
+			% Pannello (c,3)
+			\begin{scope}[xshift=5cm, yshift=-3.5cm]
+				\TraveAppoggiata
+				\HatchingParabola
+				\ParabolaNera
+				\pgfmathsetmacro{\MbI}{\Mmax*8/12}
+				\pgfmathsetmacro{\MbII}{\Mmax*10/9}
+				\pgfmathsetmacro{\zbI}{\Lell/6}
+				\pgfmathsetmacro{\zbII}{\Lell/2}
+				\pgfmathsetmacro{\zbIII}{5*\Lell/6}
+				\draw[diagMb]
+				(0,0)
+				-- (\zbI,-\MbI)
+				-- (\zbII,-\MbII)
+				-- (\zbIII,-\MbI)
+				-- (\Lell,0);
+				\node[above, font=\small] at (0.5*\Lell, -\Mmax+0.02) {$\tfrac{\bar{p}\ell^2}{8}$};
+				\node[below, font=\small, gray!50!black] at (0.5*\Lell, -\MbII-0.0) {$\tfrac{5\bar{p}\ell^2}{36}$};
+			\end{scope}
+			% Pannello (c,4)
+			\begin{scope}[xshift=10cm, yshift=-3.5cm]
+				\TraveAppoggiata
+				\HatchingParabola
+				\ParabolaNera
+				\pgfmathsetmacro{\MbI}{\Mmax/2}
+				\pgfmathsetmacro{\zbI}{\Lell/8}
+				\pgfmathsetmacro{\zbII}{3*\Lell/8}
+				\pgfmathsetmacro{\zbIII}{5*\Lell/8}
+				\pgfmathsetmacro{\zbIV}{7*\Lell/8}
+				\draw[diagMb]
+				(0,0)
+				-- (\zbI,-\MbI)
+				-- (\zbII,-\Mmax)
+				-- (\zbIII,-\Mmax)
+				-- (\zbIV,-\MbI)
+				-- (\Lell,0);
+				\node[above, font=\small] at (0.5*\Lell, -\Mmax+0.02) {$\tfrac{\bar{p}\ell^2}{8}$};
+			\end{scope}
+			
+			% =========================================================
+			% Etichette di colonna in fondo (sotto la riga c)
+			% =========================================================
+			\node[font=\small\bfseries] at (0.5*\Lell + 0cm, -5.0) {$N=2$};
+			\node[font=\small\bfseries] at (0.5*\Lell + 5cm, -5.0) {$N=3$};
+			\node[font=\small\bfseries] at (0.5*\Lell + 10cm, -5.0) {$N=4$};
+			
+		\end{tikzpicture}%
+	}
+	\caption{Sostituzione tra carico distribuito e
+		carichi concentrati per la trave appoggiata,
+		in partizioni di $N = 2, 3, 4$ tratti di
+		uguale ampiezza (colonne, da sinistra a
+		destra). Righe, dall'alto al basso: schema
+		strutturale, diagramma del taglio $T(z)$,
+		diagramma del momento flettente $M(z)$. In
+		nero il caso continuo, in grigio il caso a
+		partizione discreta. Nella riga (a) le
+		diagonali in ciascuna sotto-area individuano
+		il baricentro in cui è applicata la
+		risultante $\bar{p}\ell/N$.}
+	\label{fig:stat_partizioni_01}
+\end{figure}

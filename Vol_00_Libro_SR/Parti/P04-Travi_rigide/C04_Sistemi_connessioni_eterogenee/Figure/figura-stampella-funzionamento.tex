@@ -1,0 +1,58 @@
+\begin{figure}[htbp]
+		\centering
+		\newcommand{\cerniera}[1]{%
+			\draw[terra] (#1) -- ++(-0.10,-0.18) -- ++(0.20,0) -- cycle;
+			\draw[terra] ($(#1)+(-0.16,-0.18)$)--($(#1)+(0.16,-0.18)$);
+			\foreach \t in {-0.14,-0.07,0,0.07,0.14} \draw[terra] ($(#1)+(\t,-0.18)$)--++(-0.05,-0.07);}
+		\newcommand{\semicernD}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(-0.025,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+		\newcommand{\semicernF}[2]{\draw[black,fill=white,line width=0.9pt]($(#1)+(0.125,0)$) arc[start angle=0,end angle={#2*180},radius=0.05]--cycle;}
+		\tikzset{
+			terra/.style={line width=0.8pt,black},
+			carico/.style={-{Stealth[length=1.3mm]},line width=0.5pt,black!70},
+			bordo/.style={line width=0.5pt,black!70},
+			nodoV/.style={circle,fill=white,draw=black,inner sep=0pt,minimum size=4.2pt,line width=0.7pt},
+			astaT/.style={line width=1.3pt,line cap=round,line join=round,black},
+			astaC/.style={line width=3.6pt,line cap=round,line join=round,black}}
+		\resizebox{0.92\linewidth}{!}{%
+			\begin{tikzpicture}[x=2.4cm,y=2.4cm]
+				\coordinate (A) at (0,0); \coordinate (B) at (4,0);
+				\coordinate (C) at (-0.5,0.25);\coordinate (D) at (1,0.25);
+				\coordinate (E) at (2,0.25); \coordinate (F) at (3,0.25); \coordinate (G) at (4.5,0.25);
+				\node[anchor=west,font=\small] at (-0.55,0.64){(a)\ \ carico su tutta la travata $C$--$G$};
+				\draw[astaC] (A)--(C); \draw[astaC] (A)--(D); \draw[astaC] (B)--(F); \draw[astaC] (B)--(G);
+				\draw[astaT] (C)--(D); \draw[astaC] (D)--(E)--(F); \draw[astaT] (F)--(G);
+				\draw[bordo] (-0.5,0.45)--(4.5,0.45);
+				\foreach \x in {-0.5,-0.375,...,4.501} \draw[carico] (\x,0.45)--(\x,0.25);
+				\node[above] at (2,0.46){$p$};
+				\node[font=\footnotesize] at (1.5,0.12){$-\tfrac{15}{2}p\ell$}; \node[font=\footnotesize] at (2.5,0.12){$-\tfrac{15}{2}p\ell$};
+				\cerniera{A}\cerniera{B}
+				\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
+				\semicernD{D}{-1}\semicernF{F}{-1} \node[nodoV] at (A){};\node[nodoV] at (B){};
+				\node[left=2pt] at ($(A)+(-0.06,-0.07)$){$A$}; \node[right=2pt] at ($(B)+(0.06,-0.07)$){$B$};
+				\node[left=2pt] at (C){$C$}; \node[below=2.5pt] at (D){$D$}; \node[below=2.5pt] at (E){$E$};
+				\node[below left] at (F){$F$}; \node[right=2pt] at (G){$G$};
+		\end{tikzpicture}}\\[2.5ex]
+		\resizebox{0.92\linewidth}{!}{%
+			\begin{tikzpicture}[x=2.4cm,y=2.4cm]
+				\coordinate (A) at (0,0); \coordinate (B) at (4,0);
+				\coordinate (C) at (-0.5,0.25);\coordinate (D) at (1,0.25);
+				\coordinate (E) at (2,0.25); \coordinate (F) at (3,0.25); \coordinate (G) at (4.5,0.25);
+				\node[anchor=west,font=\small] at (-0.55,0.64){(b)\ \ carico sul solo tratto $D$--$F$};
+				\draw[astaT] (A)--(C); \draw[astaC] (A)--(D); \draw[astaC] (B)--(F); \draw[astaT] (B)--(G);
+				\draw[astaC] (C)--(D)--(E)--(F)--(G);
+				\draw[bordo] (1,0.45)--(3,0.45);
+				\foreach \x in {1,1.125,...,3.001} \draw[carico] (\x,0.45)--(\x,0.25);
+				\node[above] at (2,0.46){$p$};
+				\node[font=\footnotesize] at (1.5,0.12){$-6\,p\ell$}; \node[font=\footnotesize] at (2.5,0.12){$-6\,p\ell$};
+				\cerniera{A}\cerniera{B}
+				\node[nodoV, xshift=2pt] at (C){};\node[nodoV] at (E){};\node[nodoV, xshift=-2pt] at (G){};
+				\semicernD{D}{-1}\semicernF{F}{-1} \node[nodoV] at (A){};\node[nodoV] at (B){};
+				\node[left=2pt] at ($(A)+(-0.06,-0.07)$){$A$}; \node[right=2pt] at ($(B)+(0.06,-0.07)$){$B$};
+				\node[left=2pt] at (C){$C$}; \node[below=2.5pt] at (D){$D$}; \node[below=2.5pt] at (E){$E$};
+				\node[below left] at (F){$F$}; \node[right=2pt] at (G){$G$};
+				\draw[astaC] (-0.5,-0.42)--(-0.2,-0.42); \node[right,font=\footnotesize] at (-0.15,-0.42){compresso (puntone)};
+				\draw[astaT] (1.7,-0.42)--(2.0,-0.42); \node[right,font=\footnotesize] at (2.05,-0.42){teso (tirante)};
+		\end{tikzpicture}}
+		\caption{Confronto dei due funzionamenti sulla stessa struttura: tratto spesso = compressione (puntone), sottile = trazione (tirante). \emph{(a)} carico sull'intera travata $C$--$G$: bielle d'imposta tutte compresse e corrente centrale $DEF$ compresso ($N=-\tfrac{15}{2}p\ell$), con i soli tratti $CD$, $FG$ tesi a catena locale degli anelli $A$--$C$--$D$ e $B$--$F$--$G$. \emph{(b)} carico sul solo $DF$: l'intera navata $C$--$G$ è compressa ($N=-6\,p\ell$ in mezzeria) con le bielle interne $AD$, $BF$; si fanno tese le sole bielle d'estremità $AC$, $BG$. È lo specchio di~(a), con i ruoli di catena e puntone scambiati fra navata e bielle.}
+		\label{fig:stampella_funzionamento}
+	\end{figure}

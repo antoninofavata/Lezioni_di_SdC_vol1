@@ -1,0 +1,105 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.0cm, y=1.0cm,
+		trave/.style ={line width=2.0pt, line cap=round, black},
+		carico/.style={-{Stealth[length=1.8mm,width=1.1mm]},
+			line width=0.5pt},
+		caricoS/.style={-{Stealth[length=1.5mm]}, line width=0.6pt},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		nota/.style  ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt, gray!70},
+		bordo/.style ={line width=0.5pt},
+		quota/.style ={|<->|, >=Stealth, line width=0.4pt, gray!60},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize},
+		etn/.style   ={font=\footnotesize, gray!70}]
+		
+		% ═══════════ (a) prima dell'equilibrio ═══════════
+		\begin{scope}[xshift=0cm]
+			\draw[trave] (0,0)--(0,2.6);
+			% peso proprio p/4, accostato all'asta
+			\foreach \y in {2.45,2.05,1.65,1.25,0.85,0.45}
+			\draw[caricoS] (-0.28,\y)--(-0.28,{\y-0.24});
+			\node[et, above] at (-0.28,2.50) {$p/4$};
+			% carico trasversale p/2, delimitato dai due tratti
+			\foreach \y in {0,0.2,...,2.6} \draw[carico] (-1.45,\y)--(-1.03,\y);
+			\draw[bordo] (-1.45,0)--(-1.45,2.6);
+			\draw[bordo] (-1.03,0)--(-1.03,2.6);
+			\node[et, below] at (-1.24,-0.24) {$p/2$};
+			
+			\node[nodoV] at (0,0) {};  \node[nodoV] at (0,2.6) {};
+			\coordinate (Dc) at (0,1.3);
+			\draw[black, fill=white, line width=0.9pt]
+			($(Dc)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+			\node[et] at (-0.70,0)   {$B$};
+			\node[et] at (-0.70,1.3) {$D$};
+			\node[et] at (-0.70,2.6) {$C$};
+			
+			\draw[incog] (0,-0.74)--(0,-0.06);
+			\node[et, right] at (0.05,-0.46) {$Y_B$};
+			\draw[incog] (0.80,1.3)--(0,1.3);
+			\node[et, above] at (0.47,1.33) {$X_D$};
+			\draw[incog] (0,1.3)--(0,0.60);
+			\node[et, right] at (0.06,0.84) {$Y_D$};
+			\draw[incog] (0,2.6)--(0.70,2.6);
+			\node[et, above] at (0.35,2.63) {$X_C$};
+			\draw[incog] (0,2.6)--(0,3.30);
+			\node[et, right] at (-0.70,3.20) {$Y_C$};
+			
+			\draw[quota] (1.45,0)--(1.45,1.3)
+			node[midway,right,black,et]{$\ell$};
+			\draw[quota] (1.45,1.3)--(1.45,2.6)
+			node[midway,right,black,et]{$\ell$};
+			\node[et] at (0,-1.35) {(a)};
+		\end{scope}
+		
+		% ═══════════ (b) dopo l'equilibrio ═══════════
+		\begin{scope}[xshift=5.6cm]
+			\draw[trave] (0,0)--(0,2.6);
+			% peso proprio p/4, accostato all'asta
+			\foreach \y in {2.45,2.05,1.65,1.25,0.85,0.45}
+			\draw[caricoS] (-0.28,\y)--(-0.28,{\y-0.24});
+			\node[et, above] at (-0.28,2.50) {$p/4$};
+			% carico trasversale p/2, delimitato dai due tratti
+			\foreach \y in {0,0.2,...,2.6} \draw[carico] (-1.45,\y)--(-1.03,\y);
+			\draw[bordo] (-1.45,0)--(-1.45,2.6);
+			\draw[bordo] (-1.03,0)--(-1.03,2.6);
+			\node[et, below] at (-1.24,-0.24) {$p/2$};
+			
+			\node[nodoV] at (0,0) {};  \node[nodoV] at (0,2.6) {};
+			\coordinate (Dd) at (0,1.3);
+			\draw[black, fill=white, line width=0.9pt]
+			($(Dd)+(0,0.07)$) arc[start angle=90,end angle=-90,radius=0.07]--cycle;
+			\node[et] at (-0.70,0)   {$B$};
+			\node[et] at (-0.70,1.3) {$D$};
+			\node[et] at (-0.70,2.6) {$C$};
+			
+			\draw[nota] (0.80,1.3)--(0,1.3);
+			\node[etn, above] at (0.47,1.33) {$p\ell$};
+			\draw[nota] (0,1.3)--(0,0.60);
+			\node[etn, right] at (0.06,0.84) {$p\ell$};
+			
+			\draw[incog] (0,-0.74)--(0,-0.06);
+			\node[et, right] at (0.05,-0.46) {$Y_B$};
+			\draw[incog] (0,2.6)--(0,3.30);
+			\node[et, right] at (-0.70,3.20) {$Y_C$};
+			
+			\draw[quota] (1.45,0)--(1.45,1.3)
+			node[midway,right,black,et]{$\ell$};
+			\draw[quota] (1.45,1.3)--(1.45,2.6)
+			node[midway,right,black,et]{$\ell$};
+			\node[et] at (0,-1.35) {(b)};
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Corpo libero dell'antenna $BC$. \emph{(a)}~Le
+		forze agenti prima dell'equilibrio: tutte giacciono sulla
+		verticale dell'asse, sicché l'equilibrio alla rotazione
+		attorno a $B$ coinvolge le sole componenti orizzontali.
+		\emph{(b)}~Dopo l'equilibrio restano due sole incognite,
+		$Y_B$ e $Y_C$, entrambe verticali e allineate: l'ultima
+		equazione cardinale non basta a determinarle, e occorre
+		attendere il nodo $C$.}
+	\label{fig:strallato_cdl_BC}
+\end{figure}

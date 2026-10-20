@@ -1,0 +1,97 @@
+\begin{figure}[!ht]
+	\centering
+	\tikzset{midarrow/.style={postaction={decorate},
+			decoration={markings, mark=at position 0.55 with {\arrow{Stealth}}}}}
+	\resizebox{0.90\textwidth}{!}{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2,
+			pt/.style={circle,fill,inner sep=1.3pt}]
+			
+			%==================== PANNELLO (a) ====================
+			\begin{scope}
+				\coordinate (Om) at (1.6,-0.1);
+				\coordinate (O)  at (0.6,1.0);
+				\coordinate (P)  at (2.8,1.0);
+				\coordinate (Os) at (0.9,2.2);
+				\coordinate (M)  at (3.1,2.2);
+				\coordinate (Ps) at (2.0,4.105);
+				
+				\draw[->, thin] (Om) -- (O) node[pos=0.5,below left=-2pt] {$\xb_O$};
+				\draw[->, thin] (Om) -- (P) node[pos=0.5,below right=-2pt] {$\xb_P$};
+				
+				\draw[thick, midarrow] (O) -- (P) node[midway,below=2pt] {$\overrightarrow{OP}$};
+				\draw[->, thick] (O) -- (Os) node[midway,left=1pt] {$\ub_O$};
+				\draw[->, thick] (P) -- (M)  node[midway,right=1pt] {$\ub_O$};
+				
+				\draw[->, gray!70] (Os) -- (M) node[pos=0.42,below=1pt,gray!70] {$\overrightarrow{OP}$};
+				\draw[->, gray!70] (Os) -- (Ps);
+				\draw[->, thin] ($(Os)+(0:0.85)$) arc[start angle=0, end angle=60, radius=0.85];
+				\node at ($(Os)+(30:0.5)$) {$\vartheta$};
+				
+				\draw[gray!65] ($(Os)+(0:2.2)$) arc[start angle=0, end angle=60, radius=2.2];
+				
+				\draw[thick, midarrow] (M) -- (Ps) node[pos=0.55,right=2pt] {$\Rbb\,\overrightarrow{OP}$};
+				\draw[thick, midarrow] (P) -- (Ps) node[pos=0.5,left=1pt] {$\ub_P$};
+				
+				\node[pt,label={below left:$O$}]   at (O)  {};
+				\node[pt,label={above left:$O_*$}] at (Os) {};
+				\node[pt,label={below right:$P$}]  at (P)  {};
+				\node[pt,label={above:$P_*$}]      at (Ps) {};
+				\node[below=1pt] at (Om) {$\Omega$};
+				
+				\node at (2.7,-0.50) {(a)};
+			\end{scope}
+			
+			%==================== PANNELLO (b) ====================
+			\begin{scope}[xshift=5.0cm]
+				\coordinate (O)  at (0.6,1.0);
+				\coordinate (P)  at (2.8,1.0);
+				\coordinate (Os) at (0.9,2.2);
+				\coordinate (M)  at (3.1,2.2);
+				\coordinate (Ps) at (2.0,4.105);
+				\coordinate (Q)  at (3.1,4.105);     % spigolo: M + tangenziale
+				
+				\draw[thick, midarrow] (O) -- (P) node[midway,below=2pt] {$\overrightarrow{OP}$};
+				\draw[->, thick] (O) -- (Os) node[midway,left=1pt] {$\ub_O$};
+				\draw[->, thick] (P) -- (M)  node[midway,right=1pt] {$\ub_O$};
+				
+				\draw[->, gray!70] (Os) -- (M) node[pos=0.42,below=1pt,gray!70] {$\overrightarrow{OP}$};
+				\draw[->, gray!70] (Os) -- (Ps);
+				\draw[->, thin] ($(Os)+(0:0.85)$) arc[start angle=0, end angle=60, radius=0.85];
+				\node at ($(Os)+(30:0.5)$) {$\vartheta$};
+				
+				\draw[gray!65] ($(Os)+(0:2.2)$) arc[start angle=0, end angle=60, radius=2.2];
+				
+				% corda (spostamento rotazionale) e u_P
+				\draw[thick, midarrow] (M) -- (Ps);
+				\draw[thick, midarrow] (P) -- (Ps) node[pos=0.5,left=1pt] {$\ub_P$};
+				
+				% triangolo rettangolo della decomposizione + angolo retto in Q
+				\draw[thin] (M) -- (Q);
+				\draw[thin] (Q) -- (Ps);
+				\draw[line width=0.5pt] ($(Q)+(-0.16,0)$) -- ($(Q)+(-0.16,-0.16)$) -- ($(Q)+(0,-0.16)$);
+				
+				% quota verticale |OP| sin theta (trattini + frecce terminali)
+				\draw[dashed, gray!55] (M) -- ++(0.6,0);
+				\draw[dashed, gray!55] (Q) -- ++(0.6,0);
+				\draw[<->, thin] ($(M)+(0.48,0)$) -- ($(Q)+(0.48,0)$)
+				node[midway,right=1pt] {$|\overrightarrow{OP}|\sin\vartheta$};
+				
+				% quota orizzontale |OP|(1-cos theta)
+				\draw[dashed, gray!55] (Q)  -- ++(0,0.5);
+				\draw[dashed, gray!55] (Ps) -- ++(0,0.5);
+				\draw[<->, thin] ($(Ps)+(0,0.4)$) -- ($(Q)+(0,0.4)$)
+				node[midway,above=0pt] {$|\overrightarrow{OP}|(1-\cos\vartheta)$};
+				
+				\node[pt,label={left:$O$}]   at (O)  {};
+				\node[pt,label={left:$O_*$}] at (Os) {};
+				\node[pt,label={right:$P$}]  at (P)  {};
+				\node[pt,label={[xshift=-3pt] left:$P_*$}] at (Ps) {};
+				
+				\node at (2.7,-0.50) {(b)};
+			\end{scope}
+			
+		\end{tikzpicture}
+	}
+	\caption{\textbf{\textit{(a)}}~Rappresentazione geometrica di una traslazione e di una rotazione finita nel piano, dove il punto $O$ si sposta in $O_*$ e il punto $P$ si sposta in $P_*$, con origine del sistema di riferimento in $\Omega$. Il vettore $\ub(O)$ rappresenta la traslazione di $O$, mentre $\ub(P)$ è lo spostamento totale di $P$, e $\Rbb \protect\overrightarrow{OP}$ è il vettore $\protect\overrightarrow{OP}$ ruotato di $\vartheta$. \textbf{\textit{(b)}}~Scomposizione dello spostamento del punto $P$ in $P_*$ come somma della traslazione $\ub(O)$ e della rotazione, con la componente rotazionale decomposta nelle direzioni ortogonale ($|\protect\overrightarrow{OP}|\sin\vartheta$) e parallela ($|\protect\overrightarrow{OP}|(1-\cos\vartheta)$) rispetto al vettore posizione $\protect\overrightarrow{OP}$.}
+	\label{fig:spostamenti_finiti}
+\end{figure}

@@ -1,0 +1,948 @@
+\graphicspath{{Appendici/A01-statica_grafica/Figure/}}
+\newcommand{\FiguraSGR}[1]{\input{Appendici/A01-statica_grafica/Figure/#1}}
+
+\chapter{Elementi di Statica Grafica}
+\label{app:statica_grafica}
+
+\begin{sommario}
+	Si presentano le costruzioni grafiche con cui si riducono e si equilibrano i sistemi piani di
+	forze. Il poligono delle forze fornisce la risultante; il poligono funicolare, ottenuto con una
+	successione di operazioni elementari di equivalenza, ne individua la retta d'azione, cioè l'asse
+	di sollecitazione, e misura il momento del sistema. Letto come catena di aste in equilibrio, il
+	poligono funicolare introduce la notazione dei campi, che mette in corrispondenza il piano di
+	posizione con il piano delle forze. Se ne ricavano le condizioni grafiche di equilibrio e le
+	costruzioni delle reazioni vincolari: il lato di chiusura per le forze parallele, il concorso
+	di tre forze per il corpo vincolato da una cerniera e da un carrello e per i sistemi a tre
+	cerniere. La stessa notazione conduce all'equilibrio grafico del nodo canonico e al diagramma
+	cremoniano delle travature reticolari. Si mostra infine che queste costruzioni hanno un esatto
+	corrispettivo nella cinematica grafica dei centri di rotazione.
+\end{sommario}
+
+\section{Considerazioni introduttive}
+\label{sec:intro_sgr}
+
+La statica grafica tratta per via geometrica i sistemi di forze: le forze sono rappresentate da
+segmenti orientati, e le operazioni su di esse da costruzioni eseguite con riga e squadra. Come
+procedimento di calcolo è stata in larga misura sostituita dai metodi analitici; conserva invece
+intatto il suo valore come rappresentazione e come controllo, perché raccoglie in un solo disegno
+la geometria di una struttura e le forze che la percorrono, e con i sistemi di disegno assistito
+le sue costruzioni sono tornate a essere esatte e immediate.
+
+L'appendice non aggiunge risultati a quelli del volume: li ritrova per altra via. Presuppone la
+statica dei sistemi di forze del \CAPref{cap:statica_CR}, della quale usa la risultante, il
+momento risultante, l'asse di sollecitazione (\PARref{sec:asse_soll}) e le operazioni elementari
+di equivalenza (\PARref{sec:equivalenza}), e applica le costruzioni a strutture già risolte per
+via analitica nei capitoli, così che ogni disegno abbia la propria controprova.
+
+Ogni costruzione si svolge su due disegni distinti, ciascuno con la propria scala: il \emph{piano
+di posizione}, nel quale sono tracciate la struttura e le rette d'azione delle forze e si leggono
+le lunghezze, e il \emph{piano delle forze}, nel quale le forze sono riportate come vettori liberi
+e se ne leggono l'intensità, la direzione e il verso. Dall'uno all'altro si trasportano soltanto
+direzioni: ogni passo consiste nel condurre per un punto di un disegno la parallela a un segmento
+dell'altro.
+
+Due avvertenze sulle notazioni. Le forze del sistema si indicano con $\fb_1, \dots, \fb_n$ e le
+loro rette d'azione con $a_1, \dots, a_n$: nel piano una forza si può far scorrere lungo la propria
+retta d'azione, e il punto di applicazione non interviene. Inoltre nel
+\CAPref{cap:statica_CR} il \emph{polo} è il punto rispetto al quale si calcola il momento; qui la
+parola indica, secondo l'uso della statica grafica, un punto $P$ del piano delle forze. Dove
+occorre il primo significato, si dirà esplicitamente ``il momento rispetto al punto $Q$''.
+
+\section{Il poligono delle forze}
+\label{sec:poligono_forze_sgr}
+
+Sia dato un sistema piano di $n$ forze $\fb_1, \dots, \fb_n$, con rette d'azione
+$a_1, \dots, a_n$ (\FIGref{fig:costruzione_sgr}\,a); le eventuali coppie si intendono sostituite
+ciascuna da due forze opposte su rette parallele. Fissato l'ordine delle forze, nel piano delle
+forze le si riporta una di seguito all'altra a partire da un punto $0$: la forza $\fb_i$ è
+rappresentata dal segmento orientato che va dal vertice $i-1$ al vertice $i$,
+\begin{equation}
+	\fb_i = \overrightarrow{(i-1)\,i}, \qquad i = 1, \dots, n .
+	\label{eq:lati_poligono_forze_sgr}
+\end{equation}
+La spezzata $0\,1 \dots n$ è il \emph{poligono delle forze} (\FIGref{fig:costruzione_sgr}\,b), e
+il segmento orientato che ne congiunge gli estremi è la risultante \eqref{eq:risultante} del
+sistema:
+\begin{equation}
+	\fb = \sum_{i=1}^{n} \fb_i = \overrightarrow{0\,n} .
+	\label{eq:risultante_sgr}
+\end{equation}
+Dall'ordine in cui le forze sono riportate dipende la forma del poligono, non la risultante.
+
+Il poligono delle forze determina la risultante come vettore libero; non dice dove essa sia
+applicata. Nel piano, quando $\fb \neq \zerovb$, il sistema equivale alla sola risultante applicata
+sull'asse di sollecitazione, la retta dei punti rispetto ai quali il momento è nullo: per
+individuarla occorre tornare al piano di posizione. Per due forze le cui rette d'azione si
+incontrano, l'asse di sollecitazione passa per il punto di incontro, nel quale le forze si
+trasportano e si compongono. Con più forze si può ripetere l'operazione componendole a due a due,
+ma il procedimento cade in difetto quando le rette d'azione sono parallele, e diviene impreciso
+quando si incontrano sotto angoli piccoli o fuori dal foglio. Il poligono funicolare risolve il
+problema in ogni caso, sostituendo alle composizioni successive altrettante decomposizioni secondo
+direzioni scelte a piacere.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-costruzione}
+	\caption{Costruzione del poligono funicolare di un sistema di tre forze: \emph{(a)} piano di
+		posizione, con le rette d'azione $a_i$, il poligono funicolare $A_0 \dots A_4$ di lati
+		$b_0, \dots, b_3$ e il punto $R$ in cui si incontrano il primo e l'ultimo lato, per il quale
+		passa la retta d'azione $a$ della risultante; \emph{(b)} poligono delle forze $0\,1\,2\,3$, con
+		il polo $P$ e i raggi polari: il lato $b_i$ è parallelo al raggio $iP$, e la risultante $\fb$
+		va da $0$ a $3$.}
+	\label{fig:costruzione_sgr}
+\end{figure}
+
+\section{Il poligono funicolare}
+\label{sec:poligono_funicolare_sgr}
+
+\subsection{La costruzione}
+\label{sec:costruzione_sgr}
+
+Nel piano delle forze si sceglie un punto $P$, il \emph{polo}, e lo si congiunge con i vertici del
+poligono delle forze: i segmenti $0P, 1P, \dots, nP$ sono i \emph{raggi polari}. Nel piano di
+posizione si sceglie un punto $A_0$ e si procede di lato in lato
+(\FIGref{fig:costruzione_sgr}):
+\begin{itemize}
+	\item per $A_0$ si conduce la retta $b_0$ parallela al raggio $0P$, fino a incontrare la retta
+	d'azione $a_1$ nel punto $A_1$;
+	\item per $A_1$ si conduce la retta $b_1$ parallela al raggio $1P$, fino a incontrare $a_2$ nel
+	punto $A_2$;
+	\item si prosegue allo stesso modo fino alla retta $b_n$, condotta per $A_n$ parallelamente al
+	raggio $nP$, sulla quale si fissa un punto $A_{n+1}$.
+\end{itemize}
+La spezzata $A_0 A_1 \dots A_{n+1}$ è un \emph{poligono funicolare} del sistema di forze. I punti
+$A_1, \dots, A_n$ ne sono i \emph{nodi}, uno su ciascuna retta d'azione, e i segmenti
+$b_0, \dots, b_n$ i \emph{lati}: il lato $b_i$ congiunge $A_i$ con $A_{i+1}$ ed è parallelo al
+raggio $iP$. Il lato compreso fra le rette d'azione di due forze consecutive è dunque parallelo al
+raggio che esce dal vertice comune ai segmenti che le rappresentano.
+
+La costruzione riesce se ogni lato incontra la retta d'azione successiva, cioè se $b_{i-1}$ non è
+parallelo ad $a_i$: il polo va scelto fuori dalle rette che contengono i lati del poligono delle
+forze. Per il resto la scelta è libera. Fissato l'ordine delle forze, sono arbitrari il polo, cioè
+due parametri, e la retta $b_0$ fra le parallele al raggio $0P$, cioè un terzo parametro: i
+poligoni funicolari di un sistema di forze sono $\infty^3$.
+
+\subsection{Equivalenza e asse di sollecitazione}
+\label{sec:equivalenza_sgr}
+
+Ogni passo della costruzione è una delle operazioni elementari di equivalenza del
+\PARref{sec:equivalenza}: traslazione di una forza lungo la retta d'azione, decomposizione,
+rimozione di un sistema equilibrato. Trasportata lungo la propria retta d'azione nel nodo $A_i$,
+la forza $\fb_i$ si decompone secondo le direzioni dei due lati che vi concorrono. Nel poligono
+delle forze la decomposizione è il triangolo di vertici $i-1$, $i$ e $P$:
+\begin{equation}
+	\fb_i = \overrightarrow{(i-1)\,P} + \overrightarrow{P\,i} ,
+	\label{eq:decomposizione_sgr}
+\end{equation}
+con la prima componente diretta come $b_{i-1}$ e la seconda come $b_i$. Su ciascun lato intermedio
+$b_i$, con $1 \le i \le n-1$, vengono così a trovarsi due forze: $\overrightarrow{P\,i}$, che
+proviene dalla decomposizione di $\fb_i$ in $A_i$, e $\overrightarrow{i\,P}$, che proviene dalla
+decomposizione di $\fb_{i+1}$ in $A_{i+1}$. Hanno la stessa retta d'azione e sono opposte:
+formano un sistema equilibrato, che si rimuove. Restano due sole forze,
+\begin{equation}
+	\overrightarrow{0\,P} \ \text{ sulla retta } b_0 , \qquad
+	\overrightarrow{P\,n} \ \text{ sulla retta } b_n ,
+	\label{eq:sistema_ridotto_sgr}
+\end{equation}
+e il sistema dato è equivalente a esse. Con $n$ decomposizioni, tutte eseguite in punti e secondo
+direzioni che la scelta del polo rende comodi, le $n$ forze sono ridotte a due.
+
+Se $\fb \neq \zerovb$ e il polo non è allineato con i vertici $0$ e $n$, i lati estremi non sono
+paralleli, e le loro rette si incontrano in un punto $R$. Trasportate in $R$ e composte, le due
+forze \eqref{eq:sistema_ridotto_sgr} danno
+\begin{equation}
+	\overrightarrow{0\,P} + \overrightarrow{P\,n} = \overrightarrow{0\,n} = \fb :
+	\label{eq:composizione_sgr}
+\end{equation}
+il sistema equivale alla risultante applicata in $R$, e l'asse di sollecitazione è la retta $a$
+condotta per $R$ parallelamente al segmento $0n$. Il punto $R$ cambia con il polo e con il punto
+iniziale; la retta $a$ no, perché l'asse di sollecitazione è una proprietà del sistema di forze.
+Al variare del poligono funicolare, il punto di incontro del primo e dell'ultimo lato scorre lungo
+la retta d'azione della risultante.
+
+\begin{esempio}[Riduzione grafica di un sistema di tre forze]
+	\label{ese:riduzione_sgr}
+	Si riduca per via grafica il sistema dell'\ESEref{ex:C02_riduzione_piano}: nel piano $(x, y)$,
+	$\fb_1 = 2\,\ab_x$ applicata in $(0,\,1)$, $\fb_2 = -\ab_y$ applicata in $(3,\,0)$ e
+	$\fb_3 = \ab_x + 2\,\ab_y$ applicata in $(1,\,2)$.
+
+	\begin{svolgimento}
+		Riportate le forze una di seguito all'altra a partire dal vertice $0$, il poligono delle forze
+		ha i vertici $1$, $2$ e $3$ della \FIGref{fig:esempio_sgr}\,b, e il segmento $0\,3$ fornisce la
+		risultante, di componenti $X = 3$ e $Y = 1$. Scelto il polo $P$, per un punto $A_1$ della retta
+		$a_1$ si conducono il lato $b_0$, parallelo al raggio $0P$, e il lato $b_1$, parallelo a $1P$,
+		fino al nodo $A_2$ su $a_2$; di qui il lato $b_2$, parallelo a $2P$, fino al nodo $A_3$ su
+		$a_3$, e infine il lato $b_3$, parallelo a $3P$ (\FIGref{fig:esempio_sgr}\,a). Le rette del
+		primo e dell'ultimo lato si incontrano in $R$, e la parallela al segmento $0\,3$ condotta per
+		$R$ è l'asse di sollecitazione.
+
+		Sul disegno si legge che l'asse passa per il punto $C = (-0{,}5;\,1{,}5)$, piede della
+		perpendicolare condotta dall'origine $O$, a distanza $\overline{OC} \simeq 1{,}58$, e che la
+		risultante, applicata su di esso, ruota attorno a $O$ in verso orario: il momento vale
+		$\mu_z(O) = -|\fb|\,\overline{OC} = -\sqrt{10}\cdot 5/\sqrt{10} = -5$. Sono i risultati
+		dell'esercizio, ottenuti con la riga e la squadra. Cambiando il polo, o il punto $A_1$, cambiano
+		il poligono e il punto $R$, ma non la retta $a$.
+	\end{svolgimento}
+\end{esempio}
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-esempio}
+	\caption{Riduzione grafica del sistema dell'\ESEref{ex:C02_riduzione_piano}: \emph{(a)} piano
+		di posizione, con le forze nei punti di applicazione, il poligono funicolare e il punto $R$; la
+		retta $a$, condotta per $R$ parallelamente alla risultante, è l'asse di sollecitazione e passa
+		per il punto $C$; \emph{(b)} poligono delle forze, con il polo e i raggi polari.}
+	\label{fig:esempio_sgr}
+\end{figure}
+
+\subsection{Forze parallele}
+\label{sec:parallele_sgr}
+
+La costruzione non richiede che le rette d'azione delle forze si incontrino, e vale senza
+modifiche per le forze parallele, per le quali la composizione a due a due non è possibile. I
+vertici del poligono delle forze sono allora allineati su una retta parallela alle forze, la
+\emph{linea dei carichi}, e la distanza del polo da essa, letta nella scala delle forze, è la
+\emph{distanza polare} $H$: è la componente, uguale per tutti, dei vettori $\overrightarrow{i\,P}$
+nella direzione ortogonale alle forze.
+
+Nella \FIGref{fig:parallele_sgr} la costruzione è applicata al caso (b) dell'esempio delle forze
+concentrate su un intervallo del \CAPref{cap:statica_CR}
+(\FIGref{fig:forze_concentrate_intervallo}\,b): due forze concordi, di intensità $F$ e
+$2F$, applicate a un terzo e a due terzi di un intervallo di lunghezza $\ell$. La linea dei carichi
+è il segmento $0\,2$, di lunghezza $3F$; il primo e l'ultimo lato si incontrano in $R$, e la
+risultante agisce sulla retta $a$ condotta per $R$ parallelamente alle forze, a distanza
+$d = 5\ell/9$ dall'origine dell'intervallo: è il baricentro \eqref{eq:baricentro_forze} dei punti
+di applicazione, pesati con le intensità.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-parallele}
+	\caption{Risultante di due forze parallele e concordi, di intensità $F$ e $2F$: \emph{(a)} il
+		primo e l'ultimo lato del poligono funicolare si incontrano in $R$, sulla retta d'azione $a$
+		della risultante, a distanza $d = 5\ell/9$ dall'origine; \emph{(b)} linea dei carichi e polo.}
+	\label{fig:parallele_sgr}
+\end{figure}
+
+\subsection{La lettura meccanica e i campi}
+\label{sec:lettura_meccanica_sgr}
+
+Il nome del poligono viene dalla sua lettura meccanica. Si pensi la spezzata materializzata in una
+catena di aste rettilinee incernierate nei nodi, caricata in ciascun nodo $A_i$ dalla forza
+$\fb_i$ e trattenuta alle estremità $A \equiv A_0$ e $B \equiv A_{n+1}$ dalle forze
+\begin{equation}
+	\fb_A = \overrightarrow{P\,0} \ \text{ in } A , \qquad
+	\fb_B = \overrightarrow{n\,P} \ \text{ in } B ,
+	\label{eq:forze_estremita_sgr}
+\end{equation}
+dirette secondo il primo e l'ultimo lato (\FIGref{fig:nodi_sgr}\,a). Sono le opposte delle
+\eqref{eq:sistema_ridotto_sgr}: le forze date e le forze di estremità formano un sistema
+equilibrato, e il poligono delle forze, completato dai due raggi estremi, si chiude nel polo.
+
+Ogni asta, caricata soltanto alle estremità, è un corpo soggetto a due forze, e trasmette una
+forza diretta secondo il proprio asse. Il lato $b_i$ esercita sul primo estremo $A_i$ la forza
+$\overrightarrow{i\,P}$ e sul secondo estremo $A_{i+1}$ la forza opposta $\overrightarrow{P\,i}$,
+di intensità
+\begin{equation}
+	N_i = \bigl|\overrightarrow{i\,P}\bigr| , \qquad i = 0, \dots, n ,
+	\label{eq:forza_lato_sgr}
+\end{equation}
+pari alla lunghezza del raggio polare, letta nella scala delle forze. Con queste forze ogni nodo è
+in equilibrio. Sul nodo $A_i$ agiscono la forza $\fb_i$, la forza $\overrightarrow{i\,P}$
+esercitata dal lato $b_i$ e la forza $\overrightarrow{P\,(i-1)}$ esercitata dal lato $b_{i-1}$, e
+la loro somma è nulla,
+\begin{equation}
+	\fb_i + \overrightarrow{i\,P} + \overrightarrow{P\,(i-1)} = \zerovb , \qquad i = 1, \dots, n ,
+	\label{eq:equilibrio_nodo_sgr}
+\end{equation}
+perché è la \eqref{eq:decomposizione_sgr}, letta come chiusura del triangolo di vertici $i-1$, $i$
+e $P$. Il poligono delle forze è dunque l'unione di $n$ triangoli, uno per nodo, ciascuno dei
+quali ha un raggio in comune con il successivo (\FIGref{fig:nodi_sgr}\,b). Ogni raggio interno è
+percorso due volte, in versi opposti, nei due triangoli che lo condividono: sono le forze, uguali
+e contrarie, che lo stesso lato esercita sui suoi due nodi di estremità.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-nodi}
+	\caption{Lettura meccanica del poligono funicolare: \emph{(a)} le forze applicate nei nodi e le
+		forze di estremità $\fb_A$ e $\fb_B$, dirette secondo il primo e l'ultimo lato; i simboli
+		cerchiati sono i campi del piano di posizione, con il campo $P$ dalla parte opposta alle forze;
+		\emph{(b)} il poligono delle forze, chiuso nel polo dalle forze di estremità: i triangoli, a
+		grigi alterni, sono i poligoni di equilibrio dei nodi $A_1$, $A_2$ e $A_3$, e ogni raggio
+		interno è percorso in versi opposti nei due triangoli che lo hanno in comune.}
+	\label{fig:nodi_sgr}
+\end{figure}
+
+\paragraph{I campi.}
+La corrispondenza fra i due disegni si legge a colpo d'occhio con la notazione dei campi, dovuta
+a Bow. Nel piano di posizione si riportano le forze nei nodi, tutte dalla stessa parte del
+poligono, facendo terminare nel nodo, anziché partirne, quelle che puntano dalla parte opposta. I
+lati e le forze dividono allora il piano in campi: uno dalla parte opposta alle forze, al quale si
+dà il nome del polo, $P$; gli altri dalla parte delle forze, numerati da $0$ a $n$ in modo che la
+forza $\fb_i$ separi il campo $i-1$ dal campo $i$. Il lato $b_i$ separa così il campo $i$ dal
+campo $P$, e le forze di estremità, dirette secondo $b_0$ e $b_n$, il campo $P$ dai campi $0$ e
+$n$. Con questi nomi:
+\begin{itemize}
+	\item a ogni campo del piano di posizione corrisponde il vertice del poligono delle forze che
+	porta lo stesso nome;
+	\item a ogni linea che separa due campi corrisponde il segmento, a essa parallelo, che congiunge
+	i due vertici omonimi: alla forza $\fb_i$ il segmento $(i-1)\,i$, al lato $b_i$ il raggio $iP$;
+	\item a ogni nodo, attorno al quale si incontrano tre campi, corrisponde il triangolo che ha per
+	vertici i tre punti omonimi: al nodo $A_i$ il triangolo $(i-1)\,i\,P$.
+\end{itemize}
+Punti e regioni si scambiano dunque fra i due disegni, che per questo si dicono \emph{figure
+reciproche}. La regola pratica che se ne trae è che il nome di un lato, cioè la coppia dei campi
+che esso separa, indica quale segmento del poligono delle forze gli è parallelo e ne misura la
+forza.
+
+\begin{oss}[Il verso di lettura]
+	\label{oss:verso_lettura_sgr}
+	I nomi dei campi fissano anche il verso delle forze. Si giri attorno a un nodo nel verso in
+	cui sono stati numerati i campi, che nella \FIGref{fig:nodi_sgr} è quello antiorario: i campi
+	che si incontrano, letti nell'ordine, sono i vertici del poligono di equilibrio del nodo,
+	percorso nel verso delle forze che agiscono su di esso. Attorno al nodo $A_i$ si incontrano i
+	campi $P$, $i-1$ e $i$: il lato $b_{i-1}$ esercita sul nodo la forza
+	$\overrightarrow{P\,(i-1)}$, la forza applicata è $\overrightarrow{(i-1)\,i}$, e il lato $b_i$
+	esercita la forza $\overrightarrow{i\,P}$. Un lato è teso se la forza che esercita sul nodo se
+	ne allontana lungo il lato, cioè se lo tira; è compresso se punta verso il nodo, cioè se lo
+	spinge. Per le forze parallele e concordi i lati sono tutti tesi, o tutti compressi, secondo la
+	parte della linea dei carichi in cui si è scelto il polo: nel primo caso il poligono è la
+	configurazione di una fune caricata dalle forze, nel secondo la linea d'asse di un arco che le
+	porta senza inflettersi. Queste due letture, e le costruzioni con cui il poligono si fa
+	passare per punti assegnati, sono sviluppate nell'appendice sul poligono funicolare del
+	Volume~III.
+\end{oss}
+
+\subsection{Il momento del sistema}
+\label{sec:momento_sgr}
+
+Il poligono funicolare fornisce anche il momento del sistema rispetto a un punto qualsiasi $Q$ del
+piano di posizione (\FIGref{fig:momento_sgr}). Sia $a'$ la retta per $Q$ parallela all'asse di
+sollecitazione $a$, e siano $Q'$ e $Q''$ i punti in cui essa incontra le rette del primo e
+dell'ultimo lato. I triangoli $R\,Q'Q''$ e $P\,0\,n$ hanno i lati a due a due paralleli, e sono
+simili. Nel primo, l'altezza relativa al lato $Q'Q''$ è la distanza fra le rette $a$ e $a'$, cioè
+il braccio $d_Q$ della risultante rispetto a $Q$; nel secondo, l'altezza relativa al lato $0n$ è
+la distanza $\delta$ del polo dalla retta $0n$, la \emph{distanza polare}. Dalla proporzione
+$\overline{Q'Q''} : d_Q = |\fb| : \delta$ segue
+\begin{equation}
+	|\mu_z(Q)| = |\fb|\,d_Q = \delta\;\overline{Q'Q''} :
+	\label{eq:momento_sgr}
+\end{equation}
+il momento del sistema rispetto a $Q$ è il prodotto della distanza polare, letta nella scala delle
+forze, per il segmento che il primo e l'ultimo lato staccano sulla parallela alla risultante
+condotta per $Q$, letto nella scala delle lunghezze. Il verso si riconosce dalla posizione di $Q$
+rispetto alla retta $a$. Fissato il polo, la distanza polare è la stessa per tutti i punti del
+piano, e i segmenti staccati dai lati estremi misurano il momento in un'unica scala: esso cresce
+in proporzione alla distanza da $a$, come vuole la legge di variazione
+\eqref{eq:variazione_momento}, e si annulla nei punti di $a$, per i quali $Q'$ e $Q''$ coincidono
+con $R$.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-momento}
+	\caption{Momento del sistema rispetto a un punto $Q$: \emph{(a)} la retta $a'$, condotta per
+		$Q$ parallelamente alla retta d'azione $a$ della risultante, incontra le rette del primo e
+		dell'ultimo lato in $Q'$ e $Q''$; \emph{(b)} il triangolo $P\,0\,3$, simile al triangolo
+		$R\,Q'Q''$, e la distanza polare $\delta$. Il momento vale $\delta\;\overline{Q'Q''}$.}
+	\label{fig:momento_sgr}
+\end{figure}
+
+\begin{oss}[Sistemi parziali]
+	\label{oss:momento_parziale_sgr}
+	La costruzione vale anche per le sole prime $i$ forze, il cui poligono funicolare è la parte
+	$A_0 \dots A_{i+1}$ di quello dell'intero sistema. La loro risultante è $\overrightarrow{0\,i}$,
+	la sua retta d'azione passa per il punto di incontro delle rette $b_0$ e $b_i$, e il loro
+	momento rispetto a $Q$ è il prodotto della distanza del polo dalla retta $0i$ per il segmento
+	che $b_0$ e $b_i$ staccano sulla parallela a $0i$ condotta per $Q$. Per un sistema qualsiasi la
+	direzione di $0i$ e la distanza del polo da essa cambiano con $i$. Per le forze parallele sono
+	le stesse per ogni $i$: la retta $0i$ è la linea dei carichi e la distanza vale $H$. Il
+	poligono funicolare, letto lungo le parallele alle forze a partire dalla retta del primo lato, è
+	allora il diagramma del momento delle forze che precedono, in scala $H$.
+\end{oss}
+
+\section{Le condizioni grafiche di equilibrio}
+\label{sec:equilibrio_sgr}
+
+\subsection{Poligoni chiusi}
+\label{sec:poligoni_chiusi_sgr}
+
+Sia ora $\fb = \zerovb$. Il poligono delle forze è \emph{chiuso}: il vertice $n$ coincide con il
+vertice $0$, e il raggio $nP$ con il raggio $0P$. Il primo e l'ultimo lato del poligono
+funicolare, paralleli allo stesso raggio, sono paralleli fra loro
+(\FIGref{fig:equilibrio_sgr}\,a), e le due forze \eqref{eq:sistema_ridotto_sgr} alle quali il
+sistema si riduce, $\overrightarrow{0\,P}$ sulla retta $b_0$ e
+$\overrightarrow{P\,n} = \overrightarrow{P\,0}$ sulla retta $b_n$, sono opposte. Il sistema
+equivale a una coppia, di momento
+\begin{equation}
+	|\mu_z| = N_0\,d ,
+	\label{eq:coppia_sgr}
+\end{equation}
+dove $N_0$ è la lunghezza del raggio $0P$, letta nella scala delle forze, e $d$ la distanza fra le
+rette $b_0$ e $b_n$, letta nella scala delle lunghezze. Il momento della coppia è una proprietà
+del sistema: se si sposta il polo, $N_0$ e $d$ variano in ragione inversa.
+
+Se anche $d = 0$, l'ultimo lato torna sulla retta del primo: il poligono funicolare è
+\emph{chiuso}, la coppia ha braccio nullo e il sistema è equilibrato
+(\FIGref{fig:equilibrio_sgr}\,b). Viceversa, un sistema equilibrato ha risultante nulla, quindi
+poligono delle forze chiuso, e momento nullo, quindi $d = 0$ per la \eqref{eq:coppia_sgr}.
+Dunque \emph{un sistema piano di forze è equilibrato se e solo se sono chiusi tanto il poligono
+delle forze quanto il poligono funicolare}. Le due chiusure traducono le due equazioni di
+equilibrio \eqref{eq:equilibrio_CR}: la prima l'annullarsi della risultante, la seconda
+l'annullarsi del momento. Dei tre casi in cui si classificano i sistemi piani, la forza unica ha
+il poligono delle forze aperto, la coppia ha il poligono delle forze chiuso e il poligono
+funicolare aperto, il sistema nullo li ha chiusi entrambi.
+
+Nella lettura meccanica il poligono funicolare chiuso è un anello di aste in equilibrio sotto le
+sole forze applicate nei nodi, senza forze di estremità.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-equilibrio}
+	\caption{Sistema di tre forze a risultante nulla: \emph{(a)} la retta d'azione di $\fb_3$ non
+		passa per il punto $K$ in cui concorrono le altre due: il primo e l'ultimo lato del poligono
+		funicolare sono paralleli, a distanza $d$, e il sistema equivale a una coppia; \emph{(b)} le tre
+		rette d'azione concorrono in $K$: l'ultimo lato torna sulla retta del primo, il poligono
+		funicolare si chiude e il sistema è equilibrato; \emph{(c)} il poligono delle forze, chiuso,
+		comune ai due casi.}
+	\label{fig:equilibrio_sgr}
+\end{figure}
+
+\subsection{Due e tre forze}
+\label{sec:tre_forze_sgr}
+
+Per i sistemi di due e di tre forze le condizioni di chiusura si riducono a quelle già enunciate
+nel \PARref{sec:equivalenza}, e non richiedono il poligono funicolare.
+\begin{itemize}
+	\item \emph{Due forze} sono in equilibrio se e solo se sono opposte e hanno la stessa retta
+	d'azione: il poligono delle forze è un segmento percorso due volte. Ne discende che un corpo
+	scarico, vincolato al resto della struttura da due sole cerniere, trasmette una forza diretta
+	secondo la congiungente delle cerniere: è la \emph{biella}.
+	\item \emph{Tre forze} non parallele sono in equilibrio se e solo se il loro poligono delle forze
+	è un triangolo chiuso e le loro rette d'azione concorrono in un punto
+	(\FIGref{fig:equilibrio_sgr}). Se infatti due di esse si incontrano in $K$, la loro risultante
+	passa per $K$, e la terza, che deve esserle opposta sulla stessa retta, passa anch'essa per
+	$K$.
+\end{itemize}
+Queste due proposizioni risolvono, senza altro, gran parte dei problemi di equilibrio dei sistemi
+isostatici: una retta d'azione incognita si determina perché deve passare per il punto in cui
+concorrono le altre due, e le intensità si leggono sul triangolo delle forze.
+
+\section{Le reazioni vincolari}
+\label{sec:reazioni_sgr}
+
+Le condizioni di chiusura servono a determinare le reazioni dei vincoli. Di ciascuna reazione il
+\CAPref{cap:vincoli_CR} dice che cosa è noto a priori: la reazione di un carrello è diretta
+secondo l'asse del carrello, e ne è incognita la sola intensità \eqref{eq:reazione_carrello}; la
+reazione di una cerniera è una forza che passa per la cerniera, di direzione e intensità incognite
+\eqref{eq:reazione_cerniera}. Forze attive e reazioni formano un sistema equilibrato, e i loro
+due poligoni devono chiudersi: da questa condizione si ricavano, in un corpo isostatico, le tre
+incognite.
+
+\subsection{Forze parallele: il lato di chiusura}
+\label{sec:chiusura_sgr}
+
+Il caso più semplice è quello di un corpo soggetto a forze parallele $\fb_1, \dots, \fb_n$ e
+vincolato in due punti $A$ e $B$ in modo che anche le reazioni $\rb_A$ e $\rb_B$ siano parallele
+alle forze: la trave appoggiata soggetta a carichi verticali (\FIGref{fig:chiusura_sgr}). Delle
+reazioni sono note le rette d'azione $a_A$ e $a_B$ e incognite le intensità. Forze e reazioni,
+prese nell'ordine $\fb_1, \dots, \fb_n, \rb_B, \rb_A$, formano un sistema equilibrato.
+
+Si costruisca, con un polo qualsiasi, il poligono funicolare delle forze date, prendendone gli
+estremi sulle rette d'azione delle reazioni: $A_0$ su $a_A$ e $A_{n+1}$ su $a_B$. I due estremi
+sono i nodi delle reazioni, e per chiudere il poligono funicolare dell'intero sistema manca un
+solo lato, quello che da $A_{n+1}$ torna ad $A_0$: è il segmento $c = A_0A_{n+1}$, il \emph{lato
+di chiusura}. Nel poligono delle forze gli corrisponde un raggio a esso parallelo. Condotta per
+il polo la parallela a $c$, essa incontra la linea dei carichi in un punto $m$, che è il vertice
+mancante del poligono chiuso $0\,1 \dots n\,m\,0$:
+\begin{equation}
+	\rb_B = \overrightarrow{n\,m} , \qquad \rb_A = \overrightarrow{m\,0} .
+	\label{eq:reazioni_sgr}
+\end{equation}
+\emph{Il raggio parallelo al lato di chiusura divide la linea dei carichi nelle due reazioni.}
+
+Le reazioni sono determinate dall'equilibrio, e il punto $m$ non dipende dunque dal polo né dal
+punto iniziale: al variare del poligono funicolare il lato di chiusura cambia, ma il raggio a
+esso parallelo passa sempre per lo stesso punto della linea dei carichi.
+
+Con il lato di chiusura si completano anche i campi del piano di posizione
+(\PARref{sec:lettura_meccanica_sgr}). Riportate nei nodi le forze e le reazioni, tutte all'esterno
+del poligono chiuso, questo racchiude il campo $P$. Dalla parte dei lati $b_0, \dots, b_n$ stanno i
+campi $0, \dots, n$, separati dalle forze; dalla parte del lato di chiusura, fra le due reazioni,
+sta un nuovo campo, al quale si dà il nome $m$ (\FIGref{fig:chiusura_sgr}\,a). Il lato di chiusura
+separa il campo $m$ dal campo $P$, la reazione $\rb_A$ il campo $m$ dal campo $0$, la reazione
+$\rb_B$ il campo $n$ dal campo $m$: nel poligono delle forze sono il raggio $mP$ e i segmenti
+$m\,0$ e $n\,m$. Attorno al nodo $A_0$ si incontrano i campi $m$, $0$ e $P$, e il triangolo
+$m\,0\,P$ è il suo poligono di equilibrio: nella lettura meccanica il lato di chiusura è un'asta
+che collega gli estremi della catena, e il raggio $mP$ ne misura la forza.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-chiusura}
+	\caption{Reazioni di una trave appoggiata soggetta a forze parallele: \emph{(a)} il poligono
+		funicolare delle forze, con gli estremi $A_0$ e $A_4$ sulle rette d'azione $a_A$ e $a_B$ delle
+		reazioni, e il lato di chiusura $c$; $\eta$ è la distanza del poligono dal lato di chiusura,
+		misurata nella direzione delle forze. Forze e reazioni sono riportate anche nei nodi del
+		poligono chiuso; i simboli cerchiati sono i campi, con $P$ all'interno del poligono e $m$
+		dalla parte del lato di chiusura; \emph{(b)} il raggio condotto per il polo parallelamente a
+		$c$ incontra la linea dei carichi in $m$ e la divide nelle reazioni
+		$\rb_A = \protect\overrightarrow{m\,0}$ e $\rb_B = \protect\overrightarrow{3\,m}$.}
+	\label{fig:chiusura_sgr}
+\end{figure}
+
+\begin{esempio}[Trave con sbalzo]
+	\label{ese:sbalzo_sgr}
+	La campata $ABE$ della trave di Gerber del \PARref{subsec:gerber} è vincolata da una cerniera
+	in $A$ e da un carrello in $B$, a distanza $\ell$, e porta la forza $p\ell/2$, diretta verso il
+	basso, all'estremo $E$ di uno sbalzo di lunghezza $\ell/2$. Se ne determinino graficamente le
+	reazioni.
+
+	\begin{svolgimento}
+		La retta d'azione $a_1$ della forza è esterna alle rette $a_A$ e $a_B$ delle reazioni
+		(\FIGref{fig:sbalzo_sgr}\,a). Il poligono funicolare ha due soli lati: $b_0$, condotto dal punto
+		$A_0$ di $a_A$ parallelamente al raggio $0P$ fino al nodo $A_1$ su $a_1$, e $b_1$, parallelo
+		al raggio $1P$, che per incontrare $a_B$ va prolungato da $A_1$ all'indietro, fino al punto
+		$A_2$. Il lato di chiusura è $c = A_0A_2$. Il raggio condotto per il polo parallelamente a $c$
+		incontra la linea dei carichi nel punto $m$, che cade \emph{fuori} dal segmento $0\,1$, dalla
+		parte del vertice $0$ (\FIGref{fig:sbalzo_sgr}\,b).
+
+		La reazione $\rb_B = \overrightarrow{1\,m}$ è diretta verso l'alto ed è lunga una volta e
+		mezza il segmento $0\,1$: $V_B = \tfrac{3}{4}\,p\ell$. La reazione
+		$\rb_A = \overrightarrow{m\,0}$ è diretta verso il basso ed è lunga la metà:
+		$V_A = -\tfrac{1}{4}\,p\ell$. Sono i valori ottenuti nel capitolo con le equazioni cardinali.
+		Quando il punto $m$ cade fuori dalla linea dei carichi, una delle reazioni è concorde con le
+		forze: il vincolo in $A$ non sostiene la trave, la trattiene.
+	\end{svolgimento}
+\end{esempio}
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-sbalzo}
+	\caption{Reazioni di una trave con sbalzo: \emph{(a)} il poligono funicolare ha i lati $b_0$ e
+		$b_1$, e l'ultimo incontra la retta $a_B$ nel suo prolungamento all'indietro; $c$ è il lato di
+		chiusura; \emph{(b)} il raggio parallelo a $c$ incontra la linea dei carichi in $m$, fuori dal
+		segmento $0\,1$: la reazione $\rb_B = \protect\overrightarrow{1\,m}$ è rivolta verso l'alto,
+		la reazione $\rb_A = \protect\overrightarrow{m\,0}$ verso il basso.}
+	\label{fig:sbalzo_sgr}
+\end{figure}
+
+\begin{oss}[Il poligono funicolare come diagramma dei momenti]
+	\label{oss:momento_flettente_sgr}
+	Si applichi l'\OSSref{oss:momento_parziale_sgr} al sistema equilibrato formato dalle forze e
+	dalle reazioni, ordinato a partire da $\rb_A$: il suo poligono funicolare comincia con la retta
+	del lato di chiusura e prosegue con i lati $b_0, \dots, b_n$. Per una sezione della trave
+	compresa fra le rette $a_i$ e $a_{i+1}$, il momento delle forze che la precedono, reazione
+	compresa, è il prodotto della distanza polare per il segmento $\eta$ che il lato di chiusura e
+	il lato $b_i$ staccano sulla parallela alle forze condotta per la sezione:
+	\begin{equation}
+		H\,\eta = |M| .
+		\label{eq:momento_flettente_sgr}
+	\end{equation}
+	Ma il momento delle forze che precedono una sezione è, in valore assoluto, il momento flettente
+	della trave (\CAPref{cap:Diagrammi_CS}): \emph{il poligono funicolare, misurato dal lato di
+	chiusura nella direzione delle forze, è il diagramma del momento flettente della trave
+	appoggiata, in scala $H$}. Nella \FIGref{fig:chiusura_sgr} il momento ha lo stesso segno lungo
+	tutta la trave; nella \FIGref{fig:sbalzo_sgr} il poligono chiuso è il triangolo $A_0A_1A_2$, e
+	il momento, nullo in $A$ e in $E$, è massimo in valore assoluto sull'appoggio $B$.
+\end{oss}
+
+\subsection{Forze qualsiasi: cerniera e carrello}
+\label{sec:cerniera_carrello_sgr}
+
+Sia ora il corpo soggetto a forze qualsiasi e vincolato con una cerniera in $A$ e un carrello in
+$B$. Della reazione $\rb_B$ è nota la retta d'azione $a_B$, l'asse del carrello; della reazione
+$\rb_A$ è noto soltanto un punto, la cerniera. Il lato di chiusura si costruisce ancora, con una
+sola avvertenza: si conduce il primo lato del poligono funicolare per $A$, l'unico punto noto
+della retta d'azione di $\rb_A$, e si prende l'estremo $A_{n+1}$ sulla retta $a_B$, sicché
+$c = A\,A_{n+1}$. Nel poligono delle forze il punto $m$ è l'intersezione della parallela a $c$
+condotta per il polo con la parallela ad $a_B$ condotta per il vertice $n$, e valgono ancora le
+\eqref{eq:reazioni_sgr}.
+
+Quando le forze attive si riducono a una sola forza, o sono state composte nella loro risultante,
+basta la proposizione sulle tre forze (\PARref{sec:tre_forze_sgr}): la retta d'azione della
+forza attiva e l'asse del carrello si incontrano in un punto $K$, e la reazione della cerniera,
+che deve passare per $K$, ha la retta $AK$. Il triangolo delle forze, costruito conducendo per
+gli estremi della forza attiva le parallele ad $a_B$ e ad $AK$, fornisce le due reazioni.
+
+\begin{esempio}[Tre forze concorrenti]
+	\label{ese:tre_forze_sgr}
+	Si determinino graficamente le reazioni esterne del sistema dell'\ESEref{ex:anello_vincolato_TA}.
+
+	\begin{svolgimento}
+		Per le reazioni esterne il sistema si comporta come un solo corpo rigido, vincolato a terra
+		dalla cerniera in $B$ e dalla biella $AC$, che è un carrello con l'asse diretto secondo la
+		propria corda (\FIGref{fig:tre_forze_sgr}\,a). I carichi sono il carico $p$, riferito alla
+		proiezione orizzontale del tratto $ED$, di risultante $p\ell$ sulla verticale a distanza $\ell$
+		da $A$, e la coppia oraria $p\ell^2$ applicata in $G$.
+
+		Una forza e una coppia si compongono in una sola forza, uguale alla prima e spostata
+		parallelamente a sé stessa della distanza $|\mu|/|\fb| = \ell$, dalla parte per la quale il
+		momento della forza spostata rispetto ai punti della retta originaria ha il verso della coppia:
+		è l'operazione inversa del trasporto di una forza. La forza $p\ell$ agisce dunque sulla
+		verticale $a$ a distanza $2\ell$ da $A$. Questa retta incontra l'asse $a_A$ della biella nel
+		punto $K$, e la reazione della cerniera ha la retta $a_B = BK$.
+
+		Nel triangolo delle forze (\FIGref{fig:tre_forze_sgr}\,b) il segmento $0\,1$ rappresenta la
+		forza $p\ell$; la parallela ad $a_B$ per il vertice $1$ e la parallela ad $a_A$ per il vertice
+		$0$ si incontrano in $m$, e $\rb_B = \overrightarrow{1\,m}$, $\rb_A = \overrightarrow{m\,0}$.
+		Proiettando i due lati sugli assi si leggono le componenti: $V_B = \tfrac{4}{5}\,p\ell$ e
+		$H_B = \tfrac{1}{10}\,p\ell$ verso sinistra; $V_A = \tfrac{1}{5}\,p\ell$ e
+		$H_A = \tfrac{1}{10}\,p\ell$ verso destra. Sono i valori ottenuti nell'esercizio.
+	\end{svolgimento}
+\end{esempio}
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-tre-forze}
+	\caption{Reazioni del sistema dell'\ESEref{ex:anello_vincolato_TA}: \emph{(a)} la risultante
+		$p\ell$ del carico distribuito e la coppia $p\ell^2$ equivalgono alla forza $p\ell$ sulla retta
+		$a$, spostata di $\ell$; la retta $a$ e l'asse $a_A$ della biella $AC$ si incontrano in $K$,
+		per il quale passa la retta d'azione $a_B$ della reazione in $B$; \emph{(b)} triangolo delle
+		forze.}
+	\label{fig:tre_forze_sgr}
+\end{figure}
+
+\subsection{Sistemi a tre cerniere}
+\label{sec:tre_cerniere_sgr}
+
+In un sistema a tre cerniere le reazioni esterne sono quattro, e la sola chiusura dei poligoni
+dell'intero sistema non basta. La proposizione sulle due forze fornisce la condizione mancante
+quando uno dei due corpi è scarico: esso è una biella, e la reazione della sua cerniera a terra è
+diretta secondo la congiungente con la cerniera interna. Il problema torna allora a quello delle
+tre forze.
+
+Nel portale della \FIGref{fig:tre_cerniere_sgr}, che ha la geometria di quello del
+\PARref{sec:arco_tre_cerniere}, agisce una sola forza $F$ sul traverso di sinistra. Il corpo
+$DEB$ è scarico, e la reazione in $B$ ha la retta $a_B = BD$. Questa incontra la retta d'azione
+della forza in $K$, e la reazione in $A$ ha la retta $a_A = AK$. Il triangolo delle forze dà
+$\rb_B$, di componenti $F/4$ verso l'alto e $F/4$ verso sinistra, e $\rb_A$, di componenti
+$3F/4$ verso l'alto e $F/4$ verso destra: lo stesso risultato si ottiene dall'equilibrio alla
+rotazione dell'intero portale attorno ad $A$ e del corpo $DEB$ attorno a $D$.
+
+Se sono carichi entrambi i corpi, si considerano separatamente i carichi dell'uno e dell'altro:
+in ciascuno dei due problemi un corpo è scarico, e le reazioni cercate sono la somma di quelle
+dei due problemi, che si esegue riportando i due triangoli nello stesso piano delle forze. La
+simmetria, quando c'è, abbrevia il procedimento: in un sistema simmetrico e simmetricamente
+caricato la forza trasmessa dalla cerniera interna è ortogonale all'asse di simmetria, e ciascuna
+metà è soggetta a tre forze, di cui sono note due rette d'azione.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-tre-cerniere}
+	\caption{Portale a tre cerniere con una forza sul traverso di sinistra: \emph{(a)} il corpo
+		$DEB$, scarico, trasmette una forza diretta secondo $BD$; le rette d'azione della forza e
+		delle due reazioni concorrono in $K$; \emph{(b)} triangolo delle forze, con
+		$\rb_B = \protect\overrightarrow{1\,m}$ e $\rb_A = \protect\overrightarrow{m\,0}$.}
+	\label{fig:tre_cerniere_sgr}
+\end{figure}
+
+\section{I sistemi reticolari}
+\label{sec:reticolari_sgr}
+
+Il poligono funicolare, letto come catena di aste, è il più semplice dei sistemi reticolari, e i
+triangoli dei suoi nodi sono equilibri di nodi nei quali concorrono due aste. La notazione dei
+campi è nata per le travature reticolari, e vi rende il metodo dei nodi (\PARref{sec:metodo_nodi})
+una costruzione grafica.
+
+\subsection{Il nodo canonico}
+\label{sec:nodo_canonico_sgr}
+
+Si consideri una travatura reticolare caricata nei nodi e liberata dai vincoli, con le reazioni
+esterne già determinate. Si fissa un verso di percorrenza, per esempio quello orario, e si dà un
+nome ai campi:
+\begin{itemize}
+	\item i campi \emph{esterni}, compresi fra due forze esterne consecutive, si numerano nell'ordine
+	in cui si incontrano girando attorno alla travatura nel verso fissato, e nello stesso ordine si
+	riportano le forze esterne nel poligono delle forze, che è chiuso;
+	\item i campi \emph{interni} sono le maglie, e si indicano con lettere minuscole,
+	$a, b, \dots$, per distinguerli dai primi.
+\end{itemize}
+Ogni asta separa due campi, e ogni nodo è circondato dai campi che le aste e le forze concorrenti
+in esso delimitano. Come nel poligono funicolare, alla forza di un'asta corrisponde, nel piano
+delle forze, il segmento parallelo all'asta che congiunge i vertici omonimi dei due campi; e al
+nodo corrisponde il poligono chiuso che ha per vertici i campi che lo circondano, letti nel verso
+fissato (\OSSref{oss:verso_lettura_sgr}).
+
+In un \emph{nodo canonico} sono incognite le forze di due sole aste. I campi adiacenti alle forze
+note hanno vertici già segnati nel piano delle forze; le due aste incognite delimitano un campo
+il cui vertice manca. Lo si trova all'intersezione delle parallele alle due aste, condotte per i
+vertici dei campi, già noti, che esse separano da quello. Nella
+\FIGref{fig:nodo_canonico_sgr} il procedimento è applicato al nodo $D$ della capriata
+dell'\ESEref{ese:capriata_palladiana}: attorno al nodo, in verso orario, si incontrano i campi
+$0$, $1$, $b$ e $a$. Sono noti il segmento $0\,1$, che è la forza applicata, e
+il segmento $a\,0$, che è la forza dell'asta $DA$, determinata nel nodo precedente. Il
+vertice $b$ è l'intersezione della parallela a $DF$ per il vertice $1$ con la parallela
+a $DB$ per il vertice $a$.
+
+Il poligono $0\,1\,b\,a$, percorso in questo ordine, dà le forze che agiscono
+sul nodo, con il loro verso. L'asta $DF$ esercita la forza $\overrightarrow{1\,b}$, che
+punta verso il nodo: l'asta lo spinge, ed è compressa. Lo stesso vale per l'asta $DB$, con la
+forza $\overrightarrow{b\,a}$. Un'asta è tesa quando la forza che esercita sul
+nodo se ne allontana lungo l'asta.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-nodo-canonico}
+	\caption{Equilibrio grafico di un nodo canonico, il nodo $D$ della capriata della
+		\FIGref{fig:cremoniano_sgr}: \emph{(a)} il nodo con i campi che lo circondano e le forze che
+		agiscono su di esso; la freccia curva indica il verso di lettura; \emph{(b)} il poligono di
+		equilibrio: sono noti i lati $a\,0$ e $0\,1$, e il vertice $b$ è
+		l'intersezione delle parallele alle due aste incognite.}
+	\label{fig:nodo_canonico_sgr}
+\end{figure}
+
+\subsection{Il diagramma cremoniano}
+\label{sec:cremoniano_sgr}
+
+Procedendo di nodo canonico in nodo canonico, nell'ordine della propagazione a cascata del metodo
+dei nodi, ogni nodo aggiunge un vertice al piano delle forze. I poligoni dei nodi non si disegnano
+separati: hanno i lati in comune, perché ogni asta separa gli stessi due campi vista dall'uno e
+dall'altro dei suoi nodi, e si compongono in una sola figura, il \emph{diagramma cremoniano},
+nella quale ogni forza d'asta compare una volta sola. Il poligono delle forze con il polo e i
+raggi polari ne è il caso particolare relativo al poligono funicolare.
+
+\begin{esempio}[Il diagramma cremoniano della capriata palladiana]
+	\label{ese:cremoniano_sgr}
+	Si determinino graficamente gli sforzi normali nelle aste della capriata
+	dell'\ESEref{ese:capriata_palladiana}, soggetta a tre forze verticali di intensità $F$ nei nodi
+	$D$, $F$ ed $E$.
+	
+	\begin{svolgimento}
+		Le reazioni sono verticali e, per simmetria, valgono $\tfrac{3}{2}F$. Girando attorno alla
+		travatura in verso orario a partire dalla reazione in $A$, le forze esterne si incontrano
+		nell'ordine $\rb_A$, $\fb_1$, $\fb_2$, $\fb_3$, $\rb_C$, e delimitano i campi esterni $0$, $1$,
+		$2$, $3$ e $m$; le quattro maglie sono i campi interni $a$, $b$,
+		$c$ e $d$ (\FIGref{fig:cremoniano_sgr}\,a). Il poligono delle forze esterne
+		è la linea dei carichi $0\,1\,2\,3$, percorsa verso il basso dalle forze e risalita dalle
+		reazioni $\rb_C = \overrightarrow{3\,m}$ e $\rb_A = \overrightarrow{m\,0}$, con $m$ nel punto
+		medio.
+		
+		I vertici dei campi interni si determinano nell'ordine dei nodi canonici.
+		\begin{itemize}
+			\item \emph{Nodo $A$} (campi $m$, $0$, $a$): il vertice $a$ è l'intersezione
+			della parallela ad $AD$ per $0$ con la parallela ad $AB$ per $m$.
+			\item \emph{Nodo $D$} (campi $0$, $1$, $b$, $a$): il vertice $b$ è
+			l'intersezione della parallela a $DF$ per $1$ con la parallela a $DB$ per $a$.
+			\item \emph{Nodo $F$} (campi $1$, $2$, $c$, $b$): il vertice
+			$c$ è l'intersezione della parallela a $FE$ per $2$ con la parallela a $FB$ per
+			$b$.
+			\item \emph{Nodo $E$} (campi $2$, $3$, $d$, $c$): il vertice
+			$d$ è l'intersezione della parallela a $EC$ per $3$ con la parallela a $EB$ per
+			$c$; per la simmetria coincide con $a$.
+		\end{itemize}
+		I nodi $C$ e $B$ non aggiungono vertici: i loro poligoni, $3\,m\,d$ e
+		$m\,a\,b\,c\,d$, sono già tracciati e devono
+		chiudersi, e questa è la verifica del disegno.
+		
+		A ciascuna asta corrisponde il segmento che congiunge i vertici dei due campi che essa separa
+		(\FIGref{fig:cremoniano_sgr}\,b):
+		\begin{equation*}
+			\begin{array}{llll}
+				AD:\ 0\,a , & DF:\ 1\,b , & FE:\ 2\,c , & CE:\ 3\,d , \\[2pt]
+				DB:\ a\,b , & BF:\ b\,c , &
+				EB:\ c\,d , & AB:\ a\,m , \quad BC:\ d\,m .
+			\end{array}
+		\end{equation*}
+		Le lunghezze, lette nella scala delle forze, danno le intensità: $\tfrac{3\sqrt{2}}{2}F$ per
+		le falde $AD$ e $CE$, $\sqrt{2}\,F$ per $DF$ e $FE$, $\tfrac{\sqrt{2}}{2}F$ per le saette $DB$
+		ed $EB$, $F$ per il monaco $BF$ e $\tfrac{3}{2}F$ per la catena $AB$, $BC$. Il segno si legge
+		girando attorno a un nodo. Attorno ad $A$, in verso orario, i campi sono $m$, $0$,
+		$a$: l'asta $AD$ esercita sul nodo la forza $\overrightarrow{0\,a}$, che punta
+		verso $A$, ed è compressa; l'asta $AB$ esercita la forza $\overrightarrow{a\,m}$, che
+		si allontana da $A$ lungo l'asta, ed è tesa. Risultano compresse le falde e le saette, tesi la
+		catena e il monaco: sono i valori e i segni dell'esempio.
+	\end{svolgimento}
+\end{esempio}
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-cremoniano}
+	\caption{Diagramma cremoniano della capriata dell'\ESEref{ese:capriata_palladiana}:
+		\emph{(a)} la travatura liberata dai vincoli, con le forze $\fb_1$, $\fb_2$, $\fb_3$, di
+		intensità $F$, le reazioni e i campi: quelli esterni sono numerati in verso orario, quelli
+		interni, le maglie, sono indicati con lettere; \emph{(b)} il diagramma: a ogni asta
+		corrisponde il segmento che
+		congiunge i vertici dei due campi che essa separa; tratto spesso per le aste compresse, sottile
+		per le tese. I vertici $a$ e $d$ coincidono per la simmetria.}
+	\label{fig:cremoniano_sgr}
+\end{figure}
+
+\begin{oss}[Aste scariche e limiti del procedimento]
+	\label{oss:limiti_cremoniano_sgr}
+	Un'asta è scarica quando i due campi che essa separa hanno lo stesso vertice nel piano delle
+	forze, e il segmento che le corrisponde si riduce a un punto: i criteri di riconoscimento delle
+	aste scariche si leggono così sul diagramma. Il procedimento richiede, a ogni passo, un nodo
+	canonico. Dove la propagazione a cascata si arresta, come nelle travature che non si risolvono
+	con il solo metodo dei nodi, si interrompe anche il diagramma, e la forza di un'asta va prima
+	determinata con una sezione di Ritter (\PARref{sec:metodo_ritter}).
+\end{oss}
+
+\section{Il parallelo con la cinematica}
+\label{sec:dualita_sgr}
+
+Il volume insiste sulla corrispondenza fra la cinematica e la statica del corpo rigido. Nel piano
+essa prende la forma più semplice: a una forza corrisponde una rotazione, alla retta d'azione il
+centro di rotazione, alla coppia, forza di retta d'azione impropria, la traslazione, rotazione di
+centro improprio; il momento rispetto a un punto e lo spostamento di un punto obbediscono alla
+stessa legge di variazione. Le costruzioni di questa appendice hanno tutte, in questa
+corrispondenza, la loro controparte nella cinematica grafica del
+\CAPref{cap:cinematica_infinitesima} (\TABref{tab:dualita_sgr}).
+
+\begin{table}[htbp]
+	\centering
+	\caption{Corrispondenza fra le costruzioni della statica grafica e quelle della cinematica
+		grafica nel piano.}
+	\label{tab:dualita_sgr}
+	\begin{tabular}{p{0.46\textwidth}p{0.46\textwidth}}
+		\hline
+		\emph{Statica} & \emph{Cinematica} \\
+		\hline
+		forza, di intensità $F$ & rotazione, di ampiezza $\vartheta$ \\
+		retta d'azione & centro di rotazione \\
+		coppia (retta d'azione impropria) & traslazione (centro improprio) \\
+		momento rispetto a un punto & spostamento di un punto \\
+		risultante, somma delle forze & rotazione composta, somma delle rotazioni \\
+		lati del poligono funicolare & corpi di una catena \\
+		nodo fra due lati, sulla retta d'azione di una forza & centro relativo di due corpi \\
+		incontro del primo e dell'ultimo lato, sulla retta d'azione della risultante &
+		centro assoluto dell'ultimo corpo \\
+		tre forze in equilibrio: tre rette per un punto & tre corpi: tre centri relativi su una retta \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{Poligono funicolare e diagramma degli spostamenti}
+\label{sec:spostamenti_sgr}
+
+Si riprendano le due forze parallele della \FIGref{fig:parallele_sgr}, e si scelga il polo sulla
+retta condotta per il vertice $0$ ortogonalmente alle forze, a distanza $H$ dalla linea dei
+carichi (\FIGref{fig:dualita_sgr}\,a). Il primo lato $b_0$ è ortogonale alle forze; passando per
+il nodo $A_1$ il poligono devia di $F/H$, e passando per $A_2$ di $2F/H$. Per
+l'\OSSref{oss:momento_parziale_sgr} la distanza del lato $b_i$ dalla retta del primo lato,
+misurata nella direzione delle forze in un punto $Q$, è il momento rispetto a $Q$ delle prime $i$
+forze, diviso per $H$. Il lato $b_1$ incontra la retta di $b_0$ in $A_1$, sulla retta d'azione di
+$\fb_1$, dove il momento di questa è nullo; il lato $b_2$ la incontra in $R$, sulla retta
+d'azione della risultante, dove è nullo il momento delle due forze.
+
+Si consideri ora una catena di tre corpi (\FIGref{fig:dualita_sgr}\,b): il corpo $0$ è fermo, il
+corpo $1$ ruota di $\vartheta_1$ attorno al punto $C_1$, e il corpo $2$ ruota rispetto al corpo
+$1$ attorno al punto $C_{12}$, il loro centro relativo (\PARref{sec:CR_relativo}). Il diagramma
+degli spostamenti trasversali alla retta dei centri, già impiegato nella
+\FIGref{fig:composizione_2_rot}, è una spezzata che devia di $\vartheta_1$ in $C_1$ e della
+rotazione relativa $\vartheta_2 - \vartheta_1$ in $C_{12}$: lo spostamento di un punto del corpo
+$i$ è la somma dei prodotti delle rotazioni che precedono per le distanze dai rispettivi centri.
+La retta del corpo $1$ incontra la configurazione iniziale in $C_1$, il suo centro assoluto; la
+retta del corpo $2$ la incontra in $C_2$, il centro assoluto del corpo $2$, che è il centro della
+rotazione composta \eqref{eq:comp_rot_baricentro}.
+
+Se le rotazioni stanno fra loro come le forze, le due spezzate sono, a meno di un ribaltamento
+attorno all'orizzontale, la stessa figura. Il poligono
+funicolare delle forze parallele è il diagramma dei loro momenti, come la spezzata delle
+rotazioni è il diagramma degli spostamenti; ai lati corrispondono i corpi, ai nodi i centri
+relativi, al punto $R$ il centro assoluto dell'ultimo corpo. L'allineamento dei centri $C_1$,
+$C_{12}$ e $C_2$ e il rapporto in cui il centro relativo divide il segmento dei due centri
+assoluti sono, letti sulla \FIGref{fig:dualita_sgr}\,a, la regola con cui la risultante di due
+forze parallele divide la distanza fra le loro rette d'azione in parti inversamente proporzionali
+alle intensità.
+
+\begin{figure}[htbp]
+	\centering
+	\FiguraSGR{figura-sgr-dualita}
+	\caption{Poligono funicolare e diagramma degli spostamenti: \emph{(a)} le forze $F$ e $2F$
+		della \FIGref{fig:parallele_sgr}, con il polo scelto in modo che il primo lato sia ortogonale
+		alle forze: il lato $b_2$ incontra la retta di $b_0$ in $R$, sulla retta d'azione della
+		risultante; \emph{(b)} catena di tre corpi, con il corpo $0$ fermo: il corpo $1$ ruota di
+		$\vartheta_1$ attorno a $C_1$, il corpo $2$ ruota rispetto al corpo $1$ di $2\vartheta_1$
+		attorno al centro relativo $C_{12}$; la retta del corpo $2$ incontra la configurazione
+		iniziale nel suo centro assoluto $C_2$. Le due spezzate hanno, a meno del verso, le stesse
+		pendenze, e i punti
+		$A_1$, $A_2$ e $R$ stanno sulle verticali di $C_1$, $C_{12}$ e $C_2$.}
+	\label{fig:dualita_sgr}
+\end{figure}
+
+\subsection{Rette concorrenti e centri allineati}
+\label{sec:concorrenza_sgr}
+
+Nella corrispondenza le rette si scambiano con i punti, e il concorso di più rette in un punto
+con l'allineamento di più punti su una retta.
+\begin{itemize}
+	\item Tre forze in equilibrio hanno rette d'azione concorrenti (\PARref{sec:tre_forze_sgr}); i
+	tre centri di rotazione relativi di tre corpi sono allineati
+	(\PARref{sec:allineamento_relativi}). In entrambi i casi la proposizione serve a determinare
+	l'elemento incognito, una retta o un punto, dagli altri due.
+	\item Per un carrello, la retta condotta per il punto di applicazione nella direzione dell'asse è
+	a un tempo il luogo dei centri di rotazione che il vincolo consente e la retta d'azione della
+	reazione che esso esplica; per una cerniera, il punto fisso è il centro di rotazione, e per esso
+	passa la reazione (\CAPref{cap:vincoli_CR}).
+	\item Un corpo vincolato da tre carrelli i cui assi concorrono in un punto è labile, perché quel
+	punto è un centro di rotazione consentito da tutti e tre. Per la stessa ragione le tre reazioni,
+	concorrenti, non possono equilibrare una forza che non passi per quel punto: la condizione
+	grafica di labilità e la condizione grafica di impossibilità dell'equilibrio sono la stessa
+	figura.
+\end{itemize}
+La radice comune è il principio dei lavori virtuali, per il quale la reazione di un vincolo non
+compie lavoro negli spostamenti che il vincolo consente (\CAPref{cap:dualismo_CR}): una forza non
+compie lavoro in una rotazione se e solo se la sua retta d'azione passa per il centro.
+
+\begin{oss}[Nota storica]
+	\label{oss:nota_storica_sgr}
+	La regola del triangolo delle forze risale a Simon Stevin, alla fine del Cinquecento; il
+	poligono delle forze e il poligono funicolare compaiono insieme nella \emph{Nouvelle mécanique}
+	di Pierre Varignon, pubblicata postuma nel 1725. La statica grafica come disciplina sistematica
+	nasce con \emph{Die graphische Statik} di Karl Culmann, del 1866. La reciprocità fra il piano di
+	posizione e il piano delle forze fu riconosciuta da James Clerk Maxwell nel 1864 e sviluppata
+	da Luigi Cremona nel 1872, dal quale prende nome il diagramma delle travature reticolari; la
+	notazione dei campi fu introdotta da Robert Bow nel 1873.
+\end{oss}
+
+%\section{Esercizi proposti}
+%
+%\begin{esercizio}[Una coppia]
+%	\label{ex:sgr_coppia}
+%	Si costruiscano il poligono delle forze e un poligono funicolare del sistema
+%	dell'\ESEref{ex:C02_coppia}, formato da due forze opposte di intensità $5$, parallele all'asse
+%	$y$ e applicate nei punti $(1,\,0)$ e $(4,\,0)$.
+%
+%	\risultato Il poligono delle forze è chiuso; il primo e l'ultimo lato del poligono funicolare
+%	sono paralleli, e il prodotto della loro distanza $d$ per la lunghezza $N_0$ del raggio $0P$
+%	vale $15$, qualunque sia il polo: è il modulo del momento della coppia.
+%\end{esercizio}
+%
+%\begin{esercizio}[Reazioni della trave ramificata]
+%	\label{ex:sgr_ramificata}
+%	Per le reazioni esterne la trave ramificata del \PARref{sec:trave_ramificata} si comporta come
+%	una trave appoggiata di luce $2\ell$, soggetta a due forze verticali di intensità $p\ell$ alle
+%	distanze $\ell/2$ e $3\ell/2$ dalla cerniera $A$. Si determinino le reazioni con il lato di
+%	chiusura.
+%
+%	\risultato Il raggio parallelo al lato di chiusura incontra la linea dei carichi nel suo punto
+%	medio: $V_A = Y_C = p\ell$.
+%\end{esercizio}
+%
+%\begin{esercizio}[Ponte a stampella]
+%	\label{ex:sgr_stampella}
+%	Nel caso (a) dell'\ESEref{ex:ponte_stampella}, con il carico $p$ su tutta la travata, sistema
+%	e carico sono simmetrici. (a) Si determini graficamente la reazione della cerniera $A$,
+%	considerando il semiarco di sinistra. (b) Si scomponga la reazione secondo le due bielle che
+%	concorrono in $A$.
+%
+%	\risultato (a) La forza trasmessa dalla cerniera $E$ è orizzontale e ha per retta d'azione
+%	l'asse della travata; la risultante $\tfrac{5}{2}\,p\ell$ del carico di sinistra la incontra nel
+%	punto $K$, a distanza $\tfrac{3}{4}\ell$ dalla verticale di $A$, e la reazione ha la retta $AK$,
+%	di pendenza $1/3$: $V_A = \tfrac{5}{2}\,p\ell$ e $H_A = \tfrac{15}{2}\,p\ell$. (b) Il nodo $A$ è
+%	un nodo canonico: il triangolo di equilibrio fornisce
+%	$N_{AC} = -\tfrac{5\sqrt{5}}{12}\,p\ell$ e $N_{AD} = -\tfrac{25\sqrt{17}}{12}\,p\ell$, entrambe
+%	di compressione.
+%\end{esercizio}
+%
+%\begin{esercizio}[Diagramma cremoniano di una travatura non simmetrica]
+%	\label{ex:sgr_tre_maglie}
+%	Si tracci il diagramma cremoniano della travatura dell'\ESEref{ex:tre_maglie}, soggetta a una
+%	forza orizzontale $2F$ in $D$ e a una forza verticale $3F$ in $E$, dopo averne determinato le
+%	reazioni con la costruzione del \PARref{sec:cerniera_carrello_sgr}.
+%
+%	\risultato Il poligono delle forze esterne è un quadrilatero non degenere, chiuso dalle
+%	reazioni $X_A = -2F$, $Y_A = \tfrac{2}{3}F$ e $Y_C = \tfrac{7}{3}F$. I nodi canonici si
+%	succedono nell'ordine $A$, $C$, $D$, $E$, e il nodo $B$ fornisce la verifica. Si leggono
+%	$N_{AB} = \tfrac{10}{3}F$, $N_{BC} = \tfrac{14}{3}F$, $N_{DB} = \tfrac{2\sqrt{2}}{3}F$,
+%	$N_{AD} = -\tfrac{2\sqrt{5}}{3}F$, $N_{EC} = -\tfrac{7\sqrt{5}}{3}F$, $N_{DE} = -4F$ e
+%	$N_{BE} = -\tfrac{2\sqrt{2}}{3}F$.
+%\end{esercizio}

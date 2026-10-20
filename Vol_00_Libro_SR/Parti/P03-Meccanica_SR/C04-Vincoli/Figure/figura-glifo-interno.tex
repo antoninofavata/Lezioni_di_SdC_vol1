@@ -1,0 +1,191 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica del glifo interno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\xAi{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}    % semi-lunghezza piatto verticale
+			\def\bw{0.20}         % semi-distanza ruote
+			\pgfmathsetmacro{\rrota}{0.105}
+			\pgfmathsetmacro{\D}{2*\rrota}
+			\pgfmathsetmacro{\xAj}{\xAi+\D}
+			\pgfmathsetmacro{\xMid}{\xAi+\rrota}
+			
+			%% ── Asse a (retta orizzontale grigia continua) ──
+			\draw[gray!60, line width=0.6pt]  (-4.0, \yA) -- (3.10, \yA);
+			
+			%% ── Versore a a destra ──
+			\draw[->, line width=1pt] 	(1.80, \yA) -- (2.30, \yA);
+			\node[anchor=north, font=\small] at (1.85, \yA-0.05) {$\ab$};
+			
+			%% ── Etichetta del CR all'infinito ──
+			\node[gray, font=\footnotesize, anchor=south] 	at (-3.80, \yA+0.0) {$C_{ij} = \infty_\ab$};
+			
+			%% ── Corpo C_i (a sinistra, piatto verticale a x=0) ──
+			\draw[line width=1pt] 
+			(\xAi, -\Lpiatto)
+			.. controls (-0.60, -1.55) and (-1.55, -1.65)
+			.. (-2.15, -1.30)
+			.. controls (-2.85, -0.70) and (-3.00,  0.50)
+			.. (-2.50, 1.20)
+			.. controls (-1.80, 1.65) and (-0.70, 1.55)
+			.. (\xAi, \Lpiatto)
+			-- cycle;
+			\node at (-1.65, 0.70) {$\mathcal{C}_i$};
+			
+			%			%% ── Corpo C_j (a destra, piatto verticale a x=D) ──
+			\draw[line width=1pt] 
+			(\xAj, \Lpiatto)
+			.. controls ({\xAj+0.70}, 1.55) and ({\xAj+1.80}, 1.65)
+			.. ({\xAj+2.50}, 1.20)
+			.. controls ({\xAj+3.00}, 0.50) and ({\xAj+2.85}, -0.70)
+			.. ({\xAj+2.15}, -1.30)
+			.. controls ({\xAj+1.55}, -1.65) and ({\xAj+0.60}, -1.55)
+			.. (\xAj, -\Lpiatto)
+			-- cycle;
+			\node at ({\xAj+1.65}, 0.70) {$\mathcal{C}_j$};
+			
+			%% ── Equazioni di vincolo (in alto) ──
+			\node[font=\small] at (\xMid, 2.0) {$\llbracket \ub \rrbracket(A)\cdot\ab = 0, \quad \llbracket \vartheta \rrbracket = 0$};
+			
+			
+			%% ── Glifo: due ruote tangenti ai piatti ──
+			\draw (\xMid, \bw) circle (\rrota);
+			\draw (\xMid, -\bw) circle (\rrota);
+			
+			%% ── Punti A_i e A_j ──
+			\fill (\xAi, \yA) circle (1.5pt);
+			\fill (\xAj, \yA) circle (1.5pt);
+			\node[anchor=east, font=\footnotesize] 
+			at ({\xAi-0.05}, {\yA-0.18}) {$A_i$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAj+0.05}, {\yA-0.18}) {$A_j$};
+			
+			
+			%			
+			%% ── Etichetta "asse del glifo" sulla retta dell'asse ──
+			\node[gray, font=\footnotesize, anchor=north] at (\xMid-4.0, \yA-0.05) {asse del glifo};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 	at (\xMid, -1.50) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica del glifo interno
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6.5cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\xAi{0.00}
+			\def\yA{0.00}
+			\def\Lpiatto{0.60}
+			\def\bw{0.20}
+			\pgfmathsetmacro{\rrota}{0.105}
+			\pgfmathsetmacro{\D}{2*\rrota}
+			\pgfmathsetmacro{\xAj}{\xAi+\D}
+			\pgfmathsetmacro{\xMid}{\xAi+\rrota}
+			
+			%% ── Asse a (retta orizzontale grigia continua) ──
+			\draw[gray!60, line width=0.6pt] (-2.0, \yA) -- (3.0, \yA);
+			
+			%% ── Versore a a destra ──
+			\draw[->, line width=1pt] (3.30, \yA) -- (3.80, \yA);
+			\node[anchor=south, font=\small] at (3.55, \yA+0.05) {$\ab$};
+			
+			%% ── Corpo C_i (identico ad (a)) ──
+			%% ── Corpo C_i (a sinistra, piatto verticale a x=0) ──
+			\draw[line width=1pt] 
+			(\xAi, -\Lpiatto)
+			.. controls (-0.60, -1.55) and (-1.55, -1.65)
+			.. (-2.15, -1.30)
+			.. controls (-2.85, -0.70) and (-3.00,  0.50)
+			.. (-2.50, 1.20)
+			.. controls (-1.80, 1.65) and (-0.70, 1.55)
+			.. (\xAi, \Lpiatto)
+			-- cycle;
+			\node at (-1.75, 0.90) {$\mathcal{C}_i$};
+			
+			
+			%% ── Corpo C_j (identico ad (a)) ──
+			\draw[line width=1pt] 
+			(\xAj, \Lpiatto)
+			.. controls ({\xAj+0.70}, 1.55) and ({\xAj+1.80}, 1.65)
+			.. ({\xAj+2.50}, 1.20)
+			.. controls ({\xAj+3.00}, 0.50) and ({\xAj+2.85}, -0.70)
+			.. ({\xAj+2.15}, -1.30)
+			.. controls ({\xAj+1.55}, -1.65) and ({\xAj+0.60}, -1.55)
+			.. (\xAj, -\Lpiatto)
+			-- cycle;
+			\node at ({\xAj+1.75}, 0.90) {$\mathcal{C}_j$};
+			
+			%% ── Glifo: due ruote tangenti ai piatti ──
+			\draw (\xMid, \bw) circle (\rrota);
+			\draw (\xMid, -\bw) circle (\rrota);
+			
+			%% ── Punti A_i e A_j ──
+			\fill (\xAi, \yA) circle (1.5pt);
+			\fill (\xAj, \yA) circle (1.5pt);
+			\node[anchor=east, font=\footnotesize] 	at ({\xAi-0.05}, {\yA-0.28}) {$A_i$};
+			\node[anchor=west, font=\footnotesize] 
+			at ({\xAj+0.05}, {\yA-0.28}) {$A_j$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: 2 forze + 2 coppie, uguali e opposte
+			%% ──────────────────────────────────────────────────
+			
+			%% Forza in A_i: -R a (verso sinistra, entra in C_i)
+			\draw[->, line width=1.4pt] 
+			({\xAi-0.05}, \yA) -- ({\xAi-1.05}, \yA);
+			\node[anchor=south, font=\small] 
+			at ({\xAi-0.55}, {\yA+0.05}) {$-R\,\ab$};
+			
+			%% Forza in A_j: +R a (verso destra, entra in C_j)
+			\draw[->, line width=1.4pt] 
+			({\xAj+0.05}, \yA) -- ({\xAj+1.05}, \yA);
+			\node[anchor=south, font=\small] 
+			at ({\xAj+0.55}, {\yA+0.05}) {$R\,\ab$};
+			
+			
+			%% ── Coppie μ(A): semicerchi verticali, uguali e opposti ──
+			\def\rmu{0.35}
+			\def\yMu{0.0}              % quota delle coppie, dentro i corpi
+			
+			% Coppia in C_i: semicerchio orario (concavo verso destra, freccia in basso)
+			\draw[->, line width=1.4pt] ({-1.65+\rmu}, \yMu-\rmu) arc(-90:-270:\rmu);
+			\node[font=\small] at (-2.0, \yMu-0.5) {$\mu(A)$};
+			
+			% Coppia in C_j: semicerchio antiorario (concavo verso sinistra, freccia in basso)
+			\draw[->, line width=1.4pt] ({\xAj+1.65-\rmu}, \yMu-\rmu) arc(-90:90:\rmu);
+			\node[font=\small] at ({\xAj+2.0}, \yMu-0.5) {$\mu(A)$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (\xMid, -1.50) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Glifo interno con asse $\ab$ fra due corpi: prestazioni cinematica e statica.]{%
+		Glifo interno fra i corpi $\mathcal{C}_i$ e $\mathcal{C}_j$
+		con asse $\ab$. Prestazione cinematica (a): le equazioni
+		di vincolo $\llbracket \ub \rrbracket(A) \cdot \ab = 0$ e
+		$\llbracket \vartheta \rrbracket = 0$ impongono l'uguaglianza
+		delle componenti di spostamento dei due corpi lungo $\ab$
+		e l'uguaglianza delle rotazioni $\vartheta_i$ e $\vartheta_j$;
+		lo scorrimento relativo lungo $\ab^\perp$ resta libero. Il
+		\CRr\ è all'infinito sulla retta dell'asse,
+		$C_{ij} = \infty_\ab$. Prestazione statica (b): i due corpi
+		si scambiano una forza $R\,\ab$ diretta lungo l'asse e una
+		coppia $\mu(A)$, uguali e opposte, in dualità rispettivamente
+		con la componente di spostamento relativo lungo $\ab$ e con
+		la rotazione relativa bloccate, in accordo con la
+		molteplicità due.}
+	\label{fig:glifo_interno}
+\end{figure}

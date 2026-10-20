@@ -1,0 +1,187 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.95]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica della cerniera tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\def\rA{0.28}   % raggio del pallino della cerniera in A
+			\def\rcorpo{1.10}   % distanza del centro dei corpi da A
+			\def\rrot{0.32}  % raggio degli archi di rotazione
+			
+			
+			% Angoli di disposizione dei tre corpi (in gradi)
+			\def\angCuno{90}       % C_1 in alto
+			\def\angCdue{-30}      % C_2 in basso a destra
+			\def\angCtre{-150}     % C_3 in basso a sinistra
+			
+			% Coordinate dei centri dei corpi
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			%% ── Corpo C_1 (in alto) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.10, 0.40) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			
+			
+			
+			%% ── Corpo C_2 ──
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.20, 0.50) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			%% ── Corpo C_3 ──
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (0, 0) circle (\rA);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ── Equazioni di vincolo (a sinistra del pannello) ──
+			\node[font=\footnotesize, anchor=west] 	at (-3.4, 1.30) {$\ub_2(A) = \ub_1(A)$};
+			\node[font=\footnotesize, anchor=west] 	at (-3.40, 0.80) {$\ub_3(A) = \ub_1(A)$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica della cerniera tripla
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=6cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\def\rA{0.28}
+			\def\rcorpo{1.10}
+			
+			\def\angCuno{90}
+			\def\angCdue{-30}
+			\def\angCtre{-150}
+			
+			\pgfmathsetmacro{\xCuno}{\rcorpo*cos(\angCuno)}
+			\pgfmathsetmacro{\yCuno}{\rcorpo*sin(\angCuno)}
+			\pgfmathsetmacro{\xCdue}{\rcorpo*cos(\angCdue)}
+			\pgfmathsetmacro{\yCdue}{\rcorpo*sin(\angCdue)}
+			\pgfmathsetmacro{\xCtre}{\rcorpo*cos(\angCtre)}
+			\pgfmathsetmacro{\yCtre}{\rcorpo*sin(\angCtre)}
+			
+			%% ── Corpo C_1 (identico ad (a)) ──
+			\begin{scope}[shift={(\xCuno, \yCuno)}, rotate=\angCuno-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.10, 0.40) {$\mathcal{C}_1$};
+			\end{scope}
+			
+			%% ── Corpo C_2 (identico ad (a)) ──
+			\begin{scope}[shift={(\xCdue, \yCdue)}, rotate=\angCdue-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (0.30, 0.40) {$\mathcal{C}_2$};
+			\end{scope}
+			
+			%% ── Corpo C_3 (identico ad (a)) ──
+			\begin{scope}[shift={(\xCtre, \yCtre)}, rotate=\angCtre-90]
+				\draw[line width=1pt] 
+				plot[smooth cycle, tension=0.7] coordinates 
+				{(0.00, -0.85) (0.50, -0.65) (0.80, -0.10) 
+					(0.70, 0.55) (0.20, 0.90) (-0.40, 0.80) 
+					(-0.75, 0.30) (-0.70, -0.30) (-0.40, -0.75)};
+				\node at (-0.30, 0.50) {$\mathcal{C}_3$};
+			\end{scope}
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (0, 0) circle (\rA);
+			\node[font=\small] at (0, 0) {$A$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: tre forze r_1, r_2, r_3 uscenti da A
+			%% radialmente verso i rispettivi corpi
+			%% ──────────────────────────────────────────────────
+			
+			\def\Lfreccia{0.50}
+			
+			% Reazione r_1 (verso C_1, in alto)
+			\draw[->, line width=1.4pt] 
+			({\rA*cos(\angCuno)}, {\rA*sin(\angCuno)}) 
+			-- ++({\Lfreccia*cos(\angCuno)}, {\Lfreccia*sin(\angCuno)});
+			\node[font=\small, anchor=west] 
+			at ({(\rA+\Lfreccia)*cos(\angCuno)+0.10}, 
+			{(\rA+\Lfreccia)*sin(\angCuno)}) {$\rb_1$};
+			
+			% Reazione r_2 (verso C_2, in basso a destra)
+			\draw[->, line width=1.4pt] 
+			({\rA*cos(\angCdue)}, {\rA*sin(\angCdue)}) 
+			-- ++({\Lfreccia*cos(\angCdue)}, {\Lfreccia*sin(\angCdue)});
+			\node[font=\small, anchor=west] 
+			at ({(\rA+\Lfreccia)*cos(\angCdue)+0.10}, 
+			{(\rA+\Lfreccia)*sin(\angCdue)-0.05}) {$\rb_2$};
+			
+			% Reazione r_3 (verso C_3, in basso a sinistra)
+			\draw[->, line width=1.4pt] 
+			({\rA*cos(\angCtre)}, {\rA*sin(\angCtre)}) 
+			-- ++({\Lfreccia*cos(\angCtre)}, {\Lfreccia*sin(\angCtre)});
+			\node[font=\small, anchor=east] 
+			at ({(\rA+\Lfreccia)*cos(\angCtre)-0.10}, 
+			{(\rA+\Lfreccia)*sin(\angCtre)-0.05}) {$\rb_3$};
+			
+			%% ── Equazione di equilibrio del nodo (a sinistra) ──
+			\node[font=\footnotesize, anchor=west] 
+			at (-3.40, 0.5) {$\rb_1 + \rb_2 + \rb_3 = \zerovb$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0, -1.40) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Cerniera multipla  fra tre corpi]{%
+		Cerniera multipla  fra i corpi $\mathcal{C}_1$,
+		$\mathcal{C}_2$, $\mathcal{C}_3$ nel punto $A$.
+		Prestazione cinematica (a):  le equazioni di vincolo
+		$\ub_2(A) = \ub_1(A)$ e $\ub_3(A) = \ub_1(A)$ impongono
+		l'uguaglianza degli spostamenti dei tre corpi in $A$;
+		le rotazioni dei tre corpi restano libere e non sono
+		rappresentate. Il \CRr\ di ogni coppia di corpi coincide
+		con $A$. Prestazione statica (b): i tre corpi si scambiano in $A$ tre forze
+		$\rb_1$, $\rb_2$, $\rb_3$ di direzione arbitraria,
+		soggette all'equilibrio del nodo $\sum_i \rb_i = \zerovb$;
+		nessuna coppia scambiata. Le incognite indipendenti
+		sono le componenti di $\rb_2$ e $\rb_3$ (per un totale
+		di $2(k-1) = 4$), in accordo con la molteplicità.}
+	\label{fig:cerniera_tripla}
+\end{figure}

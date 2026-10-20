@@ -1,0 +1,138 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					trave/.style={line width=1.8pt, line cap=round, line join=round, black},
+					terra/.style={line width=0.8pt, black},
+					nodoV/.style={circle, fill=white, draw=black,
+						inner sep=0pt, minimum size=5pt, line width=0.80pt},
+					reaz/.style={-{Stealth[length=5pt,width=4pt]}, line width=0.8pt, black},
+					cop/.style={-{Stealth[length=4pt,width=3.5pt]}, line width=0.8pt, black},
+					lab/.style={font=\small},
+					etlab/.style={circle, draw=black, line width=0.6pt,
+						fill=white, inner sep=1.5pt, font=\small},
+					]
+					
+					\def\L{1.5}
+					\def\AR{0.55}
+					\def\HSEP{5.6}
+					\def\VSEP{3.0}
+					
+					\def\portale{\draw[trave](0,0)--(0,\L)--(2*\L,\L)--(2*\L,0);}
+					\def\cernieraA{%
+						\draw[terra](0,0)--(-0.22,-0.36)--(0.22,-0.36)--cycle;
+						\draw[terra](-0.30,-0.36)--(0.30,-0.36);
+						\foreach \x in {-0.24,-0.12,0.00,0.12,0.24}
+						\draw[very thin](\x,-0.36)--++(-0.08,-0.10);
+						\node[nodoV]at(0,0){};}
+					\def\cernieraB{%
+						\draw[terra](2*\L,0)--(2*\L-0.22,-0.36)--(2*\L+0.22,-0.36)--cycle;
+						\draw[terra]({2*\L-0.30},-0.36)--({2*\L+0.30},-0.36);
+						\foreach \x in {-0.24,-0.12,0.00,0.12,0.24}
+						\draw[very thin]({2*\L+\x},-0.36)--++(-0.08,-0.10);
+						\node[nodoV]at(2*\L,0){};}
+					\def\nodoM{\node[nodoV]at(\L,\L){};}
+					\def\nodilabel{%
+						\node[right,lab]at(0,0){$A$};
+						\node[left,lab]at(2*\L,0){$B$};
+						\node[below right,lab]at(0,\L){$C$};
+						\node[below left,lab]at(2*\L,\L){$D$};
+						\node[below,lab]at(\L,\L){$M$};}
+					
+					%% P0 -- riga 1 col 1
+					\begin{scope}[xshift=0cm, yshift=0cm]
+						%% carico distribuito p sul traverso
+						\foreach \t in {0.0,0.143,0.286,0.429,0.571,0.714,0.857,1.00}
+						\draw[reaz]({2*\L*\t},{\L+0.50})--({2*\L*\t},\L);
+						\draw[black,line width=0.65pt](0,{\L+0.50})--(2*\L,{\L+0.50});
+						\draw[black,line width=0.40pt](0,\L)--(2*\L,\L);
+						\node[above,lab]at(\L,{\L+0.54}){$p$};
+						%% reazioni in A
+						\draw[reaz](0,{-\AR})--(0,0);
+						\node[below,lab]at(0,{-\AR}){$p\ell$};
+						\draw[reaz]({-\AR},0)--(0,0);
+						\node[left,lab]at({-\AR},0){$\tfrac{p\ell}{2}$};
+						%% reazioni in B
+						\draw[reaz](2*\L,{-\AR})--(2*\L,0);
+						\node[below,lab]at(2*\L,{-\AR}){$p\ell$};
+						\draw[reaz]({2*\L+\AR},0)--(2*\L,0);
+						\node[right,lab]at({2*\L+\AR},0){$\tfrac{p\ell}{2}$};
+						\portale \cernieraA \cernieraB \nodoM \nodilabel
+						\node[etlab]at(\L,{0}){$P0$};
+					\end{scope}
+					
+					
+					%% P1 -- riga 1 col 2
+					\begin{scope}[xshift=\HSEP cm, yshift=0cm]
+						%% coppia antioraria in A
+						\draw[cop](0,0)+(-30:0.38) arc(-30:180:0.38);
+						\node[above=0.2,lab]at({-0.28},0){$1$};
+						%% VA su
+						\draw[reaz](0,{-\AR})--(0,0);
+						\node[below,lab]at(0,{-\AR}){$\tfrac{1}{2\ell}$};
+						%% HA verso sinistra (esterno)
+						\draw[reaz](0,0)--({-\AR},0);
+						\node[left,lab]at({-\AR},0){$\tfrac{1}{2\ell}$};
+						%% VB giu
+						\draw[reaz](2*\L,0)--(2*\L,{-\AR});
+						\node[below,lab]at(2*\L,{-\AR}){$\tfrac{1}{2\ell}$};
+						%% HB verso destra (esterno)
+						\draw[reaz](2*\L,0)--({2*\L+\AR},0);
+						\node[right,lab]at({2*\L+\AR},0){$\tfrac{1}{2\ell}$};
+						\portale \cernieraA \cernieraB \nodoM \nodilabel
+						\node[etlab]at(\L,{0}){$P1$};
+					\end{scope}
+					
+					%% P2 -- riga 2 col 1
+					\begin{scope}[xshift=0cm, yshift={-\VSEP cm}]
+						%% coppia oraria in B -- semicerchio 180 gradi, senso orario
+						\draw[cop](2*\L-0.73,0.06)+(0:0.38) arc(180:-0:0.38);
+						\node[above right,lab]at({2*\L+0.38},0){$1$};
+						
+						
+						%			%% coppia oraria in B
+						%			\draw[cop](2*\L,0)+(210:0.38) arc(210:510:0.38);
+						%			\node[right=0.12,lab]at({2*\L+0.38},0){$1$};
+						%% VA giu
+						\draw[reaz](0,0)--(0,{-\AR});
+						\node[below,lab]at(0,{-\AR}){$\tfrac{1}{2\ell}$};
+						%% HA verso sinistra (esterno)
+						\draw[reaz](0,0)--({-\AR},0);
+						\node[left,lab]at({-\AR},0){$\tfrac{1}{2\ell}$};
+						%% VB su
+						\draw[reaz](2*\L,{-\AR})--(2*\L,0);
+						\node[below,lab]at(2*\L,{-\AR}){$\tfrac{1}{2\ell}$};
+						%% HB verso destra (esterno)
+						\draw[reaz](2*\L,0)--({2*\L+\AR},0);
+						\node[right,lab]at({2*\L+\AR},0){$\tfrac{1}{2\ell}$};
+						\portale \cernieraA \cernieraB \nodoM \nodilabel
+						\node[etlab]at(\L,{0}){$P2$};
+					\end{scope}
+					
+					%% P3 -- riga 2 col 2
+					\begin{scope}[xshift=\HSEP cm, yshift={-\VSEP cm}]
+						%			%% coppia antioraria in M
+						%			\draw[cop](\L,\L)+(-30:0.38) arc(-30:210:0.38);
+						%			\node[above=0.44,lab]at(\L,\L){$1$};
+						%% coppia antioraria a sinistra di M
+						\draw[->,>=stealth,line width=0.85pt]({\L-0.14},{\L-0.18}) arc(270:90:0.18);
+						%% coppia oraria a destra di M
+						\draw[<-,>=stealth,line width=0.85pt]({\L+0.14},{\L+0.18}) arc(90:-90:0.18);
+						\node[above,lab]at({\L},\L){$1$};
+						%% HA verso destra (interno), HB verso sinistra (interno) -- VA=VB=0
+						\draw[reaz]({-\AR},0)--(0,0);
+						\node[left,lab]at({-\AR},0){$\tfrac{1}{\ell}$};
+						\draw[reaz]({2*\L+\AR},0)--(2*\L,0);
+						\node[right,lab]at({2*\L+\AR},0){$\tfrac{1}{\ell}$};
+						\portale \cernieraA \cernieraB \nodoM \nodilabel
+						\node[etlab]at(\L,{0}){$P3$};
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Portale a tre cerniere: reazioni vincolari nei quattro problemi
+				di carico. Pannello~$P0$: carico uniforme~$p$ sul traverso.
+				Pannelli~$P1$, $P2$, $P3$: coppie unitarie $\chi_1$, $\chi_2$, $\chi_3$
+				applicate rispettivamente in~$A$, $B$ e~$M$.}
+			\label{fig:portale_reazioni:P0_1_2_3}
+		\end{figure}

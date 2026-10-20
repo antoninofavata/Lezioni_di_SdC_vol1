@@ -1,0 +1,134 @@
+\begin{figure}[!ht]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+		
+		\def\L{4.0}
+		
+		% ============================================================
+		% PANNELLO (a) — caso regolare (assi non paralleli)
+		% ============================================================
+		\begin{scope}[xshift=0cm]
+			
+			% --- trave (orizzontale, in y=0, parte dall'origine) ---
+			\draw[line width=1.5pt] (0,0) -- (\L,0);
+			
+			% --- GLIFO in A: piatti a -45° (orario), agganciato alla
+			\begin{scope}[shift={({-0.12*sin(45)}, {-0.12*cos(45)})},
+				rotate=-45]
+				% piatto inferiore
+				\draw[thick] (-0.45,-0.12) -- (0.45,-0.12);
+				% piatto superiore
+				\draw[thick] (-0.45, 0.12) -- (0.45, 0.12);
+				% rotelle (cerchietti tra i piatti)
+				\draw[thick] (-0.15, 0) circle (0.10);
+				\draw[thick] ( 0.15, 0) circle (0.10);
+				% hatching sotto il piatto inferiore (a indicare il suolo)
+				\foreach \x in {-0.36,-0.18,0,0.18,0.36}{
+					\draw[thin] (\x,-0.12) -- (\x-0.10,-0.26);
+				}
+			\end{scope}
+			
+			% --- freccia ed etichetta asse del glifo a_g a +45° ---
+			\draw[->, thin, gray!70] (0,0) -- ({0.55*cos(45)}, {0.55*sin(45)});
+			\node[gray!80, font=\scriptsize, right] at	({0.55*cos(45)+0.05}, {0.55*sin(45)+0.02}) {$\ab_g$};
+			
+			% --- CARRELLO in B: asse verticale ---
+			\draw[thick] (\L,0) -- (\L-0.22,-0.38)
+			-- (\L+0.22,-0.38) -- cycle;
+			\draw[thick] (\L-0.15,-0.44) circle (0.07);
+			\draw[thick] (\L+0.15,-0.44) circle (0.07);
+			\draw[thick] (\L-0.32,-0.54) -- (\L+0.32,-0.54);
+			\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+				\draw[thin] (\L+\x,-0.54) -- (\L+\x-0.10,-0.68);
+			}
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (\L,0) {};
+			
+			% --- freccia ed etichetta asse del carrello a_c verticale ---
+			\draw[->, thin, gray!70] (\L,0) -- (\L,0.55);
+			\node[gray!80, font=\scriptsize, right] at (\L,0.45) {$\ab_c$};
+			
+			% --- etichette dei nodi ---
+			\node[above ,  font=\scriptsize] at (0,0)  {$A$};
+			\node[above right, font=\scriptsize] at (\L,0) {$B$};
+			
+			% --- didascalia del pannello ---
+			\node[font=\scriptsize] at (\L/2,-1.30)
+			{(a) caso regolare, $\rg(\bm{A})=3$};
+			
+		\end{scope}
+		
+		% ============================================================
+		% PANNELLO (b) — caso degenere (assi collineari, opposti)
+		% ============================================================
+		\begin{scope}[xshift=7.0cm]
+			
+			\def\q{1.0}
+			
+			% --- meccanismo: trave traslata di q lungo (-45°) [grigia] ---
+			\draw[gray!55, line width=1.2pt] ({\q*cos(45)},{-\q*sin(45)}) -- ({\L+\q*cos(45)},{-\q*sin(45)});
+			\node[gray!70, below left,  font=\scriptsize] at({\q*cos(45)},{-\q*sin(45)})  {$A'$};
+			\node[gray!70, below right, font=\scriptsize] at ({\L+\q*cos(45)},{-\q*sin(45)}) {$B'$};
+			
+			% frecce del parametro lagrangiano q in A e in B, lungo -45°
+			\draw[->, gray!70, thick] (0,0) --	({\q*cos(45)},{-\q*sin(45)});
+			\draw[->, gray!70, thick] (\L,0) --		({\L+\q*cos(45)},{-\q*sin(45)});
+			\node[gray!70, font=\scriptsize] at	({0.5*\q*cos(45)+0.10},{-0.5*\q*sin(45)+0.05}) {$q$};
+			\node[gray!70, font=\scriptsize] at	({\L+0.5*\q*cos(45)+0.10},{-0.5*\q*sin(45)+0.05}) {$q$};
+			
+			% --- trave (configurazione iniziale) ---
+			\draw[line width=1.5pt] (0,0) -- (\L,0);
+			
+			% --- GLIFO in A: piatti a -45° (invariato) ---
+			\begin{scope}[shift={({-0.12*sin(45)},{-0.12*cos(45)})},
+				rotate=-45]
+				\draw[thick] (-0.45,-0.12) -- (0.45,-0.12);
+				\draw[thick] (-0.45, 0.12) -- (0.45, 0.12);
+				\draw[thick] (-0.15, 0) circle (0.10);
+				\draw[thick] ( 0.15, 0) circle (0.10);
+				\foreach \x in {-0.36,-0.18,0,0.18,0.36}{
+					\draw[thin] (\x,-0.12) -- (\x-0.10,-0.26);
+				}
+			\end{scope}
+			% freccia ed etichetta a_g a +45°
+			\draw[->, thin, gray!70] (0,0)	-- ({0.55*cos(45)},{0.55*sin(45)});
+			\node[gray!80, font=\scriptsize, right] at	({0.55*cos(45)+0.05},{0.55*sin(45)+0.02}) {$\ab_g$};
+			
+			% --- CARRELLO in B: ruotato così che a_c = -a_g (a +45° + 180° = -135°) ---
+			\begin{scope}[shift={(\L,0)}, rotate=135]
+				\draw[thick] (0,0) -- (-0.22,-0.38)	-- (0.22,-0.38) -- cycle;
+				\draw[thick] (-0.15,-0.44) circle (0.07);
+				\draw[thick] ( 0.15,-0.44) circle (0.07);
+				\draw[thick] (-0.32,-0.54) -- (0.32,-0.54);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\x,-0.54) -- (\x-0.10,-0.68);
+				}
+			\end{scope}
+			% perno bianco in B (centro del carrello = punto di attacco)
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=5pt, line width=0.8pt] at (\L,0) {};
+			% freccia ed etichetta a_c a -135° (cioè -a_g, verso basso-sinistra)
+			\draw[->, thin, gray!70] (\L,0)
+			-- ({\L-0.55*cos(45)},{-0.55*sin(45)});
+			\node[gray!80, font=\scriptsize, left] at
+			({\L-0.55*cos(45)-0.05},{-0.55*sin(45)-0.02}) {$\ab_c$};
+			
+			% --- etichette dei nodi ---
+			\node[above,  font=\scriptsize] at (0,0)  {$A$};
+			\node[above left, font=\scriptsize] at (\L,0) {$B$};
+			
+			% --- didascalia del pannello ---
+			\node[font=\scriptsize] at (\L/2,-1.55)
+			{(b) caso degenere, $g_\ell = g_{\mathscr{i}} = 1$};
+			
+		\end{scope}
+	\end{tikzpicture}
+	\caption{Trave con glifo in $A$ e carrello in $B$:
+		\emph{(a)}~caso regolare con assi $\ab_g$ e $\ab_c$
+		non paralleli ($\rg(\bm{A})=3$, isostatico);
+		\emph{(b)}~caso degenere con assi $\ab_g$ e $\ab_c$
+		collineari ($g_\ell = g_{\mathscr{i}} = 1$). In (b)
+		il meccanismo è la traslazione del corpo nella
+		direzione ortogonale agli assi, parametrizzata da $q$.}
+	\label{fig:catalogo_trave_glifo}
+\end{figure}

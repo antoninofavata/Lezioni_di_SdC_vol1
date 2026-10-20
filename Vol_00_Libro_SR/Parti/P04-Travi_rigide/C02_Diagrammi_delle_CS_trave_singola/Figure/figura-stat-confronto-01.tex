@@ -1,0 +1,218 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.95,
+					>=latex,
+					trave/.style={line width=1.2pt},
+					carico/.style={black, line width=0.4pt},
+					forza/.style={black, line width=1pt},
+					risultante/.style={gray!65, line width=1.8pt},
+					diagT/.style={black, line width=0.8pt},
+					diagM/.style={black, line width=0.8pt},
+					diagTb/.style={gray!65, line width=1.0pt},
+					diagMb/.style={gray!65, line width=1.0pt},
+					hatch/.style={gray!40, line width=0.3pt},
+					quota/.style={black, line width=0.4pt},
+					fibre/.style={gray!70, line width=0.3pt},
+					segno/.style={circle, draw=black, line width=0.4pt,
+						minimum size=10pt, inner sep=0pt, font=\small\bfseries},
+					]
+					
+					% ── Parametri dei vincoli (convenzione C06/C07) ──
+					\def\tw{0.15}    \def\thR{0.28}   \def\rn{0.06}
+					\def\rw{0.05}    \def\bw{0.09}    \def\gw{0.22}
+					\def\hh{0.10}
+					
+					% ── Macro vincoli (riuso nei tre pannelli) ──
+					\def\cerniera#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\gw,-\thR) -- (#1+\gw,-\thR);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1,0) circle (\rn);}
+					\def\carrello#1{%
+						\draw[thick] (#1,0) -- (#1-\tw,-\thR) -- (#1+\tw,-\thR) -- cycle;
+						\draw[thick] (#1-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (#1+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (#1-\gw,-\thR-2*\rw-0.04) -- (#1+\gw,-\thR-2*\rw-0.04);
+						\foreach \xh in {-0.16,-0.08,0,0.08,0.16}{%
+							\draw[thin] (#1+\xh,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);}
+						\draw[thick, fill=white] (#1,0) circle (\rn);}
+					
+					% ── Geometria del problema ──
+					\def\Lell{4}
+					\pgfmathsetmacro{\xA}{0}
+					\pgfmathsetmacro{\xMid}{0.5*\Lell}      % mezzeria ℓ/2 = 2
+					\def\yqi{-0.80}
+					\def\ylab{-3.70}
+					
+					% ── Centri utili per le etichette (pre-calcolati per evitare ambiguità TikZ) ──
+					\pgfmathsetmacro{\xMidAC}{0.5*\xMid}            % centro tratto AC
+					\pgfmathsetmacro{\xMidCB}{0.5*(\xMid+\Lell)}    % centro tratto CB
+					\pgfmathsetmacro{\xLabel}{0.5*\Lell}            % x dell'etichetta di pannello
+					\pgfmathsetmacro{\yLabel}{0.4*\ylab}            % y dell'etichetta di pannello
+					
+					% ── Parametri del carico distribuito ──
+					\def\pgap{0.10}
+					\def\php{0.40}
+					\pgfmathsetmacro{\pBase}{\pgap}
+					\pgfmathsetmacro{\pTop}{\pgap+\php}
+					
+					% =========================================================
+					% PANNELLO (a) — Schema statico: distribuito + risultante
+					% =========================================================
+					\begin{scope}[xshift=0cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						\draw[fibre, dashed] (0, -0.1) -- (\Lell, -0.1);
+						
+						% Cerniera in A
+						\draw[thick] (0,0) -- (-\tw,-\thR) -- (\tw,-\thR) -- cycle;
+						\draw[thick] (-\gw,-\thR) -- (\gw,-\thR);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\x,-\thR) -- ++(-0.07,-\hh);
+						
+						% Carrello verticale in B
+						\draw[thick] (\Lell,0) -- (\Lell-\tw,-\thR) -- (\Lell+\tw,-\thR) -- cycle;
+						\draw[thick] (\Lell-\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell+\bw,-\thR-\rw-0.01) circle (\rw);
+						\draw[thick] (\Lell-\gw,-\thR-2*\rw-0.04) -- (\Lell+\gw,-\thR-2*\rw-0.04);
+						\foreach \x in {-0.16,-0.08,0,0.08,0.16}
+						\draw[thin] (\Lell+\x,-\thR-2*\rw-0.04) -- ++(-0.07,-\hh);
+						
+						\draw[thick, fill=white] (0,0) circle (\rn);
+						\draw[thick, fill=white] (\Lell,0) circle (\rn);
+						
+						% Riquadro del carico distribuito p̄
+						\draw[carico] (0,\pBase) rectangle (\Lell,\pTop);
+						\foreach \x in {0.25, 0.75, 1.25, 1.75, 2.25, 2.75, 3.25, 3.75} {
+							\draw[carico, -{Latex[length=2pt, width=1.5pt]}]
+							(\x, \pTop) -- (\x, \pBase);
+						}
+						\node[above, font=\small] at (0.5, \pTop+0.02) {$\bar{p}$};
+						
+						% Risultante R = p̄ℓ in mezzeria
+						\def\Rstart{1.5}
+						\draw[risultante, -{Latex[length=5pt, width=4pt]}]
+						(\xMid, \Rstart) -- (\xMid, 0);
+						\node[right, font=\small, gray!50!black] at (\xMid+0.08, \Rstart-0.18) 
+						{$R = \bar{p}\,\ell$};
+						
+						\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						\node[below=2pt, font=\small] at (\xMid, 0) {$C$};
+						
+						% Quote ℓ/2 - ℓ/2
+						\draw[<->, quota] (0,\yqi)   -- (\xMid,\yqi);
+						\draw[<->, quota] (\xMid,\yqi) -- (\Lell,\yqi);
+						\draw[quota] (0,\yqi+0.07)     -- (0,\yqi-0.07);
+						\draw[quota] (\xMid,\yqi+0.07) -- (\xMid,\yqi-0.07);
+						\draw[quota] (\Lell,\yqi+0.07) -- (\Lell,\yqi-0.07);
+						\node[above, font=\footnotesize] at (\xMidAC, \yqi-0.08) {$\ell/2$};
+						\node[above, font=\footnotesize] at (\xMidCB, \yqi-0.08) {$\ell/2$};
+						
+						\node[font=\small] at (\xLabel/2, \yLabel) {(a)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (b) — Diagramma del taglio T(z)
+					% =========================================================
+					\begin{scope}[xshift=5.5cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						
+						\cerniera{0}
+						\carrello{\Lell}
+						\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						\def\sT{0.4}
+						\pgfmathsetmacro{\Tmax}{(\Lell/2)*\sT}
+						
+						% Caso (b) GRIGIO: rettangolo a gradini
+						\draw[diagTb]
+						(0, 0) -- (0, \Tmax)
+						-- (\xMid, \Tmax)
+						-- (\xMid, -\Tmax)
+						-- (\Lell, -\Tmax)
+						-- (\Lell, 0);
+						
+						% Hatching del caso (a)
+						\foreach \x in {0.10, 0.30, ..., 3.90} {
+							\pgfmathsetmacro{\h}{(\Lell/2 - \x)*\sT}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Caso (a) NERO: triangolo lineare
+						\draw[diagT]
+						(0, 0) -- (0, \Tmax)
+						-- (\Lell, -\Tmax) -- (\Lell, 0);
+						
+						% ── Simboli ⊕/⊖ cerchiati nelle due zone ──
+						\node[segno] at (\xMidAC/2, {0.4*\Tmax}) {$+$};
+						\node[segno] at (1.20*\xMidCB, {-0.4*\Tmax}) {$-$};
+						
+						\node[left, font=\small] at (0., \Tmax-0.02) {$\tfrac{\bar{p}\ell}{2}$};
+						\node[right, font=\small] at (\Lell, -\Tmax+0.02) {$\tfrac{\bar{p}\ell}{2}$};
+						
+						\node[font=\small] at (\xLabel/2, \yLabel) {(b)};
+						
+					\end{scope}
+					
+					% =========================================================
+					% PANNELLO (c) — Diagramma del momento M(z)
+					% =========================================================
+					\begin{scope}[xshift=11.0cm]
+						
+						\draw[trave] (0,0) -- (\Lell,0);
+						\cerniera{0}
+						\carrello{\Lell}
+						\node[above left=-2pt,  font=\small] at (0,0)      {$A$};
+						\node[above right=-2pt, font=\small] at (\Lell,0)  {$B$};
+						
+						\def\sM{0.38}
+						\pgfmathsetmacro{\Mb}{-(\Lell*\Lell/4)*\sM}
+						\pgfmathsetmacro{\Ma}{-(\Lell*\Lell/8)*\sM}
+						
+						% Caso (b) GRIGIO: triangolo
+						\draw[diagMb]
+						(0, 0) -- (\xMid, \Mb) -- (\Lell, 0);
+						
+						% Hatching del caso (a) — parabola
+						\foreach \x in {0.10, 0.30, ..., 3.90} {
+							\pgfmathsetmacro{\h}{(\x*(\Lell-\x)/(\Lell*\Lell/4))*\Ma}
+							\draw[hatch] (\x, 0) -- (\x, \h);
+						}
+						
+						% Caso (a) NERO: parabola
+						\draw[diagM]
+						(0.00, 0)
+						\foreach \x in {0.20, 0.40, ..., 3.80} {
+							-- ({\x}, {(\x*(\Lell-\x)/(\Lell*\Lell/4))*\Ma})
+						}
+						-- (\Lell, 0);
+						
+						\node[above, font=\small] at (\xMid, \Ma+0.02) {$\tfrac{\bar{p}\ell^2}{8}$};
+						\node[above, font=\small, gray!50!black] at (\xMid, \Mb+0.02) 
+						{$\tfrac{\bar{p}\ell^2}{4}$};
+						
+						% Tangente al vertice della parabola — parallela alla corda A–B (l'asse).
+						
+						\node[font=\small] at (\xLabel/2, \yLabel) {(c)};
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+			}
+			\caption{Trave appoggiata, confronto fra carico distribuito uniforme
+				$\bar{p}$ (caso~a, tratto nero) e risultante concentrata
+				$R = \bar{p}\ell$ applicata in mezzeria (caso~b, tratto grigio):
+				(a)~schema strutturale con i due sistemi di carico sovrapposti;
+				(b)~diagrammi del taglio $T(z)$; (c)~diagrammi del momento $M(z)$,
+				con la tangente orizzontale al vertice della parabola del caso~(a)
+				(tratto grigio tratteggiato), parallela alla corda $A$--$B$ che
+				congiunge le ordinate estreme del diagramma.}
+			\label{fig:stat_confronto_01}
+		\end{figure}

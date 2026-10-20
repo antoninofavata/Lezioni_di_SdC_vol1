@@ -56,86 +56,9 @@ riprenderemo per l'intero capitolo. In questo contesto la parola ``trave'' denot
 e per anticipare  esempi strutturali rilevanti; nulla nella trattazione presente dipende dalla forma del corpo;  le proprietà specifiche della trave come elemento strutturale saranno introdotte nel \CAPref{cap:Trave_Rigida}.
 
 %----------------------------------------------------------------------------------------------------------------------
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-		nodo/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=5pt, line width=0.8pt},
-		cint/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=6pt, line width=0.8pt},
-		richiam/.style={thin, gray, dashed},
-		tacca/.style={thin, gray!70}]
-		
-		\def\a{1.0}
-		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
-		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
-		
-		\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-		\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
-		
-		\node[above=2pt] at (0,0)       {$A$};
-		\node[above=2pt] at ({2*\a},0)  {$B$};
-		\node[above=2pt] at ({3*\a},0)  {$C$};
-		\node[above=2pt] at ({5*\a},0)  {$D$};
-		
-		\node at ({\a},  -0.32) {$\mathcal{C}_1$};
-		\node at ({4*\a},-0.32) {$\mathcal{C}_2$};
-		
-		%% cerniera in A
-		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-		\draw (-\gw,-\thA) -- (\gw,-\thA);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-		\node[nodo] at (0,0) {};
-		
-		%% carrello intermedio in B
-		\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-		\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-		\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-		\draw ({2*\a-\sr},0) arc(180:360:\sr);
-		
-		%% cerniera interna in C
-		\node[cint] at ({3*\a},0) {};
-		
-		%% carrello terminale in D
-		\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-		\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-		\node[nodo] at ({5*\a},0) {};
-		
-		%% quotatura
-		\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
-		\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
-		\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
-		\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
-		
-		\draw[tacca] (0,     -1.55) -- (0,     -1.75);
-		\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
-		\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
-		\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
-		
-		\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
-		\node[above=0.04] at ({\a},   -1.65) {$2a$};
-		\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
-		\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
-		\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
-		\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
-		
-	\end{tikzpicture}
-	\caption{La trave Gerber: due corpi rigidi $\mathcal{C}_1$, $\mathcal{C}_2$
-		connessi da una cerniera in $C$; cerniera al suolo in $A$, carrelli
-		verticali in $B$ e $D$.}
-	\label{fig:gerber_motiv}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-gerber-motiv}
+
 %----------------------------------------------------------------------------------------------------------------------
 
 Si dunque provi a ragionare sulla  cinematica della trave Gerber senza scrivere ancora
@@ -419,75 +342,9 @@ Vediamo ora come la stessa costruzione si generalizzi a un sistema
 qualunque.
 
 
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-		nodo/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=4pt, line width=0.7pt},
-		nodoR/.style={circle, fill=black, draw=black,
-			inner sep=0pt, minimum size=3pt}]
-		
-		\def\a{1.0}
-		
-		% --- configurazione di riferimento (tratteggiata) ---
-		\draw[dashed, gray!60, line width=0.9pt] (0,0) -- ({5*\a},0);
-		\node[gray!70, above=2pt] at (0,0)      {$A$};
-		\node[gray!70, above=2pt] at ({2*\a},0) {$B$};
-		\node[gray!70, above=2pt] at ({3*\a},0) {$C$};
-		\node[gray!70, above=2pt] at ({5*\a},0) {$D$};
-		\node[nodo] at (0,0) {};
-		\node[nodo] at ({2*\a},0) {};
-		\node[nodo] at ({3*\a},0) {};
-		\node[nodo] at ({5*\a},0) {};
-		
-		% --- configurazione deformata ---
-		\coordinate (Ad) at (0,0);
-		\coordinate (Bd) at ({2*\a},-0.6);
-		\coordinate (Cd) at ({3*\a},-0.9);
-		\coordinate (Dd) at ({5*\a},-0.3);
-		
-		\draw[line width=1.6pt] (Ad) -- (Cd);
-		\draw[line width=1.6pt] (Cd) -- (Dd);
-		
-		\node[nodoR] at (Ad) {};
-		\node[nodoR, label={[yshift=-11pt]below:$B$}] at (Bd) {};
-		\node[nodoR, label={[xshift=6pt,yshift=-9pt]below:$C$}] at (Cd) {};
-		\node[nodoR, label={[yshift=-11pt]below:$D$}] at (Dd) {};
-		
-		% --- riferimenti orizzontali locali per gli angoli ---
-		\draw[dashed, gray!60, thin] (Ad) -- ++(0.9,0);
-		\draw[dashed, gray!60, thin] (Cd) -- ++(0.9,0);
-		
-		% --- angolo theta_1 in A (orario, sotto l'orizzontale) ---
-		\draw[->, thin] ({0.6*\a},0) arc[start angle=0, end angle=-16.7, radius={0.6*\a}];
-		\node[font=\scriptsize] at (1,-0.16) {$\vartheta_1$};
-		
-		% --- angolo theta_2 in C (antiorario, sopra l'orizzontale locale) ---
-		\draw[->, thin] ({3*\a+0.6},-0.9) arc[start angle=0, end angle=16.7, radius=0.6];
-		\node[font=\scriptsize] at ({3*\a+1},-0.76) {$\vartheta_2$};
-		
-		% --- cedimenti ---
-		\draw[->, thick] ({2*\a},-0.05) -- ({2*\a},-0.55)
-		node[right=1pt, pos=0.6, font=\scriptsize] {$2\bar v$};
-		\draw[->, thick] ({5*\a},-0.05) -- ({5*\a},-0.25)
-		node[right=1pt, pos=0.6, font=\scriptsize] {$\bar v$};
-		
-	\end{tikzpicture}
-	\caption{Configurazione deformata della trave di Gerber (in grigio
-		tratteggiato la configurazione di riferimento, non deformata),
-		soluzione del problema cinematico del
-		\PARref{sec:gerber_congruenza}; spostamenti esagerati per
-		chiarezza. $\mathcal{C}_1$ ruota rigidamente attorno ad $A$
-		dell'angolo $\vartheta_1=-\bar v/a$ (orario); $\mathcal{C}_2$
-		ruota, indipendentemente da $\mathcal{C}_1$, dell'angolo
-		$\vartheta_2=+\bar v/a$ (antiorario) attorno al punto $C$, che
-		segue $\mathcal{C}_1$ senza distaccarsene. Il punto $C$ non
-		presenta alcuna discontinuità di \emph{spostamento} --- le due
-		travi restano a contatto --- ma la pendenza della configurazione
-		deformata cambia bruscamente in $C$: è la manifestazione
-		visibile dello svincolo rotazionale della cerniera interna.}
-	\label{fig:gerber_deformata}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-gerber-deformata}
+
 
 
 \subsection{La formulazione generale}\label{sec:congruenza_generale}
@@ -848,98 +705,9 @@ sistema, con la stessa geometria e la stessa cerniera interna in $C$, che
 abbiamo già letto in chiave cinematica: qui lo leggiamo in chiave
 statica, e fra poco energetica.
 
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-		nodo/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=5pt, line width=0.8pt},
-		cint/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=6pt, line width=0.8pt},
-		richiam/.style={thin, gray, dashed},
-		tacca/.style={thin, gray!70}]
-		
-		\def\a{1.0}
-		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
-		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
-		
-		\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-		\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
-		
-		\node[above=2pt] at (0,0)       {$A$};
-		\node[above=2pt] at ({2*\a},0)  {$B$};
-		\node[above=2pt] at ({3*\a},0)  {$C$};
-		\node[above=2pt] at ({5*\a},0)  {$D$};
-		
-		\node at ({\a},  -0.32) {$\mathcal{C}_1$};
-		\node at ({4*\a},-0.32) {$\mathcal{C}_2$};
-		
-		%% cerniera in A
-		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-		\draw (-\gw,-\thA) -- (\gw,-\thA);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-		\node[nodo] at (0,0) {};
-		
-		%% carrello intermedio in B
-		\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-		\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-		\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-		\draw ({2*\a-\sr},0) arc(180:360:\sr);
-		
-		%% cerniera interna in C
-		\node[cint] at ({3*\a},0) {};
-		
-		%% carrello terminale in D
-		\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-		\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-		\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-		\node[nodo] at ({5*\a},0) {};
-		
-		%% carico 2F nel punto medio di AB (x=a)
-		\draw[thin] (\a,0.05) -- (\a,-0.05);
-		\draw[->, thick] (\a,0.85) -- (\a,0.10)
-		node[right=3pt, pos=0] {$2F$};
-		
-		%% carico F nel punto medio di C_2 (x=4a)
-		\draw[thin] ({4*\a},0.05) -- ({4*\a},-0.05);
-		\draw[->, thick] ({4*\a},0.85) -- ({4*\a},0.10)
-		node[right=3pt, pos=0] {$F$};
-		
-		%% quotatura
-		\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
-		\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
-		\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
-		\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
-		
-		\draw[tacca] (0,     -1.55) -- (0,     -1.75);
-		\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
-		\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
-		\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
-		
-		\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
-		\node[above=0.04] at ({\a},   -1.65) {$2a$};
-		\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
-		\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
-		\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
-		\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
-		
-	\end{tikzpicture}
-	\caption{La trave di Gerber sotto carico attivo: una forza $2F$
-		verso il basso nel punto medio di $AB$, su $\mathcal{C}_1$, e
-		una forza $F$ verso il basso nel punto medio di $\mathcal{C}_2$.
-		Stesso sistema di \FIGref{fig:gerber_motiv}, qui nella lettura
-		statica.}
-	\label{fig:gerber_carichi}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-gerber-carichi}
+
 
 \paragraph{La lettura vettoriale.}
 Isoliamo i due corpi, esattamente come si farebbe per un corpo singolo,
@@ -1128,82 +896,9 @@ Y_D\cdot\bigl(2a\,\vartheta_2\bigr) \;-\; F\cdot\bigl(a\,
 essendo $\vartheta_2$ arbitrario e non nullo. È lo stesso valore già
 trovato in \eqref{eq:eqC2_MC}, per una strada del tutto diversa.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-nodo/.style={circle, fill=white, draw=black,
-	inner sep=0pt, minimum size=5pt, line width=0.8pt},
-cint/.style={circle, fill=white, draw=black,
-	inner sep=0pt, minimum size=6pt, line width=0.8pt},
-fantasma/.style={thin, gray, dashed},
-tacca/.style={thin, gray!70}]
 
-\def\a{1.0}
-\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
-\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-gerber-mecc-D}
 
-%% riferimento indeformato, tratteggiato
-\draw[fantasma] (0,0) -- ({5*\a},0);
-
-%% configurazione del meccanismo: C1 fermo, C2 ruotato attorno a C
-\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},-0.6);
-
-\node[above=2pt] at (0,0)      {$A$};
-\node[above=2pt] at ({2*\a},0) {$B$};
-\node[above=2pt] at ({3*\a},0) {$C$};
-\node[below right=1pt] at ({5*\a},-0.6) {$D$};
-
-\node at ({1.4*\a},0.28)  {$\mathcal{C}_1$};
-\node at ({4.3*\a},-0.2)   {$\mathcal{C}_2$};
-
-%% angolo virtuale theta_2 in C
-\draw[tacca] ({3.2*\a-0.35},0) -- ({3.2*\a+0.35},0);
-\draw[thin] ({3.2*\a+0.3},0) arc (0:-16.7:0.3);
-\node[right=1pt] at ({3*\a+0.32},-0.4) {$\vartheta_2$};
-
-%% cerniera in A e carrello in B, invariati
-\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-\draw (-\gw,-\thA) -- (\gw,-\thA);
-\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-\node[nodo] at (0,0) {};
-
-\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-\draw ({2*\a-\sr},0) arc(180:360:\sr);
-
-\node[cint] at ({3*\a},0) {};
-
-%% carrello in D soppresso: fantasma nella posizione originaria
-\draw[fantasma] ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-\node[gray, above=2pt] at ({5*\a},0) {\footnotesize(soppresso)};
-\node[nodo] at ({5*\a},-0.6) {};
-
-%% reazione incognita Y_D, verso l'alto, applicata nel punto attuale
-\draw[-{Latex[length=2.8mm]}, thick] ({5*\a},-1.2) -- ({5*\a},-0.65);
-\node[below=2pt] at ({5*\a},-0.95) {$Y_D$};
-
-%% carico F, verso il basso, applicato nel punto attuale
-\draw[-{Latex[length=2.8mm]}, thick] ({4*\a},0.7) -- ({4*\a},0.1);
-\node[right=2pt] at ({3.4*\a},0.5) {$F$};
-
-\end{tikzpicture}
-\caption{Il meccanismo usato per determinare $Y_D$: si sopprime
-(concettualmente) il carrello in $D$, in grigio nella sua posizione
-originaria. Cerniera in $A$ e carrello in $B$ bloccano
-$\mathcal{C}_1$, che resta fermo; $\mathcal{C}_2$ è allora libero di
-ruotare, di un angolo virtuale $\vartheta_2$, attorno al punto fisso
-$C$. Solo $F$ e la reazione incognita $Y_D$ compiono lavoro in
-questo moto.}
-\label{fig:gerber_mecc_D}
-\end{figure}
 
 \medskip
 
@@ -1241,89 +936,9 @@ Y_B\cdot\bigl(2a\,\vartheta_1\bigr)
 \end{equation}
 di nuovo lo stesso valore già trovato in \eqref{eq:eqC1_MA}.
 
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-nodo/.style={circle, fill=white, draw=black,
-	inner sep=0pt, minimum size=5pt, line width=0.8pt},
-cint/.style={circle, fill=white, draw=black,
-	inner sep=0pt, minimum size=6pt, line width=0.8pt},
-fantasma/.style={thin, gray, dashed},
-tacca/.style={thin, gray!70}]
 
-\def\a{1.0}
-\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
-\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-gerber-mecc-B}
 
-%% riferimento indeformato, tratteggiato
-\draw[fantasma] (0,0) -- ({5*\a},0);
-
-%% configurazione del meccanismo
-\draw[line width=2.2pt] (0,0) -- ({3*\a},-0.9);
-\draw[line width=2.2pt] ({3*\a},-0.9) -- ({5*\a},0);
-
-\node[above=2pt] at (0,0)             {$A$};
-%\node[below=3pt] at ({2*\a},-0.6)     {$B$};
-\node[below=3pt] at ({3*\a},-0.9)     {$C$};
-\node[above=2pt] at ({5*\a},0)        {$D$};
-
-%\node at ({1*\a},-0.15)  {$\mathcal{C}_1$};
-%\node at ({4*\a},-0.6)   {$\mathcal{C}_2$};
-
-%% angolo virtuale theta_1 in A
-\draw[tacca] (0,0) -- (0.9,0);
-\draw[thin] (0.75,0) arc (0:-16.7:0.75);
-\node[below right=1pt] at (0.9,.09) {$\vartheta_1$};
-
-%% angolo virtuale theta_2 in C, contro una tacca locale orizzontale
-\draw[tacca] ({3*\a-0.4},-0.9) -- ({3*\a+0.4},-0.9);
-\draw[thin] ({3*\a+0.35},-0.9) arc (0:24.2:0.35);
-\node[above right=1pt] at ({3*\a+0.4},-1.1) {$\vartheta_2$};
-
-%% cerniera in A, invariata
-\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-\draw (-\gw,-\thA) -- (\gw,-\thA);
-\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-\node[nodo] at (0,0) {};
-
-%% carrello in B soppresso: fantasma nella posizione originaria
-\draw[fantasma] ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-\node[gray, above=2pt] at ({2*\a},0) {\footnotesize(soppresso)};
-%\node[nodo] at ({2*\a},-0.6) {};
-
-%% cerniera interna, nella posizione attuale
-\node[cint] at ({3*\a},-0.9) {};
-
-%% carrello in D, invariato (coincide con la posizione di riferimento)
-\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-\node[nodo] at ({5*\a},0) {};
-
-%% reazione incognita Y_B, applicata nel punto attuale
-\draw[-{Latex[length=2.8mm]}, thick] ({2*\a},-1.2) -- ({2*\a},-0.6);
-\node[below=2pt] at ({1.7*\a},-0.85) {$Y_B$};
-
-%% carichi attivi, applicati nei punti attuali
-\draw[-{Latex[length=2.8mm]}, thick] ({1*\a},0.65) -- ({1*\a},0.1);
-\node[right=2pt] at ({0.2*\a},0.5) {$2F$};
-
-\draw[-{Latex[length=2.8mm]}, thick] ({4*\a},0.6) -- ({4*\a},0.1);
-\node[right=2pt] at ({4*\a},0.5) {$F$};
-
-\end{tikzpicture}
-\caption{Il meccanismo usato per determinare $Y_B$: si sopprime il
-carrello in $B$. $\mathcal{C}_1$ ruota di $\vartheta_1$ attorno alla
-cerniera in $A$; $\mathcal{C}_2$ accompagna il moto ruotando di
-$\vartheta_2=-\tfrac32\vartheta_1$ attorno a $C$, in modo da lasciare
-fermo il punto $D$, dove il carrello non è stato toccato.}
-\label{fig:gerber_mecc_B}
-\end{figure}
 
 Le rimanenti reazioni --- $X_A$, $X_C$ (nulle, in assenza di carichi
 orizzontali) e $Y_A$, $Y_C$ --- si trovano allo stesso modo, con un
@@ -1505,34 +1120,9 @@ lo stesso $a_{ku_j}$ è il contributo della reazione $R_k$
 all'equazione di equilibrio associata a $u_j$: la colonna
 intera è la riga $j$-esima di $\bm{A}^\top$ e il termine
 noto è $-X_j$.
-\begin{figure}[htbp]
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	\small
-	\begin{tabular}{c|ccc|c|ccc|c}
-		& $u_1$ & $v_1$ & $\vartheta_1$
-		& $\cdots$ & $u_j$ & $v_j$ & $\vartheta_j$ & \\
-		\hline
-		$R_1$ & $a_{1u_1}$ & $a_{1v_1}$ & $a_{1\vartheta_1}$
-		& $\cdots$ & $a_{1u_j}$ & $a_{1v_j}$ & $a_{1\vartheta_j}$ & $s_1$ \\
-		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
-		& $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-		$R_k$ & $a_{ku_1}$ & $a_{kv_1}$ & $a_{k\vartheta_1}$
-		& $\cdots$ & $a_{ku_j}$ & $a_{kv_j}$ & $a_{k\vartheta_j}$ & $s_k$ \\
-		$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
-		& $\ddots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
-		$R_m$ & $a_{mu_1}$ & $a_{mv_1}$ & $a_{m\vartheta_1}$
-		& $\cdots$ & $a_{mu_j}$ & $a_{mv_j}$ & $a_{m\vartheta_j}$ & $s_m$ \\
-		\hline
-		& $-X_1$ & $-Y_1$ & $-\mu(O_1)$
-		& $\cdots$ & $-X_j$ & $-Y_j$ & $-\mu(O_j)$ &
-	\end{tabular}
-	\caption{Rilettura meccanica dello schema di dualità
-		del \CAPref{app:applicazionilin_dualita}: per righe il problema cinematico
-		$\bm{A}\,\bm{u}=\bm{s}$, per colonne il problema
-		statico $\bm{B}\,\bm{r}=-\bm{f}$.}
-	\label{fig:duale_mec}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-duale-mec}
+
 La Figura~\ref{fig:duale_mec} rende dunque visibile, in forma
 schematica, la rilettura meccanica dello schema di dualità del
 \CAPref{app:applicazionilin_dualita}: le grandezze astratte
@@ -2250,75 +1840,9 @@ $\bm{f}_n$ --- che devono annullarsi per garantire l'esistenza della soluzione
 --- appartengono ai nuclei degli operatori duali.
 
 %---------------------------------------------------------------------------------------------------------------------
-\begin{figure}[htbp]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.8]
-		
-		% --- Ellisse sinistra: spazio R^n ---
-		\draw[thick] (-3.5, 0) ellipse [x radius=2.2, y radius=3.0];
-		\node at (-3.5, 3.4) {$\mathbb{R}^n$};
-		
-		% Curva divisoria sinistra
-		\draw[thick] (-5.7, 0)
-		.. controls (-4.5, 0.5) and (-2.5, -0.5) ..
-		(-1.3, 0);
-		
-		% Regione superiore — N(A)
-		\node          at (-3.5,  2.3) {$\Nc(\bm{A})$};
-		\node[font=\small\itshape] at (-3.5,  1.65) {meccanismi};
-		\fill (-3.5,  1.0) circle (1.5pt) node[right=2pt] {$\bm{u}_n$};
-		\node[gray!60] at (-3.5,  0.35) {$\bm{f}_n = \bm{0}$};
-		
-		% Regione inferiore — Im(A^T)
-		\fill (-3.5, -0.35) circle (1.5pt) node[right=2pt] {$\bm{u}_c$};
-		\fill (-3.5, -1.0)  circle (1.5pt) node[right=2pt] {$\bm{f}_c$};
-		\node[font=\small\itshape] at (-3.5, -1.65) {forze equilibrabili};
-		\node          at (-3.5, -2.3) {$\Ic(\bm{A}^\top)$};
-		
-		% --- Ellisse destra: spazio R^m ---
-		\draw[thick] (3.5, 0) ellipse [x radius=2.2, y radius=3.0];
-		\node at (3.5, 3.4) {$\mathbb{R}^m$};
-		
-		% Curva divisoria destra
-		\draw[thick] (1.3, 0)
-		.. controls (2.5, 0.5) and (4.5, -0.5) ..
-		(5.7, 0);
-		
-		% Regione superiore — Im(A)
-		\node          at (3.5,  2.3) {$\Ic(\bm{A})$};
-		\node[font=\small\itshape] at (3.5,  1.65) {ced.\ ammissibili};
-		\fill (3.5,  1.0) circle (1.5pt) node[right=2pt] {$\bm{s}_c$};
-		\fill (3.5,  0.35) circle (1.5pt) node[right=2pt] {$\bm{r}_c$};
-		
-		% Regione inferiore — N(A^T)
-		\node[gray!60] at (3.5, -0.35) {$\bm{s}_n = \bm{0}$};
-		\fill (3.5, -1.0)  circle (1.5pt) node[right=2pt] {$\bm{r}_n$};
-		\node[font=\small\itshape] at (3.5, -1.65) {autoequilibrio};
-		\node          at (3.5, -2.3) {$\Nc(\bm{A}^\top)$};
-		
-		% --- Freccia problema cinematico ---
-		\draw[->, thick] (-1.0, 1.5) to[bend left=20]
-		node[midway, above=4pt] {$\bm{A}\bm{u}_c = \bm{s}_c$}
-		(1.0, 1.5);
-		
-		% --- Freccia problema statico ---
-		\draw[->, thick] (1.0, -1.5) to[bend left=20]
-		node[midway, below=4pt] {$\bm{A}^\top\bm{r}_c = -\bm{f}_c$}
-		(-1.0, -1.5);
-		
-	\end{tikzpicture}
-	\caption{Struttura duale dei problemi cinematico $\bm{A}\bm{u} = \bm{s}$
-		e statico $\bm{A}^\top\bm{r} = -\bm{f}$. Il problema cinematico ammette
-		soluzione se e solo se $\bm{s}_c \in \Ic(\bm{A})$, cioè $\bm{s}_n = \bm{0}$:
-		il cedimento deve essere cinematicamente ammissibile. Il problema statico
-		ammette soluzione se e solo se $\bm{f}_c \in \Ic(\bm{A}^\top)$, cioè
-		$\bm{f}_n = \bm{0}$: la forza attiva deve essere equilibrabile dai vincoli.
-		Le soluzioni generali sono $\bm{u} = \bm{u}_c + \bm{u}_n$ con
-		$\bm{u}_n \in \Nc(\bm{A})$ (meccanismo) arbitrario, e
-		$\bm{r} = \bm{r}_c + \bm{r}_n$ con $\bm{r}_n \in \Nc(\bm{A}^\top)$
-		(stato di autoequilibrio) arbitrario.}
-	\label{fig:problemi_duali_SCR}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-problemi-duali-SCR}
+
 
 
 \begin{oss}
@@ -2611,6 +2135,8 @@ in tal caso la soluzione generale è:
 %%-------------------------------------------------------------------------------------------------------------------
 
 
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-trave-semplice}
+
 \begin{esempio}[Trave semplicemente appoggiata]
 	\label{ex:trave_semplice}
 	Si consideri una trave rigida di lunghezza $\ell$,
@@ -2631,126 +2157,8 @@ in tal caso la soluzione generale è:
 	I dati dei due problemi sono illustrati nella
 	Figura~\ref{fig:trave_semplice}.
 	
-	\begin{figure}[ht]
-		\centering
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-			nodo/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=5pt, line width=0.8pt}, tacca/.style={thin, gray!70}]
-			
-			
-			\def\L{5.0}
-			\def\tw{0.22}
-			\def\thA{0.38}
-			\def\thR{0.32}
-			\def\bw{0.16}
-			\def\gw{0.30}
-			\def\dx{0.6}    % offset orizzontale del cedimento
-			
-			% ============================================================
-			% PANNELLO (a) — dato cinematico
-			% ============================================================
-			\begin{scope}[xshift=0cm]
-				
-				%% trave
-				\draw[line width=2.2pt] (0,0) -- (\L,0);
-				
-				%% etichette nodi
-				\node[above=2pt] at (0,0)  {$A$};
-				\node[above=2pt] at (\L,0) {$B$};
-				
-				%% cerniera in A
-				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-				\draw (-\gw,-\thA) -- (\gw,-\thA);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-				\node[nodo] at (0,0) {};
-				
-				%% carrello terminale in B
-				\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-				\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
-				\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
-				\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
-				\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-				\node[nodo] at (\L,0) {};
-				
-				%% cedimento di B (a destra: tacca orizzontale + freccia verticale)
-				\draw[thin] (\L,0) -- (\L+\dx,0);
-				\draw[->, thick] (\L+\dx,0) -- (\L+\dx,-0.50)
-				node[right=3pt, pos=0.5] {$\bar{v}_B$};
-				
-				%% quota
-				\draw[<->, thin] (0,-0.90) -- (\L,-0.90)
-				node[midway, above=2pt] {$\ell$};
-				
-				\draw[tacca] (0, -1.00) -- (0, -0.80);
-				\draw[tacca] (\L,-1.00) -- (\L,-0.80);
-				
-				
-				
-				\node at (\L/2, -1.40) {(a)};
-				
-			\end{scope}
-			
-			% ============================================================
-			% PANNELLO (b) — dato statico
-			% ============================================================
-			\begin{scope}[xshift=7.5cm]
-				
-				\def\xa{3.0}
-				
-				%% trave
-				\draw[line width=2.2pt] (0,0) -- (\L,0);
-				
-				%% etichette nodi
-				\node[above=2pt] at (0,0)  {$A$};
-				\node[above=2pt] at (\L,0) {$B$};
-				
-				%% cerniera in A
-				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-				\draw (-\gw,-\thA) -- (\gw,-\thA);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-				\node[nodo] at (0,0) {};
-				
-				%% carrello terminale in B
-				\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-				\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
-				\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
-				\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
-				\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
-				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-				\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-				\node[nodo] at (\L,0) {};
-				
-				%% forza F
-				\draw[thin] (\xa,0.05) -- (\xa,-0.05);
-				\draw[->, thick] (\xa,0.85) -- (\xa,0.10)
-				node[right=3pt, pos=0] {$F$};
-				
-				%% quotatura: parziali (a, ell-a)
-				\draw[<->, thin] (0,-0.90) -- (\xa,-0.90)
-				node[midway, above=2pt] {$a$};
-				\draw[<->, thin] (\xa,-0.90) -- (\L,-0.90)
-				node[midway, above=2pt] {$\ell - a$};
-				
-				\draw[tacca] (0,  -1.00) -- (0,  -0.80);
-				\draw[tacca] (\xa,-1.00) -- (\xa,-0.80);
-				\draw[tacca] (\L, -1.00) -- (\L, -0.80);
-				
-				\node at (\L/2, -1.40) {(b)};
-				
-			\end{scope}
-			
-		\end{tikzpicture}
-		\caption{Trave semplicemente appoggiata
-			(\ESEref{ex:trave_semplice}): dato cinematico (a) e dato
-			statico (b). In entrambi i casi la cerniera è in $A=(0,0)$
-			e il carrello verticale in $B=(\ell,0)$, con polo
-			$O\equiv A$.}
-		\label{fig:trave_semplice}
-	\end{figure}
+
+
 	
 	\begin{svolgimento}
 		
@@ -2844,7 +2252,9 @@ in tal caso la soluzione generale è:
 	\end{svolgimento}
 \end{esempio}
 
-%\begin{esempio}[Trave di Gerber]
+%\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-gerber}
+
+%%\begin{esempio}[Trave di Gerber]
 %	\label{ex:gerber}
 %	Si consideri un sistema di due travi rigide
 %	$\mathcal{C}_1$ e $\mathcal{C}_2$ collegate da una
@@ -2874,186 +2284,8 @@ in tal caso la soluzione generale è:
 %	I dati dei due problemi sono illustrati nella
 %	Figura~\ref{fig:gerber}.
 %	
-%	\begin{figure}[ht]
-%		\centering
-%		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-%			nodo/.style={circle, fill=white, draw=black,
-%				inner sep=0pt, minimum size=5pt, line width=0.8pt},
-%			cint/.style={circle, fill=white, draw=black,
-%				inner sep=0pt, minimum size=6pt, line width=0.8pt},
-%			richiam/.style={thin, gray, dashed},
-%			tacca/.style={thin, gray!70}]
-%			
-%			
-%			\def\a{1.0}     % unità di lunghezza (= a)
-%			\def\tw{0.22}   % semi-larghezza triangolo
-%			\def\thA{0.38}  % altezza triangolo cerniera
-%			\def\thR{0.32}  % altezza triangolo carrello
-%			\def\sr{0.08}   % raggio mezzaluna (carrello intermedio)
-%			\def\bw{0.16}   % semi-distanza rotelle
-%			\def\gw{0.30}   % semi-larghezza barra di terra
-%			
-%			% ============================================================
-%			% PANNELLO (a) — dato cinematico
-%			% ============================================================
-%			\begin{scope}[xshift=0cm]
-%				
-%				%% trave (suddivisa in C1 e C2 dalla cerniera in C)
-%				\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-%				\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
-%				
-%				%% etichette nodi
-%				\node[above=2pt] at (0,0)       {$A$};
-%				\node[above=2pt] at ({2*\a},0)  {$B$};
-%				\node[above=2pt] at ({3*\a},0)  {$C$};
-%				\node[above=2pt] at ({5*\a},0)  {$D$};
-%				
-%				%% etichette corpi
-%				\node at ({\a},  -0.30) {$\mathcal{C}_1$};
-%				\node at ({4*\a},-0.30) {$\mathcal{C}_2$};
-%				
-%				%% cerniera in A
-%				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-%				\draw (-\gw,-\thA) -- (\gw,-\thA);
-%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-%				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-%				\node[nodo] at (0,0) {};
-%				
-%				%% carrello intermedio in B
-%				\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-%				\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-%				\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-%				\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-%				\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-%				\draw ({2*\a-\sr},0) arc(180:360:\sr);
-%				
-%				%% cerniera interna in C
-%				\node[cint] at ({3*\a},0) {};
-%				
-%				%% carrello terminale in D
-%				\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-%				\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-%				\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-%				\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-%				\node[nodo] at ({5*\a},0) {};
-%				
-%				%% cedimenti
-%				\draw[->, thick] ({2*\a},-0.75) -- ({2*\a},-1.30)
-%				node[right=3pt, pos=0.5] {$2\bar{v}$};
-%				\draw[->, thick] ({5*\a},-0.75) -- ({5*\a},-1.30)
-%				node[right=3pt, pos=0.5] {$\bar{v}$};
-%				
-%				%% quotatura
-%				\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
-%				\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
-%				\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
-%				\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
-%				
-%				\draw[tacca] (0,     -1.55) -- (0,     -1.75);
-%				\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
-%				\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
-%				\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
-%				
-%				\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
-%				\node[above=0.04] at ({\a},   -1.65) {$2a$};
-%				\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
-%				\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
-%				\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
-%				\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
-%				
-%				\node at ({2.5*\a}, -2.05) {(a)};
-%				
-%			\end{scope}
-%			
-%			% ============================================================
-%			% PANNELLO (b) — dato statico
-%			% ============================================================
-%			\begin{scope}[xshift=7cm]
-%				
-%				\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
-%				\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
-%				
-%				\node[above=2pt] at (0,0)       {$A$};
-%				\node[above=2pt] at ({2*\a},0)  {$B$};
-%				\node[above=2pt] at ({3*\a},0)  {$C$};
-%				\node[above=2pt] at ({5*\a},0)  {$D$};
-%				
-%				\node at ({\a},  -0.30) {$\mathcal{C}_1$};
-%				\node at ({4*\a},-0.30) {$\mathcal{C}_2$};
-%				
-%				%% cerniera in A
-%				\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-%				\draw (-\gw,-\thA) -- (\gw,-\thA);
-%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-%				\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-%				\node[nodo] at (0,0) {};
-%				
-%				%% carrello intermedio in B
-%				\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-%				\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-%				\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-%				\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-%				\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
-%				\draw ({2*\a-\sr},0) arc(180:360:\sr);
-%				
-%				\node[cint] at ({3*\a},0) {};
-%				
-%				%% carrello terminale in D
-%				\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-%				\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
-%				\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
-%				\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
-%				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-%				\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-%				\node[nodo] at ({5*\a},0) {};
-%				
-%				%% forze
-%				\draw[thin] ({\a},0.05) -- ({\a},-0.05);
-%				\draw[->, thick] ({\a},0.70) -- ({\a},0.10)
-%				node[right=3pt, pos=0] {$2F$};
-%				\draw[thin] ({4*\a},0.05) -- ({4*\a},-0.05);
-%				\draw[->, thick] ({4*\a},0.70) -- ({4*\a},0.10)
-%				node[right=3pt, pos=0] {$F$};
-%				
-%				%% quotatura
-%				\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.10);
-%				\draw[richiam] ({2*\a}, -\thR-0.40) -- ({2*\a}, -1.10);
-%				\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.10);
-%				\draw[richiam] ({5*\a}, -\thR-0.40) -- ({5*\a}, -1.10);
-%				
-%				\draw[tacca] (0,     -1.10) -- (0,     -1.30);
-%				\draw[tacca] ({2*\a},-1.10) -- ({2*\a},-1.30);
-%				\draw[tacca] ({3*\a},-1.10) -- ({3*\a},-1.30);
-%				\draw[tacca] ({5*\a},-1.10) -- ({5*\a},-1.30);
-%				
-%				\draw[<->, thin, gray] (0,     -1.20) -- ({2*\a},-1.20);
-%				\node[above=0.04] at ({\a},   -1.20) {$2a$};
-%				\draw[<->, thin, gray] ({2*\a},-1.20) -- ({3*\a},-1.20);
-%				\node[above=0.04] at ({2.5*\a},-1.20) {$a$};
-%				\draw[<->, thin, gray] ({3*\a},-1.20) -- ({5*\a},-1.20);
-%				\node[above=0.04] at ({4*\a}, -1.20) {$2a$};
-%				
-%				\node at ({2.5*\a}, -2.05) {(b)};
-%				
-%			\end{scope}
-%			
-%		\end{tikzpicture}
-%		\caption{Trave di Gerber (\ESEref{ex:gerber}): dato cinematico
-%			(a) e dato statico (b). Cerniera in $A$, carrello (intermedio)
-%			in $B$, cerniera interna in $C$, carrello (terminale) in $D$;
-%			poli $O_1\equiv A$ e $O_2\equiv C$.}
-%		\label{fig:gerber}
-%	\end{figure}
+%
+
 %	
 %	\begin{svolgimento}
 %		
@@ -3337,83 +2569,16 @@ in tal caso la soluzione generale è:
 
 
 \tR{Da verificare}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-trave-tre-appoggi}
+
 \begin{esempio}[Trave su tre appoggi: autotensione e
 	compatibilità cinematica]
 	\label{ex:trave_tre_appoggi}
 	Si consideri una trave rigida vincolata da una cerniera in
 	$A=(0,0)$ e da due carrelli verticali, in $B=(a,0)$ e in
 	$C=(2a,0)$. Si scelga il polo $O\equiv A$.
-	
-	\begin{figure}[ht]
-		\centering
-		\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-			nodo/.style={circle, fill=white, draw=black,
-				inner sep=0pt, minimum size=5pt, line width=0.8pt},
-			tacca/.style={thin, gray!70}]
-			
-			\def\a{2.0}     % unità di lunghezza (= a)
-			\def\tw{0.22}
-			\def\thA{0.38}
-			\def\thR{0.32}
-			\def\bw{0.16}
-			\def\gw{0.30}
-			\def\sr{0.08}
-			
-			%% trave
-			\draw[line width=2.2pt] (0,0) -- ({2*\a},0);
-			
-			%% etichette nodi
-			\node[above=2pt] at (0,0)      {$A$};
-			\node[above=2pt] at (\a,0)     {$B$};
-			\node[above=2pt] at ({2*\a},0) {$C$};
-			
-			%% cerniera in A
-			\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-			\draw (-\gw,-\thA) -- (\gw,-\thA);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-			\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-			\node[nodo] at (0,0) {};
-			
-			%% carrello intermedio in B
-			\draw (\a,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-			\draw (\a-\gw,-\thR) -- (\a+\gw,-\thR);
-			\draw (\a-\bw,-\thR-0.12) circle (2.4pt);
-			\draw (\a+\bw,-\thR-0.12) circle (2.4pt);
-			\draw (\a-\gw,-\thR-0.24) -- (\a+\gw,-\thR-0.24);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-			\draw[thin] (\a+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-			\fill[white] (\a-\sr,0) arc(180:360:\sr) -- cycle;
-			\draw (\a-\sr,0) arc(180:360:\sr);
-			
-			%% carrello terminale in C
-			\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-			\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
-			\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
-			\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
-			\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-			\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
-			\node[nodo] at ({2*\a},0) {};
-			
-			%% quotatura
-			\draw[tacca] (0,-0.90) -- (0,-1.10);
-			\draw[tacca] (\a,-0.90) -- (\a,-1.10);
-			\draw[tacca] ({2*\a},-0.90) -- ({2*\a},-1.10);
-			
-			\draw[<->, thin, gray] (0,-1.00) -- (\a,-1.00);
-			\node[above=0.04] at ({0.5*\a},-1.00) {$a$};
-			\draw[<->, thin, gray] (\a,-1.00) -- ({2*\a},-1.00);
-			\node[above=0.04] at ({1.5*\a},-1.00) {$a$};
-			
-		\end{tikzpicture}
-		\caption{Trave su tre appoggi (\ESEref{ex:trave_tre_appoggi}):
-			cerniera in $A=(0,0)$, carrello verticale intermedio in
-			$B=(a,0)$, carrello verticale terminale in $C=(2a,0)$;
-			polo $O\equiv A$. Il vincolo ridondante --- uno dei tre
-			è in eccesso rispetto al minimo necessario per un unico
-			corpo rigido --- rende il sistema iperstatico di grado 1.}
-		\label{fig:trave_tre_appoggi}
-	\end{figure}
+
 	
 	\begin{svolgimento}
 		
@@ -3690,67 +2855,9 @@ significato di proiezione dello spostamento sul proprio asse.
 	$M_B+V_B\,\ell=-F\ell+F\ell=0$. Equilibrio verificato.
 \end{esercizio}
 
-\begin{figure}[ht]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-		nodo/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=5pt, line width=0.8pt},
-		tacca/.style={thin, gray!70}]
-		
-		\def\L{5.0}
-		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
-		\def\bw{0.16}\def\gw{0.30}
-		
-		%% trave
-		\draw[line width=2.2pt] (0,0) -- (\L,0);
-		\node[above=2pt] at (0,0)  {$A$};
-		\node[above=2pt] at (\L,0) {$B$};
-		\node[above=2pt] at (\L/2,0) {$C$};
-		
-		%% cerniera in A
-		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-		\draw (-\gw,-\thA) -- (\gw,-\thA);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-		\node[nodo] at (0,0) {};
-		
-		%% carrello terminale in B, ruotato di -45° (asse a 45° dalla verticale)
-		\begin{scope}[rotate around={-45:(\L,0)}]
-			\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-			\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
-			\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
-			\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
-			\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
-			\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-			\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-		\end{scope}
-		\node[nodo] at (\L,0) {};
-		
-		%% asse del carrello (versore a)
-		\draw[->, thick, gray!50] (\L,0) -- ++(0.50, 0.50)
-		node[right=2pt, black] {$\ab$};
-		
-		%% forza F a 45° in C (verso il basso a destra)
-		\draw[thin] (\L/2,0.05) -- (\L/2,-0.05);
-		\draw[->, thick] (\L/2-0.55, 0.55) -- (\L/2-0.06, 0.06)
-		node[above left=2pt, pos=0] {$F$};
-		
-		%% quota
-		\draw[tacca] (0, -1.05) -- (0, -0.85);
-		\draw[tacca] (\L,-1.05) -- (\L,-0.85);
-		\draw[<->, thin] (0,-0.95) -- (\L,-0.95)
-		node[midway, above=2pt] {$\ell$};
-		
-	\end{tikzpicture}
-	\caption{Trave appoggiata con carrello inclinato
-		(\ESEref{ex:C05_trave_inclinata_stat} e
-		\ESEref{ex:C05_trave_inclinata_cin}): cerniera in $A$,
-		carrello in $B$ con asse $\ab$ a $45^\circ$ rispetto alla
-		verticale, polo $O\equiv A$. Nel dato statico è applicata
-		in $C=(\ell/2,0)$ una forza $F$ inclinata di $45^\circ$
-		sull'orizzontale.}
-	\label{fig:C05_trave_inclinata}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-C05-trave-inclinata}
+
 
 \begin{esercizio}[Trave appoggiata con carrello inclinato — dato statico]
 	\label{ex:C05_trave_inclinata_stat}
@@ -3874,69 +2981,9 @@ significato di proiezione dello spostamento sul proprio asse.
 	La somma è zero, come previsto da~\eqref{eq:reciprocita_SCR}.
 \end{esercizio}
 
-\begin{figure}[ht]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-		nodo/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=5pt, line width=0.8pt},
-		tacca/.style={thin, gray!70}]
-		
-		\def\L{6.0}
-		\def\tw{0.22}\def\thR{0.32}
-		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
-		
-		%% trave
-		\draw[line width=2.2pt] (0,0) -- (\L,0);
-		\node[above=2pt] at (0,0)    {$A$};
-		\node[above=2pt] at (\L/2,0) {$C$};
-		\node[above=2pt] at (\L,0)   {$B$};
-		
-		%% carrello terminale in A (perno bianco)
-		\draw (0,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw (-\gw,-\thR) -- (\gw,-\thR);
-		\draw (-\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\bw,-\thR-0.12) circle (2.4pt);
-		\draw (-\gw,-\thR-0.24) -- (\gw,-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\x,-\thR-0.24) -- ++(-0.09,-0.11);
-		\node[nodo] at (0,0) {};
-		
-		%% carrello intermedio in C (mezzaluna)
-		\draw (\L/2,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw (\L/2-\gw,-\thR) -- (\L/2+\gw,-\thR);
-		\draw (\L/2-\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L/2+\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L/2-\gw,-\thR-0.24) -- (\L/2+\gw,-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\L/2+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-		\fill[white] (\L/2-\sr,0) arc(180:360:\sr) -- cycle;
-		\draw (\L/2-\sr,0) arc(180:360:\sr);
-		
-		%% carrello terminale in B (perno bianco)
-		\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
-		\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-		\node[nodo] at (\L,0) {};
-		
-		%% quotatura
-		\draw[tacca] (0,    -1.05) -- (0,    -0.85);
-		\draw[tacca] (\L/2, -1.05) -- (\L/2, -0.85);
-		\draw[tacca] (\L,   -1.05) -- (\L,   -0.85);
-		\draw[<->, thin] (0,-0.95)    -- (\L/2,-0.95)
-		node[midway, above=2pt] {$\ell$};
-		\draw[<->, thin] (\L/2,-0.95) -- (\L,-0.95)
-		node[midway, above=2pt] {$\ell$};
-		
-	\end{tikzpicture}
-	\caption{Trave singola su tre carrelli verticali paralleli
-		(\ESEref{ex:C05_tre_carrelli}): un caso di degenerazione
-		geometrica in cui $\nu=0$ ma $g_\ell=g_{\mathscr{i}}=1$.}
-	\label{fig:C05_tre_carrelli}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-C05-tre-carrelli}
+
 
 \begin{esercizio}[Tre carrelli paralleli — sistema labile-iperstatico]
 	\label{ex:C05_tre_carrelli}
@@ -3995,64 +3042,9 @@ significato di proiezione dello spostamento sul proprio asse.
 	ortogonali nel senso del lavoro virtuale).
 \end{esercizio}
 
-\begin{figure}[ht]
-	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
-		nodo/.style={circle, fill=white, draw=black,
-			inner sep=0pt, minimum size=5pt, line width=0.8pt},
-		tacca/.style={thin, gray!70}]
-		
-		\def\L{6.0}
-		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
-		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
-		
-		\draw[line width=2.2pt] (0,0) -- (\L,0);
-		\node[above=2pt] at (0,0)    {$A$};
-		\node[above=2pt] at (\L/2,0) {$C$};
-		\node[above=2pt] at (\L,0)   {$B$};
-		
-		%% cerniera in A
-		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
-		\draw (-\gw,-\thA) -- (\gw,-\thA);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
-		\node[nodo] at (0,0) {};
-		
-		%% carrello intermedio in C (mezzaluna)
-		\draw (\L/2,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw (\L/2-\gw,-\thR) -- (\L/2+\gw,-\thR);
-		\draw (\L/2-\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L/2+\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L/2-\gw,-\thR-0.24) -- (\L/2+\gw,-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\L/2+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-		\fill[white] (\L/2-\sr,0) arc(180:360:\sr) -- cycle;
-		\draw (\L/2-\sr,0) arc(180:360:\sr);
-		
-		%% carrello terminale in B (perno)
-		\draw (\L,0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
-		\draw (\L-\gw,-\thR) -- (\L+\gw,-\thR);
-		\draw (\L-\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L+\bw,-\thR-0.12) circle (2.4pt);
-		\draw (\L-\gw,-\thR-0.24) -- (\L+\gw,-\thR-0.24);
-		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
-		\draw[thin] (\L+\x,-\thR-0.24) -- ++(-0.09,-0.11);
-		\node[nodo] at (\L,0) {};
-		
-		\draw[tacca] (0,    -1.05) -- (0,    -0.85);
-		\draw[tacca] (\L/2, -1.05) -- (\L/2, -0.85);
-		\draw[tacca] (\L,   -1.05) -- (\L,   -0.85);
-		\draw[<->, thin] (0,-0.95)    -- (\L/2,-0.95)
-		node[midway, above=2pt] {$\ell$};
-		\draw[<->, thin] (\L/2,-0.95) -- (\L,-0.95)
-		node[midway, above=2pt] {$\ell$};
-		
-	\end{tikzpicture}
-	\caption{Trave continua su tre appoggi
-		(\ESEref{ex:C05_trave_continua}): cerniera in $A$, carrelli
-		verticali in $C$ e $B$. Sistema iperstatico di grado uno.}
-	\label{fig:C05_trave_continua}
-\end{figure}
+
+\input{Parti/P03-Meccanica_SR/C05-Problemi_CinStat_SCR/Figure/figura-C05-trave-continua}
+
 
 \begin{esercizio}[Trave continua su tre appoggi — sistema iperstatico]
 	\label{ex:C05_trave_continua}

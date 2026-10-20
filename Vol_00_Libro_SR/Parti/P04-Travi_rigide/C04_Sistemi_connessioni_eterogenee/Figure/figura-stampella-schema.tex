@@ -1,0 +1,83 @@
+\begin{figure}[htbp]
+		\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tikzpicture}[
+				x=0.5cm,y=0.5cm,
+				trave/.style ={line width=1.7pt,line cap=round,line join=round,black},
+				biella/.style={line width=1.0pt,black},
+				carico/.style={-{Stealth[length=1.4mm]},line width=0.5pt,black!70},
+				base/.style  ={line width=0.5pt,black!70},
+				proj/.style  ={black!40,dashed,line width=0.3pt},
+				griglia/.style={black!12,line width=0.3pt},
+				terra/.style ={line width=0.7pt,black},
+				nodoV/.style ={circle,fill=white,draw=black,inner sep=0pt,minimum size=4pt,line width=0.7pt},
+				lab/.style   ={font=\footnotesize},
+				carlab/.style={font=\scriptsize,black!70},
+				quota/.style={{Bar[width=1.6mm] Stealth[length=1.6mm]}-{Stealth[length=1.6mm] Bar[width=1.6mm]},line width=0.4pt,black!75},
+				]
+				% --- griglia di passo ell/4 (riferimento geometrico)
+%				\foreach \gx in {-2,...,18} \draw[griglia] (\gx,0)--(\gx,4.4);
+%				\foreach \gy in {0,1,2,3,4} \draw[griglia] (-2,\gy)--(18,\gy);
+				% --- coordinate (unità = ell/4)
+				\coordinate (A) at (0,0);  \coordinate (B) at (16,0);
+				\coordinate (C) at (-2,1); \coordinate (D) at (4,1); \coordinate (E) at (8,1);
+				\coordinate (F) at (12,1); \coordinate (G) at (18,1);
+				% --- bielle e travata
+				\draw[biella] (A)--(C); \draw[biella] (A)--(D);
+				\draw[biella] (B)--(F); \draw[biella] (B)--(G);
+				\draw[trave] (C)--(G);
+				% --- cerniere a terra in A,B
+				\foreach \P in {A,B}{
+					\draw[terra] ($(\P)+(-0.5,-0.9)$)--(\P)--($(\P)+(0.5,-0.9)$)--cycle;
+					\draw[terra] ($(\P)+(-0.85,-0.9)$)--($(\P)+(0.85,-0.9)$);
+					\foreach \t in {-0.6,-0.3,0,0.3,0.6}
+					\draw[terra,line width=0.4pt] ($(\P)+(\t,-0.9)$)--++(-0.22,-0.3);
+				}
+				% --- cerniere interne (C,E,G complete; D,F innesto biella-trave)
+				\foreach \P in {A,B,C,E,G} \node[nodoV] at (\P){};
+				\node[nodoV,minimum size=3pt] at (D){}; \node[nodoV,minimum size=3pt] at (F){};
+				% --- etichette nodi
+				\node[lab, left, yshift=-2pt]  at (A){$A$}; \node[lab, right, yshift=-2pt] at (B){$B$};
+				\node[lab,below]  at (C){$C$}; \node[lab,below] at (D){$D$};
+				\node[lab,below]       at (E){$E$}; \node[lab,below] at (F){$F$};
+				\node[lab,below] at (G){$G$};
+				% --- (a) carico p su tutta la travata, disegnato sulla travata
+				\foreach \xx in {-2,-1,...,18} \draw[carico] (\xx,1.9)--(\xx,1.12);
+				\draw[base] (-2,1.9)--(18,1.9);
+				\draw[base] (-2,1.12)--(18,1.12);
+				\node[carlab,anchor=west] at (18.5,1.9){(a)\,\(p\) su \(CDEFG\)};
+				% --- (b) carico p su DEF, a livello superiore
+				\foreach \xx in {4,5,...,12} \draw[carico] (\xx,3.0)--(\xx,2.25);
+				\draw[base] (4,3.0)--(12,3.0);
+				\draw[base] (4,2.25)--(12,2.25);
+				\draw[proj] (4,2.2)--(4,1.12); \draw[proj] (12,2.2)--(12,1.12);
+				\node[carlab,anchor=west] at (12.5,3.0){(b)\,\(p\) su \(DEF\)};
+				% --- (c) carico p su CD ed EF, a livello ancora superiore
+				\foreach \xx in {-2,-1,...,4} \draw[carico] (\xx,4.1)--(\xx,3.35);
+				\foreach \xx in {8,9,...,12}  \draw[carico] (\xx,4.1)--(\xx,3.35);
+				\draw[base] (-2,4.1)--(4,4.1); \draw[base] (8,4.1)--(12,4.1);
+				\draw[base] (-2,3.35)--(4,3.35); \draw[base] (8,3.35)--(12,3.35);
+				\draw[proj] (-2,3.3)--(-2,1.12); \draw[proj] (4,3.3)--(4,1.12);
+				\draw[proj] (8,3.3)--(8,1.12);   \draw[proj] (12,3.3)--(12,1.12);
+				\node[carlab,anchor=west] at (12.5,4.1){(c)\,\(p\) su \(CD\) ed \(EF\)};
+				% --- quote orizzontali (stazioni: C,A,D,E,F,B,G) ---
+				\draw[quota] (-2,-1.7)--(0,-1.7)  node[midway,below,font=\footnotesize]{$\ell/2$};
+				\draw[quota] (0,-1.7)--(4,-1.7)   node[midway,below,font=\footnotesize]{$\ell$};
+				\draw[quota] (4,-1.7)--(8,-1.7)   node[midway,below,font=\footnotesize]{$\ell$};
+				\draw[quota] (8,-1.7)--(12,-1.7)  node[midway,below,font=\footnotesize]{$\ell$};
+				\draw[quota] (12,-1.7)--(16,-1.7) node[midway,below,font=\footnotesize]{$\ell$};
+				\draw[quota] (16,-1.7)--(18,-1.7) node[midway,below,font=\footnotesize]{$\ell/2$};
+				% --- quota verticale (ribassamento) ---
+				\draw[proj] (-3,1)--(-2,1);   \draw[proj] (-3,0)--(0,0);
+				\draw[quota] (-3,0)--(-3,1) node[midway,left,font=\footnotesize]{$\ell/4$};
+		\end{tikzpicture}}%
+		\caption{Ponte a stampella: schema strutturale e tre scenari di carico.
+			La travata $CDEFG$ (quota $\ell/4$) poggia sulle quattro bielle
+			$AC$, $AD$, $BF$, $BG$ incernierate al suolo in $A$ e $B$; le cerniere
+			interne sono in $C,D,E,F,G$, con $E$ cerniera di chiave. I tre scenari,
+			disegnati su quote crescenti per chiarezza, sono: \emph{(a)}~carico $p$
+			su tutta la travata $CDEFG$; \emph{(b)}~carico $p$ sul tratto centrale
+			$DEF$; \emph{(c)}~carico $p$ su $CD$ ed $EF$ (asimmetrico). Le linee
+			tratteggiate riportano l'estensione dei carichi (b) e (c) sulla travata.}
+		\label{fig:stampella_schema}
+	\end{figure}

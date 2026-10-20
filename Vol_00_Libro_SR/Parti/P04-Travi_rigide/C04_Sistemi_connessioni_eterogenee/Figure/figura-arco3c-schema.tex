@@ -1,0 +1,109 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		trave/.style={line width=2.0pt, line cap=round,
+			line join=round, black},
+		carico/.style={->, >=stealth, line width=1.1pt, black},
+		reaz/.style={->, >=stealth, line width=1.1pt, gray!70},
+		terra/.style={line width=0.8pt, black},
+		nodoV/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt, line width=0.9pt},
+		nodoP/.style={rectangle, fill=black, draw=black,
+			inner sep=0pt, minimum size=3.5pt},
+		quota/.style={|<->|, >=stealth, thin, gray!60},
+		]
+		
+		\def\L{3.0}   % lunghezza asta in cm
+		
+		%% ── Coordinate nodali ──────────────────────────────────
+		\coordinate (A) at (0,       0      );
+		\coordinate (C) at (0,       \L     );
+		\coordinate (D) at (\L,      \L     );
+		\coordinate (E) at (2*\L,    \L     );
+		\coordinate (B) at (2*\L,    0      );
+		\coordinate (F) at (2*\L,    0.5*\L );
+		
+		%% ── Semiarco sinistro A→C→D ────────────────────────────
+		\draw[trave] (A) -- (C) -- (D);
+		
+		%% ── Semiarco destro D→E→B ──────────────────────────────
+		\draw[trave] (D) -- (E) -- (B);
+		
+		%% ── Cerniera esterna in A ──────────────────────────────
+		\draw[terra] (A) -- ++(-0.30,-0.52) -- ++(0.60,0) -- cycle;
+		\draw[terra] (-0.40,-0.52) -- (0.40,-0.52);
+		\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}
+		\draw[very thin,black] (\x,-0.52) -- ++(-0.12,-0.15);
+		\node[nodoV] at (A) {};
+		
+		%% ── Cerniera esterna in B ──────────────────────────────
+		\draw[terra] (B) -- ++(-0.30,-0.52) -- ++(0.60,0) -- cycle;
+		\draw[terra] ($(B)+(-0.40,-0.52)$) -- ($(B)+(0.40,-0.52)$);
+		\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}
+		\draw[very thin,black] ($(B)+(\x,-0.52)$) -- ++(-0.12,-0.15);
+		\node[nodoV] at (B) {};
+		
+		%% ── Cerniera interna in D (chiave) ─────────────────────
+		\node[nodoV] at (D) {};
+		
+		
+		%% ── Punto F (mezzeria di EB) ───────────────────────────
+		\draw[gray!60, line width=0.8pt] ($(F)+(-0.15, 0)$) -- ($(F)+(0.15, 0)$);
+		%\node[nodoP] at (F) {};
+		
+		
+		%% ── Carico triangolare su AC (orizzontale →) ───────────
+		\foreach \t in {0.15, 0.30, 0.45, 0.60, 0.75, 0.90, 1.00} {
+			\pgfmathsetmacro{\lungh}{\t * 0.80}
+			\draw[carico]
+			($(A)!\t!(C)+(-\lungh, 0)$) -- ($(A)!\t!(C)$);
+		}
+		%% Profilo triangolare: da A=(0,0) al punto di massimo in C
+		\draw[black, line width=0.6pt]
+		(A) -- ($(C)+(-0.80, 0)$);
+		%% Etichetta al livello di C
+		\node[left, font=\small] at ($(C)+(-0.90, 0)$) {$p$};
+		
+		%% ── Carico uniforme su CDE (verticale ↓) ───────────────
+		\pgfmathsetmacro{\hLoad}{0.72}
+		\draw[black, line width=0.8pt]
+		($(C)+(0,\hLoad)$) -- ($(E)+(0,\hLoad)$);
+		\foreach \t in {0.00,0.125,0.25,0.375,0.50,0.625,0.75,0.875,1.00} {
+			\draw[carico, line width=1.0pt]
+			($(C)!\t!(E)+(0,\hLoad)$) -- ($(C)!\t!(E)+(0,0.08)$);
+		}
+		\draw[black, line width=0.5pt]
+		($(C)+(0,0.08)$) -- ($(E)+(0,0.08)$);
+		\node[above, font=\small]
+		at ($(C)!0.5!(E)+(0,\hLoad)$) {$p$};
+		
+		%% ── Coppia antioraria in F ─────────────────────────────
+		\def\rcop{0.34}
+		\draw[->, >=stealth, line width=0.9pt]
+		($(F)+(\rcop, 0)$) arc(0:270:\rcop);
+		\node[right, font=\small]
+		at ($(F)+(\rcop-1.3, 0.10)$) {$p\ell^2$};
+		
+		%% ── Etichette dei nodi ─────────────────────────────────
+		\node[right,  font=\small] at (A)                    {$A$};
+		\node[below right,  font=\small] at ($(C)$)  {$C$};
+		\node[below,       font=\small] at ($(D)+(0, -0.14)$)      {$D$};
+		\node[below left, font=\small] at ($(E)$)   {$E$};
+		\node[left, font=\small] at (B)                    {$B$};
+		\node[below right,   font=\small] at ($(F)+(+0, 0)$)     {$F$};
+		
+		%% ── Quote dimensionali ─────────────────────────────────
+		%% Mezzeria sinistra: da x=0 a x=ℓ (sotto la struttura)
+		\draw[quota] (0,-1.20) -- (\L,-1.20)
+		node[midway, above, font=\small] {$\ell$};
+		%% Mezzeria destra: da x=ℓ a x=2ℓ
+		\draw[quota] (\L,-1.20) -- (2*\L,-1.20)
+		node[midway, above, font=\small] {$\ell$};
+		%% Altezza dei montanti: a sinistra della struttura
+		\draw[quota] (-1.60, 0) -- (-1.60, \L)
+		node[midway, right, font=\small] {$\ell$};
+		
+	\end{tikzpicture}
+	\caption{Portale a tre cerniere: schema geometrico e di carico.}
+	\label{fig:arco3c_schema}
+\end{figure}

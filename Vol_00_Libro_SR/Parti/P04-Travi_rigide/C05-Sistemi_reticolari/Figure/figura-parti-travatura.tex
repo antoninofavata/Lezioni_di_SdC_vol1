@@ -1,0 +1,149 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			asta/.style={line width=1.5pt, line cap=round, line join=round, black},
+			cord/.style={line width=1.5pt, line cap=round, line join=round, black},
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=5pt, line width=1.0pt},
+			terra/.style={line width=0.7pt, black},
+			richiamo/.style={->, >=stealth, line width=0.6pt, black},
+			]
+			\def\d{1.0}
+			\def\h{0.95}
+			
+			%% =========================================================
+			%% (a) TRAVATURA A CORRENTI PARALLELI (mensola con tirante)
+			%% =========================================================
+			\begin{scope}[xshift=0cm]
+				
+				%% ── Correnti ─────────────────────────────────────────
+				\draw[cord](0,0)--(7*\d,0);
+				\draw[cord](\d,\h)--(8*\d,\h);
+				
+				%% ── Montanti ─────────────────────────────────────────
+				\foreach \i in {1,...,7}
+				\draw[asta](\i*\d,0)--(\i*\d,\h);
+				
+				%% ── Diagonali ────────────────────────────────────────
+				\foreach \i in {0,...,7}
+				\draw[asta](\i*\d,0)--(\i*\d+\d,\h);
+				
+				%% ── Tirante a parete ─────────────────────────────────
+				\coordinate (W) at (-0.9, 2.5);
+				\draw[asta](W)--(3*\d,\h);
+				%% cerniera a base verticale
+				\draw[line width=1.0pt](W)--++(-0.40,-0.24)--++(0,0.48)--cycle;
+				\draw[line width=1.0pt]($(W)+(-0.40,-0.34)$)--($(W)+(-0.40,0.34)$);
+				\foreach \yy in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(W)+(-0.40,\yy)$)--++(-0.13,-0.10);
+				
+				%% ── Cerniera a terra nel nodo di sinistra ────────────
+				\draw[line width=1.0pt](0,0)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt](-0.34,-0.40)--(0.34,-0.40);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin](\x,-0.40)--++(-.10,-0.13);
+				
+				%% ── Nodi ─────────────────────────────────────────────
+				\node[nodo]at(W){};
+				\foreach \i in {0,...,7} \node[nodo]at(\i*\d,0){};
+				\foreach \i in {1,...,8} \node[nodo]at(\i*\d,\h){};
+				
+				%% ── Etichette con richiami ───────────────────────────
+				\draw[richiamo](3.6,1.85)--(4.5*\d,\h+0.04);
+				\node[right,font=\small]at(3.6,1.85){corrente superiore};
+				
+				\draw[richiamo](5.8,-0.75)--(5.5*\d,-0.05);
+				\node[right,font=\small]at(5.8,-0.75){corrente inferiore};
+				
+				\draw[richiamo](1.3,-0.85)--(2*\d-0.04,0.5*\h);
+				\node[left,font=\small]at(1.3,-0.85){montante};
+				
+				\draw[richiamo](2.9,-0.85)--(3.5*\d-0.06,0.40*\h);
+				\node[right,font=\small]at(2.9,-0.85){asta diagonale};
+				
+				\node[font=\small]at(1.5,-1.45){(a)};
+			\end{scope}
+			
+			%% =========================================================
+			%% (b) TRAVATURA AD ARCO (correnti curvi)
+			%% =========================================================
+			\begin{scope}[xshift=10.5cm, yshift=-0.cm]
+				
+				%% ── Correnti curvi (archi di cerchio) ────────────────
+				%% intradosso interrotto alla chiave: archi A->I2 e I3->B
+				%% (R=5.212, centro (3.5,-3.862))
+				\draw[cord] (0,0) arc[start angle=132.18, end angle=97.03, radius=5.212];
+				\draw[cord] (4.138,1.311) arc[start angle=82.97, end angle=47.82, radius=5.212];
+				%% estradosso: R=3.967, centro (3.5,-1.867), 151.93° -> 28.07°
+				\draw[cord] (0,0) arc[start angle=151.93, end angle=28.07, radius=3.967];
+				
+				%% ── Nodi (coordinate precalcolate) ───────────────────
+				\coordinate (A)  at (0,0);
+				\coordinate (B)  at (7,0);
+				\coordinate (E1) at (0.883,1.114);
+				\coordinate (E2) at (2.102,1.845);
+				\coordinate (C)  at (3.500,2.100);
+				\coordinate (E4) at (4.898,1.845);
+				\coordinate (E5) at (6.117,1.114);
+				\coordinate (I1) at (1.624,1.001);
+				\coordinate (I2) at (2.862,1.311);
+				\coordinate (I3) at (4.138,1.311);
+				\coordinate (I4) at (5.376,1.001);
+				
+				%% ── Aste di parete (zig-zag) ─────────────────────────
+				\draw[asta](E1)--(I1)--(E2)--(I2)--(C)--(I3)--(E4)--(I4)--(E5);
+				
+				%% ── Cerniera in A ────────────────────────────────────
+				\draw[line width=1.0pt](A)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt](-0.34,-0.40)--(0.34,-0.40);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin](\x,-0.40)--++(-.10,-0.13);
+				
+				%% ── Cerniera in B ────────────────────────────────────
+				\draw[line width=1.0pt](B)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt]($(B)+(-0.34,-0.40)$)--($(B)+(0.34,-0.40)$);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(B)+(\x,-0.40)$)--++(-.10,-0.13);
+				
+				%% ── Nodi ─────────────────────────────────────────────
+				\foreach \n in {A,B,E1,E2,C,E4,E5,I1,I2,I3,I4}
+				\node[nodo]at(\n){};
+				
+				%% ── Etichette nodi ───────────────────────────────────
+				\node[left, font=\small]at($(A)+(-0.12,0.10)$){$A$};
+				\node[right,font=\small]at($(B)+( 0.12,0.10)$){$B$};
+				\node[above,font=\small]at($(C)+(0,0.10)$){$C$};
+				
+				%% ── Etichette con richiami ───────────────────────────
+				\draw[richiamo](5.3,2.65)--($(E4)!0.5!(E5)+(0.13,0.13)$);
+				\node[right,font=\small]at(5.3,2.65){corrente di estradosso};
+				
+				\draw[richiamo](3.2,0.62)--($(I1)!0.45!(E2)$);
+				\draw[richiamo](3.8,0.62)--($(I3)!0.55!(E4)$);
+				\node[font=\small, align=center]at(3.5,0.28){aste di\\parete};
+				
+				\draw[richiamo](4.6,-1.15)--($(A)!0.30!(I1)+(0.10,-0.10)$);
+				\draw[richiamo](4.6,-1.15)--($(I4)!0.55!(B)+(0.06,-0.12)$);
+				\node[right,font=\small]at(4.6,-1.15){corrente di intradosso};
+				
+				\node[font=\small]at(1.5,-1.45){(b)};
+			\end{scope}
+	\end{tikzpicture}}
+	\caption{Parti della travatura reticolare piana.
+		(a): travatura a correnti paralleli
+		(mensola con tirante ancorato a parete); si
+		distinguono il corrente superiore (o di
+		estradosso), il corrente inferiore (o di
+		intradosso) e le aste di parete, suddivise
+		in montanti e diagonali.
+		(b): arco reticolare a tre cerniere
+		($A$, $C$, $B$) a correnti curvi; le stesse
+		denominazioni si applicano con riferimento al
+		corrente di estradosso e al corrente di
+		intradosso, entrambi curvilinei, raccordati
+		dalle aste di parete; il corrente di intradosso
+		è interrotto alla chiave, dove il nodo $C$
+		funge da cerniera tra i due semiarchi.}
+	\label{fig:parti_travatura}
+\end{figure}

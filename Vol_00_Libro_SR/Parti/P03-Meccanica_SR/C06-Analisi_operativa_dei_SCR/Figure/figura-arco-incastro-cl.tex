@@ -1,0 +1,129 @@
+\begin{figure}[ht]
+			\centering
+			\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+				
+				\def\R{2.0}
+				\def\arr{0.55}
+				
+				% ============================================================
+				% PANNELLO (a) — corpo libero di C_2
+				% ============================================================
+				\begin{scope}[xshift=0cm]
+					
+					% semiarco C_2
+					\draw[line width=1.5pt] (0,\R)
+					arc[start angle=90, end angle=0, radius=\R];
+					
+					% carrello verticale in B (grigio: vincolo rotto)
+					\draw[gray!50, thick] (\R,0) -- (\R-0.28,-0.48)
+					-- (\R+0.28,-0.48) -- cycle;
+					\draw[gray!50, thick] (\R-0.18,-0.55) circle (0.08);
+					\draw[gray!50, thick] (\R+0.18,-0.55) circle (0.08);
+					\draw[gray!50, thick] (\R-0.38,-0.65) -- (\R+0.38,-0.65);
+					\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+						\draw[gray!50, thin] (\R+\x,-0.65) -- (\R+\x-0.12,-0.83);
+					}
+					
+					% perni B e C
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (\R,0) {};
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (0,\R) {};
+					
+					% etichette punti
+					\node[left=2pt, font=\scriptsize] at (\R+0.05,0) {$B$};
+					\node[left=2pt, font=\scriptsize] at (0,\R) {$C$};
+					
+					% etichetta corpo
+					\node[font=\small] at ({(\R-0.45)*cos(35)},{(\R-0.45)*sin(35)})	{$\mathcal{C}_2$};
+					
+					% ----- Reazioni in B -----
+					\draw[->, thick] (\R+0.05,0) -- (\R+0.05,\arr)	node[right, font=\scriptsize] {$Y_B$};
+					
+					% ----- Reazioni in C (interne) -----
+					% X_C = 0: annotazione in scriptsize
+					\node[below=1pt, font=\scriptsize] at (0,\R)
+					{$X_C\!=\!0$};
+					% Y_C verticale verso l'alto, decentrata a sinistra
+					\draw[->, thick] (-0.0,\R) -- (-0.0,\R+\arr)
+					node[left, yshift=-3pt, font=\scriptsize] {$Y_C$};
+					
+					% ----- Forza F in P = (R/2, R*sqrt(3)/2) -----
+					\draw[->, thick]
+					({\R/2},{\R*0.866+\arr}) -- ({\R/2},{\R*0.866});
+					\node[font=\scriptsize]
+					at ({\R/2+0.20},{\R*0.866+\arr-0.10}) {$F$};
+					
+					% linea tratteggiata grigia per R/2
+					\draw[gray!50, dashed, thin] (\R,{\R*0.866}) -- ({\R/2},{\R*0.866});
+					\draw[gray!50, dashed, thin] (\R,0) -- (\R,{\R*0.866});
+					\node[gray!70, font=\scriptsize] at ({(\R+\R/2)/2},{\R*0.866+0.18})
+					{$R/2$};
+					
+					% etichetta pannello
+					\node[font=\scriptsize] at (\R/2-0.50,-0.80) {(a)};
+					
+				\end{scope}
+				
+				% ============================================================
+				% PANNELLO (b) — corpo libero di C_1
+				% ============================================================
+				\begin{scope}[xshift=7.0cm]
+					
+					% semiarco C_1
+					\draw[line width=1.5pt] (-\R,0)	arc[start angle=180, end angle=90, radius=\R];
+					
+					% incastro in A (grigio: vincolo rotto)
+					\draw[gray!50, thick] (-\R-0.38,0) -- (-\R+0.38,0);
+					\foreach \x in {-0.28,-0.14,0,0.14,0.28}{
+						\draw[gray!50, thin] (-\R+\x,0) -- (-\R+\x-0.13,-0.20);
+					}
+					
+					% perno  C
+					
+					\node[circle, fill=white, draw=black, inner sep=0pt,
+					minimum size=5pt, line width=0.8pt] at (0,\R) {};
+					
+					% etichette punti
+					\node[left=2pt, font=\scriptsize] at (-\R,0.2) {$A$};
+					\node[right=2pt, font=\scriptsize] at (0,\R) {$C$};
+					
+					% etichetta corpo
+					\node[font=\small] at ({(\R+0.45)*cos(145)},{(\R+0.45)*sin(145)}) {$\mathcal{C}_1$};
+					
+					% ----- Reazioni in A -----
+					% X_A = 0: annotazione in scriptsize
+					\node[above right=4pt and 4pt, font=\scriptsize] at (-\R,0)
+					{$X_A\!=\!0$};
+					% Y_A verticale verso l'alto, allineata con A
+					\draw[->, thick] (-\R-0.05,0) -- (-\R-0.05,\arr)	node[left, font=\scriptsize] {$Y_A$};
+					% mu(A) semicerchio antiorario con convessità verso il basso (180°)
+					\draw[<-, thick]
+					({-\R+0.30},0) arc[start angle=0, end angle=-180, radius=0.30];
+					\node[font=\scriptsize] at (-\R,-0.55) {$\mu_A$};
+					
+					
+					% ----- Reazioni interne in C (uguali e opposte al pannello a) -----
+					% X_C = 0: annotazione in scriptsize
+					\node[above left=2pt and 4pt, font=\scriptsize] at (0,\R)
+					{$X_C\!=\!0$};
+					% Y_C verticale verso il basso (opposta al pannello a)
+					\draw[->, thick] (0.05,\R) -- (0.05,\R-\arr)
+					node[right, yshift=3pt, font=\scriptsize] {$Y_C$};
+					
+					% ----- Coppia esterna applicata mu in P_1 -----
+					\draw[->, thick]
+					({\R*cos(135)+0.30},{\R*sin(135)+0.05})
+					arc[start angle=10, end angle=310, radius=0.30];
+					\node[font=\scriptsize]
+					at ({\R*cos(135)+0.55},{\R*sin(135)+0.10}) {$\mu$};
+					
+					% etichetta pannello
+					\node[font=\scriptsize] at (\R/2-0.80,-0.80) {(b)};
+					
+				\end{scope}
+				
+			\end{tikzpicture}
+			\caption{Arco a tutto sesto con incastro: schemi dei corpi	liberi di $\mathcal{C}_2$ \emph{(a)} e		$\mathcal{C}_1$ \emph{(b)}. La cascata statica	procede da $\mathcal{C}_2$ a $\mathcal{C}_1$,	in ordine inverso rispetto alla cinematica;	polo di momento in $C$ per $\mathcal{C}_2$,	in $A$ per $\mathcal{C}_1$.}
+			\label{fig:arco_incastro_cl}
+		\end{figure}

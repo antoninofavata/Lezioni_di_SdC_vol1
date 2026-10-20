@@ -1,0 +1,50 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[x=1.25cm, y=1.25cm,
+		stub/.style  ={line width=1.0pt, gray!55},
+		incog/.style ={-{Stealth[length=2.2mm,width=1.3mm]},
+			line width=0.9pt},
+		assiale/.style={-{Stealth[length=2.4mm]}, line width=1.3pt},
+		nodoV/.style ={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=4.4pt, line width=0.7pt},
+		et/.style    ={font=\footnotesize},
+		etn/.style   ={font=\footnotesize, gray!70}]
+
+		\draw[stub] (0,0)--(-1.15,-1.15); \node[et] at (-1.36,-1.15) {$AC$};
+		\draw[stub] (0,0)--(1.60,-0.80);  \node[et] at (1.84,-0.80)  {$CE$};
+		\draw[stub] (0,0)--(0,-1.30);     \node[et, below] at (0,-1.36) {$BC$};
+
+		\draw[gray!60, dashed, line width=0.35pt]
+			(-0.80,0)--(-0.80,-0.80)--(0,-0.80)
+			(0.80,0)--(0.80,-0.40)--(0,-0.40);
+
+		\draw[assiale] (0,0)--(-0.80,-0.80);
+		\node[et] at (-1.06,-0.64) {$N_{AC}$};
+		\draw[assiale] (0,0)--(0.80,-0.40);
+		\node[et] at (1.08,-0.26) {$N_{CE}$};
+
+		\draw[incog] (0,0)--(-0.80,0);
+		\node[et, above] at (-0.70,0.03) {$X_{AC}$};
+		\draw[incog] (0,0)--(0.80,0);
+		\node[et, above] at (0.54,0.03) {$X_{CE}$};
+		\draw[incog] (0,0)--(0,-0.80);
+		\node[et, right] at (0.06,-0.72) {$Y_{AC}$};
+		\draw[incog] (0,0)--(0,-0.40);
+		\node[et, right] at (0.0,-0.40) {$Y_{CE}$};
+		\draw[incog] (0,0)--(0,0.62);
+		\node[et, right] at (0.08,0.50) {$-Y_C$};
+
+		\node[nodoV] at (0,0) {};
+		\node[et] at (-0.22,0.28) {$C$};
+		%\node[etn] at (-1.05,0.46) {$X_C = 0$};
+	\end{tikzpicture}
+	\caption{Il nodo $C$ come corpo libero. Tutte le forze sono
+		applicate nel nodo e giacciono sulla propria retta
+		d'azione; i rettangoli tratteggiati scompongono nelle
+		componenti gli sforzi assiali delle due bielle. Poiché
+		l'antenna non riceve dal nodo alcuna forza orizzontale,
+		le due componenti orizzontali si fanno equilibrio fra
+		loro e le verticali si sommano scaricandosi
+		sull'antenna.}
+	\label{fig:strallato_nodo_C}
+\end{figure}

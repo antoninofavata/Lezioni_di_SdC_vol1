@@ -1,0 +1,326 @@
+\begin{figure}[!ht]
+			\centering
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+					
+					\def\R{2.0}
+					\def\vA{0.40}                        % cedimento amplificato per chiarezza
+					\pgfmathsetmacro\thetaB{atan(\vA/\R)} % theta_2 in gradi (~11.3°)
+					\def\arr{0.55}
+					\def\xV{-3.2}                        % ascissa di r_V
+					\def\yH{-1.4}                        % ordinata di r_H
+					\def\vB{0.40}
+					\pgfmathsetmacro\thetaC{atan(\vB/\R)}
+					
+					% ============================================================
+					% PANNELLO (a) — contributo v_A
+					% ============================================================
+					\begin{scope}[xshift=0cm]
+						
+						% ----- Sistema originale (grigio chiaro, riferimento) -----
+						\draw[gray!50, thick] (-\R,0)
+						arc[start angle=180, end angle=90, radius=\R];
+						\draw[gray!50, thick] (0,\R)
+						arc[start angle=90, end angle=0, radius=\R];
+						
+						% incastro in A (suolo orizzontale + tratteggio obliquo verso il basso)
+						\draw[thick, gray!80] (-\R-0.38,0) -- (-\R+0.38,0);
+						\foreach \x in {-0.28,-0.14,0,0.14,0.28}{\draw[thin, gray!80] (-\R+\x,0) -- (-\R+\x-0.13,-0.20);
+						}
+						
+						% carrello verticale in B (configurazione indeformata, in grigio)
+						\draw[gray!50, thick] (\R,0) -- (\R-0.28,-0.48)
+						-- (\R+0.28,-0.48) -- cycle;
+						\draw[gray!50, thick] (\R-0.18,-0.55) circle (0.08);
+						\draw[gray!50, thick] (\R+0.18,-0.55) circle (0.08);
+						\draw[gray!50, thick] (\R-0.38,-0.65) -- (\R+0.38,-0.65);
+						\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+							\draw[gray!50, thin] (\R+\x,-0.65) -- (\R+\x-0.12,-0.83);
+						}
+						\node[circle, fill=white, draw=gray!50, inner sep=0pt,
+						minimum size=5pt, line width=0.8pt] at (\R,0) {};
+						
+						% cerniera interna in C (sistema originale - perno grigio)
+						\node[circle, fill=white, draw=gray!50, inner sep=0pt,
+						minimum size=5pt, line width=0.8pt] at (0,\R) {};
+						
+						% ----- Sistema deformato (nero spesso) -----
+						% C_1 deformato: tutto traslato verso il basso di v_A
+						\begin{scope}[yshift=-\vA cm]
+							\draw[line width=1.5pt] (-\R,0)
+							arc[start angle=180, end angle=90, radius=\R];
+							% incastro deformato in A'
+							\draw[thick] (-\R-0.38,0) -- (-\R+0.38,0);
+							\foreach \x in {-0.28,-0.14,0,0.14,0.28}{
+								\draw[thin] (-\R+\x,0) -- (-\R+\x-0.13,-0.20);
+							}
+						\end{scope}
+						
+						% perno B' (rotazione di B attorno a C_2^(1))
+						\node[circle, fill=white, draw=black, inner sep=0pt,
+						minimum size=5pt, line width=0.8pt] at (\R+\vA,0) {};
+						
+						% C_2 deformato: ruotato di theta_2 attorno a C_2^(1) = (R, R)
+						\begin{scope}[rotate around={\thetaB:(\R,\R)}]
+							\draw[line width=1.5pt] (0,\R)
+							arc[start angle=90, end angle=0, radius=\R];
+						\end{scope}
+						
+						% perno C' (nuova posizione di C, comune a C_1 e C_2 deformati)
+						\node[circle, fill=white, draw=black, inner sep=0pt,
+						minimum size=5pt, line width=0.8pt] at (0,\R-\vA) {};
+						
+						% ----- Centri di rotazione -----
+						% C_2^(1) = (R, R) — centro assoluto di C_2
+						\fill (\R,\R) circle (1.5pt);
+						\node[above right=-1pt and 1pt, font=\small] at (\R,\R)
+						{$C_2^{(1)}$};
+
+						\node[above=4pt, font=\small] at (0,\R)	{$C_{12}\!\equiv\!C$};
+						
+						% C_1 = punto improprio di x: freccia che esce dal disegno
+						\draw[->, thick] (-\R-0.85,\R+0.55) -- (-\R-0.15,\R+0.55);
+						\node[font=\small] at (-\R-0.30,\R+0.85) {$C_1\!\to\!\infty$};
+						
+						% retta orizzontale per C (passante per C_1 improprio e C_2^(1))
+						\draw[gray!60, dashed, thin] (-\R-0.30,\R) -- (\R+0.40,\R);
+						% retta verticale per B (passante per C_2^(1))
+						\draw[gray!60, dashed, thin] (\R,\R+0.40) -- (\R,-0.20);
+						
+						% ----- Etichette punti -----
+						\node[gray!80, left, font=\small] at (-\R,+0.20) {$A$};
+						\node[gray!80, left, font=\small] at (\R,0) {$B$};
+						\node[gray!80, font=\small] at (-0.20,\R-0.20) {$C$};
+						\node[left=2pt, font=\small] at (-\R,-\vA) {$A'$};
+						\node[below right=-2pt and 2pt, font=\small] at (0,\R-\vA) {$C'$};
+						\node[above right=-2pt and 2pt, font=\small] at (\R+\vA,0) {$B'$};
+						
+						% ----- Etichette corpi -----
+						\node[gray!80, font=\small] at ({(\R+0.45)*cos(150)},{(\R+0.45)*sin(150)}) {$\mathcal{C}_1$};
+						\node[gray!80, font=\small] at ({(\R-0.30)*cos(30)},{(\R-0.30)*sin(30)})	{$\mathcal{C}_2$};
+						
+						% ----- Etichette corpi -----
+						\node[font=\small] at ({(\R-0.6)*cos(150)},{(\R-0.6)*sin(150)}) {$\mathcal{C}_1^{\prime}$};
+						\node[font=\small] at ({(\R+0.45)*cos(30)},{(\R+0.45)*sin(30)})	{$\mathcal{C}_2^{\prime}$};
+						
+						% ============================================================
+						% Retta r_V (campo u) — verticale a sinistra
+						% ============================================================
+						\draw[gray!40, thin] (\xV,-0.5) -- (\xV,\R+0.6)
+						node[above, font=\small] {$r_V$};
+						\node[gray!60, left=2pt, font=\small] at (\xV,\R*0.5) {$u_1^{(1)}$};
+						
+						% skyline del triangolo (verso destra: B si sposta di +v_A)
+						\draw[gray!60, thin] ({\xV+\vA},0) -- (\xV,\R);
+						
+						% frecce discrete in 5 punti (k=0..4)
+						\foreach \k in {0,1,2,3,4}{
+							\pgfmathsetmacro{\yy}{\k*\R/4}
+							\pgfmathsetmacro{\uu}{\vA*(1-\k/4)}
+							\fill[gray!60] (\xV,\yy) circle (1pt);
+							\ifnum\k<4
+							\draw[->, gray!70, thin]
+							(\xV,\yy) -- ({\xV+\uu},\yy);
+							\fi
+						}
+						% freccia thick + etichetta a y=0 (punto B)
+						\draw[->, gray!70, thick] (\xV,0) -- ({\xV+\vA},0)
+						node[below, font=\small] {$\bar{v}_A$};
+						
+						% linee di proiezione tratteggiate dal sistema a r_V
+						\draw[gray!40, dashed, thin] (0,\R) -- (\xV,\R);    % C, C_2^(1)
+						\draw[gray!40, dashed, thin] (\R,0) -- (\xV,0);     % B
+						
+						% traccia di C_2^(1) e C su r_V (a y=R)
+						\node[gray!70, left=4pt, font=\scriptsize] at (\xV,\R)
+						{$C_2^{(1)}\!,\,C$};
+						
+						% ============================================================
+						% Retta r_H (campo v) — orizzontale in basso
+						% ============================================================
+						\draw[gray!40, thin] (-\R-0.5,\yH) -- (\R+0.5,\yH)
+						node[right, font=\small] {$r_H$};
+						\node[gray!60, above=3pt, font=\small] at (-\R*0.5,\yH) {$v_1^{(1)}$};
+						\node[gray!60, above=3pt, font=\small] at (\R*0.5,\yH) {$v_2^{(1)}$};
+						
+						% skyline: v_1 costante (-v_A) tra A e C, poi v_2 lineare a 0 in B
+						\draw[gray!60, thin] (-\R,\yH-\vA) -- (0,\yH-\vA) -- (\R,\yH);
+						
+						% frecce discrete v_1 (5 punti tra A e C, costante = -v_A)
+						\foreach \k in {0,1,2,3,4}{
+							\pgfmathsetmacro{\xx}{-\R + \k*\R/4}
+							\fill[gray!60] (\xx,\yH) circle (1pt);
+							\draw[->, gray!70, thin] (\xx,\yH) -- (\xx,\yH-\vA);
+						}
+						% frecce discrete v_2 (3 punti tra C e B; salto k=0 già in v_1, k=4 ha v=0)
+						\foreach \k in {1,2,3}{
+							\pgfmathsetmacro{\xx}{\k*\R/4}
+							\pgfmathsetmacro{\vv}{\vA*(1-\k/4)}
+							\fill[gray!60] (\xx,\yH) circle (1pt);
+							\draw[->, gray!70, thin] (\xx,\yH) -- (\xx,\yH-\vv);
+						}
+						\fill[gray!60] (\R,\yH) circle (1pt);   % B / C_2^(1)
+						
+						% freccia thick + etichetta a x=0 (punto C, v=-v_A)
+						\draw[->, gray!70, thick] (-\R,\yH) -- (-\R,\yH-\vA)
+						node[left, font=\small] {$\bar{v}_A$};
+						
+						% proiezioni tratteggiate sui punti notevoli
+						\draw[gray!40, dashed, thin] (-\R,-0.20) -- (-\R,\yH);
+						\draw[gray!40, dashed, thin] (0,\R-\vA-0.10) -- (0,\yH);
+						\draw[gray!40, dashed, thin] (\R,-0.20) -- (\R,\yH);
+						
+						% tracce dei centri sulla r_H
+						\node[gray!70, above, font=\scriptsize] at (0,\yH)	{$C_{12}\!\equiv\!C$};
+						\node[gray!70, above, font=\scriptsize] at (\R,\yH)	{$C_2^{(1)}$};
+						
+						% etichetta pannello
+						\node[font=\small] at (-\R,\yH-1.0) {(a)};
+						
+					\end{scope}
+					
+					% ============================================================
+					% PANNELLO (b) — contributo v_B (da costruire)
+					% ============================================================
+					
+					\begin{scope}[xshift=8.0cm]
+						
+						% ----- Sistema originale: solo C_2 in grigio (sarà ruotato) -----
+						\draw[gray!50, thick] (0,\R)
+						arc[start angle=90, end angle=0, radius=\R];
+						
+						% incastro in A (spettatore, GRIGIO)
+						\draw[gray!50, thick] (-\R-0.38,0) -- (-\R+0.38,0);
+						\foreach \x in {-0.28,-0.14,0,0.14,0.28}{
+							\draw[gray!50, thin] (-\R+\x,0) -- (-\R+\x-0.13,-0.20);
+						}
+						
+						% carrello verticale in B (configurazione indeformata, in grigio)
+						\draw[gray!50, thick] (\R,0) -- (\R-0.28,-0.48)
+						-- (\R+0.28,-0.48) -- cycle;
+						\draw[gray!50, thick] (\R-0.18,-0.55) circle (0.08);
+						\draw[gray!50, thick] (\R+0.18,-0.55) circle (0.08);
+						\draw[gray!50, thick] (\R-0.38,-0.65) -- (\R+0.38,-0.65);
+						\foreach \x in {-0.30,-0.15,0,0.15,0.30}{
+							\draw[gray!50, thin] (\R+\x,-0.65) -- (\R+\x-0.12,-0.83);
+						}
+						\node[circle, fill=white, draw=gray!50, inner sep=0pt,
+						minimum size=5pt, line width=0.8pt] at (\R,0) {};
+						
+						% ----- C_1 fisso (nero spesso, una sola volta) -----
+						\draw[line width=1.5pt] (-\R,0)
+						arc[start angle=180, end angle=90, radius=\R];
+						
+						% ----- C_2 deformato (ruotato di theta attorno a C) -----
+						\begin{scope}[rotate around={\thetaC:(0,\R)}]
+							\draw[line width=1.5pt] (0,\R)
+							arc[start angle=90, end angle=0, radius=\R];
+						\end{scope}
+						
+						% perno C (fisso, comune a C_1 e C_2 deformato)
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (0,\R) {};
+						
+						% perno B' = (R + v_B, v_B) — nuova posizione di B
+						\node[circle, fill=white, draw=black, inner sep=0pt,
+						minimum size=5pt, line width=0.8pt] at (\R+\vB,\vB) {};
+						
+						% ----- Centro di rotazione C_2^(2) ≡ C -----
+						%\fill (0,\R) circle (1.5pt);
+						\node[above=4pt, font=\small] at (0,\R) {$C_2^{(2)}\!\equiv\!C$};
+						
+						% ----- Etichette punti -----
+						\node[gray!80, left, font=\small] at (-\R,0.20) {$A$};
+						\node[gray!80,left, font=\small] at (\R,0.20) {$B$};
+						\node[above right=-2pt and 2pt, font=\small] at (\R+\vB,\vB) {$B'$};
+						
+						% ----- Etichette corpi -----
+						\node[gray!80, font=\small] at ({(\R+0.45)*cos(150)},{(\R+0.45)*sin(150)}) {$\mathcal{C}_1$};
+						\node[gray!80, font=\small] at ({(\R-0.30)*cos(30)},{(\R-0.30)*sin(30)})	{$\mathcal{C}_2$};
+						\node[font=\small] at ({(\R+0.65)*cos(30)},{(\R+0.65)*sin(30)})	{$\mathcal{C}_2^{\prime}$};
+						
+						% ============================================================
+						% Retta r_V (campo u) — verticale a sinistra
+						% ============================================================
+						\draw[gray!40, thin] (\xV,-0.5) -- (\xV,\R+0.6)
+						node[above, font=\small] {$r_V$};
+						\node[gray!60, left=2pt, font=\small] at (\xV,\R*0.5) {$u_2^{(2)}$};
+						
+						% skyline del triangolo (verso destra: B si sposta di +v_B)
+						\draw[gray!60, thin] ({\xV+\vB},0) -- (\xV,\R);
+						
+						% frecce discrete in 5 punti
+						\foreach \k in {0,1,2,3,4}{
+							\pgfmathsetmacro{\yy}{\k*\R/4}
+							\pgfmathsetmacro{\uu}{\vB*(1-\k/4)}
+							\fill[gray!60] (\xV,\yy) circle (1pt);
+							\ifnum\k<4
+							\draw[->, gray!70, thin]
+							(\xV,\yy) -- ({\xV+\uu},\yy);
+							\fi
+						}
+						% freccia thick + etichetta a y=0 (punto B)
+						\draw[->, gray!70, thick] (\xV,0) -- ({\xV+\vB},0)
+						node[below, font=\small] {$\bar{v}_B$};
+						
+						% linee di proiezione tratteggiate
+						\draw[gray!40, dashed, thin] (0,\R) -- (\xV,\R);    % C / C_2^(2)
+						\draw[gray!40, dashed, thin] (\R,0) -- (\xV,0);     % B
+						
+						% traccia di C_2^(2) ≡ C su r_V (a y=R)
+						\node[gray!70, left=4pt, font=\scriptsize] at (\xV,\R)
+						{$C_2^{(2)}\!\equiv\!C$};
+						
+						% ============================================================
+						% Retta r_H (campo v) — orizzontale in basso
+						% ============================================================
+						\draw[gray!40, thin] (-\R-0.5,\yH) -- (\R+0.5,\yH)
+						node[right, font=\small] {$r_H$};
+						\node[gray!60, below=3pt, font=\small] at (-\R*0.5,\yH) {$v_1^{(2)}$};
+						\node[gray!60, below=3pt, font=\small] at (\R*0.5,\yH) {$v_2^{(2)}$};
+						
+						% skyline: v_2 lineare da 0 in x=0 a v_B in x=R (frecce SOPRA r_H)
+						\draw[gray!60, thin] (0,\yH) -- (\R,\yH+\vB);
+						
+						% frecce discrete v_2 (verso ALTO)
+						\foreach \k in {0,1,2,3,4}{
+							\pgfmathsetmacro{\xx}{\k*\R/4}
+							\pgfmathsetmacro{\vv}{\vB*\k/4}
+							\fill[gray!60] (\xx,\yH) circle (1pt);
+							\ifnum\k>0
+							\draw[->, gray!70, thin] (\xx,\yH) -- (\xx,\yH+\vv);
+							\fi
+						}
+						% freccia thick + etichetta a x=R (punto B, dove v=v_B)
+						\draw[->, gray!70, thick] (\R,\yH) -- (\R,\yH+\vB)
+						node[right, font=\small] {$\bar{v}_B$};
+						
+						% proiezioni tratteggiate
+						\draw[gray!40, dashed, thin] (0,\R-0.10) -- (0,\yH);
+						\draw[gray!40, dashed, thin] (\R,-0.20) -- (\R,\yH);
+						
+						% traccia di C_2^(2) ≡ C su r_H (a x=0)
+						\node[gray!70, above=4pt, font=\scriptsize] at (0,\yH)
+						{$C_2^{(2)}\!\equiv\!C$};
+						
+						% etichetta pannello
+						\node[font=\small] at (-\R,\yH-1.0) {(b)};
+						
+					\end{scope}
+				\end{tikzpicture}
+			}
+			\caption{Arco a tutto sesto con incastro: contributi separati
+				dei due cedimenti al metodo grafico-analitico.
+				\emph{(a)}~Contributo $\bar{v}_A$: $\mathcal{C}_1$
+				trasla verso il basso ($C_1$ punto improprio di $x$);
+				$\mathcal{C}_2$ ruota attorno a $C_2^{(1)}$
+				(intersezione dell'orizzontale per $C$ con la
+				verticale per $B$); su $r_H$ sono riportate le
+				tracce di $C_{12}\equiv C$ e $C_2^{(1)}$ e i
+				campi $u$ e $v$ di $\mathcal{C}_1$ e $\mathcal{C}_2$.
+				\emph{(b)}~Contributo $\bar{v}_B$: $\mathcal{C}_1$
+				fisso, $C$ fisso; $\mathcal{C}_2$ ruota attorno a
+				$C_2^{(2)}\equiv C$; su $r_H$ sono riportate la
+				traccia di $C_2^{(2)}\equiv C$ e i campi $u$ e $v$
+				di $\mathcal{C}_2$.}
+			\label{fig:arco_incastro_grafo}
+		\end{figure}

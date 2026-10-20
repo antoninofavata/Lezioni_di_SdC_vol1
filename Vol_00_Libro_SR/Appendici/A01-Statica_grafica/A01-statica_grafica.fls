@@ -1,0 +1,10 @@
+PWD /Users/ap/Documents/Università/Libri_progress/Vol_01_Libro_SR/Appendici/A01-Statica_grafica
+INPUT /usr/local/texlive/2022/texmf.cnf
+INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT A01-statica_grafica.tex
+OUTPUT A01-statica_grafica.log
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
+OUTPUT A01-statica_grafica.pdf
+INPUT /usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map

@@ -1,0 +1,40 @@
+\begin{figure}[htbp]
+		\centering
+		\resizebox{0.62\linewidth}{!}{%
+			\begin{tikzpicture}[x=3.2cm,y=1.05cm,font=\footnotesize,
+				ax/.style={-{Stealth[length=2mm]},line width=0.6pt,black},
+				cg/.style={line width=1.3pt,black},
+				df/.style={line width=1.3pt,black,dash pattern=on 5pt off 2.5pt},
+				sg/.style={line width=0.9pt,black!55,dash pattern=on 2.5pt off 2pt},
+				gd/.style={gray!20,line width=0.3pt}]
+				\def\xmax{2.1}\def\ymax{8.6}
+				\foreach \bx in {0,0.25,...,2.0}\draw[gd](\bx,0)--(\bx,\ymax);
+				\foreach \yy in {0,2,...,8}\draw[gd](0,\yy)--(\xmax,\yy);
+				\draw[ax](0,0)--(\xmax,0) node[right]{$\beta/\ell$};
+				\draw[ax](0,0)--(0,\ymax) node[above]{$\dfrac{H}{V_A}\,,\ \dfrac{\beta}{f}$};
+				\foreach \bx in {0.5,1,1.5,2}\draw(\bx,0.08)--(\bx,-0.08) node[below]{$\bx$};
+				\foreach \yy in {2,4,6,8}\draw(0.02,\yy)--(-0.02,\yy) node[left]{$\yy$};
+				\draw[sg](0,0)--(\xmax,{4*\xmax});
+				\node[black!55,anchor=north west,font=\scriptsize] at (1.30,4.6){soglia $\beta/f=4\beta/\ell$};
+				\draw[cg](0,3)--(\xmax,3);
+				\node[anchor=west] at (2.12,3){$\big(\tfrac{H}{V_A}\big)_{CG}=3$};
+				\draw[df](0,4)--(\xmax,{4+2*\xmax});
+				\node[anchor=south west,font=\scriptsize] at (0.40,6.50){$\big(\tfrac{H}{V_A}\big)_{DF}=4+2\tfrac{\beta}{\ell}$};
+				\draw[gray!60,dashed,line width=0.4pt](0.75,0)--(0.75,3);
+				\fill[black](0.75,3)circle(1.3pt);
+				\node[below,gray!70,font=\tiny] at (0.75,-0.02){$\tfrac34$};
+				\node[below,font=\tiny] at (0.78,3){$\beta^\ast$};
+				\node[font=\scriptsize] at (0.40,7.9){$AC$ \emph{tesa}};
+				\node[font=\scriptsize] at (0.62,7.55){(impalcato compresso)};
+				\node[font=\scriptsize,align=center] at (1.62,1.3){$AC$ compressa};
+				\fill[black](0.5,3)circle(1.0pt); 
+				\node[font=\tiny,above=1pt,align=center]at(0.40,3){progetto\\($\beta=\ell/2$)};
+				\fill[black](1.0,3)circle(1.0pt); \node[font=\tiny,below right=-1pt]at(1.0,3){originale, ($\beta=\ell$)};
+		\end{tikzpicture}}
+		\caption{Commutazione del segno di $N_{AC}$ al variare dello sbalzo interno $\beta$
+			($L=4\ell$, $\alpha=\ell/2$, $f=\ell/4$). Per ciascuno scenario $AC$ è \emph{tesa} dove la curva
+			$H/V_A$ sta \emph{sopra} la retta soglia $\beta/f$. Il peso proprio ($CG$, costante $=3$) supera la
+			soglia solo per $\beta<\beta^\ast=\tfrac34\ell$; il carico centrale ($DF$) la supera sempre. Il
+			dimensionamento $\beta=\tfrac12\ell$ cade nella regione favorevole, quello originario $\beta=\ell$ no.}
+		\label{fig:stampella_commutazione}
+	\end{figure}

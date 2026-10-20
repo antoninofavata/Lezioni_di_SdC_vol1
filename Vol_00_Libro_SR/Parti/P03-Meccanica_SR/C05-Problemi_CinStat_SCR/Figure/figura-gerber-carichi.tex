@@ -1,0 +1,92 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, font=\small,
+		nodo/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt, line width=0.8pt},
+		cint/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt, line width=0.8pt},
+		richiam/.style={thin, gray, dashed},
+		tacca/.style={thin, gray!70}]
+		
+		\def\a{1.0}
+		\def\tw{0.22}\def\thA{0.38}\def\thR{0.32}
+		\def\bw{0.16}\def\gw{0.30}\def\sr{0.08}
+		
+		\draw[line width=2.2pt] (0,0) -- ({3*\a},0);
+		\draw[line width=2.2pt] ({3*\a},0) -- ({5*\a},0);
+		
+		\node[above=2pt] at (0,0)       {$A$};
+		\node[above=2pt] at ({2*\a},0)  {$B$};
+		\node[above=2pt] at ({3*\a},0)  {$C$};
+		\node[above=2pt] at ({5*\a},0)  {$D$};
+		
+		\node at ({\a},  -0.32) {$\mathcal{C}_1$};
+		\node at ({4*\a},-0.32) {$\mathcal{C}_2$};
+		
+		%% cerniera in A
+		\draw (0,0) -- ++(-\tw,-\thA) -- ++(2*\tw,0) -- cycle;
+		\draw (-\gw,-\thA) -- (\gw,-\thA);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] (\x,-\thA) -- ++(-0.09,-0.11);
+		\node[nodo] at (0,0) {};
+		
+		%% carrello intermedio in B
+		\draw ({2*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw ({2*\a-\gw},-\thR) -- ({2*\a+\gw},-\thR);
+		\draw ({2*\a-\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({2*\a+\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({2*\a-\gw},-\thR-0.24) -- ({2*\a+\gw},-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] ({2*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+		\fill[white] ({2*\a-\sr},0) arc(180:360:\sr) -- cycle;
+		\draw ({2*\a-\sr},0) arc(180:360:\sr);
+		
+		%% cerniera interna in C
+		\node[cint] at ({3*\a},0) {};
+		
+		%% carrello terminale in D
+		\draw ({5*\a},0) -- ++(-\tw,-\thR) -- ++(2*\tw,0) -- cycle;
+		\draw ({5*\a-\gw},-\thR) -- ({5*\a+\gw},-\thR);
+		\draw ({5*\a-\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({5*\a+\bw},-\thR-0.12) circle (2.4pt);
+		\draw ({5*\a-\gw},-\thR-0.24) -- ({5*\a+\gw},-\thR-0.24);
+		\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+		\draw[thin] ({5*\a+\x},-\thR-0.24) -- ++(-0.09,-0.11);
+		\node[nodo] at ({5*\a},0) {};
+		
+		%% carico 2F nel punto medio di AB (x=a)
+		\draw[thin] (\a,0.05) -- (\a,-0.05);
+		\draw[->, thick] (\a,0.85) -- (\a,0.10)
+		node[right=3pt, pos=0] {$2F$};
+		
+		%% carico F nel punto medio di C_2 (x=4a)
+		\draw[thin] ({4*\a},0.05) -- ({4*\a},-0.05);
+		\draw[->, thick] ({4*\a},0.85) -- ({4*\a},0.10)
+		node[right=3pt, pos=0] {$F$};
+		
+		%% quotatura
+		\draw[richiam] (0,      -\thA-0.15) -- (0,      -1.55);
+		\draw[richiam] ({2*\a}, -1.40)      -- ({2*\a}, -1.55);
+		\draw[richiam] ({3*\a}, -0.10)      -- ({3*\a}, -1.55);
+		\draw[richiam] ({5*\a}, -1.40)      -- ({5*\a}, -1.55);
+		
+		\draw[tacca] (0,     -1.55) -- (0,     -1.75);
+		\draw[tacca] ({2*\a},-1.55) -- ({2*\a},-1.75);
+		\draw[tacca] ({3*\a},-1.55) -- ({3*\a},-1.75);
+		\draw[tacca] ({5*\a},-1.55) -- ({5*\a},-1.75);
+		
+		\draw[<->, thin, gray] (0,     -1.65) -- ({2*\a},-1.65);
+		\node[above=0.04] at ({\a},   -1.65) {$2a$};
+		\draw[<->, thin, gray] ({2*\a},-1.65) -- ({3*\a},-1.65);
+		\node[above=0.04] at ({2.5*\a},-1.65) {$a$};
+		\draw[<->, thin, gray] ({3*\a},-1.65) -- ({5*\a},-1.65);
+		\node[above=0.04] at ({4*\a}, -1.65) {$2a$};
+		
+	\end{tikzpicture}
+	\caption{La trave di Gerber sotto carico attivo: una forza $2F$
+		verso il basso nel punto medio di $AB$, su $\mathcal{C}_1$, e
+		una forza $F$ verso il basso nel punto medio di $\mathcal{C}_2$.
+		Stesso sistema di \FIGref{fig:gerber_motiv}, qui nella lettura
+		statica.}
+	\label{fig:gerber_carichi}
+\end{figure}

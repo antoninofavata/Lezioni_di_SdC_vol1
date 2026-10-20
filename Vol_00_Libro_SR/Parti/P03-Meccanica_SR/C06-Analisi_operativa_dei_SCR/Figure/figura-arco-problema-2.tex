@@ -1,0 +1,196 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			\def\R{2.0}      % raggio dell'arco
+			\def\arr{0.55}   % lunghezza frecce di cedimento/spostamento
+			\def\eps{0.13}   % offset visivo di separazione D_1, D_2
+			\def\rt{0.40}    % raggio degli archi di rotazione
+			
+			% ============================================================
+			% PANNELLO (a) — dati del problema
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				% semiarco C_1 (sinistro): da A=(-R,0) a D=(0,R)
+				\draw[line width=1.5pt] (-\R,0)
+				arc[start angle=180, end angle=90, radius=\R];
+				% semiarco C_2 (destro): da D=(0,R) a B=(R,0)
+				\draw[line width=1.5pt] (0,\R)
+				arc[start angle=90, end angle=0, radius=\R];
+				
+				% raggio R dell'arco (dal centro del semicerchio a 45° su C_2)
+				\draw[->, thin] (0,0) -- ({\R*cos(45)},{\R*sin(45)})
+				node[midway, above left=-2pt, font=\small] {$R$};
+				\node[circle, fill=black, inner sep=0pt, minimum size=2pt] at (0,0) {};
+				
+				
+				% cerniera in A (al suolo)
+				\draw[thick] (-\R,0) -- (-\R-0.22,-0.38)
+				-- (-\R+0.22,-0.38) -- cycle;
+				\draw[thick] (-\R-0.32,-0.38) -- (-\R+0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (-\R+\x,-0.38) -- (-\R+\x-0.10,-0.52);
+				}
+				% cerniera in B (al suolo)
+				\draw[thick] (\R,0) -- (\R-0.22,-0.38)
+				-- (\R+0.22,-0.38) -- cycle;
+				\draw[thick] (\R-0.32,-0.38) -- (\R+0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\R+\x,-0.38) -- (\R+\x-0.10,-0.52);
+				}
+				
+				% perni A, B (cerniere a terra)
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (-\R,0) {};
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\R,0) {};
+				
+				
+				% cerniera interna in D — perno unico
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,\R) {};
+				
+				% coordinate ausiliarie per ancorare le frecce di s_3, s_4
+				\coordinate (D1) at (-\eps,\R-\eps*0.3);
+				\coordinate (D2) at (\eps,\R+\eps*0.3);
+				
+				% etichette A, B
+				\node[left, font=\scriptsize] at (-\R,+0.2)
+				{$A$};
+				\node[right, font=\scriptsize] at (\R,+0.2)
+				{$B$};
+				
+				% etichetta D (a sinistra del cluster), D_1, D_2
+				\node[font=\scriptsize] at (-0.2,\R+0.30) {$D$};
+				\node[font=\scriptsize, below left=-0.5pt and 1pt] at (D1) {$D_1$};
+				\node[font=\scriptsize, above right=-1pt and 1pt] at (D2) {$D_2$};
+				
+				
+				% etichette corpi (esterne all'arco, lungo i raggi a 135° e 45°)
+				\node[font=\small] at ({(\R+0.30)*cos(135)},{(\R+0.30)*sin(135)})
+				{$\mathcal{C}_1$};
+				\node[font=\small] at ({(\R+0.30)*cos(45)},{(\R+0.30)*sin(45)})
+				{$\mathcal{C}_2$};
+				
+				% cedimento s_1: orizzontale (verso destra) in A
+				\draw[->, thick] (-\R,0.0) -- (-\R+\arr,0.0)
+				node[right, font=\scriptsize] {$s_1$};
+				% retta ausiliaria da A alla coda di s_2
+				\draw[gray!50, thin] (-\R,0) -- (-\R-0.55,0);
+				% cedimento s_2: verticale (verso il basso) in A
+				% decentrato a sinistra del perno per evitare la cerniera
+				\draw[->, thick] (-\R-0.55,0) -- (-\R-0.55,-\arr)
+				node[below, font=\scriptsize] {$s_2$};
+				
+				% cedimento relativo s_3: allontanamento orizzontale in D
+				\draw[->, thick] (\eps,\R+0.05) -- ++(\arr-0.05,0)
+				node[right, font=\scriptsize] {$s_3$};
+				\draw[->, thick] (-\eps,\R+0.05) -- ++(-\arr+0.05,0);
+				% cedimento relativo s_4: innalzamento di D_2 rispetto a D_1
+				\draw[->, thick] (D2.north) -- ++(0,\arr-0.10)
+				node[above, font=\scriptsize] {$s_4$};
+				\draw[->, thick] (D1.south) -- ++(0,-\arr+0.10);
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (0,-1.0) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — parametri di configurazione
+			% ============================================================
+			\begin{scope}[xshift=6.5cm]
+				
+				% semiarchi
+				\draw[line width=1.5pt] (-\R,0)
+				arc[start angle=180, end angle=90, radius=\R];
+				\draw[line width=1.5pt] (0,\R)
+				arc[start angle=90, end angle=0, radius=\R];
+				
+				% cerniera in A
+				\draw[thick] (-\R,0) -- (-\R-0.22,-0.38)
+				-- (-\R+0.22,-0.38) -- cycle;
+				\draw[thick] (-\R-0.32,-0.38) -- (-\R+0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (-\R+\x,-0.38) -- (-\R+\x-0.10,-0.52);
+				}
+				% cerniera in B
+				\draw[thick] (\R,0) -- (\R-0.22,-0.38)
+				-- (\R+0.22,-0.38) -- cycle;
+				\draw[thick] (\R-0.32,-0.38) -- (\R+0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\R+\x,-0.38) -- (\R+\x-0.10,-0.52);
+				}
+				
+				% perni A, B, D
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (-\R,0) {};
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (\R,0) {};
+				\node[circle, fill=white, draw=black, inner sep=0pt,
+				minimum size=5pt, line width=0.8pt] at (0,\R) {};
+				
+				% etichette punti
+				\node[left=4pt, font=\scriptsize] at (-\R,-0.)
+				{$A \!\equiv\! O_1$};
+				\node[left=4pt, font=\scriptsize] at (\R,-0.)
+				{$B \!\equiv\! O_2$};
+				\node[above, font=\scriptsize] at (0,\R+0.10) {$D$};
+				
+				% etichette corpi (esterne all'arco, lungo i raggi a 135° e 45°)
+				\node[font=\small] at ({(\R+0.30)*cos(135)},{(\R+0.30)*sin(135)})
+				{$\mathcal{C}_1$};
+				\node[font=\small] at ({(\R+0.30)*cos(45)},{(\R+0.30)*sin(45)})
+				{$\mathcal{C}_2$};
+				
+				
+				% parametri di C_1 (in A)
+				% u(O_1) orizzontale verso destra
+				\draw[->, thick] (-\R,0.0) -- (-\R+\arr+0.15,0.0)
+				node[right, font=\scriptsize] {$u(O_1)$};
+				% v(O_1) verticale verso l'alto (decentrato a sinistra)
+				\draw[->, thick] (-\R-0.05,0) -- (-\R-0.05,\arr+0.15)
+				node[left,  yshift=-5pt, font=\scriptsize] {$v(O_1)$};
+				% vartheta_1 antiorario attorno a O_1 (traslato verso l'alto)
+				\draw[->, thick]
+				(-\R+\rt,0.10) arc[start angle=0, end angle=75, radius=\rt];
+				\node[font=\scriptsize] at ({-\R+0.1+0.65*cos(45)},{0.06+0.65*sin(45)})
+				{$\vartheta_1$};
+				
+				% parametri di C_2 (in B)
+				% u(O_2) orizzontale verso destra
+				\draw[->, thick] (\R,0.0) -- (\R+\arr+0.15,0.0)
+				node[right, font=\scriptsize] {$u(O_2)$};
+				% v(O_2) verticale verso l'alto (decentrato a sinistra)
+				\draw[->, thick] (\R+0.05,0) -- (\R+0.05,\arr+0.15)
+				node[left, yshift=-5pt, font=\scriptsize] {$v(O_2)$};
+				% vartheta_2 antiorario attorno a O_2 (traslato verso l'alto)
+				\draw[->, thick]
+				(\R+\rt,0.10) arc[start angle=0, end angle=75, radius=\rt];
+				\node[font=\scriptsize] at ({\R+0.1+0.65*cos(45)},{0.06+0.65*sin(45)})
+				{$\vartheta_2$};
+				
+				% etichetta pannello
+				\node[font=\scriptsize] at (0,-1.0) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Arco a tre cerniere
+			(\ESEref{ex:arco_cedimenti}):
+			\emph{(a)}~dati del problema cinematico ---
+			cedimenti in $A$ ($s_1$ orizzontale, $s_2$
+			verticale) e cedimenti relativi in $D$
+			($s_3$ orizzontale, $s_4$ verticale); le
+			frecce indicano il verso positivo dei
+			cedimenti assegnati.
+			\emph{(b)}~parametri di configurazione ---
+			spostamenti $u(O_1)$, $v(O_1)$ e rotazione
+			$\vartheta_1$ del polo $O_1\equiv A$;
+			spostamenti $u(O_2)$, $v(O_2)$ e rotazione
+			$\vartheta_2$ del polo $O_2\equiv B$; le
+			frecce indicano il verso positivo delle
+			incognite.}
+		\label{fig:arco_problema}
+	\end{figure}

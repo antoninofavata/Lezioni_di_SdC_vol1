@@ -1,0 +1,65 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.86\textwidth}{!}{%
+				\begin{tikzpicture}[
+					scale=0.72,
+					asta/.style={line width=1.3pt, line cap=round, line join=round, black},
+					nodo/.style={circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=1.0pt},
+					quota/.style={thin, gray, {Stealth[length=4pt,width=3pt]}-{Stealth[length=4pt,width=3pt]}},
+					tacca/.style={thin, gray, line cap=round},
+					forza/.style={->, >=stealth, line width=1.4pt, black},
+					lab/.style={font=\small},
+					]
+					\def\dd{2.6}\def\hh{2.6}
+					\foreach \i in {0,1,2,3,4}{ \coordinate (E\i) at ({\i*\dd},\hh); \coordinate (I\i) at ({\i*\dd},0); }
+					\foreach \i in {1,2,3,4}{ \coordinate (M\i) at ({\i*\dd},{\hh/2}); }
+					\useasboundingbox (-1.5,-2.6) rectangle ({4*\dd+1.5},{\hh+1.9});
+					
+					\draw[asta](E0)--(E1)--(E2)--(E3)--(E4);
+					\draw[asta](I0)--(I1)--(I2)--(I3)--(I4);
+					\draw[asta](E0)--(I0);
+					\foreach \i in {1,2,3,4}{\pgfmathtruncatemacro{\p}{\i-1}
+						\draw[asta](E\i)--(M\i); \draw[asta](M\i)--(I\i);
+						\draw[asta](M\i)--(E\p); \draw[asta](M\i)--(I\p);}
+					
+					%% cerniera in I0
+					\draw[line width=1.1pt](I0)--++(-0.35,-0.55)--++(0.7,0)--cycle;
+					\draw[line width=1.1pt]($(I0)+(-0.48,-0.55)$)--($(I0)+(0.48,-0.55)$);
+					\foreach \x in {-0.40,-0.22,-0.04,0.14,0.32}\draw[thin]($(I0)+(\x,-0.55)$)--++(-0.16,-0.20);
+					%% carrello in I4
+					\draw[line width=1.1pt](I4)--++(-0.35,-0.45)--++(0.7,0)--cycle;
+					\draw[line width=1.1pt]($(I4)+(-0.45,-0.45)$)--($(I4)+(0.45,-0.45)$);
+					\draw[line width=1.1pt]($(I4)+(-0.22,-0.58)$)circle(3pt);
+					\draw[line width=1.1pt]($(I4)+( 0.22,-0.58)$)circle(3pt);
+					\draw[line width=1.1pt]($(I4)+(-0.48,-0.73)$)--($(I4)+(0.48,-0.73)$);
+					\foreach \x in {-0.40,-0.22,-0.04,0.14,0.32}\draw[thin]($(I4)+(\x,-0.73)$)--++(-0.16,-0.20);
+					
+					%% carichi F
+					\foreach \i in {1,2,3}{ \draw[forza](I\i)--($(I\i)+(0,-1.15)$); \node[below,lab]at($(I\i)+(0,-1.15)$){$F$}; }
+					
+					\foreach \i in {0,1,2,3,4}{ \node[nodo]at(E\i){}; \node[nodo]at(I\i){}; }
+					\foreach \i in {1,2,3,4}{ \node[nodo]at(M\i){}; }
+					
+					\foreach \i in {0,1,2,3,4}{ \node[lab,above=2pt]at(E\i){$E_\i$}; }
+					\foreach \i in {1,2,3}{ \node[lab,below left=-2pt]at(I\i){$I_\i$}; }
+					\node[lab,left=2pt]at(I0){$I_0$};
+					\node[lab,right=2pt]at(I4){$I_4$};
+					\foreach \i in {1,2,3,4}{ \node[lab,right=2pt]at(M\i){$M_\i$}; }
+					
+					%% quote orizzontali con tacche
+					\foreach \i in {0,1,2,3}{ \pgfmathsetmacro{\xa}{\i*\dd}\pgfmathsetmacro{\xb}{(\i+1)*\dd}
+						\draw[quota]({\xa},{\hh+0.9})--node[above,font=\small]{$d$}({\xb},{\hh+0.9}); }
+					\foreach \i in {0,1,2,3,4}{ \draw[tacca]({\i*\dd},{\hh+0.77})--({\i*\dd},{\hh+1.03}); }
+					%% quota verticale h con tacche
+					\draw[quota](-0.85,0)--node[left,font=\small]{$d$}(-0.85,\hh);
+					\draw[tacca](-0.98,0)--(-0.72,0);
+					\draw[tacca](-0.98,\hh)--(-0.72,\hh);
+				\end{tikzpicture}
+			}
+			\caption{Travatura a $K$ a quattro celle
+				quadrate di lato $d$; i nodi di mezzeria $M_i$
+				stanno a metà altezza dei montanti. Cerniera in
+				$I_0$, carrello in $I_4$, carichi $F$ ai nodi
+				d'intradosso interni.}
+			\label{fig:ktruss_schema}
+		\end{figure}

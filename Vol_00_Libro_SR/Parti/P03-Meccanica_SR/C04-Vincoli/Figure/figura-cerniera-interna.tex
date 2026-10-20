@@ -1,0 +1,145 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.85]
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (a) — Prestazione cinematica della cerniera interna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=0cm]
+			
+			%% ── Parametri ──
+			\pgfmathsetmacro{\rn}{0.15}
+			\def\xA{0.00}
+			\def\yA{0.00}
+			
+			%% ── Corpo C_i (bordo destro tangente al pallino) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(-0.15, 0.50) (-0.30, 0.85) (-0.65, 1.10) (-1.35, 1.40) 
+				(-2.15, 1.20) (-2.55, 0.50) (-2.55, -0.50)
+				(-2.15, -1.20) (-1.35, -1.40) (-0.65, -1.10) 
+				(-0.30, -0.85) (-0.15, -0.50)};
+			\node at (-1.55, 0.0) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (bordo sinistro tangente al pallino) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.15, 0.50) (0.30, 0.85) (0.65, 1.10) (1.35, 1.40) 
+				(2.15, 1.20) (2.55, 0.50) (2.55, -0.50)
+				(2.15, -1.20) (1.35, -1.40) (0.65, -1.10) 
+				(0.30, -0.85) (0.15, -0.50)};
+			\node at (1.55, 0.0) {$\mathcal{C}_j$};
+			
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (\xA, \yA) circle (\rn);
+			
+			%% ── Etichette dei punti di applicazione A_i, A_j ──
+			\node[font=\footnotesize, anchor=south east] at ({-\rn-0.02}, 0.05) {$A_i$};
+			\node[font=\footnotesize, anchor=south west] at ({\rn-0.02}, 0.0) {$A_j$};
+			
+			
+			%% ── Equazione di vincolo (in alto) ──
+			\node[font=\small] at (0.00, 1.80) 	{$\ub(A_j) - \ub(A_i) = \zerovb$};
+			
+			%% ── Archi delle rotazioni ϑ_i, ϑ_j (semicerchio, 180°) ──
+			\def\rrot{0.30}
+			
+			%% ── Etichetta del centro di rotazione relativo (in basso) ──
+			\node[font=\footnotesize] 
+			at (0.00, -1.80) 
+			{$C_{ij} \equiv A_i \equiv A_j$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0.00, -2.30) {$(a)$};
+			
+		\end{scope}
+		
+		% ═══════════════════════════════════════════════════════════
+		% PANNELLO (b) — Prestazione statica della cerniera interna
+		% ═══════════════════════════════════════════════════════════
+		\begin{scope}[xshift=8cm]
+			
+			%% ── Parametri (identici ad (a)) ──
+			\pgfmathsetmacro{\rn}{0.15}
+			\def\xA{0.00}
+			\def\yA{0.00}
+			
+			%% ── Corpo C_i (identico ad (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(-0.15, 0.50) (-0.30, 0.85) (-0.65, 1.10) (-1.35, 1.40) 
+				(-2.15, 1.20) (-2.55, 0.50) (-2.55, -0.50)
+				(-2.15, -1.20) (-1.35, -1.40) (-0.65, -1.10) 
+				(-0.30, -0.85) (-0.15, -0.50)};
+			\node at (-1.55, 0.60) {$\mathcal{C}_i$};
+			
+			%% ── Corpo C_j (identico ad (a)) ──
+			\draw[line width=1pt] 
+			plot[smooth cycle, tension=0.7] coordinates 
+			{(0.15, 0.50) (0.30, 0.85) (0.65, 1.10) (1.35, 1.40) 
+				(2.15, 1.20) (2.55, 0.50) (2.55, -0.50)
+				(2.15, -1.20) (1.35, -1.40) (0.65, -1.10) 
+				(0.30, -0.85) (0.15, -0.50)};
+			\node at (1.55, 0.60) {$\mathcal{C}_j$};
+			
+			%% ── Pallino della cerniera in A ──
+			\draw[line width=0.8pt, fill=white] (\xA, \yA) circle (\rn);
+			
+			%% ── Etichette A_i, A_j (identiche ad (a)) ──
+			\node[font=\footnotesize, anchor=south east] 
+			at ({-\rn-0.02}, 0.05) {$A_i$};
+			\node[font=\footnotesize, anchor=south west] 
+			at ({\rn-0.02}, 0.0) {$A_j$};
+			
+			%% ──────────────────────────────────────────────────
+			%% REAZIONI: 4 frecce, azione e reazione
+			%% ──────────────────────────────────────────────────
+			
+			%% Forze applicate a C_i (lato sinistro): -X(A) a_x, -Y(A) a_y
+			% Componente orizzontale: da A verso sinistra
+			\draw[->, line width=1.4pt] ({-\rn}, 0) -- ({-\rn-1.05}, 0);
+			\node[anchor=north, font=\small] at ({-\rn-1.10}, -0.1) {$-X(A)\,\ab_x$};
+			% Componente verticale: da A verso il basso
+			\draw[->, line width=1.4pt] (-0.05, {-\rn}) -- (-0.05, {-\rn-1.0});
+			\node[anchor=north, font=\small] at (0, {-\rn-1.10}) {$-Y(A)\,\ab_y$};
+			
+			%% Forze applicate a C_j (lato destro): +X(A) a_x, +Y(A) a_y
+			% Componente orizzontale: da A verso destra
+			\draw[->, line width=1.4pt] ({\rn}, 0) -- ({\rn+1.05}, 0);
+			\node[anchor=north, font=\small] at ({\rn+1.10}, -0.1) {$X(A)\,\ab_x$};
+			% Componente verticale: da A verso l'alto
+			\draw[->, line width=1.4pt] (0.05, {\rn}) -- (0.05, {\rn+1.0});
+			\node[anchor=south, font=\small] at (0, {\rn+1.10}) {$Y(A)\,\ab_y$};
+			
+			%% ── Terna x, y in basso a sinistra ──
+			\draw[->, line width=0.8pt] (-3.20, -1.80) -- (-2.40, -1.80);
+			\node[anchor=west, font=\footnotesize] at (-2.40, -1.85) {$x$};
+			\draw[->, line width=0.8pt] (-3.20, -1.80) -- (-3.20, -1.00);
+			\node[anchor=south, font=\footnotesize] at (-3.20, -1.00) {$y$};
+			
+			%% ── Etichetta pannello ──
+			\node[anchor=north, font=\small] 
+			at (0.00, -2.30) {$(b)$};
+			
+		\end{scope}
+		
+	\end{tikzpicture}
+	\caption[Cerniera interna fra due corpi: prestazioni cinematica e statica.]{%
+		Cerniera interna fra i corpi $\mathcal{C}_i$ e
+		$\mathcal{C}_j$, applicata nel punto $A$ che si identifica
+		con i punti di applicazione $A_i \in \mathcal{C}_i$ e
+		$A_j \in \mathcal{C}_j$. Prestazione cinematica (a):
+		l'equazione di vincolo $\ub(A_j) - \ub(A_i) = \zerovb$
+		impone l'uguaglianza degli spostamenti dei due corpi in
+		$A$; le rotazioni dei due corpi restano libere e non sono
+		rappresentate. Il \CRr\ coincide con il punto di
+		applicazione, $C_{ij} \equiv A_i \equiv A_j$.
+		Prestazione statica (b): i due corpi si scambiano una
+		forza generica $X(A)\,\ab_x + Y(A)\,\ab_y$ applicata in
+		$A$, in dualità con le due componenti di spostamento
+		relativo bloccate; la coppia scambiata è identicamente
+		nulla, in accordo con la molteplicità due.}
+	\label{fig:cerniera_interna}
+\end{figure}

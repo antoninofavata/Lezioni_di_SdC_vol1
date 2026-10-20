@@ -1,0 +1,65 @@
+\begin{figure}[htbp]
+	\centering
+	\subfloat[][\emph{traslazione lungo la linea d'azione}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+			% linea d'azione (direzione di fb_k)
+			\draw[dashed] (0,0) -- (4.5,2.25);
+			% punto Pk
+			\fill (1,0.5) circle (1.5pt) node[below right] {$P_k$};
+			% forza in Pk
+			\draw[->, thick] (1,0.5) -- (2.6,1.3)
+			node[above left] {$\fb_k$};
+			% punto Pk' più avanti sulla stessa retta
+			\fill (3,1.5) circle (1.5pt) node[below right] {$P_k'$};
+			% forza in Pk'
+			\draw[->, thick] (3,1.5) -- (4.6,2.3)
+			node[above left] {$\fb_k$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{composizione di forze concorrenti}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+			% punto di concorrenza P
+			\fill (2,1.5) circle (1.5pt) node[above right] {$P$};
+			% linee d'azione
+			\draw[dashed] (0,0) -- (2,1.5);
+			\draw[dashed] (4,0) -- (2,1.5);
+			% forze f1 e f2 dirette verso P
+			\draw[->, thick] (0.6,0.45) -- (2,1.5)
+			node[midway, left] {$\fb_1$};
+			\draw[->, thick] (3.4,0.45) -- (2,1.5)
+			node[midway, right] {$\fb_2$};
+			% risultante in P
+			\draw[->, thick] (2,1.5) -- (2,3.0)
+			node[right] {$\fb_1+\fb_2$};
+	\end{tikzpicture}}
+	\qquad
+	\subfloat[][\emph{decomposizione di una forza}]{%
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+			% punto P
+			\fill (1.5,1.0) circle (1.5pt) node[below right] {$P$};
+			% forza risultante f
+			\draw[->, thick] (1.5,1.0) -- (3.3,2.5)
+			node[above right] {$\fb$};
+			% componente f1 (orizzontale)
+			\draw[->, thick] (1.5,1.0) -- (3.3,1.0)
+			node[below] {$\fb_1$};
+			% componente f2 (verticale)
+			\draw[->, thick] (1.5,1.0) -- (1.5,2.5)
+			node[left] {$\fb_2$};
+			% parallelogramma tratteggiato
+			\draw[dashed] (3.3,1.0) -- (3.3,2.5);
+			\draw[dashed] (1.5,2.5) -- (3.3,2.5);
+	\end{tikzpicture}}
+	\caption{Operazioni elementari di equivalenza (I).
+		\textbf{\textit{(a)}}~Traslazione della forza $\fb_k$
+		lungo la propria linea d'azione da $P_k$ a $P_k'$:
+		risultante e momento risultante restano invariati.
+		\textbf{\textit{(b)}}~Composizione di due forze
+		concorrenti in $P$: il sistema è equivalente alla
+		risultante $\fb_1+\fb_2$ applicata in $P$.
+		\textbf{\textit{(c)}}~Decomposizione della forza $\fb$
+		applicata in $P$ nelle componenti $\fb_1$ e $\fb_2$
+		secondo due direzioni indipendenti: operazione inversa
+		alla composizione.}
+	\label{fig:operazioni_elementari_1}
+\end{figure}

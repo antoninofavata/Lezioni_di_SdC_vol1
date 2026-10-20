@@ -1,0 +1,135 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		corrC/.style={line width=2.0pt, line cap=round, line join=round, black},
+		corrT/.style={line width=0.8pt,  line cap=round, line join=round, black},
+		punt/.style={line width=1.8pt,  line cap=round, line join=round, black},
+		staf/.style={line width=0.8pt,  line cap=round, line join=round, black},
+		vett/.style={-{Stealth[length=5pt,width=4pt]}, line width=1.0pt, black},
+		forza/.style={-{Stealth[length=5pt,width=4pt]}, line width=0.9pt, black},
+		quota/.style={<->, >=stealth, very thin, gray!70},
+		lab/.style={font=\small},
+		labs/.style={font=\scriptsize},
+		]
+		
+		%% theta=45, alpha=60, d=1.60
+		\def\d{1.60}
+		\pgfmathsetmacro{\bh}{\d*1.0000}   % d*cot(theta)=1.60
+		\pgfmathsetmacro{\ah}{\d*0.5774}   % d*cot(alpha)=0.924
+		
+		%% Nodi maglia elementare
+		\coordinate (I0) at (0,    0);
+		\coordinate (I1) at (\bh+\ah, 0);
+		\coordinate (S0) at (0,    \d);
+		\coordinate (S1) at (\bh+\ah, \d);
+		\coordinate (Sp) at (\bh,  \d);   % nodo comune puntone-staffa (in alto)
+		
+		%%── PANNELLO SINISTRO: maglia elementare ────────────────────────
+		%% riquadro grigio chiaro
+		\fill[gray!12,rounded corners=2pt]
+		(-0.12,-0.18)rectangle(\bh+\ah+0.12,{\d+0.18});
+		\draw[gray!40,line width=0.5pt,rounded corners=2pt]
+		(-0.12,-0.18)rectangle(\bh+\ah+0.12,{\d+0.18});
+		
+		%% correnti (con prolungamenti)
+		\draw[corrC]($(S0)+(-0.30,0)$)--($(S1)+(0.30,0)$);
+		\draw[corrT]($(I0)+(-0.60,0)$)--($(I1)+(0.60,0)$);
+		
+		%% puntone: I0 -> Sp  (compresso, spesso)
+		\draw[punt](I0)--(Sp);
+		
+		%% staffa: Sp -> I1  (tesa, sottile)
+		\draw[staf](Sp)--(I1);
+		
+		%% nodi
+		\foreach \pt in {I0,I1,Sp}{\fill(\pt)circle(2.2pt);}
+		
+		%% frecce sforzo corrente superiore (compressione: frecce verso l'interno del nodo)
+		\draw[forza]($(S0)+(-0.90,0)$)--($(S0)+(-0.35,0)$);
+		\draw[forza]($(S1)+(0.90,0)$)--($(S1)+(0.35,0)$);
+		\node[above,labs]at($(S0)+(-0.72,0)$){$N$};
+		\node[above,labs]at($(S1)+(0.76,0)$){$N{+}\Delta N$};
+		
+		%% frecce sforzo corrente inferiore (trazione: frecce verso l'esterno del nodo)
+		\draw[forza]($(I0)+(-0.35,0)$)--($(I0)+(-0.90,0)$);
+		\draw[forza]($(I1)+(0.35,0)$)--($(I1)+(0.90,0)$);
+		\node[below,labs]at($(I0)+(-0.72,0)$){$N$};
+		\node[below,labs]at($(I1)+(0.76,0)$){$N{+}\Delta N$};
+		
+		%% quota d
+		\draw[quota](-0.95,0)--(-0.95,\d)node[midway,left,lab]{$d$};
+		
+		%% angolo theta in I0
+		\draw[very thin,gray!60](I0)--++(0.50,0);
+		\draw[thin,gray!60]($(I0)+(0.38,0)$) arc(0:{atan(\d/\bh)}:0.38);
+		\node[labs]at($(I0)+(0.50,0.18)$){$\vartheta$};
+		
+		%% angolo alpha in Sp
+		\draw[very thin,gray!60](Sp)--++(0.50,0);
+		\draw[thin,gray!60]($(Sp)+(0.38,0)$) arc(0:{-atan(\d/\ah)}:0.38);
+		\node[labs]at($(Sp)+(0.50,-0.22)$){$\alpha$};
+		
+		%%── PANNELLO DESTRO: triangolo delle forze (equilibrio al nodo Sp) ──
+		%% Forze su Sp:
+		%%   DeltaN: orizzontale verso SINISTRA (squilibrio compressione corrente sup)
+		%%   N_p: verso DESTRA-ALTO a theta (puntone compresso spinge Sp via da I0)
+		%%   N_s: verso DESTRA-BASSO a alpha (staffa tesa tira Sp verso I1)
+		%%
+		%% Poligono chiuso: O --(DeltaN sinistra)--> A --(Np su-destra theta)--> B --(Ns giu-destra alpha)--> O
+		
+		\def\OX{6.60}
+		\def\DN{2.20}   % lunghezza DeltaN
+		
+		\pgfmathsetmacro{\Np}{\DN*sin(60)/sin(105)}   % N_p = DN*sin(alpha)/sin(theta+alpha)
+		\pgfmathsetmacro{\Ns}{\DN*sin(45)/sin(105)}   % N_s = DN*sin(theta)/sin(theta+alpha)
+		
+		%% Vertici:
+		%% O = (OX, 0) — inizio DeltaN / fine N_s
+		%% A = (OX-DN, 0) — fine DeltaN / inizio N_p
+		%% B = A + Np*(cos45, sin45)
+		\pgfmathsetmacro{\Bx}{\OX - \DN + \Np*cos(45)}
+		\pgfmathsetmacro{\By}{\Np*sin(45)}
+		
+		\coordinate (TO) at (\OX, -0.0);
+		\coordinate (TA) at (\OX-\DN, -0.0);
+		\coordinate (TB) at (\Bx, \By-0.0);
+		
+		%% lati con frecce
+		\draw[vett](TO)--(TA);          % DeltaN verso sinistra
+		\draw[vett](TA)--(TB);          % N_p verso destra-alto (theta)
+		\draw[vett](TB)--(TO);          % N_s verso destra-basso (alpha)
+		
+		%% etichette lati
+		\node[below,lab]at($(TO)!0.5!(TA)+(0,-0.08)$){$\Delta N$};
+		\node[left=0.04,lab]at($(TA)!0.5!(TB)$){$N_p$};
+		\node[right=0.04,lab]at($(TB)!0.5!(TO)$){$N_s$};
+		
+		%% angolo theta in A (tra AO direzione destra e AB direzione su-destra)
+		\draw[thin,gray!60]($(TA)+(0.38,0)$) arc(0:45:0.38);
+		\node[labs]at($(TA)+(0.50,0.18)$){$\vartheta$};
+		
+		%% angolo alpha in O (tra OA direzione sinistra e OB direzione su-sinistra)
+		%% direzione da O verso B: angolo = atan(By/(Bx-OX))
+		\pgfmathsetmacro{\angOB}{atan((\By)/(\Bx-\OX))+180}
+		\draw[thin,gray!60]($(TO)+(-0.38,0)$) arc(180:{\angOB}:0.38);
+		\node[labs]at($(TO)+(-0.50,0.22)$){$\alpha$};
+		
+		%% angolo al vertice B
+		\node[labs,above=0.06]at(TB){$\pi{-}(\vartheta{+}\alpha)$};
+		
+	\end{tikzpicture}
+	\caption{Maglia elementare del traliccio di Ritter-Mörsch
+		e poligono delle forze al nodo del corrente superiore.
+		\emph{Pannello sinistro}: la variazione di sforzo
+		$\Delta N$ nei correnti --- uguale in valore assoluto
+		nel corrente superiore compresso e in quello inferiore
+		teso --- deve essere equilibrata dalle componenti
+		orizzontali del puntone (tratto spesso, angolo
+		$\vartheta$) e della staffa (tratto sottile, angolo
+		$\alpha$).
+		\emph{Pannello destro}: poligono chiuso delle forze
+		al nodo; l'angolo al vertice opposto a $\Delta N$
+		vale $\pi - (\vartheta+\alpha)$, donde per il
+		teorema dei seni le~\eqref{eq:Np_Ns}.}
+	\label{fig:maglia_Morsch}
+\end{figure}

@@ -1,0 +1,93 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.85\textwidth}{!}{%
+				\begin{tikzpicture}[>=Stealth, line width=0.8pt,
+					forza/.style={line width=0.8pt},          % tratto semplice: la freccia e' manuale (alette)
+					carico/.style={->, line width=0.8pt},      % forze concentrate P
+					quota/.style={line width=0.4pt},
+					hatch/.style={line width=0.3pt, gray!50},
+					rif/.style={line width=0.5pt}]
+					
+					\def\Lell{3.6}\def\Lc{1.2}\def\Ld{2.4}
+					\def\rCoppia{0.24}\def\Lwing{0.12}\def\AoffX{0.20}\def\BoffX{0.20}
+					
+					% --- vincoli e indicatore pi/4 (sposta nel preambolo se vuoi) ---
+					\newcommand\incastro[1]{%
+						\draw[line width=1.0pt] (#1)+(0,-0.34) -- ($(#1)+(0,0.34)$);
+						\foreach \yy in {-0.30,-0.18,-0.06,0.06,0.18,0.30}{\draw[hatch] ($(#1)+(0,\yy)$) -- ($(#1)+(-0.16,\yy-0.16)$);}}
+					\newcommand\cerniera[1]{%
+						\begin{scope}[shift={(#1)}]
+							\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+							\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch] (\x,-0.38) -- (\x-0.12,-0.52);}
+						\end{scope}
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (#1) {};}
+					\newcommand\carrelloincl[1]{%
+						\begin{scope}[shift={(#1)}, rotate=45]
+							\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+							\draw[thick] (-0.15,-0.45) circle (0.06); \draw[thick] (0.15,-0.45) circle (0.06);
+							\draw[thick] (-0.32,-0.53) -- (0.32,-0.53);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch] (\x,-0.53) -- (\x-0.12,-0.67);}
+						\end{scope}
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (#1) {};}
+					\newcommand\glifoincl[1]{%
+						\begin{scope}[shift={(#1)}, rotate=45]
+							\draw[thick] (-0.40,-0.11) -- (0.40,-0.11); \draw[thick] (-0.40,0.11) -- (0.40,0.11);
+							\draw[thick] (-0.16,0) circle (0.085); \draw[thick] (0.16,0) circle (0.085);
+							\foreach \x in {-0.32,-0.16,0,0.16,0.32}{\draw[hatch] (\x,-0.11) -- (\x-0.12,-0.25);}
+					\end{scope}}
+					\newcommand\pianoincl[1]{%
+						\draw[rif, gray!60] (#1) -- ($(#1)+(0.9,0)$);   % prolungamento asse trave (riferimento per \pi/4)
+						\draw[rif, gray!60] (#1) -- ($(#1)+(45:0.9)$);
+						\draw[gray!60] ($(#1)+(0.62,0)$) arc (0:45:0.62);
+						\node[gray!80, font=\scriptsize] at ($(#1)+(0.86,0.30)$) {$\pi/4$};}
+					
+					% ---- coppie: template fig:stat_trasv_iso_07 (antiorarie) ----
+					\def\coppiaA#1{%
+						\draw[forza] (\AoffX,-\rCoppia) arc[start angle=-90, end angle=90, radius=\rCoppia];
+						\draw[forza] (\AoffX,\rCoppia) -- ({\AoffX+\Lwing*cos(25)},{\rCoppia+\Lwing*sin(25)});
+						\draw[forza] (\AoffX,\rCoppia) -- ({\AoffX+\Lwing*cos(-25)},{\rCoppia+\Lwing*sin(-25)});
+						\node[font=\footnotesize] at (\AoffX+0.28,\rCoppia+0.06) {#1};}
+					\def\coppiaB#1{%
+						\draw[forza] (\Lell-\BoffX,\rCoppia) arc[start angle=90, end angle=270, radius=\rCoppia];
+						\draw[forza] (\Lell-\BoffX,-\rCoppia) -- ({\Lell-\BoffX+\Lwing*cos(155)},{-\rCoppia+\Lwing*sin(155)});
+						\draw[forza] (\Lell-\BoffX,-\rCoppia) -- ({\Lell-\BoffX+\Lwing*cos(205)},{-\rCoppia+\Lwing*sin(205)});
+						\node[font=\footnotesize] at (\Lell-\BoffX-\rCoppia-0.10,-0.30) {#1};}
+					
+					% ===================== (a) trave reale: incastro + glifo =====================
+					\begin{scope}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\draw[gray!55, dashed, line width=0.4pt] (0,-0.07) -- (\Lell,-0.07);   % fibre inferiori (M>0)
+						\incastro{0,0} \glifoincl{\Lell,0} \pianoincl{\Lell,0}
+						\node[font=\small] at (0.14,0.24) {$A$};
+						\node[font=\small] at (\Lell-0.16,0.26) {$B$};
+						% carichi P: sopra la trave, punta al bordo superiore
+						\draw[carico] (\Lc,0.52) -- (\Lc,0.04); \node[font=\small,right] at (\Lc,0.32) {$P$};
+						\draw[carico] (\Ld,0.52) -- (\Ld,0.04); \node[font=\small,right] at (\Ld,0.32) {$P$};
+						% quotatura posizioni, estesa A--B in tre tratti \ell/3
+						\foreach \xx in {0,\Lc,\Ld,\Lell}{\draw[quota] (\xx,-0.16) -- (\xx,-0.74);}
+						\draw[quota,<->] (0,-0.64)    -- (\Lc,-0.64);   \node[font=\scriptsize,below] at (\Lc/2,-0.62) {$\ell/3$};
+						\draw[quota,<->] (\Lc,-0.64)  -- (\Ld,-0.64);   \node[font=\scriptsize,below] at ({(\Lc+\Ld)/2},-0.62) {$\ell/3$};
+						\draw[quota,<->] (\Ld,-0.64)  -- (\Lell,-0.64); \node[font=\scriptsize,below] at ({(\Ld+\Lell)/2},-0.62) {$\ell/3$};
+						\node[font=\small] at (\Lell/2,-1.35) {(a)};
+					\end{scope}
+					% ================= (b) sistema principale: cerniera + carrello =================
+					\begin{scope}[xshift=5.4cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\draw[gray!55, dashed, line width=0.4pt] (0,-0.07) -- (\Lell,-0.07);   % fibre inferiori (M>0)
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						\node[font=\small] at (-0.05,0.28) {$A$};
+						\node[font=\small] at (\Lell,0.26) {$B$};
+						\coppiaA{$\chi_1$}
+						\coppiaB{$\chi_2$}
+						\draw[carico] (\Lc,0.52) -- (\Lc,0.04); \node[font=\small,right] at (\Lc,0.32) {$P$};
+						\draw[carico] (\Ld,0.52) -- (\Ld,0.04); \node[font=\small,right] at (\Ld,0.32) {$P$};
+						\node[font=\small] at (\Lell/2,-1.35) {(b)};
+					\end{scope}
+				\end{tikzpicture}
+			}
+			\caption{Trave iperstatica con glifo
+				inclinato (a) e sistema principale
+				scelto (b).}
+			\label{fig:stat_misto_iper_01}
+		\end{figure}

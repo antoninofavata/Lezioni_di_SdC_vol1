@@ -1,0 +1,74 @@
+\begin{figure}[!htbp]
+	\centering
+	\def\ax{0.5}\def\ay{0.30}
+	\providecommand{\xyz}[3]{{#2 + (#1)*\ax},{#3 + (#1)*\ay}}
+	\providecommand{\rightangle}[3]{%
+		\coordinate (ra1) at ($(#2)!2.4mm!(#1)$);
+		\coordinate (ra3) at ($(#2)!2.4mm!(#3)$);
+		\draw[line width=0.5pt] (ra1) -- ($(ra1)+(ra3)-(#2)$) -- (ra3);}
+	\begin{minipage}[b]{0.50\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.1]
+			% proiezione: x in avanti (basso-sinistra), y destra, z su
+			\def\ax{-0.65}\def\ay{-0.48}
+			
+			\def\az{0.7}                            % <1 = comprime in altezza
+			\renewcommand{\xyz}[3]{{#2 + (#1)*\ax},{(#3)*\az + (#1)*\ay}}
+			% componenti di P_k
+			\def\xk{1.4}\def\yk{2.6}\def\zk{2.0}
+			\coordinate (O)   at (\xyz{0}{0}{0});
+			\coordinate (Px)  at (\xyz{\xk}{0}{0});
+			\coordinate (Py)  at (\xyz{0}{\yk}{0});
+			\coordinate (Pxy) at (\xyz{\xk}{\yk}{0});
+			\coordinate (Pk)  at (\xyz{\xk}{\yk}{\zk});
+			
+			% --- scatola di decomposizione (base + verticale) ---
+			\draw[gray!55, thin] (O) -- (Px) -- (Pxy) -- (Py) -- cycle;
+			\draw[gray!55, thin] (Pxy) -- (Pk);
+			
+			% --- assi x,y,z ---
+			\draw[->, thin] (O) -- (\xyz{2.6}{0}{0}) node[below left=-2pt] {$x$};
+			\draw[->, thin] (O) -- (\xyz{0}{3.4}{0}) node[right]          {$y$};
+			\draw[->, thin] (O) -- (\xyz{0}{0}{2.9}) node[above]          {$z$};
+			
+			% --- vettore posizione OP_k ---
+			%				\draw[->, thin] (O) -- (Pk);
+			%				\node[font=\small, above left=-8pt, yshift=6pt] at ($(O)!0.42!(Pk)$) {$\overrightarrow{OP_k}$};
+			
+			% --- terna delle componenti di forza in P_k ---
+			\coordinate (Xt) at (\xyz{\xk+0.85}{\yk}{\zk});
+			\coordinate (Yt) at (\xyz{\xk}{\yk+0.85}{\zk});
+			\coordinate (Zt) at (\xyz{\xk}{\yk}{\zk+0.85});
+			\draw[->, thick] (Pk) -- (Xt) node[above=4pt, xshift=-2pt] {$v_x(P)$};
+			\draw[->, thick] (Pk) -- (Yt) node[right=-1pt] {$v_y(P)$};
+			\draw[->, thick] (Pk) -- (Zt) node[above=-1pt] {$v_z(P)$};
+			
+			% --- etichette componenti (spigoli O->Py->Pxy->Pk) ---
+			\node[font=\small, below=20pt, xshift=-20pt]      at ($(O)!0.5!(Py)$)   {$y(P)$};
+			\node[font=\small,  right=1pt, yshift=-6pt] at ($(Py)!0.5!(Pxy)$) {$x(P)$};
+			\node[font=\small, right, yshift=6pt]      at ($(Pxy)!0.5!(Pk)$) {$z(P)$};
+			
+			% --- punti ---
+			\fill (O)  circle (1.5pt) node[above left=-1pt]  {$O$};
+			\fill (Pk) circle (1.5pt) node[above right=-1pt] {$P$};
+			
+			
+			% ===== MOMENTI in O (interni, assiali ->> + ricciolo) =====
+			\coordinate (Mx) at (\xyz{1.2}{0}{0});
+			\coordinate (My) at (\xyz{0}{1.2}{0});
+			\coordinate (Mz) at (\xyz{0}{0}{1.4});
+			\draw[->>, thick] (O) -- (Mx);
+			%\draw[->, thin, rotate around={126:(Mx)}]([shift={(0.16,0)}]Mx) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
+			\node[font=\small, above,  xshift=-4pt, yshift=6pt] at (Mx) {$\bm{\upmu}_{x}(O)$};
+			\draw[->>, thick] (O) -- (My);
+			%\draw[->, thin, rotate around={-90:(My)}] ([shift={(0.16,0)}]My) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
+			\node[font=\small, below=-1pt, xshift=-6pt] at (My) {$\bm{\upmu}_{y}(O)$};
+			\draw[->>, thick] (O) -- (Mz);
+			%\draw[->, thin, rotate around={0:(Mz)}]	([shift={(0.16,0)}]Mz) arc[x radius=0.16, y radius=0.06, start angle=0, end angle=305];
+			\node[font=\small, left=1pt] at (Mz) {$\bm{\upmu}_{z}(O)$};
+			
+			
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Componenti del momento polare di $(P,\vb)$ rispetto al sistema cartesiano con origine nel polo $O$.}
+	\label{f:componenti_momento_polare}
+\end{figure}

@@ -1,0 +1,365 @@
+\begin{figure}[!htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[font=\small,
+			asta/.style={line width=0.9pt, line cap=round, line join=round, black},
+			cede/.style={line width=0.9pt, line cap=round, gray!55},
+			blocco/.style={line width=0.9pt, line join=round, fill=black!12},
+			nodo/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=4.5pt, line width=0.9pt},
+			quota/.style={<->, >={Latex[length=1.6mm]}, line width=0.5pt},
+			frec/.style={->, >={Latex[length=1.6mm]}, line width=0.8pt},
+			ext/.style={line width=0.3pt},
+			rif/.style={line width=0.4pt, dash pattern=on 2.5pt off 2pt, gray!80},
+			etich/.style={font=\small},
+			pan/.style={font=\small},
+			]
+			
+			\def\bw{1.8}   % larghezza blocchi
+			\def\bh{1.4}   % altezza blocchi (= h)
+			\def\gp{1.4}   % luce della sezione canonica
+			
+			%% =========================================================
+			%% (a.1) SEZIONE CANONICA INDEFORMATA
+			%% =========================================================
+			\begin{scope}[xshift=0cm, yshift=0cm]
+				\draw[blocco](-\bw,0) rectangle (0,\bh);
+				\draw[blocco](\gp,0) rectangle (\gp+\bw,\bh);
+				\draw[asta](0,\bh)--(\gp,\bh);
+				\draw[asta](0,0)--(\gp,0);
+				\draw[asta](0,\bh)--(\gp,0);
+				\foreach \p in {(0,0),(0,\bh),(\gp,0),(\gp,\bh)} \node[nodo]at\p{};
+				%\node[etich,above]at(0,\bh+0.10){$C$};
+				%% angolo alpha (configurazione indeformata): fra la diagonale e la
+				%% perpendicolare ai correnti (verticale per il nodo C)
+				\draw[rif](0,\bh)--(0,\bh-0.95);
+				\draw[line width=0.5pt](0,\bh)++(-90:0.78)	arc[start angle=-90, end angle=-45, radius=0.78];
+				
+				\node[etich]at(-0.5*\bw,0.5*\bh){$\mathcal{C}_L$};
+				\node[etich]at(\gp+0.5*\bw,0.5*\bh){$\mathcal{C}_R$};
+				
+				\node[etich]at($(0,\bh)+(-67:1.02)$){$\alpha$};
+			\end{scope}
+			
+			
+			%% =========================================================
+			%% (a.2) DISTORSIONE NEL CORRENTE INFERIORE: ROTAZIONE CCW
+			%% =========================================================
+			\begin{scope}[xshift=6.6cm, yshift=0cm]
+				\draw[blocco](-\bw,0) rectangle (0,\bh);
+				%% riferimento orizzontale (configurazione indeformata)
+				\draw[rif](0,0)--(\gp+\bw+0.45,0);
+				\begin{scope}[rotate around={9:(0,\bh)}]
+					\draw[blocco](\gp,0) rectangle (\gp+\bw,\bh);
+					\coordinate (TR) at (\gp,\bh);
+					\coordinate (BR) at (\gp,0);
+				\end{scope}
+				\draw[asta](0,\bh)--(TR);
+				\draw[asta](0,\bh)--(BR);
+				\draw[cede](0,0)--(BR);
+				%% frecce antagoniste della distorsione (sotto il corrente inferiore)
+				\coordinate (M) at ($(0,0)!0.5!(BR)+(0,-0.30)$);
+				\draw[frec]($(M)+(-0.06,0)$)--($(M)+(-0.40,-0.02)$);
+				\draw[frec]($(M)+( 0.06,0.01)$)--($(M)+( 0.40,0.04)$);
+				\node[etich,below]at($(M)+(0,-0.07)$){$\varrho_w$};
+				%% quota h (a sinistra)
+				\draw[ext](0,\bh)--(-\bw-0.50,\bh);
+				\draw[ext](0,0)--(-\bw-0.50,0);
+				\draw[quota](-\bw-0.40,0)--(-\bw-0.40,\bh)
+				node[midway,left,etich]{$d$};
+				%% angolo Delta-theta: fra la linea d'intradosso prolungata del
+				%% troncone sinistro (y=0) e il corrente inferiore che ha ruotato,
+				%% con vertice nel nodo d'appoggio sinistro				
+				\pgfmathsetmacro{\angBR}{atan2(0.236,1.602)}   % inclinazione del corrente ruotato
+				\def\Rarc{2.05}                                % raggio dell'archetto
+				\draw[->,line width=0.5pt](0,0)++(0:\Rarc)	arc[start angle=0, end angle=\angBR, radius=\Rarc];
+				\draw[<-, ext]($(0,0)+(0.5*\angBR:\Rarc)$)--(\gp+0.25,-0.45);
+				\node[etich,right]at(\gp+0.30,-0.52){$\Delta\vartheta=\dfrac{\varrho_w}{d}$};
+				\foreach \p in {(0,0),(0,\bh)} \node[nodo]at\p{};
+				\node[nodo]at(TR){};
+				\node[nodo]at(BR){};
+				\node[etich,above]at(0,\bh+0.10){$P^e\equiv C_{LR}$};
+			\end{scope}
+			
+			
+			%% =========================================================
+			%% (b.1) POLO IMPROPRIO: ASTE RESIDUE PARALLELE, TRASLAZIONE
+			%% =========================================================
+			\begin{scope}[xshift=0cm, yshift=-4.0cm]
+				\def\vt{0.50}  % traslazione verticale del troncone destro
+				\draw[blocco](-\bw,0) rectangle (0,\bh);
+				%% configurazione indeformata del troncone destro (riferimento)
+				\draw[rif](\gp,0) rectangle (\gp+\bw,\bh);
+				\draw[rif](0,\bh)--(\gp,\bh);
+				\draw[rif](0,0)--(\gp,0);
+				%% troncone destro traslato verso il basso
+				\begin{scope}[yshift=-\vt cm]
+					\draw[blocco](\gp,0) rectangle (\gp+\bw,\bh);
+					\coordinate (TRb) at (\gp,\bh);
+					\coordinate (BRb) at (\gp,0);
+				\end{scope}
+				\draw[asta](0,\bh)--(TRb);
+				\draw[asta](0,0)--(BRb);
+				
+				
+				%% diagonale distorta in configurazione INDEFORMATA: (0,h) -> (gp,0)
+				\draw[cede, dashed](0,\bh)--(\gp,0);
+				
+				\draw[cede](0,\bh)--(BRb);
+				%% frecce antagoniste lungo di essa (versore (gp,-h)/|...| = (0.658,-0.753))
+				\pgfmathsetmacro{\dL}{sqrt(\gp*\gp+\bh*\bh)}
+				\pgfmathsetmacro{\tbx}{\gp/\dL}
+				\pgfmathsetmacro{\tby}{-\bh/\dL}
+				
+				\coordinate (Mo) at ($(0,\bh)!0.5!(\gp,0)+(-0.18*\tby,0.18*\tbx)$);
+				
+				%\coordinate (Mo) at ($(0,\bh)!0.5!(\gp,0)+(0.26*\tby,-0.26*\tbx)$);
+				\draw[frec]($(Mo)+(-0.05*\tbx,-0.05*\tby)$)--($(Mo)+(-0.38*\tbx,-0.38*\tby)$);
+				\draw[frec]($(Mo)+( 0.05*\tbx, 0.05*\tby)$)--($(Mo)+( 0.38*\tbx, 0.38*\tby)$);
+				\node[etich]at($(Mo)+(-0.12,-0.16)$){$\varrho_w$};
+				
+				%\node[etich]at($(Mo)+(-0.14,-0.20)$){$\varrho_w$};
+				
+				\draw[rif](0,\bh)--(0,-0.30);
+				%				\draw[line width=0.5pt](0,\bh)++(-90:0.78)
+				%				arc[start angle=-90, end angle=-54, radius=0.78];
+				%\node[etich]at($(0,\bh)+(-67:1.02)$){$\alpha'$};
+				%% quota della traslazione (a destra)
+				\draw[ext](\gp+\bw,\bh)--(\gp+\bw+0.50,\bh);
+				\draw[ext](\gp+\bw,\bh-\vt)--(\gp+\bw+0.50,\bh-\vt);
+				\draw[quota](\gp+\bw+0.40,\bh)--(\gp+\bw+0.40,\bh-\vt)
+				node[midway,right,etich]{$\dfrac{\varrho_w}{\cos\alpha}$};
+				\foreach \p in {(0,0),(0,\bh)} \node[nodo]at\p{};
+				\node[nodo]at(TRb){};
+				\node[nodo]at(BRb){};
+				
+				%% --- nodo "prima" (indeformato) e cerchio di dettaglio attorno ai due nodi
+				%\draw[rif](\gp,0) circle(1.7pt);
+				\coordinate (Cdet) at (\gp,-0.5*\vt);
+				\draw[line width=0.5pt](Cdet) circle(0.42);
+				%% --- dettaglio ingrandito: scomposizione al vertice inferiore
+				\coordinate (Iorg) at (0.55,-1.20);
+				\draw[rif]($(Cdet)+(-128:0.42)$)--(Iorg);
+				\begin{scope}[shift={(Iorg)}]
+					\pgfmathsetmacro{\dang}{atan2(-\bh,\gp)}    % direzione diagonale indeformata
+					\pgfmathsetmacro{\aalpha}{90+\dang}         % angolo verticale-diagonale
+					\def\Lv{0.95}                                % traslazione disegnata (ipotenusa)
+					\pgfmathsetmacro{\Lrho}{\Lv*cos(\aalpha)}   % cateto rho_w
+					\coordinate (O)  at (0,0);
+					\coordinate (Vv) at (0,-\Lv);
+					\coordinate (Hh) at ($(O)+(\dang:\Lrho)$);
+					\draw[rif]($(O)+(\dang:-0.35)$)--($(O)+(\dang:\Lrho+0.30)$);
+					\draw[asta](O)--(Vv);
+					\draw[cede](O)--(Hh);
+					\draw[line width=0.5pt](Hh)--(Vv);
+					\coordinate (q1) at ($(Hh)!0.13!(O)$);
+					\coordinate (q2) at ($(Hh)!0.13!(Vv)$);
+					\draw[line width=0.3pt](q1)--($(q1)+(q2)-(Hh)$)--(q2);
+					%% centro relativo improprio: freccia orizzontale (direzione all'infinito)
+					\draw[->, line width=0.7pt](0.18,\bh+1.4)--(\gp-0.18,\bh+1.4);
+					\node[etich,above]at($(0.5*\gp,\bh+1.4)$){$P^e\equiv C_{L,R}^\infty$};
+					
+					\draw[line width=0.5pt](O)++(-90:0.34)	arc[start angle=-90, end angle=\dang, radius=0.34];
+					\node[etich]at($(O)+({0.5*(-90+\dang)}:0.58)+(-0.08,0.06)$){$\alpha$};
+					\node[etich]at($(O)!0.5!(Hh)+(0.22,0.16)$){$\varrho_w$};
+					\node[etich,left]at($(O)!0.5!(Vv)+(-0.05,0)$){$\dfrac{\varrho_w}{\cos\alpha}$};
+				\end{scope}
+			\end{scope}
+			
+			%% =========================================================
+			%% (b.2) DISTORSIONE NEL CORRENTE SUPERIORE: ROTAZIONE CW
+			%% =========================================================
+			\begin{scope}[xshift=6.6cm, yshift=-4.0cm]
+				\draw[blocco](-\bw,0) rectangle (0,\bh);
+				\begin{scope}[rotate around={-9:(\gp,0)}]
+					\draw[blocco](\gp,0) rectangle (\gp+\bw,\bh);
+					\coordinate (TRc) at (\gp,\bh);
+				\end{scope}
+				\draw[asta](0,0)--(\gp,0);
+				\draw[asta](0,\bh)--(\gp,0);
+				\draw[cede](0,\bh)--(TRc);
+				%% frecce antagoniste della distorsione (sopra il corrente superiore)
+				\coordinate (Mc) at ($(0,\bh)!0.5!(TRc)+(0,0.30)$);
+				\draw[frec]($(Mc)+(-0.06,0)$)--($(Mc)+(-0.40,0)$);
+				\draw[frec]($(Mc)+( 0.06,0)$)--($(Mc)+( 0.40,0)$);
+				\node[etich,above]at($(Mc)+(0,0.05)$){$\varrho_w$};
+				
+				%% estradosso del troncone sinistro, prolungato orizzontale
+				\draw[ext](0,\bh)--(\gp+\bw+0.75,\bh);
+				%% quota d: dal livello del polo C (y=0) all'estradosso (y=d)
+				\draw[ext](\gp,0)--(\gp+\bw+0.75,0);
+				\draw[quota](\gp+\bw+0.62,0)--(\gp+\bw+0.62,\bh)
+				node[midway,right,etich]{$d$};
+				%% angolo Delta-theta fra l'estradosso orizzontale e il bordo
+				%% superiore ruotato (vertice Vt sull'estradosso, y=h)
+				\coordinate (Vt) at ($(\gp,\bh)+(0.11,0)$);
+				\draw[->, line width=0.5pt](Vt)++(0:1.55) arc[start angle=0, end angle=-9, radius=1.55];
+				\draw[ext]($(Vt)+(-9:1.55)$)--($(Vt)+(1.45,0.70)$);
+				\node[etich,right]at($(Vt)+(1.40,0.63)$){$\Delta\vartheta=\dfrac{\varrho_w}{d}$};
+				
+				\foreach \p in {(0,0),(0,\bh),(\gp,0)} \node[nodo]at\p{};
+				\node[nodo]at(TRc){};
+				\node[etich,below]at(\gp,-0.12){$P^e \equiv C_{LR}$};
+			\end{scope}
+			
+			
+			%% =========================================================
+			%% (c) EFFETTO GLOBALE: cinematismo completo (cfr. fig:LI_reticolare)
+			%%     travatura + configurazione deformata + campi v* e u*
+			%% =========================================================
+			\begin{scope}[xshift=13.0cm, yshift=-0.8cm]
+				\def\L{2.0}
+				\def\h{1.5}
+				\coordinate (N1) at (0,0);
+				\coordinate (N2) at (\L,0);
+				\coordinate (N3) at (2*\L,0);
+				\coordinate (N4) at (3*\L,0);
+				\coordinate (N5) at (0.5*\L,\h);
+				\coordinate (N6) at (1.5*\L,\h);
+				\coordinate (N7) at (2.5*\L,\h);
+				\coordinate (CR) at (3*\L,2*\h);
+				%% --- configurazione deformata (nodi spostati, fattore di scala visuale)
+				\coordinate (D1) at (0,0);
+				\coordinate (D2) at (\L,-0.24);
+				\coordinate (D3) at (2*\L+0.36,-0.24);
+				\coordinate (D4) at (3*\L+0.36,0);
+				\coordinate (D5) at (0.5*\L+0.18,\h-0.12);
+				\coordinate (D6) at (1.5*\L+0.18,\h-0.36);
+				\coordinate (D7) at (2.5*\L+0.18,\h-0.12);
+				%% --- tronconi DEFORMATI campiti in grigio (configurazione reale)
+				\fill[black!12](D1)--(D2)--(D6)--(D5)--cycle;
+				\fill[black!12](D3)--(D4)--(D7)--(D6)--cycle;
+				%% --- configurazione INDEFORMATA: riferimento grigio tratteggiato
+				\draw[rif](N1)--(N5)--(N2)--(N6)--(N3)--(N7)--(N4);
+				\draw[rif](N1)--(N2)--(N3)--(N4);
+				\draw[rif](N5)--(N6)--(N7);
+				%% --- struttura DEFORMATA: linea piena
+				\draw[asta](D1)--(D5);
+				\draw[asta](D2)--(D5);
+				\draw[asta](D2)--(D6);
+				\draw[asta](D3)--(D6);
+				\draw[asta](D3)--(D7);
+				\draw[asta](D4)--(D7);
+				\draw[asta](D1)--(D2);
+				\draw[cede](D2)--(D3);
+				\draw[asta](D3)--(D4);
+				\draw[asta](D5)--(D6)--(D7);
+				%% distorsione sull'asta 2 (deformata)
+				\coordinate (Mw) at ($(D2)!0.5!(D3)+(0,0.30)$);
+				\draw[frec]($(Mw)+(-0.06,0)$)--($(Mw)+(-0.40,0)$);
+				\draw[frec]($(Mw)+( 0.06,0)$)--($(Mw)+( 0.40,0)$);
+				\node[etich,above]at($(Mw)+(0,0.02)$){$\varrho_w$};
+				%% cerniera in D1 (=N1, fissa)
+				\draw[line width=1.0pt](D1)--++(-0.24,-0.40)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt]($(D1)+(-0.34,-0.40)$)--($(D1)+(0.34,-0.40)$);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(D1)+(\x,-0.40)$)--++(-.10,-0.13);
+				%% carrello nella posizione deformata D4
+				\draw[line width=1.0pt](D4)--++(-0.24,-0.34)--++(0.48,0)--cycle;
+				\draw[line width=1.0pt]($(D4)+(-0.34,-0.34)$)--($(D4)+(0.34,-0.34)$);
+				\draw[line width=1.0pt]($(D4)+(-0.16,-0.47)$) circle(2.2pt);
+				\draw[line width=1.0pt]($(D4)+( 0.16,-0.47)$) circle(2.2pt);
+				\draw[line width=1.0pt]($(D4)+(-0.34,-0.58)$)--($(D4)+(0.34,-0.58)$);
+				\foreach \x in {-0.28,-0.14,0.00,0.14,0.28}
+				\draw[very thin]($(D4)+(\x,-0.58)$)--++(-.10,-0.13);
+				%% carrello indeformato di riferimento (grigio) in N4
+				\draw[rif]($(N4)+(-0.16,-0.47)$) circle(2.2pt);
+				\draw[rif]($(N4)+( 0.16,-0.47)$) circle(2.2pt);
+				%% rette dei centri e centro assoluto C_R
+				\draw[rif](N1)--(CR);
+				\draw[rif](N4)--(CR);
+				%% nodi della struttura deformata
+				\foreach \d in {D1,D2,D3,D4,D5,D6,D7} \node[nodo]at(\d){};
+				\node[nodo]at(CR){};
+				\node[etich,above left]at(D1){$C_L$};
+				\node[etich,above]at($(N6)+(0,0.12)$){$C_{L,R}\equiv P^e$};
+				\node[etich,above right]at(CR){$C_R$};
+				%% quota h (a sinistra)
+				\draw[ext](-0.48,0)--(-1.05,0);
+				\draw[ext](N5)--(-1.05,\h);
+				\draw[quota](-0.95,0)--(-0.95,\h) node[midway,left,etich]{$h$};
+				%% quote l (tre campate)
+				\def\yq{-0.95}
+				\foreach \x in {0,\L,2*\L,3*\L} \draw[ext](\x,-0.42)--(\x,\yq-0.10);
+				\draw[quota](0,\yq)--(\L,\yq) node[midway,below,etich]{$\ell$};
+				\draw[quota](\L,\yq)--(2*\L,\yq) node[midway,below,etich]{$\ell$};
+				\draw[quota](2*\L,\yq)--(3*\L,\yq) node[midway,below,etich]{$\ell$};
+				%% ---- diagramma v* (spostamenti verticali, campito verticalmente) ----
+				\def\yB{-2.75}
+				\def\vpk{0.95}
+				\draw[rif](0,\yq-0.10)--(0,\yB);
+				\draw[rif](1.5*\L,\yq-0.10)--(1.5*\L,\yB-\vpk);
+				\draw[rif](3*\L,\yq-0.10)--(3*\L,\yB);
+				\fill[black!12]
+				(0,\yB)--(1.5*\L,\yB-\vpk)--(3*\L,\yB)--cycle;
+				\draw[line width=1.0pt](0,\yB)--(1.5*\L,\yB-\vpk)--(3*\L,\yB);
+				\draw[line width=0.4pt](-0.40,\yB)--(3*\L+0.40,\yB);
+				\foreach \x in {0,1.5*\L,3*\L}
+				\draw[line width=0.5pt](\x,\yB-0.08)--(\x,\yB+0.08);
+				\node[etich,above]at(0,\yB+0.07){$C_L$};
+				\node[etich,above]at(1.5*\L,\yB+0.07){$C_{L,R}$};
+				\node[etich,above]at(3*\L,\yB+0.07){$C_R$};
+				%% quota del picco (esterna al diagramma)
+				\draw[ext](2.9*\L,\yB-\vpk)--(3*\L+0.62,\yB-\vpk);
+				\draw[quota](3*\L+0.52,\yB)--(3*\L+0.52,\yB-\vpk);
+				\node[etich,right]at(3*\L+0.62,\yB-0.5*\vpk){$\dfrac{3}{4}\,\dfrac{\varrho_w\,\ell}{h}$};
+				
+				% prolungamento in grigio del ramo sinistro (rotazione rigida del troncone SX)
+				\draw[rif](1.5*\L,\yB-\vpk)--(3*\L,\yB-2*\vpk);
+				\draw[rif](3*\L,\yB)--(3*\L,\yB-2*\vpk);
+				% rotazione relativa al colmo, fra prolungamento e ramo destro
+				\draw[<-,line width=0.5pt](1.5*\L,\yB-\vpk)++({atan2(\vpk,1.5*\L)}:0.66)
+				arc[start angle={atan2(\vpk,1.5*\L)}, end angle={atan2(-\vpk,1.5*\L)}, radius=0.66];
+				\node[etich,right]at($(1.5*\L,\yB-\vpk)+(0.80,0)$){$\Delta\vartheta=\dfrac{\varrho_w}{h}$};
+				%% etichette dei due contributi
+				\node[etich,below]at($(0,\yB)!0.5!(1.5*\L,\yB+\vpk)+(0,+0.10)$){$v_L$};
+				\node[etich,below]at($(1.5*\L,\yB+\vpk)!0.5!(3*\L,\yB)+(0,+0.10)$){$v_R$};
+				
+				%% ---- campo u* (spostamenti orizzontali, a destra) ----
+				\pgfmathsetmacro{\xU}{3*\L+1.70}
+				\def\uRho{0.80}
+				\pgfmathsetmacro{\uHalf}{0.5*\uRho}
+				\draw[rif](3*\L+0.40,0)--(\xU+0.10,0);
+				\draw[rif](2.5*\L+0.10,\h)--(\xU+0.10,\h);
+				\draw[rif](CR)--(\xU+0.10,2*\h);
+				\fill[black!12]
+				(\xU,0)--(\xU+\uRho,0)--(\xU+\uHalf,\h)--(\xU,\h)--cycle;
+				\draw[line width=0.5pt](\xU,0)--(\xU+\uRho,0);
+				\draw[line width=0.5pt](\xU,\h)--(\xU+\uHalf,\h);
+				\draw[line width=0.5pt](\xU,0)--(\xU,\h);
+				\draw[rif](\xU,\h)--(\xU,2*\h);
+				\draw[line width=0.5pt](\xU-0.08,0)--(\xU+0.08,0);
+				\node[etich,left]at(\xU-0.10,0){$C_L$};
+				\draw[line width=0.5pt](\xU-0.08,\h)--(\xU+0.08,\h);
+				\node[etich,left]at(\xU-0.10,\h){$C_{L,R}$};
+				\draw[line width=0.5pt](\xU-0.08,2*\h)--(\xU+0.08,2*\h);
+				\node[etich,left]at(\xU-0.10,2*\h){$C_R$};
+				\draw[line width=0.9pt](\xU,0)--(\xU+\uHalf,\h);
+				\draw[line width=0.9pt](\xU+\uRho,0)--(\xU,2*\h);
+				\draw[ext](\xU,0)--(\xU,-0.30);
+				\draw[ext](\xU+\uRho,0)--(\xU+\uRho,-0.30);
+				\draw[quota](\xU,-0.25)--(\xU+\uRho,-0.25)
+				node[midway,below,etich]{$\varrho_w$};
+				\node[etich,right]at($(\xU+\uHalf,\h)+(0.10,-0.30)$){$u_L$};
+				\node[etich,right]at($(\xU+\uRho,0)+(0.04,0.55)$){$u_R$};
+			\end{scope}
+			
+			
+			%% =========================================================
+			%% lettere dei pannelli
+			%% =========================================================
+			\node[pan]at(4.1,-1.40){(a)};
+			\node[pan]at(4.1,-5.50){(b)};
+			\node[pan]at(15.6,-5.50){(c)};
+			
+	\end{tikzpicture}}
+	\caption{Effetto di una distorsione estensionale $\varrho_w$ in una
+		travatura reticolare piana. \emph{(a)}~caso generale, con polo
+		proprio $C\equiv P^e$ e rotazione relativa
+		$\Delta\vartheta=\varrho_w/d$; \emph{(b)}~polo improprio (a
+		sinistra) e distorsione nel corrente superiore (a destra);
+		\emph{(c)}~effetto globale su travatura vincolata: configurazione
+		deformata, centri di rotazione $C_L$, $C_{L,R}\equiv P^e$, $C_R$ e
+		campi degli spostamenti verticali $v^*$ e orizzontali $u^*$.}
+	\label{fig:polo_distorsione}
+\end{figure}

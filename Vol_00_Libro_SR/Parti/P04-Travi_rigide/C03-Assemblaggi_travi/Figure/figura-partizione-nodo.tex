@@ -1,0 +1,58 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		>=Stealth, line width=0.8pt, scale=1.0,
+		asta/.style={line width=1.6pt},
+		fz/.style={-{Stealth[length=2.2mm]}, line width=0.9pt},
+		et/.style={font=\footnotesize},
+		nd/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=5pt}]
+		
+		% ═══════════ PANNELLO (a): nodo non isolato ═══════════
+		\begin{scope}[xshift=0cm]
+			\def\R{1.25}
+			\foreach \a/\nome in {90/1, -30/2, -150/3}{
+				\draw[asta] (0,0)--(\a:\R);
+				\node[et] at (\a:{\R+0.30}) {$e_{\nome}$};}
+			% cerniera tripla: un solo pallino
+			\node[nd, minimum size=7pt] at (0,0) {};
+			\node[et, above left=1pt] at (0,0) {$i$};
+			\node[et, align=center] at (0,-2.20)
+			{cerniera tripla\\
+				$2(n_i-1) = 4$ incognite\\
+				nessuna equazione propria};
+		\end{scope}
+		
+		% ═══════════ PANNELLO (b): nodo isolato ═══════════
+		\begin{scope}[xshift=6.4cm]
+			\def\R{1.25}
+			\def\g{0.42}   % ampiezza del distacco
+			\foreach \a/\nome in {90/1, -30/2, -150/3}{
+				\draw[asta] (\a:\g)--(\a:\R);
+				\node[et] at (\a:{\R+0.30}) {$e_{\nome}$};
+				% forza trasmessa al nodo: due componenti
+				\draw[fz] (\a:\g)--($(\a:\g)+(\a:-0.32)$);}
+			\node[nd, minimum size=7pt] at (0,0) {};
+			\node[et, above left=1pt] at (0,0) {$i$};
+			\node[et, align=center] at (0,-2.20)
+			{nodo isolato\\
+				$2n_i = 6$ incognite\\
+				$+\,2$ equazioni di equilibrio};
+		\end{scope}
+		
+		% ═══════════ bilancio ═══════════
+		\node[et] at (3.2,-3.10)
+		{$+2$ incognite \quad contro \quad $+2$ equazioni};
+	\end{tikzpicture}
+	\caption{Le due letture di un nodo a cerniera in cui
+		convergono tre travi. A sinistra il nodo è un vincolo
+		interno e le sue incognite statiche sono quattro,
+		secondo la \EQUref{eq:molt_nodo}; non porta equazioni
+		proprie. A destra il nodo è isolato come corpo libero:
+		ciascuna trave scambia con esso una forza di due
+		componenti, per un totale di sei incognite, e il nodo
+		porta le due equazioni
+		\eqref{eq:equilibrio_nodo_cerniera}. Le due incognite
+		in più sono compensate dalle due equazioni in più.}
+	\label{fig:partizione_nodo}
+\end{figure}

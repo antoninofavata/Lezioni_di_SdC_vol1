@@ -1,0 +1,62 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[
+		trave/.style={line width=2.0pt, line cap=round,
+			line join=round, black},
+		terra/.style={line width=0.8pt, black},
+		nodoV/.style={circle, fill=white, draw=black,
+			inner sep=0pt, minimum size=6pt, line width=0.9pt},
+		quota/.style={|<->|, >=stealth, thin, gray!60},
+		]
+		
+		\def\L{3.0}   % lunghezza asta (cm)
+		
+		%% ── Coordinate nodali ──────────────────────────────────
+		\coordinate (A) at (0,       0      );
+		\coordinate (C) at (0,       \L     );
+		\coordinate (D) at (\L,      \L     );
+		\coordinate (E) at (2*\L,    \L     );
+		\coordinate (B) at (2*\L,    0      );
+		
+		%% ── Semiarco sinistro A-C-D ────────────────────────────
+		\draw[trave] (A) -- (C) -- (D);
+		
+		%% ── Semiarco destro D-E-B ──────────────────────────────
+		\draw[trave] (D) -- (E) -- (B);
+		
+		%% ── Cerniera esterna in A ──────────────────────────────
+		\draw[terra] (A) -- ++(-0.30,-0.52) -- ++(0.60,0) -- cycle;
+		\draw[terra] (-0.40,-0.52) -- (0.40,-0.52);
+		\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}
+		\draw[very thin,black] (\x,-0.52) -- ++(-0.12,-0.15);
+		\node[nodoV] at (A) {};
+		
+		%% ── Cerniera esterna in B ──────────────────────────────
+		\draw[terra] (B) -- ++(-0.30,-0.52) -- ++(0.60,0) -- cycle;
+		\draw[terra] ($(B)+(-0.40,-0.52)$) -- ($(B)+(0.40,-0.52)$);
+		\foreach \x in {-0.34,-0.18,-0.02,0.14,0.30}
+		\draw[very thin,black] ($(B)+(\x,-0.52)$) -- ++(-0.12,-0.15);
+		\node[nodoV] at (B) {};
+		
+		%% ── Cerniera interna in D (chiave) ─────────────────────
+		\node[nodoV] at (D) {};
+		
+		%% ── Etichette dei nodi ─────────────────────────────────
+		\node[right, font=\small] at (A)                 {$A$};
+		\node[below right, font=\small] at (C)           {$C$};
+		\node[below, font=\small] at ($(D)+(0,-0.14)$)   {$D$};
+		\node[below left, font=\small] at (E)            {$E$};
+		\node[left, font=\small] at (B)                  {$B$};
+		
+		%% ── Quote dimensionali ─────────────────────────────────
+		\draw[quota] (0,-1.20) -- (\L,-1.20)
+		node[midway, above, font=\small] {$\ell$};
+		\draw[quota] (\L,-1.20) -- (2*\L,-1.20)
+		node[midway, above, font=\small] {$\ell$};
+		\draw[quota] (-1.60, 0) -- (-1.60, \L)
+		node[midway, right, font=\small] {$\ell$};
+		
+	\end{tikzpicture}
+	\caption{Arco a tre cerniere a geometria spezzata.}
+	\label{fig:arco3c_base}
+\end{figure}

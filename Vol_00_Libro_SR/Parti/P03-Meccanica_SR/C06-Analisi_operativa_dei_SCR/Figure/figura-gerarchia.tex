@@ -1,0 +1,151 @@
+\begin{figure}[ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			% ============================================================
+			% PANNELLO (a) — gerarchia cinematica
+			% ============================================================
+			\begin{scope}[xshift=0cm]
+				
+				
+				% linee d'asse (più spesse)
+				\draw[line width=1.5pt] (0,0) -- (3,0);
+				\draw[line width=1.5pt] (3,0) -- (5,0);
+				
+				% etichette corpi
+				\node[above, font=\scriptsize] at (1.,0) {$\mathcal{C}_1$};
+				\node[above, font=\scriptsize] at (4.0,0) {$\mathcal{C}_2$};
+				
+				% etichette punti notevoli
+				\node[font=\scriptsize, above] at (0,0) {$A$};
+				\node[font=\scriptsize, above] at (2,0) {$B$};
+				\node[font=\scriptsize, above] at (3,0) {$C$};
+				\node[font=\scriptsize, above] at (5,0) {$D$};
+				
+				% cerniera in A
+				\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+				\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+				}
+				% perno bianco in A (sopra il vertice del triangolo)
+				\draw[fill=white, thick] (0,0) circle (2.5pt);
+				
+				% carrello in B (intermedio)
+				\draw[thick] (2,0) -- (2-0.22,-0.38) -- (2+0.22,-0.38) -- cycle;
+				\draw[thick] (2-0.32,-0.38) -- (2+0.32,-0.38);
+				\draw[thick] (2-0.15,-0.44) circle (0.07);
+				\draw[thick] (2+0.15,-0.44) circle (0.07);
+				\draw[thick] (2-0.32,-0.54) -- (2+0.32,-0.54);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (2+\x,-0.54) -- (2+\x-0.10,-0.68);
+				}
+				% mezzaluna in B (carrello intermedio: la trave attraversa il vincolo)
+				\fill[white] (2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[thick] (2-0.08,0) arc(180:360:0.08);
+				
+				% cerniera interna in C (cerchio bianco di taglia maggiore del perno)
+				\draw[fill=white, thick] (3,0) circle (2.5pt);
+				
+				% carrello in D (terminale)
+				\draw[thick] (5,0) -- (5-0.22,-0.38) -- (5+0.22,-0.38) -- cycle;
+				\draw[thick] (5-0.32,-0.38) -- (5+0.32,-0.38);
+				\draw[thick] (5-0.15,-0.44) circle (0.07);
+				\draw[thick] (5+0.15,-0.44) circle (0.07);
+				\draw[thick] (5-0.32,-0.54) -- (5+0.32,-0.54);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (5+\x,-0.54) -- (5+\x-0.10,-0.68);
+				}
+				% perno bianco in D (carrello terminale)
+				\draw[fill=white, thick] (5,0) circle (2.5pt);
+				
+				
+				% freccia cascata cinematica (sinistra -> destra)
+				\draw[->, very thick, gray!60]
+				(0.2, 0.75) -- (4.8, 0.75);
+				\node[font=\scriptsize, gray!70] at (2.5, 1.05)
+				{trascinante $\to$ trascinato};
+				
+				
+				\node[font=\scriptsize] at (3.0,-0.80) {(a)};
+				
+			\end{scope}
+			
+			% ============================================================
+			% PANNELLO (b) — gerarchia statica
+			% ============================================================
+			\begin{scope}[xshift=7.0cm]
+				
+				% linee d'asse (più spesse)
+				\draw[line width=1.5pt] (0,0) -- (3,0);
+				\draw[line width=1.5pt] (3,0) -- (5,0);
+				
+				% etichette corpi
+				\node[above, font=\scriptsize] at (1.0,0) {$\mathcal{C}_1$};
+				\node[above, font=\scriptsize] at (4.0,0) {$\mathcal{C}_2$};
+				
+				% etichette punti notevoli
+				\node[font=\scriptsize, above] at (0,0) {$A$};
+				\node[font=\scriptsize, above] at (2,0) {$B$};
+				\node[font=\scriptsize, above] at (3,0) {$C$};
+				\node[font=\scriptsize, above] at (5,0) {$D$};
+				
+				% cerniera in A
+				\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+				\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (\x,-0.38) -- (\x-0.10,-0.52);
+				}
+				% perno bianco in A (sopra il vertice del triangolo)
+				\draw[fill=white, thick] (0,0) circle (2.5pt);
+				
+				% carrello in B (intermedio)
+				\draw[thick] (2,0) -- (2-0.22,-0.38) -- (2+0.22,-0.38) -- cycle;
+				\draw[thick] (2-0.32,-0.38) -- (2+0.32,-0.38);
+				\draw[thick] (2-0.15,-0.44) circle (0.07);
+				\draw[thick] (2+0.15,-0.44) circle (0.07);
+				\draw[thick] (2-0.32,-0.54) -- (2+0.32,-0.54);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (2+\x,-0.54) -- (2+\x-0.10,-0.68);
+				}
+				% mezzaluna in B (carrello intermedio: la trave attraversa il vincolo)
+				\fill[white] (2-0.08,0) arc(180:360:0.08) -- cycle;
+				\draw[thick] (2-0.08,0) arc(180:360:0.08);
+				
+				% cerniera interna in C (cerchio bianco di taglia maggiore del perno)
+				\draw[fill=white, thick] (3,0) circle (2.5pt);
+				
+				% carrello in D (terminale)
+				\draw[thick] (5,0) -- (5-0.22,-0.38) -- (5+0.22,-0.38) -- cycle;
+				\draw[thick] (5-0.32,-0.38) -- (5+0.32,-0.38);
+				\draw[thick] (5-0.15,-0.44) circle (0.07);
+				\draw[thick] (5+0.15,-0.44) circle (0.07);
+				\draw[thick] (5-0.32,-0.54) -- (5+0.32,-0.54);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}{
+					\draw[thin] (5+\x,-0.54) -- (5+\x-0.10,-0.68);
+				}
+				% perno bianco in D (carrello terminale)
+				\draw[fill=white, thick] (5,0) circle (2.5pt);
+				
+				% freccia cascata statica (destra -> sinistra)
+				\draw[->, very thick, gray!60]
+				(4.8, 0.75) -- (0.2, 0.75);
+				\node[font=\scriptsize, gray!70] at (2.5, 1.05)
+				{portato $\to$ portante};
+				
+				\node[font=\scriptsize] at (3.0,-0.80) {(b)};
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption{Gerarchia strutturale della trave di Gerber:
+			\emph{(a)}~cascata cinematica, dal trascinante
+			$\mathcal{C}_1$ al trascinato $\mathcal{C}_2$
+			(freccia da sinistra a destra);
+			\emph{(b)}~cascata statica, dal portato
+			$\mathcal{C}_2$ al portante $\mathcal{C}_1$
+			(freccia da destra a sinistra). Le due cascate
+			percorrono la stessa gerarchia in direzioni
+			opposte.}
+		\label{fig:gerarchia}
+	\end{figure}

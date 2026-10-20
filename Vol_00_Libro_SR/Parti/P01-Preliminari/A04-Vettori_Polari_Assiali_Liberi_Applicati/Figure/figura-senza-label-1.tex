@@ -1,0 +1,44 @@
+\begin{figure}[htbp]
+	\centering
+	\tikzset{midarrow/.style={postaction={decorate},
+			decoration={markings, mark=at position #1 with {\arrow{Stealth}}}},
+		midarrow/.default=0.55}
+	\begin{minipage}[b]{0.46\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			% ===== (a) SOMMA =====
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (3,0);   % punta di u
+			\coordinate (B) at (1,2);   % punta di v
+			\coordinate (C) at (4,2);   % punta di u+v
+			% lati traslati (punta-coda): freccia a meta' tratto
+			\draw[thick, midarrow] (B) -- (C);   % u traslato
+			\draw[thick, midarrow] (A) -- (C);   % v traslato
+			% vettori dalla stessa origine
+			\draw[->, thick] (O) -- (A) node[midway, below=1pt] {$\ub$};
+			\draw[->, thick] (O) -- (B) node[midway, above left=-3pt] {$\vb$};
+			% diagonale = somma
+			\draw[thick, midarrow] (O) -- (C) node[midway, sloped, above=2pt] {$\ub+\vb$};
+		\end{tikzpicture}\\[0.8ex]
+		\emph{(a) somma}
+	\end{minipage}\hfill
+	\begin{minipage}[b]{0.46\textwidth}\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.0]
+			% ===== (b) DIFFERENZA =====
+			\coordinate (O) at (0,0);
+			\coordinate (A) at (3,0);   % punta di u
+			\coordinate (B) at (1,2);   % punta di v
+			\coordinate (C) at (4,2);
+			% parallelogramma di contesto (lati di completamento)
+			\draw[gray!55, thin] (A) -- (C);
+			\draw[gray!55, thin] (B) -- (C);
+			% vettori u, v
+			\draw[->, thick] (O) -- (A) node[midway, below=1pt] {$\ub$};
+			\draw[->, thick] (O) -- (B) node[midway, above left=-3pt] {$\vb$};
+			% differenza: dalla punta di v alla punta di u
+			\draw[thick, midarrow] (B) -- (A) node[midway, sloped, above=2pt] {$\ub-\vb$};
+		\end{tikzpicture}\\[0.8ex]
+		\emph{(b) differenza}
+	\end{minipage}
+	\caption{Somma e differenza di due vettori.}
+	\label{f:somma_vettoriale}
+\end{figure}

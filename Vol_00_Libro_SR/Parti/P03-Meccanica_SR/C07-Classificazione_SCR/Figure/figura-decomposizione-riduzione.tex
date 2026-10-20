@@ -1,0 +1,132 @@
+\begin{figure}[!ht]
+		\centering
+		\begin{tikzpicture}[>=Stealth, line width=0.8pt]
+			
+			% --- coordinate dei nodi ---
+			\coordinate (A) at (0,4);
+			\coordinate (B) at (3,4);
+			\coordinate (C) at (5,4);
+			\coordinate (D) at (3,2);
+			\coordinate (E) at (5,2);
+			\coordinate (F) at (3,0);
+			\coordinate (G) at (5,0);
+			\coordinate (H) at (8,0);
+			
+			% --- C_1 = ABCE: traversa superiore A-B-C + asta verticale C-E ---
+			\draw[line width=1.5pt] (A) -- (C);
+			\draw[line width=1.5pt] (C) -- ($(E)+(0,0.50)$);
+			
+			% --- C_2 = HGED: H-G + G-E + E-D ---
+			\draw[line width=1.5pt] (H) -- (G);
+			\draw[line width=1.5pt] (E) -- (G);
+			\draw[line width=1.5pt] (E) -- ($(D)+(0.50,0)$);
+			
+			
+			% --- C_3 = BDFG: B-D + D-F + F-G ---
+			\draw[line width=1.5pt] (B) -- (D);
+			\draw[line width=1.5pt] (D) -- (F);
+			\draw[line width=1.5pt] (F) -- ($(G)+(-0.50,0)$);
+			
+			% =====================================================
+			% VINCOLI ESTERNI
+			% =====================================================
+			
+			% --- incastro in A (in alto a sinistra, parete a sinistra) ---
+			\draw[thick] (0,3.62) -- (0,4.38);
+			\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30}{\draw[thin] (0,4+\y) -- (-0.12,4+\y-0.10);}
+			
+			% --- incastro in H (in basso a destra, parete a destra) ---
+			\draw[thick] (8,-0.38) -- (8,0.38);
+			\foreach \y in {-0.30,-0.18,-0.06,0.06,0.18,0.30}{\draw[thin] (8,\y) -- (8.12,\y-0.10);	}
+			
+			% =====================================================
+			% CONNESSIONI INTERNE
+			% =====================================================
+			
+			% --- cerniera interna in B ---
+			\fill[white] ($(B)+(-0.08,0)$) arc(180:360:0.08) -- cycle;
+			\draw[thick] ($(B)+(-0.08,0)$) arc(180:360:0.08);
+			
+			%\draw[fill=white, thick] (B) circle (3pt);
+			
+			% =====================================================
+			% CARRELLO INTERNO in D (asse orizzontale)
+			% =====================================================
+			
+			% rotelle: più piccole (raggio 0.06), tangenti all'asta verticale di C_3
+			\draw[thick] ($(D)+(0.09,-0.10)$) circle (0.08);
+			\draw[thick] ($(D)+(0.09, 0.10)$) circle (0.08);
+			
+			% triangolo: base verticale a x = D_x + 0.20 (vertici interni a y = ±0.25),
+			%            base prolungata fino a y = ±0.35
+			\draw[thick] ($(D)+(0.20,-0.35)$) -- ($(D)+(0.20,0.35)$);
+			\draw[thick] ($(D)+(0.20,-0.25)$) -- ($(D)+(0.50,0)$);
+			\draw[thick] ($(D)+(0.20, 0.25)$) -- ($(D)+(0.50,0)$);
+			
+			% pallino bianco al vertice del triangolo (perno della connessione con C_2)
+			\node[circle, fill=white, draw=black, inner sep=0pt,	minimum size=4pt, line width=0.7pt] at ($(D)+(0.50,0)$) {};
+			
+			
+			% =====================================================
+			% CARRELLO INTERNO in E (asse verticale)
+			% =====================================================
+			
+			% prolungamento del tratto D-E di C_2 oltre E, per accogliere la base del carrello
+			\draw[line width=1.5pt] (E) -- ($(E)+(0.20,0)$);
+			
+			% rotelle: tangenti al tratto orizzontale di C_2 a y = E_y, centri a y = E_y + 0.09
+			\draw[thick] ($(E)+(-0.10,0.09)$) circle (0.08);
+			\draw[thick] ($(E)+( 0.10,0.09)$) circle (0.08);
+			
+			% triangolo del carrello: base orizzontale a y = E_y + 0.20, vertice in alto a y = E_y + 0.50
+			\draw[thick] ($(E)+(-0.35,0.20)$) -- ($(E)+(0.35,0.20)$);
+			\draw[thick] ($(E)+(-0.25,0.20)$) -- ($(E)+(0,0.50)$);
+			\draw[thick] ($(E)+( 0.25,0.20)$) -- ($(E)+(0,0.50)$);
+			
+			% pallino bianco al vertice del triangolo
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=4pt, line width=0.7pt] at ($(E)+(0,0.50)$) {};
+			
+			% =====================================================
+			% CARRELLO INTERNO in G (asse orizzontale)
+			% =====================================================
+			
+			% prolungamento del tratto E-G di C_2 oltre G, per accogliere la base del carrello
+			\draw[line width=1.5pt] (E) -- ($(G)+(0,-0.20)$);
+			
+			% rotelle: tangenti all'asta verticale di C_2 (E-G), a sinistra
+			\draw[thick] ($(G)+(-0.09,-0.10)$) circle (0.08);
+			\draw[thick] ($(G)+(-0.09, 0.10)$) circle (0.08);
+			
+			% triangolo: base verticale a x = G_x - 0.20, vertice a x = G_x - 0.50
+			\draw[thick] ($(G)+(-0.20,-0.35)$) -- ($(G)+(-0.20,0.35)$);
+			\draw[thick] ($(G)+(-0.20,-0.25)$) -- ($(G)+(-0.50,0)$);
+			\draw[thick] ($(G)+(-0.20, 0.25)$) -- ($(G)+(-0.50,0)$);
+			
+			% pallino bianco al vertice del triangolo (perno della connessione con C_3)
+			\node[circle, fill=white, draw=black, inner sep=0pt,
+			minimum size=4pt, line width=0.7pt] at ($(G)+(-0.50,0)$) {};
+			
+			% =====================================================
+			% ETICHETTE DEI NODI
+			% =====================================================
+			\node[font=\scriptsize, above right]       at (A) {$A$};
+			\node[font=\scriptsize, above]       at (B) {$B$};
+			\node[font=\scriptsize, above]       at (C) {$C$};
+			\node[font=\scriptsize, left]        at ($(D)+(-0.12,0)$) {$D$};
+			\node[font=\scriptsize, right]       at ($(E)+(0.12,0)$)  {$E$};
+			\node[font=\scriptsize, left] at (F) {$F$};
+			\node[font=\scriptsize, above right] at (G) {$G$};
+			\node[font=\scriptsize, above left]       at (H) {$H$};
+			
+		\end{tikzpicture}
+		\caption{Struttura mista: due mensole ad asse spezzato
+			$\mathcal{S}_1 = ABCE$ (incastrata in $A$) e
+			$\mathcal{S}_2 = HGED$ (incastrata in $H$),
+			collegate da una trave appoggiata $\mathcal{S}_3 = BDFG$
+			(cerniera in $B$, carrello in $G$). I carrelli in
+			$D$ ed $E$ aggiungono due vincoli semplici allo
+			schema isostatico di riferimento: $\nu = -2$,
+			iperstatica di grado~2.}
+		\label{fig:decomposizione_riduzione}
+	\end{figure}

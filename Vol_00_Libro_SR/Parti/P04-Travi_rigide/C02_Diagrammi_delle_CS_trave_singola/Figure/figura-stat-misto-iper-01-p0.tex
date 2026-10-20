@@ -1,0 +1,89 @@
+\begin{figure}[htbp]
+			\centering
+			\resizebox{0.75\textwidth}{!}{%
+				\begin{tikzpicture}[>=Stealth, line width=0.8pt,
+					carico/.style={->, line width=0.8pt},
+					hatch/.style={line width=0.3pt, gray!50},
+					rif/.style={line width=0.5pt},
+					diag/.style={line width=0.7pt},
+					campit/.style={line width=0.3pt},
+					quota/.style={line width=0.4pt}]
+					
+					\def\Lell{3.6}\def\Lc{1.2}\def\Ld{2.4}
+					\def\hN{0.55}\def\hT{0.55}\def\hM{0.80}
+					
+					% se \cerniera, \carrelloincl, \pianoincl sono gia' nel preambolo, NON ridefinirle qui
+					\newcommand\cerniera[1]{%
+						\begin{scope}[shift={(#1)}]
+							\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+							\draw[thick] (-0.32,-0.38) -- (0.32,-0.38);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch] (\x,-0.38) -- (\x-0.12,-0.52);}
+						\end{scope}
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (#1) {};}
+					\newcommand\carrelloincl[1]{%
+						\begin{scope}[shift={(#1)}, rotate=45]
+							\draw[thick] (0,0) -- (-0.22,-0.38) -- (0.22,-0.38) -- cycle;
+							\draw[thick] (-0.15,-0.45) circle (0.06); \draw[thick] (0.15,-0.45) circle (0.06);
+							\draw[thick] (-0.32,-0.53) -- (0.32,-0.53);
+							\foreach \x in {-0.24,-0.12,0,0.12,0.24}{\draw[hatch] (\x,-0.53) -- (\x-0.12,-0.67);}
+						\end{scope}
+						\node[circle, fill=white, draw=black, inner sep=0pt, minimum size=5pt, line width=0.8pt] at (#1) {};}
+					\newcommand\pianoincl[1]{%
+						\draw[rif, gray!60] (#1) -- ($(#1)+(0.9,0)$);
+						\draw[rif, gray!60] (#1) -- ($(#1)+(45:0.9)$);
+						\draw[gray!60] ($(#1)+(0.62,0)$) arc (0:45:0.62);
+						\node[gray!80, font=\scriptsize] at ($(#1)+(0.86,0.30)$) {$\pi/4$};}
+					\newcommand\campcost[3]{\foreach \k in {1,...,9}{\pgfmathsetmacro\xx{#1+(#2-#1)*\k/10}\draw[campit] (\xx,0) -- (\xx,#3);}}
+					
+					% ===================== (a) sistema principale + carichi =====================
+					\begin{scope}
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\draw[gray!55, dashed, line width=0.4pt] (0,-0.07) -- (\Lell,-0.07);
+						\cerniera{0,0} \carrelloincl{\Lell,0} \pianoincl{\Lell,0}
+						\draw[carico] (\Lc,0.52) -- (\Lc,0.04); \node[font=\small,right] at (\Lc,0.32) {$P$};
+						\draw[carico] (\Ld,0.52) -- (\Ld,0.04); \node[font=\small,right] at (\Ld,0.32) {$P$};
+						\node[font=\small] at (\Lell/2,-1.0) {(a)};
+					\end{scope}
+					% ===================== (b) N_0 = -P  (compressione, sotto) =====================
+					\begin{scope}[xshift=6.2cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0}
+						\draw[diag] (0,-\hN) -- (\Lell,-\hN);
+						\draw[diag] (0,0) -- (0,-\hN); \draw[diag] (\Lell,0) -- (\Lell,-\hN);
+						\campcost{0}{\Lell}{-\hN}
+						\node[font=\small, fill=white, inner sep=1pt] at (\Lell/2,-\hN/2) {$\ominus$};
+						\node[font=\small, left] at (0,-\hN-0.05) {$P$};
+						\node[font=\small] at (\Lell/2,-1.0) {(b)};
+					\end{scope}
+					% ===================== (c) T_0 : +P in AC (sopra), -P in DB (sotto) =====================
+					\begin{scope}[yshift=-2.0cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0}
+						\draw[diag] (0,\hT) -- (\Lc,\hT); \draw[diag] (0,0) -- (0,\hT); \draw[diag] (\Lc,0) -- (\Lc,\hT);
+						\campcost{0}{\Lc}{\hT}
+						\node[font=\small, fill=white, inner sep=1pt] at (\Lc/2,\hT/2) {$\oplus$};
+						\node[font=\small, right] at (\Lc-0.1,\hT/2) {$P$};
+						\draw[diag] (\Ld,-\hT) -- (\Lell,-\hT); \draw[diag] (\Ld,0) -- (\Ld,-\hT); \draw[diag] (\Lell,0) -- (\Lell,-\hT);
+						\campcost{\Ld}{\Lell}{-\hT}
+						\node[font=\small, fill=white, inner sep=1pt] at ({(\Ld+\Lell)/2},-\hT/2) {$\ominus$};
+						\node[font=\small, left] at ({(\Ld},-\hT/2) {$P$};
+						\node[font=\small] at (\Lell/2,-1.3) {(c)};
+					\end{scope}
+					% ===================== (d) M_0 : trapezio sotto, colmo P l/3 =====================
+					\begin{scope}[xshift=6.2cm, yshift=-2.0cm]
+						\draw[line width=1.4pt] (0,0) -- (\Lell,0);
+						\cerniera{0,0} \carrelloincl{\Lell,0}
+						\draw[diag] (0,0) -- (\Lc,-\hM) -- (\Ld,-\hM) -- (\Lell,0);
+						\foreach \xx in {0.2,0.4,...,3.4}{%
+							\pgfmathsetmacro\dd{(\xx<\Lc)*(\xx/\Lc) + (\xx>=\Lc)*(\xx<=\Ld)*1 + (\xx>\Ld)*((\Lell-\xx)/(\Lell-\Ld))}%
+							\draw[campit] (\xx,0) -- (\xx,-\hM*\dd);}
+						\draw[quota, <-] (\Ld,-\hM/2) -- (\Ld+0.55,-\hM-0.22);
+						%\draw[quota] (\Ld,-\hM) -- (\Ld+0.55,-\hM-0.22);
+						\node[font=\small, right] at (\Ld+0.55,-\hM-0.22) {$\dfrac{P\ell}{3}$};
+						\node[font=\small] at (\Lell/2,-1.3) {(d)};
+					\end{scope}
+			\end{tikzpicture}}
+			\caption{Problema ``0'': carichi esterni sul sistema principale (a);
+				sforzo normale $N_0$ (b); taglio $T_0$ (c); momento flettente $M_0$ (d).}
+			\label{fig:stat_misto_iper_01-p0}
+		\end{figure}
