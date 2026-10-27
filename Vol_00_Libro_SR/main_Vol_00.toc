@@ -1,167 +1,211 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{5}{part.1}%
-\contentsline {chapter}{\numberline {1}Prestazioni cinematiche e statiche dei vincoli}{7}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Il vincolo di rigidità e i vincoli di collegamento}{7}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Prestazione cinematica}{8}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}Prestazione statica}{8}{subsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.1.3}Distorsioni e svincoli}{8}{subsection.1.1.3}%
-\contentsline {section}{\numberline {1.2}Il vincolo posizionale: definizione e classificazione}{9}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Vincoli esterni e vincoli interni}{10}{subsection.1.2.1}%
-\contentsline {section}{\numberline {1.3}Richiamo: il campo di spostamento e il centro di rotazione}{11}{section.1.3}%
-\contentsline {section}{\numberline {1.4}Vincoli semplici: molteplicità uno}{13}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Il carrello}{14}{subsection.1.4.1}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{14}{subsection.1.4.1}%
-\contentsline {paragraph}{Caso esterno.}{15}{figure.caption.2}%
-\contentsline {paragraph}{Equazione cinematica.}{15}{figure.caption.2}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{15}{equation.1.4.5}%
-\contentsline {paragraph}{Reazione vincolare.}{15}{equation.1.4.8}%
-\contentsline {paragraph}{Caso interno.}{16}{figure.caption.3}%
-\contentsline {subsection}{\numberline {1.4.2}Il bipendolo}{17}{subsection.1.4.2}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{17}{subsection.1.4.2}%
-\contentsline {paragraph}{Caso esterno.}{18}{subsection.1.4.2}%
-\contentsline {paragraph}{Equazione cinematica.}{18}{subsection.1.4.2}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{18}{equation.1.4.13}%
-\contentsline {paragraph}{Reazione vincolare.}{19}{figure.caption.5}%
-\contentsline {paragraph}{Caso interno.}{19}{ossinner.1.6}%
-\contentsline {section}{\numberline {1.5}Vincoli doppi: molteplicità due}{20}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}La cerniera}{20}{subsection.1.5.1}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{20}{subsection.1.5.1}%
-\contentsline {paragraph}{Caso esterno.}{20}{subsection.1.5.1}%
-\contentsline {paragraph}{Equazione cinematica.}{20}{subsection.1.5.1}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{21}{equation.1.5.17}%
-\contentsline {paragraph}{Reazione vincolare.}{21}{ossinner.1.7}%
-\contentsline {paragraph}{Caso interno.}{21}{figure.caption.7}%
-\contentsline {subsection}{\numberline {1.5.2}Il glifo}{22}{subsection.1.5.2}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{22}{subsection.1.5.2}%
-\contentsline {paragraph}{Caso esterno.}{23}{Item.6}%
-\contentsline {paragraph}{Equazione cinematica.}{23}{Item.6}%
-\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{24}{ossinner.1.8}%
-\contentsline {paragraph}{Reazione vincolare.}{24}{figure.caption.9}%
-\contentsline {paragraph}{Caso interno.}{25}{equation.1.5.27}%
-\contentsline {section}{\numberline {1.6}Vincolo triplo: l'incastro}{26}{section.1.6}%
-\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{26}{section.1.6}%
-\contentsline {paragraph}{Caso esterno.}{27}{section.1.6}%
-\contentsline {paragraph}{Equazioni cinematiche.}{27}{section.1.6}%
-\contentsline {paragraph}{Posizione del centro di rotazione.}{27}{ossinner.1.10}%
-\contentsline {paragraph}{Reazione vincolare.}{27}{ossinner.1.10}%
-\contentsline {paragraph}{Caso interno.}{27}{figure.caption.11}%
-\contentsline {section}{\numberline {1.7}Vincoli composti: giustapposizione di vincoli semplici}{29}{section.1.7}%
-\contentsline {paragraph}{Cinematica: teorema di intersezione.}{29}{ossinner.1.12}%
-\contentsline {paragraph}{Statica: somma vettoriale delle reazioni.}{30}{figure.caption.12}%
-\contentsline {paragraph}{Svincoli.}{31}{figure.caption.12}%
-\contentsline {section}{\numberline {1.8}Tavola riepilogativa}{31}{section.1.8}%
-\contentsline {section}{\numberline {1.9}Il cedimento vincolare}{33}{section.1.9}%
-\contentsline {paragraph}{Generalizzazione delle equazioni cinematiche.}{33}{ossinner.1.13}%
-\contentsline {paragraph}{Effetto sul centro di rotazione.}{33}{ossinner.1.13}%
-\contentsline {paragraph}{Effetto sulla reazione vincolare.}{34}{equation.1.9.37}%
-\contentsline {paragraph}{Cedimento nei vincoli interni.}{35}{ossinner.1.14}%
-\contentsline {paragraph}{Distorsioni del vincolo di rigidità.}{36}{ossinner.1.15}%
-\contentsline {section}{\numberline {1.10}Dualità fra vincoli composti e componenti}{36}{section.1.10}%
-\contentsline {paragraph}{Cerniera.}{36}{section.1.10}%
-\contentsline {paragraph}{Glifo: decomposizione modale sym/skw.}{36}{equation.1.10.38}%
-\contentsline {paragraph}{Incastro.}{37}{equation.1.10.42}%
-\contentsline {section}{\numberline {1.11}Vincoli che collegano più corpi}{37}{section.1.11}%
-\contentsline {subsection}{\numberline {1.11.1}La cerniera multipla}{38}{subsection.1.11.1}%
-\contentsline {paragraph}{Prestazione statica.}{38}{ossinner.1.16}%
-\contentsline {paragraph}{Forza esterna applicata al nodo.}{40}{equation.1.11.47}%
-\contentsline {paragraph}{Cerniera multipla vincolata al suolo.}{40}{equation.1.11.49}%
-\contentsline {subsection}{\numberline {1.11.2}L'incastro multiplo}{41}{subsection.1.11.2}%
-\contentsline {paragraph}{Prestazione statica.}{41}{equation.1.11.54}%
-\contentsline {paragraph}{Forza e coppia esterne applicate al nodo.}{42}{figure.caption.15}%
-\contentsline {paragraph}{Incastro multiplo vincolato al suolo.}{43}{equation.1.11.58}%
-\contentsline {section}{\numberline {1.12}Cenno ai vincoli spaziali}{45}{section.1.12}%
-\contentsline {paragraph}{Piano di scorrimento (molteplicità 1).}{46}{section.1.12}%
-\contentsline {paragraph}{Biella (molteplicità 1).}{46}{section.1.12}%
-\contentsline {paragraph}{Bipendolo (molteplicità 1).}{46}{section.1.12}%
-\contentsline {paragraph}{Cerniera sferica (molteplicità 3).}{46}{section.1.12}%
-\contentsline {paragraph}{Perno scorrevole (molteplicità 4).}{46}{equation.1.12.62}%
-\contentsline {paragraph}{Glifo (molteplicità 5).}{47}{equation.1.12.63}%
-\contentsline {paragraph}{Cerniera cilindrica (molteplicità 5).}{47}{equation.1.12.64}%
-\contentsline {paragraph}{Incastro (molteplicità 6).}{47}{equation.1.12.65}%
-\contentsline {section}{\numberline {1.13}Esercizi proposti}{49}{section.1.13}%
-\contentsline {chapter}{\numberline {2}Congruenza, equilibrio e lavoro virtuale nei sistemi di corpi rigidi}{53}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Perché una teoria dei sistemi}{54}{section.2.1}%
-\contentsline {section}{\numberline {2.2}La congruenza del sistema}{56}{section.2.2}%
-\contentsline {paragraph}{Cerniera in $A$.}{56}{section.2.2}%
-\contentsline {paragraph}{Carrello in $B$.}{56}{equation.2.2.1}%
-\contentsline {paragraph}{Cerniera in $C$.}{57}{equation.2.2.2}%
-\contentsline {paragraph}{Carrello in $D$.}{57}{equation.2.2.3}%
-\contentsline {paragraph}{Il vettore di configurazione.}{57}{equation.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.1}La formulazione generale}{59}{subsection.2.2.1}%
-\contentsline {paragraph}{Vincoli esterni.}{59}{equation.2.2.7}%
-\contentsline {paragraph}{Vincoli interni.}{60}{equation.2.2.11}%
-\contentsline {subsection}{\numberline {2.2.2}Problema cinematico, in generale}{61}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}L'equilibrio del sistema}{62}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Un caso esplicito: la trave di Gerber, letta due volte}{63}{subsection.2.3.1}%
-\contentsline {paragraph}{La lettura vettoriale.}{63}{figure.caption.21}%
-\contentsline {paragraph}{Soppesare le reazioni: la via del lavoro virtuale.}{65}{equation.2.3.28}%
-\contentsline {subsection}{\numberline {2.3.2}Il problema statico, in generale.}{68}{subsection.2.3.2}%
-\contentsline {paragraph}{Il principio dei lavori virtuali.}{72}{ossinner.2.4}%
-\contentsline {subsection}{\numberline {2.3.3}Equilibrio, congruenza e lavoro virtuale.}{73}{subsection.2.3.3}%
-\contentsline {paragraph}{L'Identità del lavoro virtuale tra stati indipendenti.}{74}{ossinner.2.5}%
-\contentsline {paragraph}{Congruenza e lavoro virtuale implicano l'equilibrio.}{74}{equation.2.3.43}%
-\contentsline {paragraph}{Equilibrio e lavoro virtuale implicano la congruenza.}{75}{equation.2.3.43}%
-\contentsline {paragraph}{Compatibilità statica: l'esistenza dell'equilibrio.}{75}{equation.2.3.44}%
-\contentsline {paragraph}{Il teorema degli spostamenti virtuali (Müller-Breslau).}{76}{ossinner.2.6}%
-\contentsline {paragraph}{Compatibilità cinematica: l'esistenza della congruenza.}{78}{equation.2.3.47}%
-\contentsline {paragraph}{Il teorema delle forze virtuali.}{78}{ossinner.2.9}%
-\contentsline {paragraph}{Uno sguardo d'insieme.}{79}{ossinner.2.11}%
-\contentsline {section}{\numberline {2.4}I quattro sottospazi e la classificazione}{81}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Struttura duale dei due problemi}{81}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}La formula fondamentale di classificazione}{83}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Struttura della soluzione}{84}{subsection.2.4.3}%
-\contentsline {paragraph}{Sistema isostatico ($g_\ell = 0$, $g_i = 0$).}{84}{subsection.2.4.3}%
-\contentsline {paragraph}{Sistema labile ($g_\ell > 0$, $g_i = 0$).}{85}{equation.2.4.56}%
-\contentsline {paragraph}{Sistema iperstatico ($g_\ell = 0$, $g_i > 0$).}{86}{equation.2.4.60}%
-\contentsline {paragraph}{Sistema labile-iperstatico ($g_\ell > 0$, $g_i > 0$).}{86}{equation.2.4.64}%
-\contentsline {section}{\numberline {2.5}Esempi applicativi}{87}{section.2.5}%
-\contentsline {section}{\numberline {2.6}Esercizi proposti}{94}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Classificazione dei sistemi di corpi rigidi}{101}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Il conteggio come criterio necessario}{101}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Come si conta $m$: dalla geometria del sistema alla matrice}{103}{section.3.2}%
-\contentsline {paragraph}{Caso standard.}{103}{section.3.2}%
-\contentsline {paragraph}{Vincoli multipli propri.}{104}{esempioinner.3.2}%
-\contentsline {paragraph}{Incastro multiplo e vincolo di rigidità.}{105}{esempioinner.3.3}%
-\contentsline {paragraph}{Procedura di conteggio.}{105}{equation.3.2.4}%
-\contentsline {paragraph}{Primo conteggio: tre corpi composti.}{106}{esempioinner.3.4}%
-\contentsline {paragraph}{Secondo conteggio: nove aste come corpi distinti.}{106}{esempioinner.3.4}%
-\contentsline {section}{\numberline {3.3}Degenerazioni geometriche}{107}{section.3.3}%
-\contentsline {paragraph}{Labilità e iperstaticità simultanee.}{108}{section.3.3}%
-\contentsline {paragraph}{Causa geometrica.}{108}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Isostaticità globale e locale}{109}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Definizioni e decomposizione di $\nu $}{109}{subsection.3.4.1}%
-\contentsline {paragraph}{Conteggio globale.}{109}{subsection.3.4.1}%
-\contentsline {paragraph}{Conteggio locale.}{109}{equation.3.4.5}%
-\contentsline {paragraph}{Decomposizione di $\nu $.}{110}{equation.3.4.6}%
-\contentsline {subsection}{\numberline {3.4.2}Casi possibili e loro significato}{110}{subsection.3.4.2}%
-\contentsline {section}{\numberline {3.5}Riduzione tramite vincolo di rigidità}{113}{section.3.5}%
-\contentsline {paragraph}{Invarianza di $\nu $ per riduzione.}{113}{section.3.5}%
-\contentsline {paragraph}{Applicazione iterata.}{114}{equation.3.5.8}%
-\contentsline {paragraph}{Riduzione aperta e riduzione chiusa.}{114}{equation.3.5.8}%
-\contentsline {paragraph}{Svincoli interni.}{114}{equation.3.5.10}%
-\contentsline {section}{\numberline {3.6}Catalogo delle sottostrutture elementari}{118}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Un corpo: mensola e trave appoggiata}{118}{subsection.3.6.1}%
-\contentsline {paragraph}{Mensola.}{118}{subsection.3.6.1}%
-\contentsline {paragraph}{Trave semplicemente appoggiata.}{118}{figure.caption.37}%
-\contentsline {paragraph}{Trave con glifo.}{119}{figure.caption.38}%
-\contentsline {paragraph}{Trave con tre carrelli.}{120}{ossinner.3.10}%
-\contentsline {subsection}{\numberline {3.6.2}Due corpi: arco a tre cerniere}{123}{subsection.3.6.2}%
-\contentsline {paragraph}{Caso regolare.}{123}{subsection.3.6.2}%
-\contentsline {paragraph}{Caso degenere.}{123}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Due corpi: trave Gerber elementare}{125}{subsection.3.6.3}%
-\contentsline {paragraph}{Struttura portante e appendice.}{125}{figure.caption.42}%
-\contentsline {paragraph}{Condizione di non degenerazione.}{126}{figure.caption.42}%
-\contentsline {subsection}{\numberline {3.6.4}Tre corpi: anello a tre cerniere}{127}{subsection.3.6.4}%
-\contentsline {paragraph}{Anello vincolato al suolo.}{127}{subsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.6.5}Composizione di sottostrutture}{128}{subsection.3.6.5}%
-\contentsline {paragraph}{Regola di composizione.}{128}{subsection.3.6.5}%
-\contentsline {subsection}{\numberline {3.6.6}Classificazione per decomposizione e per riduzione}{128}{subsection.3.6.6}%
-\contentsline {subsubsection}{Decomposizione gerarchica}{129}{subsection.3.6.6}%
-\contentsline {paragraph}{Regola operativa.}{129}{subsection.3.6.6}%
-\contentsline {subsubsection}{Riduzione a schema noto}{129}{ossinner.3.16}%
-\contentsline {paragraph}{Operazioni elementari di riduzione.}{130}{ossinner.3.16}%
-\contentsline {paragraph}{Procedura.}{130}{ossinner.3.16}%
-\contentsline {section}{\numberline {3.7}Procedura di ispezione diretta}{133}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}Passi della procedura}{133}{subsection.3.7.1}%
-\contentsline {chapter}{Indice analitico}{139}{section*.47}%
+\contentsline {part}{\EnsureStandardFontEncoding {I}\hspace {1em}Meccanica dei corpi rigidi}{7}{part.1}%
+\contentsline {chapter}{\numberline {1}Prestazioni cinematiche e statiche dei vincoli}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Il vincolo di rigidità e i vincoli di collegamento}{9}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Prestazione cinematica}{10}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Prestazione statica}{10}{subsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.1.3}Distorsioni e svincoli}{10}{subsection.1.1.3}%
+\contentsline {section}{\numberline {1.2}Il vincolo posizionale: definizione e classificazione}{11}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Vincoli esterni e vincoli interni}{12}{subsection.1.2.1}%
+\contentsline {section}{\numberline {1.3}Richiamo: il campo di spostamento e il centro di rotazione}{13}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Vincoli semplici: molteplicità uno}{15}{section.1.4}%
+\contentsline {subsection}{\numberline {1.4.1}Il carrello}{16}{subsection.1.4.1}%
+\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{16}{subsection.1.4.1}%
+\contentsline {paragraph}{Caso esterno.}{17}{figure.caption.2}%
+\contentsline {paragraph}{Equazione cinematica.}{17}{figure.caption.2}%
+\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{17}{equation.1.4.5}%
+\contentsline {paragraph}{Reazione vincolare.}{17}{equation.1.4.8}%
+\contentsline {paragraph}{Caso interno.}{18}{figure.caption.3}%
+\contentsline {subsection}{\numberline {1.4.2}Il bipendolo}{19}{subsection.1.4.2}%
+\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{19}{subsection.1.4.2}%
+\contentsline {paragraph}{Caso esterno.}{20}{subsection.1.4.2}%
+\contentsline {paragraph}{Equazione cinematica.}{20}{subsection.1.4.2}%
+\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{20}{equation.1.4.13}%
+\contentsline {paragraph}{Reazione vincolare.}{21}{figure.caption.5}%
+\contentsline {paragraph}{Caso interno.}{21}{ossinner.1.6}%
+\contentsline {section}{\numberline {1.5}Vincoli doppi: molteplicità due}{22}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}La cerniera}{22}{subsection.1.5.1}%
+\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{22}{subsection.1.5.1}%
+\contentsline {paragraph}{Caso esterno.}{22}{subsection.1.5.1}%
+\contentsline {paragraph}{Equazione cinematica.}{22}{subsection.1.5.1}%
+\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{23}{equation.1.5.17}%
+\contentsline {paragraph}{Reazione vincolare.}{23}{ossinner.1.7}%
+\contentsline {paragraph}{Caso interno.}{23}{figure.caption.7}%
+\contentsline {subsection}{\numberline {1.5.2}Il glifo}{24}{subsection.1.5.2}%
+\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{24}{subsection.1.5.2}%
+\contentsline {paragraph}{Caso esterno.}{25}{Item.6}%
+\contentsline {paragraph}{Equazione cinematica.}{25}{Item.6}%
+\contentsline {paragraph}{Posizione del centro di rotazione assoluto.}{26}{ossinner.1.8}%
+\contentsline {paragraph}{Reazione vincolare.}{26}{figure.caption.9}%
+\contentsline {paragraph}{Caso interno.}{27}{equation.1.5.27}%
+\contentsline {section}{\numberline {1.6}Vincolo triplo: l'incastro}{28}{section.1.6}%
+\contentsline {paragraph}{Realizzazione meccanica e parametri caratterizzanti.}{28}{section.1.6}%
+\contentsline {paragraph}{Caso esterno.}{29}{section.1.6}%
+\contentsline {paragraph}{Equazioni cinematiche.}{29}{section.1.6}%
+\contentsline {paragraph}{Posizione del centro di rotazione.}{29}{ossinner.1.10}%
+\contentsline {paragraph}{Reazione vincolare.}{29}{ossinner.1.10}%
+\contentsline {paragraph}{Caso interno.}{29}{figure.caption.11}%
+\contentsline {section}{\numberline {1.7}Vincoli composti: giustapposizione di vincoli semplici}{31}{section.1.7}%
+\contentsline {paragraph}{Cinematica: teorema di intersezione.}{31}{ossinner.1.12}%
+\contentsline {paragraph}{Statica: somma vettoriale delle reazioni.}{32}{figure.caption.12}%
+\contentsline {paragraph}{Svincoli.}{33}{figure.caption.12}%
+\contentsline {section}{\numberline {1.8}Tavola riepilogativa}{33}{section.1.8}%
+\contentsline {section}{\numberline {1.9}Il cedimento vincolare}{35}{section.1.9}%
+\contentsline {paragraph}{Generalizzazione delle equazioni cinematiche.}{35}{ossinner.1.13}%
+\contentsline {paragraph}{Effetto sul centro di rotazione.}{35}{ossinner.1.13}%
+\contentsline {paragraph}{Effetto sulla reazione vincolare.}{36}{equation.1.9.37}%
+\contentsline {paragraph}{Cedimento nei vincoli interni.}{37}{ossinner.1.14}%
+\contentsline {paragraph}{Distorsioni del vincolo di rigidità.}{38}{ossinner.1.15}%
+\contentsline {section}{\numberline {1.10}Dualità fra vincoli composti e componenti}{38}{section.1.10}%
+\contentsline {paragraph}{Cerniera.}{38}{section.1.10}%
+\contentsline {paragraph}{Glifo: decomposizione modale sym/skw.}{38}{equation.1.10.38}%
+\contentsline {paragraph}{Incastro.}{39}{equation.1.10.42}%
+\contentsline {section}{\numberline {1.11}Vincoli che collegano più corpi}{39}{section.1.11}%
+\contentsline {subsection}{\numberline {1.11.1}La cerniera multipla}{40}{subsection.1.11.1}%
+\contentsline {paragraph}{Prestazione statica.}{40}{ossinner.1.16}%
+\contentsline {paragraph}{Forza esterna applicata al nodo.}{42}{equation.1.11.47}%
+\contentsline {paragraph}{Cerniera multipla vincolata al suolo.}{42}{equation.1.11.49}%
+\contentsline {subsection}{\numberline {1.11.2}L'incastro multiplo}{43}{subsection.1.11.2}%
+\contentsline {paragraph}{Prestazione statica.}{43}{equation.1.11.54}%
+\contentsline {paragraph}{Forza e coppia esterne applicate al nodo.}{44}{figure.caption.15}%
+\contentsline {paragraph}{Incastro multiplo vincolato al suolo.}{45}{equation.1.11.58}%
+\contentsline {section}{\numberline {1.12}Cenno ai vincoli spaziali}{47}{section.1.12}%
+\contentsline {paragraph}{Piano di scorrimento (molteplicità 1).}{48}{section.1.12}%
+\contentsline {paragraph}{Biella (molteplicità 1).}{48}{section.1.12}%
+\contentsline {paragraph}{Bipendolo (molteplicità 1).}{48}{section.1.12}%
+\contentsline {paragraph}{Cerniera sferica (molteplicità 3).}{48}{section.1.12}%
+\contentsline {paragraph}{Perno scorrevole (molteplicità 4).}{48}{equation.1.12.62}%
+\contentsline {paragraph}{Glifo (molteplicità 5).}{49}{equation.1.12.63}%
+\contentsline {paragraph}{Cerniera cilindrica (molteplicità 5).}{49}{equation.1.12.64}%
+\contentsline {paragraph}{Incastro (molteplicità 6).}{49}{equation.1.12.65}%
+\contentsline {section}{\numberline {1.13}Esercizi proposti}{51}{section.1.13}%
+\contentsline {chapter}{\numberline {2}Congruenza, equilibrio e lavoro virtuale nei sistemi di corpi rigidi}{55}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Perché una teoria dei sistemi}{56}{section.2.1}%
+\contentsline {section}{\numberline {2.2}La congruenza del sistema}{58}{section.2.2}%
+\contentsline {paragraph}{Cerniera in $A$.}{58}{section.2.2}%
+\contentsline {paragraph}{Carrello in $B$.}{58}{equation.2.2.1}%
+\contentsline {paragraph}{Cerniera in $C$.}{59}{equation.2.2.2}%
+\contentsline {paragraph}{Carrello in $D$.}{59}{equation.2.2.3}%
+\contentsline {paragraph}{Il vettore di configurazione.}{59}{equation.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.1}La formulazione generale}{61}{subsection.2.2.1}%
+\contentsline {paragraph}{Vincoli esterni.}{61}{equation.2.2.7}%
+\contentsline {paragraph}{Vincoli interni.}{62}{equation.2.2.11}%
+\contentsline {subsection}{\numberline {2.2.2}Problema cinematico, in generale}{63}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}L'equilibrio del sistema}{64}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Un caso esplicito: la trave di Gerber, letta due volte}{65}{subsection.2.3.1}%
+\contentsline {paragraph}{La lettura vettoriale.}{65}{figure.caption.21}%
+\contentsline {paragraph}{Soppesare le reazioni: la via del lavoro virtuale.}{67}{equation.2.3.28}%
+\contentsline {subsection}{\numberline {2.3.2}Il problema statico, in generale.}{70}{subsection.2.3.2}%
+\contentsline {paragraph}{Il principio dei lavori virtuali.}{74}{ossinner.2.4}%
+\contentsline {subsection}{\numberline {2.3.3}Equilibrio, congruenza e lavoro virtuale.}{75}{subsection.2.3.3}%
+\contentsline {paragraph}{L'Identità del lavoro virtuale tra stati indipendenti.}{76}{ossinner.2.5}%
+\contentsline {paragraph}{Congruenza e lavoro virtuale implicano l'equilibrio.}{76}{equation.2.3.43}%
+\contentsline {paragraph}{Equilibrio e lavoro virtuale implicano la congruenza.}{77}{equation.2.3.43}%
+\contentsline {paragraph}{Compatibilità statica: l'esistenza dell'equilibrio.}{77}{equation.2.3.44}%
+\contentsline {paragraph}{Il teorema degli spostamenti virtuali (Müller-Breslau).}{78}{ossinner.2.6}%
+\contentsline {paragraph}{Compatibilità cinematica: l'esistenza della congruenza.}{80}{equation.2.3.47}%
+\contentsline {paragraph}{Il teorema delle forze virtuali.}{80}{ossinner.2.9}%
+\contentsline {paragraph}{Uno sguardo d'insieme.}{81}{ossinner.2.11}%
+\contentsline {section}{\numberline {2.4}I quattro sottospazi e la classificazione}{83}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Struttura duale dei due problemi}{83}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}La formula fondamentale di classificazione}{85}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}Struttura della soluzione}{86}{subsection.2.4.3}%
+\contentsline {paragraph}{Sistema isostatico ($g_\ell = 0$, $g_i = 0$).}{86}{subsection.2.4.3}%
+\contentsline {paragraph}{Sistema labile ($g_\ell > 0$, $g_i = 0$).}{87}{equation.2.4.56}%
+\contentsline {paragraph}{Sistema iperstatico ($g_\ell = 0$, $g_i > 0$).}{88}{equation.2.4.60}%
+\contentsline {paragraph}{Sistema labile-iperstatico ($g_\ell > 0$, $g_i > 0$).}{88}{equation.2.4.64}%
+\contentsline {section}{\numberline {2.5}Esempi applicativi}{89}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Esercizi proposti}{96}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Classificazione dei sistemi di corpi rigidi}{103}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Il conteggio come criterio necessario}{103}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Come si conta $m$: dalla geometria del sistema alla matrice}{105}{section.3.2}%
+\contentsline {paragraph}{Caso standard.}{105}{section.3.2}%
+\contentsline {paragraph}{Vincoli multipli propri.}{106}{esempioinner.3.2}%
+\contentsline {paragraph}{Incastro multiplo e vincolo di rigidità.}{107}{esempioinner.3.3}%
+\contentsline {paragraph}{Procedura di conteggio.}{107}{equation.3.2.4}%
+\contentsline {paragraph}{Primo conteggio: tre corpi composti.}{108}{esempioinner.3.4}%
+\contentsline {paragraph}{Secondo conteggio: nove aste come corpi distinti.}{108}{esempioinner.3.4}%
+\contentsline {section}{\numberline {3.3}Degenerazioni geometriche}{109}{section.3.3}%
+\contentsline {paragraph}{Labilità e iperstaticità simultanee.}{110}{section.3.3}%
+\contentsline {paragraph}{Causa geometrica.}{110}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Isostaticità globale e locale}{111}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Definizioni e decomposizione di $\nu $}{111}{subsection.3.4.1}%
+\contentsline {paragraph}{Conteggio globale.}{111}{subsection.3.4.1}%
+\contentsline {paragraph}{Conteggio locale.}{111}{equation.3.4.5}%
+\contentsline {paragraph}{Decomposizione di $\nu $.}{112}{equation.3.4.6}%
+\contentsline {subsection}{\numberline {3.4.2}Casi possibili e loro significato}{112}{subsection.3.4.2}%
+\contentsline {section}{\numberline {3.5}Riduzione tramite vincolo di rigidità}{115}{section.3.5}%
+\contentsline {paragraph}{Invarianza di $\nu $ per riduzione.}{115}{section.3.5}%
+\contentsline {paragraph}{Applicazione iterata.}{116}{equation.3.5.8}%
+\contentsline {paragraph}{Riduzione aperta e riduzione chiusa.}{116}{equation.3.5.8}%
+\contentsline {paragraph}{Svincoli interni.}{116}{equation.3.5.10}%
+\contentsline {section}{\numberline {3.6}Catalogo delle sottostrutture elementari}{120}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Un corpo: mensola e trave appoggiata}{120}{subsection.3.6.1}%
+\contentsline {paragraph}{Mensola.}{120}{subsection.3.6.1}%
+\contentsline {paragraph}{Trave semplicemente appoggiata.}{120}{figure.caption.37}%
+\contentsline {paragraph}{Trave con glifo.}{121}{figure.caption.38}%
+\contentsline {paragraph}{Trave con tre carrelli.}{122}{ossinner.3.10}%
+\contentsline {subsection}{\numberline {3.6.2}Due corpi: arco a tre cerniere}{125}{subsection.3.6.2}%
+\contentsline {paragraph}{Caso regolare.}{125}{subsection.3.6.2}%
+\contentsline {paragraph}{Caso degenere.}{125}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Due corpi: trave Gerber elementare}{127}{subsection.3.6.3}%
+\contentsline {paragraph}{Struttura portante e appendice.}{127}{figure.caption.42}%
+\contentsline {paragraph}{Condizione di non degenerazione.}{128}{figure.caption.42}%
+\contentsline {subsection}{\numberline {3.6.4}Tre corpi: anello a tre cerniere}{129}{subsection.3.6.4}%
+\contentsline {paragraph}{Anello vincolato al suolo.}{129}{subsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.6.5}Composizione di sottostrutture}{130}{subsection.3.6.5}%
+\contentsline {paragraph}{Regola di composizione.}{130}{subsection.3.6.5}%
+\contentsline {subsection}{\numberline {3.6.6}Classificazione per decomposizione e per riduzione}{130}{subsection.3.6.6}%
+\contentsline {subsubsection}{Decomposizione gerarchica}{131}{subsection.3.6.6}%
+\contentsline {paragraph}{Regola operativa.}{131}{subsection.3.6.6}%
+\contentsline {subsubsection}{Riduzione a schema noto}{131}{ossinner.3.16}%
+\contentsline {paragraph}{Operazioni elementari di riduzione.}{132}{ossinner.3.16}%
+\contentsline {paragraph}{Procedura.}{132}{ossinner.3.16}%
+\contentsline {section}{\numberline {3.7}Procedura di ispezione diretta}{135}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Passi della procedura}{135}{subsection.3.7.1}%
+\contentsline {part}{\EnsureStandardFontEncoding {II}\hspace {1em}Travi e sistemi di travi rigide}{141}{part.2}%
+\contentsline {chapter}{\numberline {4}La trave rigida}{143}{chapter.4}%
+\contentsline {section}{\numberline {4.1}La trave}{143}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Riferimento locale}{144}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Configurazione}{145}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Azioni esterne ed equilibrio globale}{146}{subsection.4.1.3}%
+\contentsline {section}{\numberline {4.2}Azioni interne}{147}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Il taglio ideale}{147}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Calcolo per equivalenza}{148}{subsection.4.2.2}%
+\contentsline {paragraph}{Valori agli estremi.}{149}{equation.4.2.11}%
+\contentsline {subsection}{\numberline {4.2.3}Equilibrio del concio}{149}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Equazioni puntuali di equilibrio}{150}{subsection.4.2.4}%
+\contentsline {subsection}{\numberline {4.2.5}Equazioni di salto}{151}{subsection.4.2.5}%
+\contentsline {section}{\numberline {4.3}Continuità e distorsioni}{154}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Distorsioni}{154}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Lavoro delle azioni interne}{155}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}Invarianza della classificazione sotto taglio interno}{158}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Perché la classificazione non cambia}{158}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Il caso non isostatico}{159}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Trave monoconnessa e trave pluriconnessa: iperstaticità interna}{159}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Grado di connessione}{159}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Iperstaticità interna delle travi pluriconnesse}{159}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Svincoli interni}{161}{subsection.4.5.3}%
+\contentsline {chapter}{\numberline {5}Diagrammi delle caratteristiche della sollecitazione}{163}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Disaccoppiamento longitudinale e trasversale}{164}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Procedura operativa e convenzioni grafiche}{165}{section.5.2}%
+\contentsline {paragraph}{Lettura per aree.}{166}{Item.26}%
+\contentsline {paragraph}{Sovrapposizione degli effetti.}{166}{equation.5.2.5}%
+\contentsline {paragraph}{Convenzioni grafiche.}{166}{equation.5.2.5}%
+\contentsline {section}{\numberline {5.3}Esempi di travi isostatiche}{167}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Problema statico longitudinale}{167}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Problema statico trasversale}{171}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Proprietà di tangenza del diagramma del momento}{197}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Sostituzione tra carico distribuito e carichi concentrati}{212}{subsection.5.3.4}%
+\contentsline {subsection}{\numberline {5.3.5}Problema statico misto}{214}{subsection.5.3.5}%
+\contentsline {paragraph}{Carichi su travi inclinate.}{214}{subsection.5.3.5}%
+\contentsline {subsection}{\numberline {5.3.6}Esempi di travi iperstatiche}{221}{subsection.5.3.6}%
+\contentsline {paragraph}{Sistema principale.}{221}{subsection.5.3.6}%
+\contentsline {paragraph}{Problema ``0''.}{221}{subsection.5.3.6}%
+\contentsline {paragraph}{Problemi ``$j$'' $(j = 1,\ldots ,m-n)$.}{222}{subsection.5.3.6}%
+\contentsline {paragraph}{Soluzione generale per sovrapposizione.}{222}{subsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.3.7}Iperstaticità longitudinale}{223}{subsection.5.3.7}%
+\contentsline {subsection}{\numberline {5.3.8}Iperstaticità trasversale}{225}{subsection.5.3.8}%
+\contentsline {subsection}{\numberline {5.3.9}Problema statico misto}{228}{subsection.5.3.9}%
+\contentsline {chapter}{Indice analitico}{233}{section*.96}%

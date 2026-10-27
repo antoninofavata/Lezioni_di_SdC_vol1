@@ -1,0 +1,1288 @@
+%---------------------------------------------------------------------------------------------------------------------------- 
+\graphicspath{{Parti/P04-Travi_rigide/P04-Travi_rigide/Figure/}}
+\chapter{La trave rigida}\label{cap:Trave_Rigida}
+%---------------------------------------------------------------------------------------------------------------------------- 
+
+\begin{sommario}
+	La trave è il modello di corpo più usato nell'ingegneria
+	strutturale: un solido lungo e sottile, che si descrive
+	con la sola linea d'asse. In questo capitolo la si
+	suppone rigida.
+	
+	Le azioni che due parti di una trave si scambiano
+	attraverso una sezione si rivelano con un taglio ideale,
+	chiedendo che ciascuna parte resti in equilibrio: nascono
+	così la forza normale, il taglio e il momento flettente.
+	Localizzando l'equilibrio su porzioni di trave sempre più
+	corte si ottengono le equazioni indefinite e le equazioni
+	di salto. Nulla di tutto ciò dipende dalla rigidità.
+	
+	La rigidità interviene altrove: nella cinematica, perché
+	impone alle due facce di ogni sezione di muoversi insieme,
+	e nella statica, perché rende le azioni interne grandezze
+	puramente reattive. Il capitolo si chiude con la
+	distinzione fra travi monoconnesse e pluriconnesse e con
+	il catalogo degli svincoli interni.
+\end{sommario}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{La trave}
+\label{sec:trave_def}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Si chiama \emph{trave}\index{trave|textbf} un corpo in
+cui una dimensione, la \emph{lunghezza} $\ell$, prevale
+nettamente sulle altre due. Di un corpo così conviene
+seguire la \emph{linea d'asse}\index{linea d'asse|textbf},
+luogo dei baricentri delle sezioni; la
+\emph{sezione}\index{sezione trasversale|textbf} in un
+punto della linea d'asse è l'intersezione del corpo con
+il piano normale alla linea in quel punto. Quando la
+linea d'asse giace in un piano e i carichi agiscono
+nello stesso piano, la trave si dice
+\emph{piana}\index{trave!piana|textbf}. Qui si considera
+la trave piana ad asse rettilineo, di estremi $A$ e $B$;
+la trave ad asse curvo è trattata nel Volume~III.
+
+In questo volume la trave è
+\emph{rigida}\index{trave!rigida|textbf}, e del corpo
+il modello conserva soltanto ciò che serve alla sua
+cinematica e alla sua statica. Le dimensioni della
+sezione, piccole rispetto a $\ell$, non vi compaiono.
+La forma della linea d'asse stabilisce dove si trovano i
+punti di applicazione dei carichi e dei vincoli, e quindi
+i bracci delle forze, ma non cambia la descrizione del
+moto, affidata ai tre parametri di configurazione del
+\PARref{sec:polo_trave}. Per la stessa ragione un corpo
+rigido piano di forma qualsiasi si tratta allo stesso
+modo: la trave è il caso più frequente nella pratica
+strutturale, non una restrizione della teoria. Nelle
+figure la si disegna riducendola alla linea d'asse, sulla
+quale si collocano anche i vincoli
+(\FIGref{fig:trave_convenzione}).
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-trave-convenzione}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Riferimento locale}
+\label{sec:riferimento_intrinseco}
+%----------------------------------------------------------------------------------------------------------------------------
+
+A ogni trave si associa un \emph{riferimento
+	locale}\index{riferimento locale|textbf}
+$\{A;\,x,\,y,\,z\}$, di base
+$\{\ab_x,\,\ab_y,\,\ab_z\}$\nomenclature[L]{$\{A;\,x,\,y,\,z\}$}{riferimento locale della trave}.
+L'asse $z$ corre lungo la linea d'asse da $A$ verso $B$,
+e la coordinata $z \in [0,\ell]$ è l'\emph{ascissa}
+della sezione. L'asse $y$ giace nel piano della trave e
+punta verso il lato che si conviene di chiamare
+\emph{fibra inferiore}\index{fibra inferiore}; l'asse
+$x$, ortogonale al piano e uscente dal foglio, completa
+la terna destrorsa.
+
+Il riferimento locale è legato al riferimento globale,
+di assi $x^{\mathrm{g}}$, $y^{\mathrm{g}}$, $z^{\mathrm{g}}$,
+da un solo angolo: l'angolo $\alpha$ di cui occorre
+ruotare in senso antiorario il versore
+$\ab_x^{\mathrm{g}}$ per sovrapporlo ad $\ab_z$. Risulta
+\begin{equation}\label{eq:base_locale}
+	\ab_x = \ab_z^{\mathrm{g}}, \qquad
+	\ab_y = \sin\alpha\,\ab_x^{\mathrm{g}} - \cos\alpha\,\ab_y^{\mathrm{g}}, \qquad
+	\ab_z = \cos\alpha\,\ab_x^{\mathrm{g}} + \sin\alpha\,\ab_y^{\mathrm{g}}.
+\end{equation}
+Scegliere $\alpha$ significa scegliere insieme il verso
+di percorrenza e la fibra inferiore, che sta sempre alla
+destra di chi percorre la trave da $A$ verso $B$. Per
+$\alpha = 0$, la trave orizzontale percorsa da sinistra
+verso destra, è $\ab_z = \ab_x^{\mathrm{g}}$ e
+$\ab_y = -\ab_y^{\mathrm{g}}$: l'asse $y$ punta verso il
+basso: uno spostamento verso il basso, negativo nel
+riferimento globale, è positivo in quello locale. Questa
+inversione è la fonte più frequente di errori di segno
+nel passaggio da un riferimento all'altro.
+
+Nelle figure la fibra inferiore è segnata dal
+\emph{tratteggio}, disegnato sul lato verso cui punta
+$\ab_y$ (\FIGref{fig:riferimento_intrinseco}). Il
+tratteggio basta a ricostruire l'intero riferimento:
+poiché $\ab_x$ esce dal foglio, il verso di percorrenza
+è quello di $\ab_z = \ab_x \times \ab_y$, e la fibra
+inferiore resta alla destra di chi percorre la trave.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-riferimento-intrinseco}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Configurazione}
+\label{sec:polo_trave}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Il polo $O$ della trave è un punto della linea d'asse,
+di ascissa $z_O$. Nel riferimento locale il vettore di
+configurazione\index{vettore di configurazione} è
+\begin{equation}\label{eq:conf_trave}
+	\bm{u} =
+	\Bigl\{w(O)\; v(O) \; \vartheta\Bigr\}^{\!\top}
+	\in \mathbb{R}^3,
+\end{equation}
+dove $w(O)$ e $v(O)$ sono gli spostamenti del polo lungo
+$z$ e lungo $y$, e $\vartheta$ è la rotazione della trave,
+positiva se antioraria. Poiché $\ab_x = \ab_z^{\mathrm{g}}$,
+la rotazione è la stessa nei due riferimenti. Lo
+spostamento della sezione di ascissa $z$ segue dalla
+rigidità:
+\begin{equation}\label{eq:cinematica_trave}
+	w(z) = w(O),
+	\qquad
+	v(z) = v(O) - \vartheta\,(z - z_O);
+\end{equation}
+la componente assiale è uniforme, quella trasversale
+varia linearmente con pendenza $-\vartheta$. Conviene
+scegliere il polo in corrispondenza di un vincolo, così
+che le condizioni vincolari annullino subito qualche
+componente di $\bm{u}$.
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Azioni esterne ed equilibrio globale}
+\label{sec:azioni_esterne}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Sulla trave agiscono i carichi applicati e le reazioni
+dei vincoli, che conviene trattare insieme come
+\emph{azioni esterne} (\FIGref{fig:azioni_esterne}).
+Una parte di esse è distribuita lungo l'asse, con
+densità per unità di lunghezza che sono funzioni
+dell'ascissa $z$,
+\begin{equation}\label{eq:densita}
+	\pb = p\,\ab_y + q\,\ab_z, \qquad
+	\cb = c\,\ab_x;
+\end{equation}
+$p$ e $q$ si misurano in $[\text{N/m}]$, $c$ in
+$[\text{N\,m/m}]$. Qui e nel seguito l'argomento di
+queste funzioni, e delle altre funzioni dell'ascissa,
+si sottintende nelle equazioni che valgono in ogni
+sezione; lo si scrive quando una grandezza è valutata in
+una sezione determinata, quando nella stessa equazione
+compaiono sezioni diverse e sotto il segno di integrale.\nomenclature[L]{$p,\,q$}{densità di forza trasversale e assiale}\nomenclature[L]{$c$}{densità di coppia}
+Un'altra parte è concentrata in un numero finito di
+sezioni, di ascisse $z_i$ ($i = 1, \ldots, n$), dove
+agiscono la forza e la coppia
+\begin{equation}\label{eq:concentrate}
+	\fb_i = P_i\,\ab_y + Q_i\,\ab_z, \qquad
+	\cb_i = C_i\,\ab_x.
+\end{equation}
+Gli estremi $A$ e $B$, sede abituale delle reazioni, sono
+sezioni di questo tipo, e per le azioni che vi agiscono si
+scrive anche $\fb_A$, $\cb_A$ e $\fb_B$, $\cb_B$. Tutte
+le componenti sono positive se concordi con gli assi
+locali; le coppie, quindi, se antiorarie.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-azioni-esterne}
+
+La trave è in equilibrio\index{equilibrio!globale}: la
+risultante e il momento risultante rispetto ad $A$ di
+tutte le azioni esterne sono nulli,
+\begin{gather*}
+	\sum_{i} \fb_i + \int_0^\ell \pb(z)\,\dd z = \zerovb,
+	\\
+	\sum_{i} \bigl(z_i\,\ab_z \times \fb_i + \cb_i\bigr)
+	+ \int_0^\ell \bigl[z\,\ab_z \times \pb(z) + \cb(z)\bigr]\,\dd z = \zerovb.
+\end{gather*}
+Poiché $\ab_z \times \fb_i = -P_i\,\ab_x$, in componenti
+si ha
+\begin{align}
+	\sum_{i} Q_i + \int_0^\ell q(z)\,\dd z &= 0,
+	\label{eq:eq_glob_z}\\
+	\sum_{i} P_i + \int_0^\ell p(z)\,\dd z &= 0,
+	\label{eq:eq_glob_y}\\
+	\sum_{i} \bigl(C_i - P_i\,z_i\bigr)
+	+ \int_0^\ell \bigl[c(z) - p(z)\,z\bigr]\,\dd z &= 0.
+	\label{eq:eq_glob_mu}
+\end{align}
+Sono le tre equazioni cardinali della statica del corpo
+rigido (\CAPref{cap:statica_CR}). Separando le reazioni
+dei vincoli, raccolte nel vettore $\bm{r}$, dalle azioni
+attive, raccolte in $\bm{f}$, esse assumono la forma
+matriciale $\bm{A}^{\top}\bm{r} = -\bm{f}$ del
+\CAPref{cap:SCR}.
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Azioni interne}
+\label{sec:caratteristiche}
+%----------------------------------------------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Il taglio ideale}
+\label{sec:taglio_ideale}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Si immagini di tagliare la trave nella sezione $S$ di
+ascissa $z$\index{taglio ideale|textbf}. Il taglio la
+divide in due parti: $\Cc^-$, fra $A$ e $S$, e $\Cc^+$,
+fra $S$ e $B$. Se la trave è in equilibrio lo è anche
+ciascuna delle due parti, purché si tenga conto, accanto
+alle azioni esterne, di quelle che ogni parte riceve
+dall'altra attraverso la sezione. Nel modello di trave
+queste azioni di contatto si riducono, per ipotesi, a
+una forza $\tb(z)$ e a una coppia $\mb(z)$ applicate nel
+baricentro della sezione: sono le azioni che $\Cc^+$
+esercita su $\Cc^-$. Per il principio di azione e
+reazione, $\Cc^-$ esercita su $\Cc^+$ la forza $-\tb(z)$
+e la coppia $-\mb(z)$.
+
+Le \emph{azioni interne}\index{azioni interne|textbf}
+si decompongono nel riferimento locale,
+\begin{equation}\label{eq:azioni_interne}
+	\tb = T\,\ab_y + N\,\ab_z, \qquad
+	\mb = M\,\ab_x,
+\end{equation}
+e le loro componenti prendono il nome di
+\emph{caratteristiche della sollecitazione}\index{caratteristiche della sollecitazione|textbf}:
+$N$ è la \emph{forza normale}\index{forza normale|textbf}\nomenclature[L]{$N$}{forza normale},
+$T$ il \emph{taglio}\index{taglio|textbf}\nomenclature[L]{$T$}{taglio},
+$M$ il \emph{momento flettente}\index{momento flettente|textbf}\nomenclature[L]{$M$}{momento flettente}.
+Poiché $\tb$ e $\mb$ agiscono sulla faccia di $\Cc^-$,
+la cui normale uscente è $\ab_z$, le caratteristiche
+sono positive quando su questa faccia sono concordi con
+gli assi locali; sulla faccia di $\Cc^+$ i versi positivi
+sono quindi opposti (\FIGref{fig:NTM_sezione}). Una forza
+normale positiva è di trazione; un momento flettente
+positivo tende le fibre inferiori.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-NTM-sezione}
+
+In questa costruzione intervengono soltanto l'equilibrio
+e il principio di azione e reazione. La rigidità non vi
+ha alcun ruolo, e tutto ciò che segue in questo paragrafo
+vale, senza modifiche, per la trave deformabile, purché
+gli spostamenti siano piccoli: l'equilibrio si scrive
+nella configurazione di riferimento, con i bracci delle
+forze misurati sulla trave indeformata.
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Calcolo per equivalenza}
+\label{sec:caratteristiche_calcolo}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Delle azioni interne non interessa il valore in una sola
+sezione, ma l'andamento lungo tutta la trave: le funzioni
+$N(z)$, $T(z)$, $M(z)$ e i loro grafici, i
+\emph{diagrammi}\index{diagramma} delle caratteristiche
+della sollecitazione. Sono i diagrammi a indicare le
+sezioni più sollecitate, sulle quali si verificherà la
+resistenza della trave, e a mostrare a colpo d'occhio
+come la trave porta i carichi fino ai vincoli. Occorre
+dunque un modo sistematico per calcolare le azioni
+interne in una sezione qualsiasi.
+
+Siano $\fb^-(z)$ e $\mub^-(z)$ la risultante e il
+momento risultante, rispetto al baricentro di $S$, delle
+azioni esterne agenti su $\Cc^-$, e siano $\fb^+(z)$ e
+$\mub^+(z)$ le analoghe grandezze per $\Cc^+$; dipendono
+da $z$ perché da $z$ dipende la posizione del taglio.
+L'equilibrio delle due parti richiede
+\begin{alignat*}{2}
+	&\fb^-(z) + \tb(z) = \zerovb, &\qquad
+	&\mub^-(z) + \mb(z) = \zerovb,\\
+	&\fb^+(z) - \tb(z) = \zerovb, &\qquad
+	&\mub^+(z) - \mb(z) = \zerovb,
+\end{alignat*}
+e quindi
+\begin{equation}\label{eq:NTM_def}
+	\tb(z) = \fb^+(z) = -\fb^-(z), \qquad
+	\mb(z) = \mub^+(z) = -\mub^-(z).
+\end{equation}
+Le azioni interne in una sezione sono dunque la risultante
+e il momento risultante delle azioni esterne che agiscono
+da una parte del taglio: quelle su $\Cc^+$, oppure le
+opposte di quelle su $\Cc^-$. È il \emph{metodo per
+	equivalenza}\index{metodo!per equivalenza|textbf}.
+Le azioni interne si prestano così a due letture. Viste
+dalla sezione, sono ciò che tiene unite le due parti: la
+forza e la coppia che ciascuna trasmette all'altra. Viste
+da lontano, sono la sintesi di tutto ciò che agisce da
+una parte del taglio, ridotto al baricentro della
+sezione. La prima lettura ne dà il significato fisico,
+la seconda il modo di calcolarle.
+Che le due espressioni coincidano è garantito
+dall'equilibrio globale, $\fb^+(z) + \fb^-(z) = \zerovb$
+e $\mub^+(z) + \mub^-(z) = \zerovb$; nei calcoli si sceglie la
+parte più semplice, e l'altra fornisce una verifica.
+Scegliendo $\Cc^-$ si ha, in componenti,
+\begin{equation}\label{eq:NTM_esplicite}
+	\begin{aligned}
+		N(z) &= -\sum_{z_i < z} Q_i - \int_0^z q(\zeta)\,\dd\zeta,\\
+		T(z) &= -\sum_{z_i < z} P_i - \int_0^z p(\zeta)\,\dd\zeta,\\
+		M(z) &= -\sum_{z_i < z} \bigl[C_i + P_i\,(z - z_i)\bigr]
+		- \int_0^z \bigl[c(\zeta) + p(\zeta)\,(z - \zeta)\bigr]\,\dd\zeta.
+	\end{aligned}
+\end{equation}
+
+\paragraph{Valori agli estremi.}
+Quando la sezione $S$ si avvicina ad $A$, la parte
+$\Cc^-$ si riduce all'estremo $A$ e porta con sé soltanto
+$\fb_A$ e $\cb_A$; quando $S$ si avvicina a $B$, è la
+parte $\Cc^+$ a ridursi all'estremo $B$. Le~\eqref{eq:NTM_def}
+danno allora
+\begin{align}
+	N(0^+) &= -Q_A, & T(0^+) &= -P_A, & M(0^+) &= -C_A,
+	\label{eq:cc_sinistra}\\
+	N(\ell^-) &= Q_B, & T(\ell^-) &= P_B, & M(\ell^-) &= C_B.
+	\label{eq:cc_destra}
+\end{align}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Equilibrio del concio}
+\label{sec:equilibrio_concio}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Le equazioni scritte finora sono \emph{globali}. Il
+valore delle azioni interne in una sezione dipende,
+attraverso le~\eqref{eq:NTM_esplicite}, da tutte le azioni
+esterne che agiscono da una parte della sezione, anche
+molto lontano da essa. Ci si chiede ora quali relazioni
+leghino le azioni interne in una sezione alle sole azioni
+esterne che agiscono lì: si cercano, cioè, condizioni di
+equilibrio \emph{locali}, o \emph{puntuali}. Il modo per
+ottenerle è \emph{localizzare} l'equilibrio: scriverlo
+per una porzione di trave che contiene la sezione, e poi
+farne tendere a zero la lunghezza.
+
+Si chiama \emph{concio}\index{concio|textbf} la porzione
+di trave compresa fra due sezioni di ascisse $z_1 < z_2$.
+Lo si isola con due tagli, e su ciascuna delle sue facce
+agiscono le azioni interne con le convenzioni del
+\PARref{sec:taglio_ideale}. Sulla faccia di ascissa $z_2$
+il concio è la parte di sinistra, e riceve $\tb(z_2)$ e
+$\mb(z_2)$; sulla faccia di ascissa $z_1$ è la parte di
+destra, e riceve $-\tb(z_1)$ e $-\mb(z_1)$. A queste si
+aggiungono le azioni distribuite sull'intervallo
+$(z_1, z_2)$ e le azioni concentrate nelle sezioni $z_i$
+che vi cadono. L'equilibrio del concio, con i momenti
+calcolati rispetto al baricentro della faccia di ascissa
+$z_1$, si scrive
+\begin{equation}\label{eq:eq_concio}
+	\begin{aligned}
+		&\tb(z_2) - \tb(z_1) + \int_{z_1}^{z_2} \pb(\zeta)\,\dd\zeta
+		+ \sum_{z_1 < z_i < z_2} \fb_i = \zerovb,\\
+		&\mb(z_2) - \mb(z_1) + (z_2 - z_1)\,\ab_z \times \tb(z_2)
+		+ \sum_{z_1 < z_i < z_2} \bigl[(z_i - z_1)\,\ab_z \times \fb_i + \cb_i\bigr]\\
+		&\qquad + \int_{z_1}^{z_2} \bigl[(\zeta - z_1)\,\ab_z \times \pb(\zeta) + \cb(\zeta)\bigr]\,\dd\zeta
+		= \zerovb.
+	\end{aligned}
+\end{equation}
+
+Queste equazioni valgono per un concio di lunghezza
+qualsiasi, e sono ancora globali. Diventano locali al
+limite, quando la lunghezza $\Delta z = z_2 - z_1$ del
+concio tende a zero; un concio di cui si considera questo
+limite si dice \emph{concio elementare}\index{concio!elementare|textbf}.
+Il risultato dipende da ciò che il concio, contraendosi,
+finisce per racchiudere. Se la sezione cade in un
+\emph{tratto regolare}\index{tratto regolare|textbf} ---
+un tratto privo di azioni concentrate, in cui le densità
+$\pb$ e $\cb$ sono continue --- si ottengono equazioni
+differenziali; se nella sezione agiscono azioni
+concentrate, si ottengono relazioni algebriche fra i
+valori che le azioni interne assumono ai suoi due lati.
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Equazioni indefinite di equilibrio}
+\label{sec:eq_indefinite}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Sia $z$ un'ascissa interna a un tratto regolare, e sia
+il concio compreso fra $z$ e $z + \Delta z$, con
+$\Delta z$ abbastanza piccolo perché il concio resti nel
+tratto. Nelle~\eqref{eq:eq_concio} le somme sono vuote;
+dividendo per $\Delta z$ si ha
+\begin{equation}\label{eq:rapporti_incrementali}
+	\begin{aligned}
+		&\frac{\tb(z+\Delta z) - \tb(z)}{\Delta z}
+		+ \frac{1}{\Delta z}\int_z^{z+\Delta z} \pb(\zeta)\,\dd\zeta = \zerovb,\\
+		&\frac{\mb(z+\Delta z) - \mb(z)}{\Delta z}
+		+ \ab_z \times \tb(z+\Delta z)\\
+		&\qquad + \frac{1}{\Delta z}\int_z^{z+\Delta z}
+		\bigl[(\zeta - z)\,\ab_z \times \pb(\zeta) + \cb(\zeta)\bigr]\,\dd\zeta = \zerovb.
+	\end{aligned}
+\end{equation}
+
+Si faccia ora tendere $\Delta z$ a zero, esaminando i
+termini uno alla volta. Poiché $\pb$ e $\cb$ sono
+continue, la media integrale di $\pb$ sull'intervallo
+$[z, z + \Delta z]$ tende a $\pb(z)$, e quella di $\cb$
+tende a $\cb(z)$. Il termine che contiene il braccio
+$\zeta - z$, che non supera $\Delta z$, tende invece a
+zero: in modulo vale al più $\Delta z$ per il massimo
+di $|\pb|$ nell'intervallo. Infine,
+la prima delle~\eqref{eq:eq_concio} mostra che
+$\tb(z + \Delta z) - \tb(z)$ si annulla con $\Delta z$:
+$\tb$ è continua, e $\ab_z \times \tb(z + \Delta z)$
+tende ad $\ab_z \times \tb(z)$. I rapporti incrementali
+di $\tb$ e di $\mb$ hanno dunque limite: nei tratti
+regolari le azioni interne sono derivabili, e
+\begin{equation*}
+	\frac{\dd \tb}{\dd z} + \pb = \zerovb, \qquad
+	\frac{\dd \mb}{\dd z} + \ab_z \times \tb + \cb = \zerovb.
+\end{equation*}
+Poiché $\ab_z \times \tb = -T\,\ab_x$, in componenti si
+ottengono le \emph{equazioni indefinite di
+	equilibrio}\index{equazioni indefinite di equilibrio|textbf}:
+\begin{equation}\label{eq:eq_indefinite}
+	\frac{\dd N}{\dd z} + q = 0,
+	\qquad
+	\frac{\dd T}{\dd z} + p = 0,
+	\qquad
+	\frac{\dd M}{\dd z} - T + c = 0.
+\end{equation}
+
+Sono equazioni puntuali: in ogni sezione di un tratto
+regolare legano la rapidità con cui variano le azioni
+interne ai valori locali dei carichi. La
+\FIGref{fig:concio_eq_indefinite} ne dà la lettura
+abituale. Sulle facce del concio elementare agiscono
+$-\tb(z)$, $-\mb(z)$ e $\tb(z) + \Delta\tb$,
+$\mb(z) + \Delta\mb$, con
+$\Delta\tb = \tb(z + \Delta z) - \tb(z)$ e
+$\Delta\mb = \mb(z + \Delta z) - \mb(z)$; al primo ordine
+in $\Delta z$ i carichi distribuiti si riducono alle
+risultanti $\pb(z)\,\Delta z$ e $\cb(z)\,\Delta z$,
+e l'equilibrio, divise le equazioni per $\Delta z$,
+riproduce le~\eqref{eq:eq_indefinite}.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-concio-eq-indefinite}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Equazioni di salto}
+\label{sec:salto_singolarita}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Nella sezione di ascissa $z_i$ agiscono la forza $\fb_i$
+e la coppia $\cb_i$, e le equazioni indefinite perdono
+significato. In $z_i$ le azioni interne non sono neppure
+definite, perché il taglio cadrebbe proprio dove si
+applicano le azioni concentrate; le~\eqref{eq:NTM_esplicite}
+mostrano però che esistono i limiti da sinistra e da
+destra,
+\begin{equation*}
+	\tb(z_i^\pm) \coloneqq \lim_{z \to z_i^\pm} \tb(z),
+	\qquad
+	\mb(z_i^\pm) \coloneqq \lim_{z \to z_i^\pm} \mb(z).
+\end{equation*}
+
+Per legarli fra loro si sceglie un concio centrato in
+$z_i$, con $z_1 = z_i - \tfrac{1}{2}\Delta z$ e
+$z_2 = z_i + \tfrac{1}{2}\Delta z$, e con $\Delta z$
+abbastanza piccolo perché il concio non contenga altre
+sezioni di carico concentrato (\FIGref{fig:concio_salto}).
+Le~\eqref{eq:eq_concio} diventano
+\begin{equation*}
+	\begin{aligned}
+		&\tb(z_2) - \tb(z_1)
+		+ \int_{z_1}^{z_2} \pb(\zeta)\,\dd\zeta
+		+ \fb_i = \zerovb,\\
+		&\mb(z_2) - \mb(z_1)
+		+ \Delta z\,\ab_z \times \tb(z_2)
+		+ \tfrac{1}{2}\Delta z\,\ab_z \times \fb_i + \cb_i\\
+		&\qquad + \int_{z_1}^{z_2}
+		\bigl[(\zeta - z_1)\,\ab_z \times \pb(\zeta) + \cb(\zeta)\bigr]\,\dd\zeta
+		= \zerovb.
+	\end{aligned}
+\end{equation*}
+Quando $\Delta z$ tende a zero, $z_1$ tende a $z_i$ da
+sinistra e $z_2$ da destra, e le azioni interne sulle
+facce tendono ai limiti $\tb(z_i^\pm)$, $\mb(z_i^\pm)$.
+Gli integrali si annullano,
+perché le densità restano limitate mentre l'intervallo di
+integrazione si contrae. Si annullano anche i termini
+$\Delta z\,\ab_z \times \tb(z_2)$ e
+$\tfrac{1}{2}\Delta z\,\ab_z \times \fb_i$, perché i loro
+bracci tendono a zero. Ciò che resta sono le
+\emph{equazioni di salto}\index{salto!delle caratteristiche della sollecitazione}
+\begin{equation*}
+	\llbracket \tb \rrbracket_i \coloneqq
+	\tb(z_i^+) - \tb(z_i^-) = -\fb_i, \qquad
+	\llbracket \mb \rrbracket_i \coloneqq
+	\mb(z_i^+) - \mb(z_i^-) = -\cb_i,
+\end{equation*}
+cioè
+\begin{equation}\label{eq:salto_NTM}
+	\llbracket N \rrbracket_i = -Q_i, \qquad
+	\llbracket T \rrbracket_i = -P_i, \qquad
+	\llbracket M \rrbracket_i = -C_i.
+\end{equation}
+
+Una forza concentrata fa saltare la forza normale e il
+taglio, ma non il momento flettente, perché il suo
+braccio rispetto alla sezione è nullo; una coppia
+concentrata fa saltare soltanto il momento flettente.
+Così, una forza diretta verso la fibra inferiore,
+$P_i > 0$, fa diminuire il taglio. Dove le densità di
+carico sono discontinue ma non agiscono azioni
+concentrate, le stesse equazioni, con $\fb_i$ e $\cb_i$
+nulli, dicono che le azioni interne restano continue.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-concio-salto}
+
+Le equazioni indefinite, le equazioni di salto e i
+valori agli estremi~\eqref{eq:cc_sinistra}
+e~\eqref{eq:cc_destra} costituiscono insieme
+l'\emph{equilibrio locale} della trave. Non aggiungono
+nulla all'equilibrio globale e nulla gli tolgono:
+integrando le~\eqref{eq:eq_indefinite} fra due sezioni
+e sommando i salti si ritrovano le~\eqref{eq:eq_concio}.
+Cambia il punto di vista, che dalla trave intera si
+sposta sulla singola sezione.
+
+In questo volume le caratteristiche della sollecitazione
+si calcolano per equivalenza; l'integrazione delle
+equazioni indefinite diventa necessaria per la trave
+deformabile, ed è sviluppata nel Volume~II. Le equazioni
+locali dicono tuttavia molto sulla forma dei diagrammi,
+prima ancora di calcolarli. Dove non agiscono carichi
+assiali la forza normale è costante. Il taglio è un
+polinomio di grado superiore di uno a quello del carico
+trasversale: costante dove $p$ è nullo, lineare dove $p$
+è uniforme. In assenza di coppie distribuite il momento
+flettente è a sua volta un polinomio di grado superiore
+di uno a quello del taglio, ed è stazionario dove il
+taglio si annulla. La sua derivata seconda vale $-p$: se
+i valori positivi si riportano dal lato della fibra
+inferiore, il diagramma volge la concavità in verso
+opposto al carico, come una fune che lo sostenga.
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Continuità e distorsioni}
+\label{sec:continuita_trave}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Finora la rigidità non è intervenuta. Entra in gioco
+quando si guarda a come si muovono le due facce del
+taglio. In una trave rigida le parti $\Cc^-$ e $\Cc^+$
+hanno, nella sezione $S$, lo stesso spostamento e la
+stessa rotazione: è il \emph{vincolo di
+	rigidità}\index{vincolo!di rigidità} del
+\CAPref{cap:vincoli_CR}. Se $w^\pm$ e $v^\pm$ sono le
+componenti dello spostamento di $S$ pensato come punto
+di $\Cc^\pm$, e $\vartheta^\pm$ sono le rotazioni delle
+due parti, si definiscono i salti
+(\PARref{sec:salto_incremento})
+\begin{equation}\label{eq:salti_cinematici}
+	\llbracket w \rrbracket \coloneqq w^+ - w^-, \qquad
+	\llbracket v \rrbracket \coloneqq v^+ - v^-, \qquad
+	\llbracket \vartheta \rrbracket \coloneqq \vartheta^+ - \vartheta^-,
+\end{equation}
+e la continuità richiede
+\begin{equation}\label{eq:rigidita_perfetta}
+	\llbracket w \rrbracket = 0, \qquad
+	\llbracket v \rrbracket = 0, \qquad
+	\llbracket \vartheta \rrbracket = 0.
+\end{equation}
+Gli spostamenti $w^\pm$, $v^\pm$ sono valori puntuali,
+calcolati nella sezione $S$; le rotazioni $\vartheta^\pm$
+appartengono invece alle parti, perché in un corpo rigido
+la rotazione è la stessa in ogni punto. Nella trave
+deformabile anche la rotazione diventerà una funzione
+$\vartheta(z)$ dell'ascissa, e il suo salto dipenderà
+dalla sezione come quelli di $w$ e di $v$.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Distorsioni}
+\label{sec:distorsioni}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Una \emph{distorsione}\index{distorsione|textbf} è una
+discontinuità cinematica imposta in una sezione: le
+condizioni di continuità~\eqref{eq:rigidita_perfetta}
+vengono sostituite da
+\begin{equation}\label{eq:distorsioni}
+	\llbracket w \rrbracket = \varrho_w, \qquad
+	\llbracket v \rrbracket = \varrho_v, \qquad
+	\llbracket \vartheta \rrbracket = \varrho_\vartheta,
+\end{equation}
+con $\varrho_w$, $\varrho_v$, $\varrho_\vartheta$
+assegnate\nomenclature[G]{$\varrho_w,\,\varrho_v,\,\varrho_\vartheta$}{distorsioni estensionale, trasversale, rotazionale}.
+La distorsione \emph{estensionale}\index{distorsione!estensionale|textbf}
+$\varrho_w$ allontana le due facce lungo l'asse, quella
+\emph{trasversale}\index{distorsione!trasversale|textbf}
+$\varrho_v$ le fa scorrere l'una sull'altra lungo $y$,
+quella \emph{rotazionale}\index{distorsione!rotazionale|textbf}
+$\varrho_\vartheta$ le fa ruotare l'una rispetto
+all'altra. Le distorsioni rappresentano, per esempio,
+difetti di montaggio o l'azione di attuatori; per la
+continuità della trave svolgono il ruolo che i cedimenti
+svolgono per i vincoli di collegamento
+(\CAPref{cap:vincoli_CR}).
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Lavoro delle azioni interne}
+\label{sec:lavoro_azioni_interne}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Le azioni interne lavorano sugli spostamenti delle facce
+su cui agiscono: $\tb$ e $\mb$ su quella di $\Cc^-$,
+$-\tb$ e $-\mb$ su quella di $\Cc^+$. Il lavoro
+complessivo,
+\begin{equation*}
+	\bigl(N w^- + T v^- + M \vartheta^-\bigr)
+	- \bigl(N w^+ + T v^+ + M \vartheta^+\bigr)
+	= -\bigl(N \llbracket w \rrbracket + T \llbracket v \rrbracket
+	+ M \llbracket \vartheta \rrbracket\bigr),
+\end{equation*}
+dipende soltanto dai salti; in presenza di distorsioni
+diventa
+\begin{equation}\label{eq:lavoro_continuita}
+	\delta\mathcal{W}_S =
+	-\bigl(N\,\varrho_w + T\,\varrho_v + M\,\varrho_\vartheta\bigr)
+	= -\sigmab^{\top}\varrhob,
+\end{equation}
+con $\sigmab = \{N\; T\; M\}^{\!\top}$\nomenclature[G]{$\bm{\sigma}$}{vettore delle caratteristiche della sollecitazione}
+e $\varrhob = \{\varrho_w\; \varrho_v\; \varrho_\vartheta\}^{\!\top}$\nomenclature[G]{$\bm{\varrho}$}{vettore delle distorsioni}.
+Ogni caratteristica della sollecitazione risulta così
+associata, per dualità, alla distorsione corrispondente
+(\FIGref{fig:distorsioni_concio}); il segno negativo
+viene dal fatto che $\tb$ e $\mb$ agiscono con versi
+opposti sulle due facce. Per i vincoli di collegamento
+del \CAPref{cap:vincoli_CR}, al contrario, cedimenti e
+reazioni si assumono concordi, e il loro prodotto entra
+nel lavoro con il segno positivo. La differenza non è
+un'anomalia: discende da due convenzioni consolidate che
+conviene conservare, le caratteristiche della
+sollecitazione riferite alla faccia di normale $\ab_z$
+e le distorsioni misurate come differenza fra la parte
+di destra e quella di sinistra. Il segno andrà portato
+esplicitamente quando il principio dei lavori virtuali
+(\CAPref{cap:TLV}) sarà esteso ai sistemi di travi.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-distorsioni-concio}
+
+\begin{oss}[Azioni interne nella trave rigida]\label{oss:azioni_interne_reattive}
+	Nella trave deformabile le azioni interne sono legate
+	alla deformazione da una legge costitutiva. Nella trave
+	rigida questa legge manca: $N$, $T$, $M$ sono grandezze
+	puramente reattive, duali delle condizioni di
+	continuità~\eqref{eq:rigidita_perfetta} come le reazioni
+	dell'incastro interno lo sono delle sue condizioni
+	cinematiche (\CAPref{cap:vincoli_CR}). La struttura
+	duale è la stessa, ma non la natura fisica: l'incastro
+	è un dispositivo concentrato in un punto, la continuità
+	una proprietà diffusa su tutte le sezioni della trave.
+	Le azioni interne sono quindi determinate soltanto quando lo è il problema
+	dell'equilibrio (\PARref{sec:connessione}).
+\end{oss}
+
+\begin{oss}\label{oss:distorsione_isostatica}
+	Le distorsioni non compaiono nelle equazioni di
+	equilibrio. Se queste bastano a determinare reazioni
+	e azioni interne, le distorsioni cambiano la
+	configurazione ma non producono azioni interne. In una
+	trave iperstatica, invece, distorsioni generiche non
+	sono compatibili con i vincoli
+	(\PARref{sec:ipestat_interna}), e il problema richiede
+	il modello deformabile.
+\end{oss}
+
+
+
+\begin{esempio}[Trave appoggiata con distorsione e carichi]\label{sec:esempio_completo}
+	Una trave $AB$ di lunghezza $\ell$, con $\alpha = 0$,
+	è vincolata da una cerniera in $A$ e da un carrello
+	che impedisce lo spostamento verticale in $B$. Nella
+	sezione $S$ di ascissa $z_S = \ell/3$ è imposta una
+	distorsione rotazionale $\varrho_\vartheta > 0$.
+	Agiscono un carico uniforme $\pb = \bar p\,\ab_y$
+	su tutta la trave e, in $S$, una forza
+	$\fb_S = F\,\ab_y$, con $F = 2\bar p\ell$
+	(\FIGref{fig:esempio_completo}\,(a)). Si determinino
+	la configurazione e i diagrammi di $T$ e $M$.
+	
+	\begin{svolgimento}
+		
+		\esottotit{Configurazione.}
+		I vincoli impongono $w(0) = v(0) = 0$ e
+		$v(\ell) = 0$. Con polo in $A$,
+		le~\eqref{eq:cinematica_trave} applicate alle
+		due parti danno
+		\begin{alignat*}{2}
+			v(z) &= -\vartheta^- z,
+			&\qquad& 0 \le z \le \tfrac{\ell}{3},\\
+			v(z) &= -\vartheta^-\tfrac{\ell}{3}
+			- \vartheta^+\Bigl(z - \tfrac{\ell}{3}\Bigr),
+			&& \tfrac{\ell}{3} \le z \le \ell,
+		\end{alignat*}
+		con $\vartheta^+ = \vartheta^- + \varrho_\vartheta$.
+		La condizione $v(\ell) = 0$ fornisce
+		$\vartheta^- = -\tfrac{2}{3}\varrho_\vartheta$ e
+		$\vartheta^+ = \tfrac{1}{3}\varrho_\vartheta$;
+		lo spostamento massimo è
+		$v(z_S) = \tfrac{2}{9}\varrho_\vartheta\ell$
+		(\FIGref{fig:esempio_completo}\,(b)).
+		La configurazione non dipende dai carichi.
+		
+		\esottotit{Reazioni.}
+		Le reazioni sono le azioni concentrate negli
+		estremi. Il carrello dà $Q_B = 0$ e $C_B = 0$, la
+		cerniera $C_A = 0$; in assenza di carichi assiali
+		la~\eqref{eq:eq_glob_z} dà $Q_A = 0$.
+		Le~\eqref{eq:eq_glob_y} e~\eqref{eq:eq_glob_mu}
+		si scrivono
+		\begin{equation*}
+			P_A + P_B + F + \bar p\ell = 0, \qquad
+			-P_B\,\ell - F\,\tfrac{\ell}{3} - \tfrac{1}{2}\bar p\ell^2 = 0,
+		\end{equation*}
+		da cui $P_A = -\tfrac{11}{6}\bar p\ell$ e
+		$P_B = -\tfrac{7}{6}\bar p\ell$: entrambe le
+		reazioni sono dirette verso l'alto. Per
+		l'Oss.~\ref{oss:distorsione_isostatica} la
+		distorsione non ha effetto su reazioni e azioni
+		interne.
+		
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-esempio-completo}
+
+		\esottotit{Azioni interne.}
+		Per $0 < z < \ell/3$ le~\eqref{eq:NTM_esplicite}
+		danno
+		\begin{align*}
+			T(z) &= -P_A - \bar p z = \tfrac{11}{6}\bar p\ell - \bar p z,\\
+			M(z) &= -P_A\,z - \tfrac{1}{2}\bar p z^2
+			= \tfrac{11}{6}\bar p\ell\,z - \tfrac{1}{2}\bar p z^2.
+		\end{align*}
+		Per $\ell/3 < z < \ell$ conviene la parte $\Cc^+$:
+		\begin{equation*}
+			T(z) = P_B + \bar p(\ell - z),
+			\qquad
+			M(z) = -P_B(\ell - z) - \tfrac{1}{2}\bar p(\ell - z)^2.
+		\end{equation*}
+		
+		\esottotit{Verifica in $S$.}
+		Risulta $T(z_S^-) = \tfrac{3}{2}\bar p\ell$ e
+		$T(z_S^+) = -\tfrac{1}{2}\bar p\ell$: il salto
+		vale $-F$, in accordo con la~\eqref{eq:salto_NTM}.
+		Il momento è continuo:
+		$M(z_S^-) = M(z_S^+) = \tfrac{5}{9}\bar p\ell^2$.
+		
+		\esottotit{Diagrammi.}
+		È $N \equiv 0$. In ciascun tratto $T$ è lineare
+		e $M$ parabolico (\FIGref{fig:esempio_completo}\,(c),\,(d)).
+		Il taglio cambia segno in $S$ per effetto del
+		salto, e il momento vi raggiunge il massimo
+		$\tfrac{5}{9}\bar p\ell^2$ senza che $T$ si
+		annulli: la condizione di stazionarietà
+		$T = 0$ vale solo nei tratti regolari.
+		
+	\end{svolgimento}
+\end{esempio}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Trave monoconnessa e trave pluriconnessa}
+\label{sec:connessione}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Il metodo per equivalenza presuppone che il taglio non
+alteri la natura del problema: che una trave isostatica,
+tagliata, resti isostatica. Questo paragrafo mostra che è
+così quando il taglio separa la trave in due parti, e
+che non lo è più quando la sezione appartiene a un
+percorso chiuso della linea d'asse.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Il taglio e la classificazione}
+\label{sec:invarianza_classificazione}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Il taglio in una sezione introduce tre incognite
+statiche, $N$, $T$ e $M$. Se separa la trave in due
+parti, introduce anche tre equazioni: le parti sono due,
+le equazioni di equilibrio sei, e tre di esse ripetono
+l'equilibrio globale. Le azioni interne sono allora
+determinate se e solo se lo sono le reazioni dei vincoli.
+
+Lo stesso bilancio si legge sul versante cinematico. Si
+trattino le due parti come corpi distinti, collegati in
+$S$ dalle tre condizioni di
+continuità~\eqref{eq:rigidita_perfetta}: i parametri di
+configurazione passano da $n$ a $n + 3$, le condizioni di
+vincolo da $m$ a $m + 3$, e il numero nominale di gradi
+di libertà $\nu = n - m$ non cambia. Le tre nuove righe
+della matrice di compatibilità $\bm{A}$ coinvolgono i
+parametri della nuova parte e sono indipendenti dalle
+altre, sicché il rango di $\bm{A}$ cresce di tre, quanto
+il numero delle righe e quello delle colonne. I gradi di
+labilità $g_\ell = \nl(\bm{A})$ e di iperstaticità
+$g_{\mathscr{i}} = \nl(\bm{A}^{\top})$ restano gli
+stessi (\CAPref{cap:classificazione_SCR}): nuove
+condizioni cinematiche e nuove incognite statiche
+entrano in coppia, come vuole la dualità
+$\bm{B} = \bm{A}^{\top}$ (\CAPref{cap:SCR}), e il
+bilancio vale per qualsiasi numero di tagli. Una trave
+isostatica resta isostatica comunque la si tagli: è il
+fondamento del metodo per equivalenza.
+
+Il taglio, però, non cura una trave che isostatica non
+è. In una trave iperstatica di grado $g_{\mathscr{i}}$
+le reazioni, e con esse le azioni interne, sono note solo
+a meno di $g_{\mathscr{i}}$ parametri; specularmente,
+distorsioni arbitrarie sono incompatibili con i vincoli,
+a meno che non soddisfino $g_{\mathscr{i}}$ condizioni di
+compatibilità. In una trave labile di grado $g_\ell$
+l'equilibrio è possibile solo per carichi che soddisfano
+$g_\ell$ condizioni, e la configurazione è determinata
+a meno di $g_\ell$ moti rigidi compatibili con i vincoli.
+Né il taglio né le distorsioni cambiano questi gradi.
+Le incognite iperstatiche si determinano con le equazioni
+costitutive della trave deformabile (Volume~II); per la
+trave labile occorre ammettere i moti rigidi residui e
+scrivere l'equilibrio sotto carichi compatibili.
+
+Diverso è il caso in cui la sezione appartiene a un
+percorso chiuso della linea d'asse. Il taglio, allora,
+non separa nulla: le azioni $\pm\tb$ e $\pm\mb$ agiscono
+sullo stesso corpo e si fanno equilibrio, le equazioni
+restano quelle di prima, e le tre incognite restano
+indeterminate.
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Grado di connessione}
+\label{sec:grado_connessione}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Una trave ha \emph{grado di connessione}\index{grado di connessione|textbf}
+$p$ se occorrono $p-1$ tagli per eliminare tutti i
+percorsi chiusi della sua linea d'asse. La trave è
+\emph{monoconnessa}\index{trave!monoconnessa|textbf}
+se $p = 1$, \emph{pluriconnessa}\index{trave!pluriconnessa|textbf}
+se $p \geq 2$; per $p = 2$ si dice
+\emph{biconnessa}\index{trave!biconnessa|textbf} o
+\emph{ad anello}\index{trave!ad anello|textbf}, per
+$p = 3$ \emph{triconnessa}\index{trave!triconnessa|textbf}.
+Il grado di connessione dipende soltanto dalla topologia
+della linea d'asse (\FIGref{fig:gradi_connessione}): una
+trave rettilinea, ad arco o a L è monoconnessa, un anello
+è biconnesso.
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-gradi-connessione}
+
+%----------------------------------------------------------------------------------------------------------------------------
+\subsection{Iperstaticità interna}
+\label{sec:ipestat_interna}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Ciascuno dei $p-1$ tagli che rendono aperta una trave
+pluriconnessa introduce tre incognite statiche senza
+nuove equazioni: la trave è \emph{internamente
+	iperstatica}\index{iperstaticita@iperstaticità!interna|textbf}
+di grado $3(p-1)$, indipendentemente dai vincoli esterni.
+Un anello privo di vincoli, caricato da azioni a
+risultante e momento risultante nulli, è in equilibrio;
+ma le sue azioni interne sono note solo a meno dei
+valori di $N$, $T$, $M$ in una sezione.
+
+Lo stesso fatto ha un rovescio cinematico. Si apra un
+anello con un taglio in $S$: resta un solo corpo, con tre
+parametri di configurazione, ma le due facce del taglio
+devono richiudersi, e le tre \emph{condizioni di chiusura
+	dell'anello}\index{condizioni di chiusura dell'anello|textbf}
+--- le condizioni di continuità in $S$ --- si aggiungono
+alle $m_{\rm est}$ condizioni dei vincoli esterni senza
+nuovi parametri. Il numero nominale di gradi di libertà
+diventa
+\begin{equation*}
+	\nu = 3 - (m_{\rm est} + 3) = \nu_{\rm aperta} - 3,
+\end{equation*}
+dove $\nu_{\rm aperta} = 3 - m_{\rm est}$ è quello della
+trave aperta: se questa è isostatica, l'anello è
+iperstatico di grado tre. Per un corpo rigido le
+condizioni di chiusura sono soddisfatte identicamente,
+perché le due facce appartengono allo stesso corpo:
+aggiungono ad $\bm{A}$ tre righe nulle, il rango non
+cambia e il grado di iperstaticità cresce di tre. Per lo
+stesso motivo una distorsione imposta nella sezione di
+taglio è compatibile soltanto se è nulla. Più in
+generale, le distorsioni imposte in sezioni diverse di
+un percorso chiuso devono soddisfare tre \emph{condizioni
+	di compatibilità}\index{condizioni di compatibilità},
+che esprimono la chiusura geometrica del percorso. Le
+$3(p-1)$ incognite statiche indeterminate e le $3(p-1)$
+condizioni di compatibilità sono duali, come il grado di
+iperstaticità e le condizioni di compatibilità dei sistemi
+di corpi rigidi (\CAPref{cap:classificazione_SCR}); la
+\FIGref{fig:biconnessa_dualita} illustra il caso $p = 2$.
+Per determinare le azioni interne di una trave
+pluriconnessa occorrono le equazioni costitutive della
+trave deformabile (Volume~II).
+
+\input{Parti/P04-Travi_rigide/C01-trave_rigida/Figure/figura-biconnessa-dualita}
+
+
+
+%----------------------------------------------------------------------------------------------------------------------------
+\section{Svincoli interni}
+\label{sec:svincoli_interni}
+%----------------------------------------------------------------------------------------------------------------------------
+
+Uno \emph{svincolo}\index{svincolo!interno} rilascia in
+una sezione $S$ una o più condizioni di
+continuità~\eqref{eq:rigidita_perfetta}. La componente
+corrispondente dello spostamento relativo diventa libera
+e, per la dualità espressa dalla~\eqref{eq:lavoro_continuita},
+in $S$ si annulla la caratteristica della sollecitazione
+associata: $N$ a $\llbracket w \rrbracket$, $T$ a
+$\llbracket v \rrbracket$, $M$ a
+$\llbracket \vartheta \rrbracket$.
+
+Gli \emph{svincoli semplici}\index{svincolo!semplice|textbf}
+rilasciano una sola condizione. La \emph{cerniera
+	interna}\index{cerniera!interna}, che realizza lo
+\emph{svincolo rotazionale}\index{svincolo!rotazionale|textbf},
+lascia libera la rotazione relativa e annulla il momento
+flettente. Il glifo interno con asse $z$ lascia libero
+lo scorrimento trasversale e annulla il taglio; il glifo
+interno con asse $y$ lascia libero lo scorrimento assiale
+e annulla la forza normale: sono gli \emph{svincoli
+	traslazionali}\index{svincolo!traslazionale|textbf}.
+Gli \emph{svincoli multipli}\index{svincolo!multiplo|textbf}
+rilasciano due condizioni e lasciano passare una sola
+caratteristica: la \emph{biella longitudinale}\index{biella!longitudinale|textbf}
+la sola forza normale, la \emph{biella trasversale}\index{biella!trasversale|textbf}
+il solo taglio, il \emph{bipendolo interno}\index{bipendolo!interno}
+il solo momento flettente. Rilasciare tutte e tre le
+condizioni significa separare la trave in due corpi.
+
+Il catalogo è raccolto nella
+Tabella~\ref{tab:svincoli_interni}, divisa in due
+blocchi: in alto gli svincoli semplici, in basso quelli
+multipli. In ogni riga la colonna centrale elenca le
+condizioni di continuità che restano attive, quella di
+destra le caratteristiche trasmesse; le une e le altre si
+corrispondono a coppie, secondo la dualità appena
+richiamata, e sono quindi in ugual numero. Vale la
+\emph{regola di complementarità}\index{regola di complementarita@regola di complementarità}:
+il numero delle condizioni rilasciate e quello delle
+caratteristiche trasmesse hanno per somma tre.
+
+Fra gli svincoli la cerniera interna è di gran lunga il
+più comune: è il collegamento della trave Gerber e di
+molti sistemi di travi articolate. Gli svincoli
+traslazionali compaiono in apparecchi d'appoggio speciali
+e nei giunti scorrevoli.
+
+
+\begin{table}[!htbp]
+	\centering
+	\caption{Svincoli interni della trave rigida: catalogo
+		sistematico. Ciascuno svincolo rilascia una o più
+		delle tre condizioni di continuità in $S$,
+		lasciando attive le rimanenti e, per dualità, le
+		caratteristiche della sollecitazione corrispondenti.}
+	\label{tab:svincoli_interni}
+	\begin{tabular}{@{}>{\centering\arraybackslash}m{4.0cm}
+			>{\centering\arraybackslash}m{3.8cm}
+			>{\centering\arraybackslash}m{3cm}@{}}
+		\toprule
+		\textbf{Dispositivo} 
+		& \shortstack{\textbf{Condizioni}\\\textbf{cinematiche attive}}	& \shortstack{\textbf{Caratteristiche}\\\textbf{trasmesse}} \\
+		\midrule
+		%% --- SVINCOLI SEMPLICI ---
+		%% cella cerniera 
+		\begin{tikzpicture}[
+			>=stealth, line width=0.6pt,
+			trave/.style={line width=1.2pt, line cap=round,
+				line join=round, black},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=4pt,
+				line width=0.6pt}]
+			\def\W{2.4}
+			\pgfmathsetmacro{\xS}{\W*0.5}
+			
+			%% trave continua
+			\draw[trave] (0,0) -- (\W,0);
+			
+			%% cerniera interna
+			\node[nodoV] at (\xS,0) {};
+			
+			%% moto relativo rilasciato: arco varrho_vartheta
+			\pgfmathsetmacro{\ya}{0.35}
+			\draw[->, >=stealth, line width=0.5pt]	({\xS-0.10},{\ya-0.50}) arc (270:90:0.13);
+			\draw[->, >=stealth, line width=0.5pt]	({\xS+0.10},{\ya-0.50}) arc (-90:90:0.13);
+		\end{tikzpicture}
+		& $\llbracket w \rrbracket = 0$, $\llbracket v \rrbracket = 0$
+		& $N$, $T$ \\
+		\midrule
+		%% glifo asse z^e
+		\begin{tikzpicture}[
+			>=stealth, line width=0.6pt, trave/.style={line width=1.2pt, line cap=round, line join=round, black}]
+			\def\W{2.4}
+			\pgfmathsetmacro{\xS}{\W*0.5}
+			
+			%% trave interrotta, piatti verticali alle estremità
+			\def\dt{0.18}    %% mezza-larghezza dell'interruzione
+			\def\hp{0.18}    %% mezza-altezza dei piatti
+			\draw[trave] (0,0) -- (\xS-\dt,0);
+			\draw[trave] (\xS+\dt,0) -- (\W,0);
+			\draw[line width=0.8pt] (\xS-\dt,-\hp) -- (\xS-\dt,\hp);
+			\draw[line width=0.8pt] (\xS+\dt,-\hp) -- (\xS+\dt,\hp);
+			
+			%% due rotelle tangenti ai piatti
+			\pgfmathsetmacro{\r}{\dt-0.05}
+			\draw[line width=0.5pt] (\xS,\r) circle (\r);
+			\draw[line width=0.5pt] (\xS,-\r) circle (\r);
+			
+			%% frecce del moto relativo rilasciato
+			\draw[->, line width=0.5pt] ({\xS-\dt-0.1},0.05) -- ({\xS-\dt-0.1},0.30);
+			\draw[->, line width=0.5pt] ({\xS+\dt+0.1},-0.05) -- ({\xS+\dt+0.1},-0.30);
+		\end{tikzpicture}
+		& $\llbracket w \rrbracket = 0$, $\llbracket \vartheta \rrbracket = 0$
+		& $N$, $M$ \\
+		\midrule
+	
+		\begin{tikzpicture}[
+			>=stealth, line width=0.8pt,
+			trave/.style={line width=1.2pt, line cap=round,	line join=round, black}, ruota/.style={line width=0.7pt, black},
+			moto/.style={->, >=stealth, line width=0.6pt, black}]
+			
+			\def\W{2.4}
+			\pgfmathsetmacro{\xS}{\W*0.5}
+			
+			\def\r{0.13}                       %% raggio delle rotelle
+			\pgfmathsetmacro{\dx}{\r/tan(60)}  %% spostamento orizz. della deviazione
+			%% Punti chiave (tronco sinistro)
+			\pgfmathsetmacro{\xA}{\xS-0.35-\dx}  %% inizio deviazione sx
+			\pgfmathsetmacro{\xB}{\xS-0.35}      %% fine deviazione sx
+			\pgfmathsetmacro{\xC}{\xS+0.35}      %% fine prolungamento sx
+			%% Punti speculari (tronco destro)
+			\pgfmathsetmacro{\xD}{\xS+0.35+\dx}  %% inizio deviazione dx
+			
+			%% --- tronco sinistro: trave → deviazione → prolungamento ---
+			\draw[trave] (0,0) -- (\xA,0);
+			\draw[trave] (\xA,0) -- (\xB,\r);
+			\draw[trave] (\xB,\r) -- (\xC,\r);
+			
+			%% --- tronco destro (speculare) ---
+			\draw[trave] (\xD,0) -- (\W,0);
+			\draw[trave] (\xD,0) -- (\xC,-\r);
+			\draw[trave] (\xC,-\r) -- (\xB,-\r);
+			
+			%% --- due rotelle tangenti ai due prolungamenti ---
+			\draw[ruota] (\xS-\r,0) circle (\r);
+			\draw[ruota] (\xS+\r,0) circle (\r);
+			
+			%% --- frecce del moto relativo rilasciato (varrho_w longitudinale) ---
+			%% sul prolungamento sx (sopra): freccia verso sinistra
+			\pgfmathsetmacro{\xfreccia}{\xB+0.05}
+			\pgfmathsetmacro{\yfreccia}{\r+0.10}
+			\draw[moto] (\xfreccia+0.20,\yfreccia) -- (\xfreccia,\yfreccia);
+			%% sul prolungamento dx (sotto): freccia verso destra
+			\draw[moto] (\xC-0.05-0.20,-\yfreccia) -- (\xC-0.05,-\yfreccia);
+			
+			%% --- etichetta S sotto la trave (lontano dal dispositivo) ---
+			%\node[font=\footnotesize, below=8pt] at (\xS,-\r) {$S$};
+			
+		\end{tikzpicture}
+		& $\llbracket v \rrbracket = 0$, $\llbracket \vartheta \rrbracket = 0$
+		& $T$, $M$ \\
+		\midrule\midrule    %% doppia linea: passaggio a svincoli multipli
+		%% --- SVINCOLI MULTIPLI ---
+		%% biella longitudinale
+		\begin{tikzpicture}[
+			>=stealth, line width=0.6pt,
+			trave/.style={line width=1.2pt, line cap=round,
+				line join=round, black},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=4pt,
+				line width=0.6pt},
+			moto/.style={->, >=stealth, line width=0.5pt, black}]
+			
+			\def\W{2.4}
+			\pgfmathsetmacro{\xS}{\W*0.5}
+			
+			%% trave interrotta
+			\def\dt{0.30}
+			\draw[trave] (0,0) -- (\xS-\dt,0);
+			\draw[trave] (\xS+\dt,0) -- (\W,0);
+			
+			%% biella longitudinale: segmento + due perni
+			\draw[line width=0.8pt] (\xS-\dt,0) -- (\xS+\dt,0);
+			\node[nodoV] at (\xS-\dt,0) {};
+			\node[nodoV] at (\xS+\dt,0) {};
+			
+			%% frecce dei due moti rilasciati:
+			%% (1) scorrimento trasversale: due frecce verticali antagoniste,
+			%%     in asse alle due cerniere (coda nella cerniera)
+			\draw[moto] (\xS-\dt,0) -- (\xS-\dt,0.30);    %% sx: verso l'alto
+			\draw[moto] (\xS+\dt,0) -- (\xS+\dt,-0.30);   %% dx: verso il basso
+			
+			%% (2) rotazione relativa: due semicirconferenze antagoniste,
+			%%     a sinistra e a destra del dispositivo
+			\draw[moto] ({\xS-\dt-0.27},-0.13) arc (270:90:0.13);   %% sx
+			\draw[moto] ({\xS+\dt+0.27},-0.13) arc (-90:90:0.13);   %% dx
+			
+			
+		\end{tikzpicture}
+		& $\llbracket w \rrbracket = 0$
+		& $N$ \\
+		\midrule
+		%% biella trasversale
+		\begin{tikzpicture}[
+			>=stealth, line width=0.8pt,
+			trave/.style={line width=1.2pt, line cap=round,	line join=round, black},
+			biella/.style={line width=1.0pt, black},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=4pt,
+				line width=0.6pt},
+			moto/.style={->, >=stealth, line width=0.6pt, black}]
+			
+			\def\W{2.4}
+			\pgfmathsetmacro{\xS}{\W*0.5}
+			
+			\def\r{0.20}                       %% mezza-lunghezza biella verticale
+			\pgfmathsetmacro{\dx}{\r/tan(60)}  %% spostamento orizz. deviazione
+			\pgfmathsetmacro{\xA}{\xS-0.35-\dx}  %% inizio deviazione sx
+			\pgfmathsetmacro{\xB}{\xS-0.35}      %% fine deviazione sx
+			\pgfmathsetmacro{\xC}{\xS+0.35}      %% fine prolungamento sx
+			\pgfmathsetmacro{\xD}{\xS+0.35+\dx}  %% inizio deviazione dx
+			
+			%% --- tronco sinistro: trave -> deviazione -> prolungamento sopra ---
+			\draw[trave] (0,0) -- (\xA,0);
+			\draw[trave] (\xA,0) -- (\xB,\r);
+			\draw[trave] (\xB,\r) -- (\xC,\r);
+			
+			%% --- tronco destro (speculare, prolungamento sotto) ---
+			\draw[trave] (\xD,0) -- (\W,0);
+			\draw[trave] (\xD,0) -- (\xC,-\r);
+			\draw[trave] (\xC,-\r) -- (\xB,-\r);
+			
+			
+			\def\rp{0.067}    %% raggio del nodoV (minimum size=4pt ≈ 0.067 in coord. tikz)
+			\pgfmathsetmacro{\yPsup}{\r-\rp}    %% centro perno superiore
+			\pgfmathsetmacro{\yPinf}{-\r+\rp}   %% centro perno inferiore
+			\draw[biella] (\xS,\yPsup) -- (\xS,\yPinf);
+			\node[nodoV] at (\xS,\yPsup) {};
+			\node[nodoV] at (\xS,\yPinf) {};
+			
+			%% --- frecce dei due moti rilasciati ---
+			%% (1) scorrimento longitudinale: due frecce orizzontali antagoniste
+			%%     sui prolungamenti, in asse alla biella
+			\pgfmathsetmacro{\yfa}{\r+0.13}
+			\draw[moto] (\xB+0.10,\yfa) -- (\xB-0.10,\yfa);    %% sx verso sin.
+			\draw[moto] (\xC-0.10,-\yfa) -- (\xC+0.10,-\yfa);  %% dx verso des.
+			
+			%% (2) rotazione relativa: due semicirconferenze antagoniste
+			%%     sopra e sotto la biella, da una parte e dall'altra
+			\draw[moto] ({\xB-0.20},{\r-0.33}) arc (270:90:0.13);    %% sx
+			\draw[moto] ({\xC+0.20},{-\r+0.08}) arc (-90:90:0.13);   %% dx
+			
+			%% --- etichetta S ---
+			%\node[font=\footnotesize, below=8pt] at (\xS,-\r) {$S$};
+			
+		\end{tikzpicture}
+		& $\llbracket v \rrbracket = 0$
+		& $T$ \\
+		\midrule
+		%% bipendolo interno
+		\begin{tikzpicture}[
+			>=stealth, line width=0.8pt,
+			trave/.style={line width=1.2pt, line cap=round,
+				line join=round, black},
+			asta/.style={line width=0.6pt, black},
+			biella/.style={line width=0.6pt, black},
+			nodoV/.style={circle, fill=white, draw=black,
+				inner sep=0pt, minimum size=4pt,
+				line width=0.6pt},
+			moto/.style={->, >=stealth, line width=0.6pt, black}]
+			
+			\def\W{2.40}
+			\pgfmathsetmacro{\xS}{\W*0.5}
+			
+			
+			\def\d{0.30}                       %% mezza-distanza fra i piatti (allargata)
+			\def\h{0.35}                       %% mezza-altezza piatti
+			
+			\def\rp{0.067}                     %% raggio dei perni nodoV
+			\def\angle{50}                     %% inclinazione aste
+			
+			%% Quote dei perni: interne al piatto
+			\pgfmathsetmacro{\yP}{\h-2*\rp}    %% 0.166
+			
+			%% Ascisse dei perni: tangenti dall'interno (perni dentro al dispositivo)
+			\pgfmathsetmacro{\xPsx}{\xS-\d+\rp}   %% bordo sx del perno tocca il piatto sx
+			\pgfmathsetmacro{\xPdx}{\xS+\d-\rp}   %% bordo dx del perno tocca il piatto dx
+			
+			\pgfmathsetmacro{\dy}{\d*tan(\angle)}
+			\pgfmathsetmacro{\yPa}{\yP+\dy}    %% P_A sopra
+			\pgfmathsetmacro{\yPb}{-\yP+\dy}   %% P_B poco sopra la trave
+			
+			%% --- tronchi di trave ---
+			\draw[trave] (0,0) -- (\xS-\d,0);
+			\draw[trave] (\xS+\d,0) -- (\W,0);
+			
+			%% --- piatti trasversali (spessi come la trave) ---
+			\draw[trave] (\xS-\d,-\h) -- (\xS-\d,\h);
+			\draw[trave] (\xS+\d,-\h) -- (\xS+\d,\h);
+			
+			%% --- 4 aste: dai perni interni tangenti ai piatti ---
+			\draw[asta] (\xPsx,\yP)   -- (\xS,\yPa);
+			\draw[asta] (\xPsx,-\yP)  -- (\xS,\yPb);
+			\draw[asta] (\xPdx,\yP)   -- (\xS,\yPa);
+			\draw[asta] (\xPdx,-\yP)  -- (\xS,\yPb);
+			
+			%% --- biella verticale centrale ---
+			\draw[biella] (\xS,\yPa) -- (\xS,\yPb);
+			
+			%% --- 6 perni a cerniera ---
+			\node[nodoV] at (\xPsx,\yP)   {};
+			\node[nodoV] at (\xPsx,-\yP)  {};
+			\node[nodoV] at (\xPdx,\yP)   {};
+			\node[nodoV] at (\xPdx,-\yP)  {};
+			\node[nodoV] at (\xS,\yPa)    {};
+			\node[nodoV] at (\xS,\yPb)    {};
+			
+			%% --- frecce dei due moti rilasciati ---
+			\draw[moto] (\xS-\d-0.10,0.1) -- (\xS-\d-0.35,0.1);
+			\draw[moto] (\xS+\d+0.10,0.1) -- (\xS+\d+0.35,0.1);
+			%% trasversale (v): verticali, sui piatti alle estremita' opposte
+			\draw[moto] (\xS-\d-0.1,\h-0.1)  -- (\xS-\d-0.1,\h+0.30);
+			\draw[moto] (\xS+\d+0.1,-\h+0.15) -- (\xS+\d+0.1,-\h-0.25);   % δ = 0.05
+			%\draw[moto] (\xS+\d+0.1,-\h) -- (\xS+\d+0.1,-\h-0.30);
+			%% --- etichetta S ---
+			%\node[font=\footnotesize, below=8pt] at (\xS,-\h-0.05) {$S$};
+			
+		\end{tikzpicture}
+		& $\llbracket \vartheta \rrbracket = 0$
+		& $M$ \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+
+\begin{oss}
+	Ogni svincolo elimina una condizione di vincolo. Se
+	questa era indipendente dalle altre condizioni del
+	sistema, il grado di labilità aumenta di uno;
+	altrimenti diminuisce di uno il grado di iperstaticità.
+	In una trave pluriconnessa gli svincoli possono quindi
+	ridurre l'iperstaticità interna: un anello con tre
+	cerniere non allineate è internamente isostatico,
+	mentre con tre cerniere allineate è labile.
+\end{oss}

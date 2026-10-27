@@ -1,0 +1,38 @@
+% ================================================================
+%  Preambolo/tikz-trv.tex
+%  Stili per le figure della Parte III (travi rigide).
+%  Da richiamare con \input{Preambolo/tikz-trv} DOPO Preambolo/tikz-pol,
+%  di cui riusa i vincoli (pic polcerniera, polcarrello) e le quote.
+%  Spessori e punte coerenti con gli stili pol e sgr.
+%  Le figure si disegnano in scala 1:1 (niente \resizebox, niente scale):
+%  larghezza massima circa 11 cm, etichette in \small, note in \footnotesize.
+% ================================================================
+\tikzset{
+	trvtrave/.style={line width=1.4pt,line cap=round,line join=round},          % linea d'asse
+	trvfibra/.style={line width=.5pt,dash pattern=on 2.5pt off 1.5pt},          % tratteggio della fibra inferiore
+	trvforza/.style={-{Stealth[length=2.4mm,width=1.8mm]},line width=1.0pt},    % forze concentrate, azioni interne
+	trvcoppia/.style={-{Stealth[length=2.0mm,width=1.6mm,bend]},line width=.8pt}, % coppie concentrate e momenti
+	trvcarico/.style={-{Stealth[length=1.4mm,width=1.0mm]},line width=.4pt},    % frecce dei carichi distribuiti
+	trvcontorno/.style={line width=.5pt},                                        % profilo dei carichi distribuiti
+	trvcoppiad/.style={-{Stealth[length=1.2mm,width=0.9mm]},line width=.4pt},   % coppie distribuite
+	trvasse/.style={-{Stealth[length=1.7mm,width=1.2mm]},line width=.5pt},      % assi di riferimento
+	trvconcio/.style={line width=.8pt,line join=round},                         % contorno di conci e parti
+	trvfaccia/.style={line width=1.0pt},                                         % facce di taglio
+	trvdist/.style={-{Stealth[length=1.8mm,width=1.3mm,bend]},line width=.7pt,black!55}, % distorsioni, moti relativi
+	trvrichiamo/.style={line width=.3pt,black!45},                              % linee di richiamo
+	trvcostruzione/.style={line width=.35pt,black!50,dash pattern=on 2pt off 1.5pt}, % linee di costruzione
+	trvquota/.style={{Bar[width=2.4mm]Stealth[length=1.4mm,width=1.0mm]}-{Stealth[length=1.4mm,width=1.0mm]Bar[width=2.4mm]},line width=.4pt},
+	trvdiagr/.style={line width=.8pt,line join=round},                          % contorno dei diagrammi
+	trvcampo/.style={fill=black!8},                                             % campitura dei diagrammi
+	trvnota/.style={font=\footnotesize},
+}
+\tikzset{
+	pics/trvpunto/.style={code={\fill (0,0) circle (1.5pt);}},
+	pics/trvperno/.style={code={\draw[fill=white,line width=.6pt] (0,0) circle (1.7pt);}},
+	% momento su una faccia di normale +z: arco antiorario sopra l'asse
+	pics/trvmomsu/.style={code={\draw[trvcoppia] (25:#1) arc[start angle=25, end angle=155, radius=#1];}},
+	pics/trvmomsu/.default=0.42,
+	% momento su una faccia di normale -z: arco orario sotto l'asse
+	pics/trvmomgiu/.style={code={\draw[trvcoppia] (335:#1) arc[start angle=335, end angle=205, radius=#1];}},
+	pics/trvmomgiu/.default=0.42,
+}

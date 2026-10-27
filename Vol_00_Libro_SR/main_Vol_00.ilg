@@ -1,51 +1,51 @@
 This is makeindex, version 2.17 [TeX Live 2024] (kpathsea + Thai support).
-Scanning input file main_Vol_00.idx....done (129 entries accepted, 0 rejected).
-Sorting entries....done (1052 comparisons).
+Scanning input file main_Vol_00.idx....done (197 entries accepted, 0 rejected).
+Sorting entries.....done (1673 comparisons).
 Generating output file main_Vol_00.ind....
-## Warning (input = main_Vol_00.idx, line = 24; output = main_Vol_00.ind, line = 9):
+## Warning (input = main_Vol_00.idx, line = 24; output = main_Vol_00.ind, line = 11):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 27; output = main_Vol_00.ind, line = 10):
+## Warning (input = main_Vol_00.idx, line = 27; output = main_Vol_00.ind, line = 14):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 22; output = main_Vol_00.ind, line = 15):
+## Warning (input = main_Vol_00.idx, line = 22; output = main_Vol_00.ind, line = 22):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 33; output = main_Vol_00.ind, line = 22):
+## Warning (input = main_Vol_00.idx, line = 33; output = main_Vol_00.ind, line = 29):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 2; output = main_Vol_00.ind, line = 51):
+## Warning (input = main_Vol_00.idx, line = 2; output = main_Vol_00.ind, line = 67):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 36; output = main_Vol_00.ind, line = 61):
+## Warning (input = main_Vol_00.idx, line = 36; output = main_Vol_00.ind, line = 91):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 41; output = main_Vol_00.ind, line = 68):
+## Warning (input = main_Vol_00.idx, line = 41; output = main_Vol_00.ind, line = 99):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 96; output = main_Vol_00.ind, line = 72):
+## Warning (input = main_Vol_00.idx, line = 96; output = main_Vol_00.ind, line = 103):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 94; output = main_Vol_00.ind, line = 74):
+## Warning (input = main_Vol_00.idx, line = 94; output = main_Vol_00.ind, line = 107):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 92; output = main_Vol_00.ind, line = 82):
+## Warning (input = main_Vol_00.idx, line = 92; output = main_Vol_00.ind, line = 115):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 71; output = main_Vol_00.ind, line = 90):
+## Warning (input = main_Vol_00.idx, line = 71; output = main_Vol_00.ind, line = 124):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 57; output = main_Vol_00.ind, line = 100):
+## Warning (input = main_Vol_00.idx, line = 57; output = main_Vol_00.ind, line = 138):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 54; output = main_Vol_00.ind, line = 101):
+## Warning (input = main_Vol_00.idx, line = 54; output = main_Vol_00.ind, line = 139):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 66; output = main_Vol_00.ind, line = 106):
+## Warning (input = main_Vol_00.idx, line = 66; output = main_Vol_00.ind, line = 145):
    -- Conflicting entries: multiple encaps for the same page under same key.
 
-## Warning (input = main_Vol_00.idx, line = 5; output = main_Vol_00.ind, line = 124):
+## Warning (input = main_Vol_00.idx, line = 5; output = main_Vol_00.ind, line = 175):
    -- Conflicting entries: multiple encaps for the same page under same key.
-done (162 lines written, 15 warnings).
+done (232 lines written, 15 warnings).
 Output written in main_Vol_00.ind.
 Transcript written in main_Vol_00.ilg.

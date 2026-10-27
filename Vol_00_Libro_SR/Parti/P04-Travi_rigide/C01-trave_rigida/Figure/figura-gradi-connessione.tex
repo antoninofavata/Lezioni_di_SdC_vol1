@@ -1,11 +1,8 @@
 \begin{figure}[!htbp]
 	\centering
-	\resizebox{0.85\textwidth}{!}{%
-		\begin{tikzpicture}[
-			>=stealth, line width=0.8pt,
-			trave/.style={line width=1.6pt, line cap=round,
-				line join=round, black},
-			taglio/.style={line width=0.7pt, black}]
+		\begin{tikzpicture}[font=\small,
+			trave/.style={trvtrave},
+			taglio/.style={line width=0.6pt}]
 			
 			%% ===============================================================
 			%% PANNELLO (a) — trave biconnessa: rettangolo (p = 2)
@@ -29,19 +26,15 @@
 				\draw[taglio] ({\xTa-\dt},{\H-\el}) -- ({\xTa-\dt},{\H+\el});
 				\draw[taglio] ({\xTa+\dt},{\H-\el}) -- ({\xTa+\dt},{\H+\el});
 				
-				%% --- lato inferiore: due segmenti, interrotto in xTb ---
-				\draw[trave] (0,0) -- ({\xTb-\dt},0);
-				\draw[trave] ({\xTb+\dt},0) -- (\W,0);
-				%% trattini trasversali del taglio inferiore
-				\draw[taglio] ({\xTb-\dt},{-\el}) -- ({\xTb-\dt},{\el});
-				\draw[taglio] ({\xTb+\dt},{-\el}) -- ({\xTb+\dt},{\el});
+				%% --- lato inferiore, integro ---
+				\draw[trave] (0,0) -- (\W,0);
 				
 				%% --- lati corti, integri ---
 				\draw[trave] (0,0) -- (0,\H);
 				\draw[trave] (\W,0) -- (\W,\H);
 				
 				%% --- etichetta pannello ---
-				\node[below=10pt, font=\small] at (\W/2,0) {(a) $p=2$};
+				\node[below=8pt] at (\W/2,0) {(a) $p=2$};
 			\end{scope}
 			
 			%% ===============================================================
@@ -66,11 +59,8 @@
 				\draw[taglio] ({\xTa-\dt},{\H-\el}) -- ({\xTa-\dt},{\H+\el});
 				\draw[taglio] ({\xTa+\dt},{\H-\el}) -- ({\xTa+\dt},{\H+\el});
 				
-				%% --- lato inferiore: interrotto in xTb ---
-				\draw[trave] (0,0) -- ({\xTb-\dt},0);
-				\draw[trave] ({\xTb+\dt},0) -- (\W,0);
-				\draw[taglio] ({\xTb-\dt},{-\el}) -- ({\xTb-\dt},{\el});
-				\draw[taglio] ({\xTb+\dt},{-\el}) -- ({\xTb+\dt},{\el});
+				%% --- lato inferiore, integro ---
+				\draw[trave] (0,0) -- (\W,0);
 				
 				%% --- lati corti, integri ---
 				\draw[trave] (0,0) -- (0,\H);
@@ -84,7 +74,7 @@
 				\draw[taglio] ({\xS-\el},{\yTs+\dt}) -- ({\xS+\el},{\yTs+\dt});
 				
 				%% --- etichetta pannello ---
-				\node[below=10pt, font=\small] at (\W/2,0) {(b) $p=3$};
+				\node[below=8pt] at (\W/2,0) {(b) $p=3$};
 			\end{scope}
 			
 			%% ===============================================================
@@ -138,38 +128,19 @@
 				\draw[taglio] ({\xSb-\el},{\yTd+\dt}) -- ({\xSb+\el},{\yTd+\dt});
 				
 				%% --- setto orizzontale: da xSa a xSb, interrotto in xTe ---
-				\draw[trave] (\xSa,\yO) -- ({\xTe-\dt},\yO);
-				\draw[trave] ({\xTe+\dt},\yO) -- (\xSb,\yO);
-				\draw[taglio] ({\xTe-\dt},{\yO-\el}) -- ({\xTe-\dt},{\yO+\el});
-				\draw[taglio] ({\xTe+\dt},{\yO-\el}) -- ({\xTe+\dt},{\yO+\el});
+				\draw[trave] (\xSa,\yO) -- (\xSb,\yO);
 				
 				%% --- etichetta pannello ---
-				\node[below=10pt, font=\small] at (\W/2,0) {(c) $p=5$};
+				\node[below=8pt] at (\W/2,0) {(c) $p=5$};
 			\end{scope}
 			
 		\end{tikzpicture}
-	}
-	\caption{Travi pluriconnesse di grado crescente. In
-		ciascun pannello i $p$ tagli trasversali necessari
-		a separare la linea d'asse in due tratti
-		monoconnessi sono indicati dall'interruzione della
-		linea fra due trattini paralleli.
-		(a)~Trave biconnessa ($p = 2$): la linea
-		d'asse è chiusa; due tagli la separano in due
-		tratti monoconnessi. L'iperstaticità interna è
-		$3(p-1) = 3$.
-		(b)~Trave triconnessa ($p = 3$): un setto
-		verticale interno introduce un secondo anello;
-		tre tagli separano la trave in due tratti
-		monoconnessi. L'iperstaticità interna è
-		$3(p-1) = 6$.
-		(c)~Trave pluriconnessa con $p = 5$: due setti
-		verticali interni e un setto orizzontale corto
-		che li collega creano quattro anelli; cinque
-		tagli separano la trave in due tratti monoconnessi.
-		L'iperstaticità interna è $3(p-1) = 12$.
-		Il grado di connessione dipende solo dalla
-		topologia della linea d'asse, indipendentemente
-		dai vincoli esterni (qui assenti).}
+	\caption{Travi pluriconnesse. In ciascun pannello
+		sono indicati $p-1$ tagli che eliminano tutti i
+		percorsi chiusi della linea d'asse.
+		(a)~Trave biconnessa ($p = 2$), internamente
+		iperstatica di grado $3$.
+		(b)~Trave triconnessa ($p = 3$), di grado $6$.
+		(c)~Trave con $p = 5$, di grado $12$.}
 	\label{fig:gradi_connessione}
 \end{figure}

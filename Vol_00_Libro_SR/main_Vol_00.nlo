@@ -1,11 +1,23 @@
-\nomenclatureentry{L$\rb(A)$@[{$\rb(A)$}]\begingroup forza reattiva (reazione vincolare nel punto $A$)\nomeqref {1.4}|nompageref}{13}
-\nomenclatureentry{L$R(A)$@[{$R(A)$}]\begingroup intensità scalare della reazione vincolare lungo l'asse del vincolo\nomeqref {1.34}|nompageref}{32}
-\nomenclatureentry{L$X(A),\ Y(A)$@[{$X(A),\ Y(A)$}]\begingroup componenti cartesiane della reazione vincolare\nomeqref {1.34}|nompageref}{32}
-\nomenclatureentry{G$\mu_a(A),\ \mu_r(A)$@[{$\mu_a(A),\ \mu_r(A)$}]\begingroup coppia attiva (assegnata) e coppia reattiva (incognita)\nomeqref {1.34}|nompageref}{32}
-\nomenclatureentry{L$\bar{s}$@[{$\bar{s}$}]\begingroup cedimento: spostamento (o scorrimento relativo) assegnato lungo la direzione vincolata\nomeqref {1.34}|nompageref}{33}
-\nomenclatureentry{G$\bar{\vartheta}$@[{$\bar{\vartheta}$}]\begingroup cedimento rotazionale: rotazione (relativa) assegnata\nomeqref {1.34}|nompageref}{33}
-\nomenclatureentry{L$\bm{r}$@[{$\bm{r}$}]\begingroup vettore delle reazioni vincolari (intensità scalari $R_k$)\nomeqref {2.32}|nompageref}{68}
-\nomenclatureentry{L$\bm{B}$@[{$\bm{B}$}]\begingroup matrice di equilibrio del sistema\nomeqref {2.36}|nompageref}{70}
-\nomenclatureentry{G$\nu$@[{$\nu$}]\begingroup numero nominale di gradi di libertà ($n-m$)\nomeqref {2.55}|nompageref}{83}
-\nomenclatureentry{L$\bm{q}$@[{$\bm{q}$}]\begingroup coordinate lagrangiane (di meccanismo)\nomeqref {2.58}|nompageref}{86}
-\nomenclatureentry{G$\bm{\chi}$@[{$\bm{\chi}$}]\begingroup vettore delle incognite iperstatiche\nomeqref {2.64}|nompageref}{86}
+\nomenclatureentry{L$\rb(A)$@[{$\rb(A)$}]\begingroup forza reattiva (reazione vincolare nel punto $A$)\nomeqref {1.4}|nompageref}{15}
+\nomenclatureentry{L$R(A)$@[{$R(A)$}]\begingroup intensità scalare della reazione vincolare lungo l'asse del vincolo\nomeqref {1.34}|nompageref}{34}
+\nomenclatureentry{L$X(A),\ Y(A)$@[{$X(A),\ Y(A)$}]\begingroup componenti cartesiane della reazione vincolare\nomeqref {1.34}|nompageref}{34}
+\nomenclatureentry{G$\mu_a(A),\ \mu_r(A)$@[{$\mu_a(A),\ \mu_r(A)$}]\begingroup coppia attiva (assegnata) e coppia reattiva (incognita)\nomeqref {1.34}|nompageref}{34}
+\nomenclatureentry{L$\bar{s}$@[{$\bar{s}$}]\begingroup cedimento: spostamento (o scorrimento relativo) assegnato lungo la direzione vincolata\nomeqref {1.34}|nompageref}{35}
+\nomenclatureentry{G$\bar{\vartheta}$@[{$\bar{\vartheta}$}]\begingroup cedimento rotazionale: rotazione (relativa) assegnata\nomeqref {1.34}|nompageref}{35}
+\nomenclatureentry{L$\bm{r}$@[{$\bm{r}$}]\begingroup vettore delle reazioni vincolari (intensità scalari $R_k$)\nomeqref {2.32}|nompageref}{70}
+\nomenclatureentry{L$\bm{B}$@[{$\bm{B}$}]\begingroup matrice di equilibrio del sistema\nomeqref {2.36}|nompageref}{72}
+\nomenclatureentry{G$\nu$@[{$\nu$}]\begingroup numero nominale di gradi di libertà ($n-m$)\nomeqref {2.55}|nompageref}{85}
+\nomenclatureentry{L$\bm{q}$@[{$\bm{q}$}]\begingroup coordinate lagrangiane (di meccanismo)\nomeqref {2.58}|nompageref}{88}
+\nomenclatureentry{G$\bm{\chi}$@[{$\bm{\chi}$}]\begingroup vettore delle incognite iperstatiche\nomeqref {2.64}|nompageref}{88}
+\nomenclatureentry{L$\{A;\,x,\,y,\,z\}$@[{$\{A;\,x,\,y,\,z\}$}]\begingroup riferimento locale della trave\nomeqref {4.0}|nompageref}{144}
+\nomenclatureentry{L$p,\,q$@[{$p,\,q$}]\begingroup densità di forza trasversale e assiale\nomeqref {4.4}|nompageref}{146}
+\nomenclatureentry{L$c$@[{$c$}]\begingroup densità di coppia\nomeqref {4.4}|nompageref}{146}
+\nomenclatureentry{L$N$@[{$N$}]\begingroup forza normale\nomeqref {4.9}|nompageref}{147}
+\nomenclatureentry{L$T$@[{$T$}]\begingroup taglio\nomeqref {4.9}|nompageref}{147}
+\nomenclatureentry{L$M$@[{$M$}]\begingroup momento flettente\nomeqref {4.9}|nompageref}{147}
+\nomenclatureentry{O$(\cdot)'$@[{$(\cdot)'$}]\begingroup derivata rispetto all'ascissa $z$\nomeqref {4.15}|nompageref}{151}
+\nomenclatureentry{G$\varrho_w,\,\varrho_v,\,\varrho_\vartheta$@[{$\varrho_w,\,\varrho_v,\,\varrho_\vartheta$}]\begingroup distorsioni estensionale, trasversale, rotazionale\nomeqref {4.20}|nompageref}{154}
+\nomenclatureentry{G$\bm{\sigma}$@[{$\bm{\sigma}$}]\begingroup vettore delle caratteristiche della sollecitazione\nomeqref {4.21}|nompageref}{155}
+\nomenclatureentry{G$\bm{\varrho}$@[{$\bm{\varrho}$}]\begingroup vettore delle distorsioni\nomeqref {4.21}|nompageref}{155}
+\nomenclatureentry{L$H,\,V$@[{$H,\,V$}]\begingroup componenti orizzontale e verticale della reazione vincolare\nomeqref {5.2}|nompageref}{165}
+\nomenclatureentry{O$(\cdot)'$@[{$(\cdot)'$}]\begingroup derivazione rispetto all'ascissa assiale $z^e$\nomeqref {5.5}|nompageref}{167}

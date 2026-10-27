@@ -1,0 +1,62 @@
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
+		
+		% ── Trave AB in alto ─────────────────────────────
+		\draw[thick] (0, 3.5) -- (8, 3.5);
+		\draw[dashed, thick] (0, 3.35) -- (8, 3.35);
+		\fill (0, 3.5) circle (2pt) node[above=4pt] {$A$};
+		\fill (8, 3.5) circle (2pt) node[above=4pt] {$B$};
+		
+		% Linea tratteggiata che collega trave al concio
+		\draw[dashed, gray!50, thin] (3.7, 3.35) -- (3.7, 2.5);
+		\draw[dashed, gray!50, thin] (4.3, 3.35) -- (4.3, 2.5);
+		
+		% ── Concio assottigliato ─────────────────────────
+		\draw[thick] (3.7, 0.5) rectangle (4.3, 2.5);
+		
+		% Tratteggio fibra inferiore concio
+		\draw[dashed, thick] (3.7, 0.35) -- (4.3, 0.35);
+		
+		% ── Faccia destra (normale +z^e) ─────────────────
+		% N: verso destra
+		\draw[->, line width=1.6pt]
+		(4.3, 1.5) -- (5.5, 1.5);
+		\node[above=2pt] at (5.0, 1.5) {$N$};
+		
+		% T: verso il basso
+		\draw[->, line width=1.6pt]
+		(4.3, 1.5) -- (4.3, 0.3);
+		\node[right=2pt] at (4.3, 0.9) {$T$};
+		
+		% M: quarto di cerchio da T a N
+		\draw[->, line width=1.6pt]
+		(4.3, 0.3) arc[start angle=270,
+		end angle=360, radius=1.2];
+		\node[right=2pt] at (5.25, 0.85) {$M$};
+		
+		% ── Faccia sinistra (normale -z^e) ────────────────
+		% N: verso sinistra
+		\draw[->, line width=1.6pt]	(3.7, 1.5) -- (2.5, 1.5);	\node[below=2pt] at (3.0, 1.5) {$N$};
+		
+		% T: verso l'alto
+		\draw[->, line width=1.6pt]
+		(3.7, 1.5) -- (3.7, 2.7);
+		\node[left=2pt] at (3.7, 2.1) {$T$};
+		
+		% M: quarto di cerchio da N a T
+		\draw[->, line width=1.6pt]
+		(2.5, 1.5) arc[start angle=180,
+		end angle=90, radius=1.2];
+		\node[left=2pt] at (2.85, 2.45) {$M$};
+		
+	\end{tikzpicture}
+	\caption{Concio di trave e convenzione di segno
+		delle caratteristiche della sollecitazione.
+		Sulla faccia destra (normale uscente $+z^e$)
+		$N$, $T$, $M$ sono positivi se concordi con
+		gli assi del riferimento intrinseco; sulla
+		faccia sinistra (normale uscente $-z^e$)
+		i versi positivi sono opposti.}
+	\label{fig:concio_NTM}
+\end{figure}

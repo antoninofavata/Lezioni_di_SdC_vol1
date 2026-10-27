@@ -1,0 +1,134 @@
+\begin{figure}[htbp]
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}[
+			>=Stealth, line width=0.8pt, trave/.style={line width=1.5pt, line cap=round, line join=round, black},	terra/.style={line width=0.7pt, black},
+			nodoV/.style={circle, fill=white, draw=black,	inner sep=0pt, minimum size=4pt}]
+			
+			% ================================================================
+			% PANNELLO SINISTRO — trave reale
+			% ================================================================
+			\begin{scope}[xshift=0cm]
+				
+				\def\L{5.0}
+				\def\H{0.70}
+				\def\B{0.50}
+				
+				% corpo della trave: parallelepipedo prospettico
+				% faccia frontale — aggiunto spigolo destro mancante
+				\draw[thick] (0,0) rectangle (\L,\H);
+				\draw[thick] (\L,0) -- (\L,\H);  % spigolo destro esplicito
+				% spigolo verticale faccia destra posteriore
+				\draw[thick] (\L+\B, \B) -- (\L+\B, \B+\H);
+				
+				
+				% faccia frontale
+				\draw[thick] (0,0) rectangle (\L,\H);
+				% spigoli prospettici
+				\draw[thick] (0,\H)  -- ++(\B,\B);
+				\draw[thick] (\L,\H) -- ++(\B,\B);
+				\draw[thick] (\L,0)  -- ++(\B,\B);
+				% faccia superiore
+				\draw[thick] (0,\H) -- ++(\B,\B)
+				-- ++(\L,0)
+				-- ++(-\B,-\B);
+				% spigoli posteriori tratteggiati — DOPO la faccia frontale
+				\draw[dashed,gray!60] (0,0)   -- ++(\B,\B);
+				\draw[dashed,gray!60] (\B,\B) -- ++(\L,0);
+				% spigolo verticale posteriore sinistro — per ultimo
+				\draw[dashed,gray!60] (\B,\B) -- ++(0,\H);
+				
+				% linea d'asse: dal baricentro faccia sinistra
+				\draw[trave] (\B/2, \H/2+\B/2) -- (\L+\B/2, \H/2+\B/2);
+				\fill (\B/2, \H/2+\B/2) circle (2pt)	node[left=3pt]{\small$A$};
+				\fill (\L+\B/2, \H/2+\B/2) circle (2pt)	node[right=3pt]{\small$B$};
+				
+				
+				% quota h solo a sinistra
+				\draw[|<->|,thin] (-0.35,0) -- (-0.35,\H)
+				node[midway,left=2pt]{\small$h$};
+				
+				% quota b
+				\draw[<->,thin] (\L+0.15,0)
+				-- (\L+0.15+\B, \B)
+				node[midway,right=1pt]{\small$b$};
+				
+				% quota L
+				\draw[|<->|,thin] (0,-0.45) -- (\L,-0.45)
+				node[midway,above=-1pt]{\small$\ell$};
+				
+				% etichetta pannello
+				\node[below=20pt] at (\L/2, 0) {\small(a)};
+				
+			\end{scope}
+			
+			% ================================================================
+			% PANNELLO DESTRO — schematizzazione
+			% ================================================================
+			
+			\begin{scope}[xshift=7.5cm, yshift=0.6cm]
+				
+				\def\L{5.0}
+				
+				% linea d'asse
+				\draw[trave] (0,0) -- (\L,0);
+				
+				
+				% ferri di chiamata della quota (sotto i vincoli, grigi sottili)
+				\draw[very thin, gray!50] (0,-0.85)  -- (0,-1.15);
+				\draw[very thin, gray!50] (\L,-0.85) -- (\L,-1.15);
+				
+				
+				% cerniera esterna in A (canone)
+				\draw[terra] (0,0) -- ++(-0.22,-0.38)
+				-- ++(0.44,0) -- cycle;
+				\draw[terra] (-0.30,-0.38) -- (0.30,-0.38);
+				\foreach \x in {-0.24,-0.12,0,0.12,0.24}
+				\draw[very thin, black]
+				(\x,-0.38) -- ++(-0.09,-0.11);
+				\node[nodoV] at (0,0) {};
+				\node[above=4pt] at (0,0) {$A$};
+				
+				% carrello esterno in B (canone, ridotto al 85%)
+				\draw[terra] (\L,0) -- ++(-0.25,-0.36)
+				-- ++(0.50,0) -- cycle;
+				\draw[terra] (\L-0.34,-0.36) -- (\L+0.34,-0.36);
+				\draw[terra] (\L-0.18,-0.50) circle (2.7pt);
+				\draw[terra] (\L+0.18,-0.50) circle (2.7pt);
+				\draw[terra] (\L-0.34,-0.64) -- (\L+0.34,-0.64);
+				\foreach \x in {-0.28,-0.15,-0.02,0.11,0.24}
+				\draw[very thin, black]
+				(\L+\x,-0.64) -- ++(-0.10,-0.13);
+				\node[nodoV] at (\L,0) {};
+				\node[above=4pt] at (\L,0) {$B$};
+				
+				% quota L
+				\draw[|<->|,thin] (0,-1.05) -- (\L,-1.05)
+				node[midway,above=-1pt]{\small$\ell$};
+				
+				% etichetta pannello
+				\node[below=35pt] at (\L/2, 0) {\small(b)};
+				
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+	}
+	\caption{Dalla trave reale alla schematizzazione
+		strutturale.
+		(a)~Trave reale: corpo rigido con
+		lunghezza $\ell$ e dimensioni trasversali
+		$b$, $h$ con $b,h \ll \ell$. La linea
+		d'asse (tratteggiata spessa) è il luogo
+		dei baricentri delle sezioni trasversali;
+		gli estremi $A$ e $B$ sono i punti della
+		linea d'asse corrispondenti alle facce
+		terminali.
+		(b)~Schematizzazione strutturale:
+		si traccia la sola linea d'asse; i vincoli
+		(cerniera in $A$, carrello in $B$) sono
+		posizionati sui punti corrispondenti.
+		Questa è la rappresentazione adottata in
+		tutte le figure del capitolo.}
+	\label{fig:trave_convenzione}
+\end{figure}

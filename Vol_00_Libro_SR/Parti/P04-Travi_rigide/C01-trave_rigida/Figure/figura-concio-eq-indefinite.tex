@@ -1,131 +1,40 @@
 \begin{figure}[htbp]
 	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt,
-		scale=1.1]
-		
-		% ── Trave AB con carichi distribuiti ─────────────
-		\draw[thick] (0,0) -- (9,0);
-		\draw[dashed, thick] (0,-0.18) -- (9,-0.18);
-		\fill (0,0) circle (2pt);
-		\node[below=6pt] at (0,0) {$A$};
-		\fill (9,0) circle (2pt);
-		\node[below=6pt] at (9,0) {$B$};
-		
-		% p(z)
-		\draw[thick, domain=0:9, samples=100]
-		plot (\x, {1.2 + 0.5*sin(\x*40)});
-		\foreach \x in {0.3, 0.9, 1.5, 2.1, 2.7, 3.3,
-			3.9, 4.5, 5.1, 5.7, 6.3, 6.9,
-			7.5, 8.1, 8.7}{
-			\pgfmathsetmacro{\h}{1.2 + 0.5*sin(\x*40)}
-			\draw[->, thin] (\x, \h) -- (\x, 0);
-		}
-		\node[right] at (9.1, {1.2+0.5*sin(360)}) {$p(z)$};
-		
-		% q(z)
-		\foreach \x in {0.3, 0.9, 1.5, 2.1, 2.7, 3.3,
-			3.9, 4.5, 5.1, 5.7, 6.3, 6.9,
-			7.5, 8.1, 8.7}{
-			\draw[->, thin] (\x-0.35, 0.35) -- (\x, 0.35);
-		}
-		\draw[thick] (0,0.35) -- (9,0.35);
-		\node[right] at (9.1, 0.35) {$q(z)$};
-		
-		% c(z) — archi antiorari
-		\foreach \x in {0.5, 1.3, 2.1, 2.9, 3.7, 4.5,
-			5.3, 6.1, 6.9, 7.7, 8.5}{
-			\draw[->] (\x+0.18, 0.72)
-			arc[start angle=0, end angle=180,
-			radius=0.18];
-		}
-		\node[right] at (9.1, 0.72) {$c(z)$};
-		
-		% Punti P e Q
-		\draw[thin] (4.0, -0.3) -- (4.0, 0.1);
-		\draw[thin] (5.2, -0.3) -- (5.2, 0.1);
-		%\node[below=2pt] at (3.8, -0.3) {$P$};
-		\node[below=2pt] at (4.0, -0.12) {\footnotesize$(z)$};
-		%\node[below=2pt] at (5.4, -0.3) {$Q$};
-		\node[below=2pt] at (5.3, -0.12)
-		{\footnotesize$(z{+}\dd z)$};
-		\draw[|<->|, thin] (4.0,-0.75) -- (5.2,-0.75)
-		node[midway, below=2pt] {$\dd z$};
-		
-		% Linee tratteggiate verso concio
-		\draw[dashed, gray!50, thin] (4.0,-0.18) -- (2.0,-2.0);
-		\draw[dashed, gray!50, thin] (5.2,-0.18) -- (7.0,-2.0);
-		
-		% ── Concio ingrandito (più corto) ─────────────────
-		\draw[thick] (2.0,-3.8) rectangle (7.0,-2.0);
-		\draw[dashed, thick] (2.0,-4.0) -- (7.0,-4.0);
-		
-		% Centro del concio
-		\coordinate (C) at (4.5,-2.9);
-		
-		% Etichette P e Q sulle facce
-		\node[below=4pt] at (2.2,-2.6) {$P$};
-		\node[below=4pt] at (6.8,-2.6) {$Q$};
-		
-		% c dz: coppia antioraria sopra il centro
-		\draw[->] (4.85,-2.8)
-		arc[start angle=0, end angle=180,
-		radius=0.38];
-		\node[above=2pt, font=\small] at (4.5,-2.6) {$c(z)\,\dd z$};
-		
-		% q dz: freccia da centro verso destra
-		\draw[->, line width=1.2pt]
-		(C) -- ++(1.5, 0)
-		node[above=2pt, font=\small] {$q(z)\,\dd z$};
-		
-		%p dz: freccia dal centro verso il basso
-		\draw[->, line width=1.2pt]
-		(C) -- ++(0, -0.9)
-		node[pos=0.5, right=2pt, font=\small] {$p(z)\,\dd z$};
-		
-		% ── Faccia sinistra P ─────────────────────────────
-		% N
-		\draw[->, line width=1.6pt]
-		(2.0,-2.9) -- (0.7,-2.9);
-		\node[above=2pt, font=\small] at (1.2,-2.9) {$N$};
-		
-		% T
-		\draw[->, line width=1.6pt]
-		(2.0,-2.9) -- (2.0,-1.7);
-		\node[left=2pt, font=\small] at (2.0,-2.3) {$T$};
-		
-		% M
-		\draw[->, line width=1.6pt]
-		(0.7,-2.9) arc[start angle=180,
-		end angle=90, radius=1.2];
-		\node[left=2pt, font=\small] at (0.95,-1.9) {$M$};
-		
-		% ── Faccia destra Q ───────────────────────────────
-		% N+dN
-		\draw[->, line width=1.6pt]
-		(7.0,-2.9) -- (8.3,-2.9);
-		\node[above=2pt, font=\small] at (7.8,-2.9) {$N{+}\dd N$};
-		
-		% T+dT
-		\draw[->, line width=1.6pt]
-		(7.0,-2.9) -- (7.0,-4.1);
-		\node[right=2pt, font=\small] at (6.85,-3.4) {$T{+}\dd T$};
-		
-		% M+dM
-		\draw[->, line width=1.6pt]
-		(7.0,-4.1) arc[start angle=270,
-		end angle=360, radius=1.2];
-		\node[right=2pt, font=\small] at (7.9,-3.6) {$M{+}\dd M$};
-		
+	\begin{tikzpicture}[font=\small]
+		\def\W{4.6}\def\h{0.6}\def\a{0.85}\def\r{0.55}
+		% concio
+		\draw[trvconcio] (0,-\h) rectangle (\W,\h);
+		\draw[trvfibra] (0,-\h-0.12) -- (\W,-\h-0.12);
+		% faccia sinistra: azioni con verso opposto a quello positivo
+		\draw[trvforza] (0,0) -- ++(-\a,0) node[left] {$N$};
+		\draw[trvforza] (0,0) -- ++(0,\a) node[above] {$T$};
+		\pic at (0,0) {trvmomgiu};
+		\node[below left] at ($(0,0)+(235:0.42)$) {$M$};
+		% faccia destra: azioni nei versi positivi
+		\draw[trvforza] (\W,0) -- ++(\a,0) node[right] {$N + \Delta N$};
+		\draw[trvforza] (\W,0) -- ++(0,-\a) node[right, pos=0.9] {$T + \Delta T$};
+		\pic at (\W,0) {trvmomsu};
+		\node[above right] at ($(\W,0)+(55:0.42)$) {$M + \Delta M$};
+		% risultanti delle azioni distribuite
+		\draw[trvforza] ({\W/2},0) -- ++(0.75,0) node[above=1pt, pos=0.6] {$q(z)\,\Delta z$};
+		\draw[trvforza] ({\W/2},0) -- ++(0,-0.5) node[right=1pt, pos=0.7] {$p(z)\,\Delta z$};
+		\draw[trvcoppia] ({\W/2-0.75},-0.12) arc[start angle=0, end angle=180, radius=0.24];
+		\node[below] at ({\W/2-0.99},-0.12) {$c(z)\,\Delta z$};
+		\pic at ({\W/2},0) {trvpunto};
+		% quota
+		\draw[trvrichiamo] (0,-\h-0.2) -- (0,-1.6);
+		\draw[trvrichiamo] (\W,-\h-0.2) -- (\W,-1.6);
+		\draw[trvquota] (0,-1.45) -- node[below=1pt] {$\Delta z$} (\W,-1.45);
+		\node[below left=0pt] at (0,-1.45) {$z$};
+		\node[below right=0pt] at (\W,-1.45) {$z + \Delta z$};
 	\end{tikzpicture}
-	\caption{Trave con carichi distribuiti $p(z)$,
-		$q(z)$, $c(z)$ (in alto) e concio infinitesimo
-		di lunghezza $\dd z$ tra le sezioni $P$ e $Q$
-		(ingrandimento in basso). Le risultanti dei
-		carichi distribuiti $p(z)\,\dd z$, $q(z)\,\dd z$,
-		$c(z)\,\dd z$ sono applicate al centro del
-		concio. Sulla faccia $P$ le caratteristiche
-		della sollecitazione agiscono con verso negativo;
-		sulla faccia $Q$ con verso positivo incrementate
-		di $\dd N$, $\dd T$, $\dd M$.}
+	\caption{Concio elementare compreso fra le sezioni di
+		ascissa $z$ e $z + \Delta z$ in un tratto regolare.
+		Sulla faccia di ascissa $z$ le azioni interne agiscono
+		con verso opposto a quello positivo, sulla faccia di
+		ascissa $z + \Delta z$ con verso positivo e incrementate
+		di $\Delta N$, $\Delta T$, $\Delta M$. Al primo ordine
+		in $\Delta z$ le azioni distribuite si riducono alle
+		risultanti $p(z)\,\Delta z$, $q(z)\,\Delta z$, $c(z)\,\Delta z$.}
 	\label{fig:concio_eq_indefinite}
 \end{figure}

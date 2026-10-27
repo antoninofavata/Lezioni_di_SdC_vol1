@@ -1,48 +1,66 @@
 \begin{figure}[htbp]
 	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=1.2]
-		
-		% Estremi A e B
-		\fill (0,0) circle (2pt) node[above=4pt] {$A$};
-		\fill (6,0) circle (2pt) node[above=4pt] {$B$};
-		
-		% Linea d'asse della trave (continua)
-		\draw[thick] (0,0) -- (6,0);
-		
-		% Tratteggio fibra inferiore
-		\draw[dashed, thick] (0,-0.18) -- (6,-0.18);
-		
-		% Origine O^e con asse x^e uscente (cerchio con punto)
-		\draw[thick] (1.5, 0) circle (0.15);
-		\fill (1.5, 0) circle (2pt);
-		\node[above=4pt] at (1.3, 0) {$O^e$};
-		\node[above=4pt] at (1.7, 0) {$x^e$};
-		
-		% Asse z^e (lungo la trave, verso destra)
-		\draw[->, thick] (1.5, 0) -- (3.2, 0)
-		node[above=2pt] {$z^e$};
-		
-		% Asse y^e (verso il basso, fibra inferiore)
-		\draw[->, thick] (1.5, 0) -- (1.5, -1.2)
-		node[right=2pt] {$y^e$};
-		
-		% Annotazione fibra inferiore
-		\node[below=6pt] at (3.0, -0.18)
-		{\footnotesize fibra inferiore ($y^e > 0$)};
-		
-		% Freccia verso di percorrenza
-		\draw[->, gray!60, thin] (4.2, 0.35) -- (5.5, 0.35)
-		node[midway, above=2pt]
-		{\footnotesize verso di percorrenza};
-		
+	\begin{tikzpicture}[font=\small]
+		% ---------------------------------------------------------------
+		% (a) trave inclinata dell'angolo alpha
+		% ---------------------------------------------------------------
+		\begin{scope}
+			\def\a{30}
+			% riferimento globale
+			\draw[trvasse] (0,0) -- (0.9,0) node[right] {$x^{\mathrm{g}}$};
+			\draw[trvasse] (0,0) -- (0,0.9) node[above] {$y^{\mathrm{g}}$};
+			\draw[line width=.5pt] (0,0) circle (0.09);
+			\fill (0,0) circle (0.9pt);
+			\node[below left=-1pt] at (0,0) {$z^{\mathrm{g}}$};
+			% trave
+			\coordinate (A) at (1.5,0.35);
+			\coordinate (B) at ($(A)+(\a:3.6)$);
+			\draw[trvtrave] (A) -- (B);
+			\draw[trvfibra] ($(A)+(\a-90:0.12)$) -- ($(B)+(\a-90:0.12)$);
+			\pic at (A) {trvpunto};
+			\node[above left=1pt] at (A) {$A$};
+			\node[above left=1pt] at (B) {$B$};
+			% riferimento locale (in B)
+			\draw[trvasse] (B) -- ++(\a:0.85) node[above] {$z$};
+			\draw[trvasse] (B) -- ++(\a-90:0.85) node[right] {$y$};
+			\draw[line width=.5pt, fill=white] (B) circle (0.09);
+			\fill (B) circle (0.9pt);
+			\node[right=3pt] at (B) {$x$};
+			% angolo alpha
+			\draw[trvcostruzione] (A) -- ++(1.6,0);
+			\draw[-{Stealth[length=1.3mm,width=1.0mm]},line width=.5pt]
+				($(A)+(1.1,0)$) arc[start angle=0, end angle=\a, radius=1.1];
+			\node at ($(A)+(\a/2:1.35)$) {$\alpha$};
+			\node at (2.7,-1.2) {(a)};
+		\end{scope}
+		% ---------------------------------------------------------------
+		% (b) casi alpha = 0, pi/2, pi, 3pi/2
+		% ---------------------------------------------------------------
+		\begin{scope}[xshift=6.6cm, yshift=0.2cm]
+			\foreach \a/\mx/\my in {0/0.6/1.55, 180/0.6/0.0, 90/3.0/1.25, 270/3.0/-0.15}{
+				\pgfmathtruncatemacro{\anz}{mod(\a+180,360)}
+				\pgfmathtruncatemacro{\any}{mod(\a+90,360)}
+				\coordinate (P) at ($(\mx,\my)+(\a+180:0.55)$);
+				\coordinate (Q) at ($(\mx,\my)+(\a:0.55)$);
+				\draw[trvtrave] (P) -- (Q);
+				\draw[trvfibra] ($(P)+(\a-90:0.11)$) -- ($(Q)+(\a-90:0.11)$);
+				\draw[trvasse] (Q) -- ++(\a:0.45) node[font=\footnotesize, anchor=\anz] {$z$};
+				\draw[trvasse] (Q) -- ++(\a-90:0.45) node[font=\footnotesize, anchor=\any] {$y$};
+			}
+			\node[trvnota] at (0.45,2.0) {$\alpha = 0$};
+			\node[trvnota] at (0.75,-0.45) {$\alpha = \pi$};
+			\node[trvnota, left] at (2.85,1.05) {$\alpha = \tfrac{\pi}{2}$};
+			\node[trvnota, right] at (3.15,0.05) {$\alpha = \tfrac{3\pi}{2}$};
+			\node at (1.8,-1.4) {(b)};
+		\end{scope}
 	\end{tikzpicture}
-	\caption{Riferimento intrinseco $(O^e;\, y^e,\, z^e)$
-		di una trave rettilinea piana con estremi $A$ e $B$.
-		L'asse $z^e$ è diretto nel verso di percorrenza
-		da $A$ a $B$; l'asse $y^e$ punta verso la fibra
-		inferiore, indicata dalla linea tratteggiata
-		parallela alla linea d'asse; l'asse $x^e$,
-		uscente dal piano del foglio, completa il
-		riferimento destrorso.}
+	\caption{Riferimento locale della trave.
+		(a)~L'asse $z$ è diretto da $A$ verso $B$ e forma
+		l'angolo $\alpha$ con $x^{\mathrm{g}}$; l'asse $y$
+		punta verso la fibra inferiore, indicata dal
+		tratteggio; l'asse $x$, uscente dal foglio,
+		coincide con $z^{\mathrm{g}}$.
+		(b)~Riferimento locale per $\alpha = 0$, $\pi/2$,
+		$\pi$, $3\pi/2$.}
 	\label{fig:riferimento_intrinseco}
 \end{figure}

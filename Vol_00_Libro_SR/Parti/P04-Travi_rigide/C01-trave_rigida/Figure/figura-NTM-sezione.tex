@@ -1,75 +1,37 @@
 \begin{figure}[htbp]
 	\centering
-	\begin{tikzpicture}[>=Stealth, line width=0.8pt, scale=0.80]
-		
-		% Coordinate principali
-		\coordinate (A)   at (0, 0);
-		\coordinate (Sm)  at (2.5, 0);
-		\coordinate (Sp)  at (5.5, 0);
-		\coordinate (B)   at (8, 0);
-		
-		% Linee d'asse dei due tratti
-		\draw[thick] (A) -- (Sm);
-		\draw[thick] (Sp) -- (B);
-		
-		% Tratteggio fibra inferiore
-		\draw[dashed, thick] (0,-0.2) -- (2.5,-0.2);
-		\draw[dashed, thick] (5.5,-0.2) -- (8,-0.2);
-		
-		% Etichette estremi e sezione
-		\node[above=4pt] at (A)  {$A$};
-		\node[above=4pt] at (B)  {$B$};
-		\node[above=6pt] at (4.0, 0) {$S$};
-		
-		% Linea di taglio in S (verticale tratteggiata)
-		\draw[dashed, gray!60, thin] (4.0,-1.4) -- (4.0, 1.6);
-		
-		% Etichette tratti
-		\node at (1.2, 0.5) {$\mathcal{C}^-$};
-		\node at (6.8, 0.5) {$\mathcal{C}^+$};
-		
-		% Facce di taglio (linee verticali)
-		\draw[thick] (2.5,-1.4) -- (2.5, 0.8);
-		\draw[thick] (5.5,-0.8) -- (5.5, 1.4);
-		
-		% ── Faccia destra di C^- ─────────────────────────
-		% N: verso destra
-		\draw[->, line width=1.6pt]	(2.5, 0) -- (3.7, 0);
-		\node[above=2pt] at (3.1, 0) {$N$};
-		
-		% T: verso il basso
-		\draw[->, line width=1.6pt]	(2.5, 0) -- (2.5, -1.2);
-		\node[right=2pt] at (2.5, -0.6) {$T$};
-		
-		% M: quarto di cerchio da T a N
-		\draw[->, line width=1.6pt]	(2.5, -1.2) arc[start angle=270, end angle=360, radius=1.2];
-		\node at (3.5, -1.1) {$M$};
-		
-		% ── Faccia sinistra di C^+ ────────────────────────
-		% N: verso sinistra
-		\draw[->, line width=1.6pt]	(5.5, 0) -- (4.3, 0);
-		\node[above=2pt] at (4.9, 0) {$N$};
-		
-		% T: verso l'alto
-		\draw[->, line width=1.6pt]
-		(5.5, 0) -- (5.5, 1.2);
-		\node[right=2pt] at (5.5, 0.6) {$T$};
-		
-		% M: quarto di cerchio da N a T
-		\draw[->, line width=1.6pt]	(4.3, 0) arc[start angle=180,	end angle=90, radius=1.2];
-		\node at (4.5, 1.1) {$M$};
-		
-		% Punti agli estremi
-		\fill (A) circle (2pt);
-		\fill (B) circle (2pt);
-		
+	\begin{tikzpicture}[font=\small]
+		\def\xm{3.2}\def\xp{5.4}\def\L{8.6}\def\a{0.85}\def\r{0.5}
+		% parti C^- e C^+
+		\draw[trvtrave] (0,0) -- (\xm,0);
+		\draw[trvtrave] (\xp,0) -- (\L,0);
+		\draw[trvfibra] (0,-0.12) -- (\xm,-0.12);
+		\draw[trvfibra] (\xp,-0.12) -- (\L,-0.12);
+		\draw[trvfaccia] (\xm,-0.3) -- (\xm,0.3);
+		\draw[trvfaccia] (\xp,-0.3) -- (\xp,0.3);
+		\pic at (0,0) {trvpunto};
+		\pic at (\L,0) {trvpunto};
+		\node[above=2pt] at (0,0) {$A$};
+		\node[above=2pt] at (\L,0) {$B$};
+		\node at (1.6,0.45) {$\mathcal{C}^-$};
+		\node at (7.0,0.45) {$\mathcal{C}^+$};
+		% traccia del taglio
+		\draw[trvcostruzione] ({(\xm+\xp)/2},-1.1) -- ({(\xm+\xp)/2},1.1);
+		\node[above] at ({(\xm+\xp)/2},1.1) {$S$};
+		% azioni su C^- (versi positivi)
+		\draw[trvforza] (\xm,0) -- ++(\a,0) node[below=1pt, pos=0.75] {$N$};
+		\draw[trvforza] (\xm,0) -- ++(0,-\a) node[right=1pt, pos=0.8] {$T$};
+		\pic at (\xm,0) {trvmomsu};
+		\node[above] at (\xm,0.42) {$M$};
+		% azioni su C^+ (versi opposti)
+		\draw[trvforza] (\xp,0) -- ++(-\a,0) node[above=1pt, pos=0.75] {$N$};
+		\draw[trvforza] (\xp,0) -- ++(0,\a) node[left=1pt, pos=0.8] {$T$};
+		\pic at (\xp,0) {trvmomgiu};
+		\node[below] at (\xp,-0.42) {$M$};
 	\end{tikzpicture}
-	\caption{Caratteristiche della sollecitazione
-		nella sezione $S$: sulla faccia destra di
-		$\mathcal{C}^-$ (normale uscente $+z^e$)
-		agiscono $N$, $T$, $M$ nel verso positivo
-		convenuto; sulla faccia sinistra di
-		$\mathcal{C}^+$ le stesse grandezze agiscono
-		con verso opposto per il terzo principio.}
+	\caption{Taglio ideale nella sezione $S$. Sulla faccia
+		di $\mathcal{C}^-$, di normale uscente $\mathbf{a}_z$,
+		agiscono $N$, $T$, $M$ nei versi positivi; sulla
+		faccia di $\mathcal{C}^+$ agiscono con versi opposti.}
 	\label{fig:NTM_sezione}
 \end{figure}

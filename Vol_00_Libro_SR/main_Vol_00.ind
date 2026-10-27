@@ -1,162 +1,232 @@
 \begin{theindex}
 
-  \item anello a tre cerniere, \textbf{127}
+  \item analisi qualitativa, 167
+  \item anello a tre cerniere, \textbf{129}
   \item arco
-    \subitem a tre cerniere, \textbf{123}
+    \subitem a tre cerniere, \textbf{125}
+  \item azioni interne, \textbf{147}
 
   \indexspace
 
-  \item biella, \seealso{carrello}{14}, \textbf{14}
-  \item bipendolo, \seealso{vincolo}{17}, \textbf{17}
-    \subitem interno, 19
+  \item biella, \seealso{carrello}{16}, \textbf{16}
+    \subitem longitudinale, \textbf{161}
+    \subitem trasversale, \textbf{161}
+  \item bipendolo, \seealso{vincolo}{19}, \textbf{19}
+    \subitem interno, 21, 161
 
   \indexspace
 
-  \item carrello, \seealso{vincolo}{14}, \textbf{14}
-    \subitem interno, 16
-  \item cedimento, \seealso{distorsione}{33}, \textbf{61}
-    \subitem vincolare, \textbf{33}
+  \item caratteristiche della sollecitazione, \textbf{147}
+  \item carico
+    \subitem sostituzione con la risultante, 212
+  \item carrello, \seealso{vincolo}{16}, \textbf{16}
+    \subitem interno, 18
+  \item cedimento, \seealso{distorsione}{35}, \textbf{63}
+    \subitem vincolare, \textbf{35}
   \item centro di rotazione
-    \subitem luogo geometrico, 12
-  \item centro istantaneo di rotazione, 109
-  \item cerniera, \seealso{vincolo}{20}, \textbf{20}
-    \subitem cilindrica, 47
-    \subitem impropria, 24
-    \subitem interna, 21
-    \subitem multipla, \textbf{38}
-    \subitem sferica, 46
-  \item classificazione dei sistemi di corpi rigidi, \textbf{102}
-    \subitem formula fondamentale, 83
-    \subitem per decomposizione, 129
-    \subitem per ispezione diretta, \textbf{133}
-    \subitem per riduzione a schema noto, 129
-  \item collegamento, vincolo di, \see{vincolo (interno)}{10}
+    \subitem luogo geometrico, 14
+  \item centro istantaneo di rotazione, 111
+  \item cerniera, \seealso{vincolo}{22}, \textbf{22}
+    \subitem cilindrica, 49
+    \subitem impropria, 26
+    \subitem interna, 23, 161
+    \subitem multipla, \textbf{40}
+    \subitem sferica, 48
+  \item classificazione dei sistemi di corpi rigidi, \textbf{104}
+    \subitem formula fondamentale, 85
+    \subitem per decomposizione, 131
+    \subitem per ispezione diretta, \textbf{135}
+    \subitem per riduzione a schema noto, 131
+  \item collegamento, vincolo di, \see{vincolo (interno)}{12}
   \item compatibilità
-    \subitem cinematica, \textbf{78}
-  \item configurazione cinematicamente ammissibile, 62
+    \subitem cinematica, \textbf{80}
+  \item concio, \textbf{150}
+    \subitem elementare, \textbf{150}
+  \item condizioni di chiusura dell'anello, \textbf{160}
+  \item condizioni di compatibilità, 160
+  \item configurazione cinematicamente ammissibile, 64
   \item congruenza
-    \subitem esterna, 59
-    \subitem interna, 59
-  \item conteggio dei gradi di libertà, \textbf{102}
-    \subitem globale, 109
-    \subitem locale, 109
-  \item coordinate lagrangiane, 86
+    \subitem esterna, 61
+    \subitem interna, 61
+  \item conteggio dei gradi di libertà, \textbf{104}
+    \subitem globale, 111
+    \subitem locale, 111
+  \item coordinate lagrangiane, 88
   \item corpo
-    \subitem biconnesso, \textbf{114}
-    \subitem pluriconnesso, \textbf{114}
+    \subitem biconnesso, \textbf{116}
+    \subitem pluriconnesso, \textbf{116}
 
   \indexspace
 
-  \item degenerazione geometrica, \textbf{84}, 102, 108
-  \item distorsione, \seealso{cedimento}{9}, \textbf{9}
-    \subitem di Volterra, 9
+  \item degenerazione geometrica, \textbf{86}, 104, 110
+  \item diagramma, 148, \textbf{164}
+    \subitem del momento flettente, 166
+    \subitem del taglio, 166
+    \subitem della forza normale, 166
+  \item disaccoppiamento longitudinale e trasversale, \textbf{164}
+  \item distorsione, \seealso{cedimento}{11}, \textbf{11}, \textbf{154}
+    \subitem di Volterra, 11
+    \subitem estensionale, \textbf{154}
+    \subitem rotazionale, \textbf{154}
+    \subitem trasversale, \textbf{154}
 
   \indexspace
 
-  \item gerarchia strutturale, 129
-    \subitem portante, 129
-    \subitem portato, 129
-  \item giunto prismatico, \see{glifo}{22}
-  \item giustapposizione di vincoli, \see{vincolo (composto)}{29}
-  \item glifo, \seealso{vincolo}{22}, \textbf{22}
-    \subitem interno, 25
-  \item grado di vincolo, \see{vincolo}{10}
-  \item guida prismatica, \see{glifo}{47}
+  \item equazioni puntuali di equilibrio, \textbf{151}
+  \item equilibrio
+    \subitem globale, 146
 
   \indexspace
 
-  \item incastro, \seealso{vincolo}{26}, \textbf{26}
+  \item fibra inferiore, 144
+  \item forza normale, \textbf{147}
+
+  \indexspace
+
+  \item gerarchia strutturale, 131
+    \subitem portante, 131
+    \subitem portato, 131
+  \item giunto prismatico, \see{glifo}{24}
+  \item giustapposizione di vincoli, \see{vincolo (composto)}{31}
+  \item glifo, \seealso{vincolo}{24}, \textbf{24}
     \subitem interno, 27
-    \subitem multiplo, \textbf{41}
-  \item iperstaticità, 86, 
-		\seealso{labilità, stato di autoequilibrio}{102}, 
-		\textbf{102}
-  \item isostaticità, 84, \seealso{labilità, iperstaticità}{102}, 
-		\textbf{102}
-    \subitem completa, \textbf{110}
-    \subitem globale, \textbf{109}
-    \subitem locale, \textbf{110}
+  \item grado di connessione, \textbf{159}
+  \item grado di vincolo, \see{vincolo}{12}
+  \item guida prismatica, \see{glifo}{49}
 
   \indexspace
 
-  \item labilità, 85, \seealso{iperstaticità, meccanismo}{102}, 
-		\textbf{102}
+  \item incastro, \seealso{vincolo}{28}, \textbf{28}
+    \subitem interno, 29
+    \subitem multiplo, \textbf{43}
+  \item iperstaticità, 88, 
+		\seealso{labilità, stato di autoequilibrio}{104}, 
+		\textbf{104}
+    \subitem incognita iperstatica, 221
+    \subitem interna, \textbf{159}
+  \item isostaticità, 86, \seealso{labilità, iperstaticità}{104}, 
+		\textbf{104}
+    \subitem completa, \textbf{112}
+    \subitem globale, \textbf{111}
+    \subitem locale, \textbf{112}
 
   \indexspace
 
-  \item maglia chiusa, 114
-    \subitem taglio, 115
-  \item matrice dei vincoli, \textbf{61}
-  \item matrice di equilibrio, \seealso{matrice dei vincoli}{70}, 
-		\textbf{70}
-  \item mensola, \textbf{118}
-  \item molteplicità, \see{vincolo}{10}
+  \item labilità, 87, \seealso{iperstaticità, meccanismo}{104}, 
+		\textbf{104}
+  \item linea d'asse, \textbf{143}
 
   \indexspace
 
-  \item pantografo, \seealso{bipendolo}{17}
+  \item maglia chiusa, 116
+    \subitem taglio, 117
+  \item matrice dei vincoli, \textbf{63}
+  \item matrice di equilibrio, \seealso{matrice dei vincoli}{72}, 
+		\textbf{72}
+  \item mensola, \textbf{120}
+  \item metodo
+    \subitem del sistema principale, \textbf{221}
+    \subitem per equivalenza, \textbf{149}, 164
+  \item molteplicità, \see{vincolo}{12}
+  \item momento flettente, \textbf{147}
+
+  \indexspace
+
+  \item pantografo, \seealso{bipendolo}{19}
   \item pendolo
-    \subitem doppio, \see{bipendolo}{17}
-  \item perno scorrevole, 46, \seealso{vincolo}{46}
-  \item piano di scorrimento, 46, \seealso{vincolo}{46}
+    \subitem doppio, \see{bipendolo}{19}
+  \item perno scorrevole, 48, \seealso{vincolo}{48}
+  \item piano di scorrimento, 48, \seealso{vincolo}{48}
   \item principio dei lavori virtuali
-    \subitem per un sistema di corpi rigidi, \textbf{72}
+    \subitem per un sistema di corpi rigidi, \textbf{74}
   \item principio di Müller-Breslau, 
-		\see{teorema degli spostamenti virtuali}{76}
-  \item problema cinematico, \seealso{dualità}{61}, \textbf{61}
-  \item problema statico, \textbf{68}
+		\see{teorema degli spostamenti virtuali}{78}
+  \item principio di sovrapposizione, 166
+  \item problema cinematico, \seealso{dualità}{63}, \textbf{63}
+  \item problema statico, \textbf{70}
+    \subitem longitudinale, 165
+    \subitem misto, 165
+    \subitem trasversale, 165
 
   \indexspace
 
-  \item reazione vincolare, \textbf{12}
-    \subitem coppia reattiva, 13
-    \subitem forza reattiva, 13
-  \item riduzione di corpi rigidi, \textbf{113}
-    \subitem aperta, 114
-    \subitem chiusa, 114
+  \item reazione vincolare, \textbf{14}
+    \subitem coppia reattiva, 15
+    \subitem forza reattiva, 15
+  \item regola di complementarità, 161
+  \item relazioni per aree, \textbf{166}
+  \item riduzione di corpi rigidi, \textbf{115}
+    \subitem aperta, 116
+    \subitem chiusa, 116
+  \item riferimento locale, \textbf{144}
 
   \indexspace
 
-  \item sistema labile-iperstatico, 108
-  \item sottospazi fondamentali, 81
-  \item sottostruttura elementare, 118
-  \item stato di autoequilibrio, \textbf{82}
-  \item svincolo, \seealso{vincolo}{9}, \textbf{9}
-    \subitem interno, 114
+  \item salto
+    \subitem delle caratteristiche della sollecitazione, 152
+  \item sezione trasversale, \textbf{143}
+  \item sistema di forze
+    \subitem equivalenza, 212
+  \item sistema labile-iperstatico, 110
+  \item sistema principale, 221
+  \item sottospazi fondamentali, 83
+  \item sottostruttura elementare, 120
+  \item stato di autoequilibrio, \textbf{84}
+  \item svincolo, \seealso{vincolo}{11}, \textbf{11}
+    \subitem interno, 116, 161
+    \subitem multiplo, \textbf{161}
+    \subitem rotazionale, \textbf{161}
+    \subitem semplice, \textbf{161}
+    \subitem traslazionale, \textbf{161}
 
   \indexspace
 
+  \item taglio, \textbf{147}
+  \item taglio ideale, \textbf{147}
+  \item tangenza del diagramma del momento, \textbf{197}
+    \subitem agli estremi, 197
+    \subitem in mezzeria, 198
   \item teorema
-    \subitem degli spostamenti virtuali, \textbf{76}
-    \subitem delle forze virtuali, \textbf{78}
-    \subitem di intersezione, 29
-  \item TFV, \see{teorema delle forze virtuali}{78}
-  \item trave
-    \subitem con glifo, \textbf{119}
-    \subitem con tre carrelli, \textbf{120}
-    \subitem Gerber elementare, \textbf{125}
-    \subitem semplicemente appoggiata, \textbf{118}
-  \item triade meccanica, \textbf{73}
-  \item TSV, \see{teorema degli spostamenti virtuali}{76}
+    \subitem degli spostamenti virtuali, \textbf{78}
+    \subitem delle forze virtuali, \textbf{80}
+    \subitem di intersezione, 31
+  \item TFV, \see{teorema delle forze virtuali}{80}
+  \item tratto regolare, \textbf{150}
+  \item trave, \textbf{143}
+    \subitem ad anello, \textbf{159}
+    \subitem biconnessa, \textbf{159}
+    \subitem con glifo, \textbf{121}
+    \subitem con tre carrelli, \textbf{122}
+    \subitem Gerber elementare, \textbf{127}
+    \subitem inclinata, 214
+    \subitem monoconnessa, \textbf{159}
+    \subitem piana, \textbf{143}
+    \subitem pluriconnessa, \textbf{159}
+    \subitem rigida, \textbf{143}
+    \subitem semplicemente appoggiata, \textbf{120}
+    \subitem triconnessa, \textbf{159}
+  \item triade meccanica, \textbf{75}
+  \item TSV, \see{teorema degli spostamenti virtuali}{78}
 
   \indexspace
 
-  \item vettore delle incognite iperstatiche, 86
-  \item vettore di configurazione, \textbf{57}
-  \item vettore di vincolo, 59
-  \item vincolo, \textbf{9}
-    \subitem anolonomo, 10
-    \subitem cinematico, 10
-    \subitem composto, \textbf{29}
-    \subitem di rigidità, \textbf{7}
-    \subitem doppio, 20
-    \subitem esterno, \textbf{10}
-    \subitem grado di, \textbf{10}
-    \subitem interno, \textbf{10}
-    \subitem molteplicità, \textbf{10}
-    \subitem multiplo, 104
-    \subitem semplice, 13
-    \subitem spaziale, 45
-    \subitem triplo, 26
+  \item vettore delle incognite iperstatiche, 88
+  \item vettore di configurazione, \textbf{59}, 145
+  \item vettore di vincolo, 61
+  \item vincolo, \textbf{11}
+    \subitem anolonomo, 12
+    \subitem cinematico, 12
+    \subitem composto, \textbf{31}
+    \subitem di rigidità, \textbf{9}, 154
+    \subitem doppio, 22
+    \subitem esterno, \textbf{12}
+    \subitem grado di, \textbf{12}
+    \subitem interno, \textbf{12}
+    \subitem molteplicità, \textbf{12}
+    \subitem multiplo, 106
+    \subitem semplice, 15
+    \subitem sovrabbondante, 221
+    \subitem spaziale, 47
+    \subitem triplo, 28
 
 \end{theindex}
